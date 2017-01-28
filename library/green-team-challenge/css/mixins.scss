@@ -202,7 +202,7 @@
             height: 100%;
 
             $names: resort retry complete;
-            $colors: $transparent-red $transparent-red $transparent-green;
+            $colors: $transparent-red $transparent-red $transparent;
             @for $i from 1 through length($names) {
                 &[data-ref=#{nth($names, $i)}] {
                     background-color: #{nth($colors, $i)};
@@ -232,14 +232,14 @@
             }
         }
 
-        &.open-resort {
+        &.open-resort,
+        &.open-complete {
             .close-reveal {
                 display: none;
             }
         }
 
-        &.open-retry,
-        &.open-complete {
+        &.open-retry {
             .close-reveal {
                 @include position(absolute, null 150px 150px null);
             }

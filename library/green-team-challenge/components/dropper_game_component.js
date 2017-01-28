@@ -64,6 +64,21 @@ export default function (props, ref, key, opts = {}) {
     var revealOpen = _.get(props, 'data.reveal.open', false);
     var revealClose = _.get(props, 'data.reveal.close', false);
 
+    // this is commented out for now since some VOs are missing
+    // var audioRefs = _.uniq(_.map(opts.itemsToSort, v =>
+    //     _.upperFirst(_.camelCase(_.replace(v.name, /\d+/g, ''))))
+    // );
+
+    // var arrayOfAudio = _.map(audioRefs, (v, k) =>
+    //     <skoash.Audio
+    //         type="voiceOver"
+    //         ref={v}
+    //         key={k}
+    //         src={`${CMWN.MEDIA + 'SoundAssets/_vositems/' + v}.mp3`}
+    //     />
+    // );
+    var arrayOfAudio = [];
+
     if (itemRef) catchableRefs = [itemRef];
 
     opts.itemRef = itemRef;
@@ -200,10 +215,11 @@ export default function (props, ref, key, opts = {}) {
                     <skoash.Component
                         ref="complete"
                         type="li"
-                    >
-                        <p>COMPLETE</p>
-                    </skoash.Component>,
+                    />,
                 ]}
+            />
+            <skoash.MediaCollection
+                children={arrayOfAudio}
             />
         </skoash.Screen>
     );

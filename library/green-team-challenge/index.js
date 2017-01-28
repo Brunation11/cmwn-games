@@ -169,6 +169,11 @@ skoash.start(
             quit: QuitScreen,
         }}
         assets={[
+            <skoash.JSON src={`${CMWN.MEDIA.SPRITE}_recycle.json`} />,
+            <skoash.JSON src={`${CMWN.MEDIA.SPRITE}_liquids.json`} />,
+            <skoash.JSON src={`${CMWN.MEDIA.SPRITE}_landfill.json`} />,
+            <skoash.JSON src={`${CMWN.MEDIA.SPRITE}_foodshare.json`} />,
+            <skoash.JSON src={`${CMWN.MEDIA.SPRITE}_compost.json`} />,
             <skoash.Image className="hidden" src={`${CMWN.MEDIA.SPRITE}_recycle.png`} />,
             <skoash.Image className="hidden" src={`${CMWN.MEDIA.SPRITE}_liquids.png`} />,
             <skoash.Image className="hidden" src={`${CMWN.MEDIA.SPRITE}_landfill.png`} />,
