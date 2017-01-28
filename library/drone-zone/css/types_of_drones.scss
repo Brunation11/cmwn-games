@@ -60,33 +60,46 @@
 
         .header {
             @include center;
-            @include text-stroke(3, $black);
-            top: 26%;
             width: 65%;
+            text-shadow: 2px 2px 2px $black;
             color: $green;
-            font-size: 38px;
-            font-weight: 900;
+            font-family: 'Luckiest Guy';
         }
 
         .copy {
             @include center;
             color: $black;
-            font-size: 30px;
+            font-size: 35px;
         }
 
-        &.instructions .copy {
-            top: 50%;
+        &.open-instructions {
+            .header {
+                top: 36%;
+                font-size: 50px;
+            }
+
+            .copy {
+                top: 60%;
+                line-height: 40px;
+            }
         }
 
-        &:not(.instructions) .copy {
-            top: 110%;
-            border: 10px solid $green;
-            border-radius: 10px;
-            background: $white-transparancy;
-            padding: 15px;
-            width: 100%;
-            font-size: 25px;
-            font-weight: 900;
+        &:not(.open-instructions) {
+            .header {
+                top: 27%;
+                font-size: 45px;
+            }
+
+            .copy {
+                top: 110%;
+                border: 10px solid $green;
+                border-radius: 10px;
+                background: $white-transparancy;
+                padding: 15px;
+                width: 80%;
+                font-size: 25px;
+                font-weight: 900;
+            }
         }
 
         .close-reveal {
