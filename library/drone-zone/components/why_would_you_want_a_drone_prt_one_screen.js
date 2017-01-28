@@ -130,7 +130,7 @@ export default function (props, ref, key) {
                             <br />
                             to builders high
                             <br />
-                            in the air.
+                            up in the air.
                         </span>
                     </skoash.Component>,
                     <skoash.Component
