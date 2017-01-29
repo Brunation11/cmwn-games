@@ -6,7 +6,7 @@
         @include center;
         top: 48%;
         left: 18%;
-        width: 32%;
+        width: 36%;
         height: 70%;
         text-align: center;
         color: $red;
@@ -20,13 +20,15 @@
         }
 
         .level {
-            font-size: 75px;
+            font-family: 'Luckiest Guy';
+            font-size: 85px;
         }
 
         .copy {
-            top: 35%;
-            line-height: 40px;
-            font-size: 30px;
+            top: 30%;
+            line-height: 45px;
+            font-family: 'Lilita One';
+            font-size: 35px;
         }
     }
 
@@ -38,16 +40,33 @@
         width: 60%;
         height: 70%;
 
+        .start,
+        .finish {
+            position: absolute;
+            color: $red;
+            text-shadow: 2px -2px $white;
+            font-family: 'Luckiest Guy';
+            font-size: 45px;
+        }
+
+        .start {
+            top: 11%;
+            left: 26%;
+        }
+
+        .finish {
+            top: 88%;
+            left: 70%;
+        }
+
         .drone {
             @include path-icons(1, 200px, 100px);
             position: absolute;
-            top: 20px;
-            left: 110px;
         }
 
         .selectable {
-            $tops:   55 130 225;
-            $lefts: 460 160  25;
+            $tops:   225 130  55;
+            $lefts:   25 160 460;
             @for $i from 1 through length($tops) {
                 .lock-#{$i} {
                     @include path-icons(5, 100px, 100px);
@@ -73,6 +92,13 @@
                                 transform-origin: 50% 300%;
                             }
                         }
+                    }
+
+                    .level {
+                        @include center;
+                        opacity: 0;
+                        width: 100%;
+                        text-shadow: 3px 2px 0 $black;
                     }
                 }
             }
@@ -118,12 +144,56 @@
     }
 }
 
+
+$icons:   2   3   4;
+$tops:  150  60   0;
+$lefts:   0 120 420;
+
 @for $i from 1 through 3 {
     #drone-level-#{$i} {
         .selectable {
-            .lock-#{$i} {
-                pointer-events: auto;
+            @if $i > 2 {
+                .lock-#{$i - 2} {
+                    @include path-icons(nth($icons, $i - 2), 115px, 115px);
+                    pointer-events: auto;
+
+                    .level {
+                        opacity: 1;
+                    }
+                }
             }
+
+            @if $i > 1 {
+                .lock-#{$i - 1} {
+                    @include path-icons(nth($icons, $i - 1), 115px, 115px);
+                    pointer-events: auto;
+
+                    .level {
+                        opacity: 1;
+                    }
+                }
+            }
+
+            .lock-#{$i} {
+                @include path-icons(nth($icons, $i), 115px, 115px);
+                pointer-events: auto;
+
+                .level {
+                    opacity: 1;
+                }
+            }
+        }
+
+        .drone {
+            top: #{nth($tops, $i)}px;
+            left: #{nth($lefts, $i)}px;
+        }
+
+        &::before {
+            @include instruction-bkg($i, 960px, 138px);
+            position: absolute;
+            bottom: 0;
+            content: '';
         }
     }
 }
