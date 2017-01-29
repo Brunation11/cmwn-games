@@ -3,10 +3,20 @@ import PhaserGameScreenComponent from './phaser_game_screen_component';
 export default function (props, ref, key) {
     return PhaserGameScreenComponent(props, ref, key, {
         level: 1,
-        fact1VO: 'SearchRescue',
-        fact2VO: 'EmergencySituations',
+        fact1VO: 'TheMovementsOf',
+        fact2VO: 'SearchRescue',
+        fact3VO: 'EmergencySituations',
         completeVO: 'LevelOneComplete',
         fact1Content: (
+            <p>
+                The movements of some tiny drones,
+                <br />
+                called miniature UAVs, are based
+                <br />
+                on birds and insects.
+            </p>
+        ),
+        fact2Content: (
             <p>
                 Drones were used in search and
                 <br />
@@ -15,7 +25,7 @@ export default function (props, ref, key) {
                 struck Texas and Louisiana in 2008.
             </p>
         ),
-        fact2Content: (
+        fact3Content: (
             <p>
                 In emergency situations, drones can
                 <br />
@@ -28,6 +38,6 @@ export default function (props, ref, key) {
             <p>
                 You're a master firefighter.
             </p>
-        ),
+        )
     });
 }
