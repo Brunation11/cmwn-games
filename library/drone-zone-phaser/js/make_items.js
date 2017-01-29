@@ -37,7 +37,7 @@ export default function () {
                   groups[object] === 'mailboxs' ||
                   groups[object] === 'plants' ?
                   400 :
-                  200 * _.random(0, 2);
+                  200 * _.random(0, 1);
         placeObject(object, top, left);
         if (!objects.length) objects = getObjects([], this.opts.itemAmounts);
     }
