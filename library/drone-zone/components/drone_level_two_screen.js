@@ -4,7 +4,6 @@ export default function (props, ref, key) {
     return DroneLevelsScreenComponent(props, ref, key, {
         level: 2,
         instructionsVO: 'LevelTwoHelp',
-        factVO: 'Dominos',
         instructions: (
             <span className="copy">
                 Help the drone
@@ -15,13 +14,6 @@ export default function (props, ref, key) {
                 <br />
                 the neighborhood.
             </span>
-        ),
-        factContent: (
-            <p>
-                Domino's delivered the world's
-                <br />
-                first pizza by drone in 2016.
-            </p>
-        ),
+        )
     });
 }

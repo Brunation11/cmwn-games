@@ -4,7 +4,6 @@ export default function (props, ref, key) {
     return DroneLevelsScreenComponent(props, ref, key, {
         level: 3,
         instructionsVO: 'LevelThreeHelp',
-        factVO: 'DronesCanBeUsed',
         instructions: (
             <span className="copy">
                 Help the drone
@@ -13,15 +12,6 @@ export default function (props, ref, key) {
                 <br />
                 fertilize crops!
             </span>
-        ),
-        factContent: (
-            <p>
-                Drones can be used in farming for
-                <br />
-                many things, including dusting crops
-                <br />
-                and monitoring livestock.
-            </p>
-        ),
+        )
     });
 }

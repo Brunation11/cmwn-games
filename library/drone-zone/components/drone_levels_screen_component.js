@@ -1,31 +1,12 @@
 import classNames from 'classnames';
 
 export default function (props, ref, key, opts = {}) {
-    var onCloseReveal;
     var onSelect;
     var getStarClassNames;
 
-    onCloseReveal = function (prevMessage) {
-        if (!prevMessage) return;
-
-        this.updateGameState({
-            path: 'reveal',
-            data: {
-                open: null,
-            }
-        });
-
+    onSelect = function () {
         if (_.get(props, 'gameState.currentScreenIndex') !== parseInt(key, 10)) return;
         skoash.Screen.prototype.goto(parseInt(key, 10) + 1);
-    };
-
-    onSelect = function () {
-        this.updateGameState({
-            path: 'reveal',
-            data: {
-                open: 'fact',
-            }
-        });
     };
 
     getStarClassNames = function (level, star) {
@@ -45,12 +26,10 @@ export default function (props, ref, key, opts = {}) {
                 type="voiceOver"
                 src={`${MEDIA.VO}${opts.instructionsVO}.mp3`}
             />
-            {/*
             <skoash.Image
                 className="hidden"
                 src={`${MEDIA.SPRITE}sprite.starmap.png`}
             />
-            */}
             <skoash.Image
                 className="hidden"
                 src={`${MEDIA.SPRITE}sprite.pathicons.png`}
@@ -73,6 +52,8 @@ export default function (props, ref, key, opts = {}) {
                 className="path"
             >
                 <skoash.Component className="drone" />
+                <span className="start">START</span>
+                <span className="finish">FINISH!</span>
                 <skoash.Selectable
                     onSelect={onSelect}
                     list={[
@@ -83,6 +64,7 @@ export default function (props, ref, key, opts = {}) {
                             <div className={getStarClassNames(1, 1)}/>
                             <div className={getStarClassNames(1, 2)}/>
                             <div className={getStarClassNames(1, 3)}/>
+                            <span className="level">Level: 1</span>
                         </skoash.Component>,
                         <skoash.Component
                             type="li"
@@ -91,6 +73,7 @@ export default function (props, ref, key, opts = {}) {
                             <div className={getStarClassNames(2, 1)}/>
                             <div className={getStarClassNames(2, 2)}/>
                             <div className={getStarClassNames(2, 3)}/>
+                            <span className="level">Level: 2</span>
                         </skoash.Component>,
                         <skoash.Component
                             type="li"
@@ -99,35 +82,11 @@ export default function (props, ref, key, opts = {}) {
                             <div className={getStarClassNames(3, 1)}/>
                             <div className={getStarClassNames(3, 2)}/>
                             <div className={getStarClassNames(3, 3)}/>
+                            <span className="level">Level: 3</span>
                         </skoash.Component>,
                     ]}
                 />
             </skoash.Component>
-            <skoash.Reveal
-                openTarget="reveal"
-                openReveal={_.get(props, 'data.reveal.open', false)}
-                closeReveal={_.get(props, 'data.reveal.close', false)}
-                onClose={onCloseReveal}
-                list={[
-                    <skoash.Component
-                        ref="fact"
-                        className="fact"
-                        type="li"
-                    >
-                        <h1 className="header">DRONE FACT</h1>
-                        {opts.factContent}
-                    </skoash.Component>,
-                ]}
-            />
-            <skoash.MediaCollection
-                play={_.get(props, 'data.reveal.open')}
-            >
-                <skoash.Audio
-                    type="voiceOver"
-                    ref="fact"
-                    src={`${MEDIA.VO}${opts.factVO}.mp3`}
-                />
-            </skoash.MediaCollection>
         </skoash.Screen>
     );
 }

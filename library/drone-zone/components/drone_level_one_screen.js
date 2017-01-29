@@ -4,7 +4,6 @@ export default function (props, ref, key) {
     return DroneLevelsScreenComponent(props, ref, key, {
         level: 1,
         instructionsVO: 'LevelOneHelp',
-        factVO: 'TheMovementsOf',
         instructions: (
             <span className="copy">
                 Help the drone
@@ -17,15 +16,6 @@ export default function (props, ref, key) {
                 <br />
                 runs out.
             </span>
-        ),
-        factContent: (
-            <p>
-                The movements of some tiny drones,
-                <br />
-                called miniature UAVs, are based
-                <br />
-                on birds and insects.
-            </p>
-        ),
+        )
     });
 }
