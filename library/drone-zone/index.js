@@ -16,12 +16,15 @@ import InfoWantedYourOwnDroneScreen from './components/info_wanted_your_own_dron
 import InfoCustomizeYourOwnDroneScreen from './components/info_customize_your_own_drone_screen';
 import CustomizeYourDroneScreen from './components/customize_your_drone_screen';
 import PartsOfADroneScreen from './components/parts_of_a_drone_screen';
+import InfoLetsPlayScreen from './components/info_lets_play_screen';
+import InfoHelpTheDroneScreen from './components/info_help_the_drone_screen';
 import DroneLevelOneScreen from './components/drone_level_one_screen';
 import LevelOneScreen from './components/level_one_screen';
 import DroneLevelTwoScreen from './components/drone_level_two_screen';
 import LevelTwoScreen from './components/level_two_screen';
 import DroneLevelThreeScreen from './components/drone_level_three_screen';
 import LevelThreeScreen from './components/level_three_screen';
+import InfoGameCompleteScreen from './components/info_game_complete_screen';
 import FlipScreen from './components/flip_screen';
 import QuitScreen from './components/quit_screen';
 
@@ -39,16 +42,19 @@ skoash.start(
             HowAreDronesControlledScreen,
             WhyWouldYouWantADronePrtOneScreen,
             WhyWouldYouWantADronePrtTwoScreen,
-            InfoWantedYourOwnDroneScreen,
-            InfoCustomizeYourOwnDroneScreen,
-            CustomizeYourDroneScreen,
+            // InfoWantedYourOwnDroneScreen, //temp removed from spec
+            // InfoCustomizeYourOwnDroneScreen, //temp removed from spec
+            // CustomizeYourDroneScreen, //temp removed from spec
             PartsOfADroneScreen,
+            InfoLetsPlayScreen,
+            InfoHelpTheDroneScreen,
             DroneLevelOneScreen,
             LevelOneScreen,
             DroneLevelTwoScreen,
             LevelTwoScreen,
             DroneLevelThreeScreen,
             LevelThreeScreen,
+            InfoGameCompleteScreen,
             FlipScreen
         ]}
         menus={{
@@ -57,7 +63,7 @@ skoash.start(
         assets={[
             <skoash.Font name="Chelsea Market" />,
             <skoash.Font name="Source Sans Pro" />,
-            <skoash.Font name="CMWN" />,
+            // <skoash.Font name="CMWN" />,
             <div className="background title" />,
             <div className="background bkg-1" />,
             <div className="background bkg-2" />,
