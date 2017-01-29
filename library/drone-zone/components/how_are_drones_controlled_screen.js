@@ -46,6 +46,11 @@ export default function (props, ref, key) {
                 src={`${MEDIA.VO}HowAreDronesControlled.mp3`}
             />
 
+            <skoash.Image
+                className="hidden"
+                src={`${MEDIA.SPRITE}sprite.controllers.png`}
+            />
+
             <skoash.Component className="header">
                 <h1>HOW ARE DRONES CONTROLLED?</h1>
             </skoash.Component>
