@@ -4,9 +4,10 @@
 #flip {
     .header {
         @include center;
-        @include text-stroke(1, $black);
-        top: 10%;
+        top: 15%;
         width: 100%;
+        text-shadow: 2px 2px 2px $black;
+        font-family: 'Luckiest Guy';
         font-size: 90px;
     }
 
