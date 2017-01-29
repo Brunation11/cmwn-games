@@ -84,6 +84,7 @@ export default {
             p.slow = false;
         }, this.opts.slowDuration);
         this.helpers.hitSomething.call(this, 2);
+        this.audio.powerline.play();
     },
     onFireOverlap(p, i) {
         if (i.laid) return;
@@ -106,11 +107,15 @@ export default {
     },
     onStarOverlap(p, i) {
         i.kill();
-        this.helpers.updateScore.call(this, 2);
+        this.helpers.updateStars.call(this, 1);
         this.audio.star.play();
     },
     addLife(i = 1) {
         this.data.levels[this.opts.level].hits = Math.max(0, this.data.levels[this.opts.level].hits - i);
+        this.helpers.emitData.call(this);
+    },
+    updateStars(i = 1) {
+        this.data.levels[this.opts.level].stars += i;
         this.helpers.emitData.call(this);
     },
     updateScore(i = 1) {
