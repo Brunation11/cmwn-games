@@ -29,6 +29,8 @@
 @mixin job-icons($column, $width: 0, $height: 0, $size: 'small', $label: true) {
     @if $size == 'small' {
         @include sprite('#{$sprite}sprite.jobicons.png', 725px, 185px, 7, 2, $column, 1, 1, $width, $height);
+    } @else if $size == 'large' {
+        @include sprite('#{$sprite}sprite.jobicons.png', 1939px, 500px, 7, 2, $column, 1, 1, $width, $height);
     } @else {
         @if $label == false {
             @include sprite('#{$sprite}sprite.jobicons.png', 1500px, 382px, 7, 2, $column, 2, 2, $width, $height);
@@ -81,6 +83,12 @@
 @mixin path-icons($column, $width: 0, $height: 0) {
     @include sprite('#{$sprite}sprite.pathicons.png', 1000px, 119px, 5, 1, $column, 1, 1, $width, $height);
 }
+
+@mixin instruction-bkg($column, $width: 0, $height: 0) {
+    @include sprite($sprite + 'sprite.INSTRUCTIONPAGEbkg.png', 2880px, 138px, 3, 1, $column, 1, 1, $width, $height);
+}
+
+// 540 960
 
 @mixin sprite-meter-icon($column, $width: 0, $height: 0) {
     @include sprite($sprite + 'sprite.metericons.png', 320px, 50px, 4, 1, $column, 1, 1, $width, $height);
