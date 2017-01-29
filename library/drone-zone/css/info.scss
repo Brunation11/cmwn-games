@@ -56,3 +56,94 @@
         font-size: 43px;
     }
 }
+
+#info-lets-play,
+#info-help-the-drone {
+    .lvl {
+        position: absolute;
+        background: url('#{$sprite}sprite.levelimgs.png');
+        background-repeat: no-repeat;
+        background-size: auto 100%;
+    }
+
+    .copy {
+        @include center;
+        position: absolute;
+        width: 100%;
+        text-shadow: 3px 3px 3px $white;
+        color: $red;
+        font-family: 'Luckiest Guy';
+    }
+}
+
+#info-lets-play {
+    $tops:       15%   52%    4%;
+    $lefts:      55%   38%   47%;
+    $sizes:    400px 225px 200px;
+    $positions:  50%  100%     0;
+
+    @for $i from 1 through length($tops) {
+        .lvl-#{$i} {
+            top: nth($tops, $i);
+            left: nth($lefts, $i);
+            background-position: #{nth($positions, $i)} 0;
+            width: #{nth($sizes, $i)};
+            height: #{nth($sizes, $i)};
+        }
+    }
+
+    .copy {
+        left: 22%;
+        line-height: 80px;
+        font-size: 70px;
+    }
+}
+
+#info-help-the-drone {
+    $tops:       15%   52%    4%;
+    $lefts:      22%    6%   15%;
+    $sizes:    400px 225px 200px;
+    $positions:    0   50%  100%;
+
+    @for $i from 1 through length($tops) {
+        .lvl-#{$i} {
+            top: nth($tops, $i);
+            left: nth($lefts, $i);
+            background-position: #{nth($positions, $i)} 0;
+            width: #{nth($sizes, $i)};
+            height: #{nth($sizes, $i)};
+        }
+    }
+
+    .copy {
+        left: 81%;
+        line-height: 55px;
+        font-size: 45px;
+    }
+}
+
+#game-complete {
+    .frame {
+        left: 60%;
+
+        .copy {
+            @include center;
+            top: 45%;
+            width: 100%;
+            text-shadow: 3px 3px 3px $black;
+            line-height: 110px;
+            font-family: 'Luckiest Guy';
+            font-size: 100px;
+        }
+
+        &::after {
+            @include center;
+            left: 0;
+            background: url('#{$image}winscreen.png');
+            background-size: contain;
+            width: 50%;
+            height: 100%;
+            content: '';
+        }
+    }
+}
