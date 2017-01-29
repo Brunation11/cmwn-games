@@ -13,7 +13,7 @@ const cloudDefaultProps = {
 
 const mailDefaultProps = {
     image: 'mail',
-    scale: [1, 1],
+    scale: [.5, .5],
 };
 
 const plantDefaultProps = {
@@ -28,7 +28,7 @@ const mailboxDefaultProps = {
 
 const extinguisherDefaultProps = {
     image: 'extinguisher',
-    scale: [.5, .5],
+    scale: [.35, .35],
 };
 
 const farmingDefaultProps = {
@@ -41,9 +41,9 @@ export default {
     hitsPerLife: 10,
     bounceY: 0,
     gravityY: 600,
-    playerImage: 'drone',
+    playerImage: 'fire-drone',
     playerBody: [500, 100, 500, 500],
-    leftFrames: [5, 4, 3, 2, 1, 0],
+    leftFrames: [6, 5, 4, 3, 2, 1, 0],
     leftFrameRate: 10,
     leftLoop: true,
     rightFrames: [6, 7, 8, 9, 10, 11],
@@ -63,7 +63,7 @@ export default {
     itemProps: {
         star: {
             image: 'star',
-            scale: [1, 1],
+            scale: [.10, .10],
         },
         helicopter: {
             image: 'helicopter',
@@ -112,7 +112,7 @@ export default {
         }, fireDefaultProps),
         battery: {
             image: 'battery',
-            scale: [.75, .75],
+            scale: [.5, .5],
         },
         powerline: {
             image: 'powerline',
