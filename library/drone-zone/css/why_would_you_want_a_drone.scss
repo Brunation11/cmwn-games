@@ -1,3 +1,4 @@
+@import 'keyframes';
 @import 'variables';
 @import 'mixins';
 
@@ -213,6 +214,7 @@
         @include center;
         top: 52%;
         left: 73%;
+        opacity: 0;
         width: 350px;
         height: 350px;
 
@@ -223,14 +225,22 @@
 
             @for $i from 1 through length($clr-uses) {
                 &.#{nth($clr-uses, $i)} {
-                    &.#{nth($populated-uses, $i)}:not(:first-of-type) {
-                        display: none;
-                    }
-
-                    &::after {
+                    &::before {
                         @include center;
                         @include job-images($i, 320px, 320px);
                         content: '';
+                    }
+
+                    &.#{nth($populated-uses, $i)} {
+                        &:not(:first-of-type) {
+                            animation: disable 4s forwards;
+                        }
+
+                        &::after {
+                            @include center;
+                            @include job-icons($i, 250px, 250px, 'large');
+                            content: '';
+                        }
                     }
                 }
             }
@@ -287,6 +297,13 @@
                 line-height: normal;
                 font-size: 40px;
             }
+        }
+    }
+
+    &.STARTED {
+        .dropzone {
+            transition: opacity 2s;
+            opacity: 1;
         }
     }
 }
