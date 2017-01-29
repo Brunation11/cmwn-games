@@ -12,10 +12,12 @@ export default function () {
 
     this.helpers.makeBackground.call(this);
 
+    var playerImage = this.opts.level == 1 ? 'fire-drone' : this.opts.level == 2 ? 'delivery-drone' : 'farm-drone';
+
     addPlayer.call(this, {
         left: 300,
         top: this.game.world.height - 650,
-        image: this.opts.playerImage,
+        image: playerImage,
         bounceY: 0,
         gravityY: 0,
         body: this.opts.playerBody,
