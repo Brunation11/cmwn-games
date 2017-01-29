@@ -63,6 +63,10 @@
                             opacity: 1;
                         }
 
+                        &:hover .click {
+                            opacity: 0;
+                        }
+
                         &::before {
                             @include center;
                             @include control-types($i, 250px, 149px);
