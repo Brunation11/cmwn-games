@@ -2,7 +2,6 @@ import loadAssets from 'shared/phaser/methods/load_assets/0.1';
 
 export default function () {
     loadAssets.call(this, 'image', [
-    ['drone', `${MEDIA.IMAGE}title.drone.png`],
     ['sky', `${MEDIA.IMAGE}BKG.8.jpg`],
     ['buildings', `${MEDIA.IMAGE}LEVEL1.BKG.png`],
     ['houses', `${MEDIA.IMAGE}LEVEL2.BKG.png`],
@@ -22,6 +21,21 @@ export default function () {
     ]);
 
     loadAssets.call(this, 'atlas', [
+        [
+            'fire-drone',
+            `${MEDIA.SPRITE}Drone.Sprite.with.fire.png`,
+            `${MEDIA.SPRITE}Drone.Sprite.with.fire.json`
+        ],
+        [
+            'delivery-drone',
+            `${MEDIA.SPRITE}Drone.Sprite.with.box.png`,
+            `${MEDIA.SPRITE}Drone.Sprite.with.box.json`
+        ],
+        [
+            'farm-drone',
+            `${MEDIA.SPRITE}Drone.Sprite.with.watercan.png`,
+            `${MEDIA.SPRITE}Drone.Sprite.with.watercan.json`
+        ],
         [
             'helicopter',
             `${MEDIA.SPRITE}helicopter-animation-sprite.png`,
@@ -47,7 +61,7 @@ export default function () {
     loadAssets.call(this, 'audio', [
         ['extinguish', `${MEDIA.EFFECT}HitTarget_Fire.mp3`],
         ['extinguisher', `${MEDIA.EFFECT}CollectExting.mp3`],
-        ['obstacle', `${MEDIA.EFFECT}HitPowerLine.mp3`],
+        ['powerline', `${MEDIA.EFFECT}HitPowerLine.mp3`],
         ['helicopter', `${MEDIA.EFFECT}Helicopter.mp3`],
         ['plane', `${MEDIA.EFFECT}Airplane.mp3`],
         ['balloon', `${MEDIA.EFFECT}HotAirBalloon.mp3`],
