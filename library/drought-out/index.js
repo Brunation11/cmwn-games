@@ -38,7 +38,7 @@ var DroughtOut = (
             //3: InfoNoWaterScreen,
             //4: HumansAnimalsScreen,
             //5: InfoUseWaterScreen,
-            //6: BalloonsScreen,
+            2: BalloonsScreen,
             //7: GreatJobScreen,
             //8: DroughtEffectsScreen,
             //9: EnvironmentEffectsScreen,
@@ -48,7 +48,7 @@ var DroughtOut = (
             //13: ShowerScreen,
             //14: ConserveScreen,
             //15: HeroScreen,
-            2: FlipScreen
+            //16: FlipScreen
         }}
 
         menus={{
