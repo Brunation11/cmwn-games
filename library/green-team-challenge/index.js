@@ -22,7 +22,7 @@ import iOSScreen from 'shared/components/ios_splash_screen/0.1';
 // import RecyclingChampion5Screen from './components/recycling_champion_level_five_screen';
 // import LevelCompleteScreen from './components/level_complete_screen_component';
 // import PricelessPourer1InfoScreen from './components/priceless_pourer_one_info_screen';
-import PricelessPourer1Screen from './components/priceless_pourer_level_one_screen';
+// import PricelessPourer1Screen from './components/priceless_pourer_level_one_screen';
 // import PricelessPourer2InfoScreen from './components/priceless_pourer_two_info_screen';
 // import PricelessPourer2Screen from './components/priceless_pourer_level_two_screen';
 // import PricelessPourer3InfoScreen from './components/priceless_pourer_three_info_screen';
@@ -32,7 +32,7 @@ import PricelessPourer1Screen from './components/priceless_pourer_level_one_scre
 // import PricelessPourer5InfoScreen from './components/priceless_pourer_five_info_screen';
 // import PricelessPourer5Screen from './components/priceless_pourer_level_five_screen';
 // import FantasticFoodSharer1InfoScreen from './components/fantastic_food_sharer_one_info_screen';
-// import FantasticFoodSharer1Screen from './components/fantastic_food_sharer_level_one_screen';
+import FantasticFoodSharer1Screen from './components/fantastic_food_sharer_level_one_screen';
 // import FantasticFoodSharer2InfoScreen from './components/fantastic_food_sharer_two_info_screen';
 // import FantasticFoodSharer2Screen from './components/fantastic_food_sharer_level_two_screen';
 // import FantasticFoodSharer3InfoScreen from './components/fantastic_food_sharer_three_info_screen';
@@ -95,7 +95,7 @@ skoash.start(
             // LevelCompleteScreen(1),
             // LevelScreen(2.0),
             // PricelessPourer1InfoScreen,
-            PricelessPourer1Screen,
+            // PricelessPourer1Screen,
             // LevelScreen(2.1),
             // PricelessPourer2InfoScreen,
             // PricelessPourer2Screen,
@@ -112,7 +112,7 @@ skoash.start(
             // LevelCompleteScreen(2),
             // LevelScreen(3.0),
             // FantasticFoodSharer1InfoScreen,
-            // FantasticFoodSharer1Screen,
+            FantasticFoodSharer1Screen,
             // LevelScreen(3.1),
             // FantasticFoodSharer2InfoScreen,
             // FantasticFoodSharer2Screen,
