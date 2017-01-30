@@ -128,6 +128,7 @@ var DroughtOut = (
                 ref="bkg-7"
                 type="background"
                 src={MEDIA.EFFECT + 'FlipBKG.mp3'}
+                volume={.8}
             />,
             <skoash.Audio
                 ref="button"

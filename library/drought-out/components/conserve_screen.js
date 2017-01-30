@@ -1,5 +1,4 @@
 export default function (props, ref, key) {
-    // TODO get correct copy and/or audio for "cooler" reveal
 
     const WAYS = [
         'dishes',
@@ -147,7 +146,7 @@ export default function (props, ref, key) {
                             <p>
                                 Use leftover water from<br />
                                 the melted ice in your<br />
-                                glass to water plants.
+                                glass to water your plants.
                             </p>
                         </skoash.ListItem>,
                         <skoash.ListItem data-ref={WAYS[3]}>
@@ -165,16 +164,16 @@ export default function (props, ref, key) {
                         </skoash.ListItem>,
                         <skoash.ListItem data-ref={WAYS[5]}>
                             <p>
-                                Collect cooler water<br />
-                                in a bucket for plants<br />
-                                or cleaning or flushing.
+                                Collect rain water in<br />
+                                a bucket for plants or<br />
+                                cleaning or even flushing.
                             </p>
                         </skoash.ListItem>,
                         <skoash.ListItem data-ref={WAYS[6]}>
                             <p>
                                 Throw trash in<br />
                                 a waste basket.<br /><br />
-                            Don't flush it.
+                                Don't flush it.
                             </p>
                         </skoash.ListItem>,
                         <skoash.ListItem data-ref={WAYS[7]}>

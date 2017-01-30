@@ -8,7 +8,7 @@ export default function (props, ref, key) {
             id="drought-effects"
             className="large-frame"
         >
-            <skoash.Audio type="voiceOver" src={`${MEDIA.VO}mp3`}/>
+            <skoash.Audio type="voiceOver" src={`${MEDIA.VO}DroughtCan.mp3`}/>
             <skoash.Component className="frame animated">
                 <p>
                     Drought can have<br /> severe effects on<br /> the environment.<br />

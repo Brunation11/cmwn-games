@@ -7,7 +7,8 @@ export default function (props, ref, key) {
             id="shower"
         >
             <skoash.Audio type="voiceOver" src={`${MEDIA.VO}IfYouDecrease.mp3`}/>
-            <skoash.Image src={`${MEDIA.IMAGE}img_14.1.png`}/>
+            <skoash.Image className="hidden" src={`${MEDIA.SPRITE}sprites.cards.png`} />
+            <skoash.Image className="title" src={`${MEDIA.IMAGE}img_14.1.png`}/>
             <p>Turn each card.</p>
             <skoash.Component className="flip-card-component bt">
                 <skoash.Selectable

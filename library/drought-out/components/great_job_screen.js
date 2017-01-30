@@ -11,7 +11,7 @@ export default function (props, ref, key) {
                 <skoash.Audio ref="great-job" type="voiceOver" src={`${MEDIA.VO}GreatJob.mp3`}/>
             </skoash.MediaSequence>
             <skoash.Component className="frame animated">
-                <skoash.Image src={`${MEDIA.Image}img_8.1.png`}/>
+                <skoash.Image src={`${MEDIA.IMAGE}img_8.1.png`}/>
                 <p>
                     Now let's look<br /> at the impact of drought.
                 </p>

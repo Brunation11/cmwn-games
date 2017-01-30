@@ -15,6 +15,7 @@ export default function (props, ref, key) {
                     type="voiceOver"
                     src={`${MEDIA.VO}DOFlip.mp3`}
                     completeTarget="vo"
+                    volume={2}
                 />
                 <skoash.Audio
                     type="sfx" 
