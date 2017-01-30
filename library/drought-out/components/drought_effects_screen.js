@@ -1,5 +1,4 @@
 export default function (props, ref, key) {
-    // TODO need falcon image 1/23/17 AIM
     return (
         <skoash.Screen
             {...props}
@@ -10,11 +9,12 @@ export default function (props, ref, key) {
         >
             <skoash.Audio type="voiceOver" src={`${MEDIA.VO}DroughtCan.mp3`}/>
             <skoash.Component className="frame animated">
+                <skoash.Image className="falcon" src={`${MEDIA.IMAGE}falcon.png`}/>
                 <p>
                     Drought can have<br /> severe effects on<br /> the environment.<br />
                     It's really bad for<br /> humans, too!
                 </p>
-                <skoash.Image src={`${MEDIA.IMAGE}img_9.1.png`}/>
+                <skoash.Image className="cactus" src={`${MEDIA.IMAGE}img_9.1.png`}/>
             </skoash.Component>
         </skoash.Screen>
     );

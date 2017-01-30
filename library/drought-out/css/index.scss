@@ -640,13 +640,20 @@ img.inline {
 
 #drought-effects {
     .frame {
-        padding: 180px 360px 60px 60px;
+        padding: 190px 250px 60px 60px;
 
-        img {
+        .cactus {
             position: absolute;
             right: 50px;
             bottom: 50px;
             width: 340px;
+        }
+
+        .falcon {
+            position: absolute;
+            top: 30px;
+            left: -40px;
+            width: 400px;
         }
     }
 }
