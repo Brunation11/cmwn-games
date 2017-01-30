@@ -660,10 +660,18 @@ img.inline {
 
     .selectable {
         li {
-            @for $i from 1 through 5 {
-                &:nth-child(#{$i}) {
-                    background-image: url('../media/S_10/img_10.#{$i}.png');
+            background-image: url($sprite + 'sprites.scrolls.png');
+            background-size: 250%;
+            background-position-x: 0;
+            @for $i from 0 through 5 {
+                &:nth-child(#{$i + 1}) {
+                    background-position-y: #{$i * -154}px;
                 }
+            }
+
+            &:hover, 
+            &.HIGHLIGHTED {
+                background-position-x: -206px;
             }
         }
     }
