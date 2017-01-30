@@ -34,21 +34,21 @@ var DroughtOut = (
         screens={{
             0: iOSScreen,
             1: TitleScreen,
-            //2: ThinkScreen,
-            //3: InfoNoWaterScreen,
-            //4: HumansAnimalsScreen,
-            //5: InfoUseWaterScreen,
-            //6: BalloonsScreen,
-            //7: GreatJobScreen,
-            //8: DroughtEffectsScreen,
-            2: EnvironmentEffectsScreen,
-            //10: WhatCanWeDoScreen,
-            //11: DrainScreen,
-            //12: UsingLessScreen,
-            //13: ShowerScreen,
-            //14: ConserveScreen,
-            //15: HeroScreen,
-            //16: FlipScreen
+            2: ThinkScreen,
+            3: InfoNoWaterScreen,
+            4: HumansAnimalsScreen,
+            5: InfoUseWaterScreen,
+            6: BalloonsScreen,
+            7: GreatJobScreen,
+            8: DroughtEffectsScreen,
+            9: EnvironmentEffectsScreen,
+            10: WhatCanWeDoScreen,
+            11: DrainScreen,
+            12: UsingLessScreen,
+            13: ShowerScreen,
+            14: ConserveScreen,
+            15: HeroScreen,
+            16: FlipScreen
         }}
 
         menus={{

@@ -17,15 +17,13 @@ export default function (props, ref, key) {
 
     var playAudio = function (ref, cb) {
         this.updateScreenData({
-            path: 'media',
+            path: 'selectable',
             data: {
                 play: ref
             },
             callback: cb
         });
     };
-
-    // TODO why are the sounds not playing AIM 1/20/17
 
     return (
         <skoash.Screen
@@ -44,12 +42,12 @@ export default function (props, ref, key) {
                 </p>
                 <skoash.MediaCollection
                     ref="media-collection"
-                    play={_.get(props, 'data.selectable.target', null)}
+                    play={_.get(props, 'data.selectable.play', null)}
                 >
                     <skoash.Audio
                         type="sfx"
                         data-ref="incorrect"
-                        src={`${MEDIA.EFFEct}Wrong.mp3`}
+                        src={`${MEDIA.EFFECT}Wrong.mp3`}
                         complete={true}
                         checkComplete={false}
                     />
@@ -93,24 +91,23 @@ export default function (props, ref, key) {
                     ref="selectable"
                     selectClass="HIGHLIGHTED"
                     onSelect={onSelect}
-                    dataTarget="selectable"
                     answers={ANSWERS}
                     list={[
-                        <li className="dry" data-ref="dry" correct></li>,
-                        <li className="green" data-ref="incorrect"></li>,
-                        <li className="parched" data-ref="parched" correct></li>,
-                        <li className="monsoon" data-ref="incorrect"></li>,
-                        <li className="damp" data-ref="incorrect"></li>,
-                        <li className="dusty" data-ref="dusty" correct></li>,
-                        <li className="hot" data-ref="hot" correct></li>,
-                        <li className="no-water" data-ref="no-water" correct></li>,
-                        <li className="thirsty" data-ref="thirsty" correct></li>,
-                        <li className="wet" data-ref="incorrect"></li>,
-                        <li className="tropical" data-ref="incorrect"></li>,
-                        <li className="arid" data-ref="arid" correct></li>,
-                        <li className="steamy" data-ref="incorrect"></li>,
-                        <li className="balmy" data-ref="incorrect"></li>,
-                        <li className="swampy" data-ref="incorrect"></li>,
+                        <skoash.ListItem className="dry" data-ref="dry" correct />,
+                        <skoash.ListItem className="green" data-ref="incorrect" />,
+                        <skoash.ListItem className="parched" data-ref="parched" correct />,
+                        <skoash.ListItem className="monsoon" data-ref="incorrect" />,
+                        <skoash.ListItem className="damp" data-ref="incorrect" />,
+                        <skoash.ListItem className="dusty" data-ref="dusty" correct />,
+                        <skoash.ListItem className="hot" data-ref="hot" correct />,
+                        <skoash.ListItem className="no-water" data-ref="no-water" correct />,
+                        <skoash.ListItem className="thirsty" data-ref="thirsty" correct />,
+                        <skoash.ListItem className="wet" data-ref="incorrect" />,
+                        <skoash.ListItem className="tropical" data-ref="incorrect" />,
+                        <skoash.ListItem className="arid" data-ref="arid" correct />,
+                        <skoash.ListItem className="steamy" data-ref="incorrect" />,
+                        <skoash.ListItem className="balmy" data-ref="incorrect" />,
+                        <skoash.ListItem className="swampy" data-ref="incorrect" />,
                     ]}
                 />
             </skoash.Component>
