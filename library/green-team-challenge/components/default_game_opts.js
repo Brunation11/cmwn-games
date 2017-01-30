@@ -120,6 +120,12 @@ export default {
                     data: _.startCase(_.replace(this.getFirstItem().props.className, /\d+/g, '')),
                 });
             },
+            onPickUp: function () {
+                this.updateScreenData({
+                    key: ['manual-dropper', 'dropClass'],
+                    data: '',
+                });
+            },
         };
     },
     getCatcherProps(opts) {

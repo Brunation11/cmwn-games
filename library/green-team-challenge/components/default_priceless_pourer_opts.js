@@ -35,8 +35,54 @@ export default _.defaults({
             let DOMNode;
             let onAnimationEnd;
 
+            if (e.propertyName !== 'left') return;
             if (this.props.dropClass !== 'LIQUIDS') return;
-            if (itemRef.props.message !== 'liquids') return;
+            if (itemRef.props.message !== 'liquids') {
+                let hits = opts.hits + 1;
+
+                this.updateGameData({
+                    keys: [_.camelCase(opts.gameName), 'levels', opts.level],
+                    data: {
+                        start: false,
+                        hits,
+                    }
+                });
+
+                if (hits === opts.maxHits) {
+                    setTimeout(() => {
+                        this.updateScreenData({
+                            keys: ['manual-dropper', 'pickUp'],
+                            data: true,
+                        });
+                    }, 1000);
+                    return;
+                }
+
+                this.updateScreenData({
+                    keys: ['reveal', 'open'],
+                    data: 'resort',
+                    callback: () => {
+                        setTimeout(() => {
+                            this.updateScreenData({
+                                data: {
+                                    reveal: {
+                                        open: null,
+                                        close: true,
+                                    },
+                                    'manual-dropper': {
+                                        pickUp: true,
+                                    },
+                                    catcher: {
+                                        caught: false,
+                                    }
+                                }
+                            });
+                        }, 1000);
+                    }
+                });
+
+                return;
+            }
 
             DOMNode = ReactDOM.findDOMNode(itemRef);
 
@@ -54,10 +100,14 @@ export default _.defaults({
                         items[index] = item;
                         this.setState({items});
                         this.updateScreenData({
-                            key: 'item',
                             data: {
-                                name: _.startCase(_.replace(item.props.becomes.name, /\d+/g, '')),
-                                pour: false,
+                                item: {
+                                    name: _.startCase(_.replace(item.props.becomes.name, /\d+/g, '')),
+                                    pour: false,
+                                },
+                                'manual-dropper': {
+                                    dropClass: '',
+                                },
                             }
                         });
                         DOMNode.removeEventListener('animationend', onAnimationEnd);
