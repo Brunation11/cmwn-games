@@ -82,7 +82,7 @@
             }
 
             &.liquids {
-                @include position(absolute, -200px null null -40px);
+                @include position(absolute, -220px null null -40px);
 
                 &::before {
                     transform: translateX(-50%) translateY(-50%) scale(2) rotate(60deg);
@@ -101,8 +101,25 @@
             }
 
             &.liquids {
-                @include position(absolute, -240px null null -70px);
+                @include position(absolute, -260px null null -70px);
             }
+        }
+    }
+
+    .belt {
+        @include center;
+        transform: translateX(-50%) translateY(-50%) scale(.5);
+        z-index: -1;
+    }
+
+    .pour {
+        @include position(absolute, 20px null null -50px);
+        transform: scale(.5);
+        opacity: 0;
+        z-index: -1;
+
+        &.show {
+            opacity: 1;
         }
     }
 }

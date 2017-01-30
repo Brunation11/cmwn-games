@@ -12,7 +12,7 @@ let names = [
     'empty-aluminum-can-2',
     'empty-aluminum-can-3',
     'empty-aluminum-can-4',
-    'empty-box-of-cookies-3',
+    'box-of-cookies-3',
     'empty-chocolate-milk-carton-2',
     'empty-chocolate-milk-carton-4',
     'empty-chocolate-milk-carton-5',

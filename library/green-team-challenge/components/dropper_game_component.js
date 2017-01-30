@@ -50,12 +50,10 @@ export default function (props, ref, key, opts = {}) {
     var gameComplete = _.get(props, `${levelPath}.complete`, false);
     var drop = _.get(props, 'data.manual-dropper.drop', false);
     var dropClass = _.get(props, 'data.manual-dropper.dropClass');
-    var next = _.get(props, 'data.manual-dropper.next', false);
     var pickUp = _.get(props, 'data.manual-dropper.pickUp', false);
     var onPickUp = _.get(props, 'data.manual-dropper.onPickUp');
     var selectItem = _.get(props, 'data.manual-dropper.selectItem');
     var catchableRefs = _.get(props, 'data.manual-dropper.refs', []);
-    var itemName = _.get(props, 'data.item.name', '');
     var itemRef = _.get(props, 'data.item.ref');
     var removeItemClassName = _.get(props, 'data.item.removeClassName');
     var itemTop = _.get(props, 'data.item.top', 0) / scale;
@@ -64,26 +62,27 @@ export default function (props, ref, key, opts = {}) {
     var revealOpen = _.get(props, 'data.reveal.open', false);
     var revealClose = _.get(props, 'data.reveal.close', false);
 
-    // this is commented out for now since some VOs are missing
-    // var audioRefs = _.uniq(_.map(opts.itemsToSort, v =>
-    //     _.upperFirst(_.camelCase(_.replace(v.name, /\d+/g, ''))))
-    // );
+    var audioRefs = _.uniq(_.map(opts.itemsToSort, v =>
+        _.upperFirst(_.camelCase(_.replace(v.name, /\d+/g, ''))))
+    );
 
-    // var arrayOfAudio = _.map(audioRefs, (v, k) =>
-    //     <skoash.Audio
-    //         type="voiceOver"
-    //         ref={v}
-    //         key={k}
-    //         src={`${CMWN.MEDIA + 'SoundAssets/_vositems/' + v}.mp3`}
-    //     />
-    // );
-    var arrayOfAudio = [];
+    var arrayOfAudio = _.map(audioRefs, (v, k) =>
+        <skoash.Audio
+            type="voiceOver"
+            ref={v}
+            key={k}
+            src={`${CMWN.MEDIA.GAME + 'SoundAssets/_vositems/' + v}.mp3`}
+        />
+    );
 
     if (itemRef) catchableRefs = [itemRef];
 
+    opts.next = _.get(props, 'data.manual-dropper.next', false);
     opts.itemRef = itemRef;
+    opts.itemName = _.get(props, 'data.item.name', '');
     opts.itemClassName = _.get(props, 'data.item.className');
     opts.itemAmount = _.get(props, 'data.item.amount', 0);
+    opts.pour = _.get(props, 'data.item.pour', false);
     opts.score = _.get(props, `${levelPath}.score`, 0);
     opts.highScore = _.get(props, `${levelPath}.highScore`, 0);
     opts.left = _.get(props, 'data.manual-dropper.left', 0);
@@ -133,7 +132,7 @@ export default function (props, ref, key, opts = {}) {
             </skoash.Component>
             <skoash.Component
                 className={classNames('item-name', {
-                    ACTIVE: itemName,
+                    ACTIVE: opts.itemName,
                 })}
                 style={{
                     top: itemTop,
@@ -141,7 +140,7 @@ export default function (props, ref, key, opts = {}) {
                 }}
             >
                 <span>
-                    {itemName}
+                    {opts.itemName}
                 </span>
             </skoash.Component>
             <skoash.Score
@@ -157,7 +156,7 @@ export default function (props, ref, key, opts = {}) {
                 drop={drop}
                 pickUp={pickUp}
                 onPickUp={onPickUp}
-                next={next}
+                next={opts.next}
                 bin={
                     <Randomizer
                         bin={arrayOfCatchables}
@@ -176,7 +175,7 @@ export default function (props, ref, key, opts = {}) {
             />
             <skoash.Component
                 className={classNames('bins', {
-                    DISABLED: !itemName
+                    DISABLED: opts.itemName
                 })}
             >
                 <Catcher

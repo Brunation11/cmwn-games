@@ -72,7 +72,7 @@
     }
 }
 
-@mixin sortable-item($scale: .1) {
+@mixin sortable-item($scale: .5) {
     .sprite {
         @include center;
         transform: translateX(-50%) translateY(-50%) scale($scale);

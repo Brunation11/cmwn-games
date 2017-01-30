@@ -1,3 +1,5 @@
+import classNames from 'classnames';
+
 import defaultGameOpts from './default_game_opts';
 import itemsToSort from './items_to_sort';
 
@@ -52,8 +54,11 @@ export default _.defaults({
                         items[index] = item;
                         this.setState({items});
                         this.updateScreenData({
-                            keys: ['item', 'name'],
-                            data: _.startCase(_.replace(item.props.becomes.name, /\d+/g, '')),
+                            key: 'item',
+                            data: {
+                                name: _.startCase(_.replace(item.props.becomes.name, /\d+/g, '')),
+                                pour: false,
+                            }
                         });
                         DOMNode.removeEventListener('animationend', onAnimationEnd);
                     }
@@ -63,6 +68,10 @@ export default _.defaults({
             if (!itemRef.state.className || itemRef.state.className.indexOf('POUR') === -1) {
                 DOMNode.addEventListener('animationend', onAnimationEnd);
                 itemRef.addClassName('POUR');
+                this.updateScreenData({
+                    key: ['item', 'pour'],
+                    data: true,
+                });
             }
         };
 
@@ -87,6 +96,84 @@ export default _.defaults({
         };
 
         return props;
+    },
+    getExtraComponents(opts) {
+        let color;
+
+        switch (true) {
+            case _.includes(opts.itemName, 'Chocolate'):
+                color = 'chocolate';
+                break;
+            case _.includes(opts.itemName, 'Orange'):
+                color = 'orange';
+                break;
+            case _.includes(opts.itemName, 'Milk') || _.includes(opts.itemName, 'Water'):
+                color = 'milk';
+                break;
+            case _.includes(opts.itemName, 'Fruit'):
+                color = 'fruit';
+                break;
+        }
+
+        return (
+            <skoash.Component>
+                <skoash.Sprite
+                    className="belt"
+                    src={`${CMWN.MEDIA.SPRITE}level.1.conveyor.belt`}
+                    animate={opts.next}
+                    loop={false}
+                    duration={250}
+                    frame={0}
+                    onComplete={function () {
+                        this.setState({frame: this.props.frame});
+                    }}
+                />
+                <skoash.Sprite
+                    className={classNames('pour', {show: opts.pour && color === 'chocolate'})}
+                    src={`${CMWN.MEDIA.SPRITE}level.2.chocolate.milk`}
+                    animate={opts.pour}
+                    loop={false}
+                    duration={600}
+                    frame={0}
+                    onComplete={function () {
+                        this.setState({frame: this.props.frame});
+                    }}
+                />
+                <skoash.Sprite
+                    className={classNames('pour', {show: opts.pour && color === 'fruit'})}
+                    src={`${CMWN.MEDIA.SPRITE}level.2.fruit.juice`}
+                    animate={opts.pour}
+                    loop={false}
+                    duration={600}
+                    frame={0}
+                    onComplete={function () {
+                        this.setState({frame: this.props.frame});
+                    }}
+                />
+                <skoash.Sprite
+                    className={classNames('pour', {show: opts.pour && color === 'milk'})}
+                    src={`${CMWN.MEDIA.SPRITE}level.2.milk`}
+                    animate={opts.pour}
+                    loop={false}
+                    duration={600}
+                    frame={0}
+                    onComplete={function () {
+                        this.setState({frame: this.props.frame});
+                    }}
+                />
+                <skoash.Sprite
+                    className={classNames('pour', {show: opts.pour && color === 'orange'})}
+                    src={`${CMWN.MEDIA.SPRITE}level.2.orange.juice`}
+                    animate={opts.pour}
+                    loop={false}
+                    duration={600}
+                    frame={0}
+                    onComplete={function () {
+                        this.setState({frame: this.props.frame});
+                    }}
+                />
+            </skoash.Component>
+        );
     },
     itemsToSort: _.filter(itemsToSort, item => _.includes(binNames, item.bin)),
 }, defaultGameOpts);
