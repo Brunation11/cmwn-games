@@ -669,24 +669,6 @@ img.inline {
     }
 }
 
-#human-effects {
-    .VOICE-OVER & {
-        li {
-            pointer-events: none;
-        }
-    }
-
-    .selectable {
-        li {
-            @for $i from 1 through 5 {
-                &:nth-child(#{$i}) {
-                    background-image: url('../media/S_12/img_12.#{$i}.png');
-                }
-            }
-        }
-    }
-}
-
 .scroll-selectable {
     margin: 0;
     height: 140px;
