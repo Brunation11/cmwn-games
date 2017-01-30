@@ -46,14 +46,15 @@ export default _.defaults({
                         let items = this.state.items;
                         let index = this.firstItemIndex;
                         let item = items[index];
-                        let newBin = _.find(opts.itemsToSort, itemToSort =>
-                            itemToSort.name === item.props.becomes
-                        ).bin;
-                        item.props.className = item.props.becomes;
-                        item.props.message = newBin;
-                        item.props['data-message'] = newBin;
+                        item.props.className = item.props.becomes.name;
+                        item.props.message = item.props.becomes.bin;
+                        item.props['data-message'] = item.props.becomes.bin;
                         items[index] = item;
                         this.setState({items});
+                        this.updateScreenData({
+                            keys: ['item', 'name'],
+                            data: _.startCase(_.replace(item.props.becomes.name, /\d+/g, '')),
+                        });
                         DOMNode.removeEventListener('animationend', onAnimationEnd);
                     }
                 }, this.props));

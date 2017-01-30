@@ -11,7 +11,7 @@ import iOSScreen from 'shared/components/ios_splash_screen/0.1';
 // import FiveWaysScreen from './components/five_ways_screen';
 // import LevelScreen from './components/level_screen_component';
 // import RecyclingChampion1InfoScreen from './components/recycling_champion_one_info_screen';
-import RecyclingChampion1Screen from './components/recycling_champion_level_one_screen';
+// import RecyclingChampion1Screen from './components/recycling_champion_level_one_screen';
 // import RecyclingChampion2InfoScreen from './components/recycling_champion_two_info_screen';
 // import RecyclingChampion2Screen from './components/recycling_champion_level_two_screen';
 // import RecyclingChampion3InfoScreen from './components/recycling_champion_three_info_screen';
@@ -22,7 +22,7 @@ import RecyclingChampion1Screen from './components/recycling_champion_level_one_
 // import RecyclingChampion5Screen from './components/recycling_champion_level_five_screen';
 // import LevelCompleteScreen from './components/level_complete_screen_component';
 // import PricelessPourer1InfoScreen from './components/priceless_pourer_one_info_screen';
-// import PricelessPourer1Screen from './components/priceless_pourer_level_one_screen';
+import PricelessPourer1Screen from './components/priceless_pourer_level_one_screen';
 // import PricelessPourer2InfoScreen from './components/priceless_pourer_two_info_screen';
 // import PricelessPourer2Screen from './components/priceless_pourer_level_two_screen';
 // import PricelessPourer3InfoScreen from './components/priceless_pourer_three_info_screen';
@@ -78,7 +78,7 @@ skoash.start(
             // FiveWaysScreen,
             // LevelScreen(1.0),
             // RecyclingChampion1InfoScreen,
-            RecyclingChampion1Screen,
+            // RecyclingChampion1Screen,
             // LevelScreen(1.1),
             // RecyclingChampion2InfoScreen,
             // RecyclingChampion2Screen,
@@ -95,7 +95,7 @@ skoash.start(
             // LevelCompleteScreen(1),
             // LevelScreen(2.0),
             // PricelessPourer1InfoScreen,
-            // PricelessPourer1Screen,
+            PricelessPourer1Screen,
             // LevelScreen(2.1),
             // PricelessPourer2InfoScreen,
             // PricelessPourer2Screen,

@@ -56,14 +56,14 @@
 @mixin bins() {
     position: relative;
 
-    $bins: compost landfill recycle liquids food-share liquids;
-    @for $i from 1 through length($bins) {
-        &::before {
-            @include center;
-            transform: translateX(-50%) translateY(-50%);
-            content: '';
-        }
+    &::before {
+        @include center;
+        transform: translateX(-50%) translateY(-50%);
+        content: '';
+    }
 
+    $bins: compost landfill recycle food-share liquids;
+    @for $i from 1 through length($bins) {
         &.#{nth($bins, $i)} {
             &::before {
                 @include bin-sprite($i);
