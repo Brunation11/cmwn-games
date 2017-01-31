@@ -7,6 +7,7 @@ export default function (props, ref, key, opts = {}) {
     var onRespond;
     var onTimerComplete;
     var onScoreComplete;
+    var onLifeComplete;
 
     startScreen = function (screenStart = true) {
         this.updateGameState({
@@ -42,7 +43,25 @@ export default function (props, ref, key, opts = {}) {
                         stars: 0,
                     }
                 }
-            }),
+            })
+        });
+
+        this.updateGameState({
+            path: ['game'],
+            data: {
+                levels: {
+                    [opts.level]: {
+                        start: true,
+                    }
+                }
+            }
+        });
+
+        this.updateGameState({
+            path: 'timer',
+            data: {
+                complete: false
+            }
         });
     };
 
@@ -80,6 +99,7 @@ export default function (props, ref, key, opts = {}) {
             path: 'reveal',
             data: {
                 open: null,
+                prevMessage: prevMessage
             }
         });
 
@@ -90,18 +110,8 @@ export default function (props, ref, key, opts = {}) {
             },
         });
 
-        if (prevMessage === 'instructions') {
-            this.updateGameState({
-                path: ['game'],
-                data: {
-                    levels: {
-                        [opts.level]: {
-                            start: true,
-                        }
-                    }
-                },
-            });
-        } else if (prevMessage === 'replay') {
+        if (prevMessage === 'replay') {
+            console.log('IN PREV MESSAGE');
             onScreenStart.call(this, false);
 
             this.updateGameState({
@@ -118,22 +128,35 @@ export default function (props, ref, key, opts = {}) {
             setTimeout(() => {
                 startScreen.call(this);
             }, 0);
-        } else if (prevMessage === 'fact-1' && stars > 1) {
-            this.updateGameState({
-                path: 'reveal',
-                data: {
-                    open: 'fact-2',
-                }
-            });
-        } else if (prevMessage === 'fact-2' && stars > 1) {
-            this.updateGameState({
-                path: 'reveal',
-                data: {
-                    open: 'complete',
-                }
-            });
-        } else {
-            skoash.Screen.prototype.goto(parseInt(key, 10) + 1);
+        } else if (stars > 0) {
+            console.log('STARS > 0');
+            if (prevMessage === 'fact-1') {
+                console.log('PREV MESSAGE FACT-1');
+                this.updateGameState({
+                    path: 'reveal',
+                    data: {
+                        open: 'fact-2',
+                    }
+                });
+            } else if (prevMessage === 'fact-2') {
+                console.log('PREV MESSAGE FACT-2');
+                this.updateGameState({
+                    path: 'reveal',
+                    data: {
+                        open: 'fact-3',
+                    }
+                });
+            } else if (prevMessage === 'fact-3') {
+                console.log('PREV MESSAGE FACT-3');
+                this.updateGameState({
+                    path: 'reveal',
+                    data: {
+                        open: 'complete',
+                    }
+                });
+            } else {
+                skoash.Screen.prototype.goto(parseInt(key, 10) + 1);
+            }
         }
     };
 
@@ -149,6 +172,9 @@ export default function (props, ref, key, opts = {}) {
 
     onTimerComplete = function () {
         var stars = _.get(props, `gameState.data.game.levels.${opts.level}.stars`, 0);
+
+        if (_.get(props, 'data.timer.complete')) return;
+
         if (!stars) {
             this.updateGameState({
                 path: 'reveal',
@@ -177,7 +203,21 @@ export default function (props, ref, key, opts = {}) {
                     open: 'fact-1',
                 }
             });
+            this.updateGameState({
+                path: 'timer',
+                data: {
+                    complete: true
+                }
+            });
         }
+    };
+
+    onLifeComplete = function () {
+        var stars = _.get(props, `gameState.data.game.levels.${opts.level}.stars`, 0);
+
+        if (_.get(props, 'data.reveal.prevMessage') === 'replay') return;
+
+        onTimerComplete.call(this);
     };
 
     onScoreComplete = function () {
@@ -211,6 +251,7 @@ export default function (props, ref, key, opts = {}) {
                 resume={!_.get(props, 'data.d-pad.pause')}
                 onRespond={onRespond}
             />
+
             <skoash.Timer
                 leadingContent={
                     <span className="label">TIME</span>
@@ -228,6 +269,7 @@ export default function (props, ref, key, opts = {}) {
                 checkComplete={_.get(props, `gameState.data.game.levels.${opts.level}.start`, false)}
                 restart={_.get(props, `gameState.data.game.levels.${opts.level}.start`, false)}
             />
+
             <skoash.Component
                 className="gauges"
                 complete={_.get(props, `gameState.data.game.levels.${opts.level}.complete`, false)}
@@ -237,11 +279,13 @@ export default function (props, ref, key, opts = {}) {
                         if (keyCode === 32) return 'up';
                     }}
                 />
+
                 <skoash.Score
                     className="star-score"
                     correct={Math.min(3, _.get(props, `gameState.data.game.levels.${opts.level}.stars`, 0))}
                     setScore={true}
                 />
+
                 <skoash.Score
                     className="level-score"
                     max={10}
@@ -249,15 +293,17 @@ export default function (props, ref, key, opts = {}) {
                     setScore={true}
                     onComplete={onScoreComplete}
                 />
+
                 <skoash.Score
                     className="life"
                     max={0}
                     incorrect={10}
                     correct={_.get(props, `gameState.data.game.levels.${opts.level}.hits`, 0) || 0}
                     setScore={true}
-                    onComplete={onTimerComplete}
+                    onComplete={onLifeComplete}
                 />
             </skoash.Component>
+
             <skoash.Reveal
                 openTarget="reveal"
                 openReveal={_.get(props, 'data.reveal.open', false)}
@@ -280,6 +326,14 @@ export default function (props, ref, key, opts = {}) {
                     >
                         <h1 className="header">DRONE FACT</h1>
                         {opts.fact2Content}
+                    </skoash.Component>,
+                    <skoash.Component
+                        ref="fact-3"
+                        className="fact frame square"
+                        type="li"
+                    >
+                        <h1 className="header">DRONE FACT</h1>
+                        {opts.fact3Content}
                     </skoash.Component>,
                     <skoash.Component
                         ref="complete"
@@ -305,6 +359,7 @@ export default function (props, ref, key, opts = {}) {
                     </skoash.Component>,
                 ]}
             />
+
             <skoash.MediaCollection
                 play={_.get(props, 'data.reveal.open')}
             >
@@ -318,6 +373,12 @@ export default function (props, ref, key, opts = {}) {
                     ref="fact-2"
                     src={`${MEDIA.VO}${opts.fact2VO}.mp3`}
                     complete={_.get(props, `gameState.data.game.levels.${opts.level}.fact2Complete`, false)}
+                />
+                <skoash.Audio
+                    type="voiceOver"
+                    ref="fact-3"
+                    src={`${MEDIA.VO}${opts.fact3VO}.mp3`}
+                    complete={_.get(props, `gameState.data.game.levels.${opts.level}.fact3Complete`, false)}
                 />
                 <skoash.Audio
                     type="voiceOver"
