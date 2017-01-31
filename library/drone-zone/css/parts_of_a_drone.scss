@@ -103,7 +103,7 @@
                 height: 285px;
 
                 &::before {
-                    @include parts($i, 285px, 285px);
+                    @include parts($i, 255px, 255px);
                     @include center;
                     width: 90%;
                     height: 90%;
