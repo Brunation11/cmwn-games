@@ -27,6 +27,11 @@ export default function (props, ref, key) {
             key={key}
             id="parts-of-a-drone"
         >
+            <skoash.Image className="hidden" src={`${MEDIA.SPRITE}sprite.radarframe.png`} />
+            <skoash.Image className="hidden" src={`${MEDIA.IMAGE}droneparts.png`} />
+            <skoash.Image className="hidden" src={`${MEDIA.SPRITE}sprite.qmarks.png`} />
+            <skoash.Image className="hidden" src={`${MEDIA.SPRITE}sprite.parts.png`} />
+
             <skoash.Audio
                 type="voiceOver"
                 src={`${MEDIA.VO}PartsOfADrone.mp3`}

@@ -109,6 +109,13 @@ export default function (props, ref, key) {
             id="why-would-you-want-a-drone-prt-two"
             complete={_.get(props, 'data.game.complete', false)}
         >
+            <skoash.Image className="hidden" src={`${MEDIA.SPRITE}sprite.jobgameframe.png`} />
+            <skoash.Image className="hidden" src={`${MEDIA.SPRITE}sprite.qmarkwsquare.png`} />
+            <skoash.Image className="hidden" src={`${MEDIA.SPRITE}sprite.blanksquares.png`} />
+            <skoash.Image className="hidden" src={`${MEDIA.SPRITE}sprite.jobicons.png`} />
+            <skoash.Image className="hidden" src={`${MEDIA.SPRITE}sprite.bwjobs.png`} />
+            <skoash.Image className="hidden" src={`${MEDIA.SPRITE}sprite.jobimgs.png`} />
+
             <skoash.Component className="header">
                 <h1>WHY WOULD YOU WANT A DRONE?</h1>
             </skoash.Component>

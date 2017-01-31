@@ -41,6 +41,10 @@ export default function (props, ref, key) {
             key={key}
             id="types-of-drones"
         >
+            <skoash.Image className="hidden" src={`${MEDIA.SPRITE}sprite.qmarks.png`} />
+            <skoash.Image className="hidden" src={`${MEDIA.SPRITE}sprite.dronetypes.png`} />
+            <skoash.Image className="hidden" src={`${MEDIA.SPRITE}sprite.dronetypes.png`} />
+
             <skoash.MediaCollection
                 play={_.get(props, 'data.sfx.playing', null)}
                 onPlay={onPlay}

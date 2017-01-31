@@ -111,7 +111,6 @@ export default function (props, ref, key, opts = {}) {
         });
 
         if (prevMessage === 'replay') {
-            console.log('IN PREV MESSAGE');
             onScreenStart.call(this, false);
 
             this.updateGameState({
@@ -129,9 +128,7 @@ export default function (props, ref, key, opts = {}) {
                 startScreen.call(this);
             }, 0);
         } else if (stars > 0) {
-            console.log('STARS > 0');
             if (prevMessage === 'fact-1') {
-                console.log('PREV MESSAGE FACT-1');
                 this.updateGameState({
                     path: 'reveal',
                     data: {
@@ -139,7 +136,6 @@ export default function (props, ref, key, opts = {}) {
                     }
                 });
             } else if (prevMessage === 'fact-2') {
-                console.log('PREV MESSAGE FACT-2');
                 this.updateGameState({
                     path: 'reveal',
                     data: {
@@ -147,7 +143,6 @@ export default function (props, ref, key, opts = {}) {
                     }
                 });
             } else if (prevMessage === 'fact-3') {
-                console.log('PREV MESSAGE FACT-3');
                 this.updateGameState({
                     path: 'reveal',
                     data: {

@@ -6,6 +6,8 @@ export default function (props, ref, key) {
             key={key}
             id="info-game-complete"
         >
+            <skoash.Image className="hidden" src={`${MEDIA.IMAGE}winscreen.png`} />
+
             <skoash.Audio
                 type="voiceOver"
                 src={`${MEDIA.VO}YouveWonTheGame.mp3`}

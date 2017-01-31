@@ -6,6 +6,8 @@ export default function (props, ref, key) {
             key={key}
             id="info-what-does-it-do"
         >
+            <skoash.Image className="hidden" src={`${MEDIA.IMAGE}drone.png`} />
+
             <skoash.MediaSequence>
                 <skoash.Audio
                     type="sfx"

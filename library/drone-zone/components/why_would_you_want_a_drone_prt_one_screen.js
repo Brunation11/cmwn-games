@@ -41,6 +41,11 @@ export default function (props, ref, key) {
             key={key}
             id="why-would-you-want-a-drone-prt-one"
         >
+            <skoash.Image className="hidden" src={`${MEDIA.SPRITE}sprite.jobgameframe.png`} />
+            <skoash.Image className="hidden" src={`${MEDIA.SPRITE}sprite.qmarkwsquare.png`} />
+            <skoash.Image className="hidden" src={`${MEDIA.SPRITE}sprite.blanksquares.png`} />
+            <skoash.Image className="hidden" src={`${MEDIA.SPRITE}sprite.jobicons.png`} />
+
             <skoash.Component className="header">
                 <h1>WHY WOULD YOU WANT A DRONE?</h1>
             </skoash.Component>
