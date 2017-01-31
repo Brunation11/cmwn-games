@@ -30,7 +30,7 @@ export default {
     onWorldCollide() {
         if (this.isHit) return;
         this.helpers.hitSomething.call(this);
-        this.audio.obstacle.play();
+        // this.audio.obstacle.play();
     },
     hitSomething(i = 1) {
         if (this.isHit) return;
@@ -50,7 +50,7 @@ export default {
             p.fast--;
         }, this.opts.fastDuration);
         this.helpers.updateScore.call(this, 3);
-        this.audio.plant.play();
+        // this.audio.plant.play();
     },
     onBatteryOverlap(p, i) {
         i.kill();
@@ -119,6 +119,7 @@ export default {
         this.helpers.emitData.call(this);
     },
     updateScore(i = 1) {
+        console.log('UPDATE SCORE', this.opts.level);
         this.data.levels[this.opts.level].score += i;
         this.helpers.emitData.call(this);
     },
