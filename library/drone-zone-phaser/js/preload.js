@@ -68,7 +68,7 @@ export default function () {
         ['mailbox', `${MEDIA.EFFECT}HitMailTarget.mp3`],
         ['battery', `${MEDIA.EFFECT}CollectBattery.mp3`],
         ['cloud', `${MEDIA.EFFECT}HitCloud.mp3`],
-        ['plant', `${MEDIA.EFFECT}Wind.mp3`],
+        // ['plant', `${MEDIA.EFFECT}Wind.mp3`],
         ['seed', `${MEDIA.EFFECT}CollectSeed.mp3`],
         ['water', `${MEDIA.EFFECT}CollectDrop.mp3`],
         ['fertilizer', `${MEDIA.EFFECT}CollectFertilizer.mp3`],
