@@ -78,7 +78,7 @@ export default function (props, ref, key) {
                 <skoash.Audio
                     ref="police-duties"
                     type="voiceOver"
-                    src={`${MEDIA.VO}PoliceDutiesShort.mp3`}
+                    src={`${MEDIA.VO}PoliceDuties.mp3`}
                 />
                 <skoash.Audio
                     ref="fire-fighting"
