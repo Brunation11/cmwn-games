@@ -13,6 +13,12 @@
 
     .frame {
         top: 60%;
+        background-size: 100% 72%;
         width: 620px;
+
+        .video {
+            @include center;
+            width: 88%;
+        }
     }
 }
