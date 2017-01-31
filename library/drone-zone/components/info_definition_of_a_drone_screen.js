@@ -18,6 +18,10 @@ export default function (props, ref, key) {
                 />
                 <skoash.Audio
                     type="voiceOver"
+                    src={`${MEDIA.VO}DefinitionDrone.mp3`}
+                />
+                <skoash.Audio
+                    type="voiceOver"
                     src={`${MEDIA.VO}ADroneIs.mp3`}
                 />
             </skoash.MediaSequence>
