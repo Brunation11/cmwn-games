@@ -1,4 +1,4 @@
-// const src = '';
+const src = 'http://res.cloudinary.com/changemyworldnow/video/upload/v1485551205/Drone_Zone_FINAL_FOR_UPLOAD_cv4prl.mov';
 
 export default function (props, ref, key) {
     return (
@@ -11,9 +11,7 @@ export default function (props, ref, key) {
             <h1 className="header">THE WORLD OF DRONES</h1>
 
             <skoash.Component className="frame video">
-                {/*
-                <skoash.Video src={src} />
-                */}
+                <skoash.Video className="video" src={src} />
             </skoash.Component>
         </skoash.Screen>
     );
