@@ -15,8 +15,8 @@ export default _.defaults({
         fire3: 0,
         fire4: 0,
         fire5: 0,
-        mailbox1: 10,
-        mailbox2: 10,
+        mailbox1: 30,
+        mailbox2: 30,
         battery: 2,
         extinguisher: 0,
         farming1: 0,
@@ -32,7 +32,7 @@ export default _.defaults({
         cloud2: 10,
         cloud3: 10,
         cloud4: 10,
-        powerline: 10,
+        powerline: 20,
     },
     obstacleAmounts: {
     }
