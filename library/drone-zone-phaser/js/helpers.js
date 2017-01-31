@@ -119,7 +119,6 @@ export default {
         this.helpers.emitData.call(this);
     },
     updateScore(i = 1) {
-        console.log('UPDATE SCORE', this.opts.level);
         this.data.levels[this.opts.level].score += i;
         this.helpers.emitData.call(this);
     },

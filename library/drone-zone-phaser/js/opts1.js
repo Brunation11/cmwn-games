@@ -17,7 +17,7 @@ export default _.defaults({
         fire5: 10,
         mailbox1: 0,
         mailbox2: 0,
-        battery: 2,
+        battery: 5,
         extinguisher: 2,
         farming1: 0,
         farming2: 0,

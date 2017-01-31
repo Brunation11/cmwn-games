@@ -208,8 +208,6 @@ export default function (props, ref, key, opts = {}) {
     };
 
     onLifeComplete = function () {
-        var stars = _.get(props, `gameState.data.game.levels.${opts.level}.stars`, 0);
-
         if (_.get(props, 'data.reveal.prevMessage') === 'replay') return;
 
         onTimerComplete.call(this);

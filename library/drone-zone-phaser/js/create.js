@@ -2,6 +2,8 @@ import setGameStage from 'shared/phaser/methods/set_game_stage/0.1';
 import addPlayer from 'shared/phaser/methods/add_player/0.1';
 
 export default function () {
+    var playerImage;
+
     this.controller = {};
 
     setGameStage.call(this, {
@@ -12,7 +14,9 @@ export default function () {
 
     this.helpers.makeBackground.call(this);
 
-    var playerImage = this.opts.level == 1 ? 'fire-drone' : this.opts.level == 2 ? 'delivery-drone' : 'farm-drone';
+    playerImage = this.opts.level === 1 ?
+                  'fire-drone' : this.opts.level === 2 ?
+                  'delivery-drone' : 'farm-drone';
 
     addPlayer.call(this, {
         left: 300,

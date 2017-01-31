@@ -1,4 +1,5 @@
-const src = 'http://res.cloudinary.com/changemyworldnow/video/upload/v1485551205/Drone_Zone_FINAL_FOR_UPLOAD_cv4prl.mov';
+const src = 'http://res.cloudinary.com/changemyworldnow/' +
+            'video/upload/v1485551205/Drone_Zone_FINAL_FOR_UPLOAD_cv4prl.mov';
 
 export default function (props, ref, key) {
     return (
