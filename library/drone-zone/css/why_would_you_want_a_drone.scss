@@ -193,7 +193,7 @@
 
                     &.CORRECT {
                         @include blank-squares($blank-square, $width, $height);
-                        pointer-events: none;
+                        // pointer-events: none;
 
                         &::after {
                             @include center;
