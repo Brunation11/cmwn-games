@@ -16,6 +16,10 @@ export default function (props, ref, key) {
                     HERE'S YOUR FLIP!
                 </span>
             </skoash.Component>
+            <skoash.Image
+                className="flip"
+                src={`${MEDIA.SPRITE}dz.animatedearnedflip.gif`}
+            />
         </skoash.Screen>
     );
 }
