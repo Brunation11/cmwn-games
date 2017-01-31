@@ -2,7 +2,6 @@ import classNames from 'classnames';
 
 import Catcher from 'shared/components/catcher/0.4';
 import Catchable from 'shared/components/catchable/0.1';
-import Randomizer from 'shared/components/randomizer/0.1';
 import ManualDropper from 'shared/components/manual_dropper/0.1';
 
 const PTS = 'pts';
@@ -89,6 +88,7 @@ export default function (props, ref, key, opts = {}) {
     opts.hits = _.get(props, `${levelPath}.hits`, 0);
     opts.truckClassName = _.get(props, 'data.truckClassName', '');
     opts.selectableMessage = _.get(props, 'data.selectable.message', '');
+    opts.moveClaw = _.get(props, 'data.moveClaw', false);
 
     screenProps = opts.getScreenProps(opts);
     timerProps = opts.getTimerProps(opts);
@@ -162,7 +162,7 @@ export default function (props, ref, key, opts = {}) {
                 onPickUp={onPickUp}
                 next={opts.next}
                 bin={
-                    <Randomizer
+                    <skoash.Randomizer
                         bin={arrayOfCatchables}
                     />
                 }

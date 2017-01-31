@@ -7,6 +7,7 @@ const DROPPED = 'DROPPED';
 const TILT = 'TILT';
 const ITEMS = 'items-';
 
+const BELT_SRC = CMWN.MEDIA.SPRITE + 'level.3.conveyor.belt';
 const CLAW_SRC = CMWN.MEDIA.SPRITE + 'taking.food.assets';
 const CLAW_DROP_SRC = CMWN.MEDIA.SPRITE + 'dropping.in.funnel';
 const FUNNEL_SRC = CMWN.MEDIA.SPRITE + 'front.back.funnel';
@@ -56,7 +57,8 @@ export default _.defaults({
                         },
                         selectable: {
                             message: this.props.list[dataRef].props.message
-                        }
+                        },
+                        moveClaw: true,
                     }
                 });
             },
@@ -228,13 +230,32 @@ export default _.defaults({
                     className="claw grabber"
                     src={CLAW_SRC}
                     frame={0}
+                    loop={false}
                     animate={opts.moveClaw}
+                    onComplete={function () {
+                        this.setState({frame: this.props.frame});
+                    }}
                 />
                 <skoash.Sprite
                     className="claw dropper"
                     src={CLAW_DROP_SRC}
                     frame={0}
+                    loop={false}
                     animate={opts.moveClaw}
+                    onComplete={function () {
+                        this.setState({frame: this.props.frame});
+                    }}
+                />
+                <skoash.Sprite
+                    className="belt"
+                    src={BELT_SRC}
+                    frame={0}
+                    loop={false}
+                    duration={500}
+                    animate={opts.next}
+                    onComplete={function () {
+                        this.setState({frame: this.props.frame});
+                    }}
                 />
                 <skoash.Component className="funnel">
                     <skoash.Sprite
