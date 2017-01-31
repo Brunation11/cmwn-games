@@ -26,7 +26,7 @@ export default function (props, ref, key, opts = {}) {
             <skoash.Sprite
                 src={`${CMWN.MEDIA.SPRITE}_${_.replace(v.bin, '-', '')}`}
                 frame={v.frame || 1}
-                {...{static: true}}
+                static
             />
         );
     };

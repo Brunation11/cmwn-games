@@ -7,7 +7,9 @@ const DROPPED = 'DROPPED';
 const TILT = 'TILT';
 const ITEMS = 'items-';
 
-const CLAW_SRC = CMWN.MEDIA.MOCK.SPRITE + 'player2';
+const CLAW_SRC = CMWN.MEDIA.SPRITE + 'taking.food.assets';
+const CLAW_DROP_SRC = CMWN.MEDIA.SPRITE + 'dropping.in.funnel';
+const FUNNEL_SRC = CMWN.MEDIA.SPRITE + 'front.back.funnel';
 
 const binNames = [
     'food-share',
@@ -164,16 +166,36 @@ export default _.defaults({
                 className="extras"
             >
                 <skoash.Sprite
-                    className="claw"
+                    className="claw grabber"
                     src={CLAW_SRC}
                     frame={0}
                     animate={opts.moveClaw}
                 />
-                <div className="funnel" />
+                <skoash.Sprite
+                    className="claw dropper"
+                    src={CLAW_DROP_SRC}
+                    frame={0}
+                    animate={opts.moveClaw}
+                />
+                <skoash.Component className="funnel">
+                    <skoash.Sprite
+                        className="back"
+                        src={FUNNEL_SRC}
+                        frame={0}
+                        static
+                    />
+                    <skoash.Sprite
+                        className="front"
+                        src={FUNNEL_SRC}
+                        frame={1}
+                        static
+                    />
+                </skoash.Component>
                 <skoash.Component
                     className={classNames('truck', opts.truckClassName)}
                     onTransitionEnd={onTruckTransitionEnd.bind(null, opts)}
                 />
+                <div className="truck-stand" />
             </skoash.Component>
         );
     },

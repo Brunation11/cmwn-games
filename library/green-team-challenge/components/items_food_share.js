@@ -16,7 +16,7 @@ let names = [
     'lollipop-5',
     'mayo-packet',
     'mustard-packet',
-    'Sealed-applesauce',
+    'Sealed-apple-sauce',
     'sealed-bag-of-carrots',
     'sealed-chocolate-milk',
     'sealed-fruit-drink-1',
