@@ -16,7 +16,7 @@ export default function (props, ref, key, opts = {}) {
     var lifeProps;
     var extraComponents;
 
-    const levelPath = `gameState.data.${_.camelCase(opts.gameName)}.levels.${opts.level}`;
+    const LEVEL_PATH = `gameState.data.${_.camelCase(opts.gameName)}.levels.${opts.level}`;
 
     var getChildren = v => {
         if (v.children) return v.children;
@@ -30,23 +30,24 @@ export default function (props, ref, key, opts = {}) {
         );
     };
 
-    var arrayOfCatchables = _.map(opts.itemsToSort, v =>
-        <Catchable
-            className={v.name}
-            message={v.bin}
-            reCatchable={true}
-            becomes={v.becomes}
-            children={getChildren(v)}
-        />
-    );
+    var arrayOfCatchables = _.map(opts.itemsToSort, v => ({
+        type: Catchable,
+        props: {
+            className: v.name,
+            message: v.bin,
+            reCatchable: true,
+            becomes: v.becomes,
+            children: getChildren(v),
+        },
+    }));
 
     var binComponents = _.map(opts.binNames, name =>
         <skoash.Component className={name} message={name} />
     );
 
     var scale = _.get(props, 'gameState.scale', 1);
-    var start = _.get(props, `${levelPath}.start`, false);
-    var gameComplete = _.get(props, `${levelPath}.complete`, false);
+    var start = _.get(props, `${LEVEL_PATH}.start`, false);
+    var gameComplete = _.get(props, `${LEVEL_PATH}.complete`, false);
     var drop = _.get(props, 'data.manual-dropper.drop', false);
     var dropClass = _.get(props, 'data.manual-dropper.dropClass');
     var pickUp = _.get(props, 'data.manual-dropper.pickUp', false);
@@ -65,14 +66,15 @@ export default function (props, ref, key, opts = {}) {
         _.upperFirst(_.camelCase(_.replace(v.name, /\d+/g, ''))))
     );
 
-    var arrayOfAudio = _.map(audioRefs, (v, k) =>
-        <skoash.Audio
-            type="voiceOver"
-            ref={v}
-            key={k}
-            src={`${CMWN.MEDIA.GAME + 'SoundAssets/_vositems/' + v}.mp3`}
-        />
-    );
+    var arrayOfAudio = _.map(audioRefs, (v, k) => ({
+        type: skoash.Audio,
+        props: {
+            type: 'voiceOver',
+            ref: v,
+            key: k,
+            src: `${CMWN.MEDIA.GAME + 'SoundAssets/_vositems/' + v}.mp3`,
+        },
+    }));
 
     if (itemRef) catchableRefs = [itemRef];
 
@@ -82,10 +84,10 @@ export default function (props, ref, key, opts = {}) {
     opts.itemClassName = _.get(props, 'data.item.className');
     opts.itemAmount = _.get(props, 'data.item.amount', 0);
     opts.pour = _.get(props, 'data.item.pour', false);
-    opts.score = _.get(props, `${levelPath}.score`, 0);
-    opts.highScore = _.get(props, `${levelPath}.highScore`, 0);
+    opts.score = _.get(props, `${LEVEL_PATH}.score`, 0);
+    opts.highScore = _.get(props, `${LEVEL_PATH}.highScore`, 0);
     opts.left = _.get(props, 'data.manual-dropper.left', 0);
-    opts.hits = _.get(props, `${levelPath}.hits`, 0);
+    opts.hits = _.get(props, `${LEVEL_PATH}.hits`, 0);
     opts.truckClassName = _.get(props, 'data.truckClassName', '');
     opts.selectableMessage = _.get(props, 'data.selectable.message', '');
     opts.moveClaw = _.get(props, 'data.moveClaw', false);

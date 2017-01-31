@@ -82,6 +82,7 @@ class Fireworks {
     }
 
     loop(opts, pat, canvas, ctx, listFire, listFirework, fireNumber, range) {
+        if (this.destroyed) return;
         requestAnimationFrame(this.loop);
         this.update(opts, listFire, listFirework, fireNumber, range);
         this.draw(opts, pat, canvas, ctx, listFire, listFirework);
@@ -181,6 +182,7 @@ class Fireworks {
     }
 
     destroy() {
+        this.destroyed = true;
         this.node.removeChild(this.canvas);
     }
 }

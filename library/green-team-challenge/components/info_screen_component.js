@@ -37,6 +37,11 @@ export default function (props, ref, key, opts = {}) {
             <div className="frame">
                 {opts.content}
             </div>
+            <skoash.Compoent
+                checkComplete={false}
+                complete={true}
+                children={[].concat(opts.extras || [])}
+            />
         </skoash.Screen>
     );
 }
