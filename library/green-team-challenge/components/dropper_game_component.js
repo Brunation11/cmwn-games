@@ -138,6 +138,8 @@ export default function (props, ref, key, opts = {}) {
                     top: itemTop,
                     left: itemLeft,
                 }}
+                checkComplete={false}
+                complete={true}
             >
                 <span>
                     {opts.itemName}
@@ -152,6 +154,8 @@ export default function (props, ref, key, opts = {}) {
                 {...lifeProps}
             />
             <ManualDropper
+                checkComplete={false}
+                complete={true}
                 amount={opts.dropperAmount}
                 drop={drop}
                 pickUp={pickUp}
@@ -177,6 +181,8 @@ export default function (props, ref, key, opts = {}) {
                 className={classNames('bins', {
                     DISABLED: opts.itemName
                 })}
+                checkComplete={false}
+                complete={true}
             >
                 <Catcher
                     completeOnStart
@@ -201,6 +207,8 @@ export default function (props, ref, key, opts = {}) {
                 openTarget="reveal"
                 openReveal={revealOpen}
                 closeReveal={revealClose}
+                checkComplete={false}
+                complete={true}
                 {...revealProps}
                 list={[
                     <skoash.Component
@@ -219,6 +227,8 @@ export default function (props, ref, key, opts = {}) {
             />
             <skoash.MediaCollection
                 children={arrayOfAudio}
+                checkComplete={false}
+                complete={true}
             />
         </skoash.Screen>
     );

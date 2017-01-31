@@ -32,7 +32,7 @@
 
                 &.DROPPED {
                     top: 200px;
-                    left: 240px;
+                    left: 300px;
                 }
 
                 &.PICKUP {
@@ -75,7 +75,7 @@
     .catch {
         div {
             @include bins;
-            margin: 0 10px;
+            margin: 0 -10px;
             width: 200px;
             height: 100%;
 
@@ -83,14 +83,25 @@
                 transform: translateX(-50%) translateY(-50%) scale(1.2);
             }
 
+            &.recycle {
+                margin-left: 60px;
+            }
+
             &.liquids {
+                top: 30px;
+                margin-left: 50px;
+
                 &::before {
                     transform: translateX(-50%) translateY(-50%) scale(2);
                 }
             }
 
             &.food-share {
-                @include position(absolute, -140px null null 0);
+                @include position(absolute, -140px null null -20px);
+
+                &::before {
+                    transform: translateX(-50%) translateY(-50%) scale(1.2) rotate(45deg);
+                }
             }
         }
     }
@@ -98,14 +109,19 @@
     .selectable {
         li {
             @include bin-button;
-            margin: 110px 70px;
+            margin: 70px 50px;
 
             &:nth-of-type(2) {
-                margin-left: 63px;
+                margin-left: 110px;
             }
 
             &.food-share {
-                @include position(absolute, -140px null null 0);
+                @include position(absolute, -120px null null -50px);
+            }
+
+            &.liquids {
+                margin-top: 110px;
+                margin-left: 110px;
             }
         }
     }
@@ -141,15 +157,16 @@
         }
 
         .truck {
-            @include position(absolute, 200px null null 600px);
-            @include size(200px 100px);
+            @include position(absolute, 190px null null 600px);
+            @include size(200px 120px);
             transition: transform .25s;
+            transform-origin: 50% 100%;
 
             &::before,
             &::after {
-                @include position(absolute, 0 null null 0);
                 @include center;
                 display: block;
+                left: 60%;
                 content: '';
             }
 
@@ -159,8 +176,8 @@
 
             &::after {
                 @include truck-sprite(3);
-                top: 110%;
-                left: 10%;
+                top: 100%;
+                left: 20%;
                 transform: translateX(-50%) translateY(-50%) scale(1.4);
             }
 
@@ -173,6 +190,7 @@
             @include truck-sprite(2);
             @include position(absolute, 330px null null 560px);
             transform: scale(1.2);
+            z-index: -1;
         }
     }
 }

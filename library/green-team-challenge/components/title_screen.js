@@ -2,10 +2,15 @@ import 'shared/effects/index';
 
 const FIREWORKS = 'fireworks';
 
-const onStart = function () {
-    window.CMWN.makeEffect('fireworks', ReactDOM.findDOMNode(this), {
+let onStart = function () {
+    this.effect = window.CMWN.makeEffect('fireworks', ReactDOM.findDOMNode(this), {
         backgroundImage: ReactDOM.findDOMNode(this.refs.image),
     });
+};
+
+let onStop = function () {
+    _.invoke(this.effect, 'destroy');
+    delete this.effect;
 };
 
 export default function (props, ref, key) {
@@ -37,6 +42,7 @@ export default function (props, ref, key) {
                 className={FIREWORKS}
                 ref={FIREWORKS}
                 onStart={onStart}
+                onStop={onStop}
             >
                 <skoash.Image
                     ref="image"

@@ -66,7 +66,7 @@ export default _.defaults({
         return {
             onTransitionEnd: function (e) {
                 if (e.propertyName === 'top' && _.includes(e.target.className, DROPPED)) {
-                    let itemRef;
+                    let itemRef = this.refs[ITEMS + this.firstItemIndex];
                     let DOMNode;
                     let onAnimationEnd;
 
@@ -77,7 +77,52 @@ export default _.defaults({
 
                     if (opts.selectableMessage !== 'liquids') return;
 
-                    itemRef = this.refs[ITEMS + this.firstItemIndex];
+                    if (itemRef.props.message !== 'liquids') {
+                        let hits = opts.hits + 1;
+
+                        this.updateGameData({
+                            keys: [_.camelCase(opts.gameName), 'levels', opts.level],
+                            data: {
+                                start: false,
+                                hits,
+                            }
+                        });
+
+                        if (hits === opts.maxHits) {
+                            setTimeout(() => {
+                                this.updateScreenData({
+                                    keys: ['manual-dropper', 'pickUp'],
+                                    data: true,
+                                });
+                            }, 1000);
+                            return;
+                        }
+
+                        this.updateScreenData({
+                            keys: ['reveal', 'open'],
+                            data: 'resort',
+                            callback: () => {
+                                setTimeout(() => {
+                                    this.updateScreenData({
+                                        data: {
+                                            reveal: {
+                                                open: null,
+                                                close: true,
+                                            },
+                                            'manual-dropper': {
+                                                pickUp: true,
+                                            },
+                                            catcher: {
+                                                caught: false,
+                                            }
+                                        }
+                                    });
+                                }, 1000);
+                            }
+                        });
+
+                        return;
+                    }
 
                     DOMNode = ReactDOM.findDOMNode(itemRef);
 
@@ -89,18 +134,25 @@ export default _.defaults({
                                 let items = this.state.items;
                                 let index = this.firstItemIndex;
                                 let item = items[index];
-                                let newBin = _.find(opts.itemsToSort, itemToSort =>
-                                    itemToSort.name === item.props.becomes
-                                ).bin;
-                                item.props.className = item.props.becomes;
-                                item.props.message = newBin;
-                                item.props['data-message'] = newBin;
+                                item.props.className = item.props.becomes.name;
+                                item.props.message = item.props.becomes.bin;
+                                item.props['data-message'] = item.props.becomes.bin;
                                 items[index] = item;
                                 this.setState({items}, () => {
                                     itemRef.removeAllClassNames();
                                     this.updateScreenData({
-                                        key: 'truckClassName',
-                                        data: '',
+                                        data: {
+                                            item: {
+                                                name: _.startCase(
+                                                    _.replace(item.props.becomes.name, /\d+/g, '')
+                                                ),
+                                                pour: false,
+                                            },
+                                            'manual-dropper': {
+                                                dropClass: '',
+                                            },
+                                            truckClassName: '',
+                                        }
                                     });
                                 });
                                 DOMNode.removeEventListener('animationend', onAnimationEnd);
@@ -111,6 +163,10 @@ export default _.defaults({
                     if (!itemRef.state.className || itemRef.state.className.indexOf('POUR') === -1) {
                         DOMNode.addEventListener('animationend', onAnimationEnd);
                         itemRef.addClassName('POUR');
+                        this.updateScreenData({
+                            key: ['item', 'pour'],
+                            data: true,
+                        });
                     }
                 }
             },
@@ -130,6 +186,9 @@ export default _.defaults({
                         'manual-dropper': {
                             drop: !!opts.selectableMessage,
                             itemName: _.startCase(this.getFirstItem().props.className),
+                        },
+                        item: {
+                            name: _.startCase(_.replace(this.getFirstItem().props.className, /\d+/g, '')),
                         },
                         selectable: {
                             message: ''
