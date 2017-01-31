@@ -8,8 +8,7 @@ const TILT = 'TILT';
 const ITEMS = 'items-';
 
 const BELT_SRC = CMWN.MEDIA.SPRITE + 'level.3.conveyor.belt';
-const CLAW_SRC = CMWN.MEDIA.SPRITE + 'taking.food.assets';
-const CLAW_DROP_SRC = CMWN.MEDIA.SPRITE + 'dropping.in.funnel';
+const CLAW_SRC = CMWN.MEDIA.SPRITE + 'level3robotarm';
 const FUNNEL_SRC = CMWN.MEDIA.SPRITE + 'front.back.funnel';
 
 const binNames = [
@@ -227,23 +226,20 @@ export default _.defaults({
                 className="extras"
             >
                 <skoash.Sprite
-                    className="claw grabber"
+                    className="claw"
                     src={CLAW_SRC}
                     frame={0}
                     loop={false}
                     animate={opts.moveClaw}
+                    duration={[
+                        200, 200, 200, 500, 100, 3000, 200, 200, 200, 200, 200, 200
+                    ]}
                     onComplete={function () {
                         this.setState({frame: this.props.frame});
-                    }}
-                />
-                <skoash.Sprite
-                    className="claw dropper"
-                    src={CLAW_DROP_SRC}
-                    frame={0}
-                    loop={false}
-                    animate={opts.moveClaw}
-                    onComplete={function () {
-                        this.setState({frame: this.props.frame});
+                        this.updateScreenData({
+                            key: 'moveClaw',
+                            data: false,
+                        });
                     }}
                 />
                 <skoash.Sprite

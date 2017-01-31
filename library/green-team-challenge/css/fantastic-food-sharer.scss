@@ -20,7 +20,7 @@
                 @include center;
                 @include size(50px);
                 left: 0;
-                transition: top .25s .25s, left .25s 0s, transform .5s;
+                transition: top .25s 4.6s, left 1.4s 4s, transform .5s;
 
                 $lefts: 400 150 -100;
                 @for $i from 1 through length($lefts) {
@@ -32,7 +32,7 @@
 
                 &.DROPPED {
                     top: 200px;
-                    left: 300px;
+                    left: 130px;
                 }
 
                 &.PICKUP {
@@ -41,11 +41,12 @@
 
                 $bins: FOOD_SHARE  RECYCLE  LANDFILL   COMPOST   LIQUIDS;
                 $tops:        150      350       350       350       200;
-                $lefts:      -280     -220       -50       160       390;
+                $lefts:      -280     -220       -50       110       390;
                 @for $i from 1 through length($bins) {
                     &.#{nth($bins, $i)} {
                         top: #{nth($tops, $i)}px;
                         left: #{nth($lefts, $i)}px;
+                        transition: top .25s .25s, left .25s 0s, transform .5s;
                     }
                 }
 
@@ -58,7 +59,7 @@
 
     .bins {
         position: absolute;
-        bottom: 0;
+        bottom: -20px;
         left: 0;
         width: 100%;
         height: 200px;
@@ -76,20 +77,20 @@
         div {
             @include bins;
             margin: 0 -10px;
-            width: 200px;
+            width: 180px;
             height: 100%;
 
             &::before {
-                transform: translateX(-50%) translateY(-50%) scale(1.2);
+                transform: translateX(-50%) translateY(-50%);
             }
 
             &.recycle {
-                margin-left: 60px;
+                margin-left: 10px;
             }
 
             &.liquids {
-                top: 30px;
-                margin-left: 50px;
+                top: 10px;
+                margin-left: 80px;
 
                 &::before {
                     transform: translateX(-50%) translateY(-50%) scale(2);
@@ -109,10 +110,10 @@
     .selectable {
         li {
             @include bin-button;
-            margin: 70px 50px;
+            margin: 70px 40px;
 
             &:nth-of-type(2) {
-                margin-left: 110px;
+                margin-left: 50px;
             }
 
             &.food-share {
@@ -120,23 +121,16 @@
             }
 
             &.liquids {
-                margin-top: 110px;
-                margin-left: 110px;
+                margin-top: 90px;
+                margin-left: 125px;
             }
         }
     }
 
     .extras {
         .claw {
+            @include position(absolute, -180px null null 70px);
             transform: scale(.3);
-
-            &.grabber {
-                @include position(absolute, -138px null null -40px);
-            }
-
-            &.dropper {
-                @include position(absolute, -120px null null 340px);
-            }
         }
 
         .belt {
@@ -145,7 +139,7 @@
         }
 
         .funnel {
-            @include position(absolute, 80px null null 380px);
+            @include position(absolute, 80px null null 190px);
 
             .back,
             .front {
@@ -163,7 +157,7 @@
         }
 
         .truck {
-            @include position(absolute, 190px null null 600px);
+            @include position(absolute, 190px null null 510px);
             @include size(200px 120px);
             transition: transform .25s;
             transform-origin: 50% 100%;
@@ -172,12 +166,13 @@
             &::after {
                 @include center;
                 display: block;
-                left: 60%;
                 content: '';
             }
 
             &::before {
                 @include truck-sprite(1);
+                left: 40%;
+                transform: translateX(-50%) translateY(-50%) scale3d(-1, 1, 1);
             }
 
             &::after {
@@ -194,7 +189,7 @@
 
         .truck-stand {
             @include truck-sprite(2);
-            @include position(absolute, 330px null null 560px);
+            @include position(absolute, 330px null null 470px);
             transform: scale(1.2);
             z-index: -1;
         }
