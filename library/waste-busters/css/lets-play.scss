@@ -1,0 +1,11 @@
+@import 'mixins';
+
+#lets-play {
+    .truck {
+        $scale: .8;
+        @include sprite-game-intro(2);
+        bottom: -10px;
+        left: -20px;
+        transform: scale3d($scale, $scale, 1);
+    }
+}

@@ -1,3 +1,5 @@
+@import './mixins/import';
+
 $spinner-color: rgba(0, 0, 0, .5);
 
 #loader {
@@ -5,11 +7,19 @@ $spinner-color: rgba(0, 0, 0, .5);
     opacity: 0;
     z-index: -1;
 
-    .group > .spinner {
-        animation: pulse .5s infinite;
-        margin: auto;
-        width: 80px;
-        height: 80px;
+    .group {
+        @include center;
+
+        h2 {
+            margin-bottom: 30px;
+        }
+
+        > .spinner {
+            animation: pulse .5s infinite;
+            margin: auto;
+            width: 80px;
+            height: 80px;
+        }
     }
 
     .spinner {

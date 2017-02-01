@@ -1,0 +1,44 @@
+@import 'variables';
+@import 'mixins';
+
+#take-action {
+    .frame {
+        top: 57%;
+        left: 64%;
+        width: 600px;
+        height: 400px;
+        line-height: 1.2;
+        font-size: 32px;
+
+        &::before,
+        &::after {
+            @include center;
+            display: block;
+            top: 14%;
+            content: '';
+        }
+
+        &::before {
+            @include background($image + 'banner.png');
+            width: 610px;
+            height: 200px;
+        }
+
+        &::after {
+            @include sprite-sort-title(5);
+        }
+
+        .content {
+            margin-top: 40px;
+
+            &::before {
+                @include sprite-reward(3);
+                display: block;
+                position: absolute;
+                top: -150px;
+                left: -270px;
+                content: '';
+            }
+        }
+    }
+}
