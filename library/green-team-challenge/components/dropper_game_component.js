@@ -13,6 +13,7 @@ export default function (props, ref, key, opts = {}) {
     var dropperProps;
     var catcherProps;
     var lifeProps;
+    var extraComponents;
 
     const levelPath = `gameState.data.recyclingChampion.levels.${opts.level}`;
 
@@ -27,7 +28,7 @@ export default function (props, ref, key, opts = {}) {
     var start = _.get(props, `${levelPath}.start`, false);
     var gameComplete = _.get(props, `${levelPath}.complete`, false);
     var drop = _.get(props, 'data.manual-dropper.drop', false);
-    var dropClass = _.get(props, 'data.manual-dropper.dropClass', false);
+    var dropClass = _.get(props, 'data.manual-dropper.dropClass');
     var next = _.get(props, 'data.manual-dropper.next', false);
     var pickUp = _.get(props, 'data.manual-dropper.pickUp', false);
     var onPickUp = _.get(props, 'data.manual-dropper.onPickUp');
@@ -41,6 +42,8 @@ export default function (props, ref, key, opts = {}) {
     opts.highScore = _.get(props, `${levelPath}.highScore`, 0);
     opts.left = _.get(props, 'data.manual-dropper.left', 0);
     opts.hits = _.get(props, `${levelPath}.hits`, 0);
+    opts.truckClassName = _.get(props, 'data.truckClassName', '');
+    opts.selectableMessage = _.get(props, 'data.selectable.message', '');
 
     screenProps = opts.getScreenProps(opts);
     timerProps = opts.getTimerProps(opts);
@@ -49,6 +52,7 @@ export default function (props, ref, key, opts = {}) {
     dropperProps = opts.getDropperProps(opts);
     catcherProps = opts.getCatcherProps(opts);
     lifeProps = opts.getLifeProps(opts);
+    extraComponents = opts.getExtraComponents(opts);
 
     return (
         <skoash.Screen
@@ -135,6 +139,7 @@ export default function (props, ref, key, opts = {}) {
                     list={binComponents}
                 />
             </skoash.Component>
+            {extraComponents}
             <skoash.Reveal
                 openTarget="reveal"
                 openReveal={revealOpen}

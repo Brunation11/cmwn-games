@@ -1,0 +1,122 @@
+@import 'variables';
+@import 'mixins';
+
+[id*=fantastic-food-sharer] {
+    @include game-gages;
+    @include game-reveal;
+
+    .manual-dropper {
+        position: absolute;
+        top: 50px;
+        left: 0;
+        width: 50%;
+        height: 100px;
+
+        .items {
+            @include cover;
+
+            > * {
+                @include center;
+                @include size(50px);
+                left: 0;
+                transition: top .25s .25s, left .25s 0s, transform .5s;
+                background-color: $green;
+
+                &::before {
+                    font-size: 10px;
+                    content: attr(data-message);
+                }
+
+                $lefts: 400 150 -100;
+                @for $i from 1 through length($lefts) {
+                    &:nth-of-type(#{$i}) {
+                        transform: translateX(#{nth($lefts, $i)}px) translateY(-50%);
+                        transform-origin: 0 0;
+                    }
+                }
+
+                &.DROPPED {
+                    top: 200px;
+                    left: 240px;
+                }
+
+                &.PICKUP {
+                    transition: top .25s 0s, left .25s .25s, transform .5s;
+                }
+
+                $bins: FOOD_SHARE  RECYCLE  LANDFILL   COMPOST   LIQUIDS;
+                $tops:        150      350       350       350       200;
+                $lefts:      -280     -280       -50       160       390;
+                @for $i from 1 through length($bins) {
+                    &.#{nth($bins, $i)} {
+                        top: #{nth($tops, $i)}px;
+                        left: #{nth($lefts, $i)}px;
+                    }
+                }
+
+                &.POUR {
+                    animation: fantastic-pour 1.5s;
+                }
+            }
+        }
+    }
+
+    .bins {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 200px;
+    }
+
+    .catch,
+    .selectable {
+        @include cover;
+        display: flex;
+        height: 100%;
+        justify-content: center;
+
+        div,
+        li {
+            z-index: 1;
+            margin: 0 10px;
+            width: 200px;
+            height: 100%;
+
+            &.food-share {
+                @include position(absolute, -140px null null 0);
+            }
+        }
+
+        li {
+            background-color: $blue;
+
+            &::before {
+                content: attr(data-message);
+            }
+        }
+    }
+
+    .extras {
+        .claw {
+            @include position(absolute, 0 null null 500px);
+            transform: scale(.8);
+        }
+
+        .funnel {
+            @include position(absolute, 100px null null 610px);
+            @include triangle(100px 80px, $blue, down);
+        }
+
+        .truck {
+            @include position(absolute, 200px null null 600px);
+            @include size(200px 100px);
+            transition: transform .25s;
+            background-color: $blue;
+
+            &.TILT {
+                transform: rotate(-50deg);
+            }
+        }
+    }
+}
