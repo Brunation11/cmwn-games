@@ -19,14 +19,11 @@ export default function (props, ref, key) {
             <skoash.Audio type="voiceOver" src={`${MEDIA.VO}EffectsDrought.mp3`} />
             <skoash.Selectable
                 ref="selectable"
-                list={[
-                    <skoash.ListItem data-ref={REVEALS[0]} />,
-                    <skoash.ListItem data-ref={REVEALS[1]} />,
-                    <skoash.ListItem data-ref={REVEALS[2]} />,
-                    <skoash.ListItem data-ref={REVEALS[3]} />,
-                    <skoash.ListItem data-ref={REVEALS[4]} />,
-                    <skoash.ListItem data-ref={REVEALS[5]} />,
-                ]}
+                list={
+                    _.map(REVEALS, (value) => {
+                        return <skoash.ListItem data-ref={value} />;
+                    })
+                }
                 selectClass="HIGHLIGHTED"
                 className="scroll-selectable"
                 dataTarget="selectable"
