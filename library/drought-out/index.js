@@ -22,13 +22,15 @@ import FlipScreen from './components/flip_screen';
 
 import QuitScreen from 'shared/components/quit_screen/0.1';
 
+var DroughtOut;
+
 MEDIA.GAME = MEDIA.BASE + 'Games/DroughtOut/';
 MEDIA.EFFECT = MEDIA.GAME + 'SoundAssets/effects/';
 MEDIA.VO = MEDIA.GAME + 'SoundAssets/vos/';
 MEDIA.IMAGE = MEDIA.GAME + 'ImageAssets/';
 MEDIA.SPRITE = MEDIA.GAME + 'SpritesAnimations/';
 
-var DroughtOut = (
+DroughtOut = (
     <skoash.Game
         config={config}
         screens={{

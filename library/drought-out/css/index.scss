@@ -436,8 +436,8 @@ img.inline {
         position: absolute;
         top: -225px;
         left: -176px;
+        transform: translateX(-300px) translateY(-200px) scale(.7);
         transition: transform 5s;
-        transform: translateX(-300px) translateY(-200px) scale(0.7);
     }
 
     &.OPEN {
@@ -449,7 +449,7 @@ img.inline {
 
     &.COMPLETE {
         .falcon {
-            transform: scale(0.7);
+            transform: scale(.7);
         }
     }
 }
@@ -480,12 +480,12 @@ img.inline {
             background-image: url($sprite + 'img_2.1.png');
             background-repeat: no-repeat;
             background-size: 650px;
-            height: 42px;
             cursor: pointer;
+            height: 42px;
 
             &.HIGHLIGHTED {
-                pointer-events: none;
                 cursor: default;
+                pointer-events: none;
             }
 
             // scss-lint:disable ColorVariable ColorKeyword
@@ -510,8 +510,8 @@ img.inline {
 
     .VOICE-OVER & {
         li {
-            pointer-events: none;
             cursor: default;
+            pointer-events: none;
         }
     }
 }
@@ -587,9 +587,9 @@ img.inline {
         position: relative;
         z-index: 1;
         margin: 10px auto;
+        cursor: pointer;
         width: 640px;
         pointer-events: none;
-        cursor: pointer;
     }
 
     .selectable-canvas-move {
@@ -611,8 +611,8 @@ img.inline {
 
     .VOICE-OVER & {
         canvas {
-            pointer-events: none;
             cursor: default;
+            pointer-events: none;
         }
     }
 }
@@ -676,7 +676,7 @@ img.inline {
                 }
             }
 
-            &:hover, 
+            &:hover,
             &.HIGHLIGHTED {
                 background-position-x: -206px;
             }
@@ -842,14 +842,14 @@ img.inline {
         li {
             display: block;
             margin: 0;
+            cursor: default;
             width: 220px;
             height: 320px;
-            cursor: default;
             pointer-events: none;
 
             .side {
-                background-position-x: -22px;
                 background-size: 718px;
+                background-position-x: -22px;
 
                 &.b {
                     background-position-x: -489px;
@@ -882,14 +882,15 @@ img.inline {
         }
 
         $card-text:  day week year;
-        $card-pos-y: -24 -384 -736; 
+        $card-pos-y: -24 -384 -736;
 
         @for $i from 1 through 3 {
-            [data-ref=#{nth($card-text, $i)}] div { 
+            [data-ref=#{nth($card-text, $i)}] div {
                 background-position-y: #{nth($card-pos-y, $i)}px;
             }
         }
     }
+
     .VOICE-OVER & {
         li {
             cursor: default !important;
@@ -916,8 +917,8 @@ img.inline {
                 top: 50%;
                 left: 0;
                 transform: translateY(-50%);
-                width: 100%;
                 padding: 20px;
+                width: 100%;
                 line-height: 1.1;
 
                 p {
@@ -943,14 +944,14 @@ img.inline {
             position: absolute;
             top: 0;
             right: 0;
-            height: 397px;
-            width: 73px;
+            transition: opacity .5s;
+            opacity: 0;
             background-image: url($sprite + 'img_15.3.png');
             background-repeat: no-repeat;
             background-size: 1040px;
+            width: 73px;
+            height: 397px;
             background-position-y: -12px;
-            opacity: 0;
-            transition: opacity .5s;
 
             @for $i from 0 through 8 {
                 &:nth-of-type(#{$i + 1}) {

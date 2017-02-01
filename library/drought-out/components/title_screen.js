@@ -11,7 +11,14 @@ export default function (props, ref, key) {
             completeOnStart={true}
             playOnStart="bird-wing-flap"
         >
-            <skoash.Audio ref="bird-wing-flap" type="sfx" delay={3000} src={`${MEDIA.EFFECT}BirdWingFlap.mp3`} complete checkComplete={false} />
+            <skoash.Audio
+                ref="bird-wing-flap"
+                type="sfx"
+                delay={3000}
+                src={`${MEDIA.EFFECT}BirdWingFlap.mp3`}
+                complete
+                checkComplete={false}
+            />
             <skoash.Image className="animated title" src={`${MEDIA.IMAGE}img_1.1.png`} />
             <skoash.Sprite
                 className="falcon"

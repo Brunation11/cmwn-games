@@ -118,7 +118,7 @@ export default function (props, ref, key) {
                             data-ref={value}
                             src={`${MEDIA.VO}Ways${capitalize(value)}.mp3`}
                         />
-                    )
+                    );
                 })}
             </skoash.MediaCollection>
             <skoash.Component ref="frame" className="frame animated">

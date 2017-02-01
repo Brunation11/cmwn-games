@@ -18,7 +18,7 @@ export default function (props, ref, key) {
                     volume={2}
                 />
                 <skoash.Audio
-                    type="sfx" 
+                    type="sfx"
                     src={`${MEDIA.EFFECT}Rattle.mp3`}
                 />
             </skoash.MediaSequence>

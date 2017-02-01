@@ -9,17 +9,17 @@ export default function (props, ref, key) {
         'arid'
     ];
 
-    var onSelect = function (ref) {
-        if (ANSWERS.indexOf(ref) < 0) ref = "incorrect";
-        playAudio.call(this, ref, playAudio.bind(this, 'dummy', _.noop));
+    var onSelect = function (target) {
+        if (ANSWERS.indexOf(target) < 0) ref = 'incorrect';
+        playAudio.call(this, target, playAudio.bind(this, 'dummy', _.noop));
         // the dummy update allows the incorrect sound to be played repeatedly
     };
 
-    var playAudio = function (ref, cb) {
+    var playAudio = function (target, cb) {
         this.updateScreenData({
             path: 'selectable',
             data: {
-                play: ref
+                play: target
             },
             callback: cb
         });
