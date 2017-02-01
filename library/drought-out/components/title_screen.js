@@ -1,5 +1,4 @@
 export default function (props, ref, key) {
-    // TODO add tumbleweed AIM 1/30/17
     return (
         <skoash.Screen
             {...props}
@@ -25,6 +24,11 @@ export default function (props, ref, key) {
                 src={`${MEDIA.SPRITE}Falcon_5-01`}
                 frame={0}
                 frames={9}
+                animate={true}
+            />
+            <skoash.Sprite
+                className="tumbleweed"
+                src={`${MEDIA.SPRITE}tumbleweed`}
                 animate={true}
             />
         </skoash.Screen>

@@ -4,7 +4,7 @@ export default function (props, ref, key) {
             {...props}
             ref={ref}
             key={key}
-            id="info-impact"
+            id="humans-animals"
             className="small-frame"
             playOnStart="tumbleweed"
         >
@@ -22,6 +22,11 @@ export default function (props, ref, key) {
                     Humans, animals and <br />plants need <br />water to live!
                 </p>
             </skoash.Component>
+            <skoash.Sprite
+                className="tumbleweed"
+                src={`${MEDIA.SPRITE}tumbleweed`}
+                animate={true}
+            />
         </skoash.Screen>
     );
 }

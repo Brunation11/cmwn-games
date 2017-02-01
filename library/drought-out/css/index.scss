@@ -434,22 +434,28 @@ img.inline {
 
     .falcon {
         position: absolute;
-        top: -225px;
-        left: -176px;
-        transform: translateX(-300px) translateY(-200px) scale(.7);
+        top: -435px;
+        left: -476px;
         transition: transform 5s;
+        transform: scale(.7);
+    }
+
+    .tumbleweed {
+        position: absolute;
+        top: 385px;;
+        left: 242px;
+        transform: scale(2, 1.6);
     }
 
     &.OPEN {
         .title {
             animation-name: flip;
         }
-
     }
 
     &.COMPLETE {
         .falcon {
-            transform: scale(.7);
+            transform: translateX(300px) translateY(200px) scale(.7);
         }
     }
 }
@@ -545,9 +551,16 @@ img.inline {
     }
 }
 
-#info-need-water {
+#humans-animals {
     .frame {
         padding-top: 120px;
+    }
+
+    .tumbleweed {
+        position: absolute;
+        top: 385px;
+        left: 242px;
+        transform: scale(2, 1.6);
     }
 }
 
