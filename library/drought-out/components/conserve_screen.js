@@ -52,10 +52,6 @@ export default function (props, ref, key) {
 
     };
 
-    var capitalize = function (w) {
-        return w.charAt(0).toUpperCase() + w.slice(1);
-    };
-
     return (
         <skoash.Screen
             {...props}
@@ -116,7 +112,7 @@ export default function (props, ref, key) {
                             onComplete={closeReveal}
                             type="voiceOver"
                             data-ref={value}
-                            src={`${MEDIA.VO}Ways${capitalize(value)}.mp3`}
+                            src={`${MEDIA.VO}Ways${_.upperFirst(value)}.mp3`}
                         />
                     );
                 })}

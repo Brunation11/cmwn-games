@@ -81,10 +81,6 @@ export default function (props, ref, key) {
         },
     ];
 
-    var capitalize = function (w) {
-        return w.charAt(0).toUpperCase() + w.slice(1);
-    };
-
     var playSFX = function () {
         var sfx;
         var target = _.get(props, 'data.selection.target.props.data-ref', null);
@@ -136,7 +132,7 @@ export default function (props, ref, key) {
                         <skoash.Audio
                             ref={value.text}
                             type="voiceOver"
-                            src={`${MEDIA.VO}Things${capitalize(value.text)}.mp3`}
+                            src={`${MEDIA.VO}Things${_.upperFirst(value.text)}.mp3`}
                             key={index}
                         />
                     );
