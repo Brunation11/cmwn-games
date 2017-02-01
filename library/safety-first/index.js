@@ -1,3 +1,5 @@
+var SafetyFirst;
+
 import config from './config';
 
 import Loader from 'shared/components/loader/0.1';
@@ -28,7 +30,7 @@ import QuitScreen from './components/quit_screen';
 window.MEDIA_SERVER = ENVIRONMENT.MEDIA;
 ENVIRONMENT.MEDIA += 'Games/SafetyFirst/';
 
-var SafetyFirst = (
+SafetyFirst = (
     <skoash.Game
         config={config}
         screens={{
