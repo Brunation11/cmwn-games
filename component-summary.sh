@@ -26,4 +26,4 @@ do
     fi
 done
 echo -e "$components"
-echo -e "$components" >> build/component-summary.txt
+echo -e "$components" > build/component-summary.txt

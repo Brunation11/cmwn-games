@@ -7,7 +7,7 @@ $grey: #eee;
         text-align: center;
 
         li {
-            display: inline block;
+            display: inline-block;
             position: relative;
             margin: 0 5px;
             cursor: pointer;
@@ -15,11 +15,14 @@ $grey: #eee;
             height: 250px;
             vertical-align: top;
             perspective: 500px;
+
+            &.HIGHLIGHTED {
+                cursor: default;
+                pointer-events: none;
+            }
+
         }
 
-        &.HIGHLIGHTED {
-            cursor: auto;
-        }
 
         .side {
             position: absolute;
