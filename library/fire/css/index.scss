@@ -43,18 +43,23 @@ body > div > div {
         width: 100%;
         height: 100%;
 
-        &.BKG-2 {
+        &.SCREEN-4 {
             background-image: url('../media/_BKG/BKG_2.png');
+
+            .background.BKG-2 {
+                opacity: 1;
+            }
         }
 
-        &.BKG-3 {
-            background-image: url('../media/_BKG/BKG_3.png');
-        }
-    }
+        @for $i from 5 through 14 {
+            &.SCREEN-#{$i} {
+                background-image: url('../media/_BKG/BKG_3.png');
 
-    &.BKG-2 .background.BKG-2,
-    &.BKG-3 .background.BKG-3 {
-        opacity: 1;
+                .background.BKG-3 {
+                    opacity: 1;
+                }
+            }
+        }
     }
 }
 
