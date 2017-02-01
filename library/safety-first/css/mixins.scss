@@ -1,4 +1,5 @@
 @import 'variables';
+@import '../../shared/css/mixins/import';
 
 @mixin clearfix {
     &::after {

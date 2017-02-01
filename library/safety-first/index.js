@@ -1,6 +1,4 @@
-var SafetyFirst;
-
-import config from './config.game';
+import config from './config';
 
 import Loader from 'shared/components/loader/0.1';
 
@@ -30,10 +28,9 @@ import QuitScreen from './components/quit_screen';
 window.MEDIA_SERVER = ENVIRONMENT.MEDIA;
 ENVIRONMENT.MEDIA += 'Games/SafetyFirst/';
 
-SafetyFirst = (
+var SafetyFirst = (
     <skoash.Game
         config={config}
-        loader={<Loader />}
         screens={{
             0: iOSScreen,
             1: TitleScreen,
@@ -69,6 +66,7 @@ SafetyFirst = (
                 />
             )
         }}
+        loader={<Loader />}
         assets={[
             <skoash.Font name="Source Sans Pro" />,
             <skoash.Audio
@@ -112,3 +110,5 @@ SafetyFirst = (
 );
 
 skoash.start(SafetyFirst);
+
+if (module.hot) module.hot.accept();

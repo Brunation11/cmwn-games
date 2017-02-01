@@ -1,4 +1,5 @@
 @import 'variables';
+@import 'mixins';
 
 [id*='whos-at-the-door'] {
     .frame {
@@ -137,93 +138,36 @@
             }
         }
 
-        &.open-delivery-person {
-            .frame {
-                background-position: -3162px 0;
+        $yes:
+            sister
+            mother
+            brother
+            close-friend
+            close-relative;
+
+        $no:
+            delivery-person
+            new-neighbor
+            gas-man
+            person-with-flat
+            cable-person;
+
+        $yes-positions: -419 -811 -1203 -1984 -3941;
+        $no-positions: -3162 1595 -2373 -2767 -3552;
+
+        @for $i from 1 through length($yes) {
+            &.open-#{nth($yes, $i)} .frame {
+                background-position: #{nth($yes-positions, $i)}px 0;
             }
 
-            .prompt {
-                &::before {
+            &.open-#{nth($no, $i)} {
+                .frame {
+                    background-position: #{nth($no-positions, $i)}px 0;
+                }
+
+                .prompt::before {
                     background-position: 101% 0;
                 }
-            }
-        }
-
-        &.open-sister {
-            .frame {
-                background-position: -419px 0;
-            }
-        }
-
-        &.open-new-neighbor {
-            .frame {
-                background-position: -1595px 0;
-            }
-
-            .prompt {
-                &::before {
-                    background-position: 101% 0;
-                }
-            }
-        }
-
-        &.open-mother {
-            .frame {
-                background-position: -811px 0;
-            }
-        }
-
-        &.open-brother {
-            .frame {
-                background-position: -1203px 0;
-            }
-        }
-
-        &.open-gas-man {
-            .frame {
-                background-position: -2373px 0;
-            }
-
-            .prompt {
-                &::before {
-                    background-position: 101% 0;
-                }
-            }
-        }
-
-        &.open-close-friend {
-            .frame {
-                background-position: -1984px 0;
-            }
-        }
-
-        &.open-person-with-flat {
-            .frame {
-                background-position: -2767px 0;
-            }
-
-            .prompt {
-                &::before {
-                    background-position: 101% 0;
-                }
-            }
-        }
-
-        &.open-cable-person {
-            .frame {
-                background-position: -3552px 0;
-            }
-
-            .prompt {
-                &::before {
-                    background-position: 101% 0;
-                }
-            }
-        }
-
-        &.open-close-relative {
-            .frame {
-                background-position: -3941px 0;
             }
         }
 

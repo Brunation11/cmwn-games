@@ -1,34 +1,5 @@
 @import 'variables';
-
-@keyframes slide-up-barkley {
-    0% {
-        left: -50%;
-    }
-
-    100% {
-        left: -100%;
-    }
-}
-
-@keyframes slide-up-shepherd {
-    0% {
-        top: 0;
-    }
-
-    100% {
-        top: -40%;
-    }
-}
-
-@keyframes slide-up-wolf {
-    0% {
-        left: -50%;
-    }
-
-    100% {
-        left: 2%;
-    }
-}
+@import 'mixins';
 
 #meet-the-team {
     img {
@@ -43,10 +14,7 @@
         margin: 4% 0;
 
         span {
-            text-shadow: -2px -2px 0 $color-gold,
-                          2px -2px 0 $color-gold,
-                          -3px 2px 0 $color-gold,
-                           2px 2px 0 $color-gold;
+            @include text-stroke(2, $color-gold);
             color: $color-white;
             font-size: 28px;
             font-weight: 900;
@@ -93,28 +61,21 @@
         }
     }
 
-    .barkley::before {
-        background-image: url('#{$media}ImageAssets/officer.barkley.png');
-    }
+    $officers:
+        barkley
+        shepherd
+        wolf;
 
-    .barkley::after {
-        background-position: 0 0;
-    }
+    $positions: 0 386 193;
 
-    .shepherd::before {
-        background-image: url('#{$media}ImageAssets/officer.shepherd.png');
-    }
+    @for $i from 1 through length($officers) {
+        .#{nth($officers, $i)}::before {
+            background-image: url('#{$media}ImageAssets/officer.#{nth($officers, $i)}.png');
+        }
 
-    .shepherd::after {
-        background-position: 386px 0;
-    }
-
-    .wolf::before {
-        background-image: url('#{$media}ImageAssets/officer.wolf.png');
-    }
-
-    .wolf::after {
-        background-position: 193px 0;
+        .#{nth($officers, $i)}::after {
+            background-position: #{nth($positions, $i)}px 0;
+        }
     }
 
     .selectable {

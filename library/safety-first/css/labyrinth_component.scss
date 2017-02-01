@@ -196,15 +196,12 @@
             }
 
             .header {
+                @include text-stroke(2, $color-black);
                 position: absolute;
                 top: 4%;
                 left: 50%;
                 transform: translateX(-50%);
                 width: 70%;
-                text-shadow: -2px -2px 0 $color-black,
-                              2px -2px 0 $color-black,
-                              -2px 2px 0 $color-black,
-                               2px 2px 0 $color-black;
                 color: $color-yellow;
                 font-size: 50px;
                 font-weight: 900;
@@ -355,15 +352,12 @@
             }
 
             .header {
+                @include text-stroke(2, $color-black);
                 position: absolute;
                 top: 15%;
                 left: 50%;
                 transform: translateX(-50%);
                 width: 80%;
-                text-shadow: -2px -2px 0 $color-black,
-                              2px -2px 0 $color-black,
-                              -2px 2px 0 $color-black,
-                               2px 2px 0 $color-black;
                 color: $color-yellow;
                 font-size: 50px;
                 font-weight: 900;
