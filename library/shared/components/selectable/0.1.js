@@ -1,3 +1,8 @@
+// As of skoash 1.1.0 this component can be found at skoash.Selectable
+/* eslint-disable no-console */
+console.warn('As of skoash 1.1.0 this component can be found at skoash.Selectable');
+/* eslint-enable no-console */
+
 import classNames from 'classnames';
 
 class Selectable extends skoash.Component {
@@ -113,15 +118,23 @@ class Selectable extends skoash.Component {
 
     getClass(key, li) {
         return classNames(
-      li.props.className,
-      this.state.classes[key],
-      this.state.classes[li.props['data-ref']],
-      this.state.classes[li.props['data-key']]
-    );
+            li.props.className,
+            this.state.classes[key],
+            this.state.classes[li.props['data-ref']],
+            this.state.classes[li.props['data-key']]
+        );
     }
 
     getClassNames() {
         return classNames('selectable', super.getClassNames());
+    }
+
+    componentWillReceiveProps(props) {
+        super.componentWillReceiveProps(props);
+
+        if (props.select && props.select !== this.props.select) {
+            this.state.selectFunction.call(this, props.select);
+        }
     }
 
     renderBin() {

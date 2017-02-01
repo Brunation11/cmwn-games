@@ -1,3 +1,8 @@
+// As of skoash 1.1.0 this component can be found at skoash.Score
+/* eslint-disable no-console */
+console.warn('As of skoash 1.1.0 this component can be found at skoash.Score');
+/* eslint-enable no-console */
+
 import classNames from 'classnames';
 
 class Score extends skoash.Component {
@@ -105,8 +110,9 @@ class Score extends skoash.Component {
     componentWillReceiveProps(props) {
         super.componentWillReceiveProps(props);
 
-        if (props.correct !== this.props.correct ||
-      props.incorrect !== this.props.incorrect) {
+        if (props.setScore ||
+            props.correct !== this.props.correct ||
+            props.incorrect !== this.props.incorrect) {
             this.setScore(props);
         }
     }
@@ -143,6 +149,7 @@ Score.defaultProps = _.defaults({
     startingScore: 0,
     correct: 0,
     incorrect: 0,
+    setScore: false,
     onUpdateScore: _.noop,
 }, skoash.Component.defaultProps);
 

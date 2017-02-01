@@ -1,3 +1,8 @@
+// As of skoash 1.1.0 this component can be found at skoash.Labyrinth
+/* eslint-disable no-console */
+console.warn('As of skoash 1.1.0 this component can be found at skoash.Labyrinth');
+/* eslint-enable no-console */
+
 import classNames from 'classnames';
 
 const MAP = 'map';

@@ -1,6 +1,4 @@
-import MediaCollection from 'shared/components/media_collection/0.1';
-import Repeater from 'shared/components/repeater/0.2';
-import Draggable from 'shared/components/draggable/0.3';
+import Draggable from 'shared/components/draggable/0.4';
 import Dropzone from 'shared/components/dropzone/0.4';
 
 export default function (props, ref, key) {
@@ -34,35 +32,35 @@ export default function (props, ref, key) {
         >
             <skoash.Image
                 className="hidden"
-                src={ENVIRONMENT.MEDIA + 'SpritesAnimations/sprite.minion.png'}
+                src={MEDIA.GAME + 'SpritesAnimations/sprite.minion.png'}
             />
             <skoash.Image
                 className="hidden"
-                src={ENVIRONMENT.MEDIA + 'ImageAssets/img.notepad.png'}
+                src={MEDIA.GAME + 'ImageAssets/img.notepad.png'}
             />
             <skoash.Image
                 className="hidden"
-                src={ENVIRONMENT.MEDIA + 'SpritesAnimations/sprite.game3.png'}
+                src={MEDIA.GAME + 'SpritesAnimations/sprite.game3.png'}
             />
             <skoash.Image
-                className="arrows"
-                src={ENVIRONMENT.MEDIA + 'ImageAssets/img.greenarrows.png'}
+                className="hidden"
+                src={MEDIA.GAME + 'ImageAssets/img.greenarrows.png'}
             />
             <skoash.Audio
                 type="voiceOver"
-                src={ENVIRONMENT.MEDIA + 'SoundAssets/vos/VO_drag_and.mp3'}
+                src={MEDIA.GAME + 'SoundAssets/vos/VO_drag_and.mp3'}
             />
-            <MediaCollection
+            <skoash.MediaCollection
                 play={_.get(props, 'data.sfx.playing')}
             >
                 <skoash.Audio
                     ref="drag"
                     type="sfx"
                     completeTarget="sfx"
-                    src={ENVIRONMENT.MEDIA + 'SoundAssets/effects/Drag.mp3'}
+                    src={MEDIA.GAME + 'SoundAssets/effects/Drag.mp3'}
                 />
-            </MediaCollection>
-            <Repeater
+            </skoash.MediaCollection>
+            <skoash.Repeater
                 className="draggables"
                 amount={13}
                 item={<Draggable
@@ -86,6 +84,11 @@ export default function (props, ref, key) {
                   {message: 'guitar'},
                 ]}
             />
+            <div className="arrows">
+                <div/>
+                <div/>
+                <div/>
+            </div>
             <Dropzone
                 checkComplete={false}
                 onDrag={testComplete}

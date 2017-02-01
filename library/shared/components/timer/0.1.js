@@ -1,3 +1,8 @@
+// As of skoash 1.1.0 this component can be found at skoash.Timer
+/* eslint-disable no-console */
+console.warn('As of skoash 1.1.0 this component can be found at skoash.Timer');
+/* eslint-enable no-console */
+
 import classNames from 'classnames';
 
 class Timer extends skoash.Component {
@@ -73,8 +78,9 @@ class Timer extends skoash.Component {
         });
     }
 
-    resume() {
-        if (!this.state.paused) return;
+    resume(props = {}) {
+        props = _.defaults(props, this.props);
+        if (props.pause || !this.state.paused) return;
         this.setState({
             paused: false
         }, () => {
@@ -91,6 +97,14 @@ class Timer extends skoash.Component {
 
         if (props.restart && props.restart !== this.props.restart) {
             this.restart();
+        }
+
+        if (props.pause && props.pause !== this.props.pause) {
+            this.pause(props);
+        }
+
+        if (props.resume && props.resume !== this.props.resume) {
+            this.resume(props);
         }
     }
 
