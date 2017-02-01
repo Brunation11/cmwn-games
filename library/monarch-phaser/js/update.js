@@ -5,11 +5,6 @@ export default function () {
     var upSpeed;
     var rightSpeed;
 
-    if (!this.shouldUpdate) {
-        setTimeout(() => this.shouldUpdate = true, 100);
-        return;
-    }
-
     if (this.controller.pause || this.data.levels[this.opts.level].complete) {
         this.controller = { pause: true };
         this.game.paused = true;

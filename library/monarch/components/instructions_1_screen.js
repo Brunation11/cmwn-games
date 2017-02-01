@@ -6,11 +6,12 @@ export default function (props, ref, key) {
             key={key}
             id="instructions-1"
         >
-            <skoash.Audio
-                type="voiceOver"
-                src={`${MEDIA.VO}MoveCaterpillar.mp3`}
-            />
-
+            {
+            // <skoash.Audio
+            //     type="vo"
+            //     src={`${MEDIA.VO}MoveCaterpillar.mp3`}
+            // />
+            }
             <skoash.Component className="frame standard">
                 <h1 className="header">
                     INSTRUCTIONS
@@ -24,7 +25,7 @@ export default function (props, ref, key) {
                     <br />
                     and look out for predators!
                     <br />
-                    Flowers will bring you to a
+                    Flower will bring you to a
                     <br />
                     special bonus level!
                 </span>

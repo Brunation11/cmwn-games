@@ -5,13 +5,15 @@ export default function (props, ref, key) {
             ref={ref}
             key={key}
             id="title"
+            completeDelay={3000}
         >
-            <skoash.MediaSequence>
-                <skoash.Audio
-                    type="sfx"
-                    src={`${MEDIA.EFFECT}Shake.mp3`}
-                />
-            </skoash.MediaSequence>
+            {
+                // <skoash.Audio
+                //     ref="screen-complete"
+                //     type="sfx"
+                //     src={`${MEDIA.EFFECT}Shake.mp3`}
+                // />
+            }
         </skoash.Screen>
     );
 }

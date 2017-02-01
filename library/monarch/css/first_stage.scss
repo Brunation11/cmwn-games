@@ -3,8 +3,10 @@
 
 #first-stage {
     .frame {
-        @include center;
         position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translateX(-50%) translateY(-50%);
         width: 80%;
         height: 80%;
         color: $black;
@@ -18,13 +20,13 @@
         }
 
         .header {
-            top: 23%;
-            font-size: 27px;
+            top: 22%;
+            font-size: 35px;
         }
 
         .copy {
-            top: 41%;
-            font-size: 22px;
+            top: 42%;
+            font-size: 25px;
         }
 
         &::after {
