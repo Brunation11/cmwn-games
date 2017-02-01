@@ -12,6 +12,7 @@ export default function (props, ref, key, opts = {}) {
     var selectableProps;
     var dropperProps;
     var catcherProps;
+    var lifeProps;
 
     const levelPath = `gameState.data.recyclingChampion.levels.${opts.level}`;
 
@@ -26,8 +27,10 @@ export default function (props, ref, key, opts = {}) {
     var start = _.get(props, `${levelPath}.start`, false);
     var gameComplete = _.get(props, `${levelPath}.complete`, false);
     var drop = _.get(props, 'data.manual-dropper.drop', false);
+    var dropClass = _.get(props, 'data.manual-dropper.dropClass', false);
     var next = _.get(props, 'data.manual-dropper.next', false);
     var pickUp = _.get(props, 'data.manual-dropper.pickUp', false);
+    var onPickUp = _.get(props, 'data.manual-dropper.onPickUp');
     var catchableRefs = _.get(props, 'data.manual-dropper.refs', []);
     var itemName = _.get(props, 'data.manual-dropper.itemName', '');
     var caught = _.get(props, 'data.catcher.caught', '');
@@ -45,6 +48,7 @@ export default function (props, ref, key, opts = {}) {
     selectableProps = opts.getSelectableProps(opts);
     dropperProps = opts.getDropperProps(opts);
     catcherProps = opts.getCatcherProps(opts);
+    lifeProps = opts.getLifeProps(opts);
 
     return (
         <skoash.Screen
@@ -90,11 +94,13 @@ export default function (props, ref, key, opts = {}) {
                 incorrect={opts.maxHits}
                 correct={opts.hits}
                 setScore={true}
+                {...lifeProps}
             />
             <ManualDropper
-                amount={3}
+                amount={opts.dropperAmount}
                 drop={drop}
                 pickUp={pickUp}
+                onPickUp={onPickUp}
                 next={next}
                 bin={
                     <Randomizer
@@ -105,6 +111,7 @@ export default function (props, ref, key, opts = {}) {
                     transform: `translateX(${opts.left}px)`
                 }}
                 caught={caught}
+                dropClass={dropClass}
                 {...dropperProps}
             />
             <skoash.Component
@@ -118,6 +125,7 @@ export default function (props, ref, key, opts = {}) {
                     catchableRefs={catchableRefs}
                     pause={caught}
                     resume={drop}
+                    collideFraction={opts.collideFraction}
                     assets={[
                     ]}
                     {...catcherProps}

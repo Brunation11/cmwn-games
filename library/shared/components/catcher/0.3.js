@@ -38,6 +38,13 @@ class Catcher extends Catch {
         window.requestAnimationFrame(this.checkCollisions);
     }
 
+    isColliding(bucketRect, catchRect) {
+        var xCenter = catchRect.left + (catchRect.right - catchRect.left) / 2;
+        var yOffset = (catchRect.bottom - catchRect.top) * this.props.collideFraction;
+        return (bucketRect.top < catchRect.bottom - yOffset && bucketRect.top > catchRect.top + yOffset &&
+            xCenter > bucketRect.left && xCenter < bucketRect.right);
+    }
+
     selectCatchable(bucketRef, catchableRef) {
         var catchableRefKey;
         if (!this.state.started || this.state.paused ||
@@ -99,6 +106,7 @@ class Catcher extends Catch {
 
 Catcher.defaultProps = _.defaults({
     caughtTarget: 'catcher',
+    collideFraction: 1 / 6,
 }, Catch.defaultProps);
 
 export default Catcher;

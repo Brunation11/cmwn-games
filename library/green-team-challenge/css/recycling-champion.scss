@@ -26,7 +26,7 @@
 
                 $tops: 100  30   30;
                 $lefts: 75 200 1000;
-                @for $i from 1 through length($lefts) {
+                @for $i from 1 through length($tops) {
                     &:nth-of-type(#{$i}) {
                         top: #{nth($tops, $i)}px;
                         left: #{nth($lefts, $i)}px;

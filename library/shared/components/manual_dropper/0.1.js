@@ -26,7 +26,7 @@ class Dropper extends skoash.Component {
         this.firstItemIndex = 0;
 
         this.setState({
-            items: [],
+            items: {},
         }, () => {
             this.next(this.props.amount, false);
         });
@@ -36,29 +36,31 @@ class Dropper extends skoash.Component {
         return this.refs[ITEM + this.firstItemIndex];
     }
 
-    drop() {
+    drop(props) {
         var itemRef = this.getFirstItem();
-        itemRef.addClassName(this.props.dropClass);
+        props = props || this.props;
+        itemRef.addClassName(props.dropClass);
 
         this.updateScreenData({
-            key: [this.props.refsTarget, 'drop'],
+            key: [props.refsTarget, 'drop'],
             data: false,
         });
 
-        this.props.onDrop.call(this, itemRef);
+        props.onDrop.call(this, itemRef);
     }
 
-    pickUp() {
+    pickUp(props) {
         var itemRef = this.getFirstItem();
-        itemRef.removeClassName(this.props.dropClass);
+        props = props || this.props;
+        itemRef.removeClassName(props.dropClass);
         itemRef.reset();
 
         this.updateScreenData({
-            key: [this.props.refsTarget, 'pickUp'],
+            key: [props.refsTarget, 'pickUp'],
             data: false,
         });
 
-        this.props.onPickUp.call(this, itemRef);
+        props.onPickUp.call(this, itemRef);
     }
 
     next(amount = 1, shift = true) {
@@ -88,8 +90,7 @@ class Dropper extends skoash.Component {
     }
 
     caught(catchableRefKey) {
-        var caughtRef = this.refs[catchableRefKey];
-        _.invoke(caughtRef, 'markCaught');
+        _.invoke(this.refs[catchableRefKey], 'markCaught');
     }
 
     componentWillReceiveProps(props) {
@@ -100,11 +101,11 @@ class Dropper extends skoash.Component {
         }
 
         if (props.drop === true && props.drop !== this.props.drop) {
-            this.drop();
+            this.drop(props);
         }
 
         if (props.pickUp === true && props.pickUp !== this.props.pickUp) {
-            this.pickUp();
+            this.pickUp(props);
         }
 
         if (props.caught && props.caught !== this.props.caught) {

@@ -4,6 +4,9 @@ export default {
     timeout: 120000,
     scoreToWin: 100,
     maxHits: 5,
+    dropperAmount: 3,
+    pointsPerItem: 50,
+    collideFraction: .4,
     getScreenProps(opts) {
         return {
             onStart: function () {
@@ -65,6 +68,8 @@ export default {
 
                 if (prevMessage === 'retry') {
                     data.score = 0;
+                    data.hits = 0;
+                    data.start = true;
                 }
 
                 this.updateGameData({
@@ -113,7 +118,7 @@ export default {
             onCorrect: function () {
                 this.updateGameData({
                     keys: ['recyclingChampion', 'levels', opts.level, 'score'],
-                    data: opts.score + 50,
+                    data: opts.score + opts.pointsPerItem,
                 });
                 this.updateScreenData({
                     keys: ['manual-dropper', 'next'],
@@ -122,9 +127,23 @@ export default {
             },
             onIncorrect: function () {
                 this.updateGameData({
-                    keys: ['recyclingChampion', 'levels', opts.level, 'hits'],
-                    data: opts.hits + 1,
+                    keys: ['recyclingChampion', 'levels', opts.level],
+                    data: {
+                        start: false,
+                        hits: opts.hits + 1,
+                    }
                 });
+
+                if (opts.hits + 1 === opts.maxHits) {
+                    setTimeout(() => {
+                        this.updateScreenData({
+                            keys: ['manual-dropper', 'pickUp'],
+                            data: true,
+                        });
+                    }, 1000);
+                    return;
+                }
+
                 this.updateScreenData({
                     keys: ['reveal', 'open'],
                     data: 'resort',
@@ -150,6 +169,30 @@ export default {
             },
         };
     },
+    getLifeProps(opts) {
+        return {
+            onComplete: function () {
+                if (opts.score >= opts.scoreToWin) {
+                    this.updateGameData({
+                        keys: ['recyclingChampion', 'levels', opts.level],
+                        data: {
+                            complete: true,
+                            highScore: Math.max(opts.score, opts.highScore)
+                        },
+                    });
+                    this.updateScreenData({
+                        keys: ['reveal', 'open'],
+                        data: 'complete',
+                    });
+                } else {
+                    this.updateScreenData({
+                        keys: ['reveal', 'open'],
+                        data: 'retry',
+                    });
+                }
+            },
+        };
+    },
     binNames: [
         'recycle',
         'landfill',
@@ -159,14 +202,11 @@ export default {
         emptyBottle: {
             bin: 'recycle'
         },
-        eatenApple: {
+        appleCore: {
             bin: 'compost'
         },
         candyBag: {
             bin: 'landfill'
         },
-        // fullBottle: {
-        //     bin: 'liquid', reCatchable: true, becomes: 'bottle'
-        // },
     },
 };
