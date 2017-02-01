@@ -140,21 +140,25 @@ export default _.defaults({
                                 item.props['data-message'] = item.props.becomes.bin;
                                 items[index] = item;
                                 this.setState({items}, () => {
-                                    itemRef.removeAllClassNames();
+                                    this.getFirstItem().removeAllClassNames();
                                     this.updateScreenData({
-                                        data: {
-                                            item: {
-                                                name: _.startCase(
-                                                    _.replace(item.props.becomes.name, /\d+/g, '')
-                                                ),
-                                                pour: false,
-                                            },
-                                            'manual-dropper': {
-                                                dropClass: '',
-                                            },
-                                            truckClassName: '',
-                                        }
+                                        keys: [this.props.refsTarget, 'refs'],
+                                        data: _.filter(this.refs, (v, k) => !k.indexOf(ITEMS)),
                                     });
+                                });
+                                this.updateScreenData({
+                                    data: {
+                                        item: {
+                                            name: _.startCase(
+                                                _.replace(item.props.becomes.name, /\d+/g, '')
+                                            ),
+                                            pour: false,
+                                        },
+                                        'manual-dropper': {
+                                            dropClass: '',
+                                        },
+                                        truckClassName: '',
+                                    }
                                 });
                                 DOMNode.removeEventListener('animationend', onAnimationEnd);
                             }
@@ -221,6 +225,20 @@ export default _.defaults({
         return props;
     },
     getExtraComponents(opts) {
+        let color = 'milk';
+
+        switch (true) {
+            case _.includes(opts.itemName, 'Chocolate'):
+                color = 'chocolate';
+                break;
+            case _.includes(opts.itemName, 'Orange'):
+                color = 'orange';
+                break;
+            case _.includes(opts.itemName, 'Fruit'):
+                color = 'fruit';
+                break;
+        }
+
         return (
             <skoash.Component
                 className="extras"
@@ -253,6 +271,50 @@ export default _.defaults({
                         this.setState({frame: this.props.frame});
                     }}
                 />
+                <skoash.Sprite
+                    className={classNames('pour', {show: opts.pour && color === 'chocolate'})}
+                    src={`${CMWN.MEDIA.SPRITE}level.3.chocolate.milk`}
+                    animate={opts.pour}
+                    loop={false}
+                    duration={600}
+                    frame={0}
+                    onComplete={function () {
+                        this.setState({frame: this.props.frame});
+                    }}
+                />
+                <skoash.Sprite
+                    className={classNames('pour', {show: opts.pour && color === 'fruit'})}
+                    src={`${CMWN.MEDIA.SPRITE}level.3.fruit.juice`}
+                    animate={opts.pour}
+                    loop={false}
+                    duration={600}
+                    frame={0}
+                    onComplete={function () {
+                        this.setState({frame: this.props.frame});
+                    }}
+                />
+                <skoash.Sprite
+                    className={classNames('pour', {show: opts.pour && color === 'milk'})}
+                    src={`${CMWN.MEDIA.SPRITE}level.3.milk`}
+                    animate={opts.pour}
+                    loop={false}
+                    duration={600}
+                    frame={0}
+                    onComplete={function () {
+                        this.setState({frame: this.props.frame});
+                    }}
+                />
+                <skoash.Sprite
+                    className={classNames('pour', {show: opts.pour && color === 'orange'})}
+                    src={`${CMWN.MEDIA.SPRITE}level.3.orange.juice`}
+                    animate={opts.pour}
+                    loop={false}
+                    duration={600}
+                    frame={0}
+                    onComplete={function () {
+                        this.setState({frame: this.props.frame});
+                    }}
+                />
                 <skoash.Component className="funnel">
                     <skoash.Sprite
                         className="back"
@@ -268,13 +330,14 @@ export default _.defaults({
                     />
                 </skoash.Component>
                 <skoash.Component
-                    className={classNames('truck', opts.truckClassName)}
+                    className={classNames('truck', opts.truckClassName, opts.selectableMessage)}
                     onTransitionEnd={onTruckTransitionEnd.bind(null, opts)}
                 />
                 <div className="truck-stand" />
             </skoash.Component>
         );
     },
-    itemsToSort: _.filter(itemsToSort, item => _.includes(binNames, item.bin)),
-    // itemsToSort: _.filter(itemsToSort, item => _.includes('liquids', item.bin)),
+    // itemsToSort: _.filter(itemsToSort, item => _.includes(binNames, item.bin)),
+    itemsToSort: _.filter(itemsToSort, item => _.includes('liquids', item.bin)),
+    // itemsToSort: _.filter(itemsToSort, item => _.includes('recycle', item.bin)),
 }, defaultGameOpts);

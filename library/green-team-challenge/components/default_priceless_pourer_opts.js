@@ -148,7 +148,7 @@ export default _.defaults({
         return props;
     },
     getExtraComponents(opts) {
-        let color;
+        let color = 'milk';
 
         switch (true) {
             case _.includes(opts.itemName, 'Chocolate'):
@@ -156,9 +156,6 @@ export default _.defaults({
                 break;
             case _.includes(opts.itemName, 'Orange'):
                 color = 'orange';
-                break;
-            case _.includes(opts.itemName, 'Milk') || _.includes(opts.itemName, 'Water'):
-                color = 'milk';
                 break;
             case _.includes(opts.itemName, 'Fruit'):
                 color = 'fruit';

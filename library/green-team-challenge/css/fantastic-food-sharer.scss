@@ -42,7 +42,7 @@
 
                 $bins: FOOD_SHARE  RECYCLE  LANDFILL   COMPOST   LIQUIDS;
                 $tops:        150      350       350       350       200;
-                $lefts:      -280     -220       -50       110       390;
+                $lefts:      -280     -220       -50       110       150;
                 @for $i from 1 through length($bins) {
                     &.#{nth($bins, $i)} {
                         top: #{nth($tops, $i)}px;
@@ -52,7 +52,7 @@
                 }
 
                 &.POUR {
-                    animation: fantastic-pour 1.5s;
+                    animation: fantastic-pour 1s;
                 }
             }
         }
@@ -185,6 +185,10 @@
 
             &.TILT {
                 transform: rotate(-50deg);
+
+                &.liquids {
+                    transform: rotate(50deg);
+                }
             }
         }
 
@@ -193,6 +197,17 @@
             @include position(absolute, 330px null null 470px);
             transform: scale(1.2);
             z-index: -1;
+        }
+
+        .pour {
+            @include position(absolute, 40px null null 460px);
+            transform: scale(.5);
+            opacity: 0;
+            z-index: -1;
+
+            &.show {
+                opacity: 1;
+            }
         }
     }
 }
