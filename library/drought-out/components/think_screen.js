@@ -17,7 +17,7 @@ export default function (props, ref, key) {
 
     var playAudio = function (target, cb) {
         this.updateScreenData({
-            path: 'selectable',
+            key: 'selectable',
             data: {
                 play: target
             },

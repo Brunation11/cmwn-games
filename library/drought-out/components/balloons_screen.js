@@ -148,7 +148,7 @@ export default function (props, ref, key) {
                 selectClass="HIGHLIGHTED"
                 onSelect={function (target) {
                     this.updateScreenData({
-                        path: 'selection',
+                        key: 'selection',
                         data: {
                             target
                         }

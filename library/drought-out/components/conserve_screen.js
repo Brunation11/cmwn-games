@@ -15,7 +15,7 @@ export default function (props, ref, key) {
         var index = _.get(props, 'data.reveal.index', -1);
         if (!_.isFinite(index) || index > 7) index = -1;
         this.updateScreenData({
-            path: 'reveal',
+            key: 'reveal',
             data: {
                 index: index + 1
             }
@@ -24,7 +24,7 @@ export default function (props, ref, key) {
 
     var closeReveal = function () {
         this.updateScreenData({
-            path: 'reveal',
+            key: 'reveal',
             data: {
                 close: true
             },
@@ -43,7 +43,7 @@ export default function (props, ref, key) {
         }
 
         this.updateScreenData({
-            path: 'meter',
+            key: 'meter',
             data: {
                 height: height + 1,
                 complete,
