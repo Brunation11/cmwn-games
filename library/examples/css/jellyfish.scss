@@ -1,86 +1,84 @@
 #selectable-all {
-  overflow: hidden;
-  display: block;
+    display: block;
+    overflow: hidden;
 
-  .reveal-component ul {
-    position: static;
-
-    li {
-      position: absolute;
-      left: 0;
-      top: 0;
-      width: 100%;
-      height: 100%;
-      z-index: -1;
-
-      div {
-        position: absolute;
-        left: 50%;
-        top: 50%;
-        width: 400px;
-        height: 133px;
-        transform: translateX(-50%) translateY(-50%);
-        background: url(../media/jellyfish/reveal.png) no-repeat center center;
-        background-size: 400px;
-        padding: 40px 10px;
-        box-sizing: border-box;
-        text-align: center;
-        font-size: 30px;
-      }
-
-      .close {
-        position: absolute;
-        right: 10px;
-        top: 0;
-        width: 30px;
-        margin: 0;
-        opacity: 0;
-        cursor: default;
-        transition: opacity 0.5s;
-      }
-    }
-  }
-
-  &.OPEN {
     .reveal-component ul {
-      li {
-        &.SELECTED {
-          z-index: 1;
+        position: static;
 
-          &:before {
-            content: "";
-            position: fixed;
-            left: -1000%;
-            top: -1000%;
-            width: 3000%;
-            height: 3000%;
+        li {
+            position: absolute;
+            top: 0;
+            left: 0;
             z-index: -1;
-          }
-        }
-      }
-    }
-  }
+            width: 100%;
+            height: 100%;
 
-  .reveal-component:not(.VOICE-OVER) button.close {
-    opacity: 1;
-    cursor: pointer;
-  }
+            div {
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translateX(-50%) translateY(-50%);
+                background: url('../media/jellyfish/reveal.png') no-repeat center center;
+                background-size: 400px;
+                padding: 40px 10px;
+                width: 400px;
+                height: 133px;
+                text-align: center;
+                font-size: 30px;
+                box-sizing: border-box;
+            }
+
+            .close {
+                position: absolute;
+                top: 0;
+                right: 10px;
+                transition: opacity .5s;
+                opacity: 0;
+                margin: 0;
+                cursor: default;
+                width: 30px;
+            }
+        }
+    }
+
+    &.OPEN {
+        .reveal-component ul {
+            li {
+                &.SELECTED {
+                    z-index: 1;
+
+                    &::before {
+                        position: fixed;
+                        top: -1000%;
+                        left: -1000%;
+                        z-index: -1;
+                        width: 3000%;
+                        height: 3000%;
+                        content: '';
+                    }
+                }
+            }
+        }
+    }
+
+    .reveal-component:not(.VOICE-OVER) button.close {
+        opacity: 1;
+        cursor: pointer;
+    }
 }
 
 .DEMO #jellyfish {
-  .reveal-component button.close {
-    opacity: 1;
-    cursor: pointer;
-  }
+    .reveal-component button.close {
+        opacity: 1;
+        cursor: pointer;
+    }
 }
 
 @keyframes swim {
-  100% {
-    background-position: -3080px 0;
-  }
+    100% {
+        background-position: -3080px 0;
+    }
 }
-
-.selectable-all {}
 
 .selectable-all .bin {
     display: none;
@@ -88,8 +86,10 @@
 
 .selectable-all .viewport {
     position: absolute;
-    left: 0; right: 0;
-    top: 0; bottom: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
     padding: 0;
 }
 
@@ -98,38 +98,37 @@
 }
 
 .selectable-all li {
-    position: relative;
     display: inline-block;
-    width: 100px;
-    height: 200px;
+    position: relative;
     top: 600px;
     margin: 0 40px;
     cursor: pointer;
+    width: 100px;
+    height: 200px;
 }
 
 .selectable-all li {
-
     div:nth-of-type(1),
     div:nth-of-type(2) {
-        // content: "";
-        background-size: 3000px;
-        background-position: -50px 0;
         position: absolute;
-        left: 0;
         top: 0;
-        width: 100%; height: 100%;
-        animation: swim 1s steps(13) infinite;
+        left: 0;
         transition: opacity .5s;
+        animation: swim 1s steps(13) infinite;
+        background-position: -50px 0;
+        background-size: 3000px;
+        width: 100%;
+        height: 100%;
     }
 
     div:nth-of-type(1) {
-        background-image: url(../media/jellyfish/jellyfish.png);
         opacity: 1;
+        background-image: url('../media/jellyfish/jellyfish.png');
     }
 
     div:nth-of-type(2) {
-        background-image: url(../media/jellyfish/jellyfish-hover.png);
         opacity: 0;
+        background-image: url('../media/jellyfish/jellyfish-hover.png');
     }
 }
 
@@ -149,27 +148,27 @@
 
     &.a {
         /* Id rather do a transform but this works better with click events. I may want to do my own hit testing. */
-        transition: top cubic-bezier(1, 0.1, 1, 1) 5s;
+        transition: top cubic-bezier(1, .1, 1, 1) 5s;
     }
-    
+
     &.b {
-        transition: top cubic-bezier(1, 0.1, 1, 1) 6s;
+        transition: top cubic-bezier(1, .1, 1, 1) 6s;
     }
-    
+
     &.c {
-        transition: top cubic-bezier(1, 0.1, 1, 1) 7s;
+        transition: top cubic-bezier(1, .1, 1, 1) 7s;
     }
-    
+
     &.d {
-        transition: top cubic-bezier(1, 0.1, 1, 1) 4s;
+        transition: top cubic-bezier(1, .1, 1, 1) 4s;
     }
-    
+
     &.e {
-        transition: top cubic-bezier(1, 0.1, 1, 1) 3s;
+        transition: top cubic-bezier(1, .1, 1, 1) 3s;
     }
-    
+
     &.f {
-        transition: top cubic-bezier(1, 0.1, 1, 1) 2s;
+        transition: top cubic-bezier(1, .1, 1, 1) 2s;
     }
 }
 

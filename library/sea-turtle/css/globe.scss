@@ -1,0 +1,345 @@
+@keyframes fadeOutRelayer {
+    0% {
+        opacity: 1;
+        z-index: 1;
+    }
+
+    99% {
+        opacity: 0;
+        z-index: 1;
+    }
+
+    100% {
+        z-index: auto;
+    }
+}
+
+@keyframes fadeInRelayer {
+    0% {
+        opacity: 0;
+        z-index: 1;
+    }
+
+    100% {
+        opacity: 1;
+        z-index: 1;
+    }
+}
+
+@keyframes anchor {
+    0% {transform: translateY(-200px);}
+    100% {transform: translateY(0);}
+}
+
+@keyframes lifesaver {
+    0% {transform: translateY(200px);}
+    100% {transform: translateY(0);}
+}
+
+@keyframes crab {
+    0% {transform: translatex(0);}
+    50% {transform: translatex(-40px);}
+    100% {transform: translateY(0);}
+}
+
+.reveal.OPEN ~ .dropzone-container,
+.VOICE-OVER:not(.DEMO):not(.REPLAY):not(.COMPLETE) .dropzone-reveal {
+    cursor: default;
+    pointer-events: none;
+}
+
+#globe {
+    .dropzone-container {
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+
+        .background {
+            display: block;
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+        }
+
+        ul {
+            position: absolute;
+            bottom: 0;
+            z-index: 1;
+            margin: 0;
+            background-image: url('../media/images/globe/background-tray.png');
+            padding: 0;
+            width: 100%;
+            height: 102px;
+            list-style: none;
+            text-align: center;
+
+            li {
+                display: inline-block;
+                position: relative;
+                transform: rotate(0deg);
+                margin-top: 15px;
+                width: 75px;
+                height: 70px;
+
+                .draggable {
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    transition: opacity .5s;
+                    background-image: url('../media/images/globe/sprite_4.2.png');
+                    background-repeat: no-repeat;
+                    background-size: 300px;
+                    cursor: pointer;
+                    width: 100%;
+                    height: 100%;
+
+                    &.CORRECT {
+                        opacity: 0;
+                        cursor: default;
+                        pointer-events: none;
+                    }
+
+                    &.RETURN {
+                        transition: transform .5s;
+                    }
+                }
+
+                $background-top: 0 -85 -160 -240 -325 -395 -485 -565 -640 -720;
+
+                @for $i from 1 through 10 {
+                    &:nth-of-type(#{$i}) {
+                        @if $i == 7 {
+                            width: 80px;
+                        }
+                        @if $i == 8 {
+                            width: 65px;
+                        }
+                        @if $i == 9 {
+                            width: 65px;
+                        }
+                        @if $i == 10 {
+                            width: 85px;
+                        }
+
+                        .draggable {
+                            background-position: -304 + (300) + px nth($background-top, $i) + 5 + px;
+                        }
+
+                        &::before {
+                            position: fixed;
+                            top: 0;
+                            left: 0;
+                            background-image: url('../media/images/globe/sprite_4.2.png');
+                            background-repeat: no-repeat;
+                            background-position: -304 + (100) + px nth($background-top, $i) + 5 + px;
+                            background-size: 300px;
+                            width: 100%;
+                            height: 100%;
+                            content: ' ';
+                        }
+
+                        &.DROPPED::before {
+                            background-position: -304 + (200) + px nth($background-top, $i) + 5 + px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    .dropzone {
+        position: absolute;
+        top: 10px;
+        left: 10px;
+        margin: 0 15px;
+        background-image: url('../media/images/globe/sprite_4.1.png');
+        background-repeat: no-repeat;
+        background-position: -440px -450px;
+        background-size: 900px;
+        width: 400px;
+        height: 430px;
+
+        .area {
+            position: absolute;
+            top: 10px;
+            left: 30px;
+            width: 340px;
+            height: 340px;
+
+            div {
+                position: absolute;
+                transition: opacity .5s;
+                opacity: 0;
+                background-image: url('../media/images/globe/sprite_4.3.png');
+                background-size: auto 150px;
+                width: 18%;
+
+                $left: 240    66 140    80 240 210 140 136    30 56;
+                $top:     90 270 280 190 250 186 120    20 130 70;
+                $width:    62 62 62 62 62 62 62 62 62 72;
+                $height: 48 44 60 50 62 36 44 62 44 42;
+                $background-left: 0 75 150 225 300    0 75 150 225 300;
+                $background-top:    0    0     0     0     0 75 75    75    75    75;
+
+                @for $i from 1 through 10 {
+                    &:nth-of-type(#{$i}) {
+                        top: nth($top, $i) + px;
+                        left: nth($left, $i) + px;
+                        background-position: -1 * nth($background-left, $i) + 5 + px nth($background-top, $i) + 5 + px;
+                        width: nth($width, $i) + px;
+                        height: nth($height, $i) + px;
+                    }
+                }
+            }
+        }
+
+        $bob-items: 1, 4, 7, 9, 10;
+        $anchor-items: 2, 3, 5;
+        $crab: 6;
+        $lifesaver: 8;
+
+        @for $i from 1 through 10 {
+            &.dropped-#{$i - 1} .area div:nth-of-type(#{$i}) {
+                opacity: 1;
+            }
+        }
+
+        @for $i from 1 through 5 {
+            &.dropped-#{nth($bob-items, $i) - 1} .area div:nth-of-type(#{nth($bob-items, $i)}) {
+                transform: translateY(-10%);
+                animation: bob 4s infinite;
+            }
+        }
+
+        @for $i from 1 through 3 {
+            &.dropped-#{nth($anchor-items, $i) - 1} .area div:nth-of-type(#{nth($anchor-items, $i)}) {
+                animation: anchor 4s forwards;
+            }
+        }
+
+        &.dropped-#{$crab - 1} .area div:nth-of-type(#{$crab}) {
+            animation: crab 4s infinite;
+        }
+
+        &.dropped-#{$lifesaver - 1} .area div:nth-of-type(#{$lifesaver}) {
+            animation: lifesaver 4s forwards;
+        }
+    }
+
+    .reveal {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        margin: 15px;
+        overflow: hidden;
+
+        .background {
+            display: block;
+            height: 400px;
+        }
+
+        > div > ul {
+            position: static;
+            margin: 0;
+
+            > li {
+                position: absolute;
+                top: 0;
+                right: 0;
+                left: 0;
+                padding: 10px;
+                font-size: 1.1em;
+
+                > h3 {
+                    text-align: center;
+                    font-size: 1.3em;
+                }
+
+                > * {
+                    margin-right: 1em;
+                    margin-left: 1em;
+                }
+
+
+            }
+
+        }
+
+        #well-done {
+            .group div {
+                background-position: 0 495px;
+                background-size: 990px;
+                width: 430px;
+                height: 120px;
+            }
+
+            h3 {
+                text-align: center;
+            }
+        }
+
+        &.COMPLETE #instruction,
+        &:not(.open-none) #instruction {
+            opacity: 0;
+            z-index: -1;
+        }
+
+        #correct {
+            position: absolute;
+            top: 20px;
+            animation: fadeOutRelayer 1s;
+            background-image: url('../media/images/globe/sprite_4.1.png');
+            background-size: 220%;
+            width: 100%;
+            height: 400px;
+
+            &.OPEN {
+                animation: fadeInRelayer 1s;
+            }
+        }
+
+        .selectable {
+
+            ul {
+                padding-left: 20px;
+            }
+
+            li {
+                position: relative;
+                cursor: pointer;
+                list-style: none;
+
+                &.SELECTED {
+                    background-image: url('../media/images/globe/sprite_4.4.png');
+                    background-position: -880px 4px;
+                    background-size: 1320px 100%;
+                    font-weight: normal;
+                }
+
+                > * {
+                    margin: 10px 0;
+                    padding: 10px;
+                    padding-left: 30px;
+                }
+            }
+
+            li::before {
+                position: absolute;
+                left: -30px;
+                background-image: url('../media/images/globe/sprite_4.4.png');
+                background-repeat: no-repeat;
+                background-position: -300px -5px;
+                background-size: 900px;
+                width: 60px;
+                height: 100%;
+                content: '';
+            }
+
+            li.SELECTED::before {
+                background-position: 0 -5px;
+            }
+        }
+    }
+}

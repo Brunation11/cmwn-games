@@ -1,0 +1,60 @@
+#title {
+    img {
+        position: absolute;
+
+        &.bulb {
+            top: 20px;
+            left: 280px;
+            width: 400px;
+        }
+
+        &.presents {
+            top: 210px;
+            left: 140px;
+            width: 200px;
+        }
+
+        &.title {
+            top: 300px;
+            left: 130px;
+            width: 700px;
+        }
+    }
+
+    .prev-screen {
+        display: none;
+    }
+
+    &.READY {
+        img {
+            opacity: 1;
+
+            &.bulb {
+                animation-name: bounceInUp;
+            }
+
+            &.presents {
+                animation-name: bounceInLeft;
+                animation-delay: 1s;
+            }
+
+            &.title {
+                animation-name: bounceInUp;
+                animation-delay: 2s;
+            }
+        }
+
+        &.COMPLETE {
+            img {
+                animation-name: flicker;
+                animation-duration: 2s;
+                animation-delay: 0s;
+                animation-iteration-count: 3;
+            }
+        }
+    }
+
+    &.CLOSE {
+        transform: translateX(0%);
+    }
+}

@@ -4,113 +4,103 @@ import Reveal from 'shared/components/reveal/0.1.js';
 import classNames from 'classnames';
 
 class DropzoneReveal extends skoash.Component {
-  bootstrap() {
-    super.bootstrap();
-
-    this.refs.dropzone.complete();
-  }
-
-  incompleteRefs() {
-    super.incompleteRefs();
-
-    this.refs.dropzone.complete();
-  }
-
-  correctRespond(message, dropzoneKey) {
-    this.dropRespond(message);
-
-    this.callCorrectRespond(message, dropzoneKey);
-  }
-
-  incorrectRespond(message, dropzoneKey) {
-    this.dropRespond(message);
-  }
-
-  dropRespond(message, incorrect) {
-    if (typeof this.refs.reveal.open === 'function') {
-      this.refs.reveal.open(message);
+    bootstrap() {
+        super.bootstrap();
     }
-  }
-    
-  callCorrectRespond(message, dropzoneKey) {
-    if (typeof this.props.correctRespond === 'function') {
-      this.props.correctRespond.call(this, message, dropzoneKey);
-    }
-  }
 
-  closeRespond() {
-    if (typeof this.props.closeRespond === 'function') {
-      this.props.closeRespond();
-    }
-  }
+    correctRespond(message, dropzoneKey) {
+        this.dropRespond(message);
 
-  revealComplete() {
-    if (this.audio.complete) {
-      this.audio.complete.play();
+        if (typeof this.props.correctRespond === 'function') {
+            this.props.correctRespond.call(this, message, dropzoneKey);
+        }
     }
-  }
 
-  renderAssets() {
-    if (this.props.assets) {
-      return this.props.assets.map((asset, key) => {
+    incorrectRespond(message) {
+        this.dropRespond(message);
+    }
+
+    dropRespond(message) {
+        if (typeof this.refs.reveal.open === 'function') {
+            this.refs.reveal.open(message);
+        }
+    }
+
+    closeRespond() {
+        if (typeof this.props.closeRespond === 'function') {
+            this.props.closeRespond();
+        }
+    }
+
+    revealComplete() {
+        this.playMedia('complete');
+    }
+
+    renderAssets() {
+        if (this.props.assets) {
+            return this.props.assets.map((asset, key) => {
+                return (
+                    <asset.type
+                        {...asset.props}
+                        ref={asset.props['data-ref'] || ('asset-' + key)}
+                        key={key}
+                        data-ref={key}
+                    />
+                );
+            });
+        }
+
+        return null;
+    }
+
+    renderDropzone() {
         return (
-          <skoash.Audio
-            {...asset.props}
-            ref={asset.props['data-ref'] || ('asset-' + key)}
-            key={key}
-            data-ref={key}
-          />
+            <Dropzone
+                ref="dropzone"
+                dropzones={this.props.dropzones}
+                draggables={this.props.dropzoneDraggables}
+                draggablesLeft={this.props.dropzoneDraggablesLeft}
+                draggablesRight={this.props.dropzoneDraggablesRight}
+                assets={this.props.dropzoneAssets}
+                correctRespond={this.correctRespond.bind(this)}
+                incorrectRespond={this.incorrectRespond.bind(this)}
+                onComplete={this.props.onDropzoneComplete}
+            />
         );
-      });
     }
 
-    return null;
-  }
+    renderReveal() {
+        return (
+            <Reveal
+                ref="reveal"
+                list={this.props.revealList}
+                assets={this.props.revealAssets}
+                closeRespond={this.closeRespond.bind(this)}
+                onComplete={this.revealComplete.bind(this)}
+                onOpen={this.props.onOpen}
+                openOnStart={this.props.openOnStart}
+                openReveal={this.props.openReveal}
+                closeReveal={this.props.closeReveal}
+            />
+        );
+    }
 
-  renderDropzone() {
-    return (
-      <Dropzone
-        ref="dropzone"
-        checkComplete={false}
-        dropzones={this.props.dropzones}
-        draggables={this.props.dropzoneDraggables}
-        draggablesLeft={this.props.dropzoneDraggablesLeft}
-        draggablesRight={this.props.dropzoneDraggablesRight}
-        assets={this.props.dropzoneAssets}
-        correctRespond={this.correctRespond.bind(this)}
-        incorrectRespond={this.incorrectRespond.bind(this)}
-      />
-    );
-  }
+    getClassNames() {
+        return classNames(
+            'dropzone-reveal',
+            super.getClassNames(),
+        );
+    }
 
-  renderReveal() {
-    return (
-      <Reveal
-        ref="reveal"
-        list={this.props.revealList}
-        assets={this.props.revealAssets}
-        closeRespond={this.closeRespond.bind(this)}
-        onComplete={this.revealComplete.bind(this)}
-      />
-    );
-  }
-
-  getClassNames() {
-    return classNames(
-      'dropzone-reveal',
-      super.getClassNames(),
-    );
-  }
-
-  render() {
-    return (
-      <div className={this.getClassNames()}>
-        {this.renderAssets()}
-        {this.renderReveal()}
-        {this.renderDropzone()}
-      </div>
-    );
-  }
+    render() {
+        return (
+            <div className={this.getClassNames()}>
+                {this.renderAssets()}
+                {this.renderReveal()}
+                {this.renderDropzone()}
+            </div>
+        );
+    }
 }
 
 export default DropzoneReveal;

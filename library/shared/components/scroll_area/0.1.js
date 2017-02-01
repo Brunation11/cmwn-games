@@ -1,3 +1,9 @@
+// As of skoash 1.1.0 this component can be found at skoash.ScrollArea
+/* eslint-disable no-console */
+console.warn('As of skoash 1.1.0 this component can be found at skoash.ScrollArea');
+/* eslint-enable no-console */
+
+
 import classNames from 'classnames';
 
 const IMAGE = 'image';
@@ -7,95 +13,108 @@ const SCROLLBAR = 'scrollbar';
 const SCROLLER = 'scroller';
 
 class ScrollArea extends skoash.Component {
-  constructor() {
-    super();
+    constructor() {
+        super();
 
-    this.state = _.defaults({
-      startY: 0,
-      endY: 0,
-      zoom: 1,
-    }, this.state);
+        this.state = _.defaults({
+            startY: 0,
+            endY: 0,
+            zoom: 1,
+        }, this.state);
 
-    this.setZoom = this.setZoom.bind(this);
+        this.setZoom = this.setZoom.bind(this);
 
-    this.mouseDown = this.mouseDown.bind(this);
-    this.mouseUp = this.mouseUp.bind(this);
+        this.mouseDown = this.mouseDown.bind(this);
+        this.mouseUp = this.mouseUp.bind(this);
 
-    this.moveEvent = this.moveEvent.bind(this);
+        this.moveEvent = this.moveEvent.bind(this);
 
-    this.touchStart = this.touchStart.bind(this);
-    this.touchEnd = this.touchEnd.bind(this);
-  }
+        this.touchStart = this.touchStart.bind(this);
+        this.touchEnd = this.touchEnd.bind(this);
+    }
 
-  bootstrap() {
-    super.bootstrap();
+    start() {
+        super.start(() => {
+            this[AREA].scrollTop = 0;
+            this.setState({
+                startY: 0,
+                endY: 0,
+            });
+        });
+    }
 
-    this.setZoom();
-    window.addEventListener('resize', this.setZoom);
+    bootstrap() {
+        super.bootstrap();
 
-    this[AREA] = ReactDOM.findDOMNode(this.refs[AREA]);
-    this[CONTENT] = ReactDOM.findDOMNode(this.refs[CONTENT]);
-    this[SCROLLBAR] = ReactDOM.findDOMNode(this.refs[SCROLLBAR]);
-    this[SCROLLER] = ReactDOM.findDOMNode(this.refs[SCROLLER]);
+        this.setZoom();
+        window.addEventListener('resize', this.setZoom);
 
-    this[AREA].scrollTop = 0;
+        this[AREA] = ReactDOM.findDOMNode(this.refs[AREA]);
+        this[CONTENT] = ReactDOM.findDOMNode(this.refs[CONTENT]);
+        this[SCROLLBAR] = ReactDOM.findDOMNode(this.refs[SCROLLBAR]);
+        this[SCROLLER] = ReactDOM.findDOMNode(this.refs[SCROLLER]);
 
-    this[AREA].addEventListener('scroll', e => {
-      var areaScrollTop, endY;
+        this[AREA].scrollTop = 0;
 
-      if (!e.target || this.dragging) return;
+        this[AREA].addEventListener('scroll', e => {
+            var areaScrollTop;
+            var endY;
 
-      areaScrollTop = e.target.scrollTop;
-      endY = (this[SCROLLBAR].offsetHeight - this.props.scrollbarHeight) * (areaScrollTop / (this[CONTENT].offsetHeight - this[AREA].offsetHeight));
+            if (!e.target || this.dragging) return;
 
-      this.setState({
-        startY: 0,
-        endY,
-      });
-    });
+            areaScrollTop = e.target.scrollTop;
+            endY = (this[SCROLLBAR].offsetHeight - this.props.scrollbarHeight) *
+                (areaScrollTop / (this[CONTENT].offsetHeight - this[AREA].offsetHeight));
 
-    this[SCROLLER].addEventListener('mousedown', this.mouseDown);
-    this[SCROLLER].addEventListener('touchstart', this.touchStart);
-  }
+            this.setState({
+                startY: 0,
+                endY,
+            });
+        });
 
-  setZoom() {
-    skoash.trigger('getState').then(state => {
-      this.setState({
-        zoom: state.scale,
-      });
-    });
-  }
+        this[SCROLLER].addEventListener('mousedown', this.mouseDown);
+        this[SCROLLER].addEventListener('touchstart', this.touchStart);
+    }
 
-  mouseDown(e) {
-    this.startEvent(e, this.attachMouseEvents);
-  }
+    setZoom() {
+        skoash.trigger('getState').then(state => {
+            this.setState({
+                zoom: state.scale,
+            });
+        });
+    }
 
-  touchStart(e) {
-    this.startEvent(e, this.attachTouchEvents);
-  }
+    mouseDown(e) {
+        this.startEvent(e, this.attachMouseEvents);
+    }
 
-  startEvent(e, cb) {
-    var startY, endY;
+    touchStart(e) {
+        this.startEvent(e, this.attachTouchEvents);
+    }
 
-    if (e.target !== this[SCROLLER]) return;
+    startEvent(e, cb) {
+        var startY;
+        var endY;
 
-    this.dragging = true;
+        if (e.target !== this[SCROLLER]) return;
 
-    e = e.targetTouches && e.targetTouches[0] ? e.targetTouches[0] : e;
+        this.dragging = true;
 
-    endY = this.getEndY(e);
-    startY = this.state.startY || endY;
+        e = e.targetTouches && e.targetTouches[0] ? e.targetTouches[0] : e;
 
-    this.setState({
-      startY,
-      endY,
-    });
+        endY = this.getEndY(e);
+        startY = this.state.startY || endY;
 
-    if (typeof cb === 'function') cb.call(this);
-  }
+        this.setState({
+            startY,
+            endY,
+        });
 
-  getEndY(e) {
-    return Math.min(
+        if (typeof cb === 'function') cb.call(this);
+    }
+
+    getEndY(e) {
+        return Math.min(
       Math.max(
         e.pageY / this.state.zoom,
         this.state.startY
@@ -104,94 +123,94 @@ class ScrollArea extends skoash.Component {
       this[SCROLLBAR].getBoundingClientRect().height / this.state.zoom -
       this.props.scrollbarHeight
     );
-  }
+    }
 
-  attachMouseEvents() {
-    window.addEventListener('mousemove', this.moveEvent);
-    window.addEventListener('mouseup', this.mouseUp);
-  }
+    attachMouseEvents() {
+        window.addEventListener('mousemove', this.moveEvent);
+        window.addEventListener('mouseup', this.mouseUp);
+    }
 
-  attachTouchEvents() {
-    window.addEventListener('touchmove', this.moveEvent);
-    window.addEventListener('touchend', this.touchEnd);
-  }
+    attachTouchEvents() {
+        window.addEventListener('touchmove', this.moveEvent);
+        window.addEventListener('touchend', this.touchEnd);
+    }
 
-  moveEvent(e) {
-    var endY;
+    moveEvent(e) {
+        var endY;
 
-    e = e.targetTouches && e.targetTouches[0] ? e.targetTouches[0] : e;
+        e = e.targetTouches && e.targetTouches[0] ? e.targetTouches[0] : e;
 
-    endY = this.getEndY(e);
+        endY = this.getEndY(e);
 
-    this[AREA].scrollTop = (endY - this.state.startY) *
+        this[AREA].scrollTop = (endY - this.state.startY) *
       (this[CONTENT].offsetHeight - this[AREA].offsetHeight) /
       (this[SCROLLBAR].offsetHeight - this.props.scrollbarHeight);
 
-    this.setState({
-      endY,
-    });
-  }
+        this.setState({
+            endY,
+        });
+    }
 
-  mouseUp() {
-    this.dragging = false;
-    this.detachMouseEvents();
-  }
+    mouseUp() {
+        this.dragging = false;
+        this.detachMouseEvents();
+    }
 
-  touchEnd() {
-    this.dragging = false;
-    this.detachTouchEvents();
-  }
+    touchEnd() {
+        this.dragging = false;
+        this.detachTouchEvents();
+    }
 
-  detachMouseEvents() {
-    window.removeEventListener('mousemove', this.moveEvent);
-    window.removeEventListener('mouseup', this.mouseUp);
-  }
+    detachMouseEvents() {
+        window.removeEventListener('mousemove', this.moveEvent);
+        window.removeEventListener('mouseup', this.mouseUp);
+    }
 
-  detachTouchEvents() {
-    window.removeEventListener('touchmove', this.moveEvent);
-    window.removeEventListener('touchend', this.touchEnd);
-  }
+    detachTouchEvents() {
+        window.removeEventListener('touchmove', this.moveEvent);
+        window.removeEventListener('touchend', this.touchEnd);
+    }
 
-  getScrollerStyle() {
-    return {
-      backgroundImage: `url(${this.props.img})`,
-      top: this.state.endY - this.state.startY,
-    };
-  }
+    getScrollerStyle() {
+        return {
+            backgroundImage: `url(${this.props.img})`,
+            top: this.state.endY - this.state.startY,
+        };
+    }
 
-  getClassNames() {
-    return classNames('scroll-area', super.getClassNames());
-  }
+    getClassNames() {
+        return classNames('scroll-area', super.getClassNames());
+    }
 
-  render() {
-    if (!this.props.shouldRender) return null;
+    render() {
+        if (!this.props.shouldRender) return null;
 
-    return (
-      <this.props.type {...this.props} className={this.getClassNames()}>
-        <skoash.Image ref={IMAGE} className="hidden" src={this.props.img} />
-        <div ref={AREA} className={AREA}>
-          <div ref={CONTENT} className={CONTENT}>
-            {this.renderContentList()}
-          </div>
-        </div>
-        <div
-          ref={SCROLLBAR}
-          className={SCROLLBAR}
-        >
-          <div
-            ref={SCROLLER}
-            className={SCROLLER}
-            style={this.getScrollerStyle()}
-          />
-        </div>
-      </this.props.type>
-    );
-  }
+        return (
+            <this.props.type {...this.props} className={this.getClassNames()}>
+                <skoash.Image ref={IMAGE} className="hidden" src={this.props.img} />
+                <div ref={AREA} className={AREA}>
+                    <div ref={CONTENT} className={CONTENT}>
+                        {this.renderContentList()}
+                    </div>
+                </div>
+                <div
+                    ref={SCROLLBAR}
+                    className={SCROLLBAR}
+                >
+                    <div
+                        ref={SCROLLER}
+                        className={SCROLLER}
+                        style={this.getScrollerStyle()}
+                    />
+                </div>
+            </this.props.type>
+        );
+    }
 }
 
 ScrollArea.defaultProps = _.defaults({
-  img: '',
-  scrollbarHeight: 100,
+    img: '',
+    scrollbarHeight: 100,
 }, skoash.Component.defaultProps);
 
 export default ScrollArea;

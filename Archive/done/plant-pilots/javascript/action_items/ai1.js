@@ -1,2 +1,0 @@
-background.load();
-background.play();

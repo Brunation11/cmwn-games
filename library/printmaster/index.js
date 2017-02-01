@@ -1,4 +1,4 @@
-import config from './config.game';
+import config from './config';
 
 import Loader from 'shared/components/loader/0.1';
 
@@ -29,67 +29,69 @@ import FlipScreen from './components/flip_screen';
 import QuitScreen from 'shared/components/quit_screen/0.1';
 
 var Printmaster = (
-  <skoash.Game
-    config={config}
-    screens={{
-      0: iOSScreen,
-      1: TitleScreen,
-      2: InfoTinyPatternsScreen,
-      3: InfoDiscoverScreen,
-      4: InfoArchScreen,
-      5: InfoLoopsScreen,
-      6: InfoWhorlScreen,
-      7: InfoDoubleLoopScreen,
-      8: InfoIdScreen,
-      9: IdentifyScreen,
-      10: CarouselScreen,
-      11: InfoLetsDustScreen,
-      12: InfoNeedScreen,
-      13: InfoStep1Screen,
-      14: InfoStep2Screen,
-      15: InfoStep3Screen,
-      16: InfoStep4Screen,
-      17: InfoStep5Screen,
-      18: InfoStep6Screen,
-      19: InfoStep7Screen,
-      20: InfoEverybodyScreen,
-      21: InfoFurtherScreen,
-      22: FlipScreen,
-    }}
-    menus={{
-      quit: QuitScreen,
-    }}
-    getBackgroundIndex={index => {
-      switch (true) {
-      case index === 3: return 1;
-      default: return 0;
-      }
-    }}
-    loader={<Loader />}
-    passData={opts => {
-      if (opts.name === 'typing') {
-        this.media.typing.stop();
-        this.media.typing.play();
-        setTimeout(() => {
-          this.media.typing.stop();
-        }, opts.duration || 500);
-      } else if (opts.name === 'stopTyping') {
-        this.media.typing.stop();
-      }
-    }}
-    assets={[
-      <skoash.Audio ref="bkg-1" type="background" src="media/_BKG/S_BKG_1.mp3" loop />,
-      <skoash.Audio ref="bkg-2" type="background" src="media/_BKG/S_BKG_2.mp3" loop />,
-      <skoash.Audio ref="bkg-3" type="background" src="media/_BKG/S_BKG_3.mp3" loop />,
-      <skoash.Audio ref="bkg-4" type="background" src="media/_BKG/S_BKG_4.mp3" loop />,
-      <skoash.Audio ref="bkg-5" type="background" src="media/S_12/S_12.1.mp3" />,
-      <skoash.Audio ref="bkg-6" type="background" src="media/S_22/S_22.1.mp3" />,
-      <skoash.Image ref="img-bkg" className="hidden" src="media/_BKG/BKG_1.png" />,
-      <skoash.Audio ref="button" type="sfx" src="media/_Button/S_BU_1.mp3" />,
-      <skoash.Audio ref="screen-complete" type="sfx" src="media/_Button/S_BU_2.mp3" />,
-      <skoash.Audio ref="typing" type="sfx" src="media/S_3/S_3.1.mp3" />,
-    ]}
-  />
+    <skoash.Game
+        config={config}
+        screens={{
+            0: iOSScreen,
+            1: TitleScreen,
+            2: InfoTinyPatternsScreen,
+            3: InfoDiscoverScreen,
+            4: InfoArchScreen,
+            5: InfoLoopsScreen,
+            6: InfoWhorlScreen,
+            7: InfoDoubleLoopScreen,
+            8: InfoIdScreen,
+            9: IdentifyScreen,
+            10: CarouselScreen,
+            11: InfoLetsDustScreen,
+            12: InfoNeedScreen,
+            13: InfoStep1Screen,
+            14: InfoStep2Screen,
+            15: InfoStep3Screen,
+            16: InfoStep4Screen,
+            17: InfoStep5Screen,
+            18: InfoStep6Screen,
+            19: InfoStep7Screen,
+            20: InfoEverybodyScreen,
+            21: InfoFurtherScreen,
+            22: FlipScreen,
+        }}
+        menus={{
+            quit: QuitScreen,
+        }}
+        getBackgroundIndex={index => {
+            switch (true) {
+                case index === 3: return 1;
+                default: return 0;
+            }
+        }}
+        loader={<Loader />}
+        passData={opts => {
+            if (opts.name === 'typing') {
+                this.media.typing.stop();
+                this.media.typing.play();
+                setTimeout(() => {
+                    this.media.typing.stop();
+                }, opts.duration || 500);
+            } else if (opts.name === 'stopTyping') {
+                this.media.typing.stop();
+            }
+        }}
+        assets={[
+            <skoash.Audio ref="bkg-1" type="background" src="media/_BKG/S_BKG_1.mp3" loop />,
+            <skoash.Audio ref="bkg-2" type="background" src="media/_BKG/S_BKG_2.mp3" loop />,
+            <skoash.Audio ref="bkg-3" type="background" src="media/_BKG/S_BKG_3.mp3" loop />,
+            <skoash.Audio ref="bkg-4" type="background" src="media/_BKG/S_BKG_4.mp3" loop />,
+            <skoash.Audio ref="bkg-5" type="background" src="media/S_12/S_12.1.mp3" />,
+            <skoash.Audio ref="bkg-6" type="background" src="media/S_22/S_22.1.mp3" />,
+            <skoash.Image ref="img-bkg" className="hidden" src="media/_BKG/BKG_1.png" />,
+            <skoash.Audio ref="button" type="sfx" src="media/_Button/S_BU_1.mp3" />,
+            <skoash.Audio ref="screen-complete" type="sfx" src="media/_Button/S_BU_2.mp3" />,
+            <skoash.Audio ref="typing" type="sfx" src="media/S_3/S_3.1.mp3" />,
+        ]}
+    />
 );
 
 skoash.start(Printmaster);
+
+if (module.hot) module.hot.accept();

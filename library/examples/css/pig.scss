@@ -1,0 +1,81 @@
+#pig {
+    img {
+        display: block;
+        margin: 40px auto 0;
+        width: 640px;
+    }
+
+    .selectable {
+        display: block;
+        margin: -20px auto 0;
+        padding: 0;
+        width: 730px;
+        list-style: none;
+
+        li {
+            display: inline-block;
+            background-repeat: no-repeat;
+            cursor: auto;
+            height: 380px;
+
+            &.pig {
+                background-image: url('../media/S_4/img_4.2.png');
+                background-size: auto 100%;
+                width: 500px;
+
+                &:hover {
+                    background-position: -497px 0;
+                }
+
+                &.SELECTED {
+                    background-position: -993px 0;
+                }
+            }
+
+            &.bulb {
+                background-image: url('../media/S_4/img_4.3.png');
+                background-size: auto 100%;
+                width: 230px;
+
+                &:hover {
+                    background-position: -246px 0;
+                }
+
+                &.SELECTED {
+                    background-position: 0 0;
+                }
+            }
+        }
+
+        &.COMPLETE {
+            pointer-events: none;
+
+            li.pig {
+                transition: opacity 1s;
+                opacity: .5;
+            }
+        }
+    }
+
+    &.READY.OPEN {
+        img {
+            animation-name: zoomInDown;
+        }
+
+        .pig {
+            animation-name: shake;
+            animation-duration: 3s;
+        }
+
+        .bulb {
+            animation-name: bounce;
+            animation-duration: 3s;
+        }
+    }
+}
+
+.VOICE-OVER #pig {
+    li {
+        pointer-events: none;
+    }
+}

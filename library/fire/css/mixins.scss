@@ -1,0 +1,15 @@
+@mixin explode-out($x, $y, $name: 'explode-out') {
+    @keyframes #{$name} {
+        0% {
+            transform: scale(1, 1);
+            opacity: 1;
+            transform-origin: #{$x}, #{$y};
+        }
+
+        100% {
+            transform: scale(2, 2);
+            opacity: 0;
+            transform-origin: #{$x}, #{$y};
+        }
+    }
+}
