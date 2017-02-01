@@ -6,6 +6,18 @@ import ManualDropper from 'shared/components/manual_dropper/0.1';
 
 const PTS = 'pts';
 
+let getChildren = v => {
+    if (v.children) return v.children;
+
+    return (
+        <skoash.Sprite
+            src={`${CMWN.MEDIA.SPRITE}_${_.replace(v.bin, '-', '')}`}
+            frame={v.frame || 1}
+            static
+        />
+    );
+};
+
 export default function (props, ref, key, opts = {}) {
     if (Math.abs(props.gameState.currentScreenIndex - parseInt(key, 10)) > 1) {
         return (
@@ -27,18 +39,6 @@ export default function (props, ref, key, opts = {}) {
         let extraComponents;
 
         const LEVEL_PATH = `gameState.data.${_.camelCase(opts.gameName)}.levels.${opts.level}`;
-
-        let getChildren = v => {
-            if (v.children) return v.children;
-
-            return (
-                <skoash.Sprite
-                    src={`${CMWN.MEDIA.SPRITE}_${_.replace(v.bin, '-', '')}`}
-                    frame={v.frame || 1}
-                    static
-                />
-            );
-        };
 
         let arrayOfCatchables = _.map(opts.itemsToSort, v => ({
             type: Catchable,

@@ -6,31 +6,48 @@
     @include game-reveal;
 
     .bin-name {
-        @include position(absolute, null null 0 175px);
+        @include background('#{$image}container.png');
+        @include position(absolute, null null 0 125px);
+        display: inline-block;
         transform: scale3d(1, 1, 1);
-        z-index: 3;
-        border: 2px solid $black;
+        z-index: 4;
+        margin: 5px;
         padding: 20px 0;
-        width: 200px;
-        height: 64px;
+        width: 180px;
         text-transform: capitalize;
+        color: $black;
+        font-size: 30px;
     }
 
     .dropzones {
         > div {
-            @include position(absolute, 100px null null 100px);
-            @include size(200px 100px);
+            @include position(absolute, 150px null null 120px);
+            @include size(150px 100px);
             z-index: 2;
-            background-color: $green;
+
+            &::before {
+                @include background('#{$image}exhaust.png');
+                @include size(250px 480px);
+                @include position(absolute, null null -30px -100px);
+                display: block;
+                z-index: -1;
+                content: '';
+            }
         }
     }
 
     .bins {
         @include cover;
 
-        div:nth-of-type(1) {
-            .carousel {
-                z-index: 1;
+        .items {
+            > div {
+                opacity: 0;
+                pointer-events: none;
+
+                &:nth-of-type(1) {
+                    opacity: 1;
+                    pointer-events: auto;
+                }
             }
         }
 
@@ -57,14 +74,14 @@
         position: absolute;
         transition: opacity .5s;
         opacity: 1;
-        background-color: $green;
-
-        &::before {
-            content: attr(data-message);
-        }
+        z-index: 3;
 
         &.CORRECT {
             opacity: 0;
+            pointer-events: none;
+        }
+
+        .sprite {
             pointer-events: none;
         }
     }

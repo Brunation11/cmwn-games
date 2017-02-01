@@ -32,7 +32,7 @@ import iOSScreen from 'shared/components/ios_splash_screen/0.1';
 // import PricelessPourer5InfoScreen from './components/priceless_pourer_five_info_screen';
 // import PricelessPourer5Screen from './components/priceless_pourer_level_five_screen';
 // import FantasticFoodSharer1InfoScreen from './components/fantastic_food_sharer_one_info_screen';
-import FantasticFoodSharer1Screen from './components/fantastic_food_sharer_level_one_screen';
+// import FantasticFoodSharer1Screen from './components/fantastic_food_sharer_level_one_screen';
 // import FantasticFoodSharer2InfoScreen from './components/fantastic_food_sharer_two_info_screen';
 // import FantasticFoodSharer2Screen from './components/fantastic_food_sharer_level_two_screen';
 // import FantasticFoodSharer3InfoScreen from './components/fantastic_food_sharer_three_info_screen';
@@ -42,7 +42,7 @@ import FantasticFoodSharer1Screen from './components/fantastic_food_sharer_level
 // import FantasticFoodSharer5InfoScreen from './components/fantastic_food_sharer_five_info_screen';
 // import FantasticFoodSharer5Screen from './components/fantastic_food_sharer_level_five_screen';
 // import DynamicDiverter1InfoScreen from './components/dynamic_diverter_one_info_screen';
-// import DynamicDiverter1Screen from './components/dynamic_diverter_level_one_screen';
+import DynamicDiverter1Screen from './components/dynamic_diverter_level_one_screen';
 // import DynamicDiverter2InfoScreen from './components/dynamic_diverter_two_info_screen';
 // import DynamicDiverter2Screen from './components/dynamic_diverter_level_two_screen';
 // import DynamicDiverter3InfoScreen from './components/dynamic_diverter_three_info_screen';
@@ -112,7 +112,7 @@ skoash.start(
             // LevelCompleteScreen(2),
             // LevelScreen(3.0),
             // FantasticFoodSharer1InfoScreen,
-            FantasticFoodSharer1Screen,
+            // FantasticFoodSharer1Screen,
             // LevelScreen(3.1),
             // FantasticFoodSharer2InfoScreen,
             // FantasticFoodSharer2Screen,
@@ -129,7 +129,7 @@ skoash.start(
             // LevelCompleteScreen(3),
             // LevelScreen(4.0),
             // DynamicDiverter1InfoScreen,
-            // DynamicDiverter1Screen,
+            DynamicDiverter1Screen,
             // LevelScreen(4.1),
             // DynamicDiverter2InfoScreen,
             // DynamicDiverter2Screen,

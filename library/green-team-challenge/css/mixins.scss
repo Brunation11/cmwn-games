@@ -158,21 +158,23 @@
 @mixin game-gages {
     .top-left {
         @include position(absolute, 0 null null 0);
-        z-index: 3;
+        z-index: 4;
 
         > div {
             @include background('#{$image}container.png');
             display: inline-block;
             margin: 5px;
             padding: 20px 0;
-            width: 150px;
+            width: 180px;
+            color: $black;
+            font-size: 30px;
         }
     }
 
     .item-name {
         @include background('#{$image}vertical.pipe.png');
         @include position(absolute, 0 50px null null);
-        z-index: 3;
+        z-index: 4;
         background-position: center bottom;
         background-size: 100%;
         width: 300px;
@@ -191,12 +193,16 @@
         top: 200px;
         right: 0;
         left: auto;
-        z-index: 3;
+        z-index: 4;
     }
 }
 
 @mixin game-reveal {
     .reveal {
+        &.OPEN {
+            z-index: 5;
+        }
+
         li {
             width: 100%;
             height: 100%;

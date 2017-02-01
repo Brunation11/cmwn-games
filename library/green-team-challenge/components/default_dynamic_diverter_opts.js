@@ -1,5 +1,13 @@
 import defaultGameOpts from './default_game_opts';
 
+import itemsCompost from './items_compost';
+import itemsLandfill from './items_landfill';
+import itemsRecycle from './items_recycle';
+
+let shuffledItemsCompost = _.shuffle(itemsCompost);
+let shuffledItemsLandfill = _.shuffle(itemsLandfill);
+let shuffledItemsRecycle = _.shuffle(itemsRecycle);
+
 export default _.defaults({
     gameName: 'dynamic-diverter',
     pointsPerBin: 400,
@@ -22,7 +30,9 @@ export default _.defaults({
                     style: {
                         top: _.random(30, 70) + '%',
                         left: _.random(30, 70) + '%',
-                    }
+                    },
+                    scale: _.random(1, 1.5),
+                    rotate: _.random(-30, 30),
                 });
             },
         };
@@ -82,72 +92,27 @@ export default _.defaults({
             },
         };
     },
-    binItems: {
-        recycle: [
-            {
-                name: 'emptyBottle',
-                bin: 'recycle'
-            },
-            {
-                name: 'emptyBottle',
-                bin: 'recycle'
-            },
-            {
-                name: 'emptyBottle',
-                bin: 'recycle'
-            },
-            {
-                name: 'appleCore',
-                bin: 'compost'
-            },
-            {
-                name: 'candyBag',
-                bin: 'landfill'
-            },
-        ],
-        landfill: [
-            {
-                name: 'emptyBottle',
-                bin: 'recycle'
-            },
-            {
-                name: 'appleCore',
-                bin: 'compost'
-            },
-            {
-                name: 'candyBag',
-                bin: 'landfill'
-            },
-            {
-                name: 'candyBag',
-                bin: 'landfill'
-            },
-            {
-                name: 'candyBag',
-                bin: 'landfill'
-            },
-        ],
-        compost: [
-            {
-                name: 'emptyBottle',
-                bin: 'recycle'
-            },
-            {
-                name: 'appleCore',
-                bin: 'compost'
-            },
-            {
-                name: 'appleCore',
-                bin: 'compost'
-            },
-            {
-                name: 'appleCore',
-                bin: 'compost'
-            },
-            {
-                name: 'candyBag',
-                bin: 'landfill'
-            },
-        ],
-    }
+    binItems: [
+        {
+            name: 'recycle',
+            objects: []
+                .concat(shuffledItemsCompost.splice(0, 2))
+                .concat(shuffledItemsLandfill.splice(0, 2))
+                .concat(shuffledItemsRecycle.splice(0, 6)),
+        },
+        {
+            name: 'landfill',
+            objects: []
+                .concat(shuffledItemsCompost.splice(0, 2))
+                .concat(shuffledItemsLandfill.splice(0, 6))
+                .concat(shuffledItemsRecycle.splice(0, 2)),
+        },
+        {
+            name: 'compost',
+            objects: []
+                .concat(shuffledItemsCompost.splice(0, 6))
+                .concat(shuffledItemsLandfill.splice(0, 2))
+                .concat(shuffledItemsRecycle.splice(0, 2)),
+        },
+    ]
 }, defaultGameOpts);
