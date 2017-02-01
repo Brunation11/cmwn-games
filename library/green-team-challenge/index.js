@@ -11,7 +11,7 @@ import iOSScreen from 'shared/components/ios_splash_screen/0.1';
 // import FiveWaysScreen from './components/five_ways_screen';
 // import LevelScreen from './components/level_screen_component';
 // import RecyclingChampion1InfoScreen from './components/recycling_champion_one_info_screen';
-import RecyclingChampion1Screen from './components/recycling_champion_level_one_screen';
+// import RecyclingChampion1Screen from './components/recycling_champion_level_one_screen';
 // import RecyclingChampion2InfoScreen from './components/recycling_champion_two_info_screen';
 // import RecyclingChampion2Screen from './components/recycling_champion_level_two_screen';
 // import RecyclingChampion3InfoScreen from './components/recycling_champion_three_info_screen';
@@ -78,7 +78,7 @@ skoash.start(
             // FiveWaysScreen,
             // LevelScreen(1.0),
             // RecyclingChampion1InfoScreen,
-            RecyclingChampion1Screen,
+            // RecyclingChampion1Screen,
             // LevelScreen(1.1),
             // RecyclingChampion2InfoScreen,
             // RecyclingChampion2Screen,

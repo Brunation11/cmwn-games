@@ -20,7 +20,7 @@
                 @include center;
                 @include size(50px);
                 left: 0;
-                transition: top .25s 4.6s, left 1.4s 4s, transform .5s;
+                transition: top .25s .25s, left .25s 0s, transform .5s;
 
                 $lefts: 400 150 -100;
                 @for $i from 1 through length($lefts) {
@@ -33,6 +33,7 @@
                 &.DROPPED {
                     top: 200px;
                     left: 130px;
+                    transition: top .25s 4.6s, left 1.4s 4s, transform .5s;
                 }
 
                 &.PICKUP {

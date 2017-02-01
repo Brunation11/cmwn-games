@@ -276,4 +276,5 @@ export default _.defaults({
         );
     },
     itemsToSort: _.filter(itemsToSort, item => _.includes(binNames, item.bin)),
+    // itemsToSort: _.filter(itemsToSort, item => _.includes('liquids', item.bin)),
 }, defaultGameOpts);
