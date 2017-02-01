@@ -436,13 +436,13 @@ img.inline {
         position: absolute;
         top: -435px;
         left: -476px;
-        transition: transform 5s;
         transform: scale(.7);
+        transition: transform 5s;
     }
 
     .tumbleweed {
         position: absolute;
-        top: 385px;;
+        top: 385px;
         left: 242px;
         transform: scale(2, 1.6);
     }
@@ -880,6 +880,7 @@ img.inline {
             }
 
             &.HIGHLIGHTED {
+                // scss-lint:disable ImportantRule
                 cursor: default !important;
                 pointer-events: none !important;
             }
@@ -906,6 +907,7 @@ img.inline {
 
     .VOICE-OVER & {
         li {
+            // scss-lint:disable ImportantRule
             cursor: default !important;
             pointer-events: none !important;
         }

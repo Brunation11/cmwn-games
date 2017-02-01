@@ -9,72 +9,72 @@ export default function (props, ref, key) {
             y: 432,
             text: 'bathing',
         },
-        {                   
+        {
             x: 307,
             y: 632,
             text: 'drinking',
         },
-        {                   
+        {
             x: 460,
             y: 832,
             text: 'canoeing',
         },
-        {                   
+        {
             x: 614,
             y: 1032,
             text: 'factories',
         },
-        {                   
+        {
             x: 768,
             y: 1232,
             text: 'washing',
         },
-        {                   
+        {
             x: 256,
             y: 568,
             text: 'swimming',
         },
-        {                   
+        {
             x: 409,
             y: 768,
             text: 'brushing',
         },
-        {                   
+        {
             x: 409,
             y: 768,
             text: 'electricity',
         },
-        {                   
+        {
             x: 563,
             y: 968,
             text: 'cooking',
         },
-        {                   
+        {
             x: 716,
             y: 1168,
             text: 'rafting',
         },
-        {                   
+        {
             x: 204,
             y: 504,
             text: 'water',
         },
-        {                   
+        {
             x: 358,
             y: 704,
             text: 'growing',
         },
-        {                   
+        {
             x: 512,
             y: 904,
             text: 'lawns',
         },
-        {                   
+        {
             x: 665,
             y: 1104,
             text: 'flowers',
         },
-        {                   
+        {
             x: 153,
             y: 440,
             text: 'animal',
