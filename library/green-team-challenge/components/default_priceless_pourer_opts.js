@@ -1,7 +1,9 @@
 import classNames from 'classnames';
 
+import Catchable from 'shared/components/catchable/0.1';
+
 import defaultGameOpts from './default_game_opts';
-import itemsToSort from './items_to_sort';
+import ItemsToSort from './items_to_sort';
 
 const binNames = [
     'liquids',
@@ -9,6 +11,45 @@ const binNames = [
     'landfill',
     'compost',
 ];
+
+let itemsToSort = _.filter(ItemsToSort, item => _.includes(binNames, item.bin));
+
+let audioRefs = _.uniq(_.map(itemsToSort, v =>
+    _.upperFirst(_.camelCase(_.replace(v.name, /\d+/g, ''))))
+);
+
+let audioArray = _.map(audioRefs, (v, k) => ({
+    type: skoash.Audio,
+    props: {
+        type: 'voiceOver',
+        ref: v,
+        key: k,
+        src: `${CMWN.MEDIA.GAME + 'SoundAssets/_vositems/' + v}.mp3`,
+    },
+}));
+
+let getChildren = v => {
+    if (v.children) return v.children;
+
+    return (
+        <skoash.Sprite
+            src={`${CMWN.MEDIA.SPRITE}_${_.replace(v.bin, '-', '')}`}
+            frame={v.frame || 1}
+            static
+        />
+    );
+};
+
+let catchablesArray = _.map(itemsToSort, v => ({
+    type: Catchable,
+    props: {
+        className: v.name,
+        message: v.bin,
+        reCatchable: true,
+        becomes: v.becomes,
+        children: getChildren(v),
+    },
+}));
 
 export default _.defaults({
     gameName: 'priceless-pourer',
@@ -222,5 +263,11 @@ export default _.defaults({
             </skoash.Component>
         );
     },
-    itemsToSort: _.filter(itemsToSort, item => _.includes(binNames, item.bin)),
+    itemsToSort,
+    getAudioArray() {
+        return audioArray;
+    },
+    getCatchablesArray() {
+        return catchablesArray;
+    },
 }, defaultGameOpts);

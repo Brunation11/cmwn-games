@@ -1,22 +1,9 @@
 import classNames from 'classnames';
 
 import Catcher from 'shared/components/catcher/0.4';
-import Catchable from 'shared/components/catchable/0.1';
 import ManualDropper from 'shared/components/manual_dropper/0.1';
 
 const PTS = 'pts';
-
-let getChildren = v => {
-    if (v.children) return v.children;
-
-    return (
-        <skoash.Sprite
-            src={`${CMWN.MEDIA.SPRITE}_${_.replace(v.bin, '-', '')}`}
-            frame={v.frame || 1}
-            static
-        />
-    );
-};
 
 export default function (props, ref, key, opts = {}) {
     if (Math.abs(props.gameState.currentScreenIndex - parseInt(key, 10)) > 1) {
@@ -40,16 +27,7 @@ export default function (props, ref, key, opts = {}) {
 
         const LEVEL_PATH = `gameState.data.${_.camelCase(opts.gameName)}.levels.${opts.level}`;
 
-        let arrayOfCatchables = _.map(opts.itemsToSort, v => ({
-            type: Catchable,
-            props: {
-                className: v.name,
-                message: v.bin,
-                reCatchable: true,
-                becomes: v.becomes,
-                children: getChildren(v),
-            },
-        }));
+        let catchablesArray = opts.getCatchablesArray();
 
         let binComponents = _.map(opts.binNames, name =>
             <skoash.Component className={name} message={name} />
@@ -72,19 +50,7 @@ export default function (props, ref, key, opts = {}) {
         let revealOpen = _.get(props, 'data.reveal.open', false);
         let revealClose = _.get(props, 'data.reveal.close', false);
 
-        let audioRefs = _.uniq(_.map(opts.itemsToSort, v =>
-            _.upperFirst(_.camelCase(_.replace(v.name, /\d+/g, ''))))
-        );
-
-        let arrayOfAudio = _.map(audioRefs, (v, k) => ({
-            type: skoash.Audio,
-            props: {
-                type: 'voiceOver',
-                ref: v,
-                key: k,
-                src: `${CMWN.MEDIA.GAME + 'SoundAssets/_vositems/' + v}.mp3`,
-            },
-        }));
+        let audioArray = opts.getAudioArray();
 
         if (itemRef) catchableRefs = [itemRef];
 
@@ -175,7 +141,7 @@ export default function (props, ref, key, opts = {}) {
                     next={opts.next}
                     bin={
                         <skoash.Randomizer
-                            bin={arrayOfCatchables}
+                            bin={catchablesArray}
                         />
                     }
                     style={{
@@ -238,7 +204,7 @@ export default function (props, ref, key, opts = {}) {
                     ]}
                 />
                 <skoash.MediaCollection
-                    children={arrayOfAudio}
+                    children={audioArray}
                     checkComplete={false}
                     complete={true}
                 />

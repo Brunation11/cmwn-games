@@ -1,18 +1,8 @@
 import defaultGameOpts from './default_game_opts';
 import Catchable from 'shared/components/catchable/0.1';
-import itemsToSort from './items_to_sort';
+import ItemsToSort from './items_to_sort';
 
-const binNames = [
-    'liquids',
-    'food-share',
-    'recycle',
-    'landfill',
-    'compost',
-    'tray-stacking',
-    'home',
-];
-
-const onSelect = function (key) {
+let onSelect = function (key) {
     let ref = this.refs[key];
     let rect = ReactDOM.findDOMNode(ref).getBoundingClientRect();
     this.updateScreenData({
@@ -26,20 +16,7 @@ const onSelect = function (key) {
     });
 };
 
-const mapItems = function (itemNames) {
-    const items = _.filter(itemsToSort, item => _.includes(itemNames, item.name));
-
-    return _.map(items, item =>
-        <Catchable
-            className={item.name}
-            message={item.bin}
-            reCatchable={true}
-            becomes={item.becomes}
-        />
-    );
-};
-
-const resort = function () {
+let resort = function () {
     this.updateScreenData({
         keys: ['reveal', 'open'],
         data: 'resort',
@@ -63,6 +40,100 @@ const resort = function () {
         }
     });
 };
+
+let binNames = [
+    'liquids',
+    'food-share',
+    'recycle',
+    'landfill',
+    'compost',
+    'tray-stacking',
+    'home',
+];
+
+let itemsToSort = _.filter(ItemsToSort, item => _.includes(binNames, item.bin));
+
+let audioRefs = _.uniq(_.map(itemsToSort, v =>
+    _.upperFirst(_.camelCase(_.replace(v.name, /\d+/g, ''))))
+);
+
+let audioArray = _.map(audioRefs, (v, k) => ({
+    type: skoash.Audio,
+    props: {
+        type: 'voiceOver',
+        ref: v,
+        key: k,
+        src: `${CMWN.MEDIA.GAME + 'SoundAssets/_vositems/' + v}.mp3`,
+    },
+}));
+
+let getChildren = v => {
+    if (v.children) return v.children;
+
+    return (
+        <skoash.Sprite
+            src={`${CMWN.MEDIA.SPRITE}_${_.replace(v.bin, '-', '')}`}
+            frame={v.frame || 1}
+            static
+        />
+    );
+};
+
+let mapItems = function (itemNames) {
+    let items = _.filter(ItemsToSort, item => _.includes(itemNames, item.name));
+
+    return _.map(items, item =>
+        <Catchable
+            className={item.name}
+            message={item.bin}
+            reCatchable={true}
+            becomes={item.becomes}
+            children={getChildren(item)}
+        />
+    );
+};
+
+let traysArray = [
+    {
+        name: 'tray',
+        bin: 'tray-stacking',
+        children: [
+            <skoash.Selectable
+                onSelect={onSelect}
+                list={mapItems([
+                    'plastic-cup-1',
+                    'apple-core',
+                    'empty-cracker-wrapper-2',
+                    'full-plastic-water-bottle-2',
+                    'whole-banana',
+                ])}
+            />
+        ]
+    },
+    {
+        name: 'lunchBox',
+        bin: 'home',
+        children: [
+            <skoash.Selectable
+                onSelect={onSelect}
+                list={mapItems([
+                    'empty-yogurt-container-10',
+                ])}
+            />
+        ]
+    }
+];
+
+let catchablesArray = _.map(traysArray, v => ({
+    type: Catchable,
+    props: {
+        className: v.name,
+        message: v.bin,
+        reCatchable: true,
+        becomes: v.becomes,
+        children: getChildren(v),
+    },
+}));
 
 export default _.defaults({
     gameName: 'master-sorter',
@@ -381,34 +452,10 @@ export default _.defaults({
             },
         };
     },
-    itemsToSort: [
-        {
-            name: 'tray',
-            bin: 'tray-stacking',
-            children: [
-                <skoash.Selectable
-                    onSelect={onSelect}
-                    list={mapItems([
-                        'emptyBottle',
-                        'appleCore',
-                        'candyBag',
-                        'fullBottle',
-                        'wrappedSnack',
-                    ])}
-                />
-            ]
-        },
-        {
-            name: 'lunchBox',
-            bin: 'home',
-            children: [
-                <skoash.Selectable
-                    onSelect={onSelect}
-                    list={mapItems([
-                        'emptyBottle',
-                    ])}
-                />
-            ]
-        }
-    ],
+    getAudioArray() {
+        return audioArray;
+    },
+    getCatchablesArray() {
+        return catchablesArray;
+    },
 }, defaultGameOpts);
