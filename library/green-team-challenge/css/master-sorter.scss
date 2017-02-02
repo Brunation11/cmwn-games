@@ -15,11 +15,23 @@
         transform: translateX(-40%);
         transition: opacity .5s;
         opacity: 0;
+        border: 2px solid $black;
+        border-radius: 8px;
+        background-color: $white;
+        background-image: none;
+        height: 80px;
+        text-shadow: none;
+        color: $black;
         pointer-events: none;
 
         &.ACTIVE {
             opacity: 1;
             pointer-events: auto;
+        }
+
+        span {
+            left: 50%;
+            font-size: 28px;
         }
     }
 
@@ -41,6 +53,7 @@
             > * {
                 @include master-sorter-catchable;
                 @include master-sorter-tray;
+                @include sortable-item(.75);
                 background-color: $blue;
                 width: 250px;
                 height: 250px;

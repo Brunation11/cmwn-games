@@ -76,6 +76,7 @@
     .sprite {
         @include center;
         transform: translateX(-50%) translateY(-50%) scale($scale);
+        pointer-events: none;
     }
 }
 
@@ -307,9 +308,5 @@
 
     &.POUR {
         animation: master-pour 1s;
-    }
-
-    .sprite {
-        pointer-events: none;
     }
 }

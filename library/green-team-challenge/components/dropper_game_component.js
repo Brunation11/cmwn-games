@@ -157,7 +157,7 @@ export default function (props, ref, key, opts = {}) {
                 />
                 <skoash.Component
                     className={classNames('bins', {
-                        DISABLED: opts.itemName
+                        DISABLED: !opts.itemName
                     })}
                     checkComplete={false}
                     complete={true}

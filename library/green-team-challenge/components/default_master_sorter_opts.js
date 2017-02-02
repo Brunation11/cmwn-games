@@ -8,7 +8,7 @@ let onSelect = function (key) {
     this.updateScreenData({
         key: 'item',
         data: {
-            name: _.startCase(ref.props.className),
+            name: _.startCase(_.replace(ref.props.className, /\d+/g, '')),
             ref,
             top: rect.top,
             left: rect.left,
@@ -241,14 +241,11 @@ export default _.defaults({
                     let items = this.state.items;
                     let index = this.firstItemIndex;
                     let item = items[index];
-                    let newBin = _.find(itemsToSort, itemToSort =>
-                        itemToSort.name === itemRef.props.becomes
-                    ).bin;
                     let selectable = item.props.children[0];
                     let selectedItem = selectable.props.list[itemIndex];
-                    selectedItem.props.className = selectedItem.props.becomes;
-                    selectedItem.props.message = newBin;
-                    selectedItem.props['data-message'] = newBin;
+                    selectedItem.props.className = selectedItem.props.becomes.name;
+                    selectedItem.props.message = selectedItem.props.becomes.bin;
+                    selectedItem.props['data-message'] = selectedItem.props.becomes.bin;
                     items[index] = item;
                     this.setState({items});
 
@@ -324,7 +321,7 @@ export default _.defaults({
                         tray.addClassName('HOME');
                     } else {
                         let rect = ReactDOM.findDOMNode(tray).getBoundingClientRect();
-                        let name = _.startCase(tray.props.className);
+                        let name = _.startCase(_.replace(tray.props.className, /\d+/g, ''));
                         let left = rect.left + (rect.right - rect.left) * .8 / 2;
                         let top = rect.top + (rect.bottom - rect.top) * .8 / 2;
 
