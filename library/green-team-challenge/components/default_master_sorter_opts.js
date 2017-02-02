@@ -461,6 +461,15 @@ export default _.defaults({
             },
         };
     },
+    getExtraComponents() {
+        return (
+            <div className="tray-stacking-title">
+                <span>
+                    Tray Stacking
+                </span>
+            </div>
+        );
+    },
     getAudioArray() {
         return audioArray;
     },

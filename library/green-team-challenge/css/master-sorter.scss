@@ -11,6 +11,24 @@
         bottom: -30px;
     }
 
+    .tray-stacking-title {
+        @include position(absolute, 0 20px null null);
+        @include size(250px 70px);
+
+        span {
+            @include center;
+            font-size: 18px;
+        }
+
+        &::before {
+            @include background('#{$image}vertical.pipe.png');
+            @include position(absolute, null null 0 0);
+            @include size(250px 250px);
+            display: block;
+            content: '';
+        }
+    }
+
     .item-name {
         transform: translateX(-40%);
         transition: opacity .5s;
