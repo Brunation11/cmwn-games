@@ -20,10 +20,10 @@ let audioRefs = _.uniq(_.map(itemsToSort, v =>
 
 let audioArray = _.map(audioRefs, (v, k) => ({
     type: skoash.Audio,
+    ref: v,
+    key: k,
     props: {
         type: 'voiceOver',
-        ref: v,
-        key: k,
         src: `${CMWN.MEDIA.GAME + 'SoundAssets/_vositems/' + v}.mp3`,
     },
 }));

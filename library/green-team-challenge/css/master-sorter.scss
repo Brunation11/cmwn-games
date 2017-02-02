@@ -49,7 +49,7 @@
 
         span {
             left: 50%;
-            font-size: 28px;
+            font-size: 24px;
         }
     }
 
@@ -203,7 +203,7 @@
     }
 
     .pour {
-        @include position(absolute, 130px null null 20px);
+        @include position(absolute, 150px null null -20px);
         transform: scale(.5);
         opacity: 0;
         z-index: -1;

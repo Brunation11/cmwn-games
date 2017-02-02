@@ -62,10 +62,10 @@ let audioRefs = _.uniq(_.map(itemsToSort, v =>
 
 let audioArray = _.map(audioRefs, (v, k) => ({
     type: skoash.Audio,
+    ref: v,
+    key: k,
     props: {
         type: 'voiceOver',
-        ref: v,
-        key: k,
         src: `${CMWN.MEDIA.GAME + 'SoundAssets/_vositems/' + v}.mp3`,
     },
 }));
@@ -104,15 +104,31 @@ let traysArray = [
             <skoash.Selectable
                 onSelect={onSelect}
                 list={mapItems([
-                    'plastic-cup-1',
-                    'apple-core',
-                    'empty-cracker-wrapper-2',
-                    'full-plastic-water-bottle-2',
-                    'whole-banana',
+                    'full-plastic-water-bottle-1',
+                    'half-full-chocolate-milk-carton',
+                    'half-full-energy-drink-bottle',
+                    'half-full-lemonade-box-1',
+                    'half-full-orange-juice-2',
                 ])}
             />
         ]
     },
+    // {
+    //     name: 'tray',
+    //     bin: 'tray-stacking',
+    //     children: [
+    //         <skoash.Selectable
+    //             onSelect={onSelect}
+    //             list={mapItems([
+    //                 'plastic-cup-1',
+    //                 'apple-core',
+    //                 'empty-cracker-wrapper-2',
+    //                 'full-plastic-water-bottle-2',
+    //                 'whole-banana',
+    //             ])}
+    //         />
+    //     ]
+    // },
     // {
     //     name: 'tray-pink',
     //     bin: 'tray-stacking',
