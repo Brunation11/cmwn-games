@@ -111,8 +111,8 @@ let traysArray = [
         ]
     },
     {
-        name: 'lunchBox',
-        bin: 'home',
+        name: 'tray-pink',
+        bin: 'tray-stacking',
         children: [
             <skoash.Selectable
                 onSelect={onSelect}
@@ -121,7 +121,19 @@ let traysArray = [
                 ])}
             />
         ]
-    }
+    },
+    {
+        name: 'tray-blue',
+        bin: 'tray-stacking',
+        children: [
+            <skoash.Selectable
+                onSelect={onSelect}
+                list={mapItems([
+                    'empty-yogurt-container-10',
+                ])}
+            />
+        ]
+    },
 ];
 
 let catchablesArray = _.map(traysArray, v => ({

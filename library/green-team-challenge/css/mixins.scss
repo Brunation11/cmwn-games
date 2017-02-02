@@ -255,8 +255,8 @@
 }
 
 @mixin master-sorter-tray-item {
-    $tops:  25 25 25 70 70;
-    $lefts: 20 50 80 30 70;
+    $tops:  25 25 25 50 50;
+    $lefts: 20 50 80 20 80;
     @for $i from 1 through length($tops) {
         &:nth-of-type(#{$i}) {
             top: percentage(nth($tops, $i) / 100);
