@@ -36,6 +36,10 @@ export default function (props, ref, key) {
                 />
             </skoash.MediaSequence>
             <skoash.Image
+                className="printer show"
+                src={ENVIRONMENT.MEDIA + 'ImageAssets/img.printer01.png'}
+            />
+            <skoash.Image
                 className={classNames('question', {
                     show: !_.get(props, 'data.imagine.complete')
                 })}
