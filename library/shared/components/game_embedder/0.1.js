@@ -1,66 +1,82 @@
-import _ from 'lodash';
+// As of skoash 1.1.0 this component can be found at skoash.GameEmbedder
+/* eslint-disable no-console */
+console.warn('As of skoash 1.1.0 this component can be found at skoash.GameEmbedder');
+/* eslint-enable no-console */
 
 class GameEmbedder extends skoash.Component {
-  constructor() {
-    super();
+    constructor() {
+        super();
 
-    /*
-     * For testing purposes, in order for skoash to be able to communicate
-     * with the embedded game, you may want to include `document.domain = 'localhost';`
-     * in both this component and the game you're embedding.
-     * In production you may want to include `document.domain = 'changemyworldnow.com';`
-     * in the embedded game since it will be included in the skoash game.
-     */
-
-    this.respond = this.respond.bind(this);
-    this.onLoad = this.onLoad.bind(this);
-  }
-
-  bootstrap() {
-    super.bootstrap();
-
-    this.gameNode = ReactDOM.findDOMNode(this.refs.game);
-    this.gameNode.addEventListener('game-event', this.respond);
-  }
-
-  respond(opts) {
-    if (opts.complete) {
-      this.complete();
-    } else if (opts.updateGameState) {
-      this.updateGameState(opts);
+        this.respond = this.respond.bind(this);
+        this.onLoad = this.onLoad.bind(this);
     }
-  }
 
-  onLoad() {
-    this.emitEvent({
-      name: 'focus',
-    });
+    bootstrap() {
+        super.bootstrap();
 
-    this.props.onLoad.call(this);
-  }
+        this.gameNode = ReactDOM.findDOMNode(this.refs.game);
+        this.gameNode.addEventListener('game-event', this.respond);
+    }
 
-  emitEvent(data) {
-    var e = new Event('skoash-event');
-    e.name = data.name;
-    e.data = data;
-    this.gameNode.contentWindow.dispatchEvent(e);
-  }
+    respond(opts) {
+        if (opts.complete) {
+            this.complete();
+        } else if (opts.updateGameState) {
+            this.updateGameState(opts);
+        }
+    }
 
-  render() {
-    return (
-      <iframe
-        {...this.props}
-        ref="game"
-        onLoad={this.onLoad}
-      />
-    );
-  }
+    onLoad() {
+        this.emitEvent({
+            name: 'focus',
+        });
+
+        this.props.onLoad.call(this);
+    }
+
+    pause() {
+        super.pause();
+        this.emitEvent({ name: 'pause' });
+    }
+
+    resume() {
+        super.resume();
+        this.emitEvent({ name: 'resume' });
+    }
+
+    emitEvent(data) {
+        var e = new Event('skoash-event');
+        e.name = data.name;
+        e.data = data;
+        this.gameNode.contentWindow.dispatchEvent(e);
+    }
+
+    componentWillReceiveProps(props) {
+        super.componentWillReceiveProps(props);
+
+        if (props.controller) {
+            this.emitEvent({
+                name: 'controller-update',
+                controller: props.controller,
+            });
+        }
+    }
+
+    render() {
+        return (
+            <iframe
+                {...this.props}
+                ref="game"
+                onLoad={this.onLoad}
+            />
+        );
+    }
 }
 
 GameEmbedder.defaultProps = _.defaults({
-  complete: false,
-  checkComplete: false,
-  onLoad: _.identity,
+    complete: false,
+    checkComplete: false,
+    onLoad: _.noop,
 }, skoash.Component.defaultProps);
 
 export default GameEmbedder;

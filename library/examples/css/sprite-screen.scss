@@ -1,0 +1,17 @@
+#sprite-screen {
+    > div > div {
+        display: inline-block;
+    }
+
+    .sprite-1 {
+        display: inline-block;
+        width: 200px;
+        height: 200px;
+    }
+
+    .sprite-2 {
+        display: inline-block;
+        width: 200px;
+        height: 200px;
+    }
+}

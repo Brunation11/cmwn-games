@@ -1,20 +1,17 @@
 export default function () {
-  var loadData = {};
-  if (!this.refs || !this.metaData) return;
-  if (this.refs['selectable-reveal']) {
-    if (this.refs['selectable-reveal'].refs && this.refs['selectable-reveal'].refs.selectable) {
-      _.forEach(this.metaData, (ref) => {
-        loadData[ref] = this.refs['selectable-reveal'].props.selectableSelectClass || this.refs['selectable-reveal'].refs.selectable.state.selectClass;
-        this.refs['selectable-reveal'].refs.selectable.loadData = loadData;
-      });
-    }
-  }
+    var loadData = {};
+    if (!this.refs || !this.metaData) return;
 
-  if (this.refs['dropzone-reveal']) {
-    if (this.refs['dropzone-reveal'].refs && this.refs['dropzone-reveal'].refs.dropzone) {
-      this.refs['dropzone-reveal'].refs.dropzone.loadData = this.metaData;
+    if (this.refs.selectable) {
+        _.forEach(this.metaData, (ref) => {
+            loadData[ref] = this.refs.selectable.props.selectClass || this.refs.selectable.state.selectClass;
+            this.refs.selectable.loadData = loadData;
+        });
     }
-  }
 
-  this.completeRefs();
+    if (this.refs.dropzone) {
+        this.refs.dropzone.loadData = this.metaData;
+    }
+
+    this.completeRefs();
 }

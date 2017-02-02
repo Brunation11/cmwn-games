@@ -1,24 +1,26 @@
 .frame {
-  position: relative;
-  width: 70%;
-  max-width: 977px;
+    position: relative;
+    width: 70%;
+    max-width: 977px;
 
-  img.background {
-    display: block;
-    width: 100%;
-    opacity: 1;
-  }
-  
-  .content-group {
-    position: absolute;
-    top: 0; bottom: 0;
-    left: 0; right: 0;
-    margin: 12px;
-  }
-  
-  .content-group > * {
-    margin-left: 2em;
-    margin-right: 2em;
-    text-align: center;
-  }
+    img.background {
+        display: block;
+        opacity: 1;
+        width: 100%;
+    }
+
+    .content-group {
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        margin: 12px;
+    }
+
+    .content-group > * {
+        margin-right: 2em;
+        margin-left: 2em;
+        text-align: center;
+    }
 }

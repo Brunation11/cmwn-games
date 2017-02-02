@@ -6,16 +6,16 @@ export default function (props, ref, key) {
             key={key}
             id="flip"
             emitOnComplete={{
-               name: 'flip',
+                name: 'flip',
             }}
         >
             <skoash.Audio ref="vo" type="voiceOver" src="media/flip/VO_8.1.mp3" />
-            <skoash.Image className="toilet" src="media/S_3/img_3.1.png" />
             <skoash.Component className="message">
                 <skoash.Image className="banner" src="media/flip/img_8.1.png" />
-                <p>You flushed out a brand new</p><br />
+                    <p>You flushed out a brand new</p><br />
                 <skoash.Image className="flip" src="media/flip/flip.png" />
             </skoash.Component>
+            <skoash.Image className="flip-coin" src="media/flip/TwirlNSwirl_EarnedFlip.gif" />
         </skoash.Screen>
     );
 }

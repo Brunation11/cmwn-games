@@ -1,23 +1,23 @@
 export default function (props, ref, key) {
-  return (
-    <skoash.Screen
-      {...props}
-      ref={ref}
-      key={key}
-      id="flip"
-      emitOnComplete={{
-        name: 'flip',
-      }}
-    >
-      <skoash.Audio ref="vo" type="voiceOver" src="media/S_14/VO_14.1.mp3" />
-      <skoash.Image ref="image-1" className="animated" src="media/S_14/img_14.1.png" />
-      <p>
-        Here’s another thing<br/>
-        you won’t throw away:<br/>
-        A great new<br/>
-        I-MADE-A-DIFFERENCE
-      </p>
-      <skoash.Image ref="image-2" className="animated" src="media/S_14/img_14.2.png" />
-    </skoash.Screen>
-  );
+    return (
+        <skoash.Screen
+            {...props}
+            ref={ref}
+            key={key}
+            id="flip"
+            emitOnComplete={{
+                name: 'flip',
+            }}
+        >
+            <skoash.Image className="hidden" src="media/_assets/_sprites/sprites.mr.eco-01.png" />
+            <skoash.Image className="hidden" src="media/_assets/_sprites/sprites.sing.thankyou.flip-01.png" />
+            <skoash.Audio type="voiceOver" src="media/_assets/_sounds/_vos/Flip.mp3" />
+            <div className="words" />
+            <div className="flip-container animated">
+                <div className="flip" />
+            </div>
+            <div className="mr-eco animated" />
+            <skoash.Image className="earned" src="media/_assets/_animations/LitterbugEarnedFlips.gif" />
+        </skoash.Screen>
+    );
 }

@@ -1,0 +1,89 @@
+#bulbs {
+    img.title {
+        display: block;
+        margin: 30px auto 0;
+        width: 800px;
+    }
+
+    .selectable-reveal {
+        margin-top: -30px;
+
+        .selectable {
+            transition: opacity 1s 1s;
+            opacity: 0;
+            margin: 20px auto;
+            width: 800px;
+            height: 300px;
+
+            li {
+                transition: opacity 1s;
+                opacity: .5;
+                background-image: url('../media/S_3/img_3.2.png');
+                background-repeat: no-repeat;
+                background-size: 450px;
+                cursor: auto;
+                pointer-events: none;
+
+                &:first-of-type:not(.HIGHLIGHTED) {
+                    opacity: 1;
+                    cursor: pointer;
+                    pointer-events: auto;
+
+                    &:hover {
+                        animation-name: bounce;
+                    }
+                }
+
+                &.HIGHLIGHTED {
+                    opacity: 1;
+                }
+
+                &.HIGHLIGHTED + li:not(.HIGHLIGHTED) {
+                    opacity: 1;
+                    cursor: pointer;
+                    pointer-events: auto;
+
+                    &:hover {
+                        animation-name: bounce;
+                    }
+                }
+
+                @for $i from 1 through 4 {
+                    &:nth-of-type(#{$i}) {
+                        background-position: -12px 310 - 325 * $i + px;
+
+                        &.HIGHLIGHTED,
+                        &:hover {
+                            background-position: -237px 310 - 325 * $i + px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    &.READY.OPEN {
+        img.title {
+            animation-name: zoomInDown;
+        }
+
+        .selectable-reveal {
+
+            .selectable {
+                opacity: 1;
+            }
+        }
+    }
+}
+
+.pl-game.VOICE-OVER #bulbs {
+    .selectable {
+        li {
+            pointer-events: none;
+
+            &:first-of-type:not(.HIGHLIGHTED) {
+                pointer-events: none;
+            }
+        }
+    }
+}

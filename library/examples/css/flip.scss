@@ -1,0 +1,46 @@
+$white: #fff;
+
+#flip {
+    h2 {
+        position: absolute;
+        top: 50%;
+        left: 0;
+        transform: translateY(-50%);
+        margin: -80px 0 0;
+        width: 100%;
+        text-align: center;
+        color: $white;
+        font-weight: normal;
+
+        .inline {
+            position: relative;
+            top: 50px;
+            margin-top: -60px;
+            height: 100px;
+            vertical-align: middle;
+        }
+    }
+
+    .stamp {
+        display: block;
+        position: relative;
+        opacity: 0;
+        z-index: 1;
+        margin: 0 auto;
+        width: 800px;
+    }
+
+    &.READY.OPEN {
+        .inline {
+            animation-name: flipInX;
+            animation-duration: 3s;
+        }
+
+        .stamp {
+            animation-name: stamp;
+            animation-duration: 1s;
+            animation-delay: 4s;
+            opacity: 1;
+        }
+    }
+}

@@ -3,224 +3,245 @@ import Inbox from '../../shared/components/inbox/0.1.js';
 import SavedMessages from '../../shared/components/saved_messages/0.1.js';
 
 const inboxEmptyMessage = (
-  <span>
-    You haven't received any Skribbles!<br/>
-    Get started by sending some!
-  </span>
-  );
+    <span>
+        You haven't received any Skribbles!<br/>
+        Get started by sending some!
+    </span>
+);
 const unreadEmptyMessage = (
-  <span>
-    You don't have any<br/>
-    unread Skribbles!
-  </span>
-  );
+    <span>
+        You don't have any<br/>
+        unread Skribbles!
+    </span>
+);
 const readEmptyMessage = (
-  <span>
-    You don't have any<br/>
-    read Skribbles!
-  </span>
-  );
+    <span>
+        You don't have any<br/>
+        read Skribbles!
+    </span>
+);
 const sentEmptyMessage = (
-  <span>
-    You haven't sent any Skribbles.<br/>
-    Let's get started!
-  </span>
-  );
+    <span>
+        You haven't sent any Skribbles.<br/>
+        Let's get started!
+    </span>
+);
 const draftsEmptyMessage = (
-  <span>
-    You don't have any drafts.<br/>
-    Start Skribbling!
-  </span>
-  );
+    <span>
+        You don't have any drafts.<br/>
+        Start Skribbling!
+    </span>
+);
 
 
 class InboxScreen extends skoash.Screen {
-  constructor() {
-    super();
+    constructor() {
+        super();
 
-    this.state = {
-      load: true,
-    };
+        this.state = {
+            load: true,
+        };
 
-    this.selectableList = [
-      <li />,
-      <li />,
-      <li />,
-      <li />,
-      <li />,
-    ];
+        this.selectableList = [
+            <li />,
+            <li />,
+            <li />,
+            <li />,
+            <li />,
+        ];
 
-    this.revealList = this.getRevealList();
+        this.revealList = this.getRevealList();
 
-    this.readMessage = this.readMessage.bind(this);
-    this.editMessage = this.editMessage.bind(this);
-  }
+        this.readMessage = this.readMessage.bind(this);
+        this.editMessage = this.editMessage.bind(this);
+    }
 
-  getRevealList(inbox, outbox, saved) {
-    var read, unread, props = this.props || {};
+    getRevealList(inbox, outbox, saved) {
+        var read;
+        var unread;
+        var props = this.props || {};
 
-    inbox = inbox || [];
+        inbox = inbox || this.state.inbox || [];
 
-    read = inbox.filter(item => {
-      return item.read;
-    });
+        read = inbox.filter(item => {
+            return item.read;
+        });
 
-    unread = inbox.filter((item) => {
-      return !item.read;
-    });
+        unread = inbox.filter((item) => {
+            return !item.read;
+        });
 
-    return [
-      <li>
-        <Inbox
-          data-ref="inbox"
-          data={{
-            items: inbox || [],
-          }}
-          emptyMessage={inboxEmptyMessage}
-          selectRespond={this.readMessage}
-          gameState={props.gameState}
-        />
-      </li>,
-      <li>
-        <Inbox
-          data-ref="unread"
-          data={{
-            items: unread || [],
-          }}
-          emptyMessage={unreadEmptyMessage}
-          selectRespond={this.readMessage}
-          gameState={props.gameState}
-        />
-      </li>,
-      <li>
-        <Inbox
-          data-ref="read"
-          data={{
-            items: read || [],
-          }}
-          emptyMessage={readEmptyMessage}
-          selectRespond={this.readMessage}
-          gameState={props.gameState}
-        />
-      </li>,
-      <li>
-        <Inbox
-          data-ref="outbox"
-          data={{
-            items: outbox || [],
-          }}
-          emptyMessage={sentEmptyMessage}
-          friendKey="friend_to"
-          selectRespond={this.readMessage}
-          gameState={props.gameState}
-        />
-      </li>,
-      <li>
-        <SavedMessages
-          data-ref="saved"
-          data={{
-            items: saved || [],
-          }}
-          emptyMessage={draftsEmptyMessage}
-          selectRespond={this.editMessage}
-        />
-      </li>,
-    ];
-  }
+        outbox = outbox || this.state.outbox || [];
+        saved = saved || this.state.saved || [];
 
-  editMessage(message) {
-    skoash.trigger('loadSkribble', {
-      message,
-    });
-  }
+        return [
+            <li>
+                <Inbox
+                    data-ref="inbox"
+                    data={{
+                        items: inbox,
+                    }}
+                    emptyMessage={inboxEmptyMessage}
+                    selectRespond={this.readMessage}
+                    gameState={props.gameState}
+                />
+            </li>,
+            <li>
+                <Inbox
+                    data-ref="unread"
+                    data={{
+                        items: unread,
+                    }}
+                    emptyMessage={unreadEmptyMessage}
+                    selectRespond={this.readMessage}
+                    gameState={props.gameState}
+                />
+            </li>,
+            <li>
+                <Inbox
+                    data-ref="read"
+                    data={{
+                        items: read,
+                    }}
+                    emptyMessage={readEmptyMessage}
+                    selectRespond={this.readMessage}
+                    gameState={props.gameState}
+                />
+            </li>,
+            <li>
+                <Inbox
+                    data-ref="outbox"
+                    data={{
+                        items: outbox,
+                    }}
+                    emptyMessage={sentEmptyMessage}
+                    friendKey="friend_to"
+                    selectRespond={this.readMessage}
+                    gameState={props.gameState}
+                />
+            </li>,
+            <li>
+                <SavedMessages
+                    data-ref="saved"
+                    data={{
+                        items: saved,
+                    }}
+                    emptyMessage={draftsEmptyMessage}
+                    selectRespond={this.editMessage}
+                />
+            </li>,
+        ];
+    }
 
-  readMessage(message) {
-    skoash.trigger('goto', {
-      index: 'read',
-      message,
-    });
-  }
+    editMessage(message) {
+        skoash.trigger('loadSkribble', {
+            message,
+        });
+    }
 
-  updateData() {
-    var data, inbox, outbox, saved;
+    readMessage(message) {
+        skoash.trigger('goto', {
+            index: 'read',
+            message,
+        });
+    }
 
-    data = this.props.gameState.data;
-    inbox = data.received;
-    outbox = data.sent;
-    saved = data.draft;
+    updateData() {
+        var skribbles;
+        var inbox;
+        var outbox;
+        var saved;
 
-    this.revealList = this.getRevealList(inbox, outbox, saved);
+        skribbles = this.props.gameState.data.skribbles;
+        inbox = skribbles.received;
+        outbox = skribbles.sent;
+        saved = skribbles.draft;
 
-    this.setState({
-      inbox,
-      outbox,
-      saved,
-    });
-  }
+        this.revealList = this.getRevealList(inbox, outbox, saved);
 
-  open() {
-    var self = this;
+        this.setState({
+            inbox,
+            outbox,
+            saved,
+        });
+    }
 
-    skoash.trigger('getData', {
-      status: 'received',
-    }).then(() => {
-      self.updateData();
-    });
+    updateGameData(data, status) {
+        var opts = {
+            path: ['skribbles'],
+            data: {
+                [status]: data.skribble
+            },
+            callback: () => {
+                this.updateData();
+            }
+        };
+        this.updateGameState(opts);
+    }
 
-    skoash.trigger('getData', {
-      status: 'sent',
-    }).then(() => {
-      self.updateData();
-    });
+    open() {
+        var self = this;
 
-    skoash.trigger('getData', {
-      status: 'draft',
-    }).then(() => {
-      self.updateData();
-    });
+        skoash.trigger('getData', {
+            status: 'received',
+        }).then(data => {
+            self.updateGameData(data, 'received');
+        });
 
-    self.setState({
-      load: true,
-      open: true,
-      leave: false,
-      close: false,
-    });
+        skoash.trigger('getData', {
+            status: 'sent',
+        }).then(data => {
+            self.updateGameData(data, 'sent');
+        });
 
-    setTimeout(() => {
-      if (!self.state.started) {
-        self.start();
-      }
-    }, 250);
-  }
+        skoash.trigger('getData', {
+            status: 'draft',
+        }).then(data => {
+            self.updateGameData(data, 'draft');
+        });
 
-  renderContent() {
-    return (
-      <div>
-        <div className="center">
-          <div className="frame">
-            <SelectableReveal
-              ref={'selectableReveal'}
-              selectableList={this.selectableList}
-              revealList={this.revealList}
-              selectOnStart={'0'}
-              openOnStart={'0'}
-            />
-          </div>
-        </div>
-      </div>
-    );
-  }
+        self.setState({
+            load: true,
+            open: true,
+            leave: false,
+            close: false,
+        });
+
+        setTimeout(() => {
+            if (!self.state.started) {
+                self.start();
+            }
+        }, 250);
+    }
+
+    renderContent() {
+        return (
+            <div>
+                <div className="center">
+                    <div className="frame">
+                        <SelectableReveal
+                            ref={'selectableReveal'}
+                            selectableList={this.selectableList}
+                            revealList={this.revealList}
+                            selectOnStart={'0'}
+                            openOnStart={'0'}
+                        />
+                    </div>
+                </div>
+            </div>
+        );
+    }
 }
 
 export default function (props, ref, key) {
-  return (
-    <InboxScreen
-      {...props}
-      ref={ref}
-      key={key}
-      id="inbox"
-      hideNext
-      hidePrev
-    />
-  );
+    return (
+        <InboxScreen
+            {...props}
+            ref={ref}
+            key={key}
+            id="inbox"
+            hideNext
+            hidePrev
+        />
+    );
 }
