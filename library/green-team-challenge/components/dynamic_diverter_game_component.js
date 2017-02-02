@@ -18,15 +18,8 @@ let getChildren = v => {
 };
 
 export default function (props, ref, key, opts = {}) {
-    if (Math.abs(props.gameState.currentScreenIndex - parseInt(key, 10)) > 1) {
-        return (
-            <skoash.Screen
-                {...props}
-                ref={ref}
-                key={key}
-                id={`${opts.gameName}-${opts.level}`}
-            />
-        );
+    if (Math.abs(props.gameState.currentScreenIndex - parseInt(key, 10)) > 2) {
+        return null;
     } else {
         let screenProps;
         let timerProps;

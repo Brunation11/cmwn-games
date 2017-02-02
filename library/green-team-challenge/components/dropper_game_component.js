@@ -6,15 +6,8 @@ import ManualDropper from 'shared/components/manual_dropper/0.1';
 const PTS = 'pts';
 
 export default function (props, ref, key, opts = {}) {
-    if (Math.abs(props.gameState.currentScreenIndex - parseInt(key, 10)) > 1) {
-        return (
-            <skoash.Screen
-                {...props}
-                ref={ref}
-                key={key}
-                id={`${opts.gameName}-${opts.level}`}
-            />
-        );
+    if (Math.abs(props.gameState.currentScreenIndex - parseInt(key, 10)) > 2) {
+        return null;
     } else {
         let screenProps;
         let timerProps;
@@ -160,8 +153,6 @@ export default function (props, ref, key, opts = {}) {
                     className={classNames('bins', {
                         DISABLED: !opts.itemName
                     })}
-                    checkComplete={false}
-                    complete={true}
                 >
                     <Catcher
                         completeOnStart
@@ -209,9 +200,6 @@ export default function (props, ref, key, opts = {}) {
                     children={audioArray}
                     checkComplete={false}
                     complete={true}
-                    onComponentWillReceiveProps={function () {
-                        debugger;
-                    }}
                 />
             </skoash.Screen>
         );
