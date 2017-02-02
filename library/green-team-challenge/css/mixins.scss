@@ -275,7 +275,7 @@
 
     $bins:  LIQUIDS FOOD-SHARE   RECYCLE  LANDFILL   COMPOST TRAY-STACKING HOME;
     $tops:       70       -250      -250      -250      -250          -250  500;
-    $lefts:     -15       -205       -15       180       375           565  210;
+    $lefts:     -15       -205       -15       180       375           540  210;
     @for $i from 1 through length($bins) {
         &.#{nth($bins, $i)} {
             top: #{nth($tops, $i)}px;
@@ -293,7 +293,7 @@
 
     $bins:  LIQUIDS FOOD-SHARE   RECYCLE  LANDFILL   COMPOST TRAY-STACKING;
     $tops:       50       -250      -250      -250      -250          -250;
-    $lefts:    -120       -270       -80       110       310           500;
+    $lefts:    -120       -270       -90        90       270           440;
     @for $i from 1 through length($bins) {
         &.#{nth($bins, $i)} {
             top: #{nth($tops, $i)}px;
