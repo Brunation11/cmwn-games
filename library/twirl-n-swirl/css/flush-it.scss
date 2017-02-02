@@ -1,295 +1,514 @@
-// #flush-it {
-//     background-image: url(../media/images/background.png);
+@import 'variables';
 
-//     ul:nth-child(2) {
-//         float: left;
-//         margin-left: 60px;
-//     }
+#flush-it {
+    .dropzone {
+        position: absolute;
+        top: 38%;
+        left: 40%;
+        width: 20%;
+        height: 41%;
 
-//     ul:nth-child(3) {
-//         float: right;
-//         margin-right: 60px;
-//     }
+        &::before {
+            position: absolute;
+            top: -95%;
+            left: -29%;
+            background: url('../media/S_6/img_6.1.png');
+            background-repeat: no-repeat;
+            background-position: 13px 0;
+            background-size: 90%;
+            width: 159%;
+            height: 246%;
+            content: '';
+        }
 
-//     ul:nth-child(2), ul:nth-child(3) {
-//         width: 281px;
-//         height: 486px;
-//         padding: 30px;
-//         margin-top: 8px;
-//         display: flex;
-//         flex-wrap: wrap;
-//         justify-content: space-around;
-//         align-items: center;
+        &.disable {
+            pointer-events: none;
 
-//         background: url(../media/images/frame-tall.png) no-repeat center;
-//         background-size: contain;
-//         text-align: center;
+            + ul {
+                pointer-events: none;
+            }
+        }
+    }
 
-//         &.DISABLED li {
-//             opacity: .5;
-//             pointer-events: none;
-//             cursor: default;
-//         }
+    ul li {
+        position: absolute;
+        width: 3%;
+        height: 5%;
 
-//         li {
-//             display: inline-block;
-//             width: 100px; height: 100px;
+        &:nth-of-type(1) {
+            top: 12%;
+            left: 14%;
 
-//             &.TOILET,
-//             &.DISABLED {
-//                 opacity: 0;
-//                 pointer-events: none;
-//                 cursor: default;
-//             }
-//         }
-//     }
+            div.wipes {
+                &::after {
+                    background-position: 10px 11px;
+                }
 
-//     .draggable {
-//         width: 10px;
-//         height: 10px;
-//         position: absolute;
-//         border: 1px solid blue;
-//         margin-left: 50px;
-//         margin-top: 50px;
+                &.CORRECT::after {
+                    background-position: 3px 5px;
+                }
+            }
+        }
 
-//         &::before {
-//             content: '';
-//             background-image: url(../media/S_6/sprite_6.2.png);
-//             background-repeat: no-repeat;
-//             background-size: 250px;
-//             border: 1px solid green;
-//         }
-//     }
+        &:nth-of-type(2) {
+            top: 12%;
+            left: 25%;
 
-//     $correct: false;
-//     $correctItem: noneCorrect;
-//     $items: wipes diapers paper sheets fats cosmetics bandages litter cotton gum floss hair meds chemicals;
-//     $background-left: 0 0 0 0 0 0 0 1 1 1 1 1 1 1;
-//     $background-top:    0 4 1 5 2 6 3 0 1 4 2 5 3 6;
-//     $width:    90 80    80 100    50    80 100 110 100 100    90    80    70    80;
-//     $height: 70 80 100    70 120 110 100 100 100    80 100 110 110 110;
+            div.diapers {
+                &::after {
+                    background-position: 12px 305px;
+                }
 
-//     @for $i from 1 through 14 {
-//         .#{nth($items, $i)} {
-//             &::before {
-//                 position: absolute;
-//                 width: nth($width, $i) + px;
-//                 height: nth($height, $i) + px;
-//                 background-position: #{-125* nth($background-left, $i) + px} #{-125* nth($background-top, $i) + px};
-//                 top: -(nth($height, $i))/2+ px;
-//                 left: -(nth($width, $i))/2+ px;
-//             }
-//             &.CORRECT {
-//                 &::before {
-//                     transform: translate3d(-50%, -50%, 0) scale(1.75);
-//                     top: 0; left: 0;
-//                     $correct: true;
-//                 }
-//             }
-//         }
-//     }
+                &.CORRECT::after {
+                    background-position: 6px 451px;
+                }
+            }
+        }
 
-//     .flush {
-//         position: relative;
-//         display: block;
-//         background-image: url(../media/S_6/img_6.2.png);
-//         background-size: 381px;
-//         width: 190px; height: 170px;
-//         position: absolute;
-//         top: 10px;
-//         left: 395px;
+        &:nth-of-type(3) {
+            top: 30%;
+            left: 14%;
 
-//         &:hover,
-//         &:active {
-//             background-position: -190px top;
-//         }
-//     }
+            div.paper {
+                &::after {
+                    top: -170%;
+                    background-position: 9px -79px;
+                    height: 440%;
+                }
 
-//     .dropzone {
-//         position: absolute;
-//         border: 1px solid black;
-//         width: 250px;
-//         height: 260px;
-//         left: 38%;
-//         top: 40%;
+                &.CORRECT::after {
+                    left: -170%;
+                    background-position: 10px -151px;
+                    width: 440%;
+                }
+            }
+        }
 
-//         &::before {
-//             content: '';
-//             background-image: url(../media/S_6/img_6.1.png);
-//             background-repeat: no-repeat;
-//             width: 280px;
-//             height: 540px;
-//             position: absolute;
-//             background-size: contain;
-//             overflow: hidden;
-//             background-position: center top;
-//             top: -200px;
-//             left: -15px;
-//         }
+        &:nth-of-type(4) {
+            top: 30%;
+            left: 25%;
 
-//         .area {
-//             width: 100%;
-//             height: 250px;
+            div.sheets {
+                &::after {
+                    left: -120%;
+                    background-position: 13px 211px;
+                    width: 340%;
+                }
 
-//             ul {
-//                 height: 100%;
-//                 margin: 0;
-//             }
+                &.CORRECT::after {
+                    left: -170%;
+                    background-position: 2px 306px;
+                    width: 440%;
+                }
+            }
+        }
 
-//             li {
-//                 position: absolute;
-//                 top: 50%; left: 50%;
-//                 transform: translate3d(-50%, -50%, 0) scale(1.75);
+        &:nth-of-type(5) {
+            top: 50%;
+            left: 14%;
 
-//                 &.FLUSH {
-//                     animation: flush 2.5s ease-in;
-//                     opacity: 0;
-//                 }
-//             }
-//         }
+            div.fats {
+                &::after {
+                    top: -135%;
+                    background-position: 21px 497px;
+                    height: 370%;
+                }
 
-//         &.FLUSH {
-//             button {
-//                 pointer-events: auto;
-//             }
-//         }
-//     }
+                &.CORRECT::after {
+                    top: -235%;
+                    background-position: 25px 746px;
+                    height: 570%;
+                }
+            }
+        }
 
-//     /*[pl-id=modal-reveal] {
-//         background-color: rgba(0,0,0,0.2);
-//         transition: opacity .5s;
-//         opacity: 0;*/
+        &:nth-of-type(6) {
+            top: 50%;
+            left: 25%;
 
-//     .reveal {
-//         display: none;
-//         opacity: 0;
+            div.cosmetics {
+                &::after {
+                    top: -150%;
+                    background-position: 9px 108px;
+                    height: 400%;
+                }
 
-//         &.OPEN {
-//             width: 500px; height: 320px;
-//             transition: transform 1s;
-//             transform: scale(.8);
-//             display: block;
-//             opacity: 1;
+                &.CORRECT::after {
+                    top: -220%;
+                    background-position: 4px 149px;
+                    height: 540%;
+                }
+            }
+        }
 
-//             ul {
-//                 position: static;
-//             }
+        &:nth-of-type(7) {
+            top: 69%;
+            left: 19%;
 
-//             li {
-//                 background-image: url(../media/images/frame.png);
-//                 background-size: contain;
-//                 background-repeat: no-repeat;
-//                 position: absolute;
-//                 top: 45%;
-//                 bottom: 0;
-//                 right: 0;
-//                 left: 55%;
-//                 width: 550px;
-//                 height: 350px;
-//                 display: none;
+            div.bandages {
+                &::after {
+                    left: -120%;
+                    background-position: 11px 400px;
+                    width: 340%;
+                }
 
-//                 &.OPEN {
-//                     display: block;
-//                 }
+                &.CORRECT::after {
+                    left: -170%;
+                    background-position: 0 589px;
+                    width: 440%;
+                }
+            }
+        }
 
-//                 img {
-//                     max-width: 80%;
-//                     max-height: 70px;
-//                     margin: .8em auto;
-//                 }
+        &:nth-of-type(8) {
+            top: 14%;
+            left: 71%;
 
-//                 h3 {
-//                     margin-top: .5em;
-//                     margin-bottom: .5em;
-//                 }
+            div.litter {
+                &::after {
+                    top: -135%;
+                    left: -130%;
+                    background-position: 111px 9px;
+                    width: 360%;
+                    height: 370%;
+                }
 
-//                 > * {
-//                     margin-left: 1em;
-//                     margin-right: 1em;
-//                     text-align: center;
-//                 }
+                &.CORRECT::after {
+                    top: -195%;
+                    left: -190%;
+                    background-position: 153px 0;
+                    width: 480%;
+                    height: 490%;
+                }
+            }
+        }
 
-//                 &.gum {
-//                     h3 {
-//                         margin-top: 1.5em;
-//                     }
-//                 }
+        &:nth-of-type(9) {
+            top: 14%;
+            left: 82%;
 
-//                 &::before {
-//                     content: '';
-//                     background-image: url(../media/S_6/sprite_6.1.png);
-//                     background-repeat: no-repeat;
-//                     background-size: 400px;
-//                     display: block;
-//                     margin: .5em auto 0;
-//                     height: 65px;
-//                     margin-top: 40px;
-//                 }
-//             }
+            div.cotton {
+                &::after {
+                    left: -110%;
+                    background-position: 105px 600px;
+                    width: 320%;
+                }
 
-//             $items: wipes diapers paper sheets fats cosmetics bandages litter cotton gum floss hair meds chemicals;
-//             $background-top: 0 82 170 250 330 420 504 586 672 756 838 918 1004 1084;
-//             $width: 246 170 292 276 370 218 210 216 370 120 268 100 358    366;
+                &.CORRECT::after {
+                    left: -170%;
+                    background-position: 150px 891px;
+                    width: 440%;
+                }
+            }
+        }
 
-//             @for $i from 1 through 14 {
-//                 .#{nth($items, $i)}-reveal::before {
-//                     width: nth($width, $i) + px;
-//                     background-position: 0 #{-1 * nth($background-top, $i) + px};
-//                 }
-//             }
-//         }
+        &:nth-of-type(10) {
+            top: 33%;
+            left: 71%;
 
-//         .close-reveal {
-//             background-image: url(../media/images/buttons.png);
-//             background-position: -570px -60px;
-//             background-size: 1200px;
-//             width: 70px;
-//             height: 50px;
-//             margin: 40px;
-//             opacity: 1;
-//             transition: opacity 1s;
-//             margin-bottom: -130px;
-//             right: -300px;
+            div.gum {
+                &::after {
+                    background-position: 107px 310px;
+                }
 
-//             &:hover,
-//             &:active {
-//                 background-position: -570px -231px;
-//             }
-//         }
+                &.CORRECT::after {
+                    background-position: 150px 457px;
+                }
+            }
+        }
 
-//         &.LAYER {
-//             z-index: -1;
-//         }
+        &:nth-of-type(11) {
+            top: 33%;
+            left: 82%;
 
-//         &.OPEN {
-//             opacity: 1;
-//             z-index: auto;
+            div.floss {
+                &::after {
+                    top: -115%;
+                    background-position: 109px 505px;
+                    height: 330%;
+                }
 
-//             .reveal-component {
-//                 transform: scale(1);
-//             }
-//         }
-//     }
-//     //}
+                &.CORRECT::after {
+                    top: -160%;
+                    background-position: 151px 745px;
+                    height: 440%;
+                }
+            }
+        }
 
-//     &.VOICE-OVER {
-//         [pl-id=toilet] {
-//             button {
-//                 pointer-events: none;
-//             }
-//         }
+        &:nth-of-type(12) {
+            top: 52%;
+            left: 71%;
 
-//         [pl-id=modal-reveal] button.close {
-//             opacity: 0;
-//             cursor: default;
-//             transition: none;
-//         }
-//     }
-// }
+            div.hair {
+                &::after {
+                    top: -140%;
+                    background-position: 113px 207px;
+                    height: 380%;
+                }
 
-// .DEMO #flush-it {
-//     [pl-id=modal-reveal] button.close {
-//         opacity: 1;
-//         cursor: pointer;
-//     }
-// }
+                &.CORRECT::after {
+                    top: -205%;
+                    background-position: 159px 297px;
+                    height: 510%;
+                }
+            }
+        }
+
+        &:nth-of-type(13) {
+            top: 52%;
+            left: 82%;
+
+            div.meds {
+                &::after {
+                    top: -140%;
+                    background-position: 114px 406px;
+                    height: 380%;
+                }
+
+                &.CORRECT::after {
+                    top: -210%;
+                    background-position: 160px 596px;
+                    height: 500%;
+                }
+            }
+        }
+
+        &:nth-of-type(14) {
+            top: 71%;
+            left: 76%;
+
+            div.chemicals {
+                &::after {
+                    top: -135%;
+                    background-position: 115px 109px;
+                    height: 370%;
+                }
+
+                &.CORRECT::after {
+                    top: -205%;
+                    background-position: 162px 150px;
+                    height: 490%;
+                }
+            }
+        }
+
+        > div {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+
+            &::after {
+                position: absolute;
+                top: -100%;
+                left: -100%;
+                transition: opacity .25s .25s;
+                opacity: 1;
+                background: url('../media/S_6/sprite_6.2.png');
+                background-size: 200px 698px;
+                width: 300%;
+                height: 300%;
+                content: '';
+            }
+
+            &.CORRECT {
+                pointer-events: none;
+
+                &::after {
+                    top: -150%;
+                    left: -150%;
+                    background-size: 300px 1047px;
+                    width: 400%;
+                    height: 400%;
+                }
+            }
+
+            &.DRAGGING {
+                z-index: 1;
+            }
+        }
+    }
+
+    .dropzone {
+        $items: wipes diapers paper sheets fats cosmetics bandages litter cotton gum floss hair meds chemicals;
+        @for $i from 1 through 14 {
+            &.#{nth($items, $i)} + ul li > div.#{nth($items, $i)}:after {
+                animation-name: flushTitle;
+                animation-duration: 3s;
+                animation-iteration-count: 1;
+                opacity: 0;
+            }
+        }
+    }
+
+    .frame {
+        position: absolute;
+        top: 1%;
+        background: url('../media/images/frame-tall.png');
+        background-size: cover;
+        width: 28%;
+        height: 88%;
+
+        &.left {
+            left: 7%;
+        }
+
+        &.right {
+            right: 8%;
+        }
+    }
+
+    button.flush {
+        position: absolute;
+        top: 3%;
+        left: 43%;
+        z-index: 1;
+
+        background: url('../media/S_6/img_6.2.png');
+        background-position: -3px -11px;
+        background-size: 210%;
+
+        width: 14%;
+        height: 22%;
+
+        &:hover {
+            background-position: 135px -11px;
+        }
+
+        &.disable {
+            pointer-events: none;
+        }
+    }
+
+    div.reveal.OPEN {
+        display: inline-block;
+        transition-property: opacity;
+        transition-duration: 2s;
+        transition-delay: 0s;
+
+        > div {
+            top: 0;
+            margin: 0;
+            height: 100%;
+
+            li.reveal.OPEN {
+                display: inline-block;
+                position: absolute;
+                top: 0;
+                left: 50%;
+                transform: translateX(-50%);
+                animation-name: fadeIn;
+                animation-delay: 0s;
+                background: $transparent-black url('../media/images/frame.png') no-repeat;
+                background-position: 210px 137px;
+                background-size: 55%;
+                width: 100%;
+                height: 100%;
+
+                &.intro {
+                    animation: none;
+
+                    h3 {
+                        position: absolute;
+                        top: 52%;
+                        left: 49%;
+                        text-align: center;
+                        color: $black;
+                        font-size: 25px;
+                    }
+
+                    &::after {
+                        content: none;
+                    }
+                }
+
+                &::after {
+                    position: absolute;
+                    top: 32%;
+                    left: 27%;
+                    background: url('../media/S_6/sprite_6.1.png');
+                    background-size: cover;
+                    width: 45%;
+                    height: 15%;
+                    content: '';
+                }
+
+                &.wipes::after {
+                    background-position: 85px 0;
+                }
+
+                &.diapers::after {
+                    background-position: 123px -80px;
+                }
+
+                &.paper::after {
+                    background-position: 55px -175px;
+                }
+
+                &.sheets::after {
+                    background-position: 65px -262px;
+                }
+
+                &.fats::after {
+                    background-position: 15px -348px;
+                }
+
+                &.cosmetics::after {
+                    background-position: 94px -443px;
+                }
+
+                &.bandages::after {
+                    background-position: 97px -536px;
+                }
+
+                &.litter::after {
+                    background-position: 96px -625px;
+                }
+
+                &.cotton::after {
+                    background-position: 17px -711px;
+                }
+
+                &.gum::after {
+                    background-position: 146px -807px;
+                }
+
+                &.floss::after {
+                    background-position: 73px -896px;
+                }
+
+                &.hair::after {
+                    background-position: 164px 462px;
+                }
+
+                &.meds::after {
+                    background-position: 25px -1074px;
+                }
+
+                &.chemicals::after {
+                    background-position: 18px -1152px;
+                }
+
+                h3 {
+                    position: absolute;
+                    top: 57%;
+                    left: 49%;
+                    transform: translateX(-50%) translateY(-50%);
+                    width: 80%;
+                    text-align: center;
+                    color: $black;
+                    font-size: 22px;
+                }
+            }
+        }
+
+        .close-reveal {
+            top: 70%;
+            left: 65%;
+            z-index: 2;
+            background-position: 777px -82px;
+            width: 7%;
+            height: 10%;
+        }
+    }
+}
