@@ -64,7 +64,7 @@ export default function (props, ref, key) {
                                 can be recycled.
                             </div>
                         </div>
-                        <div className="side a"></div>
+                        <div className="side a"><div/></div>
                     </skoash.Component>,
                     <skoash.Component type="li" correct={true} message="landfill">
                         <div className="side b">
