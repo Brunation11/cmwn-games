@@ -9,7 +9,11 @@ export default function (props, ref, key) {
             <skoash.MediaSequence>
                 <skoash.Audio
                     type="sfx"
+                    delay={1000}
                     src={`${MEDIA.EFFECT}Shake.mp3`}
+                    onComplete={function () {
+                        this.play();
+                    }}
                 />
             </skoash.MediaSequence>
         </skoash.Screen>
