@@ -35,14 +35,14 @@ export default function (props, ref, key) {
 
         if (state.interval) {
             setTimeout(() => {
-                play(open, ++i);
+                play.call(this, open, ++i);
             }, state.interval);
         }
     }
 
     var init = function () {
         setTimeout(() => {
-            play('', 0);
+            play.call(this, '', 0);
         }, 100);
     }
 

@@ -1,10 +1,23 @@
 export default function (props, ref, key) {
+    // TODO why is this returning to the title screen 2/3/17 AIM
 
-    var animate  = function (name) {
-        var open = _.get(props, 'data.states.open', null) === null ? name : open + ' ' + name;
+    const ANIMATE = [
+        'WOOD',
+        'PLUS',
+        'O2',
+        'EQUAL',
+        'FIRE',
+    ];
+
+    var animate  = function () {
+        var index = _.get(props, 'data.states.index', 0);
+        var open = _.get(props, 'data.states.open', '');
+        open += ` ${ANIMATE[index]}`;
+
         this.updateScreenData({
             key: 'states',
             data: {
+                index: index + 1,
                 open,
             },
         });
@@ -22,31 +35,31 @@ export default function (props, ref, key) {
                     <skoash.Audio
                         type="voiceOver"
                         src="media/S_3/vo_FuelOxygenMakeItBurn.mp3"
-                        onComplete={animate.bind(undefined, 'WOOD')}
+                        onComplete={animate}
                     />
                     <skoash.Audio
                         ref="wood"
                         type="sfx"
                         src="media/S_3/S_3.2.mp3"
-                        onComplete={animate.bind(undefined, 'PLUS')}
+                        onComplete={animate}
                     />
                     <skoash.Audio
                         ref="plus"
                         type="sfx"
                         src="media/S_3/S_3.4.mp3"
-                        onComplete={animate.bind(undefined, 'O2')}
+                        onComplete={animate}
                     />
                     <skoash.Audio
                         ref="o2"
                         type="sfx"
                         src="media/S_3/S_3.2.mp3"
-                        onComplete={animate.bind(undefined, 'EQUAL')}
+                        onComplete={animate}
                     />
                     <skoash.Audio
                         ref="equal"
                         type="sfx"
                         src="media/S_3/S_3.4.mp3"
-                        onComplete={animate.bind(undefined, 'FIRE')}
+                        onComplete={animate}
                     />
                     <skoash.Audio
                         ref="fire"
