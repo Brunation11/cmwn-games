@@ -1,3 +1,6 @@
+// const SRC = 'https://res.cloudinary.com/changemyworldnow/video/upload/' +
+//     'v1486138208/Monarch_Transformation_fmbavs.mp4';
+
 export default function (props, ref, key) {
     return (
         <skoash.Screen
@@ -14,7 +17,7 @@ export default function (props, ref, key) {
             <skoash.Component className="video-container">
                 {/*
                 <skoash.Video
-                    src={`${MEDIA.VIDEO}MonarchNewVideo.mov`}
+                    src={SRC}
                 />
                 */}
             </skoash.Component>
