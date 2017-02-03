@@ -10,6 +10,8 @@ class CursorCanvas extends skoash.Component {
             particles: [],
             updateCanvas: null,
         };
+
+        this.moveCursor = this.moveCursor.bind(this);
     }
 
     bootstrap() {
@@ -32,7 +34,7 @@ class CursorCanvas extends skoash.Component {
             });
         }
 
-        window.addEventListener('mousemove', this.moveCursor.bind(this));
+        window.addEventListener('mousemove', this.moveCursor);
     }
 
     componentWillUnmount() {
