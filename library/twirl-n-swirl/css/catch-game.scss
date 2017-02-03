@@ -152,8 +152,8 @@
         }
 
         &.TIMEOUT {
-            color: $red;
             animation: pulse 2s infinite;
+            color: $red;
         }
     }
 

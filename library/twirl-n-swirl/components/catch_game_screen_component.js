@@ -45,7 +45,7 @@ export default function (props, ref, key, opts = {}) {
         }
     }
 
-    SFXOnPlay = function (ref) {
+    SFXOnPlay = function () {
         this.updateGameState({
             path: 'sfx',
             data: {
@@ -159,7 +159,10 @@ export default function (props, ref, key, opts = {}) {
     };
 
     dropperOnTransitionEnd = function (item) {
-        if (_.get(props, 'data.reveal.open') || _.get(props, 'data.catcher.miss') || props.gameState.paused || !item.state.canCatch) return;
+        if (_.get(props, 'data.reveal.open') ||
+            _.get(props, 'data.catcher.miss') ||
+            props.gameState.paused ||
+            !item.state.canCatch) return;
 
         this.updateGameState({
             path: 'catcher',
