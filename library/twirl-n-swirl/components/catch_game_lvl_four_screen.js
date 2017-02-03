@@ -32,7 +32,19 @@ export default function (props, ref, key) {
                 message: 'trash'
             },
             {
+                className: 'trash floss',
+                message: 'trash'
+            },
+            {
                 className: 'trash medicine',
+                message: 'trash'
+            },
+            {
+                className: 'trash medicine',
+                message: 'trash'
+            },
+            {
+                className: 'trash diaper',
                 message: 'trash'
             },
             {

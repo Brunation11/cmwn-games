@@ -13,7 +13,6 @@ export default function (props, ref, key, opts = {}) {
     var bin = [];
     var SFXOnPlay;
     var scoreOnComplete;
-    var timerGetTime;
     var timerOnComplete;
     var timerOnCheckComplete;
     var revealPromptOnOpen;
@@ -30,7 +29,13 @@ export default function (props, ref, key, opts = {}) {
         for (let j = 0; j < opts.rows; j++) {
             bin.push(
                 <Catchable
-                    className={`${opts.bin[i].className} ${opts.dropSpeed}`}
+                    className={classNames(
+                        opts.bin[i].className,
+                        opts.dropSpeed,
+                        {
+                            PAUSED: _.get(props, 'data.game.start', false)
+                        }
+                    )}
                     message={opts.bin[i].message}
                     style={{
                         top: 400 * (j + .4) / opts.rows,
@@ -40,7 +45,7 @@ export default function (props, ref, key, opts = {}) {
         }
     }
 
-    SFXOnPlay = function () {
+    SFXOnPlay = function (ref) {
         this.updateGameState({
             path: 'sfx',
             data: {
@@ -65,18 +70,6 @@ export default function (props, ref, key, opts = {}) {
                 open: 'try-again'
             }
         });
-    };
-
-    timerGetTime = function () {
-        var timeLeft;
-        var minutesLeft;
-        var secondsLeft;
-        timeLeft = this.props.timeout / 1000 - this.state.time;
-        minutesLeft = Math.floor(timeLeft / 60);
-        minutesLeft = minutesLeft < 10 ? '0' + minutesLeft : minutesLeft;
-        secondsLeft = timeLeft % 60;
-        secondsLeft = secondsLeft < 10 ? '0' + secondsLeft : secondsLeft;
-        return `${minutesLeft}:${secondsLeft}`;
     };
 
     timerOnComplete = function () {
@@ -106,7 +99,7 @@ export default function (props, ref, key, opts = {}) {
 
     timerOnCheckComplete = function () {
         if (_.get(props, 'data.sfx.countdown') === 'countdown') return;
-        if ((this.props.timeout - (this.state.time * 1000)) <= 10000) {
+        if (this.props.timeout - this.state.time <= 10000) {
             this.updateGameState({
                 path: 'sfx',
                 data: {
@@ -166,8 +159,23 @@ export default function (props, ref, key, opts = {}) {
     };
 
     dropperOnTransitionEnd = function (item) {
-        if (_.get(props, 'data.reveal.open') || props.gameState.paused ||
-      item.props.message !== 'trash' || !item.state.canCatch) return;
+        if (_.get(props, 'data.reveal.open') || _.get(props, 'data.catcher.miss') || props.gameState.paused || !item.state.canCatch) return;
+
+        this.updateGameState({
+            path: 'catcher',
+            data: {
+                miss: true
+            }
+        });
+
+        setTimeout(() => {
+            this.updateGameState({
+                path: 'catcher',
+                data: {
+                    miss: false
+                }
+            });
+        }, 1000);
 
         this.updateGameState({
             path: 'score',
@@ -340,7 +348,10 @@ export default function (props, ref, key, opts = {}) {
                 onPlay={SFXOnPlay}
             >
                 <skoash.Audio ref="button" type="sfx" src="media/audio/button.mp3" silentOnStart complete />
-                <skoash.Audio ref="incorrect-miss" type="sfx" src="media/audio/LoosePoints.mp3" complete />
+                <skoash.MediaSequence ref="incorrect-miss" silentOnStart>
+                    <skoash.Audio ref="splash" type="sfx" src="media/audio/DropSplash.mp3" complete />
+                    <skoash.Audio ref="miss" type="sfx" src="media/audio/LoosePoints.mp3" complete />
+                </skoash.MediaSequence>
                 <skoash.MediaSequence ref="correct" silentOnStart>
                     <skoash.Audio ref="catch" type="sfx" src="media/audio/basket.mp3" complete />
                     <skoash.Audio ref="earn" type="sfx" src="media/audio/GainPoints.mp3" complete />
@@ -365,13 +376,13 @@ export default function (props, ref, key, opts = {}) {
                 ref="timer"
                 countDown={true}
                 timeout={opts.timeout}
-                getTime={timerGetTime}
                 stop={_.get(props, 'data.game.complete', false)}
                 complete={_.get(props, 'data.game.complete', false)}
                 checkComplete={_.get(props, 'data.game.start', false)}
                 onCheckComplete={timerOnCheckComplete}
                 restart={_.get(props, 'data.game.start', false)}
                 onComplete={timerOnComplete}
+                className={classNames({TIMEOUT: _.get(props, 'data.sfx.countdown')})}
             />
 
             <RevealPrompt
