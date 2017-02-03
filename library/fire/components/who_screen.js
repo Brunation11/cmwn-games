@@ -1,23 +1,42 @@
-import _ from 'lodash';
-
-import SelectableAudio from 'shared/components/selectable_audio/0.1';
-import Reveal from 'shared/components/reveal/0.1';
-
-const REVEAL_MSG = 0;
-
 class WhoScreenComponent extends skoash.Screen {
     open(opts) {
         super.open(opts);
 
         this.checkComplete = null;
-        this.incomplete();
-        this.refs['selectable-audio'].incompleteRefs();
+        this.refs['selectable'].incompleteRefs();
         this.checkComplete = super.checkComplete;
     }
 }
 
 export default function (props, ref, key) {
-    var revealOpen = _.get(props, 'data.reveal.open', null) !== null ? 'REVEAL-OPEN' : '';
+    const REVEAL_MSG = 0;
+    const JOBS = [
+        'builder',
+        'plumber',
+        'firefighter',
+        'chef',
+    ];
+
+    var openReveal = function () {
+        this.updateScreenData({
+            key: 'reveal',
+            data: {
+                open: REVEAL_MSG,
+            }
+        });
+    };
+
+    var playSFX = function () {
+        var ref = _.get(props, 'data.selectable.target.props.data-ref', null);
+        if (ref.length > 0) {
+            this.updateScreenData({
+                key: 'media-sfx',
+                data: {
+                    effect: ref === 'firefighter' ? 'correct' : 'incorrect',
+                }
+            });
+        }
+    };
 
     return (
         <WhoScreenComponent
@@ -25,59 +44,75 @@ export default function (props, ref, key) {
             ref={ref}
             key={key}
             id="who"
-            className={revealOpen}
-            onOpen={() => {
-                skoash.trigger('updateState', {
-                    path: 'reveal',
-                    data: {
-                        open: null,
-                    }
-                });
-            }}
+            className={_.get(props, 'data.reveal.open', null) !== null ? 'REVEAL-OPEN' : ''}
         >
             <skoash.Audio ref="title" type="voiceOver" src="media/S_6/vo_FireBreaksOut2.mp3" />
             <skoash.Image className="animated" src="media/S_6/img_6.1.png" />
-            <SelectableAudio
-                ref="selectable-audio"
-                onComplete={() => {
-                    skoash.trigger('updateState', {
-                        path: 'reveal',
-                        data: {
-                            open: REVEAL_MSG,
-                        }
-                    });
-                }}
-                audioAssets={[
-                    <skoash.Audio type="voiceOver" src="media/S_6/vo_Builder.mp3" complete />,
-                    <skoash.Audio type="voiceOver" src="media/S_6/vo_Plumber.mp3" complete />,
-                    <skoash.Audio type="voiceOver" src="media/S_6/vo_Firefighter.mp3" />,
-                    <skoash.Audio type="voiceOver" src="media/S_6/vo_Chef.mp3" complete />,
-                    <skoash.Audio data-ref="correct" type="sfx" src="media/S_6/S_6.2.mp3" />,
-                    <skoash.Audio data-ref="incorrect" type="sfx" src="media/S_6/S_6.3.mp3" complete />,
-                ]}
-                selectableList={[
-                    <skoash.ListItem className="animated" />,
-                    <skoash.ListItem className="animated" />,
-                    <skoash.ListItem className="animated" correct />,
-                    <skoash.ListItem className="animated" />,
+            <skoash.MediaCollection
+                play={_.get(props, 'data.media-sfx.effect', null)}
+                onComplete={openReveal}
+            >
+                <skoash.Audio data-ref="correct" type="sfx" src="media/S_6/S_6.2.mp3" />
+                <skoash.Audio data-ref="incorrect" type="sfx" src="media/S_6/S_6.3.mp3" complete />
+            </skoash.MediaCollection>
+            <skoash.MediaCollection
+                play={_.get(props, 'data.selectable.target.props.data-ref', null)}
+                onPlay={playSFX}
+            >
+                <skoash.Audio
+                    data-ref={JOBS[0]}
+                    type="voiceOver"
+                    src="media/S_6/vo_Builder.mp3"
+                    complete
+                />
+                <skoash.Audio
+                    data-ref={JOBS[1]}
+                    type="voiceOver" 
+                    src="media/S_6/vo_Plumber.mp3"
+                    complete
+                />
+                <skoash.Audio 
+                    data-ref={JOBS[2]}
+                    type="voiceOver"
+                    src="media/S_6/vo_Firefighter.mp3"
+                />
+                <skoash.Audio
+                    data-ref={JOBS[3]}
+                    type="voiceOver"
+                    src="media/S_6/vo_Chef.mp3"
+                    complete
+                />
+            </skoash.MediaCollection>
+            <skoash.Selectable
+                ref="selectable"
+                dataTarget="selectable"
+                list={[
+                    <skoash.ListItem data-ref={JOBS[0]} className="animated" complete />,
+                    <skoash.ListItem data-ref={JOBS[1]} className="animated" complete />,
+                    <skoash.ListItem data-ref={JOBS[2]} className="animated" correct />,
+                    <skoash.ListItem data-ref={JOBS[3]} className="animated" complete />,
                 ]}
             />
-            <Reveal
+            <skoash.Reveal
                 ref="reveal"
                 openReveal={_.get(props, 'data.reveal.open', null)}
                 assets={[
-                    <skoash.Audio type="voiceOver" src="media/S_6/vo_FirefightingTough.mp3" />
+                    <skoash.Audio
+                        data-ref="open-sound"
+                        type="voiceOver"
+                        src="media/S_6/vo_FirefightingTough.mp3"
+                    />
                 ]}
                 list={[
                     <skoash.Component className="frame">
-                    <skoash.Image className="animated" src="media/S_6/img_6.7.png" />
-                    <div className="animated">
-                        <skoash.Image className="background" src="media/_Frames/FR_2.png" />
-                        Firefighting is one of the<br />
-                        toughest jobs in the world<br />
-                        and demands total teamwork.
-                    </div>
-                  </skoash.Component>
+                        <skoash.Image className="animated" src="media/S_6/img_6.7.png" />
+                        <div className="animated">
+                            <skoash.Image className="background" src="media/_Frames/FR_2.png" />
+                            Firefighting is one of the<br />
+                            toughest jobs in the world<br />
+                            and demands total teamwork.
+                        </div>
+                    </skoash.Component>
                 ]}
             />
         </WhoScreenComponent>

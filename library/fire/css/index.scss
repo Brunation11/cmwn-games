@@ -581,54 +581,52 @@ img.background {
         width: 840px;
     }
 
-    .selectable-audio {
-        ul {
-            display: flex;
-            margin: 100px 0 0;
-            padding: 0 0 0 40px;
-            justify-content: center;
+    .selectable {
+        display: flex;
+        margin: 100px 0 0;
+        padding: 0 0 0 40px;
+        justify-content: center;
 
-            li {
-                background-position: left top;
-                background-size: auto 100%;
-                cursor: pointer;
-                height: 360px;
-                list-style: none;
+        li {
+            background-position: left top;
+            background-size: auto 100%;
+            cursor: pointer;
+            height: 360px;
+            list-style: none;
+
+            &:hover {
+                background-position: right top;
+            }
+
+            &:nth-of-type(1) {
+                background-image: url('../media/S_6/img_6.2.png');
+                background-position: left 12px;
+                width: 175px;
 
                 &:hover {
-                    background-position: right top;
+                    background-position: right 12px;
                 }
+            }
 
-                &:nth-of-type(1) {
-                    background-image: url('../media/S_6/img_6.2.png');
-                    background-position: left 12px;
-                    width: 175px;
+            &:nth-of-type(2) {
+                background-image: url('../media/S_6/img_6.3.png');
+                background-position: left 23px;
+                width: 171px;
 
-                    &:hover {
-                        background-position: right 12px;
-                    }
+                &:hover {
+                    background-position: right 23px;
                 }
+            }
 
-                &:nth-of-type(2) {
-                    background-image: url('../media/S_6/img_6.3.png');
-                    background-position: left 23px;
-                    width: 171px;
+            &:nth-of-type(3) {
+                background-image: url('../media/S_6/img_6.4.png');
+                width: 200px;
+            }
 
-                    &:hover {
-                        background-position: right 23px;
-                    }
-                }
-
-                &:nth-of-type(3) {
-                    background-image: url('../media/S_6/img_6.4.png');
-                    width: 200px;
-                }
-
-                &:nth-of-type(4) {
-                    margin-left: -30px;
-                    background-image: url('../media/S_6/img_6.5.png');
-                    width: 252px;
-                }
+            &:nth-of-type(4) {
+                margin-left: -30px;
+                background-image: url('../media/S_6/img_6.5.png');
+                width: 252px;
             }
         }
     }
@@ -680,7 +678,7 @@ img.background {
     }
 
     &.REVEAL-OPEN {
-        .selectable-audio {
+        .selectable {
             display: none;
         }
 

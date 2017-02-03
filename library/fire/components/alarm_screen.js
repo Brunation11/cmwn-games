@@ -15,7 +15,9 @@ export default function (props, ref, key) {
                 <skoash.Audio ref="title" type="voiceOver" src="media/S_5/vo_FireBreaksOut.mp3" />
                 <skoash.Audio ref="directions" type="voiceOver" src="media/S_5/vo_ClickAndShowYouKnow.mp3" />
             </skoash.MediaSequence>
-            <p>Click and show you know.</p>
+            <p>
+                Click and show you know.
+            </p>
             <skoash.Image className="animated" src="media/S_5/img_5.1.png" />
             <skoash.Image className="animated" src="media/S_5/img_5.2.png" />
             <skoash.Image className="animated" src="media/S_1/img_1.1.png" />
