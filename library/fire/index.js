@@ -28,7 +28,7 @@ var Fire = (
             2: InfoChemicalScreen,
             3: InfoFuelOxygenScreen,
             4: InfoForrestScreen,
-//            5: AlarmScreen,
+            5: AlarmScreen,
 //            6: WhoScreen,
 //            7: MenAndWomenScreen,
 //            8: TriangleScreen,
