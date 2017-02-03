@@ -5,6 +5,7 @@ class ItemDrawerScreen extends skoash.Screen {
         super();
 
         this.state = {
+            load: true,
             opts: {
                 categories: [],
             },
