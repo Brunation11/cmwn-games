@@ -160,10 +160,10 @@ skoash.start(
                     return 0;
                 case 'click-cards':
                 case 'cards':
-                    return 1;
                 case 'time-to-collect':
                 case 'lets-play':
                 case 'remember':
+                    return 1;
                 case 'phaser-level-1':
                 case 'phaser-level-2':
                 case 'phaser-level-3':
