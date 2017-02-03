@@ -26,7 +26,7 @@ export default function (props, ref, key) {
 
         open += ' ' + state.name;
         this.updateScreenData({
-            key: 'states',
+            key: 'screen-2',
             data: {
                 open,
                 play: state.audio,
@@ -53,9 +53,9 @@ export default function (props, ref, key) {
             key={key}
             id="info-chemical"
             onOpen={init}
-            className={_.get(props, 'data.states.open', null)}
+            className={_.get(props, 'data.screen-2.open', null)}
         >
-            <skoash.MediaCollection ref="media-collection" play={_.get(props, 'data.states.play', null)}>
+            <skoash.MediaCollection ref="media-collection" play={_.get(props, 'data.screen-2.play', null)}>
                 <skoash.Audio type="voiceOver" src="media/S_2/vo_ChemicalReaction.mp3" />
                 <skoash.Audio type="sfx" src="media/S_2/S_2.2.mp3" />
                 <skoash.Audio type="sfx" src="media/S_2/S_2.3.mp3" />

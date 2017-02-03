@@ -1,6 +1,4 @@
 export default function (props, ref, key) {
-    // TODO why is this returning to the title screen 2/3/17 AIM
-
     const ANIMATE = [
         'WOOD',
         'PLUS',
@@ -10,12 +8,12 @@ export default function (props, ref, key) {
     ];
 
     var animate  = function () {
-        var index = _.get(props, 'data.states.index', 0);
-        var open = _.get(props, 'data.states.open', '');
+        var index = _.get(props, 'data.screen-3.index', 0);
+        var open = _.get(props, 'data.screen-3.open', '');
         open += ` ${ANIMATE[index]}`;
 
         this.updateScreenData({
-            key: 'states',
+            key: 'screen-3',
             data: {
                 index: index + 1,
                 open,
@@ -29,7 +27,7 @@ export default function (props, ref, key) {
             ref={ref}
             key={key}
             id="info-fuel-oxygen"
-            className={_.get(props, 'data.states.open', null)}
+            className={_.get(props, 'data.screen-3.open', null)}
         >
             <skoash.MediaSequence ref="audio-sequence">
                     <skoash.Audio
