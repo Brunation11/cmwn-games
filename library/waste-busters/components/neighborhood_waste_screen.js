@@ -8,7 +8,7 @@ export default function (props, ref, key) {
         >
             <skoash.Audio
                 type="voiceOver"
-                src={CMWN.MEDIA.VO + 'compost.mp3'}
+                src={CMWN.MEDIA.VO + 'identifywaste.mp3'}
             />
             <div className="tree-3" />
             <div className="tree-4" />
