@@ -61,7 +61,8 @@
                     width: 100%;
                     text-shadow: 3px 3px 0 $black;
                     color: $light-orange;
-                    font-size: 70px;
+                    font-family: Japers;
+                    font-size: 90px;
                 }
 
                 .copy {
@@ -132,6 +133,7 @@
         width: 20%;
         text-align: left;
         color: $black;
+        font-family: Japers;
 
         * {
             display: inline;

@@ -58,6 +58,7 @@ skoash.start(
         }}
         assets={[
             <skoash.Font name="Chelsea Market" />,
+            <skoash.Font name="Japers" />,
             <skoash.Font name="Source Sans Pro" />,
             // <skoash.Font name="CMWN" />,
             <skoash.Image
