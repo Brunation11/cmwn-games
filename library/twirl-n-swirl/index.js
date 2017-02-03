@@ -44,13 +44,13 @@ var TwirlNSwirl = (
             quit: QuitScreen,
         }}
         loader={<Loader />}
-        getBackgroundIndex={function (index, id) {
-            switch (id) {
-                case 'catch-game-level-one':
-                case 'catch-game-level-two':
-                case 'catch-game-level-three':
-                case 'catch-game-level-four':
-                case 'catch-game-level-five':
+        getBackgroundIndex={function (index) {
+            switch (index) {
+                case 8:
+                case 9:
+                case 10:
+                case 11:
+                case 12:
                     return 1;
                 default:
                     return 0;
