@@ -16,7 +16,7 @@ export default function (props, ref, key) {
             <skoash.Image className="hidden reveal" src="media/_Frame/Fr_3.png" />
             <skoash.Component className="group">
                 <Carousel
-                    className={'slide' + (_.get(props, 'data.revealScore.score', 0) === 7 ? ' disable' : '')}
+                    className={'slide' + (_.get(props, 'data.reveal.indexToOpen', 0) === 7 ? ' disable' : '')}
                     clickable
                     delay={400}
                     targetIndex={2}
@@ -57,7 +57,7 @@ export default function (props, ref, key) {
                         });
                     }}
                     dataTarget="target"
-                    setTarget={_.get(props, 'data.revealScore.score', 0)}
+                    setTarget={_.get(props, 'data.reveal.indexToOpen', 0)}
                     completeOnStart
                     checkComplete={false}
                     targets={[
@@ -121,7 +121,7 @@ export default function (props, ref, key) {
                     dataTarget="score"
                     completeDelay={1000}
                     max={_.get(props, 'data.target.amount', null)}
-                    complete
+                    completeOnStart
                     resetOnComplete
                     multipleCompletes
                     onComplete={function () {
@@ -130,8 +130,8 @@ export default function (props, ref, key) {
                                 score: {
                                     correct: 0
                                 },
-                                revealScore: {
-                                    score: _.get(props, 'data.revealScore.score', -1) + 1
+                                reveal: {
+                                    indexToOpen: _.get(props, 'data.reveal.indexToOpen', -1) + 1
                                 }
                             }
                         });
@@ -157,9 +157,8 @@ export default function (props, ref, key) {
                 <skoash.Audio ref="7" type="voiceOver" src="media/S_10/VO_10.10.mp3" />,
             </skoash.MediaCollection>
             <skoash.Reveal
-              openOnStart="0"
               openTarget="reveal"
-              openReveal={_.get(props, 'data.revealScore.score', 0)}
+              openReveal={_.get(props, 'data.reveal.indexToOpen')}
               list={[
                   <li>
                       <p className="typing">CLICK WHEN THE PRINT</p>
