@@ -246,12 +246,13 @@ p {
     }
 }
 
+.skoash-game.SFX:not(.DEMO) .close-reveal,
 .skoash-game.VOICE-OVER:not(.DEMO) .close-reveal,
 .screen.GATED .next-screen {
-    transition: opacity 0s;
+    display: none;
+    transition: opacity 0s display 0s;
     opacity: 0;
     cursor: default;
-    pointer-events: none;
 }
 
 .skoash-game.VOICE-OVER:not(.DEMO) .reveal .close-reveal,

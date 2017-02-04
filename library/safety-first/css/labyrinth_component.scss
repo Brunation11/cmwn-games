@@ -108,12 +108,10 @@
         }
 
         .close-reveal {
-            display: block;
             position: absolute;
             right: 1%;
             bottom: 2%;
-            // transition: opacity 1s;
-            // opacity: 0;
+            transition: opacity 4s display 4s;
             z-index: 3;
             background-position: -665px -43px;
             width: 80px;
@@ -122,10 +120,6 @@
             &:hover {
                 background-position: -667px -187px;
             }
-        }
-
-        &:not(.open-none) .close-reveal {
-            // opacity: 1;
         }
 
         &.open-instructions .close-reveal {
