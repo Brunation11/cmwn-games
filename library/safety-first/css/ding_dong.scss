@@ -38,7 +38,7 @@
     }
 }
 
-.skoash-game.SCREEN-ding-dong:not(.DEMO) {
+.skoash-game:not(.DEMO).SCREEN-ding-dong #ding-dong:not(.COMPLETE) {
     .next-screen {
         display: none;
     }
