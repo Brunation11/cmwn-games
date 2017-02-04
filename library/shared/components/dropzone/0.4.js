@@ -10,7 +10,7 @@ class Dropzone extends skoash.Component {
 
         self.dropzoneCorners = _.map(self.props.dropzones, (value, key) =>
             self.getCorners(ReactDOM.findDOMNode(self.refs[`dropzone-${key}`]))
-    );
+        );
 
         if (self.loadData && typeof self.loadData === 'object') {
             _.forIn(self.loadData, (ref1, key1) => {
@@ -97,21 +97,22 @@ class Dropzone extends skoash.Component {
         var droppedDOM;
         var corners;
         var dropzoneRef;
+        var self = this;
 
         droppedDOM = dropped.DOMNode || ReactDOM.findDOMNode(dropped);
-        corners = this.getCorners(droppedDOM);
+        corners = self.getCorners(droppedDOM);
 
-        dropzoneRef = _.reduce(this.props.dropzones, (a, v, k) => {
-            if (skoash.util.doIntersect(corners, this.dropzoneCorners[k])) {
-                return this.refs[`dropzone-${k}`];
+        dropzoneRef = _.reduce(self.props.dropzones, (a, v, k) => {
+            if (skoash.util.doIntersect(corners, self.dropzoneCorners[k])) {
+                return self.refs[`dropzone-${k}`];
             }
             return a;
         }, false);
 
         if (dropzoneRef) {
-            this.inBounds(dropped, dropzoneRef);
+            self.inBounds(dropped, dropzoneRef);
         } else {
-            this.outOfBounds(dropped);
+            self.outOfBounds(dropped);
         }
     }
 
@@ -126,6 +127,8 @@ class Dropzone extends skoash.Component {
             if (~index) contains.splice(index, 1);
             dropzoneRef.contains = contains;
         });
+
+        this.playMedia('drag');
 
         this.props.onDrag.call(this, dragging);
     }

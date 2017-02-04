@@ -1,37 +1,13 @@
-import Draggable from 'shared/components/draggable/0.1';
-import DropzoneReveal from 'shared/components/dropzone_reveal/0.1';
+import Draggable from 'shared/components/draggable/0.4';
+import Dropzone from 'shared/components/dropzone/0.4';
 
 class TriangleScreenComponent extends skoash.Screen {
-
-    getRefs(currentRef) {
-        if (!currentRef.refs) {
-            return;
-        }
-        _.each(currentRef.refs, (ref, key) => {
-            this.refs[key] = ref;
-            if (key.includes('children')) {
-                this.getRefs(ref);
-            }
-        });
-    }
-
-    bootstrap() {
-        var ref;
-        var self = this;
-
-        super.bootstrap();
-
-        ref = self.refs['children-0'];
-        if (ref) {
-            self.getRefs(ref);
-        }
-    }
 
     open() {
         super.open();
 
         this.checkComplete = null;
-        this.refs['dropzone-reveal'].incompleteRefs();
+        this.refs['reveal'].incompleteRefs();
         this.incomplete();
         this.checkComplete = super.checkComplete;
     }
@@ -39,62 +15,135 @@ class TriangleScreenComponent extends skoash.Screen {
 
 
 export default function (props, ref, key) {
+    var getRefs = function (currentRef) {
+        if (!currentRef.refs) {
+            return;
+        }
+        _.each(currentRef.refs, (ref, key) => {
+            this.refs[key] = ref;
+            if (key.includes('children')) {
+                getRefs.call(this, ref);
+            }
+        });
+    };
+
+    var init = function () {
+        var ref = this.refs['children-0'];
+        if (ref) {
+            getRefs.call(this, ref);
+        }
+    };
+
+    var openReveal = function (dropped, dropzoneRef) {
+        this.updateScreenData({
+            key: 'dropzone',
+            data: {
+                message: dropped.props.message
+            }
+        });
+    }
+
+    var revealComplete = function () {
+        this.updateScreenData({
+            key: 'reveal',
+            data: {
+                complete: true
+            }
+        });
+    };
+
     return (
         <TriangleScreenComponent
             {...props}
             ref={ref}
             key={key}
             id="triangle"
+            onBootstrap={init}
         >
             <skoash.Component className="center">
+                <skoash.Component className="title">
+                    <skoash.Image src="media/S_8/img_8.1.png" />
+                    <h3>Choose the words and drag to form a triangle</h3>
+                </skoash.Component>
                 <skoash.Component className="frame">
-                    <skoash.Image className="title" ref="title" src="media/S_8/img_8.1.png" />
-                    <div className="directions">
-                        <h3>Choose the words and drag to form a triangle</h3>
-                    </div>
                     <skoash.MediaSequence>
                         <skoash.Audio type="voiceOver" src="media/S_8/vo_ThreeThingsMakeFireBurn.mp3" />
                         <skoash.Audio type="voiceOver" src="media/S_8/vo_ChooseTheWords.mp3" />
                     </skoash.MediaSequence>
-                    <DropzoneReveal
-                        ref="dropzone-reveal"
-                        assets={[
-                            <skoash.Audio type="sfx" data-ref="complete" src="media/S_8/S_8.3.mp3" />,
+                    <skoash.MediaCollection
+                        play={
+                            (_.get(props, 'data.reveal.complete', null)) ? 'complete' :
+                            _.get(props, 'data.draggable.dropped.props.message', null)
+                        }
+                    >
+                        <skoash.Audio
+                            type="voiceOver"
+                            data-ref="air"
+                            src="media/S_8/vo_Air.mp3"
+                        />
+                        <skoash.Audio
+                            type="voiceOver"
+                            data-ref="clouds"
+                            src="media/S_8/vo_Clouds.mp3"
+                            complete
+                        />
+                        <skoash.Audio
+                            type="voiceOver"
+                            data-ref="co2"
+                            src="media/S_8/vo_CarbonDioxide.mp3"
+                            complete
+                        />
+                        <skoash.Audio
+                            type="voiceOver"
+                            data-ref="heat"
+                            src="media/S_8/vo_Heat.mp3"
+                        />
+                        <skoash.Audio
+                            type="voiceOver"
+                            data-ref="smoke"
+                            src="media/S_8/vo_Smoke.mp3"
+                            complete
+                        />
+                        <skoash.Audio
+                            type="voiceOver"
+                            data-ref="fuel"
+                            src="media/S_8/vo_Fuel.mp3"
+                        />
+                        <skoash.Audio
+                            type="voiceOver"
+                            data-ref="water"
+                            src="media/S_8/vo_Water.mp3"
+                            complete
+                        />
+
+                        <skoash.Audio
+                            type="sfx"
+                            data-ref="complete"
+                            src="media/S_8/S_8.3.mp3"
+                        />,
+                    </skoash.MediaCollection>
+                    <skoash.Repeater
+                        className="draggables"
+                        amount={7}
+                        item={<Draggable
+                          returnOnIncorrect
+                        />}
+                        props={[
+                          {message: 'air'},
+                          {message: 'clouds', return: true},
+                          {message: 'co2', return: true},
+                          {message: 'heat'},
+                          {message: 'smoke', return: true},
+                          {message: 'fuel'},
+                          {message: 'water', return: true},
                         ]}
-                        dropzones={[
-                            <skoash.Component answers={['fuel', 'heat', 'air']}>
-                            <skoash.Image className="grey-triangle" src="media/S_8/img_8.10a.png" />
-                            <skoash.Image className="color-triangle" src="media/S_8/img_8.10e.png" />
-                          </skoash.Component>
-                        ]}
-                        dropzoneDraggables={[
-                            <Draggable message="air" />,
-                            <Draggable message="clouds" return/>,
-                            <Draggable message="co2" return/>,
-                            <Draggable message="heat" />,
-                            <Draggable message="smoke" return/>,
-                            <Draggable message="fuel" />,
-                            <Draggable message="water" return/>,
-                        ]}
-                        dropzoneAssets={[
-                            <skoash.Audio
-                                type="sfx"
-                                data-ref="incorrect"
-                                src="media/S_8/S_8.1.mp3"
-                                complete
-                            />,
-                            <skoash.Audio
-                                type="sfx"
-                                data-ref="correct"
-                                src="media/S_8/S_8.2.mp3"
-                            />,
-                            <skoash.Audio
-                                type="sfx"
-                                data-ref="drag"
-                                src="media/S_8/S_8.4.mp3"
-                            />,
-                        ]}
-                        revealList={[
+                    />
+                    <skoash.Reveal
+                        ref="reveal"
+                        openMultiple
+                        openReveal={_.get(props, 'data.dropzone.message', null)}
+                        onComplete={revealComplete}
+                        list={[
                             <skoash.ListItem ref="fuel" correct>
                                 <skoash.Image data-ref="fuel" src="media/S_8/img_8.10b.png" />
                                 <skoash.Image
@@ -120,45 +169,40 @@ export default function (props, ref, key) {
                                 />
                             </skoash.ListItem>,
                         ]}
-                        revealAssets={[
+                    />
+                    <Dropzone
+                        ref="dropzone"
+                        dropped={_.get(props, 'data.draggable.dropped')}
+                        dragging={_.get(props, 'data.draggable.dragging')}
+                        onCorrect={openReveal}
+                        dropzones={[
+                            <skoash.Component answers={['fuel', 'heat', 'air']}>
+                                <skoash.Image
+                                    className="grey-triangle"
+                                    src="media/S_8/img_8.10a.png"
+                                />
+                                <skoash.Image
+                                    className="color-triangle"
+                                    src="media/S_8/img_8.10e.png"
+                                />
+                            </skoash.Component>
+                        ]}
+                        assets={[
                             <skoash.Audio
-                                type="voiceOver"
-                                data-ref="air"
-                                src="media/S_8/vo_Air.mp3"
-                            />,
-                            <skoash.Audio
-                                type="voiceOver"
-                                data-ref="clouds"
-                                src="media/S_8/vo_Clouds.mp3"
+                                type="sfx"
+                                data-ref="incorrect"
+                                src="media/S_8/S_8.1.mp3"
                                 complete
                             />,
                             <skoash.Audio
-                                type="voiceOver"
-                                data-ref="co2"
-                                src="media/S_8/vo_CarbonDioxide.mp3"
-                                complete
+                                type="sfx"
+                                data-ref="correct"
+                                src="media/S_8/S_8.2.mp3"
                             />,
                             <skoash.Audio
-                                type="voiceOver"
-                                data-ref="heat"
-                                src="media/S_8/vo_Heat.mp3"
-                            />,
-                            <skoash.Audio
-                                type="voiceOver"
-                                data-ref="smoke"
-                                src="media/S_8/vo_Smoke.mp3"
-                                complete
-                            />,
-                            <skoash.Audio
-                                type="voiceOver"
-                                data-ref="fuel"
-                                src="media/S_8/vo_Fuel.mp3"
-                            />,
-                            <skoash.Audio
-                                type="voiceOver"
-                                data-ref="water"
-                                src="media/S_8/vo_Water.mp3"
-                                complete
+                                type="sfx"
+                                data-ref="drag"
+                                src="media/S_8/S_8.4.mp3"
                             />,
                         ]}
                     />

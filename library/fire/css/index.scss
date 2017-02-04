@@ -263,7 +263,8 @@ img.background {
     }
 
     &#triangle {
-        .dropzone-reveal {
+        .draggables {
+            cursor: default;
             pointer-events: none;
         }
     }
@@ -733,56 +734,47 @@ img.background {
 }
 
 #triangle {
-    display: flex;
-
-    img.title {
-        width: 740px;
+    .center > div {
+        display: block;
+        margin: 15px auto;
     }
 
-    div.directions {
+    .title {
         text-align: center;
         color: $white;
+
+        img {
+            width: 740px;
+        }
     }
 
-    .dropzone-reveal {
-        height: 360px;
-    }
-
-    .dropzone-container {
+    .draggables {
+        display: inline-block;
         position: absolute;
-        width: 100%;
+        background-image: url('../media/S_8/img_8.2.png');
+        background-size: 100% 100%;
+        padding: 10px;
+        width: 240px;
+        z-index: 2;
 
-        ul {
-            display: inline-block;
-            position: absolute;
-            left: 0;
-            background-image: url('../media/S_8/img_8.2.png');
-            background-size: 100% 100%;
-            padding: 10px;
-            width: 240px;
-            vertical-align: middle;
+        .draggable {
+            width: auto;
+            height: 40px;
+            background-repeat: no-repeat;
+            background-position: center center;
+            background-size: auto 100%;
+        }
 
-            li {
-                width: auto;
-                height: 40px;
-                list-style: none;
-
-                @for $i from 1 through 7 {
-                    $img: $i + 2;
-
-                    &:nth-of-type(#{$i}) .draggable {
-                        background-image: url('../media/S_8/img_8.#{$img}.png');
-                        background-repeat: no-repeat;
-                        background-position: center center;
-                        background-size: auto 100%;
-                    }
-                }
+        @for $i from 1 through 7 {
+            $img: $i + 2;
+            .draggable:nth-of-type(#{$i}) {
+                background-image: url('../media/S_8/img_8.#{$img}.png');
             }
         }
     }
 
     .reveal,
-    .dropzone {
+    .dropzones div {
         display: inline-block;
         position: absolute;
         right: 0;
@@ -820,12 +812,12 @@ img.background {
                 opacity: 0;
             }
 
-            ~ .dropzone-container img {
-                &.grey-trianlge {
+            ~ .dropzones {
+                .grey-triangle {
                     opacity: 0;
                 }
 
-                &.color-triangle {
+                .color-triangle {
                     opacity: 1;
                 }
             }
@@ -836,8 +828,8 @@ img.background {
         }
     }
 
-    .dropzone {
-        img.grey-triangle {
+    .dropzones {
+        .grey-triangle {
             top: 0;
             opacity: 1;
             z-index: -1;

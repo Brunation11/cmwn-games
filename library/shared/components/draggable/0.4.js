@@ -86,7 +86,7 @@ class Draggable extends skoash.Component {
             endY,
         });
 
-        this.updateGameState({
+        this.updateScreenData({
             path: this.props.draggableTarget,
             data: {
                 dragging: this,
@@ -189,7 +189,7 @@ class Draggable extends skoash.Component {
     }
 
     onDrop() {
-        this.updateGameState({
+        this.updateScreenData({
             path: this.props.draggableTarget,
             data: {
                 dragging: null,
