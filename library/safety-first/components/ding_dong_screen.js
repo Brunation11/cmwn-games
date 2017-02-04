@@ -9,6 +9,15 @@ export default function (props, ref, key) {
                 this.next();
             }}
         >
+            <skoash.Image
+                className="hidden"
+                src={`${ENVIRONMENT.MEDIA}ImageAssets/frame.quit.png`}
+            />
+            <skoash.Image
+                className="hidden"
+                src={`${ENVIRONMENT.MEDIA}SpritesAnimations/sprites.h1.png`}
+            />
+
             <skoash.MediaSequence>
                 <skoash.Audio
                     ref="ding-dong"

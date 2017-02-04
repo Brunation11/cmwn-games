@@ -20,6 +20,7 @@ export default function (props, ref, key, opts = {}) {
     };
 
     selectRespond = function (target) {
+        if (_.get(props, 'data.sfx') === target) return;
         this.updateGameState({
             path: 'sfx',
             data: target
@@ -43,6 +44,27 @@ export default function (props, ref, key, opts = {}) {
             id={`whos-at-the-door-${opts.id}`}
             complete={_.get(props, 'data.game.complete')}
         >
+            <skoash.Image
+                className="hidden"
+                src={`${ENVIRONMENT.MEDIA}SpritesAnimations/sprites.dogsinframes.png`}
+            />
+            <skoash.Image
+                className="hidden"
+                src={`${ENVIRONMENT.MEDIA}SpritesAnimations/sprites.h1.png`}
+            />
+            <skoash.Image
+                className="hidden"
+                src={`${ENVIRONMENT.MEDIA}ImageAssets/bkg.dooropened.jpg`}
+            />
+            <skoash.Image
+                className="hidden"
+                src={`${ENVIRONMENT.MEDIA}ImageAssets/frame.roundedrec.png`}
+            />
+            <skoash.Image
+                className="hidden"
+                src={`${ENVIRONMENT.MEDIA}SpritesAnimations/sprites.yesno.png`}
+            />
+
             <skoash.MediaSequence>
                 <skoash.Audio
                     ref="intro"
@@ -79,12 +101,6 @@ export default function (props, ref, key, opts = {}) {
 
             <MediaCollection
                 play={_.get(props, 'data.sfx')}
-                onPlay={function () {
-                    this.updateGameState({
-                        path: 'sfx',
-                        data: ''
-                    });
-                }}
             >
                 <skoash.Audio
                     ref="yes"

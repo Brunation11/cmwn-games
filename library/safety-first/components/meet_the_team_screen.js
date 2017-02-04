@@ -12,6 +12,35 @@ export default function (props, ref, key) {
             key={key}
             id="meet-the-team"
         >
+            <skoash.Image
+                className="hidden"
+                src={`${ENVIRONMENT.MEDIA}SpritesAnimations/sprites.labels.png`}
+            />
+            <skoash.Image
+                className="hidden"
+                src={`${ENVIRONMENT.MEDIA}ImageAssets/officer.barkley.png`}
+            />
+            <skoash.Image
+                className="hidden"
+                src={`${ENVIRONMENT.MEDIA}ImageAssets/officer.shepherd.png`}
+            />
+            <skoash.Image
+                className="hidden"
+                src={`${ENVIRONMENT.MEDIA}ImageAssets/officer.wolf.png`}
+            />
+            <skoash.Image
+                className="hidden"
+                src={`${ENVIRONMENT.MEDIA}SpritesAnimations/sprites.slider.jpg`}
+            />
+            <skoash.Image
+                className="hidden"
+                src={`${ENVIRONMENT.MEDIA}SpritesAnimations/sprites.profile.png`}
+            />
+            <skoash.Image
+                className="hidden"
+                src={`${ENVIRONMENT.MEDIA}ImageAssets/bkg.3.jpg`}
+            />
+
             <skoash.Audio
                 ref="intro"
                 type="voiceOver"

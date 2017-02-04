@@ -6,6 +6,19 @@ export default function (props, ref, key, opts = {}) {
             key={key}
             id={opts.id}
         >
+            <skoash.Image
+                className="hidden"
+                src={`${ENVIRONMENT.MEDIA}ImageAssets/frame.quit.png`}
+            />
+            <skoash.Image
+                className="hidden"
+                src={`${ENVIRONMENT.MEDIA}SpritesAnimations/sprites.h1.png`}
+            />
+            <skoash.Image
+                className="hidden"
+                src={`${ENVIRONMENT.MEDIA}ImageAssets/goodjob.png`}
+            />
+
             <skoash.Audio
                 ref="vo"
                 type="voiceOver"
