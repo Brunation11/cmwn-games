@@ -69,24 +69,40 @@
     }
 
     .stats {
+        display: flex;
         position: absolute;
         top: 0;
         left: 0;
+
+        > div {
+            margin: 10px;
+            color: $black;
+            font-size: 30px;
+        }
+
+        p {
+            @include text-stroke(2, $black);
+            color: $grass;
+            font-size: 30px;
+        }
     }
 
     .level {
         text-align: center;
         font-size: 1.25rem;
+        order: 3;
     }
 
     .score {
         text-align: center;
         font-size: 1.25rem;
+        order: 2;
     }
 
     .timer {
         text-align: center;
         font-size: 1.25rem;
+        order: 1;
     }
 
     .sprite-animation {
