@@ -38,7 +38,7 @@ class SkribbleGame extends skoash.Game {
         var rules;
         var skribble;
         var self = this;
-        console.log(skramble);
+
         friend_to = self.state.recipient && self.state.recipient.user_id ?
             self.state.recipient.user_id : null;
         rules = self.getRules();
@@ -57,7 +57,7 @@ class SkribbleGame extends skoash.Game {
         if (JSON.stringify(skribble) !== JSON.stringify(this.state.skribble)) {
             self.emit({
                 name: 'saveSkribble',
-                game: self.config.id,
+                game: self.props.config.id,
                 skribble,
             }).then(skribbleData => {
                 self.setState({

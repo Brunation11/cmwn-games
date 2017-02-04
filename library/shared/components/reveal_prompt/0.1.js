@@ -46,7 +46,7 @@ export default class RevealPrompt extends skoash.Component {
             self.complete();
         } else {
             _.each(self.refs, (ref, key) => {
-                if (ref && key === message) ref.complete();
+                if (key === message) _.invoke(ref, 'complete');
             });
         }
 
@@ -80,7 +80,7 @@ export default class RevealPrompt extends skoash.Component {
           ref={ref}
           key={key}
         />
-      );
+            );
         });
     }
 
