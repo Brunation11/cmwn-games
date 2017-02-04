@@ -31,9 +31,8 @@ class SkribbleGame extends skoash.Game {
         return this.refs['screen-canvas'].getData();
     }
 
-    save(opts) {
+    save(opts = {}, skramble = false) {
         /* eslint-disable camelcase */
-        var skramble = opts === true;
         var friend_to;
         var rules;
         var skribble;
@@ -70,7 +69,7 @@ class SkribbleGame extends skoash.Game {
     }
 
     send() {
-        this.save(true);
+        this.save({}, true);
 
         this.refs['screen-canvas'].reset();
         this.navigator.goto({
