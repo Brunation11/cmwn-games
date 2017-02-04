@@ -166,7 +166,6 @@ button,
     }
 
     &.close-reveal {
-        transition: opacity 1s;
         background-position: -660px 240px;
         width: 30px;
         height: 30px;
@@ -250,9 +249,14 @@ p {
 .skoash-game.VOICE-OVER:not(.DEMO) .close-reveal,
 .screen.GATED .next-screen {
     transition: opacity 0s;
-    opacity: .75;
+    opacity: 0;
     cursor: default;
     pointer-events: none;
+}
+
+.skoash-game.VOICE-OVER:not(.DEMO) .reveal .close-reveal,
+.reveal.open-none .close-reveal {
+    display: none;
 }
 
 .skoash-game.MENU-quit .screen {
