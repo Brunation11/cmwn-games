@@ -63,6 +63,10 @@
                 }
             }
 
+            &:not(:nth-of-type(1)) {
+                pointer-events: none;
+            }
+
             &.HIGHLIGHTED {
                 width: 150px;
                 height: 100px;
@@ -75,8 +79,17 @@
                         top: #{nth($highlighted-tops, $i)};
                     }
                 }
+
+                + li {
+                    pointer-events: auto;
+
+                    .VOICE-OVER & {
+                        pointer-events: none;
+                    }
+                }
             }
         }
+
     }
 
     .reveal {
