@@ -92,7 +92,7 @@
 
                     &::after {
                         @include center;
-                        @include job-icons($i, $width, $height, $icon-size);
+                        @include job-icons($i, $width - 10, $height - 10, $icon-size);
                         content: '';
                     }
                 }
@@ -197,7 +197,7 @@
 
                         &::after {
                             @include center;
-                            @include job-icons($j, $width, $height, $icon-size);
+                            @include job-icons($j, $width - 10, $height - 10, $icon-size);
                             content: '';
                         }
                     }

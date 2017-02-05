@@ -35,7 +35,7 @@
         @if $label == false {
             @include sprite('#{$sprite}sprite.jobicons.png', 1500px, 382px, 7, 2, $column, 2, 2, $width, $height);
         } @else {
-            @include sprite('#{$sprite}sprite.jobicons.png', 981px, 250px, 7, 2, $column, 1, 1, $width, $height);
+            @include sprite('#{$sprite}sprite.jobicons.png', 910px, 232px, 7, 2, $column, 1, 1, $width, $height);
         }
     }
 }
