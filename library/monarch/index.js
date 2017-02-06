@@ -13,7 +13,6 @@ import BonusLevelOneScreen from './components/bonus_level_one_screen';
 import BonusLevelTwoScreen from './components/bonus_level_two_screen';
 import VideoPupaScreen from './components/video_pupa_screen';
 import InfoYouWonScreen from './components/info_you_won_screen';
-import VideoMonarchScreen from './components/video_monarch_screen';
 import InfoMigrateScreen from './components/info_migrate_screen';
 import InfoVideoTwoScreen from './components/info_video_two_screen';
 import MonarchGenerationOneScreen from './components/monarch_generation_one_screen';
@@ -41,7 +40,6 @@ skoash.start(
             BonusLevelTwoScreen,
             VideoPupaScreen,
             InfoYouWonScreen,
-            VideoMonarchScreen,
             InfoMigrateScreen,
             InfoVideoTwoScreen,
             MonarchGenerationOneScreen,
