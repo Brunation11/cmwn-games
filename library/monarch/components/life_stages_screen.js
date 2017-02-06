@@ -126,7 +126,7 @@ export default function (props, ref, key) {
                         className="frame standard caterpillar"
                     >
                         <h2 className="label">
-                            Caterpiller
+                            Caterpillar
                         </h2>
                         <skoash.Component
                             className="life"
