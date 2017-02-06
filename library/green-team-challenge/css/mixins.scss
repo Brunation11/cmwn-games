@@ -46,8 +46,9 @@
     @for $i from 1 through length($flips) {
         &[id*=-level-#{$i}] .#{$class}::after {
             @include flip-sprite(nth($flips, $i), $row);
-            @include position(absolute, null 140px 30px null);
+            @include position(absolute, null 140px 40px null);
             display: block;
+            transform: scale(1.8);
             content: '';
         }
     }

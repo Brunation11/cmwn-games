@@ -33,6 +33,9 @@ export default function (levelNumber) {
                 id={`pre-level-${levelNumber}`}
                 className={opts.className}
             >
+                <skoash.MediaSequence>
+                    <skoash.Audio type="sfx" src={`${CMWN.MEDIA.EFFECT}LevelComplete.mp3`} />
+                </skoash.MediaSequence>
                 <skoash.Repeater
                     className="stars"
                     amount={5}
