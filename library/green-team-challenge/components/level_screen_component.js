@@ -1,3 +1,5 @@
+import classNames from 'classnames';
+
 let levelKeys = [
     'recyclingChampion',
     'pricelessPourer',
@@ -21,9 +23,10 @@ export default function (levelNumber) {
 
     return function (props, ref, key, opts = {}) {
         let levelData = _.get(props, `gameState.data.${levelKey}.levels`, {});
-        let classNames = _.map(levelData, level =>
-            ({className: level.complete ? 'earned' : ''})
+        let repeaterProps = _.map(_.get(props, 'data.earned'), level =>
+            ({className: level.playing ? 'earned' : ''})
         );
+        let allEarned = repeaterProps.length === 5 && _.every(repeaterProps, v => v.className);
 
         return (
             <skoash.Screen
@@ -31,15 +34,38 @@ export default function (levelNumber) {
                 ref={ref}
                 key={key}
                 id={`pre-level-${levelNumber}`}
-                className={opts.className}
+                backgroundAudio={4}
+                className={classNames(opts.className, {
+                    ALL_EARNED: allEarned,
+                    APPEAR: _.get(props, 'data.appear.playing'),
+                })}
             >
-                <skoash.MediaSequence>
-                    <skoash.Audio type="sfx" src={`${CMWN.MEDIA.EFFECT}LevelComplete.mp3`} />
-                </skoash.MediaSequence>
+                <skoash.MediaSequence
+                    children={[
+                        <skoash.Audio
+                            type="sfx"
+                            src={`${CMWN.MEDIA.EFFECT}LevelComplete.mp3`}
+                        />,
+                        <skoash.Audio
+                            playTarget="appear"
+                            type="sfx"
+                            src={`${CMWN.MEDIA.EFFECT}LevelAppear.mp3`}
+                        />,
+                    ].concat(
+                        _.map(levelData, (data, level) =>
+                            <skoash.Audio
+                                playTarget={['earned', level]}
+                                type="sfx"
+                                src={`${CMWN.MEDIA.EFFECT}GetStar.mp3`}
+                                volume={data.complete ? 1 : 0}
+                            />
+                        )
+                    )}
+                />
                 <skoash.Repeater
                     className="stars"
                     amount={5}
-                    props={classNames}
+                    props={repeaterProps}
                 />
                 <div className="frame">
                     <h3>Level {levelInt}</h3>

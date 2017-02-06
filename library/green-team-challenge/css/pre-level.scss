@@ -4,6 +4,10 @@
 [id*=pre-level] {
     @include level-flips(2, screen-content);
 
+    &.ALL_EARNED {
+        @include level-flips(1, screen-content);
+    }
+
     .stars {
         @include background('#{$image}purple.ribbon.png');
         height: 280px;
@@ -30,6 +34,8 @@
         @include background('#{$image}luggage.png');
         @include center;
         top: 61%;
+        transform: translateX(-50%) translateY(-50%) scale(.1) rotate(#{-360 * 3}deg);
+        transition: transform 1s;
         padding-top: 210px;
         width: 500px;
         height: 540px;
@@ -65,6 +71,12 @@
 
         p {
             font-size: 24px;
+        }
+    }
+
+    &.STARTED {
+        .frame {
+            transform: translateX(-50%) translateY(-50%) scale(1) rotate(0deg);
         }
     }
 }
