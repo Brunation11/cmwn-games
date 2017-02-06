@@ -183,6 +183,9 @@ class CanvasScreen extends skoash.Screen {
                       items={this.state.menu.items}
                       level={0}
                       lastLevel={1}
+                      onStart={function () {
+                          this.setState({classes: {}});
+                      }}
                 />
                 <div className={this.getContainerClasses()}>
                       <Canvas
