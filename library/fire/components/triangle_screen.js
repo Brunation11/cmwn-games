@@ -7,7 +7,8 @@ class TriangleScreenComponent extends skoash.Screen {
         super.open();
 
         this.checkComplete = null;
-        this.refs['reveal'].incompleteRefs();
+        var reveal = _.get(this.refs, 'children-0.refs.children-1.refs.reveal', null);
+        if (reveal) reveal.incompleteRefs();
         this.incomplete();
         this.checkComplete = super.checkComplete;
     }
@@ -15,25 +16,6 @@ class TriangleScreenComponent extends skoash.Screen {
 
 
 export default function (props, ref, key) {
-    var getRefs = function (currentRef) {
-        if (!currentRef.refs) {
-            return;
-        }
-        _.each(currentRef.refs, (ref, key) => {
-            this.refs[key] = ref;
-            if (key.includes('children')) {
-                getRefs.call(this, ref);
-            }
-        });
-    };
-
-    var init = function () {
-        var ref = this.refs['children-0'];
-        if (ref) {
-            getRefs.call(this, ref);
-        }
-    };
-
     var openReveal = function (dropped, dropzoneRef) {
         this.updateScreenData({
             key: 'dropzone',
@@ -58,7 +40,6 @@ export default function (props, ref, key) {
             ref={ref}
             key={key}
             id="triangle"
-            onBootstrap={init}
         >
             <skoash.Component className="center">
                 <skoash.Component className="title">
