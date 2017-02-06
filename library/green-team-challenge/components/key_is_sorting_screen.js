@@ -30,6 +30,7 @@ export default function (props, ref, key) {
             </p>
         ),
         vo: 'TheKey',
+        backgroundAudio: 'BKG6',
         extras: arrayOfAudio,
     });
 }

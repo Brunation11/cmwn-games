@@ -5,8 +5,8 @@
     text-shadow: 2px 2px 2px $text-shadow;
 }
 
-@mixin mirror {
-    transform: scale3d(-1, 1, 1);
+@mixin mirror($transform: translateX(0)) {
+    transform: $transform scale3d(-1, 1, 1);
 }
 
 @mixin nav-button($column, $width: 0, $height: 0) {

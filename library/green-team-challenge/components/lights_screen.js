@@ -107,6 +107,7 @@ export default function (props, ref, key) {
             ref={ref}
             key={key}
             id="lights"
+            backgroundAudio="BKG6"
         >
             <skoash.Repeater
                 amount={imageSrcs.length}
@@ -126,6 +127,22 @@ export default function (props, ref, key) {
                 reveals: revealList,
                 media: mediaCollectionList,
             })}
+            <skoash.MediaCollection
+                play={_.get(props, 'data.selectable.target') && 'click'}
+            >
+                <skoash.MediaSequence
+                    ref="click"
+                >
+                    <skoash.Audio
+                        type="sfx"
+                        src={`${CMWN.MEDIA.EFFECT}ClickRecButton.mp3`}
+                    />
+                    <skoash.Audio
+                        type="sfx"
+                        src={`${CMWN.MEDIA.EFFECT}InfoFrameMove1.mp3`}
+                    />
+                </skoash.MediaSequence>
+            </skoash.MediaCollection>
             <skoash.Compoent
                 checkComplete={false}
                 complete={true}

@@ -28,6 +28,8 @@ export default function (props, ref, key) {
             </p>
         ),
         vo: '5Ways',
+        sfx: 'InfoFrameMove1',
+        backgroundAudio: 'BKG6',
         extras: arrayOfAudio,
     });
 }
