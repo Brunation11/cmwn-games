@@ -14,5 +14,6 @@ export default function (props, ref, key) {
             </p>
         ),
         vo: 'SpeedSorting',
+        backgroundAudio: 'BKG1'
     });
 }

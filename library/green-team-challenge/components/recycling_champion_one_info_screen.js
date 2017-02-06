@@ -15,5 +15,6 @@ export default function (props, ref, key) {
             </p>
         ),
         vo: 'LetsStart',
+        backgroundAudio: 'BKG1'
     });
 }

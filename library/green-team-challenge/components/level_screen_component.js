@@ -34,7 +34,7 @@ export default function (levelNumber) {
                 ref={ref}
                 key={key}
                 id={`pre-level-${levelNumber}`}
-                backgroundAudio={4}
+                backgroundAudio={`BKG${levelInt}`}
                 className={classNames(opts.className, {
                     ALL_EARNED: allEarned,
                     APPEAR: _.get(props, 'data.appear.playing'),

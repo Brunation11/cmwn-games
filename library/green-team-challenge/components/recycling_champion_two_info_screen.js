@@ -13,5 +13,6 @@ export default function (props, ref, key) {
             </p>
         ),
         vo: 'ReadySetGo',
+        backgroundAudio: 'BKG1'
     });
 }

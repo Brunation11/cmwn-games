@@ -79,6 +79,7 @@ export default function (props, ref, key, opts = {}) {
                 id={`${opts.gameName}-${opts.level}`}
                 complete={gameComplete}
                 checkComplete={!gameComplete}
+                backgroundAudio={`BKG${opts.level}`}
                 {...screenProps}
             >
                 <skoash.Component
