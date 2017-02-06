@@ -11,7 +11,7 @@ import AlarmScreen from './components/alarm_screen';
 import WhoScreen from './components/who_screen';
 import MenAndWomenScreen from './components/men_and_women_screen';
 import TriangleScreen from './components/triangle_screen';
-//import BreakTriangleScreen from './components/break_triangle_screen';
+import BreakTriangleScreen from './components/break_triangle_screen';
 //import LadderScreen from './components/ladder_screen';
 //import ChooseScreen from './components/choose_screen';
 //import NeedScreen from './components/need_screen';
@@ -25,18 +25,18 @@ var Fire = (
         screens={{
             0: iOSScreen,
             1: TitleScreen,
-           //2: InfoChemicalScreen,
-           //3: InfoFuelOxygenScreen,
-           //4: InfoForrestScreen,
-           //5: AlarmScreen,
-           //6: WhoScreen,
-           //7: MenAndWomenScreen,
-            2: TriangleScreen,
-//            9: BreakTriangleScreen,
-//            10: LadderScreen,
-//            11: ChooseScreen,
-//            12: NeedScreen,
-//            13: FlipScreen,
+            //2: InfoChemicalScreen,
+            //3: InfoFuelOxygenScreen,
+            //4: InfoForrestScreen,
+            //5: AlarmScreen,
+            //6: WhoScreen,
+            //7: MenAndWomenScreen,
+            //8: TriangleScreen,
+            2: BreakTriangleScreen,
+            //10: LadderScreen,
+            //11: ChooseScreen,
+            //12: NeedScreen,
+            //13: FlipScreen,
         }}
         menus={{
             quit: QuitScreen,

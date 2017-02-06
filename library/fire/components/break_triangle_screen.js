@@ -1,14 +1,23 @@
 export default function (props, ref, key) {
+    const ANIMATE = [
+        'HEAT',
+        'AIR',
+        'FUEL'
+    ];
 
-    function animate(name) {
-        var open = _.get(props, 'data.states.open', null) === null ? name : open + ' ' + name;
-        skoash.trigger('updateState', {
-            path: 'states',
+    var animate  = function () {
+        var index = _.get(props, 'data.screen-9.index', 0);
+        var open = _.get(props, 'data.screen-9.open', '');
+        open += ` ${ANIMATE[index]}`;
+
+        this.updateScreenData({
+            key: 'screen-9',
             data: {
+                index: index + 1,
                 open,
             },
         });
-    }
+    };
 
     return (
         <skoash.Screen
@@ -16,15 +25,7 @@ export default function (props, ref, key) {
             ref={ref}
             key={key}
             id="break-triangle"
-            className={_.get(props, 'data.states.open', null)}
-            onOpen={() => {
-                skoash.trigger('updateState', {
-                    path: 'states',
-                    data: {
-                        open: null,
-                    },
-                });
-            }}
+            className={_.get(props, 'data.screen-9.open', null)}
         >
             <skoash.MediaSequence
                 ref="audio-sequence"
@@ -33,13 +34,24 @@ export default function (props, ref, key) {
                     type="voiceOver"
                     data-ref="title"
                     src="media/S_9/vo_FirefightersBreakTheTriangle.mp3"
-                    onComplete={animate.bind(undefined, 'HEAT')}
+                    onComplete={animate}
                 />
-                <skoash.Audio type="voiceOver" data-ref="heat" src="media/S_8/vo_Heat.mp3"
-                    onComplete={animate.bind(undefined, 'AIR')}/>
-                <skoash.Audio type="voiceOver" data-ref="air" src="media/S_8/vo_Air.mp3"
-                    onComplete={animate.bind(undefined, 'FUEL')}/>
-                <skoash.Audio type="voiceOver" data-ref="fuel" src="media/S_8/vo_Fuel.mp3" />
+                <skoash.Audio type="voiceOver"
+                    data-ref="heat"
+                    src="media/S_8/vo_Heat.mp3"
+                    onComplete={animate}
+                />
+                <skoash.Audio
+                    type="voiceOver"
+                    data-ref="air"
+                    src="media/S_8/vo_Air.mp3"
+                    onComplete={animate}
+                />
+                <skoash.Audio
+                    type="voiceOver"
+                    data-ref="fuel"
+                    src="media/S_8/vo_Fuel.mp3"
+                />
                 <skoash.Audio
                     type="voiceOver"
                     data-ref="theory"
