@@ -112,6 +112,9 @@ export default {
                     });
                 }
             },
+            onCheckComplete: function () {
+                console.log(this.props.timeout - this.state.time);
+            },
         };
     },
     getRevealProps(opts) {
