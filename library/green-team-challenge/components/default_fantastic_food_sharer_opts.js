@@ -243,6 +243,7 @@ export default _.defaults({
                         },
                         item: {
                             name: _.startCase(_.replace(this.getFirstItem().props.className, /\d+/g, '')),
+                            new: true,
                         },
                         selectable: {
                             message: ''

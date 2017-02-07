@@ -12,6 +12,7 @@ let onSelect = function (key) {
         key: 'item',
         data: {
             name: _.startCase(_.replace(ref.props.className, /\d+/g, '')),
+            new: true,
             ref,
             top: rect.top,
             left: rect.left,
