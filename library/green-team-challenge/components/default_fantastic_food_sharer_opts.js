@@ -87,6 +87,7 @@ const onItemPickUpTransitionEnd = function (itemRef) {
 
 export default _.defaults({
     gameName: 'fantastic-food-sharer',
+    gameNumber: 3,
     binNames,
     getSelectableProps() {
         return {

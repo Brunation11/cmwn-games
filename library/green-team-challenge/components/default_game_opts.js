@@ -10,20 +10,6 @@ let binNames = [
 
 let itemsToSort = _.filter(ItemsToSort, item => _.includes(binNames, item.bin));
 
-let audioRefs = _.uniq(_.map(itemsToSort, v =>
-    _.upperFirst(_.camelCase(_.replace(v.name, /\d+/g, ''))))
-);
-
-let audioArray = _.map(audioRefs, (v, k) => ({
-    type: skoash.Audio,
-    ref: v,
-    key: k,
-    props: {
-        type: 'voiceOver',
-        src: `${CMWN.MEDIA.GAME + 'SoundAssets/_vositems/' + v}.mp3`,
-    },
-}));
-
 let getChildren = v => {
     if (v.children) return v.children;
 
@@ -47,8 +33,58 @@ let catchablesArray = _.map(itemsToSort, v => ({
     },
 }));
 
+let audioRefs = _.uniq(_.map(itemsToSort, v =>
+    _.upperFirst(_.camelCase(_.replace(v.name, /\d+/g, ''))))
+);
+
+let audioArray = _.map(audioRefs, (v, k) => ({
+    type: skoash.Audio,
+    ref: v,
+    key: k,
+    props: {
+        type: 'voiceOver',
+        src: `${CMWN.MEDIA.GAME + 'SoundAssets/_vositems/' + v}.mp3`,
+    },
+}));
+
+audioArray = audioArray.concat([
+    {
+        type: skoash.Audio,
+        ref: 'drop',
+        props: {
+            type: 'sfx',
+            src: `${CMWN.MEDIA.EFFECT}ReleaseItem1.mp3`,
+        },
+    },
+    {
+        type: skoash.Audio,
+        ref: 'correct',
+        props: {
+            type: 'sfx',
+            src: `${CMWN.MEDIA.EFFECT}CorrectSelect.mp3`,
+        },
+    },
+    {
+        type: skoash.Audio,
+        ref: 'resort',
+        props: {
+            type: 'sfx',
+            src: `${CMWN.MEDIA.EFFECT}ResortWarning.mp3`,
+        },
+    },
+    {
+        type: skoash.Audio,
+        ref: 'pickUp',
+        props: {
+            type: 'sfx',
+            src: `${CMWN.MEDIA.EFFECT}ItemFlip.mp3`,
+        },
+    },
+]);
+
 export default {
     gameName: 'recycling-champion',
+    gameNumber: 1,
     level: 1,
     timeout: 120000,
     scoreToWin: 100,

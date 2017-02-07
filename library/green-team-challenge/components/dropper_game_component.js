@@ -50,7 +50,13 @@ export default function (props, ref, key, opts = {}) {
         opts.next = _.get(props, 'data.manual-dropper.next', false);
         opts.itemRef = itemRef;
         opts.itemName = _.get(props, 'data.item.name', '');
-        opts.playAudio = _.upperFirst(_.camelCase(opts.itemName));
+        opts.playAudio = (
+            drop ? 'drop' :
+            pickUp ? 'pickUp' :
+            opts.next ? 'correct' :
+            revealOpen === 'resort' ? 'resort' :
+            _.upperFirst(_.camelCase(opts.itemName))
+        );
         opts.itemClassName = _.get(props, 'data.item.className');
         opts.itemAmount = _.get(props, 'data.item.amount', 0);
         opts.pour = _.get(props, 'data.item.pour', false);
@@ -79,7 +85,7 @@ export default function (props, ref, key, opts = {}) {
                 id={`${opts.gameName}-${opts.level}`}
                 complete={gameComplete}
                 checkComplete={!gameComplete}
-                backgroundAudio={`BKG${opts.level}`}
+                backgroundAudio={`BKG${opts.gameNumber}`}
                 {...screenProps}
             >
                 <skoash.Component

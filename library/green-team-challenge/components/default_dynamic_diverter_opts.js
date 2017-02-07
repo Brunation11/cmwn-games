@@ -10,6 +10,7 @@ let shuffledItemsRecycle = _.shuffle(itemsRecycle);
 
 export default _.defaults({
     gameName: 'dynamic-diverter',
+    gameNumber: 4,
     pointsPerBin: 400,
     scoreToWin: 1200,
     dropperAmount: 2,

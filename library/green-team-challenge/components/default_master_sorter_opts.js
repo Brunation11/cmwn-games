@@ -168,6 +168,7 @@ let catchablesArray = _.map(traysArray, v => ({
 
 export default _.defaults({
     gameName: 'master-sorter',
+    gameNumber: 5,
     dropperAmount: 2,
     binNames,
     collideFraction: .4,

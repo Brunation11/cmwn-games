@@ -53,6 +53,7 @@ let catchablesArray = _.map(itemsToSort, v => ({
 
 export default _.defaults({
     gameName: 'priceless-pourer',
+    gameNumber: 2,
     dropperAmount: 4,
     binNames,
     getSelectableProps(opts) {
