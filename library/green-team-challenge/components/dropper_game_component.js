@@ -64,10 +64,13 @@ export default function (props, ref, key, opts = {}) {
         opts.playAudio = (
             drop && !opts.truckClassName ? 'drop' :
             pickUp ? 'pickUp' :
+            opts.next ? 'next' :
             opts.pour ? 'pour' :
             opts.next ? 'correct' :
             revealOpen === 'resort' ? 'resort' :
-            opts.itemNew ? _.upperFirst(_.camelCase(opts.itemName)) : null
+            opts.itemNew ? _.upperFirst(_.camelCase(opts.itemName)) :
+            dropClass === 'TRAY-STACKING' && _.includes(opts.itemName, 'tray') ? 'tray' :
+            opts.itemName ? 'select' : null
         );
 
         screenProps = opts.getScreenProps(opts);

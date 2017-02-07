@@ -41,16 +41,16 @@ import LevelCompleteScreen from './components/level_complete_screen_component';
 // import FantasticFoodSharer4Screen from './components/fantastic_food_sharer_level_four_screen';
 // import FantasticFoodSharer5InfoScreen from './components/fantastic_food_sharer_five_info_screen';
 // import FantasticFoodSharer5Screen from './components/fantastic_food_sharer_level_five_screen';
-import DynamicDiverter1InfoScreen from './components/dynamic_diverter_one_info_screen';
-import DynamicDiverter1Screen from './components/dynamic_diverter_level_one_screen';
-import DynamicDiverter2InfoScreen from './components/dynamic_diverter_two_info_screen';
-import DynamicDiverter2Screen from './components/dynamic_diverter_level_two_screen';
-import DynamicDiverter3InfoScreen from './components/dynamic_diverter_three_info_screen';
-import DynamicDiverter3Screen from './components/dynamic_diverter_level_three_screen';
-import DynamicDiverter4InfoScreen from './components/dynamic_diverter_four_info_screen';
-import DynamicDiverter4Screen from './components/dynamic_diverter_level_four_screen';
-import DynamicDiverter5InfoScreen from './components/dynamic_diverter_five_info_screen';
-import DynamicDiverter5Screen from './components/dynamic_diverter_level_five_screen';
+// import DynamicDiverter1InfoScreen from './components/dynamic_diverter_one_info_screen';
+// import DynamicDiverter1Screen from './components/dynamic_diverter_level_one_screen';
+// import DynamicDiverter2InfoScreen from './components/dynamic_diverter_two_info_screen';
+// import DynamicDiverter2Screen from './components/dynamic_diverter_level_two_screen';
+// import DynamicDiverter3InfoScreen from './components/dynamic_diverter_three_info_screen';
+// import DynamicDiverter3Screen from './components/dynamic_diverter_level_three_screen';
+// import DynamicDiverter4InfoScreen from './components/dynamic_diverter_four_info_screen';
+// import DynamicDiverter4Screen from './components/dynamic_diverter_level_four_screen';
+// import DynamicDiverter5InfoScreen from './components/dynamic_diverter_five_info_screen';
+// import DynamicDiverter5Screen from './components/dynamic_diverter_level_five_screen';
 import WantToStackScreen from './components/want_to_stack_screen';
 import MasterSorter1InfoScreen from './components/master_sorter_one_info_screen';
 import MasterSorter1Screen from './components/master_sorter_level_one_screen';
@@ -128,7 +128,6 @@ skoash.start(
             FantasticFoodSharer5Screen,
             LevelScreen(3.5),
             LevelCompleteScreen(3),
-            */
             LevelScreen(4.0),
             DynamicDiverter1InfoScreen,
             DynamicDiverter1Screen,
@@ -146,6 +145,7 @@ skoash.start(
             DynamicDiverter5Screen,
             LevelScreen(4.5),
             LevelCompleteScreen(4),
+            */
             WantToStackScreen,
             LevelScreen(5.0),
             MasterSorter1InfoScreen,

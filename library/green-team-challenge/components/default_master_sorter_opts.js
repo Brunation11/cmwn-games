@@ -173,6 +173,16 @@ let audioArray = _.map(audioRefs, (v, k) => ({
     },
 }));
 
+audioArray = audioArray.concat([
+    <skoash.Audio ref="next" type="sfx" src={`${CMWN.MEDIA.EFFECT}LunchboxSlide.mp3`} />,
+    <skoash.Audio ref="correct" type="sfx" src={`${CMWN.MEDIA.EFFECT}ConveyorBelt.mp3`} />,
+    <skoash.Audio ref="resort" type="sfx" src={`${CMWN.MEDIA.EFFECT}ResortWarning.mp3`} />,
+    <skoash.Audio ref="pickUp" type="sfx" src={`${CMWN.MEDIA.EFFECT}ItemFlip.mp3`} />,
+    <skoash.Audio ref="pour" type="sfx" src={`${CMWN.MEDIA.EFFECT}LiquidPour.mp3`} />,
+    <skoash.Audio ref="tray" type="sfx" src={`${CMWN.MEDIA.EFFECT}TrayStackerRack.mp3`} />,
+    <skoash.Audio ref="select" type="sfx" src={`${CMWN.MEDIA.EFFECT}ItemSelect.mp3`} />,
+]);
+
 export default _.defaults({
     gameName: 'master-sorter',
     gameNumber: 5,
@@ -421,8 +431,11 @@ export default _.defaults({
                                 callback: () => {
                                     if (!amount) {
                                         this.updateScreenData({
-                                            keys: ['manual-dropper', 'selectItem'],
-                                            data: true,
+                                            key: 'manual-dropper',
+                                            data: {
+                                                selectItem: true,
+                                                dropClass: null,
+                                            },
                                         });
                                     }
                                 }
