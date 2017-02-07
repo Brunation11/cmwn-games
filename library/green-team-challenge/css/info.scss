@@ -83,3 +83,16 @@
         }
     }
 }
+
+#dynamic-diverter-one-info {
+    .character {
+        top: -5px;
+        right: 55px;
+        transform: scale3d(-1, 1, 1);
+        width: 180px;
+    }
+
+    .sprite {
+        @include position(absolute, 220px -80px null null);
+    }
+}

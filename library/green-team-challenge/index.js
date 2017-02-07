@@ -31,16 +31,16 @@ import LevelCompleteScreen from './components/level_complete_screen_component';
 // import PricelessPourer4Screen from './components/priceless_pourer_level_four_screen';
 // import PricelessPourer5InfoScreen from './components/priceless_pourer_five_info_screen';
 // import PricelessPourer5Screen from './components/priceless_pourer_level_five_screen';
-import FantasticFoodSharer1InfoScreen from './components/fantastic_food_sharer_one_info_screen';
-import FantasticFoodSharer1Screen from './components/fantastic_food_sharer_level_one_screen';
-import FantasticFoodSharer2InfoScreen from './components/fantastic_food_sharer_two_info_screen';
-import FantasticFoodSharer2Screen from './components/fantastic_food_sharer_level_two_screen';
-import FantasticFoodSharer3InfoScreen from './components/fantastic_food_sharer_three_info_screen';
-import FantasticFoodSharer3Screen from './components/fantastic_food_sharer_level_three_screen';
-import FantasticFoodSharer4InfoScreen from './components/fantastic_food_sharer_four_info_screen';
-import FantasticFoodSharer4Screen from './components/fantastic_food_sharer_level_four_screen';
-import FantasticFoodSharer5InfoScreen from './components/fantastic_food_sharer_five_info_screen';
-import FantasticFoodSharer5Screen from './components/fantastic_food_sharer_level_five_screen';
+// import FantasticFoodSharer1InfoScreen from './components/fantastic_food_sharer_one_info_screen';
+// import FantasticFoodSharer1Screen from './components/fantastic_food_sharer_level_one_screen';
+// import FantasticFoodSharer2InfoScreen from './components/fantastic_food_sharer_two_info_screen';
+// import FantasticFoodSharer2Screen from './components/fantastic_food_sharer_level_two_screen';
+// import FantasticFoodSharer3InfoScreen from './components/fantastic_food_sharer_three_info_screen';
+// import FantasticFoodSharer3Screen from './components/fantastic_food_sharer_level_three_screen';
+// import FantasticFoodSharer4InfoScreen from './components/fantastic_food_sharer_four_info_screen';
+// import FantasticFoodSharer4Screen from './components/fantastic_food_sharer_level_four_screen';
+// import FantasticFoodSharer5InfoScreen from './components/fantastic_food_sharer_five_info_screen';
+// import FantasticFoodSharer5Screen from './components/fantastic_food_sharer_level_five_screen';
 import DynamicDiverter1InfoScreen from './components/dynamic_diverter_one_info_screen';
 import DynamicDiverter1Screen from './components/dynamic_diverter_level_one_screen';
 import DynamicDiverter2InfoScreen from './components/dynamic_diverter_two_info_screen';
@@ -111,7 +111,6 @@ skoash.start(
             PricelessPourer5Screen,
             LevelScreen(2.5),
             LevelCompleteScreen(2),
-            */
             LevelScreen(3.0),
             FantasticFoodSharer1InfoScreen,
             FantasticFoodSharer1Screen,
@@ -129,6 +128,7 @@ skoash.start(
             FantasticFoodSharer5Screen,
             LevelScreen(3.5),
             LevelCompleteScreen(3),
+            */
             LevelScreen(4.0),
             DynamicDiverter1InfoScreen,
             DynamicDiverter1Screen,
