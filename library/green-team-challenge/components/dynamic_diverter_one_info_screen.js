@@ -15,6 +15,8 @@ export default function (props, ref, key) {
             </p>
         ),
         vo: 'DragToBin',
+        sfx: 'InfoFrameMove1',
+        backgroundAudio: 'BKG4',
         image: `${CMWN.MEDIA.IMAGE}exhaust.png`,
     });
 }

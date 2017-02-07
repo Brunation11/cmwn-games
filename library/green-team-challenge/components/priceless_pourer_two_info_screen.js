@@ -14,5 +14,7 @@ export default function (props, ref, key) {
             </p>
         ),
         vo: 'ItsTimeToDual',
+        sfx: 'InfoFrameMove1',
+        backgroundAudio: 'BKG2',
     });
 }

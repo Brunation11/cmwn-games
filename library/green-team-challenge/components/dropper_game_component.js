@@ -62,7 +62,7 @@ export default function (props, ref, key, opts = {}) {
         opts.selectableMessage = _.get(props, 'data.selectable.message', '');
         opts.moveClaw = _.get(props, 'data.moveClaw', false);
         opts.playAudio = (
-            drop ? 'drop' :
+            drop && !opts.truckClassName ? 'drop' :
             pickUp ? 'pickUp' :
             opts.pour ? 'pour' :
             opts.next ? 'correct' :

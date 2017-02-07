@@ -15,5 +15,7 @@ export default function (props, ref, key) {
             </p>
         ),
         vo: 'ItemsFromHome',
+        sfx: 'InfoFrameMove1',
+        backgroundAudio: 'BKG5',
     });
 }

@@ -91,6 +91,17 @@ let audioArray = _.map(audioRefs, (v, k) => ({
     },
 }));
 
+audioArray = audioArray.concat([
+    <skoash.MediaSequence ref="drop" silentOnStart>
+        <skoash.Audio delay={4600} type="sfx" src={`${CMWN.MEDIA.EFFECT}ItemFunnel.mp3`} />
+        <skoash.Audio type="sfx" src={`${CMWN.MEDIA.EFFECT}TruckDump.mp3`} />
+    </skoash.MediaSequence>,
+    <skoash.Audio ref="correct" type="sfx" src={`${CMWN.MEDIA.EFFECT}ConveyorBelt.mp3`} />,
+    <skoash.Audio ref="resort" type="sfx" src={`${CMWN.MEDIA.EFFECT}ResortWarning.mp3`} />,
+    <skoash.Audio ref="pickUp" type="sfx" src={`${CMWN.MEDIA.EFFECT}ItemFlip.mp3`} />,
+    <skoash.Audio ref="pour" type="sfx" src={`${CMWN.MEDIA.EFFECT}LiquidPour.mp3`} />,
+]);
+
 export default _.defaults({
     gameName: 'fantastic-food-sharer',
     gameNumber: 3,
@@ -237,10 +248,6 @@ export default _.defaults({
             onNext: function () {
                 this.updateScreenData({
                     data: {
-                        'manual-dropper': {
-                            drop: !!opts.selectableMessage,
-                            itemName: _.startCase(this.getFirstItem().props.className),
-                        },
                         item: {
                             name: _.startCase(_.replace(this.getFirstItem().props.className, /\d+/g, '')),
                             new: true,

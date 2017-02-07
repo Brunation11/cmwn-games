@@ -30,6 +30,7 @@ export default function (props, ref, key) {
             </p>
         ),
         vo: 'TheKey',
+        sfx: 'InfoFrameMove1',
         backgroundAudio: 'BKG6',
         extras: arrayOfAudio,
     });

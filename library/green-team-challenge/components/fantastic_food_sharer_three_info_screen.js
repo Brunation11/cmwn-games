@@ -12,5 +12,7 @@ export default function (props, ref, key) {
             </p>
         ),
         vo: 'Speedshare',
+        sfx: 'InfoFrameMove1',
+        backgroundAudio: 'BKG3',
     });
 }

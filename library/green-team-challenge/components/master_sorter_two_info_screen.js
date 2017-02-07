@@ -14,5 +14,7 @@ export default function (props, ref, key) {
             </p>
         ),
         vo: 'LunchesCreatedEqually',
+        sfx: 'InfoFrameMove1',
+        backgroundAudio: 'BKG5',
     });
 }

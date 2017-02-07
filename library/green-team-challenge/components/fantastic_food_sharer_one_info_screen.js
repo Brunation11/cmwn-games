@@ -14,5 +14,7 @@ export default function (props, ref, key) {
             </p>
         ),
         vo: 'SharningSnacks',
+        sfx: 'InfoFrameMove1',
+        backgroundAudio: 'BKG3',
     });
 }
