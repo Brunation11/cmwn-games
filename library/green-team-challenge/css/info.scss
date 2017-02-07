@@ -10,7 +10,7 @@
     $p-left: 67.5%;
     $p-width: 48%;
     $char-trans-x: 1000px;
-    $frame-trans-x: 1000px;
+    $frame-trans-x: 1500px;
 
     .character {
         @include position(absolute, $char-top $char-right null null);
