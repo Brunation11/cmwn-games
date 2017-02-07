@@ -58,6 +58,7 @@ audioArray = audioArray.concat([
     <skoash.Audio ref="correct" type="sfx" src={`${CMWN.MEDIA.EFFECT}CorrectSelect.mp3`} />,
     <skoash.Audio ref="resort" type="sfx" src={`${CMWN.MEDIA.EFFECT}ResortWarning.mp3`} />,
     <skoash.Audio ref="pickUp" type="sfx" src={`${CMWN.MEDIA.EFFECT}ItemFlip.mp3`} />,
+    <skoash.Audio ref="timer" type="sfx" src={`${CMWN.MEDIA.EFFECT}SecondTimer.mp3`} />,
 ]);
 
 export default {
@@ -112,8 +113,14 @@ export default {
                     });
                 }
             },
-            onCheckComplete: function () {
-                console.log(this.props.timeout - this.state.time);
+            onIncrement: function () {
+                let secondsLeft = (this.props.timeout - this.state.time) / 1000;
+                if (secondsLeft === 10) {
+                    this.updateScreenData({
+                        key: 'play',
+                        data: 'timer',
+                    });
+                }
             },
         };
     },

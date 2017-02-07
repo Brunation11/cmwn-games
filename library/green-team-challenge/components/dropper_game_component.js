@@ -42,6 +42,7 @@ export default function (props, ref, key, opts = {}) {
         let caught = _.get(props, 'data.catcher.caught', '');
         let revealOpen = _.get(props, 'data.reveal.open', false);
         let revealClose = _.get(props, 'data.reveal.close', false);
+        let play = _.get(props, 'data.play', null);
 
         let audioArray = opts.getAudioArray();
 
@@ -62,6 +63,7 @@ export default function (props, ref, key, opts = {}) {
         opts.selectableMessage = _.get(props, 'data.selectable.message', '');
         opts.moveClaw = _.get(props, 'data.moveClaw', false);
         opts.playAudio = (
+            play ? play :
             drop && !opts.truckClassName ? 'drop' :
             pickUp ? 'pickUp' :
             opts.next ? 'next' :
@@ -212,6 +214,12 @@ export default function (props, ref, key, opts = {}) {
                     children={audioArray}
                     checkComplete={false}
                     complete={true}
+                    onPlay={function () {
+                        this.updateScreenData({
+                            key: 'play',
+                            data: null,
+                        });
+                    }}
                 />
             </skoash.Screen>
         );

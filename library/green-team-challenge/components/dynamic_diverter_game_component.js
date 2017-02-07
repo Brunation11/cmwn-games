@@ -44,6 +44,7 @@ export default function (props, ref, key, opts = {}) {
         let revealOpen = _.get(props, 'data.reveal.open', false);
         let revealClose = _.get(props, 'data.reveal.close', false);
         let carouselNext = _.get(props, 'data.manual-dropper.next', false);
+        let play = _.get(props, 'data.play', null);
 
         let answers = _.filter(opts.binNames, name => name !== binName);
 
@@ -54,6 +55,7 @@ export default function (props, ref, key, opts = {}) {
         opts.hits = _.get(props, `${LEVEL_PATH}.hits`, 0);
         opts.selectableMessage = _.get(props, 'data.selectable.message', '');
         opts.playAudio = (
+            play ? play :
             revealOpen === 'resort' ? 'resort' :
             _.upperFirst(_.camelCase(itemName)) : null
         );

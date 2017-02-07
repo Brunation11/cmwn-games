@@ -181,6 +181,7 @@ audioArray = audioArray.concat([
     <skoash.Audio ref="pour" type="sfx" src={`${CMWN.MEDIA.EFFECT}LiquidPour.mp3`} />,
     <skoash.Audio ref="tray" type="sfx" src={`${CMWN.MEDIA.EFFECT}TrayStackerRack.mp3`} />,
     <skoash.Audio ref="select" type="sfx" src={`${CMWN.MEDIA.EFFECT}ItemSelect.mp3`} />,
+    <skoash.Audio ref="timer" type="sfx" src={`${CMWN.MEDIA.EFFECT}SecondTimer.mp3`} />,
 ]);
 
 export default _.defaults({
