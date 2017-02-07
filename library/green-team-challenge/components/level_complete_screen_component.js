@@ -1,3 +1,5 @@
+import classNames from 'classnames';
+
 let flipKeys = [
     'recycling-champion',
     'priceless-pourer',
@@ -51,10 +53,13 @@ export default function (levelNumber) {
                 ref={ref}
                 key={key}
                 id={`post-level-${levelNumber}`}
-                className={opts.className}
+                className={classNames(opts.className, {
+                    APPEAR: _.get(props, 'data.appear.playing'),
+                })}
+                backgroundAudio={`BKG${levelNumber}`}
                 emitOnComplete={{
                     name: 'flip',
-                    game: flipKeys[levelNumber]
+                    game: flipKeys[levelNumber - 1]
                 }}
             >
                 <skoash.Image
@@ -65,6 +70,21 @@ export default function (levelNumber) {
                     className="hidden"
                     src={`${CMWN.MEDIA.SPRITE}sprite.levels.png`}
                 />
+                <skoash.MediaSequence>
+                    <skoash.Audio
+                        type="sfx"
+                        src={`${CMWN.MEDIA.EFFECT}LevelAward.mp3`}
+                    />
+                    <skoash.Audio
+                        type="sfx"
+                        src={`${CMWN.MEDIA.EFFECT}FlipHover.mp3`}
+                    />
+                    <skoash.Audio
+                        type="sfx"
+                        playTarget="appear"
+                        src={`${CMWN.MEDIA.EFFECT}FlipDropBounce.mp3`}
+                    />
+                </skoash.MediaSequence>
                 <div className="frame">
                     {getLevelHeader(levelNumberWord)}
                     {listLevels(levelNumber)}

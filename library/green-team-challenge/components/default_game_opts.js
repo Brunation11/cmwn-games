@@ -44,42 +44,20 @@ let audioArray = _.map(audioRefs, (v, k) => ({
     props: {
         type: 'voiceOver',
         src: `${CMWN.MEDIA.GAME + 'SoundAssets/_vositems/' + v}.mp3`,
+        onPlay: function () {
+            this.updateScreenData({
+                keys: ['item', 'new'],
+                data: false,
+            });
+        }
     },
 }));
 
 audioArray = audioArray.concat([
-    {
-        type: skoash.Audio,
-        ref: 'drop',
-        props: {
-            type: 'sfx',
-            src: `${CMWN.MEDIA.EFFECT}ReleaseItem1.mp3`,
-        },
-    },
-    {
-        type: skoash.Audio,
-        ref: 'correct',
-        props: {
-            type: 'sfx',
-            src: `${CMWN.MEDIA.EFFECT}CorrectSelect.mp3`,
-        },
-    },
-    {
-        type: skoash.Audio,
-        ref: 'resort',
-        props: {
-            type: 'sfx',
-            src: `${CMWN.MEDIA.EFFECT}ResortWarning.mp3`,
-        },
-    },
-    {
-        type: skoash.Audio,
-        ref: 'pickUp',
-        props: {
-            type: 'sfx',
-            src: `${CMWN.MEDIA.EFFECT}ItemFlip.mp3`,
-        },
-    },
+    <skoash.Audio ref="drop" type="sfx" src={`${CMWN.MEDIA.EFFECT}ReleaseItem1.mp3`} />,
+    <skoash.Audio ref="correct" type="sfx" src={`${CMWN.MEDIA.EFFECT}CorrectSelect.mp3`} />,
+    <skoash.Audio ref="resort" type="sfx" src={`${CMWN.MEDIA.EFFECT}ResortWarning.mp3`} />,
+    <skoash.Audio ref="pickUp" type="sfx" src={`${CMWN.MEDIA.EFFECT}ItemFlip.mp3`} />,
 ]);
 
 export default {
@@ -193,8 +171,11 @@ export default {
             },
             onNext: function () {
                 this.updateScreenData({
-                    keys: ['item', 'name'],
-                    data: _.startCase(_.replace(this.getFirstItem().props.className, /\d+/g, '')),
+                    key: 'item',
+                    data: {
+                        name: _.startCase(_.replace(this.getFirstItem().props.className, /\d+/g, '')),
+                        new: true,
+                    }
                 });
             },
             onPickUp: function () {

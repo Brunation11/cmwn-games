@@ -50,13 +50,7 @@ export default function (props, ref, key, opts = {}) {
         opts.next = _.get(props, 'data.manual-dropper.next', false);
         opts.itemRef = itemRef;
         opts.itemName = _.get(props, 'data.item.name', '');
-        opts.playAudio = (
-            drop ? 'drop' :
-            pickUp ? 'pickUp' :
-            opts.next ? 'correct' :
-            revealOpen === 'resort' ? 'resort' :
-            _.upperFirst(_.camelCase(opts.itemName))
-        );
+        opts.itemNew = _.get(props, 'data.item.new', false);
         opts.itemClassName = _.get(props, 'data.item.className');
         opts.itemAmount = _.get(props, 'data.item.amount', 0);
         opts.pour = _.get(props, 'data.item.pour', false);
@@ -67,6 +61,14 @@ export default function (props, ref, key, opts = {}) {
         opts.truckClassName = _.get(props, 'data.truckClassName', '');
         opts.selectableMessage = _.get(props, 'data.selectable.message', '');
         opts.moveClaw = _.get(props, 'data.moveClaw', false);
+        opts.playAudio = (
+            drop ? 'drop' :
+            pickUp ? 'pickUp' :
+            opts.pour ? 'pour' :
+            opts.next ? 'correct' :
+            revealOpen === 'resort' ? 'resort' :
+            opts.itemNew ? _.upperFirst(_.camelCase(opts.itemName)) : null
+        );
 
         screenProps = opts.getScreenProps(opts);
         timerProps = opts.getTimerProps(opts);

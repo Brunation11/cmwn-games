@@ -23,8 +23,8 @@ export default function (levelNumber) {
 
     return function (props, ref, key, opts = {}) {
         let levelData = _.get(props, `gameState.data.${levelKey}.levels`, {});
-        let repeaterProps = _.map(_.get(props, 'data.earned'), level =>
-            ({className: level.playing ? 'earned' : ''})
+        let repeaterProps = _.map(_.get(props, 'data.earned'), (level, index) =>
+            ({className: level.playing && _.get(levelData, `${index}.complete`) ? 'earned' : ''})
         );
         let allEarned = repeaterProps.length === 5 && _.every(repeaterProps, v => v.className);
 

@@ -22,21 +22,31 @@ const binNames = [
     'liquids',
 ];
 
+const onTruckTransitionEnd = function (opts, e) {
+    skoash.trigger('updateScreenData', {
+        data: {
+            'manual-dropper': {
+                drop: _.includes(e.target.className, TILT),
+                dropClass: _.toUpper(_.snakeCase(opts.selectableMessage)),
+            },
+            'selectable': {
+                message: ''
+            }
+        }
+    });
+};
+
+const onItemPickUpTransitionEnd = function (itemRef) {
+    if (_.includes(itemRef.state.className, PICKUP)) {
+        itemRef.removeAllClassNames();
+        skoash.trigger('updateScreenData', {
+            key: 'truckClassName',
+            data: '',
+        });
+    }
+};
+
 let itemsToSort = _.filter(ItemsToSort, item => _.includes(binNames, item.bin));
-
-let audioRefs = _.uniq(_.map(itemsToSort, v =>
-    _.upperFirst(_.camelCase(_.replace(v.name, /\d+/g, ''))))
-);
-
-let audioArray = _.map(audioRefs, (v, k) => ({
-    type: skoash.Audio,
-    ref: v,
-    key: k,
-    props: {
-        type: 'voiceOver',
-        src: `${CMWN.MEDIA.GAME + 'SoundAssets/_vositems/' + v}.mp3`,
-    },
-}));
 
 let getChildren = v => {
     if (v.children) return v.children;
@@ -61,29 +71,25 @@ let catchablesArray = _.map(itemsToSort, v => ({
     },
 }));
 
-const onTruckTransitionEnd = function (opts, e) {
-    skoash.trigger('updateScreenData', {
-        data: {
-            'manual-dropper': {
-                drop: _.includes(e.target.className, TILT),
-                dropClass: _.toUpper(_.snakeCase(opts.selectableMessage)),
-            },
-            'selectable': {
-                message: ''
-            }
-        }
-    });
-};
+let audioRefs = _.uniq(_.map(itemsToSort, v =>
+    _.upperFirst(_.camelCase(_.replace(v.name, /\d+/g, ''))))
+);
 
-const onItemPickUpTransitionEnd = function (itemRef) {
-    if (_.includes(itemRef.state.className, PICKUP)) {
-        itemRef.removeAllClassNames();
-        skoash.trigger('updateScreenData', {
-            key: 'truckClassName',
-            data: '',
-        });
-    }
-};
+let audioArray = _.map(audioRefs, (v, k) => ({
+    type: skoash.Audio,
+    ref: v,
+    key: k,
+    props: {
+        type: 'voiceOver',
+        src: `${CMWN.MEDIA.GAME + 'SoundAssets/_vositems/' + v}.mp3`,
+        onPlay: function () {
+            this.updateScreenData({
+                keys: ['item', 'new'],
+                data: false,
+            });
+        }
+    },
+}));
 
 export default _.defaults({
     gameName: 'fantastic-food-sharer',
