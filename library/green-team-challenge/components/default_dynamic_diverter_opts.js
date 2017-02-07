@@ -8,6 +8,32 @@ let shuffledItemsCompost = _.shuffle(itemsCompost);
 let shuffledItemsLandfill = _.shuffle(itemsLandfill);
 let shuffledItemsRecycle = _.shuffle(itemsRecycle);
 
+let itemsToSort = [].concat(itemsCompost).concat(itemsLandfill).concat(itemsRecycle);
+
+let audioRefs = _.uniq(_.map(itemsToSort, v =>
+    _.upperFirst(_.camelCase(_.replace(v.name, /\d+/g, ''))))
+);
+
+let audioArray = _.map(audioRefs, (v, k) => ({
+    type: skoash.Audio,
+    ref: v,
+    key: k,
+    props: {
+        type: 'voiceOver',
+        src: `${CMWN.MEDIA.GAME + 'SoundAssets/_vositems/' + v}.mp3`,
+        onPlay: function () {
+            this.updateScreenData({
+                keys: ['item', 'new'],
+                data: false,
+            });
+        }
+    },
+}));
+
+audioArray = audioArray.concat([
+    <skoash.Audio ref="resort" type="sfx" src={`${CMWN.MEDIA.EFFECT}ResortWarning.mp3`} />,
+]);
+
 export default _.defaults({
     gameName: 'dynamic-diverter',
     gameNumber: 4,
@@ -91,7 +117,22 @@ export default _.defaults({
                     }
                 });
             },
+            assets: [
+                <skoash.Audio ref="correct" type="sfx" src={`${CMWN.MEDIA.EFFECT}CorrectSelect.mp3`} />,
+                <skoash.Audio ref="incorrect" type="sfx" src={`${CMWN.MEDIA.EFFECT}WrongSelect.mp3`} />,
+                <skoash.Audio ref="drag" type="sfx" src={`${CMWN.MEDIA.EFFECT}Drag.mp3`} />,
+                <skoash.Audio ref="drop" type="sfx" src={`${CMWN.MEDIA.EFFECT}Vacuum.mp3`} />,
+            ],
+            onDrag: function () {
+                this.playMedia('drag');
+            },
+            onDrop: function () {
+                this.playMedia('drop');
+            },
         };
+    },
+    getAudioArray() {
+        return audioArray;
     },
     binItems: [
         {

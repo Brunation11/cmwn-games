@@ -35,22 +35,28 @@ export default function (props, ref, key, opts = {}) {
 
         let start = _.get(props, `${LEVEL_PATH}.start`, false);
         let gameComplete = _.get(props, `${LEVEL_PATH}.complete`, false);
+        let dropped = _.get(props, 'data.draggable.dropped');
+        let dragging = _.get(props, 'data.draggable.dragging');
         let itemName = _.startCase(
-            _.replace(_.get(props, 'data.draggable.dragging.props.className', ''), /\d+/g, '')
+            _.replace(_.get(dragging, 'props.className', ''), /\d+/g, '')
         );
         let binName = _.get(props, 'data.manual-dropper.binName', '');
-        let dropped = _.get(props, 'data.draggable.dropped');
         let revealOpen = _.get(props, 'data.reveal.open', false);
         let revealClose = _.get(props, 'data.reveal.close', false);
         let carouselNext = _.get(props, 'data.manual-dropper.next', false);
 
         let answers = _.filter(opts.binNames, name => name !== binName);
 
+        let audioArray = opts.getAudioArray();
+
         opts.score = _.get(props, `${LEVEL_PATH}.score`, 0);
         opts.highScore = _.get(props, `${LEVEL_PATH}.highScore`, 0);
         opts.hits = _.get(props, `${LEVEL_PATH}.hits`, 0);
-        opts.truckClassName = _.get(props, 'data.truckClassName', '');
         opts.selectableMessage = _.get(props, 'data.selectable.message', '');
+        opts.playAudio = (
+            revealOpen === 'resort' ? 'resort' :
+            _.upperFirst(_.camelCase(itemName)) : null
+        );
 
         screenProps = opts.getScreenProps(opts);
         timerProps = opts.getTimerProps(opts);
@@ -141,7 +147,9 @@ export default function (props, ref, key, opts = {}) {
                 />
                 <Dropzone
                     dropped={dropped}
+                    dragging={dragging}
                     {...dropzoneProps}
+                    incorrectOnOutOfBounds={false}
                     dropzones={[<skoash.Component answers={answers} />]}
                 />
                 <ManualDropper
@@ -173,6 +181,12 @@ export default function (props, ref, key, opts = {}) {
                             type="li"
                         />,
                     ]}
+                />
+                <skoash.MediaCollection
+                    play={opts.playAudio}
+                    children={audioArray}
+                    checkComplete={false}
+                    complete={true}
                 />
             </skoash.Screen>
         );

@@ -23,7 +23,7 @@ body {
 
 button {
     &.close {
-        @include nav-button(2, 50px, 50px);
+        @include nav-button(5, 50px, 50px);
     }
 
     &.next-screen,
@@ -40,12 +40,12 @@ button {
 
     &.close-reveal,
     &.next-screen {
-        @include nav-button(4, 100px, 65px);
+        @include nav-button(2, 100px, 65px);
         right: 15px;
     }
 
     &.prev-screen {
-        @include nav-button(3, 100px, 65px);
+        @include nav-button(1, 100px, 65px);
         left: 15px;
     }
 
