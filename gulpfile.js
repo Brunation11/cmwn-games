@@ -18,6 +18,7 @@ var sourcemaps = require('gulp-sourcemaps');
 var postcss = require('gulp-postcss');
 var autoprefixer = require('autoprefixer');
 var sass = require('gulp-sass');
+var bourbon = require('node-bourbon');
 var header = require('gulp-header');
 var concat = require('gulp-concat');
 var livereload = require('gulp-livereload');
@@ -31,6 +32,7 @@ var scsslint = require('gulp-scss-lint');
 var stylish = require('gulp-scss-lint-stylish2');
 var game;
 var webpackBuild;
+var now = Date.now();
 
 function defineEntries(config) {
     // modify some webpack config options
@@ -56,10 +58,8 @@ function defineEntries(config) {
     ];
 
     if (env === 'dev') {
-        config.entry.push (
-            'webpack/hot/dev-server',
-            'webpack-dev-server/client?http://localhost:8080/'
-        );
+        config.entry.push('webpack/hot/dev-server');
+        config.entry.push('webpack-dev-server/client?http://localhost:8080/');
     }
 
     return config;
@@ -82,7 +82,6 @@ buildTask = [
     'copy-index',
     'copy-framework',
     'copy-media',
-    'copy-components',
     'clean'
 ];
 gulp.task('default', buildTask);
@@ -138,7 +137,9 @@ gulp.task('sass', function () {
         './library/' + game + '/**/*.css'
     ])
     .pipe(header(fs.readFileSync(varsPath, 'utf8')))
-    .pipe(sass().on('error', sass.logError))
+    .pipe(sass({
+        includePaths: bourbon.includePaths,
+    }).on('error', sass.logError))
     .pipe(concat('style.css'))
     .pipe(sourcemaps.init())
     .pipe(postcss([autoprefixer({ browsers: ['last 5 versions'] })]))
@@ -152,7 +153,9 @@ gulp.task('sass', function () {
         './library/shared/css/**/*.css'
     ])
     .pipe(header(fs.readFileSync(varsPath, 'utf8')))
-    .pipe(sass().on('error', sass.logError))
+    .pipe(sass({
+        includePaths: bourbon.includePaths,
+    }).on('error', sass.logError))
     .pipe(concat('style.css'))
     .pipe(postcss([autoprefixer({ browsers: ['last 5 versions'] })]))
     .pipe(gulp.dest('./build/shared/css'))
@@ -187,7 +190,9 @@ gulp.task('copy-index', function () {
                 starttag: '<!-- inject:head -->',
                 transform: function (filePath, file) {
                     var config = JSON.parse(file.contents.toString('utf8'));
-                    var injection = `<title>${config.title || _.startCase(config.id)}</title>`;
+                    var injection = `<title>${config.title || _.startCase(config.id)}</title>\n    ` +
+                        `<link rel="stylesheet" type="text/css" href="../shared/css/style.css?d=${now}">\n` +
+                        `    <link rel="stylesheet" type="text/css" href="css/style.css?d=${now}">`;
                     injection += config.head_injection || '';
                     return injection;
                 }
@@ -205,22 +210,21 @@ gulp.task('copy-index', function () {
                 starttag: '<!-- inject:body -->',
                 transform: function (filePath, file) {
                     var config = JSON.parse(file.contents.toString('utf8'));
-                    var folder = config.media_folder ||
-                        _.upperFirst(_.camelCase(config.title)) ||
-                        _.upperFirst(_.camelCase(config.id));
-
+                    var folder = config.media_folder || config.id;
                     var min = debug ? '' : '.min';
+
                     return (
-                        `<div id="${config.id}"></div>\n  ` +
+                        `<div id="${config.id}"></div>\n    ` +
                         '<script type="text/javascript" ' +
                         `src="https://cdnjs.cloudflare.com/ajax/libs/react/15.0.2/react${min}.js">` +
-                        '</script>\n  ' +
+                        '</script>\n    ' +
                         '<script type="text/javascript" ' +
                         `src="https://cdnjs.cloudflare.com/ajax/libs/react/15.0.2/react-dom${min}.js">` +
-                        '</script>\n  ' +
+                        '</script>\n    ' +
                         '<script type="text/javascript" ' +
-                        `src="../framework/skoash.${config.skoash}.js"></script>\n  ` +
-                        `<script>window.CMWN={gameFolder:"${folder}"};</script>`
+                        `src="../framework/skoash.${config.skoash}.js"></script>\n    ` +
+                        `<script>window.CMWN={gameFolder:"${folder}"};</script>\n    ` +
+                        `<script type="text/javascript" src="./ai.js?d=${now}"></script>`
                     );
                 }
             }))
@@ -235,20 +239,16 @@ gulp.task('copy-index', function () {
             .pipe(inject(gulp.src('./library/shared/js/google-analytics.js'), {
                 starttag: '<!-- inject:ga -->',
                 transform: function (filePath, file) {
-                    return '<script>\n    ' + file.contents.toString('utf8') + '  \n</script>';
+                    return '<script>\n    ' + file.contents.toString('utf8') + '  \n    </script>';
                 }
             }))
             .pipe(gulp.dest('./build/' + game));
         }
     });
-
-    // This is only needed for LL games and can be removed once we no longer need to build any LL games.
-    gulp
-    .src(path.join('./library', game, 'source/screens/*'))
-    .pipe(gulp.dest('./build/' + game + '/screens'));
 });
 
 gulp.task('copy-framework', function () {
+    // This can be removed once the framework is being deployed separately from games
     gulp
     .src(['./library/framework/*'])
     .pipe(gulp.dest('./build/framework'));
@@ -274,18 +274,6 @@ gulp.task('copy-media', function () {
     gulp
     .src(['./library/shared/images/*'])
     .pipe(gulp.dest('./build/shared/images'));
-});
-
-gulp.task('copy-components', function () {
-    if (typeof game !== 'string') {
-        gutil.log('Your game argument must be a string');
-        process.exit(1); // eslint-disable-line no-undef
-    }
-
-    // This is only needed for LL games and can be removed once we no longer need to build any LL games.
-    gulp
-    .src(path.join( './library', game, 'source/js/components/**/*.html' ))
-    .pipe( gulp.dest(path.join( './build', game, 'components' )) );
 });
 
 // To specify what game you'd like to watch call gulp watch --game game-name
