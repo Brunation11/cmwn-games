@@ -259,6 +259,9 @@ skoash.start(
         }}
         loader={<Loader />}
         assets={[
+            <skoash.Audio ref="bkg1" type="background" src={`${CMWN.MEDIA.EFFECT}BKG1.mp3`} loop />,
+            <skoash.Audio ref="bkg2" type="background" src={`${CMWN.MEDIA.EFFECT}IntroSequnce.mp3`} loop />,
+            <skoash.Audio ref="button" type="sfx" src={`${CMWN.MEDIA.EFFECT}AllButtons.mp3`} />,
             <skoash.Image className="hidden" src="media/_Otter/Waving_Otter2.gif" />,
             <skoash.Image className="hidden" src="media/_Otter/Open-wide-Otter2.gif" />,
             <skoash.Image className="hidden" src="media/_Otter/joyful-otter_2.gif" />,
