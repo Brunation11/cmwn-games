@@ -210,11 +210,9 @@ gulp.task('copy-index', function () {
                 starttag: '<!-- inject:body -->',
                 transform: function (filePath, file) {
                     var config = JSON.parse(file.contents.toString('utf8'));
-                    var folder = config.media_folder ||
-                        _.upperFirst(_.camelCase(config.title)) ||
-                        _.upperFirst(_.camelCase(config.id));
-
+                    var folder = config.media_folder || config.id;
                     var min = debug ? '' : '.min';
+
                     return (
                         `<div id="${config.id}"></div>\n    ` +
                         '<script type="text/javascript" ' +

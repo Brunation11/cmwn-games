@@ -12,7 +12,8 @@
         "autoprefixer": true,
         "Phaser": true,
         "ENVIRONMENT": true,
-        "MEDIA": true
+        "MEDIA": true,
+        "CMWN": true
     },
     "parser": "babel-eslint",
     "plugins": [
