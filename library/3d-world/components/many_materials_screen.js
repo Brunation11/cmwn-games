@@ -16,26 +16,26 @@ export default function (props, ref, key) {
         >
             <skoash.Audio
                 type="voiceOver"
-                src={ENVIRONMENT.MEDIA + 'SoundAssets/vos/VO_wow.mp3'}
+                src={MEDIA.GAME + 'SoundAssets/vos/VO_wow.mp3'}
             />
             <skoash.MediaSequence>
                 <skoash.Audio
                     type="sfx"
-                    src={ENVIRONMENT.MEDIA + 'SoundAssets/effects/text_type.mp3'}
+                    src={MEDIA.GAME + 'SoundAssets/effects/text_type.mp3'}
                 />
                 <skoash.Audio
                     type="sfx"
-                    src={ENVIRONMENT.MEDIA + 'SoundAssets/effects/text_type.mp3'}
+                    src={MEDIA.GAME + 'SoundAssets/effects/text_type.mp3'}
                     sprite={[0, 1000]}
                 />
             </skoash.MediaSequence>
             <skoash.Image
                 className="hidden"
-                src={ENVIRONMENT.MEDIA + 'SpritesAnimations/sprite.closeupminion.png'}
+                src={MEDIA.GAME + 'SpritesAnimations/sprite.closeupminion.png'}
             />
             <skoash.Image
                 className="balloon"
-                src={ENVIRONMENT.MEDIA + 'ImageAssets/speech.balloon.frame7.png'}
+                src={MEDIA.GAME + 'ImageAssets/speech.balloon.frame7.png'}
             />
             <skoash.Component>
                 <div

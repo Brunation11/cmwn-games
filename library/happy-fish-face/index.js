@@ -1,4 +1,4 @@
-import config from './config.game';
+import config from './config';
 
 import Loader from 'shared/components/loader/0.1';
 
@@ -66,3 +66,5 @@ var HappyFishFace = (
 );
 
 skoash.start(HappyFishFace);
+
+if (module.hot) module.hot.accept();
