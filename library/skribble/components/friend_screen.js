@@ -149,6 +149,7 @@ class FriendScreen extends skoash.Screen {
 
         return (
             <div className={'goto-' + this.state.opts.goto}>
+                <skoash.Audio ref="vo" type="voiceOver" src={`${CMWN.MEDIA.EFFECT}FindFriendSend.mp3`} />
                 <div className="item-drawer-container">
                     <div className="suggest-friends-buttons">
                         <button className="continue" onClick={this.selectRespond.bind(this, {})} />
