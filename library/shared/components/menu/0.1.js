@@ -136,6 +136,7 @@ class Menu extends Selectable {
             <ul
                 className={this.getClassNames()}
                 onClick={this.onClick.bind(this)}
+                {...this.props}
             >
                 {this.renderItems()}
             </ul>

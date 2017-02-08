@@ -9,6 +9,7 @@ class SaveMenu extends skoash.Screen {
     render() {
         return (
             <div id={this.props.id} className={this.getClassNames()}>
+                <skoash.Audio ref="start" type="sfx" src={`${CMWN.MEDIA.EFFECT}SaveSkribble.mp3`} />
                 <div className="center">
                     <div className="frame">
                         <button className="quit-saved" onClick={this.cancel.bind(this)}></button>

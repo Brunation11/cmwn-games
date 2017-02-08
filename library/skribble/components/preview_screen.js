@@ -46,6 +46,7 @@ class PreviewScreen extends skoash.Screen {
     renderContent() {
         return (
             <div>
+                <skoash.Audio ref="start" type="sfx" src={`${CMWN.MEDIA.EFFECT}PreviewOpen.mp3`} />
                 <skoash.Component ref={refs.box} className={classNameText.skribbleBox}>
                     <Canvas ref={refs.canvas} preview />
                     <Repeater

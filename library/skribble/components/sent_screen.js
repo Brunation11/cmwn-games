@@ -29,6 +29,7 @@ class SentScreen extends skoash.Screen {
     renderContent() {
         return (
             <div>
+                <skoash.Audio ref="start" type="sfx" src={`${CMWN.MEDIA.EFFECT}SendSkribble.mp3`} />
                 <div className={classNameText.character} />
                 <div className={classNameText.header}>
                     <span className={classNameText.yourMessageTo}>{text.yourMessageTo}</span>

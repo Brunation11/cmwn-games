@@ -33,15 +33,18 @@ class CollisionWarning extends skoash.Screen {
     render() {
         return (
             <div id={this.props.id} className={this.getClassNames()}>
+                <skoash.Audio ref="start" type="sfx" src={`${CMWN.MEDIA.EFFECT}WarningChime.mp3`} />
                 <div className="center">
                     <div className="frame">
                         <skoash.Image
+                            ref="copy"
                             className="copy"
                             src="media/_CollisionWarning/text-youmustnotoverlapimgs.png"
                         />
                         <button className={this.getToggleClassNames()} onClick={this.toggle}></button>
                         <button className="close-collision-warning" onClick={this.cancel}></button>
                         <skoash.Image
+                            ref="otter"
                             className="otter"
                             src="media/_CollisionWarning/Peeking-through-Otter.gif"
                         />

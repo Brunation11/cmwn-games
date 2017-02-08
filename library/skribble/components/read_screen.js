@@ -113,6 +113,7 @@ class ReadScreen extends skoash.Screen {
     renderContent() {
         return (
             <div>
+                <skoash.Audio ref="start" type="sfx" src={`${CMWN.MEDIA.EFFECT}PreviewOpen.mp3`} />
                 <ul className={this.getSenderClassNames()}>
                     <li>
                         <span>

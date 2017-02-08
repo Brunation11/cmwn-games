@@ -13,8 +13,8 @@ class MenuScreen extends skoash.Screen {
                     <button className="make" onClick={this.goto.bind(this, {
                         index: 'friend',
                         goto: 'canvas',
-                    })} />
-                    <button className="read" onClick={this.goto.bind(this, 'inbox')} />
+                    }, undefined)} />
+                    <button className="read" onClick={this.goto.bind(this, 'inbox', undefined)} />
                 </div>
             </div>
         );
