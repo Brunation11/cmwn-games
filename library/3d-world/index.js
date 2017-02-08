@@ -1,4 +1,4 @@
-import config from './config.game';
+import config from './config';
 
 import Loader from 'shared/components/loader/0.1';
 
@@ -23,59 +23,56 @@ import QuitScreen from 'shared/components/quit_screen/0.1';
 
 var ThreeDWorld;
 
-window.MEDIA_SERVER = ENVIRONMENT.MEDIA;
-ENVIRONMENT.MEDIA += 'Games/3DWorld/';
-
 ThreeDWorld = (
     <skoash.Game
         config={config}
         loader={<Loader />}
-        screens={{
-            0: iOSScreen,
-            1: TitleScreen,
-            2: ImagineScreen,
-            3: LetsLearnScreen,
-            4: VideoScreen,
-            5: ManyMaterialsScreen,
-            6: SortGameLevelOneScreen,
-            7: SortGameLevelTwoScreen,
-            8: SortGameLevelThreeScreen,
-            9: CongratulationsScreen,
-            10: HelpTheWorldScreen,
-            11: BunchOfProblemsScreen,
-            12: PrinterScreen,
-            13: NowTheYouLearnedScreen,
-            14: ListScreen,
-            15: FlipScreen,
-        }}
+        screens={[
+            iOSScreen,
+            TitleScreen,
+            ImagineScreen,
+            LetsLearnScreen,
+            VideoScreen,
+            ManyMaterialsScreen,
+            SortGameLevelOneScreen,
+            SortGameLevelTwoScreen,
+            SortGameLevelThreeScreen,
+            CongratulationsScreen,
+            HelpTheWorldScreen,
+            BunchOfProblemsScreen,
+            PrinterScreen,
+            NowTheYouLearnedScreen,
+            ListScreen,
+            FlipScreen,
+        ]}
         menus={{
             quit: QuitScreen,
         }}
         assets={[
             <skoash.Font name="Molot" />,
             <skoash.Font name="Source Sans Pro" />,
-            <skoash.Audio ref="button" type="sfx" src={ENVIRONMENT.MEDIA + 'SoundAssets/effects/Back.mp3'} />,
-            <skoash.Audio ref="next" type="sfx" src={ENVIRONMENT.MEDIA + 'SoundAssets/effects/Next.mp3'} />,
-            <skoash.Audio ref="back" type="sfx" src={ENVIRONMENT.MEDIA + 'SoundAssets/effects/Back.mp3'} />,
+            <skoash.Audio ref="button" type="sfx" src={MEDIA.GAME + 'SoundAssets/effects/Back.mp3'} />,
+            <skoash.Audio ref="next" type="sfx" src={MEDIA.GAME + 'SoundAssets/effects/Next.mp3'} />,
+            <skoash.Audio ref="back" type="sfx" src={MEDIA.GAME + 'SoundAssets/effects/Back.mp3'} />,
             <skoash.Audio
                 ref="screen-complete"
                 type="sfx"
-                src={ENVIRONMENT.MEDIA + 'SoundAssets/effects/NextAppear.mp3'}
+                src={MEDIA.GAME + 'SoundAssets/effects/NextAppear.mp3'}
             />,
             <skoash.Audio
                 type="background"
-                src={ENVIRONMENT.MEDIA + 'SoundAssets/effects/TitleScreen.mp3'}
+                src={MEDIA.GAME + 'SoundAssets/effects/TitleScreen.mp3'}
                 loop
             />,
-            <skoash.Audio type="background" src={ENVIRONMENT.MEDIA + 'SoundAssets/effects/BKG1.mp3'} loop />,
-            <skoash.Audio type="background" src={ENVIRONMENT.MEDIA + 'SoundAssets/effects/BKG2.mp3'} loop />,
-            <skoash.Audio type="background" src={ENVIRONMENT.MEDIA + 'SoundAssets/effects/BKG3.mp3'} loop />,
-            <skoash.Audio type="background" src={ENVIRONMENT.MEDIA + 'SoundAssets/effects/BKG4.mp3'} loop />,
-            <skoash.Audio type="background" src={ENVIRONMENT.MEDIA + 'SoundAssets/effects/BKG5.mp3'} loop />,
-            <skoash.Image className="hidden" src={ENVIRONMENT.MEDIA + 'ImageAssets/bkg.jpg'} />,
-            <skoash.Image className="hidden" src={ENVIRONMENT.MEDIA + 'ImageAssets/bk.1.jpg'} />,
-            <skoash.Image className="hidden" src={ENVIRONMENT.MEDIA + 'ImageAssets/bkg.2.jpg'} />,
-            <skoash.Image className="hidden" src={ENVIRONMENT.MEDIA + 'ImageAssets/bkg.win.jpg'} />,
+            <skoash.Audio type="background" src={MEDIA.GAME + 'SoundAssets/effects/BKG1.mp3'} loop />,
+            <skoash.Audio type="background" src={MEDIA.GAME + 'SoundAssets/effects/BKG2.mp3'} loop />,
+            <skoash.Audio type="background" src={MEDIA.GAME + 'SoundAssets/effects/BKG3.mp3'} loop />,
+            <skoash.Audio type="background" src={MEDIA.GAME + 'SoundAssets/effects/BKG4.mp3'} loop />,
+            <skoash.Audio type="background" src={MEDIA.GAME + 'SoundAssets/effects/BKG5.mp3'} loop />,
+            <skoash.Image className="hidden" src={MEDIA.GAME + 'ImageAssets/bkg.jpg'} />,
+            <skoash.Image className="hidden" src={MEDIA.GAME + 'ImageAssets/bk.1.jpg'} />,
+            <skoash.Image className="hidden" src={MEDIA.GAME + 'ImageAssets/bkg.2.jpg'} />,
+            <skoash.Image className="hidden" src={MEDIA.GAME + 'ImageAssets/bkg.win.jpg'} />,
             <div className="background bkg-imagine" />,
             <div className="background bkg-congratulations" />,
             <div className="background bkg-printer" />,
@@ -104,3 +101,5 @@ ThreeDWorld = (
 );
 
 skoash.start(ThreeDWorld);
+
+if (module.hot) module.hot.accept();

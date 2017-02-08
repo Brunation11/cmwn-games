@@ -11,49 +11,49 @@ export default function (props, ref, key) {
             <skoash.Audio
                 type="sfx"
                 ref="start"
-                src={ENVIRONMENT.MEDIA + 'SoundAssets/effects/animation_appear.mp3'}
+                src={MEDIA.GAME + 'SoundAssets/effects/animation_appear.mp3'}
             />
             <skoash.MediaSequence>
                 <skoash.Audio
                     type="sfx"
-                    src={ENVIRONMENT.MEDIA + 'SoundAssets/effects/text_type.mp3'}
+                    src={MEDIA.GAME + 'SoundAssets/effects/text_type.mp3'}
                 />
                 <skoash.Audio
                     type="sfx"
-                    src={ENVIRONMENT.MEDIA + 'SoundAssets/effects/text_type.mp3'}
+                    src={MEDIA.GAME + 'SoundAssets/effects/text_type.mp3'}
                     sprite={[0, 2000]}
                 />
             </skoash.MediaSequence>
             <skoash.MediaSequence>
                 <skoash.Audio
                     type="voiceOver"
-                    src={ENVIRONMENT.MEDIA + 'SoundAssets/vos/VO_imagine.mp3'}
+                    src={MEDIA.GAME + 'SoundAssets/vos/VO_imagine.mp3'}
                     completeTarget="imagine"
                 />
                 <skoash.Audio
                     type="voiceOver"
-                    src={ENVIRONMENT.MEDIA + 'SoundAssets/vos/VO_it_already.mp3'}
+                    src={MEDIA.GAME + 'SoundAssets/vos/VO_it_already.mp3'}
                 />
             </skoash.MediaSequence>
             <skoash.Image
                 className={classNames('question', {
                     show: !_.get(props, 'data.imagine.complete')
                 })}
-                src={ENVIRONMENT.MEDIA + 'SpritesAnimations/wand.gif'}
+                src={MEDIA.GAME + 'SpritesAnimations/wand.gif'}
             />
             <skoash.Image
                 className={classNames('answer', {
                     show: _.get(props, 'data.imagine.complete')
                 })}
-                src={ENVIRONMENT.MEDIA + 'SpritesAnimations/wand.and.printer_.gif'}
+                src={MEDIA.GAME + 'SpritesAnimations/wand.and.printer_.gif'}
             />
             <skoash.Image
                 className="hidden"
-                src={ENVIRONMENT.MEDIA + 'SpritesAnimations/sprite.minion.png'}
+                src={MEDIA.GAME + 'SpritesAnimations/sprite.minion.png'}
             />
             <skoash.Image
                 className="hidden"
-                src={ENVIRONMENT.MEDIA + 'ImageAssets/intro.speech.balloon.png'}
+                src={MEDIA.GAME + 'ImageAssets/intro.speech.balloon.png'}
             />
             <div className="right">
                 <div

@@ -1,19 +1,11 @@
-import MediaCollection from 'shared/components/media_collection/0.1';
-
-import Score from 'shared/components/score/0.1';
-import Timer from 'shared/components/timer/0.1';
-
-import Dropper from 'shared/components/dropper/0.2';
+import Dropper from 'shared/components/dropper/0.3';
 import Randomizer from 'shared/components/randomizer/0.1';
 import Catcher from 'shared/components/catcher/0.2';
 import Catchable from 'shared/components/catchable/0.1';
 
-import Reveal from 'shared/components/reveal/0.1';
-
 export default function (props, ref, key, opts = {}) {
     var onCloseReveal;
     var onScoreComplete;
-    var getTime;
     var onTimerComplete;
     var onAddClassName;
     var onCorrectCatch;
@@ -56,17 +48,6 @@ export default function (props, ref, key, opts = {}) {
                 complete: true,
             },
         });
-    };
-
-    getTime = function () {
-        var timeLeft;
-        var minutesLeft;
-        var secondsLeft;
-        timeLeft = this.props.timeout / 1000 - this.state.time;
-        minutesLeft = Math.floor(timeLeft / 60);
-        secondsLeft = timeLeft % 60;
-        secondsLeft = secondsLeft < 10 ? '0' + secondsLeft : secondsLeft;
-        return `${minutesLeft}:${secondsLeft}`;
     };
 
     onTimerComplete = function () {
@@ -128,18 +109,18 @@ export default function (props, ref, key, opts = {}) {
         >
             <skoash.Image
                 className="hidden"
-                src={ENVIRONMENT.MEDIA + 'ImageAssets/thick.border.png'}
+                src={MEDIA.GAME + 'ImageAssets/thick.border.png'}
             />
-            <MediaCollection
+            <skoash.MediaCollection
                 play={_.get(props, 'data.reveal.open')}
                 children={opts.vos}
             />
-            <MediaCollection
+            <skoash.MediaCollection
                 play={_.get(props, 'data.sfx.playing')}
                 children={opts.sfx}
             />
             <skoash.Component className="left">
-                <Score
+                <skoash.Score
                     max={100}
                     increment={10}
                     correct={_.get(props, 'data.score.correct', 0)}
@@ -147,12 +128,11 @@ export default function (props, ref, key, opts = {}) {
                     onComplete={onScoreComplete}
                 >
                   <div />
-                </Score>
-                <Timer
+                </skoash.Score>
+                <skoash.Timer
                     countDown
                     timeout={opts.timeout}
                     leadingContent="TIME LEFT"
-                    getTime={getTime}
                     stop={_.get(props, 'data.game.complete', false)}
                     complete={_.get(props, 'data.game.complete', false)}
                     checkComplete={_.get(props, 'data.game.start', false)}
@@ -163,24 +143,22 @@ export default function (props, ref, key, opts = {}) {
             <skoash.Component className="main">
                 <skoash.Image
                     className="hidden"
-                    src={ENVIRONMENT.MEDIA + 'SpritesAnimations/sprite.game1.bins.png'}
+                    src={MEDIA.GAME + 'SpritesAnimations/sprite.game1.bins.png'}
                 />
                 <skoash.Image
                     className="hidden"
-                    src={ENVIRONMENT.MEDIA + 'SpritesAnimations/sprite.game1.png'}
+                    src={MEDIA.GAME + 'SpritesAnimations/sprite.game1.png'}
                 />
                 <skoash.Image
                     className="hidden"
-                    src={ENVIRONMENT.MEDIA + 'SpritesAnimations/sprite.game1.printer.png'}
+                    src={MEDIA.GAME + 'SpritesAnimations/sprite.game1.printer.png'}
                 />
                 <skoash.Image
                     className="hidden"
-                    src={ENVIRONMENT.MEDIA + 'ImageAssets/plus.png'}
+                    src={MEDIA.GAME + 'ImageAssets/plus.png'}
                 />
                 <Dropper
-                    leftBound={70}
-                    rightBound={820}
-                    on={_.get(props, 'data.game.start', false)}
+                    on={_.get(props, 'data.game.start', false) && !_.get(props, 'gameState.paused')}
                     start={_.get(props, 'data.game.start', false)}
                     stop={_.get(props, 'data.game.complete', false)}
                     prepClasses={['starting', 'ready', 'set', 'go']}
@@ -200,12 +178,44 @@ export default function (props, ref, key, opts = {}) {
                                   message="other"
                               />,
                               <Catchable
-                                  className="cup"
-                                  message="plastic"
+                                  className="box"
+                                  message="other"
+                              />,
+                              <Catchable
+                                  className="milk"
+                                  message="other"
+                              />,
+                              <Catchable
+                                  className="shoes"
+                                  message="other"
                               />,
                               <Catchable
                                   className="box"
                                   message="other"
+                              />,
+                              <Catchable
+                                  className="cup"
+                                  message="plastic"
+                              />,
+                              <Catchable
+                                  className="lego"
+                                  message="plastic"
+                              />,
+                              <Catchable
+                                  className="cup"
+                                  message="plastic"
+                              />,
+                              <Catchable
+                                  className="lego"
+                                  message="plastic"
+                              />,
+                              <Catchable
+                                  className="cup"
+                                  message="plastic"
+                              />,
+                              <Catchable
+                                  className="lego"
+                                  message="plastic"
                               />,
                               <Catchable
                                   className="glasses"
@@ -218,10 +228,6 @@ export default function (props, ref, key, opts = {}) {
                               <Catchable
                                   className="car"
                                   message="metal"
-                              />,
-                              <Catchable
-                                  className="lego"
-                                  message="plastic"
                               />,
                               <Catchable
                                   className="silver"
@@ -270,17 +276,17 @@ export default function (props, ref, key, opts = {}) {
                       <skoash.Audio
                       type="voiceOver"
                       ref="correct"
-                      src={ENVIRONMENT.MEDIA + 'SoundAssets/effects/Correct.mp3'}
+                      src={MEDIA.GAME + 'SoundAssets/effects/Correct.mp3'}
                     />,
                       <skoash.Audio
                       type="voiceOver"
                       ref="incorrect"
-                      src={ENVIRONMENT.MEDIA + 'SoundAssets/effects/Incorrect.mp3'}
+                      src={MEDIA.GAME + 'SoundAssets/effects/Incorrect.mp3'}
                     />,
                   ]}
                 />
             </skoash.Component>
-            <Reveal
+            <skoash.Reveal
                 openOnStart={opts.openOnStart}
                 openTarget="reveal"
                 openReveal={_.get(props, 'data.openReveal', false)}

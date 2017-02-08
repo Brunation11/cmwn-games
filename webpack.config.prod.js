@@ -7,7 +7,7 @@ module.exports = {
     devtool: 'source-map',
     resolve: {
         root: [path.resolve(__dirname, 'library'), path.resolve(__dirname, 'node_modules')],
-        extensions: ['', '.js'],
+        extensions: ['', '.js', '.json'],
         modulesDirectories: ['node_modules']
     },
     plugins: [
@@ -35,6 +35,9 @@ module.exports = {
         publicPath: '/build/'
     },
     module: {
+        preLoaders: [
+            { test: /\.json$/, exclude: /node_modules/, loader: 'json'},
+        ],
         loaders: [{
             test: /\.js$/,
             loader: ['babel'],
