@@ -19,8 +19,6 @@ import SaveMenu from './components/save_menu';
 import CollisionWarning from './components/collision_warning';
 import LimitWarning from './components/limit_warning';
 
-var Skribble;
-
 const DEFAULT_PROFILE_IMAGE = '';
 
 class SkribbleGame extends skoash.Game {
@@ -237,7 +235,7 @@ class SkribbleGame extends skoash.Game {
     }
 }
 
-Skribble = (
+skoash.start(
     <SkribbleGame
         config={config}
         screens={{
@@ -367,7 +365,5 @@ Skribble = (
         }}
     />
 );
-
-skoash.start(Skribble);
 
 if (module.hot) module.hot.accept();
