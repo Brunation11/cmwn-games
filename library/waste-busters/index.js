@@ -7,6 +7,7 @@ import TitleScreen from './components/title_screen';
 import EatAndDrinkScreen from './components/eat_and_drink_screen';
 import LearnAndCreateScreen from './components/learn_and_create_screen';
 import WhatHappensScreen from './components/what_happens_screen';
+import VideoScreen from './components/video_screen';
 import BetterWaysScreen from './components/better_ways_screen';
 import ClickCardsScreen from './components/click_cards_screen';
 import CardsScreen from './components/cards_screen';
@@ -40,6 +41,7 @@ skoash.start(
             EatAndDrinkScreen,
             LearnAndCreateScreen,
             WhatHappensScreen,
+            VideoScreen,
             BetterWaysScreen,
             ClickCardsScreen,
             CardsScreen,

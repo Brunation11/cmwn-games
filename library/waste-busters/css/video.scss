@@ -1,0 +1,14 @@
+@import 'variables';
+@import 'mixins';
+
+#video {
+    img {
+        @include center;
+        width: 800px;
+    }
+
+    video {
+        @include center;
+        width: 680px;
+    }
+}
