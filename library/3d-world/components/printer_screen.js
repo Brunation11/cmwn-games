@@ -150,39 +150,39 @@ export default function (props, ref, key) {
         >
             <skoash.Image
                 className="hidden"
-                src={ENVIRONMENT.MEDIA + 'SpritesAnimations/sprite.game2.carouselarrow.png'}
+                src={MEDIA.GAME + 'SpritesAnimations/sprite.game2.carouselarrow.png'}
             />
             <skoash.Image
                 className="hidden"
-                src={ENVIRONMENT.MEDIA + 'SpritesAnimations/sprite.game2.png'}
+                src={MEDIA.GAME + 'SpritesAnimations/sprite.game2.png'}
             />
             <skoash.Image
                 className="hidden"
-                src={ENVIRONMENT.MEDIA + 'ImageAssets/img.printer.png'}
+                src={MEDIA.GAME + 'ImageAssets/img.printer.png'}
             />
             <skoash.Image
                 className="hidden"
-                src={ENVIRONMENT.MEDIA + 'ImageAssets/img.leftbox.png'}
+                src={MEDIA.GAME + 'ImageAssets/img.leftbox.png'}
             />
             <skoash.Image
                 className="hidden"
-                src={ENVIRONMENT.MEDIA + 'SpritesAnimations/sprite.game2.brokenobj.png'}
+                src={MEDIA.GAME + 'SpritesAnimations/sprite.game2.brokenobj.png'}
             />
             <skoash.Image
                 className="hidden"
-                src={ENVIRONMENT.MEDIA + 'ImageAssets/img.winframe.png'}
+                src={MEDIA.GAME + 'ImageAssets/img.winframe.png'}
             />
             <skoash.Image
                 className="hidden"
-                src={ENVIRONMENT.MEDIA + 'ImageAssets/img.popup.png'}
+                src={MEDIA.GAME + 'ImageAssets/img.popup.png'}
             />
             <skoash.Image
                 className="hidden"
-                src={ENVIRONMENT.MEDIA + 'ImageAssets/bkg.3.jpg'}
+                src={MEDIA.GAME + 'ImageAssets/bkg.3.jpg'}
             />
             <skoash.Image
                 className="hidden"
-                src={ENVIRONMENT.MEDIA + 'ImageAssets/img.sparkle.png'}
+                src={MEDIA.GAME + 'ImageAssets/img.sparkle.png'}
             />
             <skoash.MediaCollection
                 play={_.get(props, 'data.sfx.playing')}
@@ -194,19 +194,19 @@ export default function (props, ref, key) {
                     <skoash.Audio
                         type="sfx"
                         playTarget="layer1"
-                        src={ENVIRONMENT.MEDIA + 'SoundAssets/effects/Printing.mp3'}
+                        src={MEDIA.GAME + 'SoundAssets/effects/Printing.mp3'}
                         sprite={[0, 1700]}
                     />
                     <skoash.Audio
                         type="sfx"
                         playTarget="layer2"
-                        src={ENVIRONMENT.MEDIA + 'SoundAssets/effects/Printing.mp3'}
+                        src={MEDIA.GAME + 'SoundAssets/effects/Printing.mp3'}
                         sprite={[0, 1700]}
                     />
                     <skoash.Audio
                         type="sfx"
                         playTarget="layer3"
-                        src={ENVIRONMENT.MEDIA + 'SoundAssets/effects/Printing.mp3'}
+                        src={MEDIA.GAME + 'SoundAssets/effects/Printing.mp3'}
                         onComplete={onPrinted}
                         sprite={[0, 1700]}
                     />
@@ -214,13 +214,13 @@ export default function (props, ref, key) {
                 <skoash.Audio
                     type="sfx"
                     ref="correct"
-                    src={ENVIRONMENT.MEDIA + 'SoundAssets/effects/Correct2.mp3'}
+                    src={MEDIA.GAME + 'SoundAssets/effects/Correct2.mp3'}
                 />
                 <skoash.Audio
                     type="sfx"
                     ref="incorrect"
                     complete
-                    src={ENVIRONMENT.MEDIA + 'SoundAssets/effects/Incorrect2.mp3'}
+                    src={MEDIA.GAME + 'SoundAssets/effects/Incorrect2.mp3'}
                 />
             </skoash.MediaCollection>
             <skoash.MediaCollection
@@ -229,32 +229,32 @@ export default function (props, ref, key) {
                 <skoash.Audio
                     type="voiceOver"
                     ref="instructions"
-                    src={ENVIRONMENT.MEDIA + 'SoundAssets/vos/VO_drag_item.mp3'}
+                    src={MEDIA.GAME + 'SoundAssets/vos/VO_drag_item.mp3'}
                 />
                 <skoash.Audio
                     type="voiceOver"
                     ref={targets[0]}
-                    src={ENVIRONMENT.MEDIA + 'SoundAssets/vos/VO_level1_great.mp3'}
+                    src={MEDIA.GAME + 'SoundAssets/vos/VO_level1_great.mp3'}
                 />
                 <skoash.Audio
                     type="voiceOver"
                     ref={targets[1]}
-                    src={ENVIRONMENT.MEDIA + 'SoundAssets/vos/VO_level2_amazing.mp3'}
+                    src={MEDIA.GAME + 'SoundAssets/vos/VO_level2_amazing.mp3'}
                 />
                 <skoash.Audio
                     type="voiceOver"
                     ref={targets[2]}
-                    src={ENVIRONMENT.MEDIA + 'SoundAssets/vos/VO_level3_excellent.mp3'}
+                    src={MEDIA.GAME + 'SoundAssets/vos/VO_level3_excellent.mp3'}
                 />
                 <skoash.Audio
                     type="voiceOver"
                     ref={targets[3]}
-                    src={ENVIRONMENT.MEDIA + 'SoundAssets/vos/VO_level4_one_more.mp3'}
+                    src={MEDIA.GAME + 'SoundAssets/vos/VO_level4_one_more.mp3'}
                 />
                 <skoash.Audio
                     type="voiceOver"
                     ref={targets[4]}
-                    src={ENVIRONMENT.MEDIA + 'SoundAssets/vos/VO_level5_wizard.mp3'}
+                    src={MEDIA.GAME + 'SoundAssets/vos/VO_level5_wizard.mp3'}
                 />
             </skoash.MediaCollection>
             <skoash.Component className="targets">
