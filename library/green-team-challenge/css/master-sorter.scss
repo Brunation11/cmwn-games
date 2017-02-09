@@ -1,0 +1,110 @@
+@import 'variables';
+@import 'mixins';
+
+[id*=master-sorter] {
+    @include game-gages;
+    @include game-reveal;
+
+    .top-left {
+        @include center;
+        top: auto;
+        bottom: -30px;
+    }
+
+    .item-name {
+        transform: translateX(-40%);
+        transition: opacity .5s;
+        opacity: 0;
+        pointer-events: none;
+
+        &.ACTIVE {
+            opacity: 1;
+            pointer-events: auto;
+        }
+    }
+
+    .life {
+        top: 25%;
+    }
+
+    .manual-dropper {
+        position: absolute;
+        right: 0;
+        bottom: 0;
+        transition: transform .5s;
+        width: 75%;
+        height: 75%;
+
+        .items {
+            @include cover;
+
+            > * {
+                @include master-sorter-catchable;
+                @include master-sorter-tray;
+                background-color: $blue;
+                width: 250px;
+                height: 250px;
+
+                .catchable {
+                    @include master-sorter-tray-item;
+                    @include master-sorter-catchable;
+                }
+            }
+        }
+    }
+
+    .bins {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 200px;
+
+        &.DISABLED {
+            pointer-events: none;
+        }
+
+        .catch,
+        .selectable {
+            @include cover;
+            display: flex;
+            height: 100%;
+            justify-content: center;
+
+            div,
+            li {
+                margin: 0 10px;
+                width: 200px;
+                height: 100%;
+
+                &.liquids {
+                    @include position(absolute, 300px null null -200px);
+                    background-color: $transparent;
+                }
+
+                &.home {
+                    @include position(absolute, 750px null null 0);
+                    @include size (100% 200px);
+                }
+            }
+
+            li {
+                background-color: $blue;
+
+                &::before {
+                    content: attr(data-message);
+                }
+
+                &.liquids {
+                    @include position(absolute, 300px null null -200px);
+
+                    &::before {
+                        @include cover;
+                        left: 200px;
+                        background-color: $blue;
+                    }
+                }
+            }
+        }
+    }
+}

@@ -11,7 +11,7 @@
     MEDIA.SPRITE = MEDIA.GAME + 'SpritesAnimations/';
 
     MEDIA.MOCK = {};
-    MEDIA.MOCK.GAME = MEDIA.BASE + 'Games/mockGame/';
+    MEDIA.MOCK.GAME = MEDIA.BASE + 'Games/mock-game/';
     MEDIA.MOCK.EFFECT = MEDIA.MOCK.GAME + 'SoundAssets/effects/';
     MEDIA.MOCK.VO = MEDIA.MOCK.GAME + 'SoundAssets/vos/';
     MEDIA.MOCK.IMAGE = MEDIA.MOCK.GAME + 'ImageAssets/';

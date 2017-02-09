@@ -6,7 +6,7 @@ export default {
     maxHits: 5,
     dropperAmount: 3,
     pointsPerItem: 50,
-    collideFraction: .4,
+    collideFraction: 0,
     getScreenProps(opts) {
         return {
             onStart: function () {
@@ -126,15 +126,17 @@ export default {
                 });
             },
             onIncorrect: function () {
+                let hits = opts.hits + 1;
+
                 this.updateGameData({
                     keys: [_.camelCase(opts.gameName), 'levels', opts.level],
                     data: {
                         start: false,
-                        hits: opts.hits + 1,
+                        hits,
                     }
                 });
 
-                if (opts.hits + 1 === opts.maxHits) {
+                if (hits === opts.maxHits) {
                     setTimeout(() => {
                         this.updateScreenData({
                             keys: ['manual-dropper', 'pickUp'],
@@ -201,15 +203,18 @@ export default {
         'landfill',
         'compost',
     ],
-    itemsToSort: {
-        emptyBottle: {
+    itemsToSort: [
+        {
+            name: 'emptyBottle',
             bin: 'recycle'
         },
-        appleCore: {
+        {
+            name: 'appleCore',
             bin: 'compost'
         },
-        candyBag: {
+        {
+            name: 'candyBag',
             bin: 'landfill'
         },
-    },
+    ],
 };

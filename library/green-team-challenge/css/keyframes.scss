@@ -36,3 +36,18 @@ $move: translateX(450px) translateY(-50%);
         transform: $fantastic-transform rotate(0deg);
     }
 }
+
+$master-transform: translateX(-50%) translateY(-50%);
+@keyframes master-pour {
+    0% {
+        transform: $master-transform rotate(0deg);
+    }
+
+    50% {
+        transform: $master-transform rotate(-45deg);
+    }
+
+    100% {
+        transform: $master-transform rotate(0deg);
+    }
+}

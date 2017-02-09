@@ -3,6 +3,7 @@ const levelKeys = [
     'pricelessPourer',
     'fantasticFoodSharer',
     'dynamicDiverter',
+    'masterSorter',
 ];
 
 const levelNames = [
@@ -10,6 +11,7 @@ const levelNames = [
     <p>Priceless<br/>Pourer</p>,
     <p>Fantastic<br/>Food Sharer</p>,
     <p>Dynamic<br/>Diverter</p>,
+    <p>Master<br/>Sorter</p>,
 ];
 
 export default function (props, ref, key, opts = {}) {

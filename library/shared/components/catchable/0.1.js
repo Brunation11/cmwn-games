@@ -39,12 +39,6 @@ class Catchable extends skoash.Component {
             this.setState({canCatch: true});
         }
     }
-
-    render() {
-        return (
-            <li {...this.props} className={this.getClassNames()} />
-        );
-    }
 }
 
 Catchable.defaultProps = _.defaults({
@@ -52,6 +46,7 @@ Catchable.defaultProps = _.defaults({
     isCorrect: true,
     reCatchable: true,
     onCaught: _.noop,
+    type: 'li',
 }, skoash.Component.defaultProps);
 
 export default Catchable;
