@@ -47,7 +47,7 @@ let audioArray = _.map(audioRefs, (v, k) => ({
     key: k,
     props: {
         type: 'voiceOver',
-        src: `${CMWN.MEDIA.GAME + 'SoundAssets/_vositems/' + v}.mp3`,
+        src: `${CMWN.MEDIA.GAME + 'sound-assets/_vositems/' + v}.mp3`,
         onPlay: function () {
             this.updateScreenData({
                 keys: ['item', 'new'],

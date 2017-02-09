@@ -95,7 +95,7 @@ let arrayOfAudio = _.map(audioRefs, (v, k) =>
         type="voiceOver"
         ref={v}
         key={k}
-        src={`${CMWN.MEDIA.GAME + 'SoundAssets/_vositems/' + v}.mp3`}
+        src={`${CMWN.MEDIA.GAME + 'sound-assets/_vositems/' + v}.mp3`}
         complete
     />
 );
