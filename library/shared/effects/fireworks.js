@@ -57,7 +57,7 @@ class Fireworks {
             let fire = {
                 x: Math.random() * range / 2 - range / 4 + center.x,
                 y: Math.random() * range * 2 + canvas.height,
-                size: Math.random() + 0.5,
+                size: Math.random() + 4.5,
                 fill: '#fd1',
                 vx: Math.random() - 0.5,
                 vy: -(Math.random() + 4),
@@ -106,10 +106,10 @@ class Fireworks {
                     let firework = {
                         x: fire.x,
                         y: fire.y,
-                        size: Math.random() + 1.5,
+                        size: Math.random() + 4.5,
                         fill: color,
-                        vx: Math.random() * 5 - 2.5,
-                        vy: Math.random() * -5 + 1.5,
+                        vx: Math.random() * 15 - 7.5,
+                        vy: Math.random() * -15 + 4.5,
                         ay: 0.05,
                         alpha: 1,
                         life: Math.round(Math.random() * range / 2) + range / 2
