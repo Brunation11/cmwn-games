@@ -2,11 +2,10 @@
 @import 'mixins';
 
 @include reset;
-@include bootstrap-game;
+@include bootstrap-game(McLaren);
 
 html {
     color: $text-color;
-    font-family: "McLaren", "Source Sans Pro", "Helvetica Neue", Helvetica, sans-serif;
 }
 
 .skoash-game {
