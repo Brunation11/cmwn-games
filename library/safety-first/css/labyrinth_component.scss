@@ -23,7 +23,7 @@
                 position: absolute;
                 top: -450%;
                 left: -450%;
-                background-image: url('#{$media}SpritesAnimations/sprites.charac.png');
+                background-image: url('#{$sprite}sprites.charac.png');
                 background-repeat: no-repeat;
                 background-position: 0% 0%;
                 background-size: 100% auto;
@@ -49,7 +49,7 @@
 
         div {
             position: absolute;
-            background-image: url('#{$media}ImageAssets/arrow.keys.png');
+            background-image: url('#{$image}arrow.keys.png');
             background-size: auto 200%;
             width: 72px;
             height: 72px;
@@ -145,7 +145,7 @@
 
             &::before {
                 position: absolute;
-                background-image: url('#{$media}SpritesAnimations/sprites.map1.png');
+                background-image: url('#{$sprite}sprites.map1.png');
                 background-repeat: no-repeat;
                 background-size: auto 230%;
                 content: '';
@@ -258,7 +258,7 @@
                 position: absolute;
                 top: 7px;
                 left: 343px;
-                background: url('#{$media}SpritesAnimations/sprites-signs.png');
+                background: url('#{$sprite}sprites-signs.png');
                 background-size: auto 101%;
                 width: 460px;
                 height: 476px;
@@ -300,7 +300,7 @@
 
             &::before {
                 position: absolute;
-                background-image: url('#{$media}SpritesAnimations/sprites.houseitems.png');
+                background-image: url('#{$sprite}sprites.houseitems.png');
                 background-repeat: no-repeat;
                 background-size: auto 200%;
                 content: '';
@@ -406,7 +406,7 @@
                 position: absolute;
                 top: 7px;
                 left: 295px;
-                background: url('#{$media}SpritesAnimations/sprites-signs.png');
+                background: url('#{$sprite}sprites-signs.png');
                 background-size: auto 101%;
                 width: 460px;
                 height: 476px;

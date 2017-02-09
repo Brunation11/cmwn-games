@@ -11,23 +11,23 @@ export default function (props, ref, key) {
         >
             <skoash.Image
                 className="hidden"
-                src={`${ENVIRONMENT.MEDIA}ImageAssets/frame.quit.png`}
+                src={`${MEDIA.IMAGE}frame.quit.png`}
             />
             <skoash.Image
                 className="hidden"
-                src={`${ENVIRONMENT.MEDIA}SpritesAnimations/sprites.h1.png`}
+                src={`${MEDIA.SPRITE}sprites.h1.png`}
             />
 
             <skoash.MediaSequence>
                 <skoash.Audio
                     ref="ding-dong"
                     type="sfx"
-                    src={`${ENVIRONMENT.MEDIA}SoundAssets/effects/DoorbellLong.mp3`}
+                    src={`${MEDIA.EFFECT}DoorbellLong.mp3`}
                 />
             </skoash.MediaSequence>
             <skoash.Image
                 className="animated infinite"
-                src={`${ENVIRONMENT.MEDIA}ImageAssets/ding.dong.png`}
+                src={`${MEDIA.IMAGE}ding.dong.png`}
             />
         </skoash.Screen>
     );

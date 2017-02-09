@@ -8,8 +8,8 @@ export default function (props, ref, key) {
         disableChance: .75,
         disableInterval: 4000,
         openOnStart: 'instructions',
-        img: `${ENVIRONMENT.MEDIA}ImageAssets/map.01.fullimg.jpg`,
-        map: `${ENVIRONMENT.MEDIA}ImageAssets/map.01.jpg`,
+        img: `${MEDIA.IMAGE}map.01.fullimg.jpg`,
+        map: `${MEDIA.IMAGE}map.01.jpg`,
         tips: true,
         goal: 9,
         startX: 140,
@@ -22,12 +22,12 @@ export default function (props, ref, key) {
                 <skoash.Audio
                     ref="vo-1"
                     type="voiceOver"
-                    src={`${ENVIRONMENT.MEDIA}SoundAssets/vos/UseTheArrowKeys.mp3`}
+                    src={`${MEDIA.VO}UseTheArrowKeys.mp3`}
                 />
                 <skoash.Audio
                     ref="vo-2"
                     type="voiceOver"
-                    src={`${ENVIRONMENT.MEDIA}SoundAssets/vos/ClickScreen.mp3`}
+                    src={`${MEDIA.VO}ClickScreen.mp3`}
                 />
             </skoash.MediaSequence>,
             <skoash.MediaSequence
@@ -37,12 +37,12 @@ export default function (props, ref, key) {
                 <skoash.Audio
                     ref="vo-3"
                     type="sfx"
-                    src={`${ENVIRONMENT.MEDIA}SoundAssets/effects/MapGame.mp3`}
+                    src={`${MEDIA.EFFECT}MapGame.mp3`}
                 />
                 <skoash.Audio
                     ref="vo-4"
                     type="voiceOver"
-                    src={`${ENVIRONMENT.MEDIA}SoundAssets/vos/TipsPath.mp3`}
+                    src={`${MEDIA.VO}TipsPath.mp3`}
                 />
             </skoash.MediaSequence>,
             <skoash.MediaSequence
@@ -52,12 +52,12 @@ export default function (props, ref, key) {
                 <skoash.Audio
                     ref="vo-5"
                     type="sfx"
-                    src={`${ENVIRONMENT.MEDIA}SoundAssets/effects/MapGame.mp3`}
+                    src={`${MEDIA.EFFECT}MapGame.mp3`}
                 />
                 <skoash.Audio
                     ref="vo-6"
                     type="voiceOver"
-                    src={`${ENVIRONMENT.MEDIA}SoundAssets/vos/LookBothWays.mp3`}
+                    src={`${MEDIA.VO}LookBothWays.mp3`}
                 />
             </skoash.MediaSequence>,
             <skoash.MediaSequence
@@ -67,12 +67,12 @@ export default function (props, ref, key) {
                 <skoash.Audio
                     ref="vo-7"
                     type="sfx"
-                    src={`${ENVIRONMENT.MEDIA}SoundAssets/effects/MapGame.mp3`}
+                    src={`${MEDIA.EFFECT}MapGame.mp3`}
                 />
                 <skoash.Audio
                     ref="vo-8"
                     type="voiceOver"
-                    src={`${ENVIRONMENT.MEDIA}SoundAssets/vos/WaitBus.mp3`}
+                    src={`${MEDIA.VO}WaitBus.mp3`}
                 />
             </skoash.MediaSequence>,
             <skoash.MediaSequence
@@ -82,12 +82,12 @@ export default function (props, ref, key) {
                 <skoash.Audio
                     ref="vo-9"
                     type="sfx"
-                    src={`${ENVIRONMENT.MEDIA}SoundAssets/effects/MapGame.mp3`}
+                    src={`${MEDIA.EFFECT}MapGame.mp3`}
                 />
                 <skoash.Audio
                     ref="vo-10"
                     type="voiceOver"
-                    src={`${ENVIRONMENT.MEDIA}SoundAssets/vos/DropBus.mp3`}
+                    src={`${MEDIA.VO}DropBus.mp3`}
                 />
             </skoash.MediaSequence>,
             <skoash.MediaSequence
@@ -97,12 +97,12 @@ export default function (props, ref, key) {
                 <skoash.Audio
                     ref="vo-11"
                     type="sfx"
-                    src={`${ENVIRONMENT.MEDIA}SoundAssets/effects/MapGame.mp3`}
+                    src={`${MEDIA.EFFECT}MapGame.mp3`}
                 />
                 <skoash.Audio
                     ref="vo-12"
                     type="voiceOver"
-                    src={`${ENVIRONMENT.MEDIA}SoundAssets/vos/PlayOthers.mp3`}
+                    src={`${MEDIA.VO}PlayOthers.mp3`}
                 />
             </skoash.MediaSequence>,
             <skoash.MediaSequence
@@ -112,12 +112,12 @@ export default function (props, ref, key) {
                 <skoash.Audio
                     ref="vo-13"
                     type="sfx"
-                    src={`${ENVIRONMENT.MEDIA}SoundAssets/effects/MapGame.mp3`}
+                    src={`${MEDIA.EFFECT}MapGame.mp3`}
                 />
                 <skoash.Audio
                     ref="vo-14"
                     type="voiceOver"
-                    src={`${ENVIRONMENT.MEDIA}SoundAssets/vos/StrangerBelongings.mp3`}
+                    src={`${MEDIA.VO}StrangerBelongings.mp3`}
                 />
             </skoash.MediaSequence>,
             <skoash.MediaSequence
@@ -127,12 +127,12 @@ export default function (props, ref, key) {
                 <skoash.Audio
                     ref="vo-15"
                     type="sfx"
-                    src={`${ENVIRONMENT.MEDIA}SoundAssets/effects/MapGame.mp3`}
+                    src={`${MEDIA.EFFECT}MapGame.mp3`}
                 />
                 <skoash.Audio
                     ref="vo-16"
                     type="voiceOver"
-                    src={`${ENVIRONMENT.MEDIA}SoundAssets/vos/StrangerCar.mp3`}
+                    src={`${MEDIA.VO}StrangerCar.mp3`}
                 />
             </skoash.MediaSequence>,
             <skoash.MediaSequence
@@ -142,12 +142,12 @@ export default function (props, ref, key) {
                 <skoash.Audio
                     ref="vo-17"
                     type="sfx"
-                    src={`${ENVIRONMENT.MEDIA}SoundAssets/effects/MapGame.mp3`}
+                    src={`${MEDIA.EFFECT}MapGame.mp3`}
                 />
                 <skoash.Audio
                     ref="vo-18"
                     type="voiceOver"
-                    src={`${ENVIRONMENT.MEDIA}SoundAssets/vos/StrangerGift.mp3`}
+                    src={`${MEDIA.VO}StrangerGift.mp3`}
                 />
             </skoash.MediaSequence>,
             <skoash.MediaSequence
@@ -157,12 +157,12 @@ export default function (props, ref, key) {
                 <skoash.Audio
                     ref="vo-19"
                     type="sfx"
-                    src={`${ENVIRONMENT.MEDIA}SoundAssets/effects/MapGame.mp3`}
+                    src={`${MEDIA.EFFECT}MapGame.mp3`}
                 />
                 <skoash.Audio
                     ref="vo-20"
                     type="voiceOver"
-                    src={`${ENVIRONMENT.MEDIA}SoundAssets/vos/HomeSafe.mp3`}
+                    src={`${MEDIA.VO}HomeSafe.mp3`}
                 />
             </skoash.MediaSequence>
         ],
@@ -173,7 +173,7 @@ export default function (props, ref, key) {
             >
                 <skoash.Image
                     className="wolf"
-                    src={`${ENVIRONMENT.MEDIA}ImageAssets/wolf.fullbody.png`}
+                    src={`${MEDIA.IMAGE}wolf.fullbody.png`}
                 />
                 <h1 className="header">
                     Use the arrow keys<br />
@@ -185,7 +185,7 @@ export default function (props, ref, key) {
                 </h2>
                 <skoash.Image
                     className="nav-arrows"
-                    src={`${ENVIRONMENT.MEDIA}ImageAssets/arrow.keys.png`}
+                    src={`${MEDIA.IMAGE}arrow.keys.png`}
                 />
             </skoash.Component>,
             <skoash.Component
@@ -194,23 +194,23 @@ export default function (props, ref, key) {
             >
                 <skoash.Image
                     className="bush-left"
-                    src={`${ENVIRONMENT.MEDIA}ImageAssets/bush.3.png`}
+                    src={`${MEDIA.IMAGE}bush.3.png`}
                 />
                 <skoash.Image
                     className="bush-right"
-                    src={`${ENVIRONMENT.MEDIA}ImageAssets/bush.2.png`}
+                    src={`${MEDIA.IMAGE}bush.2.png`}
                 />
                 <skoash.Image
                     className="wolf"
-                    src={`${ENVIRONMENT.MEDIA}ImageAssets/wolf.fullbody.png`}
+                    src={`${MEDIA.IMAGE}wolf.fullbody.png`}
                 />
                 <skoash.Image
                     className="sign"
-                    src={`${ENVIRONMENT.MEDIA}ImageAssets/road.sign.png`}
+                    src={`${MEDIA.IMAGE}road.sign.png`}
                 />
                 <skoash.Image
                     className="grass"
-                    src={`${ENVIRONMENT.MEDIA}ImageAssets/grass.png`}
+                    src={`${MEDIA.IMAGE}grass.png`}
                 />
                 <skoash.Component className="content" />
             </skoash.Component>,
@@ -220,23 +220,23 @@ export default function (props, ref, key) {
             >
                 <skoash.Image
                     className="bush-left"
-                    src={`${ENVIRONMENT.MEDIA}ImageAssets/bush.3.png`}
+                    src={`${MEDIA.IMAGE}bush.3.png`}
                 />
                 <skoash.Image
                     className="bush-right"
-                    src={`${ENVIRONMENT.MEDIA}ImageAssets/bush.2.png`}
+                    src={`${MEDIA.IMAGE}bush.2.png`}
                 />
                 <skoash.Image
                     className="wolf"
-                    src={`${ENVIRONMENT.MEDIA}ImageAssets/wolf.fullbody.png`}
+                    src={`${MEDIA.IMAGE}wolf.fullbody.png`}
                 />
                 <skoash.Image
                     className="sign"
-                    src={`${ENVIRONMENT.MEDIA}ImageAssets/road.sign.png`}
+                    src={`${MEDIA.IMAGE}road.sign.png`}
                 />
                 <skoash.Image
                     className="grass"
-                    src={`${ENVIRONMENT.MEDIA}ImageAssets/grass.png`}
+                    src={`${MEDIA.IMAGE}grass.png`}
                 />
                 <skoash.Component className="content" />
             </skoash.Component>,
@@ -246,23 +246,23 @@ export default function (props, ref, key) {
             >
                 <skoash.Image
                     className="bush-left"
-                    src={`${ENVIRONMENT.MEDIA}ImageAssets/bush.3.png`}
+                    src={`${MEDIA.IMAGE}bush.3.png`}
                 />
                 <skoash.Image
                     className="bush-right"
-                    src={`${ENVIRONMENT.MEDIA}ImageAssets/bush.2.png`}
+                    src={`${MEDIA.IMAGE}bush.2.png`}
                 />
                 <skoash.Image
                     className="wolf"
-                    src={`${ENVIRONMENT.MEDIA}ImageAssets/wolf.fullbody.png`}
+                    src={`${MEDIA.IMAGE}wolf.fullbody.png`}
                 />
                 <skoash.Image
                     className="sign"
-                    src={`${ENVIRONMENT.MEDIA}ImageAssets/road.sign.png`}
+                    src={`${MEDIA.IMAGE}road.sign.png`}
                 />
                 <skoash.Image
                     className="grass"
-                    src={`${ENVIRONMENT.MEDIA}ImageAssets/grass.png`}
+                    src={`${MEDIA.IMAGE}grass.png`}
                 />
                 <skoash.Component className="content" />
             </skoash.Component>,
@@ -272,23 +272,23 @@ export default function (props, ref, key) {
             >
                 <skoash.Image
                     className="bush-left"
-                    src={`${ENVIRONMENT.MEDIA}ImageAssets/bush.3.png`}
+                    src={`${MEDIA.IMAGE}bush.3.png`}
                 />
                 <skoash.Image
                     className="bush-right"
-                    src={`${ENVIRONMENT.MEDIA}ImageAssets/bush.2.png`}
+                    src={`${MEDIA.IMAGE}bush.2.png`}
                 />
                 <skoash.Image
                     className="wolf"
-                    src={`${ENVIRONMENT.MEDIA}ImageAssets/wolf.fullbody.png`}
+                    src={`${MEDIA.IMAGE}wolf.fullbody.png`}
                 />
                 <skoash.Image
                     className="sign"
-                    src={`${ENVIRONMENT.MEDIA}ImageAssets/road.sign.png`}
+                    src={`${MEDIA.IMAGE}road.sign.png`}
                 />
                 <skoash.Image
                     className="grass"
-                    src={`${ENVIRONMENT.MEDIA}ImageAssets/grass.png`}
+                    src={`${MEDIA.IMAGE}grass.png`}
                 />
                 <skoash.Component className="content" />
             </skoash.Component>,
@@ -298,23 +298,23 @@ export default function (props, ref, key) {
             >
                 <skoash.Image
                     className="bush-left"
-                    src={`${ENVIRONMENT.MEDIA}ImageAssets/bush.3.png`}
+                    src={`${MEDIA.IMAGE}bush.3.png`}
                 />
                 <skoash.Image
                     className="bush-right"
-                    src={`${ENVIRONMENT.MEDIA}ImageAssets/bush.2.png`}
+                    src={`${MEDIA.IMAGE}bush.2.png`}
                 />
                 <skoash.Image
                     className="wolf"
-                    src={`${ENVIRONMENT.MEDIA}ImageAssets/wolf.fullbody.png`}
+                    src={`${MEDIA.IMAGE}wolf.fullbody.png`}
                 />
                 <skoash.Image
                     className="sign"
-                    src={`${ENVIRONMENT.MEDIA}ImageAssets/road.sign.png`}
+                    src={`${MEDIA.IMAGE}road.sign.png`}
                 />
                 <skoash.Image
                     className="grass"
-                    src={`${ENVIRONMENT.MEDIA}ImageAssets/grass.png`}
+                    src={`${MEDIA.IMAGE}grass.png`}
                 />
                 <skoash.Component className="content" />
             </skoash.Component>,
@@ -324,23 +324,23 @@ export default function (props, ref, key) {
             >
                 <skoash.Image
                     className="bush-left"
-                    src={`${ENVIRONMENT.MEDIA}ImageAssets/bush.3.png`}
+                    src={`${MEDIA.IMAGE}bush.3.png`}
                 />
                 <skoash.Image
                     className="bush-right"
-                    src={`${ENVIRONMENT.MEDIA}ImageAssets/bush.2.png`}
+                    src={`${MEDIA.IMAGE}bush.2.png`}
                 />
                 <skoash.Image
                     className="wolf"
-                    src={`${ENVIRONMENT.MEDIA}ImageAssets/wolf.fullbody.png`}
+                    src={`${MEDIA.IMAGE}wolf.fullbody.png`}
                 />
                 <skoash.Image
                     className="sign"
-                    src={`${ENVIRONMENT.MEDIA}ImageAssets/road.sign.png`}
+                    src={`${MEDIA.IMAGE}road.sign.png`}
                 />
                 <skoash.Image
                     className="grass"
-                    src={`${ENVIRONMENT.MEDIA}ImageAssets/grass.png`}
+                    src={`${MEDIA.IMAGE}grass.png`}
                 />
                 <skoash.Component className="content" />
             </skoash.Component>,
@@ -350,23 +350,23 @@ export default function (props, ref, key) {
             >
                 <skoash.Image
                     className="bush-left"
-                    src={`${ENVIRONMENT.MEDIA}ImageAssets/bush.3.png`}
+                    src={`${MEDIA.IMAGE}bush.3.png`}
                 />
                 <skoash.Image
                     className="bush-right"
-                    src={`${ENVIRONMENT.MEDIA}ImageAssets/bush.2.png`}
+                    src={`${MEDIA.IMAGE}bush.2.png`}
                 />
                 <skoash.Image
                     className="wolf"
-                    src={`${ENVIRONMENT.MEDIA}ImageAssets/wolf.fullbody.png`}
+                    src={`${MEDIA.IMAGE}wolf.fullbody.png`}
                 />
                 <skoash.Image
                     className="sign"
-                    src={`${ENVIRONMENT.MEDIA}ImageAssets/road.sign.png`}
+                    src={`${MEDIA.IMAGE}road.sign.png`}
                 />
                 <skoash.Image
                     className="grass"
-                    src={`${ENVIRONMENT.MEDIA}ImageAssets/grass.png`}
+                    src={`${MEDIA.IMAGE}grass.png`}
                 />
                 <skoash.Component className="content" />
             </skoash.Component>,
@@ -376,23 +376,23 @@ export default function (props, ref, key) {
             >
                 <skoash.Image
                     className="bush-left"
-                    src={`${ENVIRONMENT.MEDIA}ImageAssets/bush.3.png`}
+                    src={`${MEDIA.IMAGE}bush.3.png`}
                 />
                 <skoash.Image
                     className="bush-right"
-                    src={`${ENVIRONMENT.MEDIA}ImageAssets/bush.2.png`}
+                    src={`${MEDIA.IMAGE}bush.2.png`}
                 />
                 <skoash.Image
                     className="wolf"
-                    src={`${ENVIRONMENT.MEDIA}ImageAssets/wolf.fullbody.png`}
+                    src={`${MEDIA.IMAGE}wolf.fullbody.png`}
                 />
                 <skoash.Image
                     className="sign"
-                    src={`${ENVIRONMENT.MEDIA}ImageAssets/road.sign.png`}
+                    src={`${MEDIA.IMAGE}road.sign.png`}
                 />
                 <skoash.Image
                     className="grass"
-                    src={`${ENVIRONMENT.MEDIA}ImageAssets/grass.png`}
+                    src={`${MEDIA.IMAGE}grass.png`}
                 />
                 <skoash.Component className="content" />
             </skoash.Component>,
@@ -402,23 +402,23 @@ export default function (props, ref, key) {
             >
                 <skoash.Image
                     className="bush-left"
-                    src={`${ENVIRONMENT.MEDIA}ImageAssets/bush.3.png`}
+                    src={`${MEDIA.IMAGE}bush.3.png`}
                 />
                 <skoash.Image
                     className="bush-right"
-                    src={`${ENVIRONMENT.MEDIA}ImageAssets/bush.2.png`}
+                    src={`${MEDIA.IMAGE}bush.2.png`}
                 />
                 <skoash.Image
                     className="wolf"
-                    src={`${ENVIRONMENT.MEDIA}ImageAssets/wolf.fullbody.png`}
+                    src={`${MEDIA.IMAGE}wolf.fullbody.png`}
                 />
                 <skoash.Image
                     className="sign"
-                    src={`${ENVIRONMENT.MEDIA}ImageAssets/road.sign.png`}
+                    src={`${MEDIA.IMAGE}road.sign.png`}
                 />
                 <skoash.Image
                     className="grass"
-                    src={`${ENVIRONMENT.MEDIA}ImageAssets/grass.png`}
+                    src={`${MEDIA.IMAGE}grass.png`}
                 />
                 <skoash.Component className="content" />
             </skoash.Component>

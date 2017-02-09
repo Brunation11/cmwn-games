@@ -49,7 +49,7 @@
             position: absolute;
             bottom: -10%;
             left: 0;
-            background-image: url('#{$media}SpritesAnimations/sprites.labels.png');
+            background-image: url('#{$sprite}sprites.labels.png');
             background-size: 301%;
             width: 100%;
             height: 15%;
@@ -70,7 +70,7 @@
 
     @for $i from 1 through length($officers) {
         .#{nth($officers, $i)}::before {
-            background-image: url('#{$media}ImageAssets/officer.#{nth($officers, $i)}.png');
+            background-image: url('#{$image}officer.#{nth($officers, $i)}.png');
         }
 
         .#{nth($officers, $i)}::after {
@@ -89,7 +89,7 @@
         position: absolute;
         top: 0;
         left: 0;
-        background: url('#{$media}SpritesAnimations/sprites.slider.jpg');
+        background: url('#{$sprite}sprites.slider.jpg');
         background-size: auto 100%;
         width: 100%;
         height: 100%;
@@ -146,12 +146,12 @@
 
         .frame {
             position: absolute;
-            background: url('#{$media}SpritesAnimations/sprites.profile.png');
+            background: url('#{$sprite}sprites.profile.png');
         }
 
         .bkg-reveal {
             position: absolute;
-            background: url('#{$media}ImageAssets/bkg.3.jpg');
+            background: url('#{$image}bkg.3.jpg');
             background-size: auto 100%;
         }
 

@@ -1,8 +1,8 @@
 {
     "id": "safety-first",
-    "media_folder": "monarch",
+    "media_folder": "SafetyFirst",
     "version": 1,
-    "skoash": "1.0.5",
+    "skoash": "1.1.1",
     "dimensions": {
         "width": 960,
         "height": 540

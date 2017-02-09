@@ -12,15 +12,15 @@ export default function (props, ref, key) {
             <skoash.Audio
                 ref="vo"
                 type="voiceOver"
-                src={`${ENVIRONMENT.MEDIA}SoundAssets/vos/Flip.mp3`}
+                src={`${MEDIA.VO}Flip.mp3`}
             />
             <skoash.Image
                 className="flip"
-                src={`${ENVIRONMENT.MEDIA}SpritesAnimations/SF.AnimatedEarnedFlip.gif`}
+                src={`${MEDIA.SPRITE}SF.AnimatedEarnedFlip.gif`}
             />
             <skoash.Image
                 className="sign"
-                src={`${ENVIRONMENT.MEDIA}ImageAssets/frame.flip.png`}
+                src={`${MEDIA.IMAGE}frame.flip.png`}
             />
             <h1 className="header">
                 You are important<br />

@@ -14,37 +14,37 @@ export default function (props, ref, key) {
         >
             <skoash.Image
                 className="hidden"
-                src={`${ENVIRONMENT.MEDIA}SpritesAnimations/sprites.labels.png`}
+                src={`${MEDIA.SPRITE}sprites.labels.png`}
             />
             <skoash.Image
                 className="hidden"
-                src={`${ENVIRONMENT.MEDIA}ImageAssets/officer.barkley.png`}
+                src={`${MEDIA.IMAGE}officer.barkley.png`}
             />
             <skoash.Image
                 className="hidden"
-                src={`${ENVIRONMENT.MEDIA}ImageAssets/officer.shepherd.png`}
+                src={`${MEDIA.IMAGE}officer.shepherd.png`}
             />
             <skoash.Image
                 className="hidden"
-                src={`${ENVIRONMENT.MEDIA}ImageAssets/officer.wolf.png`}
+                src={`${MEDIA.IMAGE}officer.wolf.png`}
             />
             <skoash.Image
                 className="hidden"
-                src={`${ENVIRONMENT.MEDIA}SpritesAnimations/sprites.slider.jpg`}
+                src={`${MEDIA.SPRITE}sprites.slider.jpg`}
             />
             <skoash.Image
                 className="hidden"
-                src={`${ENVIRONMENT.MEDIA}SpritesAnimations/sprites.profile.png`}
+                src={`${MEDIA.SPRITE}sprites.profile.png`}
             />
             <skoash.Image
                 className="hidden"
-                src={`${ENVIRONMENT.MEDIA}ImageAssets/bkg.3.jpg`}
+                src={`${MEDIA.IMAGE}bkg.3.jpg`}
             />
 
             <skoash.Audio
                 ref="intro"
                 type="voiceOver"
-                src={`${ENVIRONMENT.MEDIA}SoundAssets/vos/MeetTeam.mp3`}
+                src={`${MEDIA.VO}MeetTeam.mp3`}
             />
 
             <skoash.Component className="header">
@@ -65,7 +65,7 @@ export default function (props, ref, key) {
                 <skoash.Audio
                     ref="correct"
                     type="sfx"
-                    src={`${ENVIRONMENT.MEDIA}SoundAssets/effects/DogBark.mp3`}
+                    src={`${MEDIA.EFFECT}DogBark.mp3`}
                     onComplete={function () {
                         this.updateGameState({
                             path: 'reveal',
@@ -96,12 +96,12 @@ export default function (props, ref, key) {
                     <skoash.Audio
                         ref={`${answers[0]}-vo`}
                         type="voiceOver"
-                        src={`${ENVIRONMENT.MEDIA}SoundAssets/vos/Barkley.mp3`}
+                        src={`${MEDIA.VO}Barkley.mp3`}
                     />
                     <skoash.Audio
                         ref={`${answers[0]}-intro`}
                         type="voiceOver"
-                        src={`${ENVIRONMENT.MEDIA}SoundAssets/vos/BarkleyIntro.mp3`}
+                        src={`${MEDIA.VO}BarkleyIntro.mp3`}
                         startDelay={1000}
                     />
                 </skoash.MediaSequence>
@@ -112,12 +112,12 @@ export default function (props, ref, key) {
                     <skoash.Audio
                         ref={`${answers[1]}-vo`}
                         type="voiceOver"
-                        src={`${ENVIRONMENT.MEDIA}SoundAssets/vos/Shepherd.mp3`}
+                        src={`${MEDIA.VO}Shepherd.mp3`}
                     />
                     <skoash.Audio
                         ref={`${answers[1]}-intro`}
                         type="voiceOver"
-                        src={`${ENVIRONMENT.MEDIA}SoundAssets/vos/ShepherdIntro.mp3`}
+                        src={`${MEDIA.VO}ShepherdIntro.mp3`}
                         startDelay={1000}
                     />
                 </skoash.MediaSequence>
@@ -128,12 +128,12 @@ export default function (props, ref, key) {
                     <skoash.Audio
                         ref={`${answers[2]}-vo`}
                         type="voiceOver"
-                        src={`${ENVIRONMENT.MEDIA}SoundAssets/vos/Wolf.mp3`}
+                        src={`${MEDIA.VO}Wolf.mp3`}
                     />
                     <skoash.Audio
                         ref={`${answers[2]}-intro`}
                         type="voiceOver"
-                        src={`${ENVIRONMENT.MEDIA}SoundAssets/vos/WolfIntro.mp3`}
+                        src={`${MEDIA.VO}WolfIntro.mp3`}
                         startDelay={1000}
                     />
                 </skoash.MediaSequence>
@@ -155,13 +155,13 @@ export default function (props, ref, key) {
                 }}
                 list={[
                     <skoash.ListItem data-ref={answers[0]} className={answers[0]}>
-                        <skoash.Image src={`${ENVIRONMENT.MEDIA}ImageAssets/officer.${answers[0]}.png`} />
+                        <skoash.Image src={`${MEDIA.IMAGE}officer.${answers[0]}.png`} />
                     </skoash.ListItem>,
                     <skoash.ListItem data-ref={answers[1]} className={answers[1]}>
-                        <skoash.Image src={`${ENVIRONMENT.MEDIA}ImageAssets/officer.${answers[1]}.png`} />
+                        <skoash.Image src={`${MEDIA.IMAGE}officer.${answers[1]}.png`} />
                     </skoash.ListItem>,
                     <skoash.ListItem data-ref={answers[2]} className={answers[2]}>
-                        <skoash.Image src={`${ENVIRONMENT.MEDIA}ImageAssets/officer.${answers[2]}.png`} />
+                        <skoash.Image src={`${MEDIA.IMAGE}officer.${answers[2]}.png`} />
                     </skoash.ListItem>
                 ]}
             />
@@ -173,7 +173,7 @@ export default function (props, ref, key) {
                     <skoash.Component ref={answers[0]}>
                         <skoash.Component className="bkg-reveal" />
                         <skoash.Component className={answers[0]}>
-                            <skoash.Image src={`${ENVIRONMENT.MEDIA}ImageAssets/officer.${answers[0]}.png`} />
+                            <skoash.Image src={`${MEDIA.IMAGE}officer.${answers[0]}.png`} />
                         </skoash.Component>
                         <skoash.Component className="frame">
                             <span>
@@ -186,7 +186,7 @@ export default function (props, ref, key) {
                     <skoash.Component ref={answers[1]}>
                         <skoash.Component className="bkg-reveal" />
                         <skoash.Component className={answers[1]}>
-                            <skoash.Image src={`${ENVIRONMENT.MEDIA}ImageAssets/officer.${answers[1]}.png`} />
+                            <skoash.Image src={`${MEDIA.IMAGE}officer.${answers[1]}.png`} />
                         </skoash.Component>
                         <skoash.Component className="frame">
                             <span>
@@ -199,7 +199,7 @@ export default function (props, ref, key) {
                     <skoash.Component ref={answers[2]}>
                         <skoash.Component className="bkg-reveal" />
                         <skoash.Component className={answers[2]}>
-                            <skoash.Image src={`${ENVIRONMENT.MEDIA}ImageAssets/officer.${answers[2]}.png`} />
+                            <skoash.Image src={`${MEDIA.IMAGE}officer.${answers[2]}.png`} />
                         </skoash.Component>
                         <skoash.Component className="frame">
                             <span>

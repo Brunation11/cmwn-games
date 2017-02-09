@@ -46,35 +46,35 @@ export default function (props, ref, key, opts = {}) {
         >
             <skoash.Image
                 className="hidden"
-                src={`${ENVIRONMENT.MEDIA}SpritesAnimations/sprites.dogsinframes.png`}
+                src={`${MEDIA.SPRITE}sprites.dogsinframes.png`}
             />
             <skoash.Image
                 className="hidden"
-                src={`${ENVIRONMENT.MEDIA}SpritesAnimations/sprites.h1.png`}
+                src={`${MEDIA.SPRITE}sprites.h1.png`}
             />
             <skoash.Image
                 className="hidden"
-                src={`${ENVIRONMENT.MEDIA}ImageAssets/bkg.dooropened.jpg`}
+                src={`${MEDIA.IMAGE}bkg.dooropened.jpg`}
             />
             <skoash.Image
                 className="hidden"
-                src={`${ENVIRONMENT.MEDIA}ImageAssets/frame.roundedrec.png`}
+                src={`${MEDIA.IMAGE}frame.roundedrec.png`}
             />
             <skoash.Image
                 className="hidden"
-                src={`${ENVIRONMENT.MEDIA}SpritesAnimations/sprites.yesno.png`}
+                src={`${MEDIA.SPRITE}sprites.yesno.png`}
             />
 
             <skoash.MediaSequence>
                 <skoash.Audio
                     ref="intro"
                     type="voiceOver"
-                    src={`${ENVIRONMENT.MEDIA}SoundAssets/effects/Doorbell.mp3`}
+                    src={`${MEDIA.EFFECT}Doorbell.mp3`}
                 />
                 <skoash.Audio
                     ref="intro"
                     type="voiceOver"
-                    src={`${ENVIRONMENT.MEDIA}SoundAssets/vos/WhosAtDoor.mp3`}
+                    src={`${MEDIA.VO}WhosAtDoor.mp3`}
                     onComplete={function () {
                         this.updateGameState({
                             path: 'game',
@@ -87,7 +87,7 @@ export default function (props, ref, key, opts = {}) {
                 <skoash.Audio
                     ref="intro"
                     type="voiceOver"
-                    src={`${ENVIRONMENT.MEDIA}SoundAssets/vos/${opts.label}.mp3`}
+                    src={`${MEDIA.VO}${opts.label}.mp3`}
                 />
             </skoash.MediaSequence>
 
@@ -105,7 +105,7 @@ export default function (props, ref, key, opts = {}) {
                 <skoash.Audio
                     ref="yes"
                     type="sfx"
-                    src={`${ENVIRONMENT.MEDIA}SoundAssets/effects/Yes.mp3`}
+                    src={`${MEDIA.EFFECT}Yes.mp3`}
                     onComplete={function () {
                         sfxOnComplete.call(this);
                     }}
@@ -113,7 +113,7 @@ export default function (props, ref, key, opts = {}) {
                 <skoash.Audio
                     ref="no"
                     type="sfx"
-                    src={`${ENVIRONMENT.MEDIA}SoundAssets/effects/No.mp3`}
+                    src={`${MEDIA.EFFECT}No.mp3`}
                     onComplete={function () {
                         sfxOnComplete.call(this);
                     }}
@@ -135,7 +135,7 @@ export default function (props, ref, key, opts = {}) {
                 <skoash.Audio
                     ref={opts.id}
                     type="voiceOver"
-                    src={`${ENVIRONMENT.MEDIA}SoundAssets/vos/${opts.vo}.mp3`}
+                    src={`${MEDIA.VO}${opts.vo}.mp3`}
                     onComplete={function () {
                         screenComplete.call(this);
                     }}
@@ -171,10 +171,10 @@ export default function (props, ref, key, opts = {}) {
                         </skoash.Component>
                         <skoash.Image
                             className="barklines"
-                            src={`${ENVIRONMENT.MEDIA}ImageAssets/barkley.barklines.png`}
+                            src={`${MEDIA.IMAGE}barkley.barklines.png`}
                         />
                         <skoash.Image
-                            src={`${ENVIRONMENT.MEDIA}ImageAssets/barkley.fullbody.png`}
+                            src={`${MEDIA.IMAGE}barkley.fullbody.png`}
                         />
                     </skoash.Component>
                 ]}

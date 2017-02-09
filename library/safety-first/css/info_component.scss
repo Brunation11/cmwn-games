@@ -5,7 +5,7 @@
     .frame {
         @include center;
         position: absolute;
-        background: url('#{$media}ImageAssets/frame.quit.png');
+        background: url('#{$image}frame.quit.png');
         background-size: 100% 100%;
         width: 90%;
         height: 80%;
@@ -37,7 +37,7 @@
 
 #info-lets-see {
     .frame::after {
-        background: url('#{$media}SpritesAnimations/sprites.h1.png');
+        background: url('#{$sprite}sprites.h1.png');
         background-position: -10px 0;
         background-size: auto 100%;
     }
@@ -46,7 +46,7 @@
 #info-good-job {
     .frame {
         &::after {
-            background: url('#{$media}ImageAssets/goodjob.png');
+            background: url('#{$image}goodjob.png');
             background-position: -10px 0;
             background-size: auto 100%;
             height: 39%;

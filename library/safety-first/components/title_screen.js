@@ -7,7 +7,7 @@ export default function (props, ref, key) {
             id="title"
             hidePrev={true}
         >
-            <skoash.Image src={ENVIRONMENT.MEDIA + 'SpritesAnimations/safetyfirst_titlescreen_.gif'} />
+            <skoash.Image src={`${MEDIA.SPRITE}safetyfirst_titlescreen_.gif`} />
         </skoash.Screen>
     );
 }

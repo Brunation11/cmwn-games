@@ -4,7 +4,7 @@
 #ding-dong {
     .frame {
         position: absolute;
-        background: url('#{$media}ImageAssets/frame.quit.png');
+        background: url('#{$image}frame.quit.png');
         background-size: 100% 100%;
         width: 90%;
         height: 80%;
@@ -13,7 +13,7 @@
             position: absolute;
             top: 10%;
             right: 3%;
-            background: url('#{$media}SpritesAnimations/sprites.h1.png');
+            background: url('#{$sprite}sprites.h1.png');
             background-position: -10px 0;
             background-size: auto 100%;
             width: 70%;

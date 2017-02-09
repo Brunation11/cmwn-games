@@ -1,5 +1,3 @@
-var SafetyFirst;
-
 import config from './config';
 
 import Loader from 'shared/components/loader/0.1';
@@ -27,34 +25,32 @@ import FlipScreen from './components/flip_screen';
 
 import QuitScreen from './components/quit_screen';
 
-window.MEDIA_SERVER = ENVIRONMENT.MEDIA;
-ENVIRONMENT.MEDIA += 'Games/SafetyFirst/';
-
-SafetyFirst = (
+skoash.start(
     <skoash.Game
         config={config}
-        screens={{
-            0: iOSScreen,
-            1: TitleScreen,
-            2: MeetTheTeamScreen,
-            3: InfoLetsSeeScreen,
-            4: DingDongScreen,
-            5: WhosAtTheDoorGrandpaScreen,
-            6: WhosAtTheDoorDeliveryPersonScreen,
-            7: WhosAtTheDoorSisterScreen,
-            8: WhosAtTheDoorNewNeighborScreen,
-            9: WhosAtTheDoorMotherScreen,
-            10: WhosAtTheDoorBrotherScreen,
-            11: WhosAtTheDoorGasManScreen,
-            12: WhosAtTheDoorCloseFriendScreen,
-            13: WhosAtTheDoorPersonWithFlatScreen,
-            14: WhosAtTheDoorCablePersonScreen,
-            15: WhosAtTheDoorCloseRelativeScreen,
-            16: InfoGoodJobScreen,
-            17: LabyrinthOutdoorsScreen,
-            18: LabyrinthIndoorsScreen,
-            19: FlipScreen,
-        }}
+        loader={<Loader />}
+        screens={[
+            iOSScreen,
+            TitleScreen,
+            MeetTheTeamScreen,
+            InfoLetsSeeScreen,
+            DingDongScreen,
+            WhosAtTheDoorGrandpaScreen,
+            WhosAtTheDoorDeliveryPersonScreen,
+            WhosAtTheDoorSisterScreen,
+            WhosAtTheDoorNewNeighborScreen,
+            WhosAtTheDoorMotherScreen,
+            WhosAtTheDoorBrotherScreen,
+            WhosAtTheDoorGasManScreen,
+            WhosAtTheDoorCloseFriendScreen,
+            WhosAtTheDoorPersonWithFlatScreen,
+            WhosAtTheDoorCablePersonScreen,
+            WhosAtTheDoorCloseRelativeScreen,
+            InfoGoodJobScreen,
+            LabyrinthOutdoorsScreen,
+            LabyrinthIndoorsScreen,
+            FlipScreen,
+        ]}
         menus={{
             quit: (
                 <QuitScreen
@@ -62,55 +58,52 @@ SafetyFirst = (
                     assets={[
                         <skoash.Audio
                             type="voiceOver"
-                            src={`${ENVIRONMENT.MEDIA}SoundAssets/vos/Quit.mp3`}
+                            src={`${MEDIA.VO}Quit.mp3`}
                         />
                     ]}
                 />
             )
         }}
-        loader={<Loader />}
         assets={[
             <skoash.Font name="Source Sans Pro" />,
             <skoash.Audio
                 type="background"
-                src={`${ENVIRONMENT.MEDIA}SoundAssets/effects/BKG1.mp3`}
+                src={`${MEDIA.EFFECT}BKG1.mp3`}
                 loop
             />,
             <skoash.Audio
                 ref="button"
                 type="sfx"
-                src={`${ENVIRONMENT.MEDIA}SoundAssets/effects/ButtonClick.mp3`}
+                src={`${MEDIA.EFFECT}ButtonClick.mp3`}
             />,
             <skoash.Audio
                 ref="back"
                 type="sfx"
-                src={`${ENVIRONMENT.MEDIA}SoundAssets/effects/ButtonClick.mp3`}
+                src={`${MEDIA.EFFECT}ButtonClick.mp3`}
             />,
             <skoash.Image
                 className="background bkg2"
-                src={`${ENVIRONMENT.MEDIA}ImageAssets/bkg.2.jpg`}
+                src={`${MEDIA.IMAGE}bkg.2.jpg`}
             />,
             <skoash.Image
                 className="background bkg3"
-                src={`${ENVIRONMENT.MEDIA}ImageAssets/bkg.3.jpg`}
+                src={`${MEDIA.IMAGE}bkg.3.jpg`}
             />,
             <skoash.Image
                 className="background bkghome"
-                src={`${ENVIRONMENT.MEDIA}ImageAssets/bkg.home.jpg`}
+                src={`${MEDIA.IMAGE}bkg.home.jpg`}
             />,
             <skoash.Image
                 className="background dooropened"
-                src={`${ENVIRONMENT.MEDIA}ImageAssets/bkg.dooropened.jpg`}
+                src={`${MEDIA.IMAGE}bkg.dooropened.jpg`}
             />,
             <skoash.Image
                 className="background doorclosed"
-                src={`${ENVIRONMENT.MEDIA}ImageAssets/bkg.doorclosed.jpg`}
+                src={`${MEDIA.IMAGE}bkg.doorclosed.jpg`}
             />,
             <skoash.Component className="logo" />
         ]}
     />
 );
-
-skoash.start(SafetyFirst);
 
 if (module.hot) module.hot.accept();

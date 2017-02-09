@@ -8,26 +8,26 @@ export default function (props, ref, key, opts = {}) {
         >
             <skoash.Image
                 className="hidden"
-                src={`${ENVIRONMENT.MEDIA}ImageAssets/frame.quit.png`}
+                src={`${MEDIA.IMAGE}frame.quit.png`}
             />
             <skoash.Image
                 className="hidden"
-                src={`${ENVIRONMENT.MEDIA}SpritesAnimations/sprites.h1.png`}
+                src={`${MEDIA.SPRITE}sprites.h1.png`}
             />
             <skoash.Image
                 className="hidden"
-                src={`${ENVIRONMENT.MEDIA}ImageAssets/goodjob.png`}
+                src={`${MEDIA.IMAGE}goodjob.png`}
             />
 
             <skoash.Audio
                 ref="vo"
                 type="voiceOver"
-                src={`${ENVIRONMENT.MEDIA}SoundAssets/vos/${opts.label}.mp3`}
+                src={`${MEDIA.VO}${opts.label}.mp3`}
             />
             <skoash.Component className="frame">
                 {opts.copy}
             </skoash.Component>
-            <skoash.Image src={`${ENVIRONMENT.MEDIA}ImageAssets/dog.quit.png`} />
+            <skoash.Image src={`${MEDIA.IMAGE}dog.quit.png`} />
         </skoash.Screen>
     );
 }
