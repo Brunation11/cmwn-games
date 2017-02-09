@@ -1,0 +1,64 @@
+@import 'variables';
+@import 'mixins';
+
+[id*=dynamic-diverter] {
+    @include game-gages;
+    @include game-reveal;
+
+    .bin-name {
+        @include position(absolute, null null 0 175px);
+        z-index: 3;
+        border: 2px solid $black;
+        padding: 20px 0;
+        width: 200px;
+        height: 64px;
+        text-transform: capitalize;
+    }
+
+    .dropzones {
+        > div {
+            @include position(absolute, 100px null null 100px);
+            @include size(200px 100px);
+            z-index: 2;
+            background-color: $green;
+        }
+    }
+
+    .bins {
+        @include cover;
+
+        div:nth-of-type(1) {
+            .carousel {
+                z-index: 1;
+            }
+        }
+
+        .carousel {
+            @include cover;
+            transition: opacity .5s;
+            opacity: 1;
+            background-color: $blue;
+
+            &.LEAVE {
+                opacity: 0;
+            }
+        }
+    }
+
+    .draggable {
+        @include size(100px);
+        position: absolute;
+        transition: opacity .5s;
+        opacity: 1;
+        background-color: $green;
+
+        &::before {
+            content: attr(data-message);
+        }
+
+        &.CORRECT {
+            opacity: 0;
+            pointer-events: none;
+        }
+    }
+}

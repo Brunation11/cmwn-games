@@ -41,6 +41,18 @@ import FantasticFoodSharer4Screen from './components/fantastic_food_sharer_level
 import FantasticFoodSharer5InfoScreen from './components/fantastic_food_sharer_five_info_screen';
 import FantasticFoodSharer5Screen from './components/fantastic_food_sharer_level_five_screen';
 import FantasticFoodSharerPostScreen from './components/fantastic_food_sharer_post_screen';
+import DynamicDiverterPreScreen from './components/dynamic_diverter_pre_screen';
+import DynamicDiverter1InfoScreen from './components/dynamic_diverter_one_info_screen';
+import DynamicDiverter1Screen from './components/dynamic_diverter_level_one_screen';
+import DynamicDiverter2InfoScreen from './components/dynamic_diverter_two_info_screen';
+import DynamicDiverter2Screen from './components/dynamic_diverter_level_two_screen';
+import DynamicDiverter3InfoScreen from './components/dynamic_diverter_three_info_screen';
+import DynamicDiverter3Screen from './components/dynamic_diverter_level_three_screen';
+import DynamicDiverter4InfoScreen from './components/dynamic_diverter_four_info_screen';
+import DynamicDiverter4Screen from './components/dynamic_diverter_level_four_screen';
+import DynamicDiverter5InfoScreen from './components/dynamic_diverter_five_info_screen';
+import DynamicDiverter5Screen from './components/dynamic_diverter_level_five_screen';
+import DynamicDiverterPostScreen from './components/dynamic_diverter_post_screen';
 import FlipScreen from './components/flip_screen';
 import QuitScreen from './components/quit_screen';
 
@@ -54,39 +66,67 @@ skoash.start(
             RecyclingChampionPreScreen,
             RecyclingChampion1InfoScreen,
             RecyclingChampion1Screen,
+            RecyclingChampionPreScreen,
             RecyclingChampion2InfoScreen,
             RecyclingChampion2Screen,
+            RecyclingChampionPreScreen,
             RecyclingChampion3InfoScreen,
             RecyclingChampion3Screen,
+            RecyclingChampionPreScreen,
             RecyclingChampion4InfoScreen,
             RecyclingChampion4Screen,
+            RecyclingChampionPreScreen,
             RecyclingChampion5InfoScreen,
             RecyclingChampion5Screen,
             RecyclingChampionPostScreen,
             PricelessPourerPreScreen,
             PricelessPourer1InfoScreen,
             PricelessPourer1Screen,
+            PricelessPourerPreScreen,
             PricelessPourer2InfoScreen,
             PricelessPourer2Screen,
+            PricelessPourerPreScreen,
             PricelessPourer3InfoScreen,
             PricelessPourer3Screen,
+            PricelessPourerPreScreen,
             PricelessPourer4InfoScreen,
             PricelessPourer4Screen,
+            PricelessPourerPreScreen,
             PricelessPourer5InfoScreen,
             PricelessPourer5Screen,
             PricelessPourerPostScreen,
             FantasticFoodSharerPreScreen,
             FantasticFoodSharer1InfoScreen,
             FantasticFoodSharer1Screen,
+            FantasticFoodSharerPreScreen,
             FantasticFoodSharer2InfoScreen,
             FantasticFoodSharer2Screen,
+            FantasticFoodSharerPreScreen,
             FantasticFoodSharer3InfoScreen,
             FantasticFoodSharer3Screen,
+            FantasticFoodSharerPreScreen,
             FantasticFoodSharer4InfoScreen,
             FantasticFoodSharer4Screen,
+            FantasticFoodSharerPreScreen,
             FantasticFoodSharer5InfoScreen,
             FantasticFoodSharer5Screen,
             FantasticFoodSharerPostScreen,
+            DynamicDiverterPreScreen,
+            DynamicDiverter1InfoScreen,
+            DynamicDiverter1Screen,
+            DynamicDiverterPreScreen,
+            DynamicDiverter2InfoScreen,
+            DynamicDiverter2Screen,
+            DynamicDiverterPreScreen,
+            DynamicDiverter3InfoScreen,
+            DynamicDiverter3Screen,
+            DynamicDiverterPreScreen,
+            DynamicDiverter4InfoScreen,
+            DynamicDiverter4Screen,
+            DynamicDiverterPreScreen,
+            DynamicDiverter5InfoScreen,
+            DynamicDiverter5Screen,
+            DynamicDiverterPostScreen,
             FlipScreen,
         ]}
         menus={{

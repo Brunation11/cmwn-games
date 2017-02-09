@@ -230,10 +230,10 @@ class Draggable extends skoash.Component {
         y = this.state.endY - this.state.startY;
         transform = `translateX(${x}px) translateY(${y}px)`;
 
-        return {
+        return _.defaults({
             transform,
             WebkitTransform: transform,
-        };
+        }, this.state.style, this.props.style);
     }
 
     getClassNames() {

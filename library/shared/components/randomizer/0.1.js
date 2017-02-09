@@ -1,3 +1,8 @@
+// As of skoash 1.1.2 this component can be found at skoash.Randomizer
+/* eslint-disable no-console */
+console.warn('As of skoash 1.1.2 this component can be found at skoash.Randomizer');
+/* eslint-enable no-console */
+
 import classNames from 'classnames';
 
 class Randomizer extends skoash.Component {

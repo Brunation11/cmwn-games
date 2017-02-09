@@ -182,6 +182,7 @@ Dropper.defaultProps = _.defaults({
     onNext: _.noop,
     next: false,
     drop: false,
+    onTransitionEnd: _.noop,
 }, skoash.Component.defaultProps);
 
 export default Dropper;
