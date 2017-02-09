@@ -62,8 +62,8 @@ let revealVOs = {
     recycle: 'RecyclingMaterials',
     landfill: 'ThinkingCap',
     liquids: 'GetPouring',
-    compost: 'GetPouring', // needs to be replaced
-    'food-share': 'GetPouring', // needs to be replaced
+    compost: 'CompostingExplain',
+    'food-share': 'FoodSharingExplain',
 };
 
 let binComponents = _.map(binNames, bin =>
