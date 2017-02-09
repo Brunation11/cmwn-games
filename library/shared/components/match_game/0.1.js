@@ -45,7 +45,7 @@ class MatchGame extends Selectable {
         });
 
         _.each(this.refs, (ref, key) => {
-            if (key === message) ref.complete();
+            if (key === message) _.invoke(ref, 'complete');
         });
 
         this.checkComplete();

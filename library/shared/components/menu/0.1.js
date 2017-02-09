@@ -71,15 +71,15 @@ class Menu extends Selectable {
             item = this.props.items[key];
 
             isFinal = (
-          typeof item.items !== 'object' ||
-          (
-            Object.prototype.toString.call(item.items) === '[object Array]' &&
-            item.items[0] && !item.items[0].items
-          )
-        ) || (
-          typeof self.props.lastLevel === 'number' &&
-          self.props.lastLevel === self.props.level
-        );
+                typeof item.items !== 'object' ||
+                    (
+                        Object.prototype.toString.call(item.items) === '[object Array]' &&
+                        item.items[0] && !item.items[0].items
+                    )
+                ) || (
+                    typeof self.props.lastLevel === 'number' &&
+                    self.props.lastLevel === self.props.level
+                );
 
             if (isFinal) {
                 gotoObj = {
@@ -91,29 +91,29 @@ class Menu extends Selectable {
             }
 
             return (
-        <skoash.ListItem
-          className={self.getClass(key)}
-          data-ref={key}
-          ref={key}
-          key={key}
-          onClick={onClick}
-        >
-          <span>{item.name || key}</span>
-          {(() => {
-              if (isFinal) return;
-              return (
-              <Menu
-                ref={'menu-' + key}
-                categories={categories}
-                items={item.items}
-                inactive={true}
-                level={(self.props.level || 0) + 1}
-                lastLevel={self.props.lastLevel}
-              />
+                <skoash.ListItem
+                    className={self.getClass(key)}
+                    data-ref={key}
+                    ref={key}
+                    key={key}
+                    onClick={onClick}
+                >
+                <span>{item.name || key}</span>
+                {(() => {
+                    if (isFinal) return;
+                    return (
+                        <Menu
+                            ref={'menu-' + key}
+                            categories={categories}
+                            items={item.items}
+                            inactive={true}
+                            level={(self.props.level || 0) + 1}
+                            lastLevel={self.props.lastLevel}
+                        />
+                    );
+                })()}
+                </skoash.ListItem>
             );
-          })()}
-        </skoash.ListItem>
-      );
         });
     }
 

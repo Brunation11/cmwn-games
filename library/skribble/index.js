@@ -31,12 +31,13 @@ class SkribbleGame extends skoash.Game {
         return this.refs['screen-canvas'].getData();
     }
 
-    save(skramble) {
+    save(opts = {}, skramble = false) {
         /* eslint-disable camelcase */
         var friend_to;
         var rules;
         var skribble;
         var self = this;
+
         friend_to = self.state.recipient && self.state.recipient.user_id ?
             self.state.recipient.user_id : null;
         rules = self.getRules();
@@ -55,7 +56,7 @@ class SkribbleGame extends skoash.Game {
         if (JSON.stringify(skribble) !== JSON.stringify(this.state.skribble)) {
             self.emit({
                 name: 'saveSkribble',
-                game: self.config.id,
+                game: self.props.config.id,
                 skribble,
             }).then(skribbleData => {
                 self.setState({
@@ -68,7 +69,7 @@ class SkribbleGame extends skoash.Game {
     }
 
     send() {
-        this.save(true);
+        this.save({}, true);
 
         this.refs['screen-canvas'].reset();
         this.navigator.goto({
@@ -237,126 +238,134 @@ class SkribbleGame extends skoash.Game {
 }
 
 Skribble = (
-  <SkribbleGame
-    config={config}
-    screens={{
-        0: iOSScreen,
-        1: TitleScreen,
-        menu: MenuScreen,
-        friend: FriendScreen,
-        canvas: CanvasScreen,
-        'item-drawer': ItemDrawerScreen,
-        inbox: InboxScreen,
-        preview: PreviewScreen,
-        send: SendScreen,
-        sent: SentScreen,
-        read: ReadScreen,
-    }}
-    menus={{
-        quit: QuitScreen,
-        save: SaveMenu,
-        collisionWarning: CollisionWarning,
-        limitWarning: LimitWarning,
-    }}
-    loader={<Loader />}
-    assets={[
-        <skoash.Image className="hidden" src="media/_Otter/Waving_Otter2.gif" />,
-        <skoash.Image className="hidden" src="media/_Otter/Open-wide-Otter2.gif" />,
-        <skoash.Image className="hidden" src="media/_Otter/joyful-otter_2.gif" />,
-        <skoash.Image className="hidden" src="media/_Otter/Antipation-Otter3.gif" />,
-        <skoash.Image className="hidden" src="media/_Otter/proud-of-you2.gif" />,
-        <skoash.Image className="hidden" src="media/_Otter/Peeking-through-Otter2.gif" />,
-        <div className="background-1" />,
-        <div className="background-2" />,
-        <div className="background-3" />,
-        <div className="background-4" />,
-        <div className="background-5" />,
-        <div className="background-6" />,
-    ]}
-    onBootstrap={function () {
-        this.getFriends = _.throttle(this.getData.bind(this, {name: 'getFriends'}), 1000);
-        this.getMediaOnReady = _.throttle(this.getMedia.bind(this), 1000);
+    <SkribbleGame
+        config={config}
+        screens={{
+            0: iOSScreen,
+            1: TitleScreen,
+            menu: MenuScreen,
+            friend: FriendScreen,
+            canvas: CanvasScreen,
+            'item-drawer': ItemDrawerScreen,
+            inbox: InboxScreen,
+            preview: PreviewScreen,
+            send: SendScreen,
+            sent: SentScreen,
+            read: ReadScreen,
+        }}
+        menus={{
+            quit: QuitScreen,
+            save: SaveMenu,
+            collisionWarning: CollisionWarning,
+            limitWarning: LimitWarning,
+        }}
+        loader={<Loader />}
+        assets={[
+            <skoash.Image className="hidden" src="media/_Otter/Waving_Otter2.gif" />,
+            <skoash.Image className="hidden" src="media/_Otter/Open-wide-Otter2.gif" />,
+            <skoash.Image className="hidden" src="media/_Otter/joyful-otter_2.gif" />,
+            <skoash.Image className="hidden" src="media/_Otter/Antipation-Otter3.gif" />,
+            <skoash.Image className="hidden" src="media/_Otter/proud-of-you2.gif" />,
+            <skoash.Image className="hidden" src="media/_Otter/Peeking-through-Otter2.gif" />,
+            <div className="background-1" />,
+            <div className="background-2" />,
+            <div className="background-3" />,
+            <div className="background-4" />,
+            <div className="background-5" />,
+            <div className="background-6" />,
+        ]}
+        onBootstrap={function () {
+            this.getFriends = _.throttle(this.getData.bind(this, {name: 'getFriends'}), 1000);
+            this.getMediaOnReady = _.throttle(this.getMedia.bind(this), 1000);
 
-        this.updateState({
-            path: ['collisionWarning'],
-            data: {
-                show: true
-            }
-        });
-    }}
-    onReady={function () {
-        this.getMediaOnReady();
-        this.getFriends();
-    }}
-    renderMenu={function () {
-        return (
-            <div>
-                <div className="game-menu">
-                    <button className="save" onClick={this.saveButton.bind(this)} />
-                    <button className="inbox" onClick={this.navigator.goto.bind(this, {index: 'inbox'})} />
-                    <button className="create" onClick={this.create.bind(this)} />
-                    <button className="help" onClick={this.navigator.openMenu.bind(this, {id: 'help'})} />
-                    <button className="close" onClick={this.navigator.openMenu.bind(this, {id: 'quit'})} />
-                </div>
-                <ul className="menu recipient">
-                    <li onClick={this.clickRecipient.bind(this)}>
-                        <span>
-                            {this.renderRecipient()}
-                        </span>
-                    </li>
-                </ul>
-            </div>
-        );
-    }}
-    getGotoOpts={function (opts) {
-        if (opts.index === 'send') {
-            if (!this.state.recipient || !this.state.recipient.name) {
-                opts.index = 'friend';
-                opts.goto = 'send';
-            }
-        }
-        return opts;
-    }}
-    passData={function (opts) {
-        if (opts.name === 'add-item') {
-            this.refs['screen-canvas'].addItem(opts.message);
-            this.navigator.goto({ index: 'canvas' });
-        } else if (opts.name === 'add-recipient') {
-            this.addRecipient(opts.message, this.navigator.goto.bind(this, { index: opts.goto || 'canvas' }));
-        } else if (opts.name === 'send') {
-            this.send();
-        } else if (opts.name === 'showCollisionWarning') {
-            this.showCollisionWarning();
-        } else if (opts.name === 'showLimitWarning') {
-            this.showLimitWarning();
-        }
-    }}
-    getTriggerEvents={function (opts = {}) {
-        opts.save = this.save;
-        opts.getMedia = this.getMedia;
-        opts.getRules = this.getRules;
-        opts.loadSkribble = this.loadSkribble;
-        return opts;
-    }}
-    getData={function (opts) {
-        var names = [
-            'getFriends',
-            'getFriend',
-            'markAsRead',
-        ];
-
-        if (names.indexOf(opts.name) === -1) {
-            opts.name = 'getData';
-        }
-
-        return this.eventManager.emit(opts).then(data => {
-            this.updateData({
-                data,
-                callback: opts.callback,
+            this.updateState({
+                path: ['collisionWarning'],
+                data: {
+                    show: true
+                }
             });
-        });
-    }}
-  />
+        }}
+        onReady={function () {
+            this.getMediaOnReady();
+            this.getFriends();
+        }}
+        renderMenu={function () {
+            return (
+                <div>
+                    <div className="game-menu">
+                        <button className="save" onClick={this.saveButton.bind(this)} />
+                        <button
+                            className="inbox"
+                            onClick={this.navigator.goto.bind(this, {index: 'inbox'})}
+                        />
+                        <button className="create" onClick={this.create.bind(this)} />
+                        <button className="help" onClick={this.navigator.openMenu.bind(this, {id: 'help'})} />
+                        <button
+                            className="close"
+                            onClick={this.navigator.openMenu.bind(this, {id: 'quit'})}
+                        />
+                    </div>
+                    <ul className="menu recipient">
+                        <li onClick={this.clickRecipient.bind(this)}>
+                            <span>
+                                {this.renderRecipient()}
+                            </span>
+                        </li>
+                    </ul>
+                </div>
+            );
+        }}
+        getGotoOpts={function (opts) {
+            if (opts.index === 'send') {
+                if (!this.state.recipient || !this.state.recipient.name) {
+                    opts.index = 'friend';
+                    opts.goto = 'send';
+                }
+            }
+            return opts;
+        }}
+        passData={function (opts) {
+            if (opts.name === 'add-item') {
+                this.refs['screen-canvas'].addItem(opts.message);
+                this.navigator.goto({ index: 'canvas' });
+            } else if (opts.name === 'add-recipient') {
+                this.addRecipient(opts.message, this.navigator.goto.bind(this, {
+                    index: opts.goto || 'canvas'
+                }));
+            } else if (opts.name === 'send') {
+                this.send();
+            } else if (opts.name === 'showCollisionWarning') {
+                this.showCollisionWarning();
+            } else if (opts.name === 'showLimitWarning') {
+                this.showLimitWarning();
+            }
+        }}
+        getTriggerEvents={function (opts = {}) {
+            opts.save = this.save;
+            opts.getMedia = this.getMedia;
+            opts.getRules = this.getRules;
+            opts.loadSkribble = this.loadSkribble;
+            return opts;
+        }}
+        getData={function (opts) {
+            var names = [
+                'getFriends',
+                'getFriend',
+                'markAsRead',
+            ];
+
+            if (names.indexOf(opts.name) === -1) {
+                opts.name = 'getData';
+            }
+
+            return this.eventManager.emit(opts).then(data => {
+                this.updateData({
+                    data,
+                    callback: opts.callback,
+                });
+            });
+        }}
+    />
 );
 
 skoash.start(Skribble);
