@@ -7,8 +7,8 @@ const ITEM = 'items-';
 const DROPPED = 'DROPPED';
 
 class Dropper extends skoash.Component {
-    constructor() {
-        super();
+    constructor(props) {
+        super(props);
 
         this.state = _.defaults({
             items: {},

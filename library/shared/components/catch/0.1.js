@@ -3,8 +3,8 @@ import classNames from 'classnames';
 import Catchable from 'shared/components/catchable/0.1';
 
 class Catch extends skoash.Component {
-    constructor() {
-        super();
+    constructor(props) {
+        super(props);
 
         this.state = {
             canCatch: true,
