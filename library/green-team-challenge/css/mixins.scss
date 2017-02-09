@@ -17,8 +17,8 @@
     @include sprite($sprite + 'sprite.yesno.png', 215px, 220px, 2, 2, $column, 1, 2, $width, $height);
 }
 
-@mixin bin-button($width: 0, $height: 0) {
-    @include sprite($sprite + 'sprite.btn.png', 82px, 180px, 1, 2, 1, 1, 2, $width, $height);
+@mixin bin-button($row: 1, $width: 0, $height: 0) {
+    @include sprite($sprite + 'sprite.btn.png', 82px, 180px, 1, 2, 1, $row, 2, $width, $height);
 }
 
 @mixin star-sprite($row, $width: 0, $height: 0) {

@@ -126,6 +126,9 @@ export default function (props, ref, key) {
                 selectables: binComponents,
                 reveals: revealList,
                 media: mediaCollectionList,
+                SelectableProps: {
+                    selectClass: 'HIGHLIGHTED',
+                }
             })}
             <skoash.MediaCollection
                 play={_.get(props, 'data.selectable.target') && 'click'}
