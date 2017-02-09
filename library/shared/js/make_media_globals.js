@@ -1,10 +1,21 @@
 (function (gameName) {
-    window.MEDIA = {
+    // remove window.MEDIA once no games reference it
+    var MEDIA = window.MEDIA = {
         BASE: ENVIRONMENT.MEDIA
     };
-    window.MEDIA.GAME = window.MEDIA.BASE + 'Games/' + gameName + '/';
-    window.MEDIA.EFFECT = window.MEDIA.GAME + 'SoundAssets/effects/';
-    window.MEDIA.VO = window.MEDIA.GAME + 'SoundAssets/vos/';
-    window.MEDIA.IMAGE = window.MEDIA.GAME + 'ImageAssets/';
-    window.MEDIA.SPRITE = window.MEDIA.GAME + 'SpritesAnimations/';
-}(window.gameFolder));
+
+    MEDIA.GAME = MEDIA.BASE + 'Games/' + gameName + '/';
+    MEDIA.EFFECT = MEDIA.GAME + 'SoundAssets/effects/';
+    MEDIA.VO = MEDIA.GAME + 'SoundAssets/vos/';
+    MEDIA.IMAGE = MEDIA.GAME + 'ImageAssets/';
+    MEDIA.SPRITE = MEDIA.GAME + 'SpritesAnimations/';
+
+    MEDIA.MOCK = {};
+    MEDIA.MOCK.GAME = MEDIA.BASE + 'Games/mockGame/';
+    MEDIA.MOCK.EFFECT = MEDIA.MOCK.GAME + 'SoundAssets/effects/';
+    MEDIA.MOCK.VO = MEDIA.MOCK.GAME + 'SoundAssets/vos/';
+    MEDIA.MOCK.IMAGE = MEDIA.MOCK.GAME + 'ImageAssets/';
+    MEDIA.MOCK.SPRITE = MEDIA.MOCK.GAME + 'SpritesAnimations/';
+
+    window.CMWN.MEDIA = MEDIA;
+}(window.CMWN.gameFolder));

@@ -19,6 +19,9 @@
     background-size: $sprite-width $sprite-height;
     background-position: -#{$background-left} -#{$background-top};
 
+    width: $width;
+    height: $height;
+
     &:hover {
         background-position: -#{$background-left} -#{$hover-background-top};
     }

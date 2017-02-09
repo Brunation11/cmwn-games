@@ -16,6 +16,7 @@
 
     html {
         font-family: "Source Sans Pro", "Helvetica Neue", Helvetica, sans-serif;
+        touch-action: manipulation;
     }
 
     body,
@@ -26,6 +27,7 @@
         background-size: cover;
         width: 100%;
         height: 100%;
+        overflow: hidden;
         font-size: 20px;
 
         .background {
@@ -66,6 +68,11 @@
         color: transparent;
         font-family: inherit;
         font-size: inherit;
+
+        &.next-screen,
+        &.prev-screen {
+            transform: scale3d(1, 1, 1);
+        }
     }
 
     h2 {
@@ -88,7 +95,7 @@
         right: 0;
         bottom: 0;
         left: 0;
-        transition: opacity .5s, z-index 0 .5s;
+        transition: opacity .5s, z-index 0s .5s;
         opacity: 0;
         z-index: -1;
 
@@ -109,7 +116,7 @@
         }
 
         &.OPEN {
-            transition: opacity .5s, z-index 0;
+            transition: opacity .5s, z-index 0s;
             opacity: 1;
             z-index: 1;
         }
@@ -133,7 +140,7 @@
     }
 
     .skoash-game.VOICE-OVER:not(.DEMO) .close-reveal,
-    .screen.GATED .next-screen {
+    .screen .next-screen {
         transition: opacity 0s;
         opacity: 0;
         cursor: default;
@@ -150,7 +157,7 @@
     .skoash-game.DEMO .screen .next-screen,
     .screen.COMPLETE .next-screen,
     .screen.REPLAY .next-screen {
-        transform: rotate(0deg);
+        transform: rotate(0deg) scale3d(1, 1, 1);
         transition: opacity 1s, transform 1s;
         opacity: 1;
         cursor: pointer;

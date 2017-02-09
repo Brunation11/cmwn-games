@@ -1,0 +1,29 @@
+@import 'mixins';
+
+#remember {
+    .frame {
+        img {
+            @include center;
+            position: absolute;
+            top: 14%;
+        }
+
+        .banner {
+            width: 620px;
+        }
+
+        .remember {
+            width: 400px;
+        }
+
+        .content {
+            top: 54%;
+        }
+    }
+
+    .newspaper {
+        @include sprite-game-intro(1);
+        bottom: 30px;
+        left: -20px;
+    }
+}

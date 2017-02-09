@@ -1,0 +1,70 @@
+@import 'variables';
+@import 'mixins';
+
+#types-of-waste {
+    .selectable {
+        li {
+            top: 100px;
+            transition: top .5s;
+            height: 450px;
+
+            &.HIGHLIGHTED {
+                top: 0;
+
+                .side.b {
+                    z-index: 1;
+                }
+            }
+
+            .side {
+                transition: transform .5s .5s, background .5s;
+                background-size: auto 420px;
+            }
+
+            @for $i from 1 through 3 {
+                &:nth-of-type(#{$i}) .b div {
+                    @include sprite-cards($i + 3);
+                }
+            }
+        }
+    }
+
+    .side {
+        background-position: 20px 0;
+
+        &.a,
+        &.b {
+            div {
+                @include center;
+                display: block;
+            }
+        }
+
+        &.a {
+            background-position: 20px 120px;
+
+            div {
+                @include sprite-question(2);
+                z-index: 1;
+            }
+        }
+
+        &.b {
+            transition: transform .5s, z-index 0s .7s;
+            z-index: 0;
+
+            div {
+                @include sprite-question(2);
+                top: 48%;
+                height: 450px;
+            }
+        }
+    }
+
+    .screen-content {
+        &::after {
+            @include sprite-grass(2);
+            bottom: -15px;
+        }
+    }
+}
