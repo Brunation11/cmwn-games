@@ -5,65 +5,65 @@ import Loader from 'shared/components/loader/0.1';
 import iOSScreen from 'shared/components/ios_splash_screen/0.1';
 
 import TitleScreen from './components/title_screen';
-// import HiThereScreen from './components/hi_there_screen';
-// import KeyIsSortingScreen from './components/key_is_sorting_screen';
-// import LightsScreen from './components/lights_screen';
-// import FiveWaysScreen from './components/five_ways_screen';
-// import LevelScreen from './components/level_screen_component';
-// import RecyclingChampion1InfoScreen from './components/recycling_champion_one_info_screen';
+import HiThereScreen from './components/hi_there_screen';
+import KeyIsSortingScreen from './components/key_is_sorting_screen';
+import LightsScreen from './components/lights_screen';
+import FiveWaysScreen from './components/five_ways_screen';
+import LevelScreen from './components/level_screen_component';
+import RecyclingChampion1InfoScreen from './components/recycling_champion_one_info_screen';
 import RecyclingChampion1Screen from './components/recycling_champion_level_one_screen';
-// import RecyclingChampion2InfoScreen from './components/recycling_champion_two_info_screen';
-// import RecyclingChampion2Screen from './components/recycling_champion_level_two_screen';
-// import RecyclingChampion3InfoScreen from './components/recycling_champion_three_info_screen';
-// import RecyclingChampion3Screen from './components/recycling_champion_level_three_screen';
-// import RecyclingChampion4InfoScreen from './components/recycling_champion_four_info_screen';
-// import RecyclingChampion4Screen from './components/recycling_champion_level_four_screen';
-// import RecyclingChampion5InfoScreen from './components/recycling_champion_five_info_screen';
-// import RecyclingChampion5Screen from './components/recycling_champion_level_five_screen';
-// import LevelCompleteScreen from './components/level_complete_screen_component';
-// import PricelessPourer1InfoScreen from './components/priceless_pourer_one_info_screen';
-// import PricelessPourer1Screen from './components/priceless_pourer_level_one_screen';
-// import PricelessPourer2InfoScreen from './components/priceless_pourer_two_info_screen';
-// import PricelessPourer2Screen from './components/priceless_pourer_level_two_screen';
-// import PricelessPourer3InfoScreen from './components/priceless_pourer_three_info_screen';
-// import PricelessPourer3Screen from './components/priceless_pourer_level_three_screen';
-// import PricelessPourer4InfoScreen from './components/priceless_pourer_four_info_screen';
-// import PricelessPourer4Screen from './components/priceless_pourer_level_four_screen';
-// import PricelessPourer5InfoScreen from './components/priceless_pourer_five_info_screen';
-// import PricelessPourer5Screen from './components/priceless_pourer_level_five_screen';
-// import FantasticFoodSharer1InfoScreen from './components/fantastic_food_sharer_one_info_screen';
-// import FantasticFoodSharer1Screen from './components/fantastic_food_sharer_level_one_screen';
-// import FantasticFoodSharer2InfoScreen from './components/fantastic_food_sharer_two_info_screen';
-// import FantasticFoodSharer2Screen from './components/fantastic_food_sharer_level_two_screen';
-// import FantasticFoodSharer3InfoScreen from './components/fantastic_food_sharer_three_info_screen';
-// import FantasticFoodSharer3Screen from './components/fantastic_food_sharer_level_three_screen';
-// import FantasticFoodSharer4InfoScreen from './components/fantastic_food_sharer_four_info_screen';
-// import FantasticFoodSharer4Screen from './components/fantastic_food_sharer_level_four_screen';
-// import FantasticFoodSharer5InfoScreen from './components/fantastic_food_sharer_five_info_screen';
-// import FantasticFoodSharer5Screen from './components/fantastic_food_sharer_level_five_screen';
-// import DynamicDiverter1InfoScreen from './components/dynamic_diverter_one_info_screen';
-// import DynamicDiverter1Screen from './components/dynamic_diverter_level_one_screen';
-// import DynamicDiverter2InfoScreen from './components/dynamic_diverter_two_info_screen';
-// import DynamicDiverter2Screen from './components/dynamic_diverter_level_two_screen';
-// import DynamicDiverter3InfoScreen from './components/dynamic_diverter_three_info_screen';
-// import DynamicDiverter3Screen from './components/dynamic_diverter_level_three_screen';
-// import DynamicDiverter4InfoScreen from './components/dynamic_diverter_four_info_screen';
-// import DynamicDiverter4Screen from './components/dynamic_diverter_level_four_screen';
-// import DynamicDiverter5InfoScreen from './components/dynamic_diverter_five_info_screen';
-// import DynamicDiverter5Screen from './components/dynamic_diverter_level_five_screen';
-// import WantToStackScreen from './components/want_to_stack_screen';
-// import VideoScreen from './components/video_screen';
-// import MasterSorter1InfoScreen from './components/master_sorter_one_info_screen';
-// import MasterSorter1Screen from './components/master_sorter_level_one_screen';
-// import MasterSorter2InfoScreen from './components/master_sorter_two_info_screen';
-// import MasterSorter2Screen from './components/master_sorter_level_two_screen';
-// import MasterSorter3InfoScreen from './components/master_sorter_three_info_screen';
-// import MasterSorter3Screen from './components/master_sorter_level_three_screen';
-// import MasterSorter4InfoScreen from './components/master_sorter_four_info_screen';
-// import MasterSorter4Screen from './components/master_sorter_level_four_screen';
-// import MasterSorter5InfoScreen from './components/master_sorter_five_info_screen';
-// import MasterSorter5Screen from './components/master_sorter_level_five_screen';
-// import NowAMemberScreen from './components/now_a_member_screen';
+import RecyclingChampion2InfoScreen from './components/recycling_champion_two_info_screen';
+import RecyclingChampion2Screen from './components/recycling_champion_level_two_screen';
+import RecyclingChampion3InfoScreen from './components/recycling_champion_three_info_screen';
+import RecyclingChampion3Screen from './components/recycling_champion_level_three_screen';
+import RecyclingChampion4InfoScreen from './components/recycling_champion_four_info_screen';
+import RecyclingChampion4Screen from './components/recycling_champion_level_four_screen';
+import RecyclingChampion5InfoScreen from './components/recycling_champion_five_info_screen';
+import RecyclingChampion5Screen from './components/recycling_champion_level_five_screen';
+import LevelCompleteScreen from './components/level_complete_screen_component';
+import PricelessPourer1InfoScreen from './components/priceless_pourer_one_info_screen';
+import PricelessPourer1Screen from './components/priceless_pourer_level_one_screen';
+import PricelessPourer2InfoScreen from './components/priceless_pourer_two_info_screen';
+import PricelessPourer2Screen from './components/priceless_pourer_level_two_screen';
+import PricelessPourer3InfoScreen from './components/priceless_pourer_three_info_screen';
+import PricelessPourer3Screen from './components/priceless_pourer_level_three_screen';
+import PricelessPourer4InfoScreen from './components/priceless_pourer_four_info_screen';
+import PricelessPourer4Screen from './components/priceless_pourer_level_four_screen';
+import PricelessPourer5InfoScreen from './components/priceless_pourer_five_info_screen';
+import PricelessPourer5Screen from './components/priceless_pourer_level_five_screen';
+import FantasticFoodSharer1InfoScreen from './components/fantastic_food_sharer_one_info_screen';
+import FantasticFoodSharer1Screen from './components/fantastic_food_sharer_level_one_screen';
+import FantasticFoodSharer2InfoScreen from './components/fantastic_food_sharer_two_info_screen';
+import FantasticFoodSharer2Screen from './components/fantastic_food_sharer_level_two_screen';
+import FantasticFoodSharer3InfoScreen from './components/fantastic_food_sharer_three_info_screen';
+import FantasticFoodSharer3Screen from './components/fantastic_food_sharer_level_three_screen';
+import FantasticFoodSharer4InfoScreen from './components/fantastic_food_sharer_four_info_screen';
+import FantasticFoodSharer4Screen from './components/fantastic_food_sharer_level_four_screen';
+import FantasticFoodSharer5InfoScreen from './components/fantastic_food_sharer_five_info_screen';
+import FantasticFoodSharer5Screen from './components/fantastic_food_sharer_level_five_screen';
+import DynamicDiverter1InfoScreen from './components/dynamic_diverter_one_info_screen';
+import DynamicDiverter1Screen from './components/dynamic_diverter_level_one_screen';
+import DynamicDiverter2InfoScreen from './components/dynamic_diverter_two_info_screen';
+import DynamicDiverter2Screen from './components/dynamic_diverter_level_two_screen';
+import DynamicDiverter3InfoScreen from './components/dynamic_diverter_three_info_screen';
+import DynamicDiverter3Screen from './components/dynamic_diverter_level_three_screen';
+import DynamicDiverter4InfoScreen from './components/dynamic_diverter_four_info_screen';
+import DynamicDiverter4Screen from './components/dynamic_diverter_level_four_screen';
+import DynamicDiverter5InfoScreen from './components/dynamic_diverter_five_info_screen';
+import DynamicDiverter5Screen from './components/dynamic_diverter_level_five_screen';
+import WantToStackScreen from './components/want_to_stack_screen';
+import VideoScreen from './components/video_screen';
+import MasterSorter1InfoScreen from './components/master_sorter_one_info_screen';
+import MasterSorter1Screen from './components/master_sorter_level_one_screen';
+import MasterSorter2InfoScreen from './components/master_sorter_two_info_screen';
+import MasterSorter2Screen from './components/master_sorter_level_two_screen';
+import MasterSorter3InfoScreen from './components/master_sorter_three_info_screen';
+import MasterSorter3Screen from './components/master_sorter_level_three_screen';
+import MasterSorter4InfoScreen from './components/master_sorter_four_info_screen';
+import MasterSorter4Screen from './components/master_sorter_level_four_screen';
+import MasterSorter5InfoScreen from './components/master_sorter_five_info_screen';
+import MasterSorter5Screen from './components/master_sorter_level_five_screen';
+import NowAMemberScreen from './components/now_a_member_screen';
 import QuitScreen from './components/quit_screen';
 
 skoash.start(
@@ -73,15 +73,13 @@ skoash.start(
         screens={[
             iOSScreen,
             TitleScreen,
-            /*HiThereScreen,
+            HiThereScreen,
             KeyIsSortingScreen,
             LightsScreen,
             FiveWaysScreen,
             LevelScreen(1.0),
             RecyclingChampion1InfoScreen,
-            */
             RecyclingChampion1Screen,
-            /*
             LevelScreen(1.1),
             RecyclingChampion2InfoScreen,
             RecyclingChampion2Screen,
@@ -168,7 +166,6 @@ skoash.start(
             LevelCompleteScreen(5),
             NowAMemberScreen,
             LevelCompleteScreen(6),
-            */
         ]}
         menus={{
             quit: QuitScreen,
