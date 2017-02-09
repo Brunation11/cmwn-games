@@ -18,8 +18,6 @@ export default {
             }
         });
     },
-    hitGround() {
-    },
     onHitBush() {
         this.audio.bush.play();
     },

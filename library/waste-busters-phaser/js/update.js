@@ -5,12 +5,12 @@ export default function () {
     this.player.canJump = true;
 
     addResponses.call(this, 'collide', [
-    [this.player, this.ground, this.helpers.hitGround],
+    [this.player, this.ground],
     [this.player, this.water, this.helpers.hitWater],
-    [this.player, this.platforms, this.helpers.hitGround],
+    [this.player, this.platforms],
     [this.player, this.bushes, this.helpers.hitBush],
     [this.player, this.obstacles, this.helpers.hitObstacle],
-    [this.player, this.logs, this.helpers.hitGround],
+    [this.player, this.logs],
     [this.bushes, this.ground, this.helpers.stay],
     [this.bushes, this.platforms, this.helpers.stay],
     [this.trees, this.ground, this.helpers.stay],
