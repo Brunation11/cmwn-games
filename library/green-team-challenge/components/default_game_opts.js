@@ -155,7 +155,7 @@ export default {
     getSelectableProps(opts) {
         return {
             onSelect: function (binRefKey) {
-                let left = ReactDOM.findDOMNode(this.refs[binRefKey]).offsetLeft - 65;
+                let left = ReactDOM.findDOMNode(this.refs[binRefKey]).offsetLeft - 785;
                 if (opts.left === left) {
                     this.updateScreenData({
                         keys: ['manual-dropper', 'drop'],
@@ -170,10 +170,10 @@ export default {
             },
         };
     },
-    getDropperProps() {
+    getDropperProps(opts) {
         return {
             onTransitionEnd: function (e) {
-                if (this.DOMNode !== e.target) return;
+                if (this.DOMNode !== e.target || opts.left === 0) return;
                 this.updateScreenData({
                     keys: ['manual-dropper', 'drop'],
                     data: true,
@@ -181,10 +181,14 @@ export default {
             },
             onNext: function () {
                 this.updateScreenData({
-                    key: 'item',
                     data: {
-                        name: _.startCase(_.replace(this.getFirstItem().props.className, /\d+/g, '')),
-                        new: true,
+                        item: {
+                            name: _.startCase(_.replace(this.getFirstItem().props.className, /\d+/g, '')),
+                            new: true,
+                        },
+                        'manual-dropper': {
+                            left: 0,
+                        }
                     }
                 });
             },
