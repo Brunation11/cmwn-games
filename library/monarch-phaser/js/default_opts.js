@@ -24,6 +24,7 @@ const flowerDefaultProps = {
 export default {
     level: 1,
     hitsPerLife: 10,
+    hitDelay: 1000,
     bounceY: 0,
     gravityY: 600,
     playerImage: 'butterfly',

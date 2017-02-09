@@ -113,11 +113,10 @@ export default function (props, ref, key, opts = {}) {
                         }
                     }
                 },
+                callback: () => {
+                    startScreen.call(this);
+                }
             });
-
-            setTimeout(() => {
-                startScreen.call(this);
-            }, 0);
         } else if (prevMessage === 'fact-1' && stars > 1) {
             this.updateGameState({
                 path: 'reveal',

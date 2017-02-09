@@ -65,7 +65,8 @@
     }
 
     .reveal {
-        &.open-instructions {
+        &.open-instructions,
+        &.open-replay {
             .close-reveal {
                 @include nav-button(6, 60px, 60px);
                 right: 80px;

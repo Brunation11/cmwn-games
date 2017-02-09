@@ -1,5 +1,17 @@
 import classNames from 'classnames';
 
+let hiddenImagesSrcs = [
+    `${MEDIA.SPRITE}sprite.circles.png`,
+    `${MEDIA.SPRITE}sprite.starmap.png`,
+    `${MEDIA.SPRITE}sprite.butterflyhover.png`,
+    `${MEDIA.IMAGE}path.png`,
+    `${MEDIA.FRAME}frame.big.png`,
+];
+
+let hiddenImages = _.map(hiddenImagesSrcs, image =>
+    <skoash.Image className="hidden" src={image} />
+);
+
 export default function (props, ref, key, opts = {}) {
     var onCloseReveal;
     var onSelect;
@@ -53,82 +65,30 @@ export default function (props, ref, key, opts = {}) {
             key={key}
             id={`monarch-generations-${opts.level}`}
         >
-            <skoash.Image
-                className="hidden"
-                src={`${MEDIA.SPRITE}sprite.circles.png`}
-            />
-            <skoash.Image
-                className="hidden"
-                src={`${MEDIA.SPRITE}sprite.starmap.png`}
-            />
-            <skoash.Image
-                className="hidden"
-                src={`${MEDIA.SPRITE}sprite.butterflyhover.png`}
-            />
-            <skoash.Image
-                className="hidden"
-                src={`${MEDIA.IMAGE}path.png`}
-            />
-            <skoash.Image
-                className="hidden"
-                src={`${MEDIA.FRAME}frame.big.png`}
-            />
+            {hiddenImages}
             <skoash.Component
                 className="path"
             >
-                <skoash.Component
-                    className="circle-1"
-                >
-                    <div className={getStarClassNames(1, 1)}/>
-                    <div className={getStarClassNames(1, 2)}/>
-                    <div className={getStarClassNames(1, 3)}/>
-                </skoash.Component>
-                <skoash.Component
-                    className="circle-2"
-                >
-                    <div className={getStarClassNames(2, 1)}/>
-                    <div className={getStarClassNames(2, 2)}/>
-                    <div className={getStarClassNames(2, 3)}/>
-                </skoash.Component>
-                <skoash.Component
-                    className="circle-3"
-                >
-                    <div className={getStarClassNames(3, 1)}/>
-                    <div className={getStarClassNames(3, 2)}/>
-                    <div className={getStarClassNames(3, 3)}/>
-                </skoash.Component>
+                {_.map([1, 2, 3], level =>
+                    <skoash.Component
+                        className={`circle-${level}`}
+                    >
+                        {_.map([1, 2, 3], star =>
+                            <div className={getStarClassNames(level, star)}/>
+                        )}
+                    </skoash.Component>
+                )}
                 <skoash.Selectable
                     onSelect={onSelect}
-                    list={[
+                    list={_.map([1, 2, 3, 4], star =>
                         <skoash.Component
                             type="li"
-                            className={classNames('butterfly-1', {
-                                animate: _.get(props, 'gameState.data.animate.1')
+                            className={classNames(`butterfly-${star}`, {
+                                animate: _.get(props, `gameState.data.animate.${star}`)
                             })}
                             onAnimationEnd={onAnimationEnd}
-                        />,
-                        <skoash.Component
-                            type="li"
-                            className={classNames('butterfly-2', {
-                                animate: _.get(props, 'gameState.data.animate.2')
-                            })}
-                            onAnimationEnd={onAnimationEnd}
-                        />,
-                        <skoash.Component
-                            type="li"
-                            className={classNames('butterfly-3', {
-                                animate: _.get(props, 'gameState.data.animate.3')
-                            })}
-                            onAnimationEnd={onAnimationEnd}
-                        />,
-                        <skoash.Component
-                            type="li"
-                            className={classNames('butterfly-4', {
-                                animate: _.get(props, 'gameState.data.animate.4')
-                            })}
-                            onAnimationEnd={onAnimationEnd}
-                        />,
-                    ]}
+                        />
+                    )}
                 />
             </skoash.Component>
             <skoash.Reveal
