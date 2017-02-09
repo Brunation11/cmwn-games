@@ -101,6 +101,7 @@ export default _.defaults({
                     keys: [_.camelCase(opts.gameName), 'levels', opts.level],
                     data: {
                         start: false,
+                        score: opts.score - opts.pointsPerMiss,
                         hits,
                     }
                 });

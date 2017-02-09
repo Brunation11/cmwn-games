@@ -69,7 +69,8 @@ export default {
     scoreToWin: 100,
     maxHits: 5,
     dropperAmount: 3,
-    pointsPerItem: 50,
+    pointsPerItem: 95,
+    pointsPerMiss: 250,
     collideFraction: 0,
     getScreenProps(opts) {
         return {
@@ -219,6 +220,7 @@ export default {
                     keys: [_.camelCase(opts.gameName), 'levels', opts.level],
                     data: {
                         start: false,
+                        score: opts.score - opts.pointsPerMiss,
                         hits,
                     }
                 });
