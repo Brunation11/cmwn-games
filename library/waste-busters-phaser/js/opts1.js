@@ -27,7 +27,7 @@ export default _.defaults({
         [3000, 240],
         [3300, 160],
     ],
-    platformItemAmounts: {
+    platformItemAmounts: _.defaults({
         squareBush: 1,
         roundBush: 1,
         snake: 0,
@@ -42,8 +42,9 @@ export default _.defaults({
         tree1: 1,
         tree2: 1,
         tree3: 1,
-    },
-    groundItemAmounts: {
+        tree4: 1,
+    }, defaultOpts.platformItemAmounts),
+    groundItemAmounts: _.defaults({
         squareBush: 1,
         roundBush: 1,
         hole: 2,
@@ -54,5 +55,5 @@ export default _.defaults({
         heart: 0,
         recycle: 0,
         raibowRecycle: 0,
-    }
+    }, defaultOpts.groundItemAmounts),
 }, defaultOpts);

@@ -30,6 +30,7 @@ export default function (opts) {
         (this.cursors.up.isDown || this.controller.up) &&
         this.player.body.touching.down) {
         this.player.body.velocity.y = opts.upSpeed;
+        _.invoke(opts.jumpSound, 'play');
     }
 
     //  Allow the player to fall fast if they are not touching the ground.

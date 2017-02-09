@@ -1,0 +1,36 @@
+@import 'variables';
+@import 'mixins';
+
+#click-cards {
+    .frame {
+        @include center;
+        width: 680px;
+    }
+
+    .recycle {
+        @include center;
+        width: 390px;
+    }
+
+    .trash {
+        position: absolute;
+        right: 30px;
+        bottom: 50px;
+        width: 200px;
+    }
+
+    .turtle {
+        @include sprite-turtle(2);
+        position: absolute;
+        bottom: 0;
+        left: -30px;
+        transform: scale(.8);
+    }
+
+    p {
+        @include center;
+        padding-bottom: 20px;
+        color: $black;
+        font-size: 60px;
+    }
+}

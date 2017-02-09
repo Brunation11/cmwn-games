@@ -1,0 +1,312 @@
+@import 'variables';
+@import 'mixins';
+
+[id*=sorting-level] {
+    &.reveal-open-instructions,
+    &.reveal-open-retry {
+        .next-screen {
+            display: none;
+        }
+    }
+
+    p {
+        line-height: 1.2;
+    }
+
+    .cannon {
+        @include cannon;
+
+        &.FIRE {
+            .LOADED {
+                animation-duration: 1s;
+                animation-delay: 1s;
+            }
+        }
+
+        .launch-button {
+            @include sprite-sort-button;
+        }
+
+        .ammo {
+            bottom: 0;
+            left: 380px;
+            opacity: 0;
+
+            &.LOADED {
+                opacity: 1;
+            }
+
+            $items: flowers paper newspaper napkin lettuce juice eggshell diaper mug coffee box can bottle banana apple;
+            @for $i from 1 through length($items) {
+                &.#{nth($items, $i)} {
+                    @include sprite-sort-item($i);
+                }
+            }
+        }
+    }
+
+    .carousel {
+        $carousel-scale: .8;
+        @include carousel(1344px, 260px, 7);
+        top: 80px;
+        left: -192px;
+        transform: scale3d($carousel-scale, $carousel-scale, 1);
+
+        $groups: recycle landfill compost;
+        @for $i from 1 through 3 {
+            .#{nth($groups, $i)} {
+                @include sprite-sort-can($i);
+
+                &.SELECTED {
+                    @include sprite-sort-can($i, 2);
+                }
+            }
+        }
+    }
+
+    .randomizer {
+        display: none;
+    }
+
+    .stats {
+        position: absolute;
+        top: 0;
+        left: 0;
+    }
+
+    .level {
+        text-align: center;
+        font-size: 1.25rem;
+    }
+
+    .score {
+        text-align: center;
+        font-size: 1.25rem;
+    }
+
+    .timer {
+        text-align: center;
+        font-size: 1.25rem;
+    }
+
+    .sprite-animation {
+        position: absolute;
+        bottom: 0;
+        left: 330px;
+        width: 300px;
+        height: 300px;
+    }
+
+    .reveal {
+        @include reveal;
+        border: 10px solid $transparent;
+
+        &.open-instructions,
+        &.open-complete {
+            border: 10px solid $green-border;
+            background-color: $transparent-grey;
+
+            &::before,
+            &::after {
+                display: block;
+                position: absolute;
+                z-index: 1;
+                content: '';
+            }
+
+            &::before {
+                @include sprite-sort-level(2);
+                top: -40px;
+                left: 0;
+            }
+
+            &::after {
+                top: 110px;
+                left: 110px;
+            }
+        }
+
+        &.open-complete {
+            .close-reveal {
+                display: none;
+            }
+        }
+
+        &.open-retry {
+            border: 10px solid $red-border;
+            background-color: $transparent-red;
+
+            &::before {
+                @include sprite-sort-level(1);
+                display: block;
+                position: absolute;
+                top: 0;
+                left: 0;
+                content: '';
+            }
+
+            p {
+                font-size: 48px;
+            }
+        }
+
+        .close-reveal {
+            right: 5px;
+            bottom: 0;
+        }
+
+        li {
+            left: 65%;
+
+            p {
+                &::before {
+                    @include background($image + 'main.turtle.png');
+                    display: block;
+                    position: absolute;
+                    bottom: -160px;
+                    left: -260px;
+                    width: 300px;
+                    height: 300px;
+                    content: '';
+                }
+            }
+        }
+
+        .instructions {
+            &::before,
+            &::after {
+                @include center;
+                display: block;
+                top: 14%;
+                content: '';
+            }
+
+            &::before {
+                @include background($image + 'banner.png');
+                width: 610px;
+                height: 200px;
+            }
+
+            &::after {
+                @include sprite-sort-title(1);
+            }
+
+            p {
+                margin-top: 70px;
+                font-size: 24px;
+            }
+        }
+
+        .complete {
+            &::before,
+            &::after {
+                @include center;
+                display: block;
+                top: 14%;
+                content: '';
+            }
+
+            &::before {
+                @include background($image + 'banner.png');
+                width: 610px;
+                height: 200px;
+            }
+
+            &::after {
+                @include sprite-sort-title(2);
+            }
+
+            p {
+                margin-top: 70px;
+                font-size: 36px;
+
+                &::before {
+                    @include sprite-reward(1);
+                    top: -130px;
+                    left: -200px;
+                }
+
+                &::after {
+                    @include sprite-sort-level(3);
+                    display: block;
+                    position: absolute;
+                    top: -45px;
+                    left: -330px;
+                    content: '';
+                }
+            }
+        }
+    }
+
+    &#sorting-level-2,
+    &#sorting-level-3 {
+        .reveal {
+            .instructions {
+                p {
+                    font-size: 40px;
+                }
+            }
+        }
+    }
+
+    &#sorting-level-2 {
+        .reveal {
+            .complete {
+                p {
+                    &::before {
+                        top: -80px;
+                    }
+
+                    &::after {
+                        top: -5px;
+                    }
+                }
+            }
+
+        }
+    }
+
+    &#sorting-level-3 {
+        .reveal {
+            .complete {
+                &::after {
+                    @include sprite-sort-title(4);
+                }
+
+                p {
+                    font-size: 28px;
+
+                    h3 {
+                        margin: 0;
+                        font-size: 36px;
+                        font-weight: bold;
+                    }
+
+                    &::before {
+                        @include sprite-reward(2);
+                        top: -60px;
+                        left: -230px;
+                    }
+
+                    &::after {
+                        top: -5px;
+                    }
+                }
+            }
+
+        }
+    }
+
+    @for $i from 1 through 3 {
+        &#sorting-level-#{$i} {
+            .reveal {
+                &.open-instructions,
+                &.open-complete {
+                    &::after {
+                        @include sprite-number($i);
+                    }
+                }
+            }
+        }
+    }
+}

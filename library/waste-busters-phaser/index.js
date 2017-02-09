@@ -10,7 +10,7 @@ var opts = optsArray[location.search.split('v=')[1] - 1 || 0];
 
 ENVIRONMENT.MEDIA += 'Games/WasteBusters/';
 
-window.game = new Game({
+new Game({
     width: 960,
     height: 540,
     preload,

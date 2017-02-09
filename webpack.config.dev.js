@@ -14,7 +14,7 @@ module.exports = {
         new webpack.HotModuleReplacementPlugin()
     ],
     output: {
-        path: path.join(__dirname, 'build'),
+        path: __dirname + '/build',
         filename: '[name]/ai.js',
         publicPath: '/build/'
     },
@@ -30,11 +30,6 @@ module.exports = {
                 query: {
                     presets: ['react', 'es2015', 'react-hmre', 'stage-0']
                 }
-            },
-            {
-                test: /\.jsx?$/,
-                loaders: ['react-hot', 'jsx?harmony'],
-                include: path.join(__dirname, 'src')
             }
         ]
     },

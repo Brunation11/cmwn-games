@@ -17,8 +17,6 @@ export default function () {
     this.helpers.makeGround.call(this);
     this.helpers.makeDoor.call(this);
     this.helpers.makePlatforms.call(this);
-    this.helpers.makeLogs.call(this);
-    this.helpers.makeItems.call(this);
 
     addPlayer.call(this, {
         left: 32,
@@ -30,7 +28,11 @@ export default function () {
         rightFrames: this.opts.rightFrames,
         leftFrames: this.opts.leftFrames,
         scale: this.opts.playerScale,
+        anchor: this.opts.playerAnchor,
     });
+
+    this.helpers.makeLogs.call(this);
+    this.helpers.makeItems.call(this);
 
     this.data = _.defaults({
         levels: {
@@ -40,6 +42,11 @@ export default function () {
             }
         }
     }, this.data);
+
+    this.audio = _.reduce(this.audio, (a, v, k) => {
+        a[k] = this.game.add.audio(k);
+        return a;
+    }, {});
 
     this.helpers.emitData.call(this);
 }
