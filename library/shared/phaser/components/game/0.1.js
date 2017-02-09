@@ -21,7 +21,7 @@ class Game {
         opts = _.defaults(opts, {
             width: 960,
             height: 540,
-            renderer: Phaser.CANVAS,
+            renderer: Phaser.AUTO,
             parent: '',
             helpers: {},
             state: { preload: opts.preload, create: opts.create, update },
