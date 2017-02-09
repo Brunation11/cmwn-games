@@ -66,7 +66,7 @@ export default {
     gameNumber: 1,
     level: 1,
     timeout: 120000,
-    scoreToWin: 100,
+    scoreToWin: 600,
     maxHits: 5,
     dropperAmount: 3,
     pointsPerItem: 95,
