@@ -1,10 +1,10 @@
 import classNames from 'classnames';
 
 const flipEarned = CMWN.MEDIA.BASE +
-    'Flips/Wastepro%20Flip/WP%20-%20Animated%20Earned%20Flip/WP.AnimatedEarnedFlip.gif';
+    'Flips/PLT%20Wastebuster%20Flip/PLT%20-%20Animated%20Earned%20Flip/PLT.AnimatedearnedFlip.gif';
 
 const flipStatic = CMWN.MEDIA.BASE +
-    'Flips/Wastepro%20Flip/WP%20-%20Static%20Image%20Flip/WP.StaticAnimatedFlip.gif';
+    'Flips/PLT%20Wastebuster%20Flip/PLT-%20Static%20Image%20Flip/PLT.StaticFlip.png';
 
 export default function (props, ref, key) {
     return (
