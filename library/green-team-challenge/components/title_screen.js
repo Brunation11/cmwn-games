@@ -20,6 +20,7 @@ export default function (props, ref, key) {
             ref={ref}
             key={key}
             id="title"
+            silentComplete
             backgroundAudio="BKGtitle"
         >
             <h3 content="Green Team Challenge" />
