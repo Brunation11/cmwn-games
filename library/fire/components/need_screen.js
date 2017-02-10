@@ -3,17 +3,17 @@ import Dropzone from 'shared/components/dropzone/0.4';
 
 class NeedScreenComponent extends skoash.Screen {
     open() {
-		var componentParent;
+        var componentParent;
 
-		super.open();
+        super.open();
 
-		this.checkComplete = null;
-		this.refs['media-vos'].incompleteRefs();
-		componentParent = _.get(this.refs, 'children-3.refs.children-0', null);
+        this.checkComplete = null;
+        this.refs['media-vos'].incompleteRefs();
+        componentParent = _.get(this.refs, 'children-3.refs.children-0', null);
         if (componentParent) {
-			componentParent.refs['draggables-left'].incompleteRefs();
-			componentParent.refs['draggables-right'].incompleteRefs();
-		}
+            componentParent.refs['draggables-left'].incompleteRefs();
+            componentParent.refs['draggables-right'].incompleteRefs();
+        }
         this.incomplete();
         this.checkComplete = super.checkComplete;
     }
