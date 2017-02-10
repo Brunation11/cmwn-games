@@ -158,6 +158,7 @@ export default function (props, ref, key, opts = {}) {
                     bin={
                         <skoash.Randomizer
                             bin={catchablesArray}
+                            remain
                         />
                     }
                     style={{
