@@ -73,12 +73,12 @@ skoash.start(
         screens={[
             iOSScreen,
             TitleScreen,
-            HiThereScreen,
+            /*HiThereScreen,
             KeyIsSortingScreen,
             LightsScreen,
             FiveWaysScreen,
             LevelScreen(1.0),
-            RecyclingChampion1InfoScreen,
+            RecyclingChampion1InfoScreen,*/
             RecyclingChampion1Screen,
             LevelScreen(1.1),
             RecyclingChampion2InfoScreen,
