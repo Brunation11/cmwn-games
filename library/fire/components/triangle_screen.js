@@ -3,10 +3,12 @@ import Dropzone from 'shared/components/dropzone/0.4';
 
 class TriangleScreenComponent extends skoash.Screen {
     open() {
+        var reveal;
+
         super.open();
 
         this.checkComplete = null;
-        var reveal = _.get(this.refs, 'children-0.refs.children-1.refs.reveal', null);
+        reveal = _.get(this.refs, 'children-0.refs.children-1.refs.reveal', null);
         if (reveal) reveal.incompleteRefs();
         this.incomplete();
         this.checkComplete = super.checkComplete;
@@ -15,14 +17,14 @@ class TriangleScreenComponent extends skoash.Screen {
 
 
 export default function (props, ref, key) {
-    var openReveal = function (dropped, dropzoneRef) {
+    var openReveal = function (dropped) {
         this.updateScreenData({
             key: 'dropzone',
             data: {
                 message: dropped.props.message
             }
         });
-    }
+    };
 
     var revealComplete = function () {
         this.updateScreenData({

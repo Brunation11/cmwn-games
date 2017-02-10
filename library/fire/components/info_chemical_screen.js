@@ -38,13 +38,13 @@ export default function (props, ref, key) {
                 play.call(this, open, ++i);
             }, state.interval);
         }
-    }
+    };
 
     var init = function () {
         setTimeout(() => {
             play.call(this, '', 0);
         }, 100);
-    }
+    };
 
     return (
         <skoash.Screen

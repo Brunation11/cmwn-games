@@ -7,7 +7,7 @@ export default function (props, ref, key) {
         'FIRE',
     ];
 
-    var animate  = function () {
+    var animate = function () {
         var index = _.get(props, 'data.screen-3.index', 0);
         var open = _.get(props, 'data.screen-3.open', '');
         open += ` ${ANIMATE[index]}`;
@@ -19,7 +19,7 @@ export default function (props, ref, key) {
                 open,
             },
         });
-    }
+    };
 
     return (
         <skoash.Screen

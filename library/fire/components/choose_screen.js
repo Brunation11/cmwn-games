@@ -63,11 +63,11 @@ export default function (props, ref, key) {
         });
     };
 
-    var nextScreen = function (props) {
-        if (props.next && this.props.next != props.next) {
+    var nextScreen = function (nextProps) {
+        if (nextProps.next && this.nextProp.next !== nextProps.next) {
             this.next();
         }
-    }
+    };
 
     return (
         <ChooseScreenComponent

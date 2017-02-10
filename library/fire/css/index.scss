@@ -279,8 +279,8 @@ img.background {
     &#need {
         .draggable,
         .close-reveal {
-            pointer-events: none;
             cursor: default;
+            pointer-events: none;
         }
 
         .close-reveal {
@@ -747,22 +747,23 @@ img.background {
     .draggables {
         display: inline-block;
         position: absolute;
+        z-index: 2;
         background-image: url('../media/S_8/img_8.2.png');
         background-size: 100% 100%;
         padding: 10px;
         width: 240px;
-        z-index: 2;
 
         .draggable {
-            width: auto;
-            height: 40px;
             background-repeat: no-repeat;
             background-position: center center;
             background-size: auto 100%;
+            width: auto;
+            height: 40px;
         }
 
         @for $i from 1 through 7 {
             $img: $i + 2;
+
             .draggable:nth-of-type(#{$i}) {
                 background-image: url('../media/S_8/img_8.#{$img}.png');
             }
@@ -1063,12 +1064,11 @@ img.background {
         justify-content: space-around;
 
         .draggable {
+            z-index: 1;
             margin-bottom: 10px;
             background-image: url('../media/S_12/sprite_12.3.png');
-            // scss-lint:enable ImportantRule
             background-repeat: no-repeat;
             background-size: 500px;
-            z-index: 1;
         }
     }
 
@@ -1113,12 +1113,12 @@ img.background {
                 position: absolute;
                 top: 20px;
                 left: 20px;
-                width: 200px;
-                height: 400px;
                 transition: opacity .5s;
                 opacity: 0;
                 background-repeat: no-repeat;
                 background-size: 880px;
+                width: 200px;
+                height: 400px;
 
                 &.body {
                     opacity: 1;
@@ -1267,8 +1267,8 @@ img.background {
             position: absolute;
             right: 40px;
             bottom: 40px;
-            opacity: 0;
             transition: opacity .5s;
+            opacity: 0;
         }
     }
 }

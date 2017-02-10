@@ -5,7 +5,7 @@ export default function (props, ref, key) {
         'FUEL'
     ];
 
-    var animate  = function () {
+    var animate = function () {
         var index = _.get(props, 'data.screen-9.index', 0);
         var open = _.get(props, 'data.screen-9.open', '');
         open += ` ${ANIMATE[index]}`;

@@ -3,7 +3,7 @@ class WhoScreenComponent extends skoash.Screen {
         super.open(opts);
 
         this.checkComplete = null;
-        this.refs['selectable'].incompleteRefs();
+        this.refs.selectable.incompleteRefs();
         this.checkComplete = super.checkComplete;
     }
 }
@@ -37,9 +37,11 @@ export default function (props, ref, key) {
     };
 
     var playSFX = function () {
-        var ref = _.get(props, 'data.selectable.target.props.data-ref', null);
-        if (ref.length != null) {
-            var effect = ref === 'firefighter' ? 'correct' : 'incorrect';
+        var dataRef = _.get(props, 'data.selectable.target.props.data-ref', null);
+        var effect;
+
+        if (dataRef.length != null) {
+            effect = dataRef === 'firefighter' ? 'correct' : 'incorrect';
             play.call(this, effect, play.bind(this, 'dummy', _.noop));
         }
     };
@@ -73,11 +75,11 @@ export default function (props, ref, key) {
                 />
                 <skoash.Audio
                     data-ref={JOBS[1]}
-                    type="voiceOver" 
+                    type="voiceOver"
                     src="media/S_6/vo_Plumber.mp3"
                     complete
                 />
-                <skoash.Audio 
+                <skoash.Audio
                     data-ref={JOBS[2]}
                     type="voiceOver"
                     src="media/S_6/vo_Firefighter.mp3"

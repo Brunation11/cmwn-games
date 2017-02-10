@@ -2,10 +2,13 @@ import Draggable from 'shared/components/draggable/0.4';
 import Dropzone from 'shared/components/dropzone/0.4';
 
 class NeedScreenComponent extends skoash.Screen {
-   open() {
+    open() {
+        var dropzone;
+
         super.open();
+
         this.checkComplete = null;
-        var dropzone = _.get(this.refs, 'children-0.refs.children-1.refs.dropzone', null);
+        dropzone = _.get(this.refs, 'children-0.refs.children-1.refs.dropzone', null);
         if (dropzone) dropzone.incompleteRefs();
         this.incomplete();
         this.checkComplete = super.checkComplete;
@@ -48,7 +51,7 @@ export default function (props, ref, key) {
     var gender = _.get(props, 'gameState.data.character.gender', 'female');
     var skin = _.get(props, 'gameState.data.character.skin', 'medium');
 
-    var openReveal = function (dropped, dropzoneRef) {
+    var openReveal = function (dropped) {
         var droppedList = _.get(props, 'data.dropzone.droppedList', '');
         var droppedMsg = 'dropped-' + dropped.props.message;
         this.updateScreenData({
@@ -58,7 +61,7 @@ export default function (props, ref, key) {
                 droppedList: droppedList + ' ' + droppedMsg
             }
         });
-    }
+    };
 
     var mediaComplete = function () {
         this.updateScreenData({
@@ -158,7 +161,7 @@ export default function (props, ref, key) {
                         className="draggables-left"
                         amount={6}
                         item={<Draggable returnOnIncorrect />}
-                        props={ANSWERS.slice(0,6).map((value) => { return {message: value}; })}
+                        props={ANSWERS.slice(0, 6).map((value) => { return {message: value}; })}
                     />
                     <Dropzone
                         ref="dropzone"
