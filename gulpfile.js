@@ -55,11 +55,9 @@ function defineEntries(config) {
         './' + game + '/index.js',
     ];
 
-    if (env === 'dev') {
-        config.entry.push (
-            'webpack/hot/dev-server',
-            'webpack-dev-server/client?http://localhost:8080/'
-        );
+    if (env === 'dev' && !nohmr) {
+        config.entry.push('webpack/hot/dev-server');
+        config.entry.push('webpack-dev-server/client?http://localhost:8080/');
     }
 
     return config;
