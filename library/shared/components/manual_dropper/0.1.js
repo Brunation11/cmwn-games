@@ -1,7 +1,6 @@
 import classNames from 'classnames';
 
-import Randomizer from 'shared/components/randomizer/0.1';
-import Catchable from 'shared/components/catchable/0.1';
+import Catchable from 'shared/components/catchable/0.2';
 
 const ITEM = 'items-';
 const DROPPED = 'DROPPED';
@@ -83,10 +82,13 @@ class Dropper extends skoash.Component {
         this.setState({
             items
         }, () => {
+            let refs = _.filter(this.refs, (v, k) => !k.indexOf(ITEM));
+            this.invokeChildrenFunction('markCatchable');
+
             this.updateScreenData({
                 key: this.props.refsTarget,
                 data: {
-                    refs: _.filter(this.refs, (v, k) => !k.indexOf(ITEM)),
+                    refs,
                     next: false,
                 }
             });
@@ -175,7 +177,7 @@ Dropper.defaultProps = _.defaults({
     dropClass: DROPPED,
     amount: 1,
     bin: (
-        <Randomizer
+        <skoash.Randomizer
             bin={[
                 <Catchable />,
             ]}

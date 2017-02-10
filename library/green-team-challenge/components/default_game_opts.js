@@ -1,4 +1,4 @@
-import Catchable from 'shared/components/catchable/0.1';
+import Catchable from 'shared/components/catchable/0.2';
 
 import ItemsToSort from './items_to_sort';
 

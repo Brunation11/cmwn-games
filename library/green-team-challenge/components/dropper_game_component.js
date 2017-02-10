@@ -185,8 +185,6 @@ export default function (props, ref, key, opts = {}) {
                         pause={caught || !start}
                         resume={drop || itemRef}
                         collideFraction={opts.collideFraction}
-                        assets={[
-                        ]}
                         {...catcherProps}
                     />
                     <skoash.Selectable
