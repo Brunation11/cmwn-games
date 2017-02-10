@@ -11,15 +11,15 @@ import TitleScreen from './components/title_screen';
 // import FiveWaysScreen from './components/five_ways_screen';
 import LevelScreen from './components/level_screen_component';
 // import RecyclingChampion1InfoScreen from './components/recycling_champion_one_info_screen';
-import RecyclingChampion1Screen from './components/recycling_champion_level_one_screen';
-import RecyclingChampion2InfoScreen from './components/recycling_champion_two_info_screen';
-import RecyclingChampion2Screen from './components/recycling_champion_level_two_screen';
-import RecyclingChampion3InfoScreen from './components/recycling_champion_three_info_screen';
-import RecyclingChampion3Screen from './components/recycling_champion_level_three_screen';
-import RecyclingChampion4InfoScreen from './components/recycling_champion_four_info_screen';
-import RecyclingChampion4Screen from './components/recycling_champion_level_four_screen';
-import RecyclingChampion5InfoScreen from './components/recycling_champion_five_info_screen';
-import RecyclingChampion5Screen from './components/recycling_champion_level_five_screen';
+// import RecyclingChampion1Screen from './components/recycling_champion_level_one_screen';
+// import RecyclingChampion2InfoScreen from './components/recycling_champion_two_info_screen';
+// import RecyclingChampion2Screen from './components/recycling_champion_level_two_screen';
+// import RecyclingChampion3InfoScreen from './components/recycling_champion_three_info_screen';
+// import RecyclingChampion3Screen from './components/recycling_champion_level_three_screen';
+// import RecyclingChampion4InfoScreen from './components/recycling_champion_four_info_screen';
+// import RecyclingChampion4Screen from './components/recycling_champion_level_four_screen';
+// import RecyclingChampion5InfoScreen from './components/recycling_champion_five_info_screen';
+// import RecyclingChampion5Screen from './components/recycling_champion_level_five_screen';
 import LevelCompleteScreen from './components/level_complete_screen_component';
 import PricelessPourer1InfoScreen from './components/priceless_pourer_one_info_screen';
 import PricelessPourer1Screen from './components/priceless_pourer_level_one_screen';
@@ -73,12 +73,13 @@ skoash.start(
         screens={[
             iOSScreen,
             TitleScreen,
-            /*HiThereScreen,
+            /*
+            HiThereScreen,
             KeyIsSortingScreen,
             LightsScreen,
             FiveWaysScreen,
             LevelScreen(1.0),
-            RecyclingChampion1InfoScreen,*/
+            RecyclingChampion1InfoScreen,
             RecyclingChampion1Screen,
             LevelScreen(1.1),
             RecyclingChampion2InfoScreen,
@@ -93,6 +94,7 @@ skoash.start(
             RecyclingChampion5InfoScreen,
             RecyclingChampion5Screen,
             LevelScreen(1.5),
+            */
             LevelCompleteScreen(1),
             LevelScreen(2.0),
             PricelessPourer1InfoScreen,

@@ -15,6 +15,10 @@
             text-shadow: 2px 2px 2px $white;
         }
 
+        .animated {
+            transform: translateY(-1000px);
+        }
+
         h4 {
             margin-top: -7px;
             font-size: 24px;
@@ -47,6 +51,12 @@
                     font-size: 20px;
                 }
             }
+        }
+    }
+
+    &.STARTED {
+        .animated {
+            animation-name: bounceInDown;
         }
     }
 }
