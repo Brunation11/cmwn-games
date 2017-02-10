@@ -64,7 +64,7 @@ export default function (props, ref, key) {
     };
 
     var nextScreen = function (nextProps) {
-        if (nextProps.next && this.nextProp.next !== nextProps.next) {
+        if (nextProps.next && this.props.next !== nextProps.next) {
             this.next();
         }
     };

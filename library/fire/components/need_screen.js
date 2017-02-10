@@ -3,13 +3,17 @@ import Dropzone from 'shared/components/dropzone/0.4';
 
 class NeedScreenComponent extends skoash.Screen {
     open() {
-        var dropzone;
+		var componentParent;
 
-        super.open();
+		super.open();
 
-        this.checkComplete = null;
-        dropzone = _.get(this.refs, 'children-0.refs.children-1.refs.dropzone', null);
-        if (dropzone) dropzone.incompleteRefs();
+		this.checkComplete = null;
+		this.refs['media-vos'].incompleteRefs();
+		componentParent = _.get(this.refs, 'children-3.refs.children-0', null);
+        if (componentParent) {
+			componentParent.refs['draggables-left'].incompleteRefs();
+			componentParent.refs['draggables-right'].incompleteRefs();
+		}
         this.incomplete();
         this.checkComplete = super.checkComplete;
     }
@@ -85,6 +89,7 @@ export default function (props, ref, key) {
                 <skoash.Audio type="voiceOver" src="media/S_12/vo_DragAndDropToOutfit.mp3" />
             </skoash.MediaSequence>
             <skoash.MediaCollection
+				ref="media-vos"
                 play={_.get(props, 'data.dropzone.message', null)}
                 onComplete={mediaComplete}
             >
@@ -150,6 +155,7 @@ export default function (props, ref, key) {
                 />,
             </skoash.MediaCollection>
             <skoash.MediaCollection
+				ref="media-sfx"
                 play={_.get(props, 'data.media.complete', null)}
             >
                 <skoash.Audio data-ref="complete" type="sfx" src="media/S_12/S_12.3.mp3" />,
@@ -159,6 +165,7 @@ export default function (props, ref, key) {
                     <skoash.Image className="animated" src="media/S_12/img_12.1.png" />
                     <skoash.Repeater
                         className="draggables-left"
+						ref="draggables-left"
                         amount={6}
                         item={<Draggable returnOnIncorrect />}
                         props={ANSWERS.slice(0, 6).map((value) => { return {message: value}; })}
@@ -183,6 +190,7 @@ export default function (props, ref, key) {
                     />
                     <skoash.Repeater
                         className="draggables-right"
+						ref="draggables-right"
                         amount={6}
                         item={<Draggable returnOnIncorrect />}
                         props={ANSWERS.slice(6).map((value) => { return {message: value}; })}
