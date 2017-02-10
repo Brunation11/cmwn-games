@@ -13,7 +13,7 @@ export default function (props, ref, key) {
                 I hope you're ready!
             </p>
         ),
-        vo: '', // this vo is missing
+        vo: 'HeySuperSorter',
         sfx: 'InfoFrameMove1',
         backgroundAudio: 'BKG2',
     });
