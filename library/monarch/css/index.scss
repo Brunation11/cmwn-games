@@ -1,5 +1,6 @@
 @import 'variables';
 @import 'mixins';
+@import 'fonts';
 
 @include reset;
 @include bootstrap-game;
@@ -68,12 +69,13 @@ button {
     $screens:
         title
         info-video-one
+        info-video-two
         life-stages
         first-stage
         instructions-1
         bonus-level-one
         bonus-level-two
-        video-pupa
+        info-video-pupa
         info-you-won
         video-monarch
         info-migrate
@@ -86,6 +88,7 @@ button {
     $backgrounds:
         title
         bkg-4
+        bkg-1
         bkg-1
         bkg-1
         bkg-3

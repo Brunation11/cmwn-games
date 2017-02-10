@@ -2,6 +2,7 @@ $media: $media-server + 'Games/monarch/';
 $sprite: $media + 'SpritesAnimations/';
 $image: $media + 'ImageAssets/';
 $frame: $media + 'Frames/';
+$font: $media + 'Font/';
 
 $black: #000;
 $bright-green: #008000;
@@ -19,6 +20,7 @@ $text-color: #fff;
 $white: #fff;
 $dark-orange: #e06905;
 $light-orange: #ffc200;
+$orange: #ffa500;
 $white-transparancy: rgba(250, 250, 250, .15);
 
 $transparent: transparent;
