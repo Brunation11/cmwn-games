@@ -277,13 +277,14 @@ img.background {
     }
 
     &#need {
-        .draggable {
+        .draggable,
+        .close-reveal {
             pointer-events: none;
             cursor: default;
         }
 
         .close-reveal {
-            background-position: -500px -90px;
+            opacity: 0;
         }
     }
 }
@@ -654,22 +655,20 @@ img.background {
     }
 
     &.OPEN {
-        .selectable-audio {
-            ul {
-                li {
-                    animation-name: fadeInRightBig;
+        .selectable {
+            li {
+                animation-name: fadeInRightBig;
 
-                    &:nth-of-type(2) {
-                        animation-delay: 1s;
-                    }
+                &:nth-of-type(2) {
+                    animation-delay: 1s;
+                }
 
-                    &:nth-of-type(3) {
-                        animation-delay: 2s;
-                    }
+                &:nth-of-type(3) {
+                    animation-delay: 2s;
+                }
 
-                    &:nth-of-type(4) {
-                        animation-delay: 3s;
-                    }
+                &:nth-of-type(4) {
+                    animation-delay: 3s;
                 }
             }
         }
@@ -1218,6 +1217,10 @@ img.background {
 
         &.OPEN {
             z-index: 2;
+
+            .close-reveal {
+                opacity: 1;
+            }
         }
 
         > div {
@@ -1264,6 +1267,7 @@ img.background {
             position: absolute;
             right: 40px;
             bottom: 40px;
+            opacity: 0;
             transition: opacity .5s;
         }
     }

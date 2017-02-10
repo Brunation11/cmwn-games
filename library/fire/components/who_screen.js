@@ -26,15 +26,21 @@ export default function (props, ref, key) {
         });
     };
 
+    var play = function (effect, callback) {
+        this.updateScreenData({
+            key: 'media-sfx',
+            data: {
+                effect,
+            },
+            callback,
+        });
+    };
+
     var playSFX = function () {
         var ref = _.get(props, 'data.selectable.target.props.data-ref', null);
-        if (ref.length > 0) {
-            this.updateScreenData({
-                key: 'media-sfx',
-                data: {
-                    effect: ref === 'firefighter' ? 'correct' : 'incorrect',
-                }
-            });
+        if (ref.length != null) {
+            var effect = ref === 'firefighter' ? 'correct' : 'incorrect';
+            play.call(this, effect, play.bind(this, 'dummy', _.noop));
         }
     };
 
