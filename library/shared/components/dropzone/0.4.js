@@ -1,6 +1,33 @@
 import classNames from 'classnames';
 
 class Dropzone extends skoash.Component {
+    constructor() {
+        super();
+        this.getCornersDefault = this.getCorners;
+    }
+
+    componentWillMount() {
+        window.addEventListener('resize', () => {
+            this.scaleCorners();
+        });
+    }
+
+    componentWillUnmount() {
+        window.removeEventListener('resize', () => {
+            this.scaleCorners();
+        });
+    }
+
+    scaleCorners() {
+        var self = this;
+        skoash.trigger('getState').then(state => {
+            self.getCorners = self.getCornersDefault.bind(self, state.scale);
+            self.dropzoneCorners = _.map(self.props.dropzones, (value, key) =>
+                self.getCorners(ReactDOM.findDOMNode(self.refs[`dropzone-${key}`]))
+            );
+        });
+    }
+
     start() {
         var self = this;
         var dropzone;
@@ -8,9 +35,7 @@ class Dropzone extends skoash.Component {
 
         super.start();
 
-        self.dropzoneCorners = _.map(self.props.dropzones, (value, key) =>
-            self.getCorners(ReactDOM.findDOMNode(self.refs[`dropzone-${key}`]))
-        );
+        this.scaleCorners();
 
         if (self.loadData && typeof self.loadData === 'object') {
             _.forIn(self.loadData, (ref1, key1) => {
@@ -77,7 +102,7 @@ class Dropzone extends skoash.Component {
         });
     }
 
-    getCorners(el) {
+    getCorners(scale, el) {
         var offset;
         var corners = [];
 
@@ -85,8 +110,8 @@ class Dropzone extends skoash.Component {
 
         for (let i = 0; i < 4; i++) {
             corners.push({
-                x: offset.left + offset.width * (i === 1 || i === 2 ? 1 : 0),
-                y: offset.top + offset.height * (i > 1 ? 1 : 0),
+                x: offset.left + offset.width * (i === 1 || i === 2 ? 1 : 0) / scale,
+                y: offset.top + offset.height * (i > 1 ? 1 : 0) / scale,
             });
         }
 

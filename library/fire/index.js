@@ -12,9 +12,9 @@ import WhoScreen from './components/who_screen';
 import MenAndWomenScreen from './components/men_and_women_screen';
 import TriangleScreen from './components/triangle_screen';
 import BreakTriangleScreen from './components/break_triangle_screen';
-//import LadderScreen from './components/ladder_screen';
-//import ChooseScreen from './components/choose_screen';
-//import NeedScreen from './components/need_screen';
+import LadderScreen from './components/ladder_screen';
+import ChooseScreen from './components/choose_screen';
+import NeedScreen from './components/need_screen';
 //import FlipScreen from './components/flip_screen';
 
 import QuitScreen from 'shared/components/quit_screen/0.1';
@@ -32,10 +32,10 @@ var Fire = (
             //6: WhoScreen,
             //7: MenAndWomenScreen,
             //8: TriangleScreen,
-            2: BreakTriangleScreen,
+            //9: BreakTriangleScreen,
             //10: LadderScreen,
-            //11: ChooseScreen,
-            //12: NeedScreen,
+            2: ChooseScreen,
+            3: NeedScreen,
             //13: FlipScreen,
         }}
         menus={{

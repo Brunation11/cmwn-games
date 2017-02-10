@@ -9,6 +9,7 @@ class ChooseScreenComponent extends skoash.Screen {
                     toggle: false
                 }
             });
+
             return;
         }
         super.prev();
@@ -16,8 +17,17 @@ class ChooseScreenComponent extends skoash.Screen {
 }
 
 export default function (props, ref, key) {
+    var clearCharacter = function () {
+        this.updateGameData({
+            key: 'character',
+            data: {
+                gender: null,
+                skin: null,
+            }
+        });
+    };
 
-    var nextSlide = function (gender) {
+    var addGender = function (gender) {
         this.updateGameData({
             key: 'character',
             data: {
@@ -33,16 +43,12 @@ export default function (props, ref, key) {
         });
     };
 
-    var nextScreen = function (skin) {
+    var addSkin = function (skin) {
         this.updateGameData({
             key: 'character',
             data: {
                 skin,
             }
-        });
-
-        skoash.trigger('goto', {
-            index: props.index + 1,
         });
     };
 
@@ -55,6 +61,12 @@ export default function (props, ref, key) {
             SKIN: slideToggle,
             [gender]: gender,
         });
+    };
+
+    var nextScreen = function (props) {
+        if (props.next && this.props.next != props.next) {
+            this.next();
+        }
     }
 
     return (
@@ -64,16 +76,19 @@ export default function (props, ref, key) {
             key={key}
             id="choose"
             className={getClassNames()}
-            hideNext
-            silentComplete
+            onOpen={clearCharacter}
             slideToggle={_.get(props, 'data.slide.toggle', false)}
+            hideNext
+            next={_.get(props, 'gameState.data.character.skin', null) != null}
+            onComponentWillReceiveProps={nextScreen}
+            silentComplete
         >
             <skoash.Audio type="voiceOver" src="media/S_11/vo_ChooseYourFirefighter.mp3" />
             <skoash.Image className="animated" src="media/S_11/img_11.1.png" />
             <skoash.Component className="center female-male">
                 <skoash.Component className="group">
                     <skoash.Selectable
-                        onSelect={nextSlide}
+                        onSelect={addGender}
                         list={[
                             <skoash.ListItem data-ref="female" id="gender-female" className="animated" />,
                             <skoash.ListItem data-ref="male" id="gender-male" className="animated" />
@@ -84,7 +99,7 @@ export default function (props, ref, key) {
             <skoash.Component className="center skin-color">
                 <skoash.Component className="group">
                     <skoash.Selectable
-                        onSelect={nextScreen}
+                        onSelect={addSkin}
                         list={[
                             <skoash.ListItem data-ref="light" id="skin-light" className="animated" />,
                             <skoash.ListItem data-ref="medium" id="skin-medium" className="animated" />,

@@ -2,7 +2,6 @@ import Draggable from 'shared/components/draggable/0.4';
 import Dropzone from 'shared/components/dropzone/0.4';
 
 class TriangleScreenComponent extends skoash.Screen {
-
     open() {
         super.open();
 
