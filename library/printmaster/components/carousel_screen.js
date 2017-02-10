@@ -1,9 +1,5 @@
 import Target from 'shared/components/target/0.1';
 import Carousel from 'shared/components/carousel/0.1';
-import Randomizer from 'shared/components/randomizer/0.1';
-import Score from 'shared/components/score/0.1';
-import Reveal from 'shared/components/reveal/0.1';
-
 
 export default function (props, ref, key) {
     return (
@@ -20,20 +16,20 @@ export default function (props, ref, key) {
             <skoash.Image className="hidden reveal" src="media/_Frame/Fr_3.png" />
             <skoash.Component className="group">
                 <Carousel
-                    className={'slide' + (_.get(props, 'data.revealScore.score', 0) === 7 ? ' disable' : '')}
+                    className={'slide' + (_.get(props, 'data.reveal.indexToOpen', 0) === 7 ? ' disable' : '')}
                     clickable
                     delay={400}
                     targetIndex={2}
                     onSelect={function (target) {
-                        this.updateGameState({
-                            path: 'attempt',
+                        this.updateScreenData({
+                            key: 'attempt',
                             data: {
                                 target
                             }
                         });
                     }}
                     bin={
-                      <Randomizer
+                      <skoash.Randomizer
                         bin={[
                             <div ref="loops" message="loops"></div>,
                             <div ref="whorl" message="whorl"></div>,
@@ -44,101 +40,99 @@ export default function (props, ref, key) {
                     }
                 />
                 <Target
-                  attempt={_.get(props, 'data.attempt.target.ref', null)}
-                  onUpdateState={function (correct) {
-                      this.updateGameState({
-                          path: 'attempt',
-                          data: {
-                              target: null,
-                          }
-                      });
-                      if (!correct) return;
-                      this.updateGameState({
-                          path: 'score',
-                          data: {
-                              correct: _.get(props, 'data.score.correct', 0) + 1
-                          }
-                      });
-                  }}
-                  dataTarget="target"
-                  setTarget={_.get(props, 'data.revealScore.score', 0)}
-                  completeOnStart
-                  checkComplete={false}
-                  targets={[
-                      <skoash.Image
-                          name="loops"
-                          amount={2}
-                          targetClass="loops-2"
-                          className="animated"
-                          src="media/S_10/img_10.11.png"
-                      />,
-                      <skoash.Image
-                          name="whorl"
-                          amount={3}
-                          targetClass="whorl-3"
-                          className="animated"
-                          src="media/S_10/img_10.15.png"
-                      />,
-                      <skoash.Image
-                          name="arch"
-                          amount={3}
-                          targetClass="arch-3"
-                          className="animated"
-                          src="media/S_10/img_10.18.png"
-                      />,
-                      <skoash.Image
-                          name="doubleloops"
-                          amount={2}
-                          targetClass="doubleloops-2"
-                          className="animated"
-                          src="media/S_10/img_10.20.png"
-                      />,
-                      <skoash.Image
-                          name="whorl"
-                          amount={2}
-                          targetClass="whorl-2"
-                          className="animated"
-                          src="media/S_10/img_10.14.png"
-                      />,
-                      <skoash.Image
-                          name="doubleloops"
-                          amount={3}
-                          targetClass="doubleloops-3"
-                          className="animated"
-                          src="media/S_10/img_10.21.png"
-                      />,
-                      <skoash.Image
-                          name="arch"
-                          amount={2}
-                          targetClass="arch-2"
-                          className="animated"
-                          src="media/S_10/img_10.17.png"
-                      />,
-                  ]}
-                  assets={[
-                      <skoash.Audio ref="correct" type="sfx" src="media/S_10/S_10.3.mp3" />,
-                      <skoash.Audio ref="incorrect" type="sfx" src="media/S_10/S_10.4.mp3" />
-                  ]}
+                    attempt={_.get(props, 'data.attempt.target.ref', null)}
+                    onUpdateState={function (correct) {
+                        let data = {
+                            attempt: {
+                                target: null,
+                            }
+                        };
+                        if (correct) {
+                            data.score = {
+                                correct: _.get(props, 'data.score.correct', 0) + 1
+                            };
+                        }
+                        this.updateScreenData({
+                            data,
+                        });
+                    }}
+                    dataTarget="target"
+                    setTarget={_.get(props, 'data.reveal.indexToOpen', 0)}
+                    completeOnStart
+                    checkComplete={false}
+                    targets={[
+                        <skoash.Image
+                            name="loops"
+                            amount={2}
+                            targetClass="loops-2"
+                            className="animated"
+                            src="media/S_10/img_10.11.png"
+                        />,
+                        <skoash.Image
+                            name="whorl"
+                            amount={3}
+                            targetClass="whorl-3"
+                            className="animated"
+                            src="media/S_10/img_10.15.png"
+                        />,
+                        <skoash.Image
+                            name="arch"
+                            amount={3}
+                            targetClass="arch-3"
+                            className="animated"
+                            src="media/S_10/img_10.18.png"
+                        />,
+                        <skoash.Image
+                            name="doubleloops"
+                            amount={2}
+                            targetClass="doubleloops-2"
+                            className="animated"
+                            src="media/S_10/img_10.20.png"
+                        />,
+                        <skoash.Image
+                            name="whorl"
+                            amount={2}
+                            targetClass="whorl-2"
+                            className="animated"
+                            src="media/S_10/img_10.14.png"
+                        />,
+                        <skoash.Image
+                            name="doubleloops"
+                            amount={3}
+                            targetClass="doubleloops-3"
+                            className="animated"
+                            src="media/S_10/img_10.21.png"
+                        />,
+                        <skoash.Image
+                            name="arch"
+                            amount={2}
+                            targetClass="arch-2"
+                            className="animated"
+                            src="media/S_10/img_10.17.png"
+                        />,
+                    ]}
+                    assets={[
+                        <skoash.Audio ref="correct" type="sfx" src="media/S_10/S_10.3.mp3" />,
+                        <skoash.Audio ref="incorrect" type="sfx" src="media/S_10/S_10.4.mp3" />
+                    ]}
                 />
-                <Score
+                <skoash.Score
                     correct={_.get(props, 'data.score.correct', 0)}
                     dataTarget="score"
                     completeDelay={1000}
                     max={_.get(props, 'data.target.amount', null)}
-                    complete
+                    completeOnStart
                     resetOnComplete
                     multipleCompletes
                     onComplete={function () {
-                        this.updateGameState({
-                            path: 'score',
+                        this.updateScreenData({
                             data: {
-                                correct: 0
-                            }
-                        });
-                        this.updateGameState({
-                            path: 'revealScore',
-                            data: {
-                                score: _.get(props, 'data.revealScore.score', 0) + 1
+                                score: {
+                                    correct: 0
+                                },
+                                reveal: {
+                                    indexToOpen: _.get(props, 'data.reveal.indexToOpen', -1) + 1
+                                }
                             }
                         });
                     }}
@@ -148,21 +142,23 @@ export default function (props, ref, key) {
                         <div />
                         <div />
                     </div>
-                </Score>
+                </skoash.Score>
             </skoash.Component>
-            <Reveal
-              openOnStart="0"
-              openReveal={_.get(props, 'data.revealScore.score', 0)}
-              assets={[
-                  <skoash.Audio type="voiceOver" src="media/S_10/VO_10.1.mp3" />,
-                  <skoash.Audio type="voiceOver" src="media/S_10/VO_10.5.mp3" />,
-                  <skoash.Audio type="voiceOver" src="media/S_10/VO_10.4.mp3" />,
-                  <skoash.Audio type="voiceOver" src="media/S_10/VO_10.6.mp3" />,
-                  <skoash.Audio type="voiceOver" src="media/S_10/VO_10.7.mp3" />,
-                  <skoash.Audio type="voiceOver" src="media/S_10/VO_10.8.mp3" />,
-                  <skoash.Audio type="voiceOver" src="media/S_10/VO_10.9.mp3" />,
-                  <skoash.Audio type="voiceOver" src="media/S_10/VO_10.10.mp3" />,
-              ]}
+            <skoash.MediaCollection
+                play={_.get(props, 'data.reveal.open')}
+            >
+                <skoash.Audio ref="0" type="voiceOver" src="media/S_10/VO_10.1.mp3" />,
+                <skoash.Audio ref="1" type="voiceOver" src="media/S_10/VO_10.5.mp3" />,
+                <skoash.Audio ref="2" type="voiceOver" src="media/S_10/VO_10.4.mp3" />,
+                <skoash.Audio ref="3" type="voiceOver" src="media/S_10/VO_10.6.mp3" />,
+                <skoash.Audio ref="4" type="voiceOver" src="media/S_10/VO_10.7.mp3" />,
+                <skoash.Audio ref="5" type="voiceOver" src="media/S_10/VO_10.8.mp3" />,
+                <skoash.Audio ref="6" type="voiceOver" src="media/S_10/VO_10.9.mp3" />,
+                <skoash.Audio ref="7" type="voiceOver" src="media/S_10/VO_10.10.mp3" />,
+            </skoash.MediaCollection>
+            <skoash.Reveal
+              openTarget="reveal"
+              openReveal={_.get(props, 'data.reveal.indexToOpen')}
               list={[
                   <li>
                       <p className="typing">CLICK WHEN THE PRINT</p>

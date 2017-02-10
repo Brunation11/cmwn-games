@@ -66,7 +66,7 @@ var Printmaster = (
             }
         }}
         loader={<Loader />}
-        passData={opts => {
+        passData={function (opts) {
             if (opts.name === 'typing') {
                 this.media.typing.stop();
                 this.media.typing.play();
