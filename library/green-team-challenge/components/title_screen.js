@@ -21,7 +21,7 @@ export default function (props, ref, key) {
             key={key}
             id="title"
             silentComplete
-            backgroundAudio="BKGtitle"
+            backgroundAudio="BKG0"
         >
             <h3 content="Green Team Challenge" />
             <skoash.Image
