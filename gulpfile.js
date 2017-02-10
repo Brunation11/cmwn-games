@@ -32,6 +32,7 @@ var scsslint = require('gulp-scss-lint');
 var stylish = require('gulp-scss-lint-stylish2');
 var game;
 var webpackBuild;
+var now = Date.now();
 
 function defineEntries(config) {
     // modify some webpack config options
@@ -189,7 +190,9 @@ gulp.task('copy-index', function () {
                 starttag: '<!-- inject:head -->',
                 transform: function (filePath, file) {
                     var config = JSON.parse(file.contents.toString('utf8'));
-                    var injection = `<title>${config.title || _.startCase(config.id)}</title>`;
+                    var injection = `<title>${config.title || _.startCase(config.id)}</title>\n    ` +
+                        `<link rel="stylesheet" type="text/css" href="../shared/css/style.css?d=${now}">\n` +
+                        `    <link rel="stylesheet" type="text/css" href="css/style.css?d=${now}">`;
                     injection += config.head_injection || '';
                     return injection;
                 }
@@ -207,22 +210,21 @@ gulp.task('copy-index', function () {
                 starttag: '<!-- inject:body -->',
                 transform: function (filePath, file) {
                     var config = JSON.parse(file.contents.toString('utf8'));
-                    var folder = config.media_folder ||
-                        _.upperFirst(_.camelCase(config.title)) ||
-                        _.upperFirst(_.camelCase(config.id));
-
+                    var folder = config.media_folder || config.id;
                     var min = debug ? '' : '.min';
+
                     return (
-                        `<div id="${config.id}"></div>\n  ` +
+                        `<div id="${config.id}"></div>\n    ` +
                         '<script type="text/javascript" ' +
                         `src="https://cdnjs.cloudflare.com/ajax/libs/react/15.0.2/react${min}.js">` +
-                        '</script>\n  ' +
+                        '</script>\n    ' +
                         '<script type="text/javascript" ' +
                         `src="https://cdnjs.cloudflare.com/ajax/libs/react/15.0.2/react-dom${min}.js">` +
-                        '</script>\n  ' +
+                        '</script>\n    ' +
                         '<script type="text/javascript" ' +
-                        `src="../framework/skoash.${config.skoash}.js"></script>\n  ` +
-                        `<script>window.CMWN={gameFolder:"${folder}"};</script>`
+                        `src="../framework/skoash.${config.skoash}.js"></script>\n    ` +
+                        `<script>window.CMWN={gameFolder:"${folder}"};</script>\n    ` +
+                        `<script type="text/javascript" src="./ai.js?d=${now}"></script>`
                     );
                 }
             }))
@@ -237,7 +239,7 @@ gulp.task('copy-index', function () {
             .pipe(inject(gulp.src('./library/shared/js/google-analytics.js'), {
                 starttag: '<!-- inject:ga -->',
                 transform: function (filePath, file) {
-                    return '<script>\n    ' + file.contents.toString('utf8') + '  \n</script>';
+                    return '<script>\n    ' + file.contents.toString('utf8') + '  \n    </script>';
                 }
             }))
             .pipe(gulp.dest('./build/' + game));

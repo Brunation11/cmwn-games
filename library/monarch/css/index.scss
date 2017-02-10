@@ -46,24 +46,42 @@ button {
         left: 15px;
     }
 
-    &.close-reveal {
-        @include sprite-continue(1);
-        right: 85px;
-        bottom: 100px;
+    &.quit-yes,
+    &.quit-no {
+        bottom: 10%;
+        width: 220px;
+        height: 110px;
+    }
+
+    &.quit-yes {
+        @include nav-button(2, 220px, 110px);
+        left: 17%;
+    }
+
+    &.quit-no {
+        @include nav-button(3, 220px, 110px);
+        right: 17%;
     }
 }
 
 .skoash-game {
     $screens:
         title
-        video
+        info-video-one
         life-stages
         first-stage
         instructions-1
+        bonus-level-one
+        bonus-level-two
+        video-pupa
+        info-you-won
+        video-monarch
+        info-migrate
         monarch-generations-1
         monarch-generations-2
         monarch-generations-3
-        monarch-generations-4;
+        monarch-generations-4
+        flip;
 
     $backgrounds:
         title
@@ -71,12 +89,25 @@ button {
         bkg-1
         bkg-1
         bkg-3
+        bkg-3
+        bkg-3
+        bkg-1
+        bkg-3
+        bkg-1
+        bkg-5
         bkg-4
         bkg-4
         bkg-4
-        bkg-4;
+        bkg-4
+        bkg-1;
 
-    @include screen-backgrounds($screens, $backgrounds);
+    &:not(.MENU) {
+        @include screen-backgrounds($screens, $backgrounds);
+    }
+
+    &.MENU.MENU-quit .background.bkg-1 {
+        opacity: 1;
+    }
 
     .background {
         $background-titles:
@@ -138,6 +169,10 @@ button {
         width: 90%;
         color: $black;
     }
+}
+
+.skoash-game.VOICE-OVER:not(.DEMO) .reveal .close-reveal {
+    display: none;
 }
 
 .reveal {
