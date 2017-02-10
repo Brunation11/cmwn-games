@@ -19,6 +19,7 @@ class Catchable extends skoash.Component {
 
     markCaught() {
         if (!this.state.ready) return;
+        this.catchable = false;
         this.setState({catchable: false});
         this.props.onCaught.call(this);
     }
@@ -44,6 +45,7 @@ class Catchable extends skoash.Component {
 
     reset() {
         if (this.state.ready && !this.props.disabled && this.props.reCatchable) {
+            this.catchable = true;
             this.setState({catchable: true});
         }
     }
