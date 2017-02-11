@@ -264,16 +264,6 @@ gulp.task('copy-media', function () {
     gulp
     .src(path.join( './library', game, 'media/**/*' ))
     .pipe( gulp.dest(path.join( './build', game, 'media' )) );
-
-    // This can be removed once fonts for every game are transferred to the media server.
-    gulp
-    .src(['./library/shared/fonts/*'])
-    .pipe(gulp.dest('./build/shared/fonts'));
-
-    // This can be removed once shared images games are transferred to the media server.
-    gulp
-    .src(['./library/shared/images/*'])
-    .pipe(gulp.dest('./build/shared/images'));
 });
 
 // To specify what game you'd like to watch call gulp watch --game game-name
