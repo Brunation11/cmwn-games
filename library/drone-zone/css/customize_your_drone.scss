@@ -1,0 +1,136 @@
+@import 'variables';
+@import 'mixins';
+
+#customize-your-drone {
+    $drone-types:
+        one
+        two
+        three
+        four;
+
+    $color-types:
+        a b c d e f g h;
+
+    .reveal {
+        .close-reveal {
+            display: none;
+        }
+    }
+
+    .model-select,
+    .color-select,
+    .complete {
+        @include center;
+        opacity: 0;
+        width: 80%;
+        height: 100%;
+
+        .header {
+            position: absolute;
+            top: 4%;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 120%;
+            text-shadow: 3px 3px 3px $black;
+            font-family: 'Luckiest Guy', 'Source Sans Pro', 'Helvetica Neue', Helvetica, sans-serif;
+            font-size: 75px;
+        }
+
+        &.OPEN {
+            opacity: 1;
+            z-index: 1;
+        }
+    }
+
+    .model-select .selectable {
+        $tops:  200 200 420 420;
+        $lefts: 210 540 210 540;
+
+        @for $i from 1 through length($drone-types) {
+            $top: #{nth($tops, $i)}px;
+            $left: #{nth($lefts, $i)}px;
+
+            .#{nth($drone-types, $i)} {
+                @include customize-frames(1, 300px, 200px);
+                position: absolute;
+                top: $top;
+                left: $left;
+                opacity: 1;
+
+                &::after {
+                    @include customize-models($i, 270px, 170px);
+                    @include center;
+                    content: '';
+                }
+            }
+        }
+    }
+
+    .color-select .selectable {
+        $tops:  210 210 210 210 400 400 400 400;
+        $lefts: 110 300 490 680 110 300 490 680;
+
+        @for $i from 1 through length($color-types) {
+            $top: #{nth($tops, $i)}px;
+            $left: #{nth($lefts, $i)}px;
+
+            .#{nth($color-types, $i)} {
+                @include customize-frames(2, 200px, 200px);
+                position: absolute;
+                top: $top;
+                left: $left;
+                opacity: 1;
+
+                &::after {
+                    @include customize-colors($i, 150px, 150px);
+                    @include center;
+                    content: '';
+                }
+            }
+        }
+    }
+
+    .complete {
+        @for $i from 1 through length($drone-types) {
+            @for $j from 1 through length($color-types) {
+                .header {
+                    top: 10%;
+                    font-size: 55px;
+                }
+
+                $rows: 2130 2482 1420 350 0 1772 710 1060;
+
+                .selected {
+                    @include center;
+                    top: 64%;
+                    width: 550px;
+                    height: 350px;
+
+                    &.one,
+                    &.two {
+                        background: url('#{$sprite}sprite.droneoptions1.png');
+                        background-size: 200% auto;
+                    }
+
+                    &.three,
+                    &.four {
+                        background: url('#{$sprite}sprite.droneoptions2.png');
+                        background-size: 200% auto;
+                    }
+
+                    @for $i from 1 through length($color-types) {
+                        &.one.#{nth($color-types, $i)},
+                        &.four.#{nth($color-types, $i)} {
+                            background-position: 100% #{nth($rows, $i)}px;
+                        }
+
+                        &.two.#{nth($color-types, $i)},
+                        &.three.#{nth($color-types, $i)} {
+                            background-position: 0 #{nth($rows, $i)}px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

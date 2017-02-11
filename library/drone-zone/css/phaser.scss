@@ -1,0 +1,140 @@
+@import 'variables';
+@import 'mixins';
+
+[id*=phaser] {
+    iframe {
+        display: block;
+        border: 0;
+        width: 100%;
+        height: 100%;
+        pointer-events: none;
+    }
+
+    .timer {
+        position: absolute;
+        top: 2%;
+        left: 2%;
+        color: $black;
+        font-size: 40px;
+
+        &::before {
+            display: block;
+            content: '';
+        }
+
+        * {
+            display: block;
+        }
+
+        .label {
+            text-shadow: 2px 2px 2px $white;
+            color: $red;
+            font-family: 'Luckiest Guy', 'Source Sans Pro', 'Helvetica Neue', Helvetica, sans-serif;
+        }
+    }
+
+    .gauges {
+        position: absolute;
+        right: 0;
+        bottom: 0;
+        transform: scale3d(1, 1, 1);
+        background: $white-transparancy;
+        width: 100%;
+        text-align: right;
+    }
+
+    .star-score {
+        @include life-tracker;
+        display: inline-block;
+        margin-right: 10px;
+    }
+
+    .level-score,
+    .life {
+
+        &::after {
+            display: block;
+            position: absolute;
+            top: 75%;
+            left: -20px;
+            transform: scale(1.4) translateY(-50%);
+            z-index: 2;
+            width: 100%;
+            height: 100%;
+            content: '';
+        }
+    }
+
+    .level-score {
+        @include score-meter(10, url('#{$image}meterfill.png'));
+    }
+
+    .life {
+        @include score-meter(-10, url('#{$image}meterfill.png'));
+
+        &::after {
+            @include sprite-meter-icon(1, 70px, 40px);
+            left: -35px;
+        }
+    }
+
+    .reveal {
+        .close-reveal {
+            @include nav-button(2, 80px, 80px);
+            position: absolute;
+            top: 10%;
+            right: 16%;
+        }
+
+        &.open-replay {
+            border: 5px solid $red;
+            background: $red-transparancy;
+        }
+
+        .fact,
+        .replay,
+        .complete {
+            width: 72%;
+            height: 100%;
+            color: $white;
+
+            .header {
+                position: absolute;
+                top: 11%;
+                left: 50%;
+                transform: translateX(-50%);
+                background: $black-transparancy;
+                padding: 15px;
+                width: 95%;
+                text-shadow: 5px 2px 5px $black;
+                font-family: 'Luckiest Guy', 'Source Sans Pro', 'Helvetica Neue', Helvetica, sans-serif;
+                font-size: 52px;
+            }
+
+            p {
+                @include center;
+                width: 95%;
+                text-shadow: 2px 2px 10px $black;
+                line-height: 35px;
+                font-size: 30px;
+            }
+        }
+
+        .replay {
+            .header {
+                text-shadow: 5px 2px 5px $white;
+                color: $red;
+            }
+        }
+    }
+}
+
+@for $i from 1 through 3 {
+    #phaser-level-#{$i} {
+        .level-score {
+            &::after {
+                @include sprite-meter-icon($i + 1, 50px, 50px);
+            }
+        }
+    }
+}

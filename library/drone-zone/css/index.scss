@@ -1,0 +1,177 @@
+@import 'variables';
+@import 'mixins';
+
+@include reset;
+@include bootstrap-game;
+
+html {
+    color: $text-color;
+}
+
+.skoash-game {
+    font-family: 'Lilita One', 'Source Sans Pro', 'Helvetica Neue', Helvetica, sans-serif;
+
+    > .menu {
+        position: absolute;
+        top: 0;
+        right: 0;
+        z-index: 2;
+    }
+}
+
+button {
+    &.close {
+        @include nav-button(2, 80px, 80px)
+    }
+
+    &.next-screen,
+    &.prev-screen {
+        display: block;
+        position: absolute;
+        bottom: 10px;
+        z-index: 2;
+        margin: 0;
+        width: 140px;
+        height: 55px;
+    }
+
+    &.next-screen {
+        @include nav-button(4, 80px, 80px);
+        right: 10px;
+    }
+
+    &.prev-screen {
+        @include nav-button(3, 80px, 80px);
+        left: 10px;
+    }
+
+    &.close-reveal {
+        @include nav-button(5, 50px, 50px);
+    }
+
+    &.quit-yes,
+    &.quit-no {
+        position: absolute;
+        top: 120%;
+    }
+
+    &.quit-yes {
+        @include nav-button(6, 350px, 350px);
+        left: 12%;
+    }
+
+    &.quit-no {
+        @include nav-button(7, 350px, 350px);
+        right: 12%;
+    }
+}
+
+.skoash-game {
+    $screens:
+        title
+        info-definition-of-a-drone
+        info-what-does-it-do
+        video-the-world-of-drones
+        types-of-drones
+        how-are-drones-controlled
+        why-would-you-want-a-drone-prt-one
+        why-would-you-want-a-drone-prt-two
+        info-wanted-your-own-drone
+        info-customize-your-own-drone
+        customize-your-drone
+        parts-of-a-drone
+        info-lets-play
+        info-help-the-drone
+        drone-level-1
+        drone-level-2
+        drone-level-3
+        info-game-complete
+        flip;
+
+    $backgrounds:
+        title
+        bkg-3
+        bkg-3
+        bkg-2
+        bkg-4
+        bkg-3
+        bkg-6
+        bkg-6
+        bkg-10
+        bkg-10
+        bkg-10
+        bkg-9
+        bkg-7
+        bkg-7
+        bkg-7
+        bkg-7
+        bkg-7
+        bkg-7
+        bkg-5;
+
+    &:not(.MENU) {
+        @include screen-backgrounds($screens, $backgrounds);
+    }
+
+    &.MENU.MENU-quit .background.title {
+        opacity: 1;
+    }
+
+    .background {
+        $background-titles:
+            title
+            bkg-2
+            bkg-3
+            bkg-4
+            bkg-5
+            bkg-6
+            bkg-7
+            bkg-9
+            bkg-10;
+
+        @for $i from 1 through length($background-titles) {
+            &.#{nth($background-titles, $i)} {
+                @include background('#{$image}BKG.#{$i}.jpg')
+            }
+        }
+    }
+}
+
+.frame {
+    @include center;
+    @include background('#{$image}frame.png');
+    width: 780px;
+    height: 500px;
+
+    &.video {
+        @include background('#{$image}frame.video.png');
+    }
+
+    &.fact,
+    &.replay {
+        .content {
+            margin: -5%;
+        }
+    }
+
+    &.fact,
+    &.replay,
+    &.complete {
+        @include background('#{$image}flygameframe.png');
+    }
+
+    .content {
+        @include center;
+        width: 90%;
+        color: $black;
+    }
+}
+
+.skoash-game.VOICE-OVER:not(.DEMO) .reveal .close-reveal,
+.reveal.open-none .close-reveal {
+    display: none;
+}
+
+.reveal {
+    @include reveal;
+}

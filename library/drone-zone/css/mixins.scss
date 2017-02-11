@@ -1,0 +1,200 @@
+@import 'variables';
+@import '../../shared/css/mixins/import';
+
+// this can be used as an example for creating sprite mixins
+@mixin nav-button($column, $width: 0, $height: 0) {
+    @include sprite($sprite + 'sprite.nav.png', 2500px, 716px, 7, 2, $column, 1, 2, $width, $height);
+}
+
+@mixin drone-types-icon($column, $width: 0, $height: 0) {
+    @include sprite('#{$sprite}sprite.dronetypes.png', 1600px, 606px, 4, 2, $column, 1, 1, $width, $height);
+}
+
+@mixin drone-types-frame($column, $width: 0, $height: 0) {
+    @include sprite('#{$sprite}sprite.dronetypes.png', 1100px, 416px, 4, 2, $column, 2, 2, $width, $height);
+}
+
+@mixin q-marks-small($column, $width: 0, $height: 0) {
+    @include sprite('#{$sprite}sprite.qmarks.png', 130px, 259px, 1, 2, $column, 1, 2, $width, $height);
+}
+
+@mixin q-marks-large($column, $width: 0, $height: 0) {
+    @include sprite('#{$sprite}sprite.radarframe.png', 350px, 700px, 1, 2, $column, 1, 2, $width, $height);
+}
+
+@mixin q-marks-square($column, $width: 0, $height: 0) {
+    @include sprite('#{$sprite}sprite.qmarkwsquare.png', 255px, 255px, 2, 2, $column, 1, 2, $width, $height);
+}
+
+@mixin job-icons($column, $width: 0, $height: 0, $size: 'small', $label: true) {
+    @if $size == 'small' {
+        @include sprite('#{$sprite}sprite.jobicons.png', 725px, 185px, 7, 2, $column, 1, 1, $width, $height);
+    } @else if $size == 'large' {
+        @include sprite('#{$sprite}sprite.jobicons.png', 1939px, 500px, 7, 2, $column, 1, 1, $width, $height);
+    } @else {
+        @if $label == false {
+            @include sprite('#{$sprite}sprite.jobicons.png', 1500px, 382px, 7, 2, $column, 2, 2, $width, $height);
+        } @else {
+            @include sprite('#{$sprite}sprite.jobicons.png', 910px, 232px, 7, 2, $column, 1, 1, $width, $height);
+        }
+    }
+}
+
+@mixin job-icons-bw($column, $width: 0, $height: 0) {
+    @include sprite('#{$sprite}sprite.bwjobs.png', 900px, 128px, 7, 1, $column, 1, 1, $width, $height);
+}
+
+@mixin job-images($column, $width: 0, $height: 0) {
+    @include sprite('#{$sprite}sprite.jobimgs.png', 2237px, 320px, 7, 1, $column, 1, 1, $width, $height);
+}
+
+@mixin blank-squares($column, $width: 0, $height: 0) {
+    @include sprite('#{$sprite}sprite.blanksquares.png', 250px, 126px, 2, 1, $column, 1, 1, $width, $height);
+}
+
+@mixin radar($column, $width: 0, $height: 0) {
+    @include sprite('#{$sprite}sprite.radarframe.png', 370px, 737px, 1, 2, $column, 2, 2, $width, $height);
+}
+
+@mixin parts($column, $width: 0, $height: 0) {
+    @include sprite('#{$sprite}sprite.parts.png', 1800px, 258px, 7, 1, $column, 1, 1, $width, $height);
+}
+
+@mixin customize-frames($column, $width: 0, $height: 0) {
+    @include sprite('#{$sprite}sprite.customizeframes.png', 600px, 404px, 2, 2, $column, 1, 2, $width, $height);
+}
+
+@mixin customize-models($column, $width: 0, $height: 0) {
+    @include sprite('#{$sprite}sprite.models.png', 1115px, 180px, 4, 1, $column, 1, 1, $width, $height);
+}
+
+@mixin customize-colors($column, $width: 0, $height: 0) {
+    @include sprite('#{$sprite}sprite.colors.png', 1196px, 150px, 8, 1, $column, 1, 1, $width, $height);
+}
+
+@mixin customize-drones($column, $row, $width: 0, $height: 0) {
+    @include sprite('#{$sprite}sprite.droneoptions.png', 1196px, 150px, 8, 1, $column, $row, $row, $width, $height);
+}
+
+@mixin control-types($column, $width: 0, $height: 0) {
+    @include sprite('#{$sprite}sprite.controllers.png', 500px, 149px, 2, 1, $column, 1, 2, $width, $height);
+}
+
+@mixin path-icons($column, $width: 0, $height: 0) {
+    @include sprite('#{$sprite}sprite.pathicons.png', 1000px, 119px, 5, 1, $column, 1, 1, $width, $height);
+}
+
+@mixin instruction-bkg($column, $width: 0, $height: 0) {
+    @include sprite($sprite + 'sprite.INSTRUCTIONPAGEbkg.png', 2880px, 138px, 3, 1, $column, 1, 1, $width, $height);
+}
+
+// 540 960
+
+@mixin sprite-meter-icon($column, $width: 0, $height: 0) {
+    @include sprite($sprite + 'sprite.metericons.png', 320px, 50px, 4, 1, $column, 1, 1, $width, $height);
+}
+
+// can be used in flyer game
+// work later to move this function to a shared/css/mixins
+@mixin score-meter($steps: 4, $meter-color: $light-green) {
+    display: inline-block;
+    position: relative;
+    z-index: 1;
+    margin: 20px 20px 20px 50px;
+    width: 200px;
+    height: 25px;
+    vertical-align: middle;
+
+    span {
+        display: block;
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        color: transparent;
+        font-size: 0;
+
+        &::before,
+        &::after {
+            display: block;
+            position: absolute;
+            border-radius: 50px;
+            height: 100%;
+            content: '';
+        }
+
+        &::before {
+            @include center;
+            background: url('#{$image}meteroutline.png');
+            background-color: $white;
+            background-size: 100% 100%;
+            width: 103%;
+            height: 115%;
+        }
+
+        &::after {
+            top: 0;
+            left: 0;
+
+            // scss-lint:disable VendorPrefix
+            -webkit-transition: width .5s cubic-bezier(.53, 0, .63, 1);
+            // scss-lint:enable VendorPrefix
+            transition: width .5s cubic-bezier(.53, -.56, .63, 1.74);
+
+            background: $meter-color;
+            background-repeat: no-repeat;
+            background-position: right;
+            background-size: auto 100%;
+
+            width: 0;
+        }
+    }
+
+    @for $i from 0 through $steps {
+        &.score-#{$i} {
+            span::after {
+                width: percentage($i / $steps);
+            }
+        }
+    }
+}
+
+// can be used in grid game
+@mixin life-tracker() {
+    &::before,
+    &::after {
+        content: '';
+    }
+
+    &::before,
+    span,
+    &::after {
+        @include sprite-circle-star-grey;
+        display: inline-block;
+        position: relative;
+        vertical-align: middle;
+    }
+
+    span {
+        color: transparent;
+        font-size: 0;
+    }
+
+    &.score-1::before,
+    &.score-2::before,
+    &.score-2 span,
+    &.score-3::before,
+    &.score-3 span,
+    &.score-3::after {
+        @include sprite-circle-star;
+    }
+}
+
+@mixin sprite-circle-star-grey($column: 1, $width: 0, $height: 0) {
+    @include sprite($sprite + 'sprite.starmap.png', 45px, 90px, 1, 2, $column, 2, 2, $width, $height);
+}
+
+@mixin sprite-circle-star($column: 1, $width: 0, $height: 0) {
+    @include sprite($sprite + 'sprite.starmap.png', 45px, 90px, 1, 2, $column, 1, 1, $width, $height);
+}

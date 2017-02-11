@@ -1,0 +1,40 @@
+@import 'variables';
+@import 'mixins';
+
+#title {
+    .next-screen {
+        background: url('#{$sprite}play-btn-01.gif');
+        background-position: -200px -84px;
+        background-size: 600px auto;
+        width: 16%;
+        height: 36%;
+
+        &:hover {
+            background-position: -214px -275px;
+        }
+    }
+
+    .radar,
+    .drone,
+    .name {
+        position: absolute;
+    }
+
+    .radar {
+        @include center;
+        top: 30%;
+        width: 80%;
+    }
+
+    .drone {
+        top: 8%;
+        left: 16%;
+        width: 50%;
+    }
+
+    .name {
+        top: 25%;
+        left: 8%;
+        width: 70%;
+    }
+}

@@ -1,0 +1,17 @@
+@import 'variables';
+@import 'mixins';
+
+#quit {
+    .container {
+        @include center;
+        position: absolute;
+        top: 15%;
+        width: 100%;
+        text-align: center;
+
+        h2,
+        h3 {
+            font-size: 60px;
+        }
+    }
+}

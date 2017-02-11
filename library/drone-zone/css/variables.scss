@@ -1,0 +1,33 @@
+$media: $media-server + 'Games/drone-zone/';
+$sprite: $media + 'SpritesAnimations/';
+$image: $media + 'ImageAssets/';
+$frame: $media + 'Frames/';
+$font: $media + 'Font/';
+
+$black: #000;
+$bright-green: #008000;
+$light-green: #95c13d;
+$dark-green: #315a16;
+$grass: #7ab738;
+$green: #8bc53f;
+$green-border: #75bc43;
+$imagine-green: #006d05;
+$light-grey: #f9f9f9;
+$light-purple: #683eb5;
+$purple: #671db0;
+$red-border: #9e1d20;
+$text-color: #fff;
+$white: #fff;
+$dark-orange: #e06905;
+$light-orange: #ffc200;
+$white-transparancy: rgba(250, 250, 250, .75);
+$black-transparancy: rgba(0, 0, 0, .25);
+$red-transparancy: rgba(200, 0, 0, .35);
+$yellow: #ff0;
+$red: #f00;
+
+$transparent: transparent;
+$transparent-white: rgba(255, 255, 255, .5);
+$transparent-blue: rgba(68, 198, 234, .56);
+$transparent-grey: rgba(99, 100, 100, .75);
+$transparent-red: rgba(153, 26, 53, .71);

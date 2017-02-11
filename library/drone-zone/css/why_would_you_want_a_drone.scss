@@ -1,0 +1,309 @@
+@import 'keyframes';
+@import 'variables';
+@import 'mixins';
+
+[id^='why-would-you-want-a-drone-prt-'] {
+    h1 {
+        position: absolute;
+        top: 8%;
+        width: 100%;
+        text-shadow: 5px  0   0 $black,
+                     1px  0   0 $black,
+                    -1px -1px 0 $black;
+        font-family: 'Luckiest Guy', 'Source Sans Pro', 'Helvetica Neue', Helvetica, sans-serif;
+        font-size: 50px;
+    }
+
+    h2 {
+        @include center;
+        top: 20%;
+        width: 100%;
+        font-family: 'Luckiest Guy', 'Source Sans Pro', 'Helvetica Neue', Helvetica, sans-serif;
+        font-size: 70px;
+    }
+
+    .reveal {
+        .frame {
+            top: 52%;
+            left: 73%;
+            width: 350px;
+            height: 350px;
+
+            &.job-round {
+                background: url('#{$sprite}sprite.jobgameframe.png');
+                background-position: 100%;
+                background-size: auto 100%;
+            }
+
+            .copy {
+                @include center;
+                width: 100%;
+                text-shadow: 1px 1px 1px $black;
+                line-height: 30px;
+                font-family: 'Lilita One', 'Source Sans Pro', 'Helvetica Neue', Helvetica, sans-serif;
+                font-size: 20px;
+            }
+
+        }
+
+        &.open-instructions .copy {
+            line-height: 38px;
+            font-size: 28px;
+        }
+    }
+}
+
+#why-would-you-want-a-drone-prt-one {
+    $uses:
+        construction
+        delivery
+        photography
+        police-duties
+        sports
+        fire-fighting
+        farming;
+
+    .selectable {
+        $icon-sizes: small medium;
+        $square-sizes: 1 1 2 1 2 2 2;
+        $blank-squares: 2 2 1 2 1 1 1;
+        $widths: 90px 125px;
+        $heights: 90px 125px;
+        $tops:  120 290 215 207 260 345 133;
+        $lefts: 212 375 125  35 252 125 300;
+
+        @for $i from 1 through length($uses) {
+            $square-size: nth($square-sizes, $i);
+            $blank-square: nth($blank-squares, $i);
+            $icon-size: nth($icon-sizes, $square-size);
+            $width: nth($widths, $square-size);
+            $height: nth($heights, $square-size);
+            $top: #{nth($tops, $i)}px;
+            $left: #{nth($lefts, $i)}px;
+
+            .question-mark.#{nth($uses, $i)} {
+                @include q-marks-square($square-size, $width, $height);
+                position: absolute;
+                top: $top;
+                left: $left;
+
+                &.HIGHLIGHTED {
+                    @include blank-squares($blank-square, $width, $height);
+
+                    &::after {
+                        @include center;
+                        @include job-icons($i, $width - 10, $height - 10, $icon-size);
+                        content: '';
+                    }
+                }
+            }
+        }
+    }
+
+    .reveal {
+        z-index: 0;
+
+        .frame:not(.instructions) {
+            @for $i from 1 through length($uses) {
+                &.#{nth($uses, $i)}::after {
+                    @include job-icons($i, 125px, 125px, medium, false);
+                    position: absolute;
+                    top: 42%;
+                    left: 8%;
+                    content: '';
+                }
+            }
+
+            .label {
+                @include center;
+                top: 35%;
+                width: 100%;
+                text-shadow: 2px 2px 3px $black;
+                font-family: 'Luckiest Guy', 'Source Sans Pro', 'Helvetica Neue', Helvetica, sans-serif;
+                font-size: 35px;
+            }
+
+            .copy {
+                top: 60%;
+                left: 75%;
+                width: 55%;
+                text-align: left;
+            }
+        }
+
+        .close-reveal {
+            display: none;
+        }
+    }
+}
+
+#why-would-you-want-a-drone-prt-two {
+    $bw-uses:
+        construction
+        farming
+        delivery
+        fire-fighting
+        police-duties
+        photography
+        sports;
+
+    $clr-uses:
+        construction
+        delivery
+        photography
+        police-duties
+        sports
+        fire-fighting
+        farming;
+
+    $populated-uses:
+        CONSTRUCTION
+        DELIVERY
+        PHOTOGRAPHY
+        POLICE-DUTIES
+        SPORTS
+        FIRE-FIGHTING
+        FARMING;
+
+
+    .draggables {
+        $icon-sizes: small medium;
+        $square-sizes: 1 2 1 2 1 2 2;
+        $blank-squares: 2 1 2 1 2 1 1;
+        $widths: 90px 125px;
+        $heights: 90px 125px;
+        $tops:  120 133 290 345 207 215 260;
+        $lefts: 212 300 375 125  35 125 252;
+
+        @for $i from 1 through length($bw-uses) {
+            @for $j from 1 through length($clr-uses) {
+                $square-size: nth($square-sizes, $i);
+                $blank-square: nth($blank-squares, $i);
+                $icon-size: nth($icon-sizes, $square-size);
+                $width: nth($widths, $square-size);
+                $height: nth($heights, $square-size);
+                $top: #{nth($tops, $i)}px;
+                $left: #{nth($lefts, $i)}px;
+
+                .#{nth($bw-uses, $i)}.#{nth($clr-uses, $j)} {
+                    @include job-icons-bw($i, $width, $height);
+                    position: absolute;
+                    top: $top;
+                    left: $left;
+
+                    &.CORRECT {
+                        @include blank-squares($blank-square, $width, $height);
+                        // pointer-events: none;
+
+                        &::after {
+                            @include center;
+                            @include job-icons($j, $width - 10, $height - 10, $icon-size);
+                            content: '';
+                        }
+                    }
+                }
+            }
+        }
+
+        .DRAGGING {
+            z-index: 1;
+        }
+    }
+
+    .dropzone {
+        @include center;
+        top: 52%;
+        left: 73%;
+        opacity: 0;
+        width: 350px;
+        height: 350px;
+
+        &.job-round {
+            background: url('#{$sprite}sprite.jobgameframe.png');
+            background-position: 100%;
+            background-size: auto 100%;
+
+            @for $i from 1 through length($clr-uses) {
+                &.#{nth($clr-uses, $i)} {
+                    &::before {
+                        @include center;
+                        @include job-images($i, 320px, 320px);
+                        content: '';
+                    }
+
+                    &.#{nth($populated-uses, $i)} {
+                        &:not(:first-of-type) {
+                            animation: disable 4s forwards;
+                        }
+
+                        &::after {
+                            @include center;
+                            @include job-icons($i, 250px, 250px, 'large');
+                            content: '';
+                        }
+                    }
+                }
+            }
+        }
+
+        .copy {
+            @include center;
+            width: 100%;
+            line-height: 30px;
+            font-size: 20px;
+        }
+    }
+
+    .reveal {
+        &.OPEN {
+            z-index: 3;
+        }
+
+        .close-reveal {
+            @include nav-button(4, 80px, 80px);
+            display: block;
+            position: absolute;
+            right: 10px;
+            bottom: 10px;
+            margin: 0;
+        }
+
+        .incorrect {
+            @include center;
+            background: url('#{$sprite}sprite.jobgameframe.png');
+            background-size: auto 100%;
+            width: 450px;
+            height: 450px;
+
+            .copy {
+                top: 55%;
+                text-shadow: 2px 2px 2px $black;
+                line-height: normal;
+                font-size: 45px;
+            }
+        }
+
+        .complete {
+            @include center;
+            background: url('#{$sprite}sprite.jobgameframe.png');
+            background-position: 50%;
+            background-size: auto 100%;
+            width: 450px;
+            height: 450px;
+
+            .copy {
+                top: 50%;
+                text-shadow: 2px 2px 2px $black;
+                line-height: normal;
+                font-size: 40px;
+            }
+        }
+    }
+
+    &.STARTED {
+        .dropzone {
+            transition: opacity 2s;
+            opacity: 1;
+        }
+    }
+}

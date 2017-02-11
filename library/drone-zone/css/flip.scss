@@ -1,0 +1,31 @@
+@import 'variables';
+@import 'mixins';
+
+#flip {
+    .header {
+        @include center;
+        top: 15%;
+        width: 100%;
+        text-shadow: 2px 2px 2px $black;
+        font-family: 'Luckiest Guy', 'Source Sans Pro', 'Helvetica Neue', Helvetica, sans-serif;
+        font-size: 90px;
+    }
+
+    &::before {
+        @include center;
+        top: 55%;
+        border: 5px solid $yellow;
+        border-radius: 200px;
+        background: $white-transparancy;
+        width: 330px;
+        height: 350px;
+        content: '';
+    }
+
+    .flip {
+        @include center;
+        top: 40%;
+        left: 51%;
+        width: 30%;
+    }
+}

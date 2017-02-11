@@ -1,0 +1,81 @@
+@import 'variables';
+@import 'mixins';
+
+#how-are-drones-controlled {
+    h1 {
+        position: absolute;
+        top: 10%;
+        width: 100%;
+        text-shadow: 5px  0   0 $black,
+                    -1px  1px 0 $black,
+                    -1px -1px 0 $black;
+        font-family: 'Luckiest Guy', 'Source Sans Pro', 'Helvetica Neue', Helvetica, sans-serif;
+        font-size: 60px;
+    }
+
+    .selectable {
+        .question-mark {
+            @include q-marks-large(1, 350px, 350px);
+            position: absolute;
+
+            &::before {
+                @include center;
+                background: url('#{$image}qmark.png');
+                background-repeat: no-repeat;
+                background-position: 60% -20%;
+                background-size: contain;
+                width: 80%;
+                height: 80%;
+                content: '';
+            }
+
+            .label,
+            .click {
+                @include center;
+                opacity: 0;
+            }
+
+            .label {
+                top: 75%;
+                color: $black;
+            }
+
+            &:hover .click {
+                opacity: 1;
+                width: 100%;
+                text-shadow: 2px 2px 2px $black;
+                color: $white;
+                font-size: 35px;
+            }
+
+            $control-types: computers remote-control;
+            $lefts: 13% 52%;
+
+            @for $i from 1 through length($control-types) {
+                &.#{nth($control-types, $i)} {
+                    top: 25%;
+                    left: #{nth($lefts, $i)};
+
+                    &.HIGHLIGHTED {
+                        @include radar(1, 350px, 350px);
+
+                        .label {
+                            opacity: 1;
+                        }
+
+                        &:hover .click {
+                            opacity: 0;
+                        }
+
+                        &::before {
+                            @include center;
+                            @include control-types($i, 250px, 149px);
+                            content: '';
+                        }
+                    }
+                }
+            }
+        }
+
+    }
+}

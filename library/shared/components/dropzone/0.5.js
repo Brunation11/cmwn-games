@@ -103,7 +103,9 @@ class Dropzone extends skoash.Component {
 
         dropzoneRef = _.reduce(this.props.dropzones, (a, v, k) => {
             if (skoash.util.doIntersect(corners, this.dropzoneCorners[k])) {
-                return this.refs[`dropzone-${k}`];
+                if (this.refs[`dropzone-${k}`].props.className.indexOf('CORRECT') === -1) {
+                    return this.refs[`dropzone-${k}`];
+                }
             }
             return a;
         }, false);
@@ -178,8 +180,9 @@ class Dropzone extends skoash.Component {
             <component.type
                 {...component.props}
                 ref={`dropzone-${key}`}
+                data-ref={component.ref}
                 key={key}
-                className={this.dropzoneClassNames(component)}
+                className={this.getDropzoneClassNames(component)}
             />
         );
     }
@@ -188,11 +191,10 @@ class Dropzone extends skoash.Component {
         return classNames('dropzones', super.getClassNames());
     }
 
-    dropzoneClassNames(dropzone) {
+    getDropzoneClassNames(dropzone) {
         return classNames(
             'dropzone',
             dropzone.props.className,
-            this.state.content,
             super.getClassNames()
         );
     }

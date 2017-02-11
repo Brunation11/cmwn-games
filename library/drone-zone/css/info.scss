@@ -1,0 +1,149 @@
+@import 'variables';
+@import 'mixins';
+
+#info-definition-of-a-drone,
+#info-what-does-it-do {
+    .frame {
+        top: 45%;
+        left: 58%;
+
+        h1 {
+            position: absolute;
+            top: 30%;
+            left: 0;
+            width: 100%;
+            text-shadow: 2px 2px 2px $black;
+            color: $green;
+            font-family: 'Luckiest Guy', 'Source Sans Pro', 'Helvetica Neue', Helvetica, sans-serif;
+            font-size: 45px;
+        }
+
+        .content {
+            margin-top: 25px;
+            line-height: 40px;
+            font-size: 30px;
+            font-weight: 900;
+        }
+
+        &::after {
+            position: absolute;
+            top: 56%;
+            left: -20%;
+            transform: rotate(10deg);
+            background: url('#{$image}drone.png');
+            background-repeat: no-repeat;
+            background-size: 100% auto;
+            width: 50%;
+            height: 100%;
+            content: '';
+        }
+    }
+}
+
+
+#info-wanted-your-own-drone,
+#info-customize-your-own-drone {
+    .frame {
+        background-size: cover;
+    }
+
+    .copy {
+        @include center;
+        width: 100%;
+        text-shadow: 2px 2px 2px $black;
+        line-height: 53px;
+        font-family: 'Luckiest Guy', 'Source Sans Pro', 'Helvetica Neue', Helvetica, sans-serif;
+        font-size: 43px;
+    }
+}
+
+#info-lets-play,
+#info-help-the-drone {
+    .lvl {
+        position: absolute;
+        background: url('#{$sprite}sprite.levelimgs.png');
+        background-repeat: no-repeat;
+        background-size: auto 100%;
+    }
+
+    .copy {
+        @include center;
+        position: absolute;
+        width: 100%;
+        text-shadow: 3px 3px 3px $white;
+        color: $red;
+        font-family: 'Luckiest Guy', 'Source Sans Pro', 'Helvetica Neue', Helvetica, sans-serif;
+    }
+}
+
+#info-lets-play {
+    $tops:       15%   52%    4%;
+    $lefts:      55%   38%   47%;
+    $sizes:    400px 225px 200px;
+    $positions:  50%  100%     0;
+
+    @for $i from 1 through length($tops) {
+        .lvl-#{$i} {
+            top: nth($tops, $i);
+            left: nth($lefts, $i);
+            background-position: #{nth($positions, $i)} 0;
+            width: #{nth($sizes, $i)};
+            height: #{nth($sizes, $i)};
+        }
+    }
+
+    .copy {
+        left: 22%;
+        line-height: 80px;
+        font-size: 70px;
+    }
+}
+
+#info-help-the-drone {
+    $tops:       15%   52%    4%;
+    $lefts:      22%    6%   15%;
+    $sizes:    400px 225px 200px;
+    $positions:    0   50%  100%;
+
+    @for $i from 1 through length($tops) {
+        .lvl-#{$i} {
+            top: nth($tops, $i);
+            left: nth($lefts, $i);
+            background-position: #{nth($positions, $i)} 0;
+            width: #{nth($sizes, $i)};
+            height: #{nth($sizes, $i)};
+        }
+    }
+
+    .copy {
+        left: 81%;
+        line-height: 55px;
+        font-size: 45px;
+    }
+}
+
+#info-game-complete {
+    .frame {
+        left: 60%;
+
+        .copy {
+            @include center;
+            top: 45%;
+            width: 100%;
+            text-shadow: 3px 3px 3px $black;
+            line-height: 110px;
+            font-family: 'Luckiest Guy', 'Source Sans Pro', 'Helvetica Neue', Helvetica, sans-serif;
+            font-size: 100px;
+        }
+
+        &::after {
+            @include center;
+            left: 0;
+            background: url('#{$image}winscreen.png');
+            background-size: contain;
+            width: 50%;
+            height: 100%;
+            content: '';
+        }
+    }
+}

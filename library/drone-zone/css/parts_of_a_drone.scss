@@ -1,0 +1,128 @@
+@import 'variables';
+@import 'mixins';
+
+// #parts-of-a-drone {
+//     .header {
+//         position: absolute;
+//         top: 5%;
+//         width: 100%;
+//         text-shadow: 3px 3px 3px $black;
+//         font-family: 'Luckiest Guy', 'Source Sans Pro', 'Helvetica Neue', Helvetica, sans-serif;
+//         font-size: 75px;
+//     }
+
+//     .notice {
+//         position: absolute;
+//         top: 17%;
+//         left: 4%;
+//         background: url('#{$sprite}sprite.radarframe.png');
+//         background-position: 0 100%;
+//         background-size: 100% auto;
+//         width: 200px;
+//         height: 200px;
+
+//         span {
+//             @include center;
+//             width: 100%;
+//             color: $black;
+//             font-size: 20px;
+//         }
+//     }
+
+//     $parts:
+//         motor
+//         lights
+//         propeller
+//         central-core
+//         landing-platform
+//         camera
+//         arm;
+
+//     .selectable {
+//         @include center;
+//         top: 58%;
+//         background: url('#{$image}droneparts.png');
+//         background-repeat: no-repeat;
+//         background-position: center center;
+//         background-size: contain;
+//         width: 80%;
+//         height: 84%;
+
+//         $selectable-tops:   70 130 190 225 335 350 160;
+//         $selectable-lefts: 250 335 190 360 480 330 430;
+
+//         @for $i from 1 through length($parts) {
+//             .question-mark.#{nth($parts, $i)} {
+//                 position: absolute;
+//                 top: #{nth($selectable-tops, $i)}px;
+//                 left: #{nth($selectable-lefts, $i)}px;
+//                 background: url('#{$sprite}sprite.qmarks.png');
+//                 background-repeat: no-repeat;
+//                 background-size: 100% auto;
+//                 width: 60px;
+//                 height: 60px;
+
+//                 .label {
+//                     @include center;
+//                     opacity: 0;
+//                     text-shadow: 2px 2px 2px $black;
+//                     font-size: 30px;
+//                 }
+
+//                 &:hover {
+//                     background-position: 0 100%;
+//                 }
+
+//                 &.HIGHLIGHTED {
+//                     background: none;
+
+//                     .label {
+//                         opacity: 1;
+//                     }
+//                 }
+//             }
+//         }
+//     }
+
+//     $reveal-tops:   40  40 160 195 245 245 130;
+//     $reveal-lefts: 240 240 160 330 420 300 440;
+
+//     @for $i from 1 through length($parts) {
+//         .reveal.open-#{nth($parts, $i)} {
+//             top: #{nth($reveal-tops, $i)}px;
+//             left: #{nth($reveal-lefts, $i)}px;
+//             width: 285px;
+//             height: 285px;
+
+//             .#{nth($parts, $i)} {
+//                 @include center;
+//                 background: url('#{$sprite}sprite.qmarks.png');
+//                 background-repeat: no-repeat;
+//                 background-size: 100% auto;
+//                 width: 285px;
+//                 height: 285px;
+
+//                 &::before {
+//                     @include parts($i, 255px, 255px);
+//                     @include center;
+//                     width: 90%;
+//                     height: 90%;
+//                     content: '';
+//                 }
+
+//                 .label {
+//                     @include center;
+//                     text-shadow: 2px 2px 2px $black;
+//                     font-family: 'Luckiest Guy', 'Source Sans Pro', 'Helvetica Neue', Helvetica, sans-serif;
+//                     font-size: 40px;
+//                 }
+//             }
+
+//             .close-reveal {
+//                 position: absolute;
+//                 top: 5%;
+//                 right: 5%;
+//             }
+//         }
+//     }
+// }

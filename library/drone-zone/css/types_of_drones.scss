@@ -1,0 +1,109 @@
+@import 'variables';
+@import 'mixins';
+
+#types-of-drones {
+    $drone-types:
+        military
+        delivery
+        racing
+        media;
+
+    .selectable {
+        .question-mark {
+            @include q-marks-small(1, 130px, 130px);
+            position: absolute;
+
+            $tops: 18% 48% 18% 48%;
+            $lefts: 2% 2% 85% 85%;
+
+            @for $i from 1 through length($drone-types) {
+                &.#{nth($drone-types, $i)} {
+                    top: #{nth($tops, $i)};
+                    left: #{nth($lefts, $i)};
+
+                    &.HIGHLIGHTED::after {
+                        @include center;
+                        @include drone-types-icon($i, 130px, 130px);
+                        content: '';
+                    }
+                }
+            }
+        }
+    }
+
+    .reveal {
+        &.OPEN {
+            z-index: 0;
+        }
+
+        .frame {
+            top: 40%;
+            width: 80%;
+            height: 80%;
+
+            $drone-types:
+                military
+                delivery
+                racing
+                media;
+
+            @for $i from 1 through length($drone-types) {
+                &.#{nth($drone-types, $i)}::after {
+                    @include center;
+                    @include drone-types-frame($i, 270px, 210px);
+                    top: 58%;
+                    content: '';
+                }
+            }
+        }
+
+
+        .header {
+            @include center;
+            width: 65%;
+            text-shadow: 2px 2px 2px $black;
+            color: $green;
+            font-family: 'Luckiest Guy', 'Source Sans Pro', 'Helvetica Neue', Helvetica, sans-serif;
+        }
+
+        .copy {
+            @include center;
+            color: $black;
+            font-size: 35px;
+        }
+
+        &.open-instructions {
+            .header {
+                top: 36%;
+                font-size: 50px;
+            }
+
+            .copy {
+                top: 60%;
+                line-height: 40px;
+            }
+        }
+
+        &:not(.open-instructions) {
+            .header {
+                top: 27%;
+                font-size: 45px;
+            }
+
+            .copy {
+                top: 110%;
+                border: 10px solid $green;
+                border-radius: 10px;
+                background: $white-transparancy;
+                padding: 15px;
+                width: 80%;
+                font-size: 25px;
+                font-weight: 900;
+            }
+        }
+
+        .close-reveal {
+            display: none;
+        }
+    }
+}
