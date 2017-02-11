@@ -35,7 +35,7 @@ body > div > div {
 
     @for $i from 1 through 6 {
         .background-#{$i} {
-            background-image: url(`../media/_Background/SK_BKG_#{$i}.png`);
+            background-image: url('../media/_Background/SK_BKG_#{$i}.png');
         }
     }
 
@@ -1569,7 +1569,7 @@ p {
         top: 510px;
         left: 795px;
 
-        background-image: url($media-server + 'f/027b30f0d279ef41cd30eff22323051c.png');
+        background-image: url($media-server + '027b30f0d279ef41cd30eff22323051c.png');
         background-repeat: no-repeat;
         background-size: contain;
 
@@ -1577,7 +1577,7 @@ p {
         height: 300px;
 
         &:hover {
-            background-image: url($media-server + 'f/a479811171cf084bf86af4eac1f6dc28.png');
+            background-image: url($media-server + 'a479811171cf084bf86af4eac1f6dc28.png');
         }
     }
 }
