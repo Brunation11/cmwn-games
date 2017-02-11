@@ -47,8 +47,19 @@ var debug = argv.debug;
 // the flag --local should be passed only when working on localhost
 var local = argv.local || argv.l;
 var now = Date.now();
-var webpackBuild;
-var buildTask;
+
+// Production build
+var buildTask = [
+    'sass',
+    'webpack:build',
+    'copy-index',
+    'copy-framework',
+    'copy-media',
+    'clean'
+];
+gulp.task('default', buildTask);
+gulp.task('build', buildTask);
+gulp.task('b', buildTask);
 
 function defineEntries(config) {
     // modify some webpack config options
@@ -81,20 +92,7 @@ function defineEntries(config) {
     return config;
 }
 
-// Production build
-buildTask = [
-    'sass',
-    'webpack:build',
-    'copy-index',
-    'copy-framework',
-    'copy-media',
-    'clean'
-];
-gulp.task('default', buildTask);
-gulp.task('build', buildTask);
-gulp.task('b', buildTask);
-
-webpackBuild = function (callback, isWatch) {
+function webpackBuild(callback, isWatch) {
     var webpackConfig;
     var name;
     var config;
@@ -126,7 +124,7 @@ webpackBuild = function (callback, isWatch) {
         });
         server.listen(8080, 'localhost', function () {});
     }
-};
+}
 gulp.task('webpack:build', webpackBuild);
 
 gulp.task('sass', function () {
