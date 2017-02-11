@@ -1,6 +1,6 @@
 import classNames from 'classnames';
 
-import Dropzone from 'shared/components/dropzone/0.2';
+import Dropzone from 'shared/components/dropzone/0.3';
 import Reveal from 'shared/components/reveal/0.1';
 import MediaCollection from 'shared/components/media_collection/0.1';
 

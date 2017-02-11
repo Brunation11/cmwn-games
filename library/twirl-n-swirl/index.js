@@ -44,8 +44,21 @@ var TwirlNSwirl = (
             quit: QuitScreen,
         }}
         loader={<Loader />}
+        getBackgroundIndex={function (index) {
+            switch (index) {
+                case 8:
+                case 9:
+                case 10:
+                case 11:
+                case 12:
+                    return 1;
+                default:
+                    return 0;
+            }
+        }}
         assets={[
             <skoash.Audio ref="bkg-1" type="background" src="media/audio/title/background.mp3" />,
+            <skoash.Audio ref="bkg-2" type="background" src="media/audio/TS_Game_Theme.mp3" />,
             <skoash.Audio ref="button" type="sfx" src="media/audio/button.mp3" />,
             <skoash.Audio ref="screen-complete" type="sfx" src="media/audio/screen-complete.mp3" />,
             <div className="background bkg-1" />,

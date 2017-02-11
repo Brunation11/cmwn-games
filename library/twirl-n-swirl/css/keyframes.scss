@@ -1,3 +1,13 @@
+@keyframes pulse {
+    0%, 100% {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: .25;
+    }
+}
+
 @keyframes catchable {
     0% {
         top: -100%;
