@@ -9,11 +9,6 @@ var webpackDevConfig = require('./webpack.config.dev.js');
 var webpackProdConfig = require('./webpack.config.prod.js');
 var fs = require('fs');
 var path = require('path');
-var nolivereload;
-var nohmr;
-var env;
-var debug;
-var local;
 var sourcemaps = require('gulp-sourcemaps');
 var postcss = require('gulp-postcss');
 var autoprefixer = require('autoprefixer');
@@ -24,15 +19,36 @@ var concat = require('gulp-concat');
 var livereload = require('gulp-livereload');
 var inject = require('gulp-inject');
 var exec = require('child_process').exec;
-var buildTask;
 var eslint = require('gulp-eslint');
 var eslintConfigJs = JSON.parse(fs.readFileSync('./.eslintrc'));
 var eslintConfigConfig = JSON.parse(fs.readFileSync('./.eslintrc_config'));
 var scsslint = require('gulp-scss-lint');
 var stylish = require('gulp-scss-lint-stylish2');
-var game;
-var webpackBuild;
+
+var getEnv = function (environment) {
+    switch (environment) {
+        case 'dev':
+        case 'development':
+            return 'dev';
+        case 'stage':
+        case 'staging':
+            return 'staging';
+        default:
+            return 'prod';
+    }
+};
+
+// In order for livereload to work, you should run gulp on the host machine
+// unless you have native docker installed.
+var game = argv.game || argv.g;
+var nolivereload = argv.nolr;
+var env = getEnv(argv.environment || argv.env || 'prod');
+var debug = argv.debug;
+// the flag --local should be passed only when working on localhost
+var local = argv.local || argv.l;
 var now = Date.now();
+var webpackBuild;
+var buildTask;
 
 function defineEntries(config) {
     // modify some webpack config options
@@ -57,23 +73,13 @@ function defineEntries(config) {
         './' + game + '/index.js',
     ];
 
-    if (env === 'dev') {
+    if (env === 'dev' && local) {
         config.entry.push('webpack/hot/dev-server');
         config.entry.push('webpack-dev-server/client?http://localhost:8080/');
     }
 
     return config;
 }
-
-game = argv.game || argv.g;
-
-// In order for livereload to work, you should run gulp on the host machine
-// unless you have native docker installed.
-nolivereload = argv.nolr;
-nohmr = argv.nohmr;
-env = argv.environment || argv.env || 'prod';
-debug = argv.debug;
-local = argv.local || argv.l;
 
 // Production build
 buildTask = [
@@ -108,7 +114,7 @@ webpackBuild = function (callback, isWatch) {
         callback();
     });
 
-    if (isWatch && env === 'dev' && !nohmr) {
+    if (isWatch && env === 'dev' && local) {
         server = new WebpackDevServer(compiler, {
             contentBase: 'build',
             hot: true,
@@ -239,7 +245,7 @@ gulp.task('copy-index', function () {
             .pipe(inject(gulp.src('./library/shared/js/google-analytics.js'), {
                 starttag: '<!-- inject:ga -->',
                 transform: function (filePath, file) {
-                    return '<script>\n    ' + file.contents.toString('utf8') + '  \n    </script>';
+                    return '<script>\n    ' + file.contents.toString('utf8') + '\n    </script>';
                 }
             }))
             .pipe(gulp.dest('./build/' + game));
