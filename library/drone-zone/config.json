@@ -1,6 +1,5 @@
 {
     "id": "drone-zone",
-    "media_folder": "drone-zone",
     "version": 1,
     "skoash": "1.1.2",
     "head_injection": "<link href='https://fonts.googleapis.com/css?family=Lilita+One|Luckiest+Guy' rel='stylesheet'>",
