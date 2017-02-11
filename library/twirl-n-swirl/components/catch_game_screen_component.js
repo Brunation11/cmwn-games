@@ -292,7 +292,6 @@ export default function (props, ref, key, opts = {}) {
             ref={ref}
             key={key}
             id={opts.id}
-            onStart={opts.onStart}
         >
             <skoash.Component className="misc">
                 <skoash.Component
