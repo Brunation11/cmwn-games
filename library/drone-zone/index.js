@@ -61,9 +61,10 @@ skoash.start(
             quit: QuitScreen,
         }}
         assets={[
-            <skoash.Font name="Chelsea Market" />,
+            <skoash.Font name="Lilita One" />,
+            <skoash.Font name="Luckiest Guy" />,
             <skoash.Font name="Source Sans Pro" />,
-            // <skoash.Font name="CMWN" />,
+            <skoash.Font name="CMWN" />,
             <div className="background title" />,
             <div className="background bkg-1" />,
             <div className="background bkg-2" />,

@@ -4,26 +4,12 @@
 @include reset;
 @include bootstrap-game;
 
-@font-face {
-    font-family: 'Lilita One';
-    src: url('#{$font}LilitaOne-Regular.ttf');
-    font-style: normal;
-    font-weight: 400;
-}
-
-@font-face {
-    font-family: 'Luckiest Guy';
-    src: url('#{$font}LuckiestGuy.ttf');
-    font-style: normal;
-    font-weight: 400;
-}
-
 html {
     color: $text-color;
 }
 
 .skoash-game {
-    font-family: 'Lilita One';
+    font-family: 'Lilita One', 'Source Sans Pro', 'Helvetica Neue', Helvetica, sans-serif;
 
     > .menu {
         position: absolute;
@@ -143,20 +129,9 @@ button {
             bkg-9
             bkg-10;
 
-        $background-images:
-            '#{$image}BKG.1.jpg'
-            '#{$image}BKG.2.jpg'
-            '#{$image}BKG.3.jpg'
-            '#{$image}BKG.4.jpg'
-            '#{$image}BKG.5.jpg'
-            '#{$image}BKG.6.jpg'
-            '#{$image}BKG.7.jpg'
-            '#{$image}BKG.9.jpg'
-            '#{$image}BKG.10.jpg';
-
         @for $i from 1 through length($background-titles) {
             &.#{nth($background-titles, $i)} {
-                @include background(nth($background-images, $i));
+                @include background('#{$image}BKG.#{$i}.jpg')
             }
         }
     }

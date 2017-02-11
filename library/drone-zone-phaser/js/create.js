@@ -14,9 +14,8 @@ export default function () {
 
     this.helpers.makeBackground.call(this);
 
-    playerImage = this.opts.level === 1 ?
-                  'fire-drone' : this.opts.level === 2 ?
-                  'delivery-drone' : 'farm-drone';
+    playerImage = this.opts.level === 1 ? 'fire-drone' :
+                  this.opts.level === 2 ? 'delivery-drone' : 'farm-drone';
 
     addPlayer.call(this, {
         left: 300,

@@ -32,7 +32,7 @@
             transform: translateX(-50%);
             width: 120%;
             text-shadow: 3px 3px 3px $black;
-            font-family: 'Luckiest Guy';
+            font-family: 'Luckiest Guy', 'Source Sans Pro', 'Helvetica Neue', Helvetica, sans-serif;
             font-size: 75px;
         }
 
@@ -98,7 +98,6 @@
                     font-size: 55px;
                 }
 
-                $colors: a b c d e f g h;
                 $rows: 2130 2482 1420 350 0 1772 710 1060;
 
                 .selected {
@@ -119,14 +118,14 @@
                         background-size: 200% auto;
                     }
 
-                    @for $i from 1 through length($colors) {
-                        &.one.#{nth($colors, $i)},
-                        &.four.#{nth($colors, $i)} {
+                    @for $i from 1 through length($color-types) {
+                        &.one.#{nth($color-types, $i)},
+                        &.four.#{nth($color-types, $i)} {
                             background-position: 100% #{nth($rows, $i)}px;
                         }
 
-                        &.two.#{nth($colors, $i)},
-                        &.three.#{nth($colors, $i)} {
+                        &.two.#{nth($color-types, $i)},
+                        &.three.#{nth($color-types, $i)} {
                             background-position: 0 #{nth($rows, $i)}px;
                         }
                     }
