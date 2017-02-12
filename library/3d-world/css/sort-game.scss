@@ -172,11 +172,14 @@
         }
 
         .catchable {
-            top: 60px;
+            $catchables: fork robot slinky nails gears key shoes cake block burger pizza truck dice lego glasses;
+            $length: length($catchables);
+            top: 70px;
             left: 20px;
             transition: top 1s, height .25s;
             background-image: url($media-game + 'SpritesAnimations/sprite.game1.png');
-            background-size: 1200px;
+            background-repeat: no-repeat;
+            background-size: #{100 * $length}px;
             width: 100px;
             height: 0;
 
@@ -197,10 +200,7 @@
                 height: 100px;
             }
 
-            // scss-lint:disable ColorKeyword ColorVariable
-            $catchables: milk shoes cup box glasses whistle car lego silver slinky gears nails;
-            // scss-lint:enable ColorKeyword ColorVariable
-            @for $i from 1 through 12 {
+            @for $i from 1 through $length {
                 &.#{nth($catchables, $i)} {
                     background-position: #{($i - 1) * -100}px 0;
                 }

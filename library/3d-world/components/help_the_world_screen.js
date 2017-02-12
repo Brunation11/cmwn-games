@@ -1,3 +1,5 @@
+import classNames from 'classnames';
+
 export default function (props, ref, key) {
     const jobs = [
         'designer',
@@ -49,10 +51,19 @@ export default function (props, ref, key) {
                 className="hidden"
                 src={MEDIA.GAME + 'SpritesAnimations/sprite.realworldgallery.png'}
             />
-            <skoash.Audio
-                type="voiceOver"
-                src={MEDIA.GAME + 'SoundAssets/vos/VO_and_many.mp3'}
-            />
+            <skoash.MediaSequence>
+                <skoash.Audio
+                    type="voiceOver"
+                    src={ENVIRONMENT.MEDIA + 'SoundAssets/vos/ThereAreMany.mp3'}
+                    completeTarget="many"
+                    volume={4}
+                    maxVolume={4}
+                />
+                <skoash.Audio
+                    type="voiceOver"
+                    src={ENVIRONMENT.MEDIA + 'SoundAssets/vos/VO_and_many.mp3'}
+                />
+            </skoash.MediaSequence>
             <skoash.MediaCollection
                 play={_.get(props, 'data.reveal.open')}
             >
@@ -88,9 +99,16 @@ export default function (props, ref, key) {
               />
             </skoash.MediaCollection>
             <div className="header">
-                …and many ways to help the world<br/>
-                with the wonderful things you create!<br/>
-                Click on the image to expand.
+                <p className={classNames({show: !_.get(props, 'data.many.complete')})} >
+                    There are many things<br/>
+                    you can create<br/>
+                    with your 3D printer...
+                </p>
+                <p className={classNames({show: _.get(props, 'data.many.complete')})} >
+                    …and many ways to help the world<br/>
+                    with the wonderful things you create!<br/>
+                    Click on the image to expand.
+                </p>
             </div>
             <skoash.Selectable
                 dataTarget="selectable"
