@@ -183,18 +183,15 @@
         }
 
         &.STARTED {
-            .catchable {
+            .catchable.go {
                 position: absolute;
-                top: -100%;
+                top: 0;
                 transition: opacity .5s;
-
                 animation-name: catchable;
                 animation-timing-function: linear;
                 opacity: 1;
-
                 background: url('../media/S_6/sprite_6.2.png');
                 background-size: 275px 960px;
-
                 width: 15%;
                 height: 50%;
 
