@@ -26,20 +26,20 @@ skoash.start(
         loader={<Loader />}
         screens={[
             iOSScreen,
-            // TitleScreen,
-            // InfoQuestionScreen,
-            // InfoPlantScreen,
-            // FlushItScreen,
-            // ResponsibleFlusherScreen,
-            // InfoReleasedScreen,
-            // LetsCleanUpScreen,
+            TitleScreen,
+            InfoQuestionScreen,
+            InfoPlantScreen,
+            FlushItScreen,
+            ResponsibleFlusherScreen,
+            InfoReleasedScreen,
+            LetsCleanUpScreen,
             CatchGameLvlOneScreen,
             CatchGameLvlTwoScreen,
             CatchGameLvlThreeScreen,
             CatchGameLvlFourScreen,
             CatchGameLvlFiveScreen,
-            // MakeADifferenceScreen,
-            // FlipScreen
+            MakeADifferenceScreen,
+            FlipScreen
         ]}
         menus={{
             quit: QuitScreen,
@@ -48,6 +48,7 @@ skoash.start(
             <skoash.Audio ref="bkg-1" type="background" src="media/audio/title/background.mp3" />,
             <skoash.Audio ref="bkg-2" type="background" src="media/audio/TS_Game_Theme.mp3" />,
             <skoash.Audio ref="button" type="sfx" src="media/audio/button.mp3" />,
+            <skoash.Audio ref="close-sound" type="sfx" src="media/audio/button.mp3" />,
             <skoash.Audio ref="screen-complete" type="sfx" src="media/audio/screen-complete.mp3" />,
             <div className="background bkg-1" />,
             <div className="background bkg-2" />,
