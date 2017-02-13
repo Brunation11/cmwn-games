@@ -149,8 +149,7 @@ gulp.task('sass', function () {
 
     gulp
     .src([
-        './library/shared/css/**/*.scss',
-        './library/shared/css/**/*.css'
+        './library/shared/css/**/*.scss'
     ])
     .pipe(header(fs.readFileSync(varsPath, 'utf8')))
     .pipe(sass({
@@ -248,7 +247,8 @@ gulp.task('copy-index', function () {
 });
 
 gulp.task('copy-framework', function () {
-    // This can be removed once the framework is being deployed separately from games
+    // This can be removed once the framework has been transferred to the media server.
+    // We will need to add a way to actively develop with the framework at that time.
     gulp
     .src(['./library/framework/*'])
     .pipe(gulp.dest('./build/framework'));

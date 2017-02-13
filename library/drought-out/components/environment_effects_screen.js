@@ -1,7 +1,13 @@
-import Selectable from 'shared/components/selectable/0.1';
-import DroughtReveal from './drought_reveal';
-
 export default function (props, ref, key) {
+    const REVEALS = [
+        'less',
+        'loss',
+        'erosion',
+        'endangered',
+        'threats',
+        'unable',
+    ];
+
     return (
         <skoash.Screen
             {...props}
@@ -10,39 +16,79 @@ export default function (props, ref, key) {
             id="environment-effects"
             className="bottom-frame"
         >
-            <skoash.Audio type="voiceOver" src="media/S_10/VO_10.1.mp3"/>
-            <Selectable
+            <skoash.Audio type="voiceOver" src={`${MEDIA.VO}EffectsDrought.mp3`} />
+            <skoash.Selectable
                 ref="selectable"
-                list={[
-                    <skoash.Component type="li" />,
-                    <skoash.Component type="li" />,
-                    <skoash.Component type="li" />,
-                    <skoash.Component type="li" />,
-                    <skoash.Component type="li" />
-                ]}
+                list={
+                    _.map(REVEALS, (value) => {
+                        return <skoash.ListItem data-ref={value} />;
+                    })
+                }
                 selectClass="HIGHLIGHTED"
                 className="scroll-selectable"
                 dataTarget="selectable"
             />
+            <skoash.MediaCollection
+                ref="media-collection"
+                play={_.get(props, 'data.media.open', null)}
+            >
+                <skoash.Audio
+                    data-ref={REVEALS[0]}
+                    type="voiceOver"
+                    src={`${MEDIA.VO}EffectsLess.mp3`}
+                />
+                <skoash.Audio
+                    data-ref={REVEALS[1]}
+                    type="voiceOver"
+                    src={`${MEDIA.VO}EffectsLoss.mp3`}
+                />
+                <skoash.Audio
+                    data-ref={REVEALS[2]}
+                    type="voiceOver"
+                    src={`${MEDIA.VO}EffectsErosion.mp3`}
+                    />
+                <skoash.Audio
+                    data-ref={REVEALS[3]}
+                    type="voiceOver"
+                    src={`${MEDIA.VO}EffectsEndangered.mp3`}
+                />
+                <skoash.Audio
+                    data-ref={REVEALS[4]}
+                    type="voiceOver"
+                    src={`${MEDIA.VO}EffectsThreats.mp3`}
+                />
+                <skoash.Audio
+                    data-ref={REVEALS[5]}
+                    type="voiceOver"
+                    src={`${MEDIA.VO}EffectsUnable.mp3`}
+                />
+            </skoash.MediaCollection>
             <skoash.Component ref="frame" className="frame animated">
-                <skoash.Image src="media/S_10/img_10.6.png" />
-                <DroughtReveal
+                <skoash.Image src={`${MEDIA.IMAGE}img_10.7.png`} />
+                <skoash.Reveal
                     ref="reveal"
                     className="scroll-reveal"
-                    openReveal={_.get(props, 'data.selectable.target.props.data-message')}
+                    openTarget="media"
+                    openReveal={_.get(props, 'data.selectable.target.props.data-ref')}
                     list={[
-                        <li>Less food and water</li>,
-                        <li>Loss of habitat<br /> for fish and wildlife</li>,
-                        <li>More forest fires occur</li>,
-                        <li>Endangered species<br /> can face extinction</li>,
-                        <li>Erosion of soil</li>,
-                    ]}
-                    assets={[
-                        <skoash.Audio type="voiceOver" src="media/S_10/VO_10.2.mp3" />,
-                        <skoash.Audio type="voiceOver" src="media/S_10/VO_10.3.mp3" />,
-                        <skoash.Audio type="voiceOver" src="media/S_10/VO_10.4.mp3" />,
-                        <skoash.Audio type="voiceOver" src="media/S_10/VO_10.5.mp3" />,
-                        <skoash.Audio type="voiceOver" src="media/S_10/VO_10.6.mp3" />
+                        <skoash.ListItem data-ref={REVEALS[0]}>
+                            <p>Less food and water.</p>
+                        </skoash.ListItem>,
+                        <skoash.ListItem data-ref={REVEALS[1]}>
+                            <p>Loss of habitat<br /> for fish and wildlife.</p>
+                        </skoash.ListItem>,
+                        <skoash.ListItem data-ref={REVEALS[2]}>
+                            <p>Erosion of soil.</p>
+                        </skoash.ListItem>,
+                        <skoash.ListItem data-ref={REVEALS[3]}>
+                            <p>Endangered species<br /> could face extinction.</p>
+                        </skoash.ListItem>,
+                        <skoash.ListItem data-ref={REVEALS[4]}>
+                            <p>Threats to homes and lives<br /> from forest fires.</p>
+                        </skoash.ListItem>,
+                        <skoash.ListItem data-ref={REVEALS[5]}>
+                            <p>Unable to play in the water.</p>
+                        </skoash.ListItem>,
                     ]}
                 />
             </skoash.Component>
