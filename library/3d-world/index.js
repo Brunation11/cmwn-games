@@ -49,7 +49,6 @@ ThreeDWorld = (
             quit: QuitScreen,
         }}
         assets={[
-            <skoash.Font name="Molot" />,
             <skoash.Font name="Source Sans Pro" />,
             <skoash.Audio ref="button" type="sfx" src={CMWN.MEDIA.EFFECT + 'Back.mp3'} />,
             <skoash.Audio ref="next" type="sfx" src={CMWN.MEDIA.EFFECT + 'Next.mp3'} />,
