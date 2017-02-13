@@ -2,7 +2,7 @@ class MenuScreen extends skoash.Screen {
     renderContent() {
         return (
             <div>
-                <skoash.Audio ref="vo" type="voiceOver" src={`${CMWN.MEDIA.EFFECT}HiThere.mp3`} />
+                <skoash.Audio ref="vo" type="voiceOver" src={`${CMWN.MEDIA.VO}HiThere.mp3`} />
                 <skoash.Image className="hidden" src="media/_Background/SK_BKG_1.png" />
                 <skoash.Image className="otter" src="media/_Otter/Waving_Otter2.gif" />
                 <div className="bubble">
