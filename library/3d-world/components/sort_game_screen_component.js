@@ -3,6 +3,48 @@ import Randomizer from 'shared/components/randomizer/0.1';
 import Catcher from 'shared/components/catcher/0.2';
 import Catchable from 'shared/components/catchable/0.1';
 
+let categoryArray = [
+    {
+        name: 'metal',
+        items: [
+            'fork',
+            'robot',
+            'slinky',
+            'nails',
+            'gears',
+            'key',
+        ]
+    },
+    {
+        name: 'other',
+        items: [
+            'shoes',
+            'cake',
+            'block',
+            'burger',
+            'pizza',
+        ]
+    },
+    {
+        name: 'plastic',
+        items: [
+            'truck',
+            'dice',
+            'lego',
+            'glasses',
+        ]
+    }
+];
+
+let catchablesArray = _.reduce(categoryArray, (a, category) =>
+    a.concat(_.map(category.items, item =>
+        <Catchable
+            className={item}
+            message={category.name}
+        />
+    ))
+, []);
+
 export default function (props, ref, key, opts = {}) {
     var onCloseReveal;
     var onScoreComplete;
@@ -168,84 +210,7 @@ export default function (props, ref, key, opts = {}) {
                       <Randomizer
                           completeOnStart
                           checkComplete={false}
-                          bin={[
-                              <Catchable
-                                  className="milk"
-                                  message="other"
-                              />,
-                              <Catchable
-                                  className="shoes"
-                                  message="other"
-                              />,
-                              <Catchable
-                                  className="box"
-                                  message="other"
-                              />,
-                              <Catchable
-                                  className="milk"
-                                  message="other"
-                              />,
-                              <Catchable
-                                  className="shoes"
-                                  message="other"
-                              />,
-                              <Catchable
-                                  className="box"
-                                  message="other"
-                              />,
-                              <Catchable
-                                  className="cup"
-                                  message="plastic"
-                              />,
-                              <Catchable
-                                  className="lego"
-                                  message="plastic"
-                              />,
-                              <Catchable
-                                  className="cup"
-                                  message="plastic"
-                              />,
-                              <Catchable
-                                  className="lego"
-                                  message="plastic"
-                              />,
-                              <Catchable
-                                  className="cup"
-                                  message="plastic"
-                              />,
-                              <Catchable
-                                  className="lego"
-                                  message="plastic"
-                              />,
-                              <Catchable
-                                  className="glasses"
-                                  message="metal"
-                              />,
-                              <Catchable
-                                  className="whistle"
-                                  message="metal"
-                              />,
-                              <Catchable
-                                  className="car"
-                                  message="metal"
-                              />,
-                              <Catchable
-                                  className="silver"
-                                  message="metal"
-                              />,
-                              <Catchable
-                                  className="slinky"
-                                  message="metal"
-                              />,
-                              <Catchable
-                                  className="gears"
-                                  message="metal"
-                              />,
-                              <Catchable
-                                  className="nails"
-                                  message="metal"
-                              />,
-                          ]}
+                          bin={catchablesArray}
                       />
                     }
                 >
