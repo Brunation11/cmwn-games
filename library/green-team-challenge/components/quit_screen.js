@@ -35,8 +35,7 @@ class QuitScreen extends skoash.Screen {
             >
                 {this.renderAssets()}
                 <skoash.Component className="container">
-                        <h2>Are you sure you want to quit?</h2>
-                        <h3>Your progress will be saved.</h3>
+                        <h2>Are you sure<br/>you want to quit?</h2>
                         <button
                             className="quit-yes"
                             onClick={this.okay.bind(this)}

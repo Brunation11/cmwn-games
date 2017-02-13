@@ -1,0 +1,62 @@
+@import 'variables';
+@import 'mixins';
+
+.screen.info {
+    $char-top: 5px;
+    $char-right: -35px;
+    $char-width: 650px;
+    $frame-top: 48%;
+    $frame-left: 20%;
+    $p-left: 67.5%;
+    $p-width: 48%;
+
+    .character {
+        @include position(absolute, $char-top $char-right null null);
+        width: $char-width;
+    }
+
+    .frame {
+        @include center;
+        @include size(100% 85%);
+        top: $frame-top;
+        left: $frame-left;
+
+        &::before {
+            @include cover;
+            @include background('#{$frame}frame.01.png');
+            content: '';
+        }
+
+        p {
+            @include center;
+            left: $p-left;
+            width: $p-width;
+        }
+    }
+
+    &.right {
+        .character {
+            @include position(absolute, $char-top auto null $char-right);
+            @include mirror;
+        }
+
+        .frame {
+            top: 100% - $frame-top;
+            left: 100% - $frame-left;
+
+            &::before {
+                @include mirror;
+            }
+
+            p {
+                left: 100% - $p-left;
+            }
+        }
+    }
+
+    &.small {
+        p {
+            font-size: 28px;
+        }
+    }
+}

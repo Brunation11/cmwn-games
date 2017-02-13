@@ -5,8 +5,14 @@ export default function (props, ref, key) {
         id: 'priceless-pourer-five-info',
         content: (
             <p>
-                You are about to win
+                You are about to Win<br/>
+                the highest honor for the<br/>
+                Green Team Challenge!<br/>
+                <br/>
+                Win this level to become<br/>
+                a Master Sorter!
             </p>
         ),
+        vo: 'HighestHonor',
     });
 }

@@ -1,24 +1,17 @@
+/* eslint max-lines: ["error", {"max": 600}] */
+import classNames from 'classnames';
+
 import defaultGameOpts from './default_game_opts';
 import Catchable from 'shared/components/catchable/0.1';
-import itemsToSort from './items_to_sort';
+import ItemsToSort from './items_to_sort';
 
-const binNames = [
-    'liquids',
-    'food-share',
-    'recycle',
-    'landfill',
-    'compost',
-    'tray-stacking',
-    'home',
-];
-
-const onSelect = function (key) {
+let onSelect = function (key) {
     let ref = this.refs[key];
     let rect = ReactDOM.findDOMNode(ref).getBoundingClientRect();
     this.updateScreenData({
         key: 'item',
         data: {
-            name: _.startCase(ref.props.className),
+            name: _.startCase(_.replace(ref.props.className, /\d+/g, '')),
             ref,
             top: rect.top,
             left: rect.left,
@@ -26,20 +19,7 @@ const onSelect = function (key) {
     });
 };
 
-const mapItems = function (itemNames) {
-    const items = _.filter(itemsToSort, item => _.includes(itemNames, item.name));
-
-    return _.map(items, item =>
-        <Catchable
-            className={item.name}
-            message={item.bin}
-            reCatchable={true}
-            becomes={item.becomes}
-        />
-    );
-};
-
-const resort = function () {
+let resort = function () {
     this.updateScreenData({
         keys: ['reveal', 'open'],
         data: 'resort',
@@ -63,6 +43,128 @@ const resort = function () {
         }
     });
 };
+
+let binNames = [
+    'liquids',
+    'food-share',
+    'recycle',
+    'landfill',
+    'compost',
+    'tray-stacking',
+    'home',
+];
+
+let itemsToSort = _.filter(ItemsToSort, item => _.includes(binNames, item.bin));
+
+let audioRefs = _.uniq(_.map(itemsToSort, v =>
+    _.upperFirst(_.camelCase(_.replace(v.name, /\d+/g, ''))))
+);
+
+let audioArray = _.map(audioRefs, (v, k) => ({
+    type: skoash.Audio,
+    ref: v,
+    key: k,
+    props: {
+        type: 'voiceOver',
+        src: `${CMWN.MEDIA.GAME + 'SoundAssets/_vositems/' + v}.mp3`,
+    },
+}));
+
+let getChildren = v => {
+    if (v.children) return v.children;
+
+    return (
+        <skoash.Sprite
+            src={`${CMWN.MEDIA.SPRITE}_${_.replace(v.bin, '-', '')}`}
+            frame={v.frame || 1}
+            static
+        />
+    );
+};
+
+let mapItems = function (itemNames) {
+    let items = _.filter(ItemsToSort, item => _.includes(itemNames, item.name));
+
+    return _.map(items, item =>
+        <Catchable
+            className={item.name}
+            message={item.bin}
+            reCatchable={true}
+            becomes={item.becomes}
+            children={getChildren(item)}
+        />
+    );
+};
+
+let traysArray = [
+    {
+        name: 'tray',
+        bin: 'tray-stacking',
+        children: [
+            <skoash.Selectable
+                onSelect={onSelect}
+                list={mapItems([
+                    'full-plastic-water-bottle-1',
+                    'half-full-chocolate-milk-carton',
+                    'half-full-energy-drink-bottle',
+                    'half-full-lemonade-box-1',
+                    'half-full-orange-juice-2',
+                ])}
+            />
+        ]
+    },
+    // {
+    //     name: 'tray',
+    //     bin: 'tray-stacking',
+    //     children: [
+    //         <skoash.Selectable
+    //             onSelect={onSelect}
+    //             list={mapItems([
+    //                 'plastic-cup-1',
+    //                 'apple-core',
+    //                 'empty-cracker-wrapper-2',
+    //                 'full-plastic-water-bottle-2',
+    //                 'whole-banana',
+    //             ])}
+    //         />
+    //     ]
+    // },
+    // {
+    //     name: 'tray-pink',
+    //     bin: 'tray-stacking',
+    //     children: [
+    //         <skoash.Selectable
+    //             onSelect={onSelect}
+    //             list={mapItems([
+    //                 'empty-yogurt-container-10',
+    //             ])}
+    //         />
+    //     ]
+    // },
+    // {
+    //     name: 'tray-blue',
+    //     bin: 'tray-stacking',
+    //     children: [
+    //         <skoash.Selectable
+    //             onSelect={onSelect}
+    //             list={mapItems([
+    //                 'empty-yogurt-container-10',
+    //             ])}
+    //         />
+    //     ]
+    // },
+];
+
+let catchablesArray = _.map(traysArray, v => ({
+    type: Catchable,
+    props: {
+        className: v.name,
+        message: v.bin,
+        reCatchable: true,
+        becomes: v.becomes,
+        children: getChildren(v),
+    },
+}));
 
 export default _.defaults({
     gameName: 'master-sorter',
@@ -170,14 +272,11 @@ export default _.defaults({
                     let items = this.state.items;
                     let index = this.firstItemIndex;
                     let item = items[index];
-                    let newBin = _.find(itemsToSort, itemToSort =>
-                        itemToSort.name === itemRef.props.becomes
-                    ).bin;
                     let selectable = item.props.children[0];
                     let selectedItem = selectable.props.list[itemIndex];
-                    selectedItem.props.className = selectedItem.props.becomes;
-                    selectedItem.props.message = newBin;
-                    selectedItem.props['data-message'] = newBin;
+                    selectedItem.props.className = selectedItem.props.becomes.name;
+                    selectedItem.props.message = selectedItem.props.becomes.bin;
+                    selectedItem.props['data-message'] = selectedItem.props.becomes.bin;
                     items[index] = item;
                     this.setState({items});
 
@@ -201,6 +300,7 @@ export default _.defaults({
                                     name: null,
                                     ref: null,
                                     className: null,
+                                    pour: false,
                                 }
                             });
                         }
@@ -211,9 +311,10 @@ export default _.defaults({
 
                 if (!_.includes(opts.itemClassName, 'POUR')) {
                     DOMNode.addEventListener('animationend', onAnimationEnd);
+                    itemRef.addClassName('POUR');
                     this.updateScreenData({
-                        keys: ['item', 'className'],
-                        data: 'POUR',
+                        key: ['item', 'pour'],
+                        data: true,
                     });
                 }
             },
@@ -253,7 +354,7 @@ export default _.defaults({
                         tray.addClassName('HOME');
                     } else {
                         let rect = ReactDOM.findDOMNode(tray).getBoundingClientRect();
-                        let name = _.startCase(tray.props.className);
+                        let name = _.startCase(_.replace(tray.props.className, /\d+/g, ''));
                         let left = rect.left + (rect.right - rect.left) * .8 / 2;
                         let top = rect.top + (rect.bottom - rect.top) * .8 / 2;
 
@@ -381,34 +482,79 @@ export default _.defaults({
             },
         };
     },
-    itemsToSort: [
-        {
-            name: 'tray',
-            bin: 'tray-stacking',
-            children: [
-                <skoash.Selectable
-                    onSelect={onSelect}
-                    list={mapItems([
-                        'emptyBottle',
-                        'appleCore',
-                        'candyBag',
-                        'fullBottle',
-                        'wrappedSnack',
-                    ])}
-                />
-            ]
-        },
-        {
-            name: 'lunchBox',
-            bin: 'home',
-            children: [
-                <skoash.Selectable
-                    onSelect={onSelect}
-                    list={mapItems([
-                        'emptyBottle',
-                    ])}
-                />
-            ]
+    getExtraComponents(opts) {
+        let color = 'milk';
+
+        switch (true) {
+            case _.includes(opts.itemName, 'Chocolate'):
+                color = 'chocolate';
+                break;
+            case _.includes(opts.itemName, 'Orange'):
+                color = 'orange';
+                break;
+            case _.includes(opts.itemName, 'Fruit'):
+                color = 'fruit';
+                break;
         }
-    ],
+
+        return (
+            <skoash.Component>
+                <div className="tray-stacking-title">
+                    <span>
+                        Tray Stacking
+                    </span>
+                </div>
+                <skoash.Sprite
+                    className={classNames('pour', {show: opts.pour && color === 'chocolate'})}
+                    src={`${CMWN.MEDIA.SPRITE}level.2.chocolate.milk`}
+                    animate={opts.pour}
+                    loop={false}
+                    duration={600}
+                    frame={0}
+                    onComplete={function () {
+                        this.setState({frame: this.props.frame});
+                    }}
+                />
+                <skoash.Sprite
+                    className={classNames('pour', {show: opts.pour && color === 'fruit'})}
+                    src={`${CMWN.MEDIA.SPRITE}level.2.fruit.juice`}
+                    animate={opts.pour}
+                    loop={false}
+                    duration={600}
+                    frame={0}
+                    onComplete={function () {
+                        this.setState({frame: this.props.frame});
+                    }}
+                />
+                <skoash.Sprite
+                    className={classNames('pour', {show: opts.pour && color === 'milk'})}
+                    src={`${CMWN.MEDIA.SPRITE}level.2.milk`}
+                    animate={opts.pour}
+                    loop={false}
+                    duration={600}
+                    frame={0}
+                    onComplete={function () {
+                        this.setState({frame: this.props.frame});
+                    }}
+                />
+                <skoash.Sprite
+                    className={classNames('pour', {show: opts.pour && color === 'orange'})}
+                    src={`${CMWN.MEDIA.SPRITE}level.2.orange.juice`}
+                    animate={opts.pour}
+                    loop={false}
+                    duration={600}
+                    frame={0}
+                    onComplete={function () {
+                        this.setState({frame: this.props.frame});
+                    }}
+                />
+            </skoash.Component>
+        );
+    },
+    getAudioArray() {
+        return audioArray;
+    },
+    getCatchablesArray() {
+        return catchablesArray;
+    },
 }, defaultGameOpts);

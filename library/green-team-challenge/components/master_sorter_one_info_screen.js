@@ -5,8 +5,13 @@ export default function (props, ref, key) {
         id: 'priceless-pourer-one-info',
         content: (
             <p>
-                Proper tray stacking
+                Proper tray stacking<br/>
+                is a game of space.<br/>
+                <br/>
+                How much space<br/>
+                can you save?
             </p>
         ),
+        vo: 'GameOfSpace',
     });
 }

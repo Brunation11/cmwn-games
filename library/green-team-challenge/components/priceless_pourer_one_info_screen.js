@@ -5,8 +5,13 @@ export default function (props, ref, key) {
         id: 'priceless-pourer-one-info',
         content: (
             <p>
-                Hey Recycle Champion
+                Hey Recycle Champion!<br/>
+                <br/>
+                Next up—it's Liquids!<br/>
+                Pour the liquids and<br/>
+                then sort the containers.
             </p>
         ),
+        vo: 'HeyRecycleChampion',
     });
 }

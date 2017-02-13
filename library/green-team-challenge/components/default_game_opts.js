@@ -1,3 +1,52 @@
+import Catchable from 'shared/components/catchable/0.1';
+
+import ItemsToSort from './items_to_sort';
+
+let binNames = [
+    'recycle',
+    'landfill',
+    'compost',
+];
+
+let itemsToSort = _.filter(ItemsToSort, item => _.includes(binNames, item.bin));
+
+let audioRefs = _.uniq(_.map(itemsToSort, v =>
+    _.upperFirst(_.camelCase(_.replace(v.name, /\d+/g, ''))))
+);
+
+let audioArray = _.map(audioRefs, (v, k) => ({
+    type: skoash.Audio,
+    ref: v,
+    key: k,
+    props: {
+        type: 'voiceOver',
+        src: `${CMWN.MEDIA.GAME + 'SoundAssets/_vositems/' + v}.mp3`,
+    },
+}));
+
+let getChildren = v => {
+    if (v.children) return v.children;
+
+    return (
+        <skoash.Sprite
+            src={`${CMWN.MEDIA.SPRITE}_${_.replace(v.bin, '-', '')}`}
+            frame={v.frame || 1}
+            static
+        />
+    );
+};
+
+let catchablesArray = _.map(itemsToSort, v => ({
+    type: Catchable,
+    props: {
+        className: v.name,
+        message: v.bin,
+        reCatchable: true,
+        becomes: v.becomes,
+        children: getChildren(v),
+    },
+}));
+
 export default {
     gameName: 'recycling-champion',
     level: 1,
@@ -82,7 +131,8 @@ export default {
     getSelectableProps(opts) {
         return {
             onSelect: function (binRefKey) {
-                if (opts.left === ReactDOM.findDOMNode(this.refs[binRefKey]).offsetLeft) {
+                let left = ReactDOM.findDOMNode(this.refs[binRefKey]).offsetLeft - 65;
+                if (opts.left === left) {
                     this.updateScreenData({
                         keys: ['manual-dropper', 'drop'],
                         data: true,
@@ -90,7 +140,7 @@ export default {
                 } else {
                     this.updateScreenData({
                         keys: ['manual-dropper', 'left'],
-                        data: ReactDOM.findDOMNode(this.refs[binRefKey]).offsetLeft,
+                        data: left,
                     });
                 }
             },
@@ -107,8 +157,14 @@ export default {
             },
             onNext: function () {
                 this.updateScreenData({
-                    keys: ['manual-dropper', 'itemName'],
-                    data: _.startCase(this.getFirstItem().props.className),
+                    keys: ['item', 'name'],
+                    data: _.startCase(_.replace(this.getFirstItem().props.className, /\d+/g, '')),
+                });
+            },
+            onPickUp: function () {
+                this.updateScreenData({
+                    key: ['manual-dropper', 'dropClass'],
+                    data: '',
                 });
             },
         };
@@ -198,23 +254,12 @@ export default {
     getExtraComponents() {
         return null;
     },
-    binNames: [
-        'recycle',
-        'landfill',
-        'compost',
-    ],
-    itemsToSort: [
-        {
-            name: 'emptyBottle',
-            bin: 'recycle'
-        },
-        {
-            name: 'appleCore',
-            bin: 'compost'
-        },
-        {
-            name: 'candyBag',
-            bin: 'landfill'
-        },
-    ],
+    getAudioArray() {
+        return audioArray;
+    },
+    getCatchablesArray() {
+        return catchablesArray;
+    },
+    binNames,
+    itemsToSort,
 };

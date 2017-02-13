@@ -5,8 +5,14 @@ export default function (props, ref, key) {
         id: 'priceless-pourer-four-info',
         content: (
             <p>
-                Hey Super Sharer
+                Hey Super Sharer!<br/>
+                Kindness just<br/>
+                skyrocketed in<br/>
+                the lunchroom!<br/>
+                <br/>
+                Let's do this!
             </p>
         ),
+        vo: 'HeySuperSharerSkyrocketed',
     });
 }

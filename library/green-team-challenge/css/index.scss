@@ -1,11 +1,15 @@
 @import 'variables';
 @import 'mixins';
+@import 'fonts';
 
 @include reset;
 @include bootstrap-game;
 
-html {
+body {
+    @include text-shadow;
+    line-height: 1.2;
     color: $text-color;
+    font-family: GROBOLD, "Source Sans Pro", "Helvetica Neue", Helvetica, sans-serif;
 }
 
 .skoash-game {
@@ -19,10 +23,8 @@ html {
 }
 
 button {
-    background: $green;
-
     &.close {
-        @include nav-button(6, 60px, 60px);
+        @include nav-button(2, 50px, 50px);
     }
 
     &.next-screen,
@@ -37,13 +39,14 @@ button {
         height: 55px;
     }
 
+    &.close-reveal,
     &.next-screen {
-        @include nav-button(5, 140px, 65px);
+        @include nav-button(4, 100px, 65px);
         right: 15px;
     }
 
     &.prev-screen {
-        @include nav-button(4, 140px, 65px);
+        @include nav-button(3, 100px, 65px);
         left: 15px;
     }
 
@@ -55,37 +58,61 @@ button {
     }
 
     &.quit-yes {
-        @include nav-button(2, 220px, 110px);
+        @include yesno-button(1);
         left: 17%;
     }
 
     &.quit-no {
-        @include nav-button(3, 220px, 110px);
+        @include yesno-button(2);
         right: 17%;
     }
 }
 
 .skoash-game {
-    $screens:
-        title
-        flip;
+    $screen-pairs:
+        (title                      title)
+        (hi-there                   bkg1)
+        (key-is-sorting             bkg1)
+        (lights                     bkg2)
+        (five-ways                  bkg2)
+        (pre-level                  transition)
+        (one-info                   bkg1)
+        (two-info                   bkg1)
+        (three-info                 bkg1)
+        (four-info                  bkg1)
+        (five-info                  bkg1)
+        (recycling-champion         bkg4)
+        (post-level-1               bkg4)
+        (priceless-pourer           bkg2)
+        (post-level-2               bkg2)
+        (fantastic-food-sharer      bkg2)
+        (post-level-3               bkg2)
+        (dynamic-diverter           trash)
+        (post-level-4               trash)
+        (want-to-stack              bkg3)
+        (master-sorter              bkg3)
+        (post-level-5               bkg3)
+        (now-a-member               bkg1)
+        (post-level-6               bkg3)
+        (flip                       bkg1);
+    @include screen-background-pairs($screen-pairs);
 
-    $backgrounds:
-        title
-        flip;
-
-    @include screen-backgrounds($screens, $backgrounds);
+    &.MENU-quit {
+        .background.quit {
+            opacity: 1;
+        }
+    }
 
     .background {
-        // TODO
-    }
-}
-
-.screen {
-    .VOICE-OVER:not(.DEMO) & {
-        .screen-content {
-            pointer-events: none;
-        }
+        $background-pairs:
+            (bkg1           'background.01.jpg')
+            (bkg2           'background.02.jpg')
+            (bkg3           'background.03.jpg')
+            (bkg4           'background.04.jpg')
+            (trash          'background.trash.landfill.jpg')
+            (transition     'background.transition.jpg')
+            (quit           'quit.background.jpg');
+        @include background-pairs($background-pairs);
     }
 }
 

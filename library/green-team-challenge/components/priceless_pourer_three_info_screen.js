@@ -5,8 +5,12 @@ export default function (props, ref, key) {
         id: 'priceless-pourer-three-info',
         content: (
             <p>
-                Success is twice as nice
+                Success is twice as nice<br/>
+                when dual sorting!<br/>
+                <br/>
+                Let's kick it up a notch.
             </p>
         ),
+        vo: 'KickItupANotch',
     });
 }

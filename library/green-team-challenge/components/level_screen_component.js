@@ -1,4 +1,4 @@
-const levelKeys = [
+let levelKeys = [
     'recyclingChampion',
     'pricelessPourer',
     'fantasticFoodSharer',
@@ -6,7 +6,7 @@ const levelKeys = [
     'masterSorter',
 ];
 
-const levelNames = [
+let levelNames = [
     <p>Recycling<br/>Champion</p>,
     <p>Priceless<br/>Pourer</p>,
     <p>Fantastic<br/>Food Sharer</p>,
@@ -14,29 +14,35 @@ const levelNames = [
     <p>Master<br/>Sorter</p>,
 ];
 
-export default function (props, ref, key, opts = {}) {
-    var levelData = _.get(props, `gameState.data.${levelKeys[opts.level - 1]}.levels`, {});
-    var classNames = _.map(levelData, level =>
-        ({className: level.complete ? 'earned' : ''})
-    );
+export default function (levelNumber) {
+    let levelInt = _.floor(levelNumber);
+    let levelKey = levelKeys[levelInt - 1];
+    let levelName = levelNames[levelInt - 1];
 
-    return (
-        <skoash.Screen
-            {...props}
-            ref={ref}
-            key={key}
-            id={`${opts.earned ? 'post' : 'pre'}-level-${opts.level}`}
-            className={opts.className}
-        >
-            <skoash.Repeater
-                className="stars"
-                amount={5}
-                props={classNames}
-            />
-            <div className="frame">
-                <h3>Level {opts.level}</h3>
-                {levelNames[opts.level - 1]}
-            </div>
-        </skoash.Screen>
-    );
+    return function (props, ref, key, opts = {}) {
+        let levelData = _.get(props, `gameState.data.${levelKey}.levels`, {});
+        let classNames = _.map(levelData, level =>
+            ({className: level.complete ? 'earned' : ''})
+        );
+
+        return (
+            <skoash.Screen
+                {...props}
+                ref={ref}
+                key={key}
+                id={`pre-level-${levelNumber}`}
+                className={opts.className}
+            >
+                <skoash.Repeater
+                    className="stars"
+                    amount={5}
+                    props={classNames}
+                />
+                <div className="frame">
+                    <h3>Level {levelInt}</h3>
+                    {levelName}
+                </div>
+            </skoash.Screen>
+        );
+    };
 }

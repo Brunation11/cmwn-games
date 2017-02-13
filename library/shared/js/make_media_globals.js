@@ -9,6 +9,7 @@
     MEDIA.VO = MEDIA.GAME + 'SoundAssets/vos/';
     MEDIA.IMAGE = MEDIA.GAME + 'ImageAssets/';
     MEDIA.SPRITE = MEDIA.GAME + 'SpritesAnimations/';
+    MEDIA.FRAME = MEDIA.GAME + 'Frames/';
 
     MEDIA.MOCK = {};
     MEDIA.MOCK.GAME = MEDIA.BASE + 'Games/mock-game/';
@@ -16,6 +17,7 @@
     MEDIA.MOCK.VO = MEDIA.MOCK.GAME + 'SoundAssets/vos/';
     MEDIA.MOCK.IMAGE = MEDIA.MOCK.GAME + 'ImageAssets/';
     MEDIA.MOCK.SPRITE = MEDIA.MOCK.GAME + 'SpritesAnimations/';
+    MEDIA.MOCK.FRAME = MEDIA.MOCK.GAME + 'Frames/';
 
     window.CMWN.MEDIA = MEDIA;
 }(window.CMWN.gameFolder));

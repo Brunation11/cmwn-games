@@ -1,201 +1,207 @@
 import classNames from 'classnames';
 
 import Catcher from 'shared/components/catcher/0.4';
-import Catchable from 'shared/components/catchable/0.1';
-import Randomizer from 'shared/components/randomizer/0.1';
 import ManualDropper from 'shared/components/manual_dropper/0.1';
 
 const PTS = 'pts';
 
 export default function (props, ref, key, opts = {}) {
-    var screenProps;
-    var timerProps;
-    var revealProps;
-    var selectableProps;
-    var dropperProps;
-    var catcherProps;
-    var lifeProps;
-    var extraComponents;
+    if (Math.abs(props.gameState.currentScreenIndex - parseInt(key, 10)) > 2) {
+        return null;
+    } else {
+        let screenProps;
+        let timerProps;
+        let revealProps;
+        let selectableProps;
+        let dropperProps;
+        let catcherProps;
+        let lifeProps;
+        let extraComponents;
 
-    const levelPath = `gameState.data.${_.camelCase(opts.gameName)}.levels.${opts.level}`;
+        const LEVEL_PATH = `gameState.data.${_.camelCase(opts.gameName)}.levels.${opts.level}`;
 
-    var arrayOfCatchables = _.map(opts.itemsToSort, v =>
-        <Catchable
-            className={v.name}
-            message={v.bin}
-            reCatchable={true}
-            becomes={v.becomes}
-            children={v.children}
-        />
-    );
+        let catchablesArray = opts.getCatchablesArray();
 
-    var binComponents = _.map(opts.binNames, name =>
-        <skoash.Component className={name} message={name} />
-    );
+        let binComponents = _.map(opts.binNames, name =>
+            <skoash.Component className={name} message={name} />
+        );
 
-    var scale = _.get(props, 'gameState.scale', 1);
-    var start = _.get(props, `${levelPath}.start`, false);
-    var gameComplete = _.get(props, `${levelPath}.complete`, false);
-    var drop = _.get(props, 'data.manual-dropper.drop', false);
-    var dropClass = _.get(props, 'data.manual-dropper.dropClass');
-    var next = _.get(props, 'data.manual-dropper.next', false);
-    var pickUp = _.get(props, 'data.manual-dropper.pickUp', false);
-    var onPickUp = _.get(props, 'data.manual-dropper.onPickUp');
-    var selectItem = _.get(props, 'data.manual-dropper.selectItem');
-    var catchableRefs = _.get(props, 'data.manual-dropper.refs', []);
-    var itemName = _.get(props, 'data.item.name', '');
-    var itemRef = _.get(props, 'data.item.ref');
-    var removeItemClassName = _.get(props, 'data.item.removeClassName');
-    var itemTop = _.get(props, 'data.item.top', 0) / scale;
-    var itemLeft = _.get(props, 'data.item.left', 0) / scale;
-    var caught = _.get(props, 'data.catcher.caught', '');
-    var revealOpen = _.get(props, 'data.reveal.open', false);
-    var revealClose = _.get(props, 'data.reveal.close', false);
+        let scale = _.get(props, 'gameState.scale', 1);
+        let start = _.get(props, `${LEVEL_PATH}.start`, false);
+        let gameComplete = _.get(props, `${LEVEL_PATH}.complete`, false);
+        let drop = _.get(props, 'data.manual-dropper.drop', false);
+        let dropClass = _.get(props, 'data.manual-dropper.dropClass');
+        let pickUp = _.get(props, 'data.manual-dropper.pickUp', false);
+        let onPickUp = _.get(props, 'data.manual-dropper.onPickUp');
+        let selectItem = _.get(props, 'data.manual-dropper.selectItem');
+        let catchableRefs = _.get(props, 'data.manual-dropper.refs', []);
+        let itemRef = _.get(props, 'data.item.ref');
+        let removeItemClassName = _.get(props, 'data.item.removeClassName');
+        let itemTop = _.get(props, 'data.item.top', 0) / scale;
+        let itemLeft = _.get(props, 'data.item.left', 0) / scale || 'auto';
+        let caught = _.get(props, 'data.catcher.caught', '');
+        let revealOpen = _.get(props, 'data.reveal.open', false);
+        let revealClose = _.get(props, 'data.reveal.close', false);
 
-    if (itemRef) catchableRefs = [itemRef];
+        let audioArray = opts.getAudioArray();
 
-    opts.itemRef = itemRef;
-    opts.itemClassName = _.get(props, 'data.item.className');
-    opts.itemAmount = _.get(props, 'data.item.amount', 0);
-    opts.score = _.get(props, `${levelPath}.score`, 0);
-    opts.highScore = _.get(props, `${levelPath}.highScore`, 0);
-    opts.left = _.get(props, 'data.manual-dropper.left', 0);
-    opts.hits = _.get(props, `${levelPath}.hits`, 0);
-    opts.truckClassName = _.get(props, 'data.truckClassName', '');
-    opts.selectableMessage = _.get(props, 'data.selectable.message', '');
+        if (itemRef) catchableRefs = [itemRef];
 
-    screenProps = opts.getScreenProps(opts);
-    timerProps = opts.getTimerProps(opts);
-    revealProps = opts.getRevealProps(opts);
-    selectableProps = opts.getSelectableProps(opts);
-    dropperProps = opts.getDropperProps(opts);
-    catcherProps = opts.getCatcherProps(opts);
-    lifeProps = opts.getLifeProps(opts);
-    extraComponents = opts.getExtraComponents(opts);
+        opts.next = _.get(props, 'data.manual-dropper.next', false);
+        opts.itemRef = itemRef;
+        opts.itemName = _.get(props, 'data.item.name', '');
+        opts.playAudio = _.upperFirst(_.camelCase(opts.itemName));
+        opts.itemClassName = _.get(props, 'data.item.className');
+        opts.itemAmount = _.get(props, 'data.item.amount', 0);
+        opts.pour = _.get(props, 'data.item.pour', false);
+        opts.score = _.get(props, `${LEVEL_PATH}.score`, 0);
+        opts.highScore = _.get(props, `${LEVEL_PATH}.highScore`, 0);
+        opts.left = _.get(props, 'data.manual-dropper.left', 0);
+        opts.hits = _.get(props, `${LEVEL_PATH}.hits`, 0);
+        opts.truckClassName = _.get(props, 'data.truckClassName', '');
+        opts.selectableMessage = _.get(props, 'data.selectable.message', '');
+        opts.moveClaw = _.get(props, 'data.moveClaw', false);
 
-    return (
-        <skoash.Screen
-            {...props}
-            ref={ref}
-            key={key}
-            id={`${opts.gameName}-${opts.level}`}
-            complete={gameComplete}
-            checkComplete={!gameComplete}
-            {...screenProps}
-        >
-            <skoash.Component
-                className="top-left"
+        screenProps = opts.getScreenProps(opts);
+        timerProps = opts.getTimerProps(opts);
+        revealProps = opts.getRevealProps(opts);
+        selectableProps = opts.getSelectableProps(opts);
+        dropperProps = opts.getDropperProps(opts);
+        catcherProps = opts.getCatcherProps(opts);
+        lifeProps = opts.getLifeProps(opts);
+        extraComponents = opts.getExtraComponents(opts);
+
+        return (
+            <skoash.Screen
+                {...props}
+                ref={ref}
+                key={key}
+                id={`${opts.gameName}-${opts.level}`}
+                complete={gameComplete}
+                checkComplete={!gameComplete}
+                {...screenProps}
             >
-                <skoash.Score
-                    className="level-score"
-                    correct={opts.score}
-                    setScore={true}
+                <skoash.Component
+                    className="top-left"
                 >
-                    {PTS}
-                </skoash.Score>
-                <skoash.Timer
-                    countDown
-                    format="mm:ss"
-                    timeout={opts.timeout}
-                    complete={gameComplete}
-                    pause={revealOpen}
-                    resume={!revealOpen}
-                    restart={start}
-                    {...timerProps}
-                />
-            </skoash.Component>
-            <skoash.Component
-                className={classNames('item-name', {
-                    ACTIVE: itemName,
-                })}
-                style={{
-                    top: itemTop,
-                    left: itemLeft,
-                }}
-            >
-                <span>
-                    {itemName}
-                </span>
-            </skoash.Component>
-            <skoash.Score
-                className="life"
-                max={0}
-                incorrect={opts.maxHits}
-                correct={opts.hits}
-                setScore={true}
-                {...lifeProps}
-            />
-            <ManualDropper
-                amount={opts.dropperAmount}
-                drop={drop}
-                pickUp={pickUp}
-                onPickUp={onPickUp}
-                next={next}
-                bin={
-                    <Randomizer
-                        bin={arrayOfCatchables}
+                    <skoash.Score
+                        className="level-score"
+                        correct={opts.score}
+                        setScore={true}
+                    >
+                        {PTS}
+                    </skoash.Score>
+                    <skoash.Timer
+                        countDown
+                        format="mm:ss"
+                        timeout={opts.timeout}
+                        complete={gameComplete}
+                        pause={revealOpen}
+                        resume={!revealOpen}
+                        restart={start}
+                        {...timerProps}
                     />
-                }
-                style={{
-                    transform: `translateX(${opts.left}px)`
-                }}
-                caught={caught}
-                dropClass={dropClass}
-                itemRef={itemRef}
-                itemClassName={opts.itemClassName}
-                removeItemClassName={removeItemClassName}
-                selectItem={selectItem}
-                {...dropperProps}
-            />
-            <skoash.Component
-                className={classNames('bins', {
-                    DISABLED: !itemName
-                })}
-            >
-                <Catcher
-                    completeOnStart
+                </skoash.Component>
+                <skoash.Component
+                    className={classNames('item-name', {
+                        ACTIVE: opts.itemName,
+                    })}
+                    style={{
+                        top: itemTop,
+                        left: itemLeft,
+                    }}
                     checkComplete={false}
-                    start={start}
-                    bucket={binComponents}
-                    catchableRefs={catchableRefs}
-                    pause={caught}
-                    resume={drop || itemRef}
-                    collideFraction={opts.collideFraction}
-                    assets={[
+                    complete={true}
+                >
+                    <span>
+                        {opts.itemName}
+                    </span>
+                </skoash.Component>
+                <skoash.Score
+                    className="life"
+                    max={0}
+                    incorrect={opts.maxHits}
+                    correct={opts.hits}
+                    setScore={true}
+                    {...lifeProps}
+                />
+                <ManualDropper
+                    checkComplete={false}
+                    complete={true}
+                    amount={opts.dropperAmount}
+                    drop={drop}
+                    pickUp={pickUp}
+                    onPickUp={onPickUp}
+                    next={opts.next}
+                    bin={
+                        <skoash.Randomizer
+                            bin={catchablesArray}
+                        />
+                    }
+                    style={{
+                        transform: `translateX(${opts.left}px)`
+                    }}
+                    caught={caught}
+                    dropClass={dropClass}
+                    itemRef={itemRef}
+                    itemClassName={opts.itemClassName}
+                    removeItemClassName={removeItemClassName}
+                    selectItem={selectItem}
+                    {...dropperProps}
+                />
+                <skoash.Component
+                    className={classNames('bins', {
+                        DISABLED: !opts.itemName
+                    })}
+                >
+                    <Catcher
+                        completeOnStart
+                        checkComplete={false}
+                        start={start}
+                        bucket={binComponents}
+                        catchableRefs={catchableRefs}
+                        pause={caught}
+                        resume={drop || itemRef}
+                        collideFraction={opts.collideFraction}
+                        assets={[
+                        ]}
+                        {...catcherProps}
+                    />
+                    <skoash.Selectable
+                        {...selectableProps}
+                        list={binComponents}
+                    />
+                </skoash.Component>
+                {extraComponents}
+                <skoash.Reveal
+                    openTarget="reveal"
+                    openReveal={revealOpen}
+                    closeReveal={revealClose}
+                    checkComplete={false}
+                    complete={true}
+                    {...revealProps}
+                    list={[
+                        <skoash.Component
+                            ref="resort"
+                            type="li"
+                        />,
+                        <skoash.Component
+                            ref="retry"
+                            type="li"
+                        />,
+                        <skoash.Component
+                            ref="complete"
+                            type="li"
+                        />,
                     ]}
-                    {...catcherProps}
                 />
-                <skoash.Selectable
-                    {...selectableProps}
-                    list={binComponents}
+                <skoash.MediaCollection
+                    play={opts.playAudio}
+                    children={audioArray}
+                    checkComplete={false}
+                    complete={true}
                 />
-            </skoash.Component>
-            {extraComponents}
-            <skoash.Reveal
-                openTarget="reveal"
-                openReveal={revealOpen}
-                closeReveal={revealClose}
-                {...revealProps}
-                list={[
-                    <skoash.Component
-                        ref="resort"
-                        type="li"
-                    >
-                    </skoash.Component>,
-                    <skoash.Component
-                        ref="retry"
-                        type="li"
-                    >
-                        <p>RETRY</p>
-                    </skoash.Component>,
-                    <skoash.Component
-                        ref="complete"
-                        type="li"
-                    >
-                        <p>COMPLETE</p>
-                    </skoash.Component>,
-                ]}
-            />
-        </skoash.Screen>
-    );
+            </skoash.Screen>
+        );
+    }
 }

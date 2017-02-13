@@ -14,7 +14,7 @@ $transform: scale(1.3) translateX(-50%) translateY(185px);
 }
 
 $fantastic-transform: translateX(400px) translateY(-50%);
-$move: translateX(450px) translateY(-50%);
+$move: translateX(400px) translateY(-50%);
 @keyframes fantastic-pour {
     0% {
         transform: $fantastic-transform rotate(0deg);

@@ -5,8 +5,14 @@ export default function (props, ref, key) {
         id: 'priceless-pourer-one-info',
         content: (
             <p>
-                Sharing snacks
+                Sharing snacks is just a<br/>
+                kind thing to do for others.<br/>
+                <br/>
+                Identify those items that<br/>
+                are ready to eat-not waste<br/>
+                as Food Share items.
             </p>
         ),
+        vo: 'SharningSnacks',
     });
 }

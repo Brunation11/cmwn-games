@@ -1,5 +1,9 @@
+import classNames from 'classnames';
+
+import Catchable from 'shared/components/catchable/0.1';
+
 import defaultGameOpts from './default_game_opts';
-import itemsToSort from './items_to_sort';
+import ItemsToSort from './items_to_sort';
 
 const binNames = [
     'liquids',
@@ -7,6 +11,45 @@ const binNames = [
     'landfill',
     'compost',
 ];
+
+let itemsToSort = _.filter(ItemsToSort, item => _.includes(binNames, item.bin));
+
+let audioRefs = _.uniq(_.map(itemsToSort, v =>
+    _.upperFirst(_.camelCase(_.replace(v.name, /\d+/g, ''))))
+);
+
+let audioArray = _.map(audioRefs, (v, k) => ({
+    type: skoash.Audio,
+    ref: v,
+    key: k,
+    props: {
+        type: 'voiceOver',
+        src: `${CMWN.MEDIA.GAME + 'SoundAssets/_vositems/' + v}.mp3`,
+    },
+}));
+
+let getChildren = v => {
+    if (v.children) return v.children;
+
+    return (
+        <skoash.Sprite
+            src={`${CMWN.MEDIA.SPRITE}_${_.replace(v.bin, '-', '')}`}
+            frame={v.frame || 1}
+            static
+        />
+    );
+};
+
+let catchablesArray = _.map(itemsToSort, v => ({
+    type: Catchable,
+    props: {
+        className: v.name,
+        message: v.bin,
+        reCatchable: true,
+        becomes: v.becomes,
+        children: getChildren(v),
+    },
+}));
 
 export default _.defaults({
     gameName: 'priceless-pourer',
@@ -33,8 +76,54 @@ export default _.defaults({
             let DOMNode;
             let onAnimationEnd;
 
+            if (e.propertyName !== 'left') return;
             if (this.props.dropClass !== 'LIQUIDS') return;
-            if (itemRef.props.message !== 'liquids') return;
+            if (itemRef.props.message !== 'liquids') {
+                let hits = opts.hits + 1;
+
+                this.updateGameData({
+                    keys: [_.camelCase(opts.gameName), 'levels', opts.level],
+                    data: {
+                        start: false,
+                        hits,
+                    }
+                });
+
+                if (hits === opts.maxHits) {
+                    setTimeout(() => {
+                        this.updateScreenData({
+                            keys: ['manual-dropper', 'pickUp'],
+                            data: true,
+                        });
+                    }, 1000);
+                    return;
+                }
+
+                this.updateScreenData({
+                    keys: ['reveal', 'open'],
+                    data: 'resort',
+                    callback: () => {
+                        setTimeout(() => {
+                            this.updateScreenData({
+                                data: {
+                                    reveal: {
+                                        open: null,
+                                        close: true,
+                                    },
+                                    'manual-dropper': {
+                                        pickUp: true,
+                                    },
+                                    catcher: {
+                                        caught: false,
+                                    }
+                                }
+                            });
+                        }, 1000);
+                    }
+                });
+
+                return;
+            }
 
             DOMNode = ReactDOM.findDOMNode(itemRef);
 
@@ -46,14 +135,22 @@ export default _.defaults({
                         let items = this.state.items;
                         let index = this.firstItemIndex;
                         let item = items[index];
-                        let newBin = _.find(opts.itemsToSort, itemToSort =>
-                            itemToSort.name === item.props.becomes
-                        ).bin;
-                        item.props.className = item.props.becomes;
-                        item.props.message = newBin;
-                        item.props['data-message'] = newBin;
+                        item.props.className = item.props.becomes.name;
+                        item.props.message = item.props.becomes.bin;
+                        item.props['data-message'] = item.props.becomes.bin;
                         items[index] = item;
                         this.setState({items});
+                        this.updateScreenData({
+                            data: {
+                                item: {
+                                    name: _.startCase(_.replace(item.props.becomes.name, /\d+/g, '')),
+                                    pour: false,
+                                },
+                                'manual-dropper': {
+                                    dropClass: '',
+                                },
+                            }
+                        });
                         DOMNode.removeEventListener('animationend', onAnimationEnd);
                     }
                 }, this.props));
@@ -62,6 +159,10 @@ export default _.defaults({
             if (!itemRef.state.className || itemRef.state.className.indexOf('POUR') === -1) {
                 DOMNode.addEventListener('animationend', onAnimationEnd);
                 itemRef.addClassName('POUR');
+                this.updateScreenData({
+                    key: ['item', 'pour'],
+                    data: true,
+                });
             }
         };
 
@@ -87,5 +188,86 @@ export default _.defaults({
 
         return props;
     },
-    itemsToSort: _.filter(itemsToSort, item => _.includes(binNames, item.bin)),
+    getExtraComponents(opts) {
+        let color = 'milk';
+
+        switch (true) {
+            case _.includes(opts.itemName, 'Chocolate'):
+                color = 'chocolate';
+                break;
+            case _.includes(opts.itemName, 'Orange'):
+                color = 'orange';
+                break;
+            case _.includes(opts.itemName, 'Fruit'):
+                color = 'fruit';
+                break;
+        }
+
+        return (
+            <skoash.Component>
+                <skoash.Sprite
+                    className="belt"
+                    src={`${CMWN.MEDIA.SPRITE}level.1.conveyor.belt`}
+                    animate={opts.next}
+                    loop={false}
+                    duration={250}
+                    frame={0}
+                    onComplete={function () {
+                        this.setState({frame: this.props.frame});
+                    }}
+                />
+                <skoash.Sprite
+                    className={classNames('pour', {show: opts.pour && color === 'chocolate'})}
+                    src={`${CMWN.MEDIA.SPRITE}level.2.chocolate.milk`}
+                    animate={opts.pour}
+                    loop={false}
+                    duration={600}
+                    frame={0}
+                    onComplete={function () {
+                        this.setState({frame: this.props.frame});
+                    }}
+                />
+                <skoash.Sprite
+                    className={classNames('pour', {show: opts.pour && color === 'fruit'})}
+                    src={`${CMWN.MEDIA.SPRITE}level.2.fruit.juice`}
+                    animate={opts.pour}
+                    loop={false}
+                    duration={600}
+                    frame={0}
+                    onComplete={function () {
+                        this.setState({frame: this.props.frame});
+                    }}
+                />
+                <skoash.Sprite
+                    className={classNames('pour', {show: opts.pour && color === 'milk'})}
+                    src={`${CMWN.MEDIA.SPRITE}level.2.milk`}
+                    animate={opts.pour}
+                    loop={false}
+                    duration={600}
+                    frame={0}
+                    onComplete={function () {
+                        this.setState({frame: this.props.frame});
+                    }}
+                />
+                <skoash.Sprite
+                    className={classNames('pour', {show: opts.pour && color === 'orange'})}
+                    src={`${CMWN.MEDIA.SPRITE}level.2.orange.juice`}
+                    animate={opts.pour}
+                    loop={false}
+                    duration={600}
+                    frame={0}
+                    onComplete={function () {
+                        this.setState({frame: this.props.frame});
+                    }}
+                />
+            </skoash.Component>
+        );
+    },
+    itemsToSort,
+    getAudioArray() {
+        return audioArray;
+    },
+    getCatchablesArray() {
+        return catchablesArray;
+    },
 }, defaultGameOpts);
