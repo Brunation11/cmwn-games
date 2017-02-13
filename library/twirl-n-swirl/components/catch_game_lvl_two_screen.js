@@ -5,7 +5,7 @@ export default function (props, ref, key) {
         id: 'catch-game-lvl-2',
         level: 2,
         timeout: 30000,
-        dropTimeout: 1500,
+        dropTimeout: 1000,
         dropSpeed: 'medium',
         rows: 3,
         points: {
