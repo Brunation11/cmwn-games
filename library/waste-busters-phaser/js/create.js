@@ -18,7 +18,7 @@ export default function () {
 
     addPlayer.call(this, {
         left: 32,
-        top: this.game.world.height - 450,
+        top: this.game.world.height - 385,
         image: this.opts.playerImage,
         bounceY: this.opts.bounceY,
         gravityY: this.opts.gravityY,
