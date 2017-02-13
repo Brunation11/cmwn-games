@@ -6,8 +6,7 @@ export default function (props, ref, key) {
         level: 3,
         timeout: 60000,
         dropTimeout: 1000,
-        dropSpeed: 'medium',
-        rows: 3,
+        dropSpeed: 'slow',
         points: {
             goal: 50,
             correct: 5,
@@ -25,14 +24,6 @@ export default function (props, ref, key) {
             },
             {
                 className: 'trash floss',
-                message: 'trash'
-            },
-            {
-                className: 'trash floss',
-                message: 'trash'
-            },
-            {
-                className: 'trash medicine',
                 message: 'trash'
             },
             {

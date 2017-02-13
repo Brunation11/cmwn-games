@@ -8,7 +8,6 @@ export default function (props, ref, key) {
         dropTimeout: 1000,
         dropSpeed: 'slow',
         openOnStart: 'instructions',
-        rows: 3,
         points: {
             goal: 50,
             correct: 5,

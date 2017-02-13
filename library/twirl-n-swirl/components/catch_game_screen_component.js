@@ -27,23 +27,18 @@ export default function (props, ref, key, opts = {}) {
     var renderDropPoints;
 
     for (let i = 0; i < opts.bin.length; i++) {
-        for (let j = 0; j < opts.rows; j++) {
-            bin.push(
-                <Catchable
-                    className={classNames(
-                        opts.bin[i].className,
-                        opts.dropSpeed,
-                        {
-                            PAUSED: _.get(props, 'gameState.paused', false)
-                        }
-                    )}
-                    message={opts.bin[i].message}
-                    style={{
-                        top: 400 * (j + .4) / opts.rows,
-                    }}
-                />
-            );
-        }
+        bin.push(
+            <Catchable
+                className={classNames(
+                    opts.bin[i].className,
+                    opts.dropSpeed,
+                    {
+                        PAUSED: _.get(props, 'gameState.paused', false)
+                    }
+                )}
+                message={opts.bin[i].message}
+            />
+        );
     }
 
     SFXOnPlay = function () {
@@ -237,7 +232,7 @@ export default function (props, ref, key, opts = {}) {
 
         setTimeout(() => {
             bucketRef.removeClassName('correct');
-        }, 1000);
+        }, 500);
 
         this.updateScreenData({
             path: 'score',

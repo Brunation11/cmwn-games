@@ -6,8 +6,7 @@ export default function (props, ref, key) {
         level: 2,
         timeout: 30000,
         dropTimeout: 1000,
-        dropSpeed: 'medium',
-        rows: 3,
+        dropSpeed: 'slow',
         points: {
             goal: 50,
             correct: 5,
