@@ -19,8 +19,6 @@ import SaveMenu from './components/save_menu';
 import CollisionWarning from './components/collision_warning';
 import LimitWarning from './components/limit_warning';
 
-var Skribble;
-
 const DEFAULT_PROFILE_IMAGE = '';
 
 class SkribbleGame extends skoash.Game {
@@ -237,7 +235,7 @@ class SkribbleGame extends skoash.Game {
     }
 }
 
-Skribble = (
+skoash.start(
     <SkribbleGame
         config={config}
         screens={{
@@ -261,6 +259,9 @@ Skribble = (
         }}
         loader={<Loader />}
         assets={[
+            <skoash.Audio ref="bkg1" type="background" src={`${CMWN.MEDIA.EFFECT}BKG1.mp3`} loop />,
+            <skoash.Audio ref="bkg2" type="background" src={`${CMWN.MEDIA.EFFECT}IntroSequnce.mp3`} loop />,
+            <skoash.Audio ref="button" type="sfx" src={`${CMWN.MEDIA.EFFECT}AllButtons.mp3`} />,
             <skoash.Image className="hidden" src="media/_Otter/Waving_Otter2.gif" />,
             <skoash.Image className="hidden" src="media/_Otter/Open-wide-Otter2.gif" />,
             <skoash.Image className="hidden" src="media/_Otter/joyful-otter_2.gif" />,
@@ -367,7 +368,5 @@ Skribble = (
         }}
     />
 );
-
-skoash.start(Skribble);
 
 if (module.hot) module.hot.accept();

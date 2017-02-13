@@ -27,6 +27,13 @@ class CanvasScreen extends skoash.Screen {
         this.setValid = this.setValid.bind(this);
         this.closeReveal = this.closeReveal.bind(this);
         this.setHasAssets = this.setHasAssets.bind(this);
+        this.onMouseOver = this.onMouseOver.bind(this);
+    }
+
+    bootstrap() {
+        super.bootstrap();
+
+        this.menuDOM = ReactDOM.findDOMNode(this.refs.menu);
     }
 
     getData() {
@@ -159,6 +166,17 @@ class CanvasScreen extends skoash.Screen {
         }
     }
 
+    onMouseOver(e) {
+        let li = e.target.closest('LI');
+        let ul = e.target.closest('UL');
+
+        if (ul === this.menuDOM) {
+            if (!_.includes(li.className, 'SELECTED')) this.playMedia('slide');
+        } else {
+            this.playMedia('highlight');
+        }
+    }
+
     getContainerClasses() {
         return classNames({
             'canvas-container': true,
@@ -176,6 +194,8 @@ class CanvasScreen extends skoash.Screen {
     renderContent() {
         return (
             <div>
+                <skoash.Audio ref="slide" type="sfx" src={`${CMWN.MEDIA.EFFECT}MenuSlide.mp3`} />
+                <skoash.Audio ref="highlight" type="sfx" src={`${CMWN.MEDIA.EFFECT}Highlight.mp3`} />
                 <skoash.Image className="hidden" src="media/_Frames/SK_frames_canvas.png" />
                 <skoash.Image className="hidden" src="media/_Buttons/SK_btn_friend.png" />
                 <Menu
@@ -186,6 +206,7 @@ class CanvasScreen extends skoash.Screen {
                       onStart={function () {
                           this.setState({classes: {}});
                       }}
+                      onMouseOver={this.onMouseOver}
                 />
                 <div className={this.getContainerClasses()}>
                       <Canvas
