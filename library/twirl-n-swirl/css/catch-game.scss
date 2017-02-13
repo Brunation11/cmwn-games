@@ -182,7 +182,7 @@
             pointer-events: none;
         }
 
-        &.STARTED {
+        .STARTED & {
             .catchable.go {
                 position: absolute;
                 top: 0;
