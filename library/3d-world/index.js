@@ -51,28 +51,28 @@ ThreeDWorld = (
         assets={[
             <skoash.Font name="Molot" />,
             <skoash.Font name="Source Sans Pro" />,
-            <skoash.Audio ref="button" type="sfx" src={MEDIA.GAME + 'SoundAssets/effects/Back.mp3'} />,
-            <skoash.Audio ref="next" type="sfx" src={MEDIA.GAME + 'SoundAssets/effects/Next.mp3'} />,
-            <skoash.Audio ref="back" type="sfx" src={MEDIA.GAME + 'SoundAssets/effects/Back.mp3'} />,
+            <skoash.Audio ref="button" type="sfx" src={CMWN.MEDIA.EFFECT + 'Back.mp3'} />,
+            <skoash.Audio ref="next" type="sfx" src={CMWN.MEDIA.EFFECT + 'Next.mp3'} />,
+            <skoash.Audio ref="back" type="sfx" src={CMWN.MEDIA.EFFECT + 'Back.mp3'} />,
             <skoash.Audio
                 ref="screen-complete"
                 type="sfx"
-                src={MEDIA.GAME + 'SoundAssets/effects/NextAppear.mp3'}
+                src={CMWN.MEDIA.EFFECT + 'NextAppear.mp3'}
             />,
             <skoash.Audio
                 type="background"
-                src={MEDIA.GAME + 'SoundAssets/effects/TitleScreen.mp3'}
+                src={CMWN.MEDIA.EFFECT + 'TitleScreen.mp3'}
                 loop
             />,
-            <skoash.Audio type="background" src={MEDIA.GAME + 'SoundAssets/effects/BKG1.mp3'} loop />,
-            <skoash.Audio type="background" src={MEDIA.GAME + 'SoundAssets/effects/BKG2.mp3'} loop />,
-            <skoash.Audio type="background" src={MEDIA.GAME + 'SoundAssets/effects/BKG3.mp3'} loop />,
-            <skoash.Audio type="background" src={MEDIA.GAME + 'SoundAssets/effects/BKG4.mp3'} loop />,
-            <skoash.Audio type="background" src={MEDIA.GAME + 'SoundAssets/effects/BKG5.mp3'} loop />,
-            <skoash.Image className="hidden" src={MEDIA.GAME + 'ImageAssets/bkg.jpg'} />,
-            <skoash.Image className="hidden" src={MEDIA.GAME + 'ImageAssets/bk.1.jpg'} />,
-            <skoash.Image className="hidden" src={MEDIA.GAME + 'ImageAssets/bkg.2.jpg'} />,
-            <skoash.Image className="hidden" src={MEDIA.GAME + 'ImageAssets/bkg.win.jpg'} />,
+            <skoash.Audio type="background" src={CMWN.MEDIA.EFFECT + 'BKG1.mp3'} loop />,
+            <skoash.Audio type="background" src={CMWN.MEDIA.EFFECT + 'BKG2.mp3'} loop />,
+            <skoash.Audio type="background" src={CMWN.MEDIA.EFFECT + 'BKG3.mp3'} loop />,
+            <skoash.Audio type="background" src={CMWN.MEDIA.EFFECT + 'BKG4.mp3'} loop />,
+            <skoash.Audio type="background" src={CMWN.MEDIA.EFFECT + 'BKG5.mp3'} loop />,
+            <skoash.Image className="hidden" src={CMWN.MEDIA.IMAGE + 'bkg.jpg'} />,
+            <skoash.Image className="hidden" src={CMWN.MEDIA.IMAGE + 'bk.1.jpg'} />,
+            <skoash.Image className="hidden" src={CMWN.MEDIA.IMAGE + 'bkg.2.jpg'} />,
+            <skoash.Image className="hidden" src={CMWN.MEDIA.IMAGE + 'bkg.win.jpg'} />,
             <div className="background bkg-imagine" />,
             <div className="background bkg-congratulations" />,
             <div className="background bkg-printer" />,

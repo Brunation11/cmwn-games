@@ -16,11 +16,11 @@ export default function (props, ref, key) {
                 <skoash.Audio
                     type="voiceOver"
                     completeTarget="in-this"
-                    src={MEDIA.GAME + 'SoundAssets/vos/VO_in_this.mp3'}
+                    src={CMWN.MEDIA.VO + 'VO_in_this.mp3'}
                 />
                 <skoash.Audio
                     type="voiceOver"
-                    src={MEDIA.GAME + 'SoundAssets/vos/VO_be_sure.mp3'}
+                    src={CMWN.MEDIA.VO + 'VO_be_sure.mp3'}
                 />
             </skoash.MediaSequence>,
             <skoash.MediaSequence
@@ -29,18 +29,18 @@ export default function (props, ref, key) {
             >
                 <skoash.Audio
                     type="voiceOver"
-                    src={MEDIA.GAME + 'SoundAssets/effects/level_up.mp3'}
+                    src={CMWN.MEDIA.EFFECT + 'level_up.mp3'}
                 />
                 <skoash.Audio
                     type="voiceOver"
-                    src={MEDIA.GAME + 'SoundAssets/vos/VO_did_you1.mp3'}
+                    src={CMWN.MEDIA.VO + 'VO_did_you1.mp3'}
                 />
             </skoash.MediaSequence>,
             <skoash.Audio
                 type="voiceOver"
                 ref="try-again"
                 complete
-                src={MEDIA.GAME + 'SoundAssets/vos/VO_try_again.mp3'}
+                src={CMWN.MEDIA.VO + 'VO_try_again.mp3'}
             />,
         ],
         sfx: [
@@ -48,7 +48,7 @@ export default function (props, ref, key) {
                 type="voiceOver"
                 completeTarget="sfx"
                 ref="print"
-                src={MEDIA.GAME + 'SoundAssets/effects/print_item.mp3'}
+                src={CMWN.MEDIA.EFFECT + 'print_item.mp3'}
                 sprite={[0, 500]}
             />
         ],
@@ -56,19 +56,19 @@ export default function (props, ref, key) {
             <skoash.Component ref="in-this" type="li">
                 <skoash.Image
                     className="frame"
-                    src={MEDIA.GAME + 'Frames/ins.green.frame.png'}
+                    src={CMWN.MEDIA.FRAME + 'ins.green.frame.png'}
                 />
                 <skoash.Image
                     className="balloon"
-                    src={MEDIA.GAME + 'ImageAssets/img.quit.png'}
+                    src={CMWN.MEDIA.IMAGE + 'img.quit.png'}
                 />
                 <skoash.Image
                     className="bins"
-                    src={MEDIA.GAME + 'ImageAssets/ins.bins.png'}
+                    src={CMWN.MEDIA.IMAGE + 'ins.bins.png'}
                 />
                 <skoash.Image
                     className="hidden"
-                    src={MEDIA.GAME + 'SpritesAnimations/sprite.minion.png'}
+                    src={CMWN.MEDIA.SPRITE + 'sprite.minion.png'}
                 />
                 <div
                     className={classNames('words', 'in-this-game', {
@@ -123,7 +123,7 @@ export default function (props, ref, key) {
             >
                 <skoash.Image
                     className="hidden"
-                    src={MEDIA.GAME + 'SpritesAnimations/sprite.minion.png'}
+                    src={CMWN.MEDIA.SPRITE + 'sprite.minion.png'}
                 />
                 <h3>
                     LEVEL UP
@@ -144,15 +144,15 @@ export default function (props, ref, key) {
             >
                 <skoash.Image
                     className="minion"
-                    src={MEDIA.GAME + 'ImageAssets/try.again.minion.png'}
+                    src={CMWN.MEDIA.IMAGE + 'try.again.minion.png'}
                 />
                 <skoash.Image
                     className="hidden"
-                    src={MEDIA.GAME + 'Frames/try.again.frame.png'}
+                    src={CMWN.MEDIA.FRAME + 'try.again.frame.png'}
                 />
                 <skoash.Image
                     className="hidden"
-                    src={MEDIA.GAME + 'SpritesAnimations/sprite.nav.png'}
+                    src={CMWN.MEDIA.SPRITE + 'sprite.nav.png'}
                 />
                 <div>
                     <h3>

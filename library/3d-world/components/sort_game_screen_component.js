@@ -109,7 +109,7 @@ export default function (props, ref, key, opts = {}) {
         >
             <skoash.Image
                 className="hidden"
-                src={MEDIA.GAME + 'ImageAssets/thick.border.png'}
+                src={CMWN.MEDIA.IMAGE + 'thick.border.png'}
             />
             <skoash.MediaCollection
                 play={_.get(props, 'data.reveal.open')}
@@ -143,19 +143,19 @@ export default function (props, ref, key, opts = {}) {
             <skoash.Component className="main">
                 <skoash.Image
                     className="hidden"
-                    src={MEDIA.GAME + 'SpritesAnimations/sprite.game1.bins.png'}
+                    src={CMWN.MEDIA.SPRITE + 'sprite.game1.bins.png'}
                 />
                 <skoash.Image
                     className="hidden"
-                    src={MEDIA.GAME + 'SpritesAnimations/sprite.game1.png'}
+                    src={CMWN.MEDIA.SPRITE + 'sprite.game1.png'}
                 />
                 <skoash.Image
                     className="hidden"
-                    src={MEDIA.GAME + 'SpritesAnimations/sprite.game1.printer.png'}
+                    src={CMWN.MEDIA.SPRITE + 'sprite.game1.printer.png'}
                 />
                 <skoash.Image
                     className="hidden"
-                    src={MEDIA.GAME + 'ImageAssets/plus.png'}
+                    src={CMWN.MEDIA.IMAGE + 'plus.png'}
                 />
                 <Dropper
                     on={_.get(props, 'data.game.start', false) && !_.get(props, 'gameState.paused')}
@@ -276,12 +276,12 @@ export default function (props, ref, key, opts = {}) {
                       <skoash.Audio
                       type="voiceOver"
                       ref="correct"
-                      src={MEDIA.GAME + 'SoundAssets/effects/Correct.mp3'}
+                      src={CMWN.MEDIA.EFFECT + 'Correct.mp3'}
                     />,
                       <skoash.Audio
                       type="voiceOver"
                       ref="incorrect"
-                      src={MEDIA.GAME + 'SoundAssets/effects/Incorrect.mp3'}
+                      src={CMWN.MEDIA.EFFECT + 'Incorrect.mp3'}
                     />,
                   ]}
                 />

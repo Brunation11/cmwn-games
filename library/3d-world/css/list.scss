@@ -10,7 +10,7 @@
         div {
             animation: arrow-flash 1.5s infinite steps(1) backwards;
             margin-bottom: 20px;
-            background-image: url($media-game + 'ImageAssets/img.greenarrows.png');
+            background-image: url($image + 'img.greenarrows.png');
             background-repeat: no-repeat;
             background-size: auto 180px;
             width: 80px;
@@ -27,7 +27,7 @@
     .draggable {
         position: absolute;
         z-index: 1;
-        background-image: url($media-game + 'SpritesAnimations/sprite.game3.png');
+        background-image: url($sprite + 'sprite.game3.png');
         background-repeat: no-repeat;
         background-size: 1800px;
         width: 130px;
@@ -69,7 +69,7 @@
         position: absolute;
         top: 60px;
         left: 570px;
-        background-image: url($media-game + 'ImageAssets/img.notepad.png');
+        background-image: url($image + 'img.notepad.png');
         background-repeat: no-repeat;
         background-size: contain;
         padding: 55px 65px;
@@ -107,7 +107,7 @@
         position: absolute;
         bottom: 0;
         left: 405px;
-        background-image: url($media-game + 'SpritesAnimations/sprite.minion.png');
+        background-image: url($sprite + 'sprite.minion.png');
         background-position: -1905px -180px;
         background-size: 2200px;
         width: 150px;
