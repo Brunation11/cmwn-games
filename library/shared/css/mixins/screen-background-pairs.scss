@@ -4,7 +4,7 @@
         $screen: nth($pair, 1);
         $background: nth($pair, 2);
 
-        &[class*=SCREEN-#{$screen}] {
+        &.SCREEN-#{$screen} {
             .background.#{$background} {
                 opacity: 1;
             }
