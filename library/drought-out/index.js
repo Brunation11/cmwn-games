@@ -24,34 +24,28 @@ import QuitScreen from 'shared/components/quit_screen/0.1';
 
 var DroughtOut;
 
-MEDIA.GAME = MEDIA.BASE + 'Games/DroughtOut/';
-MEDIA.EFFECT = MEDIA.GAME + 'SoundAssets/effects/';
-MEDIA.VO = MEDIA.GAME + 'SoundAssets/vos/';
-MEDIA.IMAGE = MEDIA.GAME + 'ImageAssets/';
-MEDIA.SPRITE = MEDIA.GAME + 'SpritesAnimations/';
-
 DroughtOut = (
     <skoash.Game
         config={config}
-        screens={{
-            0: iOSScreen,
-            1: TitleScreen,
-            2: ThinkScreen,
-            3: InfoNoWaterScreen,
-            4: HumansAnimalsScreen,
-            5: InfoUseWaterScreen,
-            6: BalloonsScreen,
-            7: GreatJobScreen,
-            8: DroughtEffectsScreen,
-            9: EnvironmentEffectsScreen,
-            10: WhatCanWeDoScreen,
-            11: DrainScreen,
-            12: UsingLessScreen,
-            13: ShowerScreen,
-            14: ConserveScreen,
-            15: HeroScreen,
-            16: FlipScreen
-        }}
+        screens={[
+            iOSScreen,
+            TitleScreen,
+            ThinkScreen,
+            InfoNoWaterScreen,
+            HumansAnimalsScreen,
+            InfoUseWaterScreen,
+            BalloonsScreen,
+            GreatJobScreen,
+            DroughtEffectsScreen,
+            EnvironmentEffectsScreen,
+            WhatCanWeDoScreen,
+            DrainScreen,
+            UsingLessScreen,
+            ShowerScreen,
+            ConserveScreen,
+            HeroScreen,
+            FlipScreen
+        ]}
 
         menus={{
             quit: QuitScreen,

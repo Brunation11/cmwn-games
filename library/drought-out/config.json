@@ -1,5 +1,6 @@
 {
     "id": "drought-out",
+	"media_folder": "drought-out",
     "version": 2,
     "skoash": "1.1.2",
     "dimensions": {
