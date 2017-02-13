@@ -204,11 +204,11 @@ export default function (props, ref, key, opts = {}) {
         }
     };
 
-    dropperOnStop = function() {
+    dropperOnStop = function () {
         this.setState({
             items: {}
         });
-    }
+    };
 
     catcherOnMove = function (e) {
         var rect;
