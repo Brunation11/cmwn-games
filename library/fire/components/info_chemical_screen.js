@@ -56,10 +56,25 @@ export default function (props, ref, key) {
             className={_.get(props, 'data.screen-2.open', null)}
         >
             <skoash.MediaCollection ref="media-collection" play={_.get(props, 'data.screen-2.play', null)}>
-                <skoash.Audio type="voiceOver" src="media/S_2/vo_ChemicalReaction.mp3" />
-                <skoash.Audio type="sfx" src="media/S_2/S_2.2.mp3" />
-                <skoash.Audio type="sfx" src="media/S_2/S_2.3.mp3" />
-                <skoash.Audio type="sfx" src="media/S_2/S_2.4.mp3" />
+                <skoash.Audio
+                    type="voiceOver"
+                    src="media/S_2/vo_ChemicalReaction.mp3"
+                />
+                <skoash.Audio
+                    type="sfx"
+                    src="media/S_2/S_2.2.mp3"
+                    volume={0.5}
+                />
+                <skoash.Audio
+                    type="sfx"
+                    src="media/S_2/S_2.3.mp3"
+                    volume={0.6}
+                />
+                <skoash.Audio
+                    type="sfx"
+                    src="media/S_2/S_2.4.mp3" 
+                    volume={0.6}
+                />
             </skoash.MediaCollection>
             <skoash.Image className="animated" src="media/S_2/img_2.1.png" />
             <skoash.Image className="animated flame" src="media/S_2/img_2.2.png" />
