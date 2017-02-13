@@ -206,9 +206,10 @@ export default function (props, ref, key, opts = {}) {
                 }
             />
             <skoash.Component className="stats">
-                <span className="level">
+                <div className="level">
+                    <p>level</p>
                     {opts.level}
-                </span>
+                </div>
                 <skoash.Timer
                     ref="timer"
                     countDown={true}
@@ -217,6 +218,7 @@ export default function (props, ref, key, opts = {}) {
                     complete={_.get(props, 'data.game.complete', false)}
                     checkComplete={_.get(props, 'data.game.start', false)}
                     restart={_.get(props, 'data.game.start', false)}
+                    leadingContent={<p>time</p>}
                     onComplete={function () {
                         if (_.get(props, 'data.game.complete')) return;
                         this.updateGameState({
@@ -241,6 +243,7 @@ export default function (props, ref, key, opts = {}) {
                     increment={10}
                     correct={_.get(props, 'data.game.correct', 0)}
                     incorrect={_.get(props, 'data.game.incorrect', 0)}
+                    leadingContent={<p>score</p>}
                     onComplete={function () {
                         this.updateGameState({
                             path: 'reveal',

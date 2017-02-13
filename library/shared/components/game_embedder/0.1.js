@@ -4,8 +4,8 @@ console.warn('As of skoash 1.1.0 this component can be found at skoash.GameEmbed
 /* eslint-enable no-console */
 
 class GameEmbedder extends skoash.Component {
-    constructor() {
-        super();
+    constructor(props) {
+        super(props);
 
         this.respond = this.respond.bind(this);
         this.onLoad = this.onLoad.bind(this);

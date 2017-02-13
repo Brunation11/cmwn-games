@@ -35,6 +35,7 @@
         position: absolute;
         bottom: 10px;
         left: 2%;
+        transform: scale3d(1, 1, 1);
         border-radius: 20px;
         box-shadow: 0 0 10px $grass;
         background-color: $grass;
@@ -200,12 +201,12 @@
         }
 
         span.truck {
-            $truck-scale: .4;
+            $truck-scale: .35;
             @include sprite-game-intro(2);
             display: inline-block;
             position: relative;
-            transform: scale3d($truck-scale, $truck-scale, 1);
-            margin: -95px -115px;
+            transform: scale($truck-scale);
+            margin: -95px -125px;
             vertical-align: middle;
         }
 
@@ -226,6 +227,7 @@
                 }
 
                 &::before {
+                    transform: scale(1.2);
                     width: 410px;
                     height: 78px;
                 }
