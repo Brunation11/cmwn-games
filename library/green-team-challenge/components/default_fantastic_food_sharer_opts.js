@@ -1,6 +1,6 @@
 import classNames from 'classnames';
 
-import Catchable from 'shared/components/catchable/0.1';
+import Catchable from 'shared/components/catchable/0.2';
 
 import defaultGameOpts from './default_game_opts';
 import ItemsToSort from './items_to_sort';
@@ -146,6 +146,7 @@ export default _.defaults({
                             keys: [_.camelCase(opts.gameName), 'levels', opts.level],
                             data: {
                                 start: false,
+                                score: opts.score - opts.pointsPerMiss,
                                 hits,
                             }
                         });

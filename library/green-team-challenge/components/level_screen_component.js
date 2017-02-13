@@ -43,13 +43,13 @@ export default function (levelNumber) {
                 <skoash.MediaSequence
                     children={[
                         <skoash.Audio
-                            type="sfx"
-                            src={`${CMWN.MEDIA.EFFECT}LevelComplete.mp3`}
-                        />,
-                        <skoash.Audio
                             playTarget="appear"
                             type="sfx"
                             src={`${CMWN.MEDIA.EFFECT}LevelAppear.mp3`}
+                        />,
+                        <skoash.Audio
+                            type="sfx"
+                            src={`${CMWN.MEDIA.EFFECT}LevelComplete.mp3`}
                         />,
                     ].concat(
                         _.map(levelData, (data, level) =>

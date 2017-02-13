@@ -1,8 +1,8 @@
 import classNames from 'classnames';
 
 class Draggable extends skoash.Component {
-    constructor() {
-        super();
+    constructor(props) {
+        super(props);
 
         this.state = {
             endX: 0,

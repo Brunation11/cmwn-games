@@ -68,6 +68,11 @@ $button-scale: .7;
     .selectable {
         > * {
             @include bin-button;
+
+            &.HIGHLIGHTED {
+                @include bin-button(2);
+                pointer-events: none;
+            }
         }
     }
 

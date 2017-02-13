@@ -25,10 +25,11 @@ class Catcher extends Catch {
     }
 
     checkCollisions() {
-        if (!this.state.started || this.state.paused) return;
+        if (!this.state.started || this.state.paused || !this.state.canCatch) return;
         _.each(this.bucketNodes, (bucketNode, bucketRefKey) => {
             var bucketRect = bucketNode.getBoundingClientRect();
             _.each(this.props.catchableRefs, catchableRef => {
+                if (!catchableRef.canCatch()) return;
                 if (this.isColliding(bucketRect, catchableRef.DOMNode.getBoundingClientRect())) {
                     this.selectCatchable(this.refs[bucketRefKey], catchableRef);
                 }

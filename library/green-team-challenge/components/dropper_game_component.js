@@ -7,7 +7,15 @@ const PTS = 'pts';
 
 export default function (props, ref, key, opts = {}) {
     if (Math.abs(props.gameState.currentScreenIndex - parseInt(key, 10)) > 2) {
-        return null;
+        return (
+            <skoash.Screen
+                {...props}
+                ref={ref}
+                key={key}
+                id={`${opts.gameName}-${opts.level}`}
+                backgroundAudio={`BKG${opts.gameNumber}`}
+            />
+        );
     } else {
         let screenProps;
         let timerProps;
@@ -150,6 +158,7 @@ export default function (props, ref, key, opts = {}) {
                     bin={
                         <skoash.Randomizer
                             bin={catchablesArray}
+                            remain
                         />
                     }
                     style={{
@@ -174,11 +183,9 @@ export default function (props, ref, key, opts = {}) {
                         start={start}
                         bucket={binComponents}
                         catchableRefs={catchableRefs}
-                        pause={caught}
+                        pause={caught || !start}
                         resume={drop || itemRef}
                         collideFraction={opts.collideFraction}
-                        assets={[
-                        ]}
                         {...catcherProps}
                     />
                     <skoash.Selectable

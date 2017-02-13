@@ -62,8 +62,8 @@ let revealVOs = {
     recycle: 'RecyclingMaterials',
     landfill: 'ThinkingCap',
     liquids: 'GetPouring',
-    compost: 'GetPouring', // needs to be replaced
-    'food-share': 'GetPouring', // needs to be replaced
+    compost: 'CompostingExplain',
+    'food-share': 'FoodSharingExplain',
 };
 
 let binComponents = _.map(binNames, bin =>
@@ -126,6 +126,9 @@ export default function (props, ref, key) {
                 selectables: binComponents,
                 reveals: revealList,
                 media: mediaCollectionList,
+                SelectableProps: {
+                    selectClass: 'HIGHLIGHTED',
+                }
             })}
             <skoash.MediaCollection
                 play={_.get(props, 'data.selectable.target') && 'click'}

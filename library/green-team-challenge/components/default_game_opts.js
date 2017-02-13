@@ -1,4 +1,4 @@
-import Catchable from 'shared/components/catchable/0.1';
+import Catchable from 'shared/components/catchable/0.2';
 
 import ItemsToSort from './items_to_sort';
 
@@ -66,10 +66,11 @@ export default {
     gameNumber: 1,
     level: 1,
     timeout: 120000,
-    scoreToWin: 100,
+    scoreToWin: 600,
     maxHits: 5,
     dropperAmount: 3,
-    pointsPerItem: 50,
+    pointsPerItem: 95,
+    pointsPerMiss: 250,
     collideFraction: 0,
     getScreenProps(opts) {
         return {
@@ -219,6 +220,7 @@ export default {
                     keys: [_.camelCase(opts.gameName), 'levels', opts.level],
                     data: {
                         start: false,
+                        score: opts.score - opts.pointsPerMiss,
                         hits,
                     }
                 });

@@ -17,8 +17,8 @@
     @include sprite($sprite + 'sprite.yesno.png', 215px, 220px, 2, 2, $column, 1, 2, $width, $height);
 }
 
-@mixin bin-button($width: 0, $height: 0) {
-    @include sprite($sprite + 'sprite.btn.png', 82px, 180px, 1, 2, 1, 1, 2, $width, $height);
+@mixin bin-button($row: 1, $width: 0, $height: 0) {
+    @include sprite($sprite + 'sprite.btn.png', 82px, 180px, 1, 2, 1, $row, 2, $width, $height);
 }
 
 @mixin star-sprite($row, $width: 0, $height: 0) {
@@ -39,6 +39,10 @@
 
 @mixin truck-sprite($column, $width: 0, $height: 0) {
     @include sprite($sprite + 'dumptruck.png', 758px, 191px, 3, 1, $column, 1, 1, $width, $height);
+}
+
+@mixin complete-sprite($column, $width: 0, $height: 0) {
+    @include sprite($sprite + 'levelandroundcompleted.png', 1450px, 200px, 2, 1, $column, 1, 1, $width, $height);
 }
 
 @mixin level-flips($row, $class: frame, $scale: 1.8) {
@@ -219,7 +223,7 @@
             height: 100%;
 
             $names: resort retry complete;
-            $colors: $transparent-red $transparent-red $transparent;
+            $colors: $transparent-red $transparent-red $transparent-white;
             @for $i from 1 through length($names) {
                 &[data-ref=#{nth($names, $i)}] {
                     background-color: #{nth($colors, $i)};
@@ -249,6 +253,14 @@
             }
         }
 
+        [data-ref=complete] {
+            &::before {
+                @include center;
+                @include complete-sprite(2);
+                content: '';
+            }
+        }
+
         &.open-resort,
         &.open-complete {
             .close-reveal {
@@ -259,6 +271,16 @@
         &.open-retry {
             .close-reveal {
                 @include position(absolute, null 150px 150px null);
+            }
+        }
+    }
+
+    &[id*='5'] {
+        .reveal {
+            [data-ref=complete] {
+                &::before {
+                    @include complete-sprite(1);
+                }
             }
         }
     }

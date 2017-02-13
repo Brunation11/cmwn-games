@@ -2,7 +2,7 @@
 import classNames from 'classnames';
 
 import defaultGameOpts from './default_game_opts';
-import Catchable from 'shared/components/catchable/0.1';
+import Catchable from 'shared/components/catchable/0.2';
 import ItemsToSort from './items_to_sort';
 
 let onSelect = function (key) {
@@ -248,6 +248,7 @@ export default _.defaults({
                         keys: [_.camelCase(opts.gameName), 'levels', opts.level],
                         data: {
                             start: false,
+                            score: opts.score - opts.pointsPerMiss,
                             hits,
                         }
                     });
@@ -470,6 +471,7 @@ export default _.defaults({
                     keys: [_.camelCase(opts.gameName), 'levels', opts.level],
                     data: {
                         start: false,
+                        score: opts.score - opts.pointsPerMiss,
                         hits,
                     }
                 });
