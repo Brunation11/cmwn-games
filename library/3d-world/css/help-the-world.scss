@@ -6,7 +6,7 @@
     .header {
         position: relative;
         border-bottom: 12px solid $green;
-        padding: 56px 50px 50px 120px;
+        padding: 52px 50px 40px 120px;
         color: $green;
         font-size: 32px;
 
@@ -20,6 +20,14 @@
             width: 200px;
             height: 200px;
             content: '';
+        }
+
+        p {
+            display: none;
+
+            &.show {
+                display: block;
+            }
         }
     }
 
