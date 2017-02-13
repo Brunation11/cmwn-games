@@ -54,10 +54,8 @@ $default-font: "Source Sans Pro", "Helvetica Neue", Helvetica, sans-serif;
         height: 540px;
     }
 
-    img {
-        &.hidden {
-            display: none;
-        }
+    .hidden {
+        display: none;
     }
 
     button {
