@@ -11,53 +11,53 @@ export default function (props, ref, key) {
             <skoash.Audio
                 type="sfx"
                 ref="start"
-                src={MEDIA.GAME + 'SoundAssets/effects/animation_appear.mp3'}
+                src={CMWN.MEDIA.EFFECT + 'animation_appear.mp3'}
             />
             <skoash.MediaSequence>
                 <skoash.Audio
                     type="sfx"
-                    src={MEDIA.GAME + 'SoundAssets/effects/text_type.mp3'}
+                    src={CMWN.MEDIA.EFFECT + 'text_type.mp3'}
                 />
                 <skoash.Audio
                     type="sfx"
-                    src={MEDIA.GAME + 'SoundAssets/effects/text_type.mp3'}
+                    src={CMWN.MEDIA.EFFECT + 'text_type.mp3'}
                     sprite={[0, 2000]}
                 />
             </skoash.MediaSequence>
             <skoash.MediaSequence>
                 <skoash.Audio
                     type="voiceOver"
-                    src={MEDIA.GAME + 'SoundAssets/vos/VO_imagine.mp3'}
+                    src={CMWN.MEDIA.VO + 'VO_imagine.mp3'}
                     completeTarget="imagine"
                 />
                 <skoash.Audio
                     type="voiceOver"
-                    src={MEDIA.GAME + 'SoundAssets/vos/VO_it_already.mp3'}
+                    src={CMWN.MEDIA.VO + 'VO_it_already.mp3'}
                 />
             </skoash.MediaSequence>
             <skoash.Image
                 className="printer show"
-                src={ENVIRONMENT.MEDIA + 'ImageAssets/img.printer01.png'}
+                src={CMWN.MEDIA.IMAGE + 'img.printer01.png'}
             />
             <skoash.Image
                 className={classNames('question', {
                     show: !_.get(props, 'data.imagine.complete')
                 })}
-                src={MEDIA.GAME + 'SpritesAnimations/wand.gif'}
+                src={CMWN.MEDIA.SPRITE + 'wand.gif'}
             />
             <skoash.Image
                 className={classNames('answer', {
                     show: _.get(props, 'data.imagine.complete')
                 })}
-                src={MEDIA.GAME + 'SpritesAnimations/wand.and.printer_.gif'}
+                src={CMWN.MEDIA.SPRITE + 'wand.and.printer_.gif'}
             />
             <skoash.Image
                 className="hidden"
-                src={MEDIA.GAME + 'SpritesAnimations/sprite.minion.png'}
+                src={CMWN.MEDIA.SPRITE + 'sprite.minion.png'}
             />
             <skoash.Image
                 className="hidden"
-                src={MEDIA.GAME + 'ImageAssets/intro.speech.balloon.png'}
+                src={CMWN.MEDIA.IMAGE + 'intro.speech.balloon.png'}
             />
             <div className="right">
                 <div

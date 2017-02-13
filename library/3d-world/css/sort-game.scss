@@ -105,7 +105,7 @@
         }
 
         .el {
-            background-image: url($media-game + 'SpritesAnimations/sprite.game1.printer.png');
+            background-image: url($sprite + 'sprite.game1.printer.png');
             background-size: 150px;
         }
 
@@ -177,7 +177,7 @@
             top: 70px;
             left: 20px;
             transition: top 1s, height .25s;
-            background-image: url($media-game + 'SpritesAnimations/sprite.game1.png');
+            background-image: url($sprite + 'sprite.game1.png');
             background-repeat: no-repeat;
             background-size: #{100 * $length}px;
             width: 100px;
@@ -212,7 +212,7 @@
         div {
             position: absolute;
             top: 392px;
-            background-image: url($media-game + 'SpritesAnimations/sprite.game1.bins.png');
+            background-image: url($sprite + 'sprite.game1.bins.png');
             background-repeat: no-repeat;
             background-size: 600px;
             width: 170px;
@@ -239,7 +239,7 @@
 
             &.correct {
                 &::before {
-                    background-image: url($media-game + 'ImageAssets/plus.png');
+                    background-image: url($image + 'plus.png');
                     background-size: contain;
                     content: '+10';
                 }
@@ -294,7 +294,7 @@
             }
 
             .line {
-                background-image: url($media-game + 'ImageAssets/thick.border.png');
+                background-image: url($image + 'thick.border.png');
                 background-repeat: no-repeat;
                 background-size: 100% 100%;
             }
@@ -308,7 +308,7 @@
                     position: absolute;
                     right: -15px;
                     bottom: 0;
-                    background-image: url($media-game + 'SpritesAnimations/sprite.minion.png');
+                    background-image: url($sprite + 'sprite.minion.png');
                     background-repeat: no-repeat;
                     background-position: -600px 0;
                     background-size: 2400px;
@@ -360,7 +360,7 @@
                         button {
                             display: block;
                             margin: 10px auto 0;
-                            background-image: url($media-game + 'SpritesAnimations/sprite.nav.png');
+                            background-image: url($sprite + 'sprite.nav.png');
                             background-position: 0 0;
                             width: 300px;
                             height: 70px;
@@ -388,7 +388,7 @@
                 top: 0;
                 left: 0;
                 background-color: $sort-game-level-up-background;
-                background-image: url($media-game + 'Frames/green.frame.png');
+                background-image: url($frame + 'green.frame.png');
                 background-repeat: no-repeat;
                 background-position: 200px 120px;
                 background-size: 720px;
@@ -400,7 +400,7 @@
                     position: absolute;
                     bottom: 0;
                     left: 0;
-                    background-image: url($media-game + 'SpritesAnimations/sprite.minion.png');
+                    background-image: url($sprite + 'sprite.minion.png');
                     background-repeat: no-repeat;
                     background-position: -1130px 2px;
                     background-size: 1800px;
@@ -457,7 +457,7 @@
                     left: 120px;
                     transform: rotate(180deg);
                     transition: transform 1s;
-                    background-image: url($media-game + 'Frames/try.again.frame.png');
+                    background-image: url($frame + 'try.again.frame.png');
                     background-repeat: no-repeat;
                     background-size: contain;
                     width: 740px;
@@ -506,7 +506,7 @@
             .close-reveal {
                 top: 280px;
                 left: 338px;
-                background-image: url($media-game + 'SpritesAnimations/sprite.nav.png');
+                background-image: url($sprite + 'sprite.nav.png');
                 background-position: -910px 0;
                 width: 284px;
                 height: 70px;

@@ -6,7 +6,7 @@ export default function (props, ref, key) {
           key={key}
           id="title"
       >
-          <skoash.Image src={MEDIA.GAME + 'SpritesAnimations/title.gif'} />
+          <skoash.Image src={CMWN.MEDIA.SPRITE + 'title.gif'} />
       </skoash.Screen>
     );
 }

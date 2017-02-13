@@ -28,7 +28,7 @@
         position: absolute;
         top: 70px;
         right: 0;
-        background-image: url($media-game + 'ImageAssets/intro.speech.balloon.png');
+        background-image: url($image + 'intro.speech.balloon.png');
         background-repeat: no-repeat;
         background-size: 300px;
     }
@@ -70,7 +70,7 @@
 
     .minion {
         margin-top: 140px;
-        background-image: url($media-game + 'SpritesAnimations/sprite.minion.png');
+        background-image: url($sprite + 'sprite.minion.png');
         background-position: -120px -240px;
         background-size: 3000px;
         width: 320px;

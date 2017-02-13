@@ -1,4 +1,8 @@
-$media-game: $media-server + 'Games/3DWorld/';
+$media-game: $media-server + 'games/3d-world/';
+$sprite: $media-game + 'sprites-animations/';
+$image: $media-game + 'image-assets/';
+$font: $media-game + 'fonts/';
+$frame: $media-game + 'frames/';
 
 $text-color: #fff;
 $imagine-green: #006d05;

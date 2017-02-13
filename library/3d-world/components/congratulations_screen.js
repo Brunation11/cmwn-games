@@ -8,11 +8,11 @@ export default function (props, ref, key) {
         >
             <skoash.Image
                 className="hidden"
-                src={MEDIA.GAME + 'SpritesAnimations/sprite.minion.png'}
+                src={CMWN.MEDIA.SPRITE + 'sprite.minion.png'}
             />
             <skoash.Audio
                 type="voiceOver"
-                src={MEDIA.GAME + 'SoundAssets/vos/VO_Congratulations.mp3'}
+                src={CMWN.MEDIA.VO + 'VO_Congratulations.mp3'}
             />
             <div>
                 CONGRATULATIONS!

@@ -26,17 +26,17 @@ export default function (props, ref, key) {
             <skoash.MediaSequence>
                 <skoash.Audio
                     type="voiceOver"
-                    src={MEDIA.GAME + 'SoundAssets/vos/VO_Flip.mp3'}
+                    src={CMWN.MEDIA.VO + 'VO_Flip.mp3'}
                 />
                 <skoash.Audio
                     type="sfx"
-                    src={MEDIA.GAME + 'SoundAssets/effects/Printing.mp3'}
+                    src={CMWN.MEDIA.EFFECT + 'Printing.mp3'}
                     playTarget="layer1"
                     sprite={[0, 1900]}
                 />
                 <skoash.Audio
                     type="sfx"
-                    src={MEDIA.GAME + 'SoundAssets/effects/Printing.mp3'}
+                    src={CMWN.MEDIA.EFFECT + 'Printing.mp3'}
                     playTarget="layer2"
                     completeTarget="layer2"
                     sprite={[1900, 1900]}
@@ -44,7 +44,7 @@ export default function (props, ref, key) {
             </skoash.MediaSequence>
             <skoash.Image
                 className="printer"
-                src={MEDIA.GAME + 'ImageAssets/img.flip.printer.png'}
+                src={CMWN.MEDIA.IMAGE + 'img.flip.printer.png'}
             />
             <skoash.Image
                 className={classNames('earned-flip', {
@@ -59,7 +59,7 @@ export default function (props, ref, key) {
             />
             <skoash.Image
                 className="minion"
-                src={MEDIA.GAME + 'ImageAssets/img.flip.minion.png'}
+                src={CMWN.MEDIA.IMAGE + 'img.flip.minion.png'}
             />
             <skoash.Component
                 checkComplete={false}
