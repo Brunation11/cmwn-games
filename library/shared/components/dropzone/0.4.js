@@ -113,6 +113,8 @@ class Dropzone extends skoash.Component {
         } else {
             this.outOfBounds(dropped);
         }
+
+        this.props.onDrop.call(this, dropped);
     }
 
     onDrag(dragging) {
@@ -141,7 +143,7 @@ class Dropzone extends skoash.Component {
     outOfBounds(dropped) {
         // respond to an out of bounds drop
         this.playMedia('out');
-        this.incorrect(dropped);
+        if (this.props.incorrectOnOutOfBounds) this.incorrect(dropped);
     }
 
     correct(dropped, dropzoneRef) {
@@ -202,6 +204,8 @@ Dropzone.defaultProps = _.defaults({
     onCorrect: _.noop,
     onIncorrect: _.noop,
     onDrag: _.noop,
+    onDrop: _.noop,
+    incorrectOnOutOfBounds: true,
 }, skoash.Component.defaultProps);
 
 export default Dropzone;

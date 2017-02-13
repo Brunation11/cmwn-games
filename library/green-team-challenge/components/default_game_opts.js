@@ -10,20 +10,6 @@ let binNames = [
 
 let itemsToSort = _.filter(ItemsToSort, item => _.includes(binNames, item.bin));
 
-let audioRefs = _.uniq(_.map(itemsToSort, v =>
-    _.upperFirst(_.camelCase(_.replace(v.name, /\d+/g, ''))))
-);
-
-let audioArray = _.map(audioRefs, (v, k) => ({
-    type: skoash.Audio,
-    ref: v,
-    key: k,
-    props: {
-        type: 'voiceOver',
-        src: `${CMWN.MEDIA.GAME + 'SoundAssets/_vositems/' + v}.mp3`,
-    },
-}));
-
 let getChildren = v => {
     if (v.children) return v.children;
 
@@ -47,8 +33,37 @@ let catchablesArray = _.map(itemsToSort, v => ({
     },
 }));
 
+let audioRefs = _.uniq(_.map(itemsToSort, v =>
+    _.upperFirst(_.camelCase(_.replace(v.name, /\d+/g, ''))))
+);
+
+let audioArray = _.map(audioRefs, (v, k) => ({
+    type: skoash.Audio,
+    ref: v,
+    key: k,
+    props: {
+        type: 'voiceOver',
+        src: `${CMWN.MEDIA.GAME + 'SoundAssets/_vositems/' + v}.mp3`,
+        onPlay: function () {
+            this.updateScreenData({
+                keys: ['item', 'new'],
+                data: false,
+            });
+        }
+    },
+}));
+
+audioArray = audioArray.concat([
+    <skoash.Audio ref="drop" type="sfx" src={`${CMWN.MEDIA.EFFECT}ReleaseItem1.mp3`} />,
+    <skoash.Audio ref="correct" type="sfx" src={`${CMWN.MEDIA.EFFECT}CorrectSelect.mp3`} />,
+    <skoash.Audio ref="resort" type="sfx" src={`${CMWN.MEDIA.EFFECT}ResortWarning.mp3`} />,
+    <skoash.Audio ref="pickUp" type="sfx" src={`${CMWN.MEDIA.EFFECT}ItemFlip.mp3`} />,
+    <skoash.Audio ref="timer" type="sfx" src={`${CMWN.MEDIA.EFFECT}SecondTimer.mp3`} />,
+]);
+
 export default {
     gameName: 'recycling-champion',
+    gameNumber: 1,
     level: 1,
     timeout: 120000,
     scoreToWin: 100,
@@ -95,6 +110,15 @@ export default {
                     this.updateScreenData({
                         keys: ['reveal', 'open'],
                         data: 'retry',
+                    });
+                }
+            },
+            onIncrement: function () {
+                let secondsLeft = (this.props.timeout - this.state.time) / 1000;
+                if (secondsLeft === 10) {
+                    this.updateScreenData({
+                        key: 'play',
+                        data: 'timer',
                     });
                 }
             },
@@ -157,8 +181,11 @@ export default {
             },
             onNext: function () {
                 this.updateScreenData({
-                    keys: ['item', 'name'],
-                    data: _.startCase(_.replace(this.getFirstItem().props.className, /\d+/g, '')),
+                    key: 'item',
+                    data: {
+                        name: _.startCase(_.replace(this.getFirstItem().props.className, /\d+/g, '')),
+                        new: true,
+                    }
                 });
             },
             onPickUp: function () {

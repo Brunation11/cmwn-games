@@ -22,45 +22,6 @@ const binNames = [
     'liquids',
 ];
 
-let itemsToSort = _.filter(ItemsToSort, item => _.includes(binNames, item.bin));
-
-let audioRefs = _.uniq(_.map(itemsToSort, v =>
-    _.upperFirst(_.camelCase(_.replace(v.name, /\d+/g, ''))))
-);
-
-let audioArray = _.map(audioRefs, (v, k) => ({
-    type: skoash.Audio,
-    ref: v,
-    key: k,
-    props: {
-        type: 'voiceOver',
-        src: `${CMWN.MEDIA.GAME + 'SoundAssets/_vositems/' + v}.mp3`,
-    },
-}));
-
-let getChildren = v => {
-    if (v.children) return v.children;
-
-    return (
-        <skoash.Sprite
-            src={`${CMWN.MEDIA.SPRITE}_${_.replace(v.bin, '-', '')}`}
-            frame={v.frame || 1}
-            static
-        />
-    );
-};
-
-let catchablesArray = _.map(itemsToSort, v => ({
-    type: Catchable,
-    props: {
-        className: v.name,
-        message: v.bin,
-        reCatchable: true,
-        becomes: v.becomes,
-        children: getChildren(v),
-    },
-}));
-
 const onTruckTransitionEnd = function (opts, e) {
     skoash.trigger('updateScreenData', {
         data: {
@@ -85,8 +46,66 @@ const onItemPickUpTransitionEnd = function (itemRef) {
     }
 };
 
+let itemsToSort = _.filter(ItemsToSort, item => _.includes(binNames, item.bin));
+
+let getChildren = v => {
+    if (v.children) return v.children;
+
+    return (
+        <skoash.Sprite
+            src={`${CMWN.MEDIA.SPRITE}_${_.replace(v.bin, '-', '')}`}
+            frame={v.frame || 1}
+            static
+        />
+    );
+};
+
+let catchablesArray = _.map(itemsToSort, v => ({
+    type: Catchable,
+    props: {
+        className: v.name,
+        message: v.bin,
+        reCatchable: true,
+        becomes: v.becomes,
+        children: getChildren(v),
+    },
+}));
+
+let audioRefs = _.uniq(_.map(itemsToSort, v =>
+    _.upperFirst(_.camelCase(_.replace(v.name, /\d+/g, ''))))
+);
+
+let audioArray = _.map(audioRefs, (v, k) => ({
+    type: skoash.Audio,
+    ref: v,
+    key: k,
+    props: {
+        type: 'voiceOver',
+        src: `${CMWN.MEDIA.GAME + 'SoundAssets/_vositems/' + v}.mp3`,
+        onPlay: function () {
+            this.updateScreenData({
+                keys: ['item', 'new'],
+                data: false,
+            });
+        }
+    },
+}));
+
+audioArray = audioArray.concat([
+    <skoash.MediaSequence ref="drop" silentOnStart>
+        <skoash.Audio delay={4600} type="sfx" src={`${CMWN.MEDIA.EFFECT}ItemFunnel.mp3`} />
+        <skoash.Audio type="sfx" src={`${CMWN.MEDIA.EFFECT}TruckDump.mp3`} />
+    </skoash.MediaSequence>,
+    <skoash.Audio ref="correct" type="sfx" src={`${CMWN.MEDIA.EFFECT}ConveyorBelt.mp3`} />,
+    <skoash.Audio ref="resort" type="sfx" src={`${CMWN.MEDIA.EFFECT}ResortWarning.mp3`} />,
+    <skoash.Audio ref="pickUp" type="sfx" src={`${CMWN.MEDIA.EFFECT}ItemFlip.mp3`} />,
+    <skoash.Audio ref="pour" type="sfx" src={`${CMWN.MEDIA.EFFECT}LiquidPour.mp3`} />,
+    <skoash.Audio ref="timer" type="sfx" src={`${CMWN.MEDIA.EFFECT}SecondTimer.mp3`} />,
+]);
+
 export default _.defaults({
     gameName: 'fantastic-food-sharer',
+    gameNumber: 3,
     binNames,
     getSelectableProps() {
         return {
@@ -230,12 +249,9 @@ export default _.defaults({
             onNext: function () {
                 this.updateScreenData({
                     data: {
-                        'manual-dropper': {
-                            drop: !!opts.selectableMessage,
-                            itemName: _.startCase(this.getFirstItem().props.className),
-                        },
                         item: {
                             name: _.startCase(_.replace(this.getFirstItem().props.className, /\d+/g, '')),
+                            new: true,
                         },
                         selectable: {
                             message: ''

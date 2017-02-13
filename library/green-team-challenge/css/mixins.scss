@@ -5,8 +5,8 @@
     text-shadow: 2px 2px 2px $text-shadow;
 }
 
-@mixin mirror {
-    transform: scale3d(-1, 1, 1);
+@mixin mirror($transform: translateX(0)) {
+    transform: $transform scale3d(-1, 1, 1);
 }
 
 @mixin nav-button($column, $width: 0, $height: 0) {
@@ -41,14 +41,24 @@
     @include sprite($sprite + 'dumptruck.png', 758px, 191px, 3, 1, $column, 1, 1, $width, $height);
 }
 
-@mixin level-flips($row, $class: frame) {
+@mixin level-flips($row, $class: frame, $scale: 1.8) {
     $flips: 2 4 5 3 6 1;
     @for $i from 1 through length($flips) {
-        &[id*=-level-#{$i}] .#{$class}::after {
-            @include flip-sprite(nth($flips, $i), $row);
-            @include position(absolute, null 140px 30px null);
-            display: block;
-            content: '';
+        &[id*=-level-#{$i}] {
+            .#{$class}::after {
+                @include flip-sprite(nth($flips, $i), $row);
+                @include position(absolute, null 140px 40px null);
+                display: block;
+                transform: translateY(-1000px) scale($scale);
+                transition: transform .5s;
+                content: '';
+            }
+
+            &.APPEAR {
+                .#{$class}::after {
+                    transform: scale($scale);
+                }
+            }
         }
     }
 }

@@ -3,13 +3,25 @@ import classNames from 'classnames';
 const CHARACTER = `${CMWN.MEDIA.IMAGE}greenteamcharac.png`;
 const FRAME = `${CMWN.MEDIA.FRAME}frame.01.png`;
 
-let renderAudio = function (opts) {
+let renderVO = function (opts) {
     if (!opts.vo) return null;
 
     return (
         <skoash.Audio
             type="voiceOver"
             src={`${CMWN.MEDIA.VO}${opts.vo}.mp3`}
+        />
+    );
+};
+
+let renderSFX = function (opts) {
+    if (!opts.sfx) return null;
+
+    return (
+        <skoash.Audio
+            type="sfx"
+            ref="start"
+            src={`${CMWN.MEDIA.EFFECT}${opts.sfx}.mp3`}
         />
     );
 };
@@ -29,9 +41,11 @@ export default function (props, ref, key, opts = {}) {
             ref={ref}
             key={key}
             id={opts.id}
+            backgroundAudio={opts.backgroundAudio}
             className={classNames('info', opts.className)}
         >
-            {renderAudio(opts)}
+            {renderVO(opts)}
+            {renderSFX(opts)}
             {renderImage(opts)}
             <skoash.Image className="hidden" src={FRAME} />
             <div className="frame">

@@ -14,5 +14,7 @@ export default function (props, ref, key) {
             </p>
         ),
         vo: 'TakeItTotheNextLevel',
+        sfx: 'InfoFrameMove1',
+        backgroundAudio: 'BKG2',
     });
 }

@@ -119,12 +119,6 @@ class Dropper extends skoash.Component {
         }
     }
 
-    // componentDidUpdate(prevProps, prevState) {
-    //     if (prevState.items !== this.state.items) {
-    //         this.invokeChildrenFunction('start');
-    //     }
-    // }
-
     getClassNames() {
         return classNames('manual-dropper', super.getClassNames());
     }

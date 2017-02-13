@@ -12,6 +12,7 @@ let onSelect = function (key) {
         key: 'item',
         data: {
             name: _.startCase(_.replace(ref.props.className, /\d+/g, '')),
+            new: true,
             ref,
             top: rect.top,
             left: rect.left,
@@ -56,20 +57,6 @@ let binNames = [
 
 let itemsToSort = _.filter(ItemsToSort, item => _.includes(binNames, item.bin));
 
-let audioRefs = _.uniq(_.map(itemsToSort, v =>
-    _.upperFirst(_.camelCase(_.replace(v.name, /\d+/g, ''))))
-);
-
-let audioArray = _.map(audioRefs, (v, k) => ({
-    type: skoash.Audio,
-    ref: v,
-    key: k,
-    props: {
-        type: 'voiceOver',
-        src: `${CMWN.MEDIA.GAME + 'SoundAssets/_vositems/' + v}.mp3`,
-    },
-}));
-
 let getChildren = v => {
     if (v.children) return v.children;
 
@@ -113,46 +100,46 @@ let traysArray = [
             />
         ]
     },
-    // {
-    //     name: 'tray',
-    //     bin: 'tray-stacking',
-    //     children: [
-    //         <skoash.Selectable
-    //             onSelect={onSelect}
-    //             list={mapItems([
-    //                 'plastic-cup-1',
-    //                 'apple-core',
-    //                 'empty-cracker-wrapper-2',
-    //                 'full-plastic-water-bottle-2',
-    //                 'whole-banana',
-    //             ])}
-    //         />
-    //     ]
-    // },
-    // {
-    //     name: 'tray-pink',
-    //     bin: 'tray-stacking',
-    //     children: [
-    //         <skoash.Selectable
-    //             onSelect={onSelect}
-    //             list={mapItems([
-    //                 'empty-yogurt-container-10',
-    //             ])}
-    //         />
-    //     ]
-    // },
-    // {
-    //     name: 'tray-blue',
-    //     bin: 'tray-stacking',
-    //     children: [
-    //         <skoash.Selectable
-    //             onSelect={onSelect}
-    //             list={mapItems([
-    //                 'empty-yogurt-container-10',
-    //             ])}
-    //         />
-    //     ]
-    // },
+    {
+        name: 'tray',
+        bin: 'tray-stacking',
+        children: [
+            <skoash.Selectable
+                onSelect={onSelect}
+                list={mapItems([
+                    'plastic-cup-1',
+                    'apple-core',
+                    'empty-cracker-wrapper-2',
+                    'full-plastic-water-bottle-2',
+                    'whole-banana',
+                ])}
+            />
+        ]
+    },
+    {
+        name: 'tray-pink',
+        bin: 'tray-stacking',
+        children: [
+            <skoash.Selectable
+                onSelect={onSelect}
+                list={mapItems([
+                    'empty-yogurt-container-10',
+                ])}
+            />
+        ]
+    },
+    {
+        name: 'tray-blue',
+        bin: 'tray-stacking',
+        children: [
+            <skoash.Selectable
+                onSelect={onSelect}
+                list={mapItems([
+                    'empty-yogurt-container-10',
+                ])}
+            />
+        ]
+    },
 ];
 
 let catchablesArray = _.map(traysArray, v => ({
@@ -166,8 +153,40 @@ let catchablesArray = _.map(traysArray, v => ({
     },
 }));
 
+let audioRefs = _.uniq(_.map(itemsToSort, v =>
+    _.upperFirst(_.camelCase(_.replace(v.name, /\d+/g, ''))))
+);
+
+let audioArray = _.map(audioRefs, (v, k) => ({
+    type: skoash.Audio,
+    ref: v,
+    key: k,
+    props: {
+        type: 'voiceOver',
+        src: `${CMWN.MEDIA.GAME + 'SoundAssets/_vositems/' + v}.mp3`,
+        onPlay: function () {
+            this.updateScreenData({
+                keys: ['item', 'new'],
+                data: false,
+            });
+        }
+    },
+}));
+
+audioArray = audioArray.concat([
+    <skoash.Audio ref="next" type="sfx" src={`${CMWN.MEDIA.EFFECT}LunchboxSlide.mp3`} />,
+    <skoash.Audio ref="correct" type="sfx" src={`${CMWN.MEDIA.EFFECT}ConveyorBelt.mp3`} />,
+    <skoash.Audio ref="resort" type="sfx" src={`${CMWN.MEDIA.EFFECT}ResortWarning.mp3`} />,
+    <skoash.Audio ref="pickUp" type="sfx" src={`${CMWN.MEDIA.EFFECT}ItemFlip.mp3`} />,
+    <skoash.Audio ref="pour" type="sfx" src={`${CMWN.MEDIA.EFFECT}LiquidPour.mp3`} />,
+    <skoash.Audio ref="tray" type="sfx" src={`${CMWN.MEDIA.EFFECT}TrayStackerRack.mp3`} />,
+    <skoash.Audio ref="select" type="sfx" src={`${CMWN.MEDIA.EFFECT}ItemSelect.mp3`} />,
+    <skoash.Audio ref="timer" type="sfx" src={`${CMWN.MEDIA.EFFECT}SecondTimer.mp3`} />,
+]);
+
 export default _.defaults({
     gameName: 'master-sorter',
+    gameNumber: 5,
     dropperAmount: 2,
     binNames,
     collideFraction: .4,
@@ -413,8 +432,11 @@ export default _.defaults({
                                 callback: () => {
                                     if (!amount) {
                                         this.updateScreenData({
-                                            keys: ['manual-dropper', 'selectItem'],
-                                            data: true,
+                                            key: 'manual-dropper',
+                                            data: {
+                                                selectItem: true,
+                                                dropClass: null,
+                                            },
                                         });
                                     }
                                 }

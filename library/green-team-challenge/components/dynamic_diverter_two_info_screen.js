@@ -13,5 +13,7 @@ export default function (props, ref, key) {
             </p>
         ),
         vo: 'MisplacedItems',
+        sfx: 'InfoFrameMove1',
+        backgroundAudio: 'BKG4',
     });
 }

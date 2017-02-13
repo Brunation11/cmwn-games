@@ -14,5 +14,7 @@ export default function (props, ref, key) {
             </p>
         ),
         vo: 'WasteDiversion',
+        sfx: 'InfoFrameMove1',
+        backgroundAudio: 'BKG4',
     });
 }

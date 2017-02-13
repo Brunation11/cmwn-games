@@ -68,11 +68,11 @@ class Draggable extends skoash.Component {
 
         if (!this.state.return) {
             startX = _.isFinite(this.state.grabX) ?
-        this.state.startX + this.state.grabX - grabX :
-        startX;
+                this.state.startX + this.state.grabX - grabX :
+                startX;
             startY = _.isFinite(this.state.grabY) ?
-        this.state.startY + this.state.grabY - grabY :
-        startY;
+                this.state.startY + this.state.grabY - grabY :
+                startY;
         }
 
         this.setState({

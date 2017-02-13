@@ -52,6 +52,7 @@ import DynamicDiverter4Screen from './components/dynamic_diverter_level_four_scr
 import DynamicDiverter5InfoScreen from './components/dynamic_diverter_five_info_screen';
 import DynamicDiverter5Screen from './components/dynamic_diverter_level_five_screen';
 import WantToStackScreen from './components/want_to_stack_screen';
+import VideoScreen from './components/video_screen';
 import MasterSorter1InfoScreen from './components/master_sorter_one_info_screen';
 import MasterSorter1Screen from './components/master_sorter_level_one_screen';
 import MasterSorter2InfoScreen from './components/master_sorter_two_info_screen';
@@ -145,6 +146,7 @@ skoash.start(
             LevelScreen(4.5),
             LevelCompleteScreen(4),
             WantToStackScreen,
+            VideoScreen,
             LevelScreen(5.0),
             MasterSorter1InfoScreen,
             MasterSorter1Screen,
@@ -196,6 +198,15 @@ skoash.start(
             <skoash.Image className="hidden" src={`${CMWN.MEDIA.IMAGE}background.trash.landfill.jpg`} />,
             <skoash.Image className="hidden" src={`${CMWN.MEDIA.IMAGE}background.trash.compost.jpg`} />,
             <skoash.Image className="hidden" src={`${CMWN.MEDIA.IMAGE}quit.background.jpg`} />,
+            <skoash.Audio type="sfx" ref="button" src={`${CMWN.MEDIA.EFFECT}ButtonClick.mp3`} />,
+            <skoash.Audio type="sfx" ref="screen-complete" src={`${MEDIA.EFFECT}NextAppear.mp3`} />,
+            <skoash.Audio ref="BKGtitle" type="background" src={`${CMWN.MEDIA.EFFECT}BKGtitle.mp3`} loop />,
+            <skoash.Audio ref="BKG1" type="background" src={`${CMWN.MEDIA.EFFECT}BKG1.mp3`} loop />,
+            <skoash.Audio ref="BKG2" type="background" src={`${CMWN.MEDIA.EFFECT}BKG2.mp3`} loop />,
+            <skoash.Audio ref="BKG3" type="background" src={`${CMWN.MEDIA.EFFECT}BKG3.mp3`} loop />,
+            <skoash.Audio ref="BKG4" type="background" src={`${CMWN.MEDIA.EFFECT}BKG4.mp3`} loop />,
+            <skoash.Audio ref="BKG5" type="background" src={`${CMWN.MEDIA.EFFECT}BKG5.mp3`} loop />,
+            <skoash.Audio ref="BKG6" type="background" src={`${CMWN.MEDIA.EFFECT}BKG6.mp3`} loop />,
             <div className="background title" />,
             <div className="background bkg1" />,
             <div className="background bkg2" />,
@@ -205,15 +216,6 @@ skoash.start(
             <div className="background transition" />,
             <div className="background quit" />,
         ]}
-        getBackgroundIndex={(index, id) => {
-            switch (id) {
-                case 'ios-splash': return;
-                case 'title':
-                case 'hi-there-info':
-                case 'flip':
-                    return;
-            }
-        }}
     />
 );
 

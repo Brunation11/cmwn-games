@@ -9,9 +9,13 @@
     $frame-left: 20%;
     $p-left: 67.5%;
     $p-width: 48%;
+    $char-trans-x: 1000px;
+    $frame-trans-x: 1500px;
 
     .character {
         @include position(absolute, $char-top $char-right null null);
+        transform: translateX($char-trans-x);
+        transition: transform .5s 1.5s;
         width: $char-width;
     }
 
@@ -20,6 +24,8 @@
         @include size(100% 85%);
         top: $frame-top;
         left: $frame-left;
+        transform: translateX(-$frame-trans-x) translateY(-50%);
+        transition: transform .5s 0s;
 
         &::before {
             @include cover;
@@ -37,12 +43,13 @@
     &.right {
         .character {
             @include position(absolute, $char-top auto null $char-right);
-            @include mirror;
+            @include mirror(translateX(-$char-trans-x));
         }
 
         .frame {
             top: 100% - $frame-top;
             left: 100% - $frame-left;
+            transform: translateX($frame-trans-x) translateY(-50%);
 
             &::before {
                 @include mirror;
@@ -58,5 +65,34 @@
         p {
             font-size: 28px;
         }
+    }
+
+    &.STARTED {
+        .character {
+            transform: none;
+        }
+
+        .frame {
+            transform: translateX(-50%) translateY(-50%);
+        }
+
+        &.right {
+            .character {
+                @include mirror;
+            }
+        }
+    }
+}
+
+#dynamic-diverter-one-info {
+    .character {
+        top: -5px;
+        right: 55px;
+        transform: scale3d(-1, 1, 1);
+        width: 180px;
+    }
+
+    .sprite {
+        @include position(absolute, 220px -80px null null);
     }
 }

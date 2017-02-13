@@ -42,6 +42,7 @@ export default function (props, ref, key, opts = {}) {
         let caught = _.get(props, 'data.catcher.caught', '');
         let revealOpen = _.get(props, 'data.reveal.open', false);
         let revealClose = _.get(props, 'data.reveal.close', false);
+        let play = _.get(props, 'data.play', null);
 
         let audioArray = opts.getAudioArray();
 
@@ -50,7 +51,7 @@ export default function (props, ref, key, opts = {}) {
         opts.next = _.get(props, 'data.manual-dropper.next', false);
         opts.itemRef = itemRef;
         opts.itemName = _.get(props, 'data.item.name', '');
-        opts.playAudio = _.upperFirst(_.camelCase(opts.itemName));
+        opts.itemNew = _.get(props, 'data.item.new', false);
         opts.itemClassName = _.get(props, 'data.item.className');
         opts.itemAmount = _.get(props, 'data.item.amount', 0);
         opts.pour = _.get(props, 'data.item.pour', false);
@@ -61,6 +62,18 @@ export default function (props, ref, key, opts = {}) {
         opts.truckClassName = _.get(props, 'data.truckClassName', '');
         opts.selectableMessage = _.get(props, 'data.selectable.message', '');
         opts.moveClaw = _.get(props, 'data.moveClaw', false);
+        opts.playAudio = (
+            play ? play :
+            drop && !opts.truckClassName ? 'drop' :
+            pickUp ? 'pickUp' :
+            opts.next ? 'next' :
+            opts.pour ? 'pour' :
+            opts.next ? 'correct' :
+            revealOpen === 'resort' ? 'resort' :
+            opts.itemNew ? _.upperFirst(_.camelCase(opts.itemName)) :
+            dropClass === 'TRAY-STACKING' && _.includes(opts.itemName, 'tray') ? 'tray' :
+            opts.itemName ? 'select' : null
+        );
 
         screenProps = opts.getScreenProps(opts);
         timerProps = opts.getTimerProps(opts);
@@ -79,6 +92,7 @@ export default function (props, ref, key, opts = {}) {
                 id={`${opts.gameName}-${opts.level}`}
                 complete={gameComplete}
                 checkComplete={!gameComplete}
+                backgroundAudio={`BKG${opts.gameNumber}`}
                 {...screenProps}
             >
                 <skoash.Component
@@ -200,6 +214,12 @@ export default function (props, ref, key, opts = {}) {
                     children={audioArray}
                     checkComplete={false}
                     complete={true}
+                    onPlay={function () {
+                        this.updateScreenData({
+                            key: 'play',
+                            data: null,
+                        });
+                    }}
                 />
             </skoash.Screen>
         );

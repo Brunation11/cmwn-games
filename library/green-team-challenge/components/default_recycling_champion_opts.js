@@ -10,6 +10,8 @@ const binNames = [
 let itemsToSort = _.filter(ItemsToSort, item => _.includes(binNames, item.bin));
 
 export default _.defaults({
+    gameName: 'recycling-champion',
+    gameNumber: 1,
     binNames,
     itemsToSort,
     extraComponents: [

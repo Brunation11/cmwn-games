@@ -13,5 +13,7 @@ export default function (props, ref, key) {
             </p>
         ),
         vo: 'ReadySetGo',
+        sfx: 'InfoFrameMove1',
+        backgroundAudio: 'BKG1'
     });
 }

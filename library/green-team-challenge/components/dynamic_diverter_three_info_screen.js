@@ -12,5 +12,7 @@ export default function (props, ref, key) {
             </p>
         ),
         vo: 'WayToSort',
+        sfx: 'InfoFrameMove1',
+        backgroundAudio: 'BKG4',
     });
 }

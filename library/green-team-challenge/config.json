@@ -1,6 +1,5 @@
 {
     "id": "green-team-challenge",
-    "media_folder": "green-team",
     "version": 1,
     "skoash": "1.1.3",
     "head_injection": "",

@@ -12,5 +12,7 @@ export default function (props, ref, key) {
             </p>
         ),
         vo: 'KickItupANotch',
+        sfx: 'InfoFrameMove1',
+        backgroundAudio: 'BKG2',
     });
 }

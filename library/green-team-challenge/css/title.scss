@@ -3,7 +3,7 @@
 
 #title {
     .next-screen {
-        @include nav-button(1);
+        @include nav-button(3);
     }
 
     $text-shadow: 2px 2px 0 $red-orange,
