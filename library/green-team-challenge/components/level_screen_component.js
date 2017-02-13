@@ -62,6 +62,9 @@ export default function (levelNumber) {
                         )
                     )}
                 />
+                <skoash.Image className="hidden" src={`${CMWN.MEDIA.IMAGE}purple.ribbon.png`} />
+                <skoash.Image className="hidden" src={`${CMWN.MEDIA.IMAGE}luggage.png`} />
+                <skoash.Image className="hidden" src={`${CMWN.MEDIA.SPRITE}flips.png`} />
                 <skoash.Repeater
                     className="stars"
                     amount={5}

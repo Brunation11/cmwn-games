@@ -8,7 +8,7 @@
     .manual-dropper {
         position: absolute;
         top: 100px;
-        left: 0;
+        left: 720px;
         transition: transform .5s;
         width: 100%;
         height: 200px;
@@ -34,17 +34,19 @@
                 width: 50px;
                 height: 50px;
 
-                $tops: 100  30   30;
+                $tops: 130  30   30;
                 $lefts: 75 200 1000;
+                $scales: 2   1    1;
                 @for $i from 1 through length($tops) {
                     &:nth-of-type(#{$i}) {
                         top: #{nth($tops, $i)}px;
                         left: #{nth($lefts, $i)}px;
+                        transform: scale(#{nth($scales, $i)});
                     }
                 }
 
                 &.DROPPED {
-                    transform: translateY(250px);
+                    transform: translateY(250px) scale(1);
                 }
             }
         }
