@@ -1,3 +1,29 @@
+const IMAGE_SRCS = [
+    `${CMWN.MEDIA.SPRITE}Mom.leaving.hole.png`,
+    `${CMWN.MEDIA.SPRITE}mom.going.to.hole.png?v=3`,
+    `${CMWN.MEDIA.SPRITE}Sister.leave.hole.png`,
+    `${CMWN.MEDIA.SPRITE}sister.down.hole.png?v=3`,
+    `${CMWN.MEDIA.SPRITE}brother.leave.hole.png`,
+    `${CMWN.MEDIA.SPRITE}brother.down.hole.png?v=3`,
+];
+
+const JSON_SRCS = [
+    `${CMWN.MEDIA.SPRITE}Mom.leaving.hole.json`,
+    `${CMWN.MEDIA.SPRITE}mom.going.to.hole.json`,
+    `${CMWN.MEDIA.SPRITE}Sister.leave.hole.json`,
+    `${CMWN.MEDIA.SPRITE}sister.down.hole.json`,
+    `${CMWN.MEDIA.SPRITE}brother.leave.hole.json`,
+    `${CMWN.MEDIA.SPRITE}brother.down.hole.json`,
+];
+
+const IMAGES = _.map(IMAGE_SRCS, src =>
+    <skoash.Image className="hidden" src={src} />
+);
+
+const JSONS = _.map(JSON_SRCS, src =>
+    <skoash.JSON src={src} />
+);
+
 export default function (props, ref, key) {
     return (
         <skoash.Screen
@@ -32,6 +58,10 @@ export default function (props, ref, key) {
             <div className="tree-1" />
             <div className="tree-2" />
             <div className="turtle" />
+            <div className="hidden">
+                {IMAGES}
+                {JSONS}
+            </div>
         </skoash.Screen>
     );
 }

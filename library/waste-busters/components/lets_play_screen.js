@@ -1,3 +1,22 @@
+const AUDIO_SRCS = [
+    `${CMWN.MEDIA.EFFECT}BumpOrLandOnBush.mp3`,
+    `${CMWN.MEDIA.EFFECT}BumpTreeStump.mp3`,
+    `${CMWN.MEDIA.EFFECT}DumpTruckZoom.mp3`,
+    `${CMWN.MEDIA.EFFECT}Fall_In_Hole.mp3`,
+    `${CMWN.MEDIA.EFFECT}goInLog.mp3`,
+    `${CMWN.MEDIA.EFFECT}Jump.mp3`,
+    `${CMWN.MEDIA.EFFECT}LandInWater.mp3`,
+    `${CMWN.MEDIA.EFFECT}LifeHeartCapture.mp3`,
+    `${CMWN.MEDIA.EFFECT}LightingCapture.mp3`,
+    `${CMWN.MEDIA.EFFECT}PickUpTrashBag.mp3`,
+    `${CMWN.MEDIA.EFFECT}RecycleColors.mp3`,
+    `${CMWN.MEDIA.EFFECT}RecycleGreen.mp3`,
+];
+
+const AUDIO = _.map(AUDIO_SRCS, src =>
+    <skoash.Audio type="sfx" src={src} />
+);
+
 export default function (props, ref, key) {
     return (
         <skoash.Screen
@@ -34,6 +53,9 @@ export default function (props, ref, key) {
             <div className="tree-1" />
             <div className="tree-2" />
             <div className="truck" />
+            <div className="hidden">
+                {AUDIO}
+            </div>
         </skoash.Screen>
     );
 }

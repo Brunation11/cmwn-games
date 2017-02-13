@@ -11,8 +11,6 @@ export default function () {
         top: -200,
     });
 
-    this.cursors = this.game.input.keyboard.createCursorKeys();
-
     this.helpers.makeBackground.call(this);
     this.helpers.makeGround.call(this);
     this.helpers.makeDoor.call(this);
