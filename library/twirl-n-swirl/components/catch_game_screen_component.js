@@ -20,6 +20,7 @@ export default function (props, ref, key, opts = {}) {
     var dropperGetClassNames;
     var dropperOnAddClassName;
     var dropperOnTransitionEnd;
+    var dropperOnStop;
     var catcherOnMove;
     var catcherOnCorrect;
     var catcherOnIncorrect;
@@ -33,7 +34,7 @@ export default function (props, ref, key, opts = {}) {
                         opts.bin[i].className,
                         opts.dropSpeed,
                         {
-                            PAUSED: _.get(props, 'data.game.start', false)
+                            PAUSED: _.get(props, 'gameState.paused', false)
                         }
                     )}
                     message={opts.bin[i].message}
@@ -46,7 +47,7 @@ export default function (props, ref, key, opts = {}) {
     }
 
     SFXOnPlay = function () {
-        this.updateGameState({
+        this.updateScreenData({
             path: 'sfx',
             data: {
                 play: null
@@ -55,7 +56,7 @@ export default function (props, ref, key, opts = {}) {
     };
 
     scoreOnComplete = function () {
-        this.updateGameState({
+        this.updateScreenData({
             path: 'sfx',
             data: {
                 countdown: null
@@ -64,7 +65,7 @@ export default function (props, ref, key, opts = {}) {
 
         if (_.get(props, 'data.reveal.open') === 'level-complete') return;
 
-        this.updateGameState({
+        this.updateScreenData({
             path: 'reveal',
             data: {
                 open: 'try-again'
@@ -73,14 +74,14 @@ export default function (props, ref, key, opts = {}) {
     };
 
     timerOnComplete = function () {
-        this.updateGameState({
+        this.updateScreenData({
             path: 'sfx',
             data: {
                 countdown: null
             }
         });
 
-        this.updateGameState({
+        this.updateScreenData({
             path: 'score',
             data: {
                 points: 0
@@ -89,7 +90,7 @@ export default function (props, ref, key, opts = {}) {
 
         if (_.get(props, 'data.reveal.open') === 'level-complete') return;
 
-        this.updateGameState({
+        this.updateScreenData({
             path: 'reveal',
             data: {
                 open: 'try-again'
@@ -100,7 +101,7 @@ export default function (props, ref, key, opts = {}) {
     timerOnCheckComplete = function () {
         if (_.get(props, 'data.sfx.countdown') === 'countdown') return;
         if (this.props.timeout - this.state.time <= 10000) {
-            this.updateGameState({
+            this.updateScreenData({
                 path: 'sfx',
                 data: {
                     countdown: 'countdown'
@@ -110,7 +111,7 @@ export default function (props, ref, key, opts = {}) {
     };
 
     revealPromptOnOpen = function () {
-        this.updateGameState({
+        this.updateScreenData({
             path: 'game',
             data: {
                 stop: true,
@@ -120,20 +121,20 @@ export default function (props, ref, key, opts = {}) {
     };
 
     revealPromptOnClose = function () {
-        this.updateGameState({
+        this.updateScreenData({
             path: 'game',
             data: {
                 stop: false,
                 start: true
             }
         });
-        this.updateGameState({
+        this.updateScreenData({
             path: 'sfx',
             data: {
                 play: 'button'
             }
         });
-        this.updateGameState({
+        this.updateScreenData({
             path: 'reveal',
             data: {
                 open: null
@@ -150,7 +151,7 @@ export default function (props, ref, key, opts = {}) {
 
     dropperOnAddClassName = function (className) {
         if (className === 'go') return;
-        this.updateGameState({
+        this.updateScreenData({
             path: 'sfx',
             data: {
                 play: 'drop'
@@ -164,7 +165,7 @@ export default function (props, ref, key, opts = {}) {
             props.gameState.paused ||
             !item.state.canCatch) return;
 
-        this.updateGameState({
+        this.updateScreenData({
             path: 'catcher',
             data: {
                 miss: true
@@ -172,7 +173,7 @@ export default function (props, ref, key, opts = {}) {
         });
 
         setTimeout(() => {
-            this.updateGameState({
+            this.updateScreenData({
                 path: 'catcher',
                 data: {
                     miss: false
@@ -180,19 +181,34 @@ export default function (props, ref, key, opts = {}) {
             });
         }, 1000);
 
-        this.updateGameState({
-            path: 'score',
-            data: {
-                points: _.get(props, 'data.score.points', 0) + opts.points.incorrect,
-            },
-        });
-        this.updateGameState({
-            path: 'sfx',
-            data: {
-                play: 'incorrect-miss',
-            }
-        });
+        if (item.props.message === 'trash') {
+            this.updateScreenData({
+                path: 'score',
+                data: {
+                    points: _.get(props, 'data.score.points', 0) + opts.points.incorrect,
+                },
+            });
+            this.updateScreenData({
+                path: 'sfx',
+                data: {
+                    play: 'incorrect-miss',
+                }
+            });
+        } else {
+            this.updateScreenData({
+                path: 'sfx',
+                data: {
+                    play: 'splash',
+                }
+            });
+        }
     };
+
+    dropperOnStop = function() {
+        this.setState({
+            items: {}
+        });
+    }
 
     catcherOnMove = function (e) {
         var rect;
@@ -223,22 +239,22 @@ export default function (props, ref, key, opts = {}) {
             bucketRef.removeClassName('correct');
         }, 1000);
 
-        this.updateGameState({
+        this.updateScreenData({
             path: 'score',
             data: {
                 points: _.get(props, 'data.score.points', 0) + opts.points.correct,
             },
         });
 
-        this.updateGameState({
+        this.updateScreenData({
             path: 'sfx',
             data: {
-                play: 'correct',
+                play: 'correct-catch',
             }
         });
 
         if (_.get(props, 'data.score.points') >= opts.points.goal) {
-            this.updateGameState({
+            this.updateScreenData({
                 path: 'game',
                 data: {
                     complete: true,
@@ -247,7 +263,7 @@ export default function (props, ref, key, opts = {}) {
                 }
             });
 
-            this.updateGameState({
+            this.updateScreenData({
                 path: 'reveal',
                 data: {
                     open: 'level-complete'
@@ -263,14 +279,14 @@ export default function (props, ref, key, opts = {}) {
         setTimeout(() => {
             bucketRef.removeClassName('incorrect');
         }, 1000);
-        this.updateGameState({
+        this.updateScreenData({
             path: 'score',
             data: {
                 points: _.get(props, 'data.score.points', 0) + opts.points.incorrect,
             },
         });
 
-        this.updateGameState({
+        this.updateScreenData({
             path: 'sfx',
             data: {
                 play: 'incorrect-catch',
@@ -350,11 +366,12 @@ export default function (props, ref, key, opts = {}) {
                 onPlay={SFXOnPlay}
             >
                 <skoash.Audio ref="button" type="sfx" src="media/audio/button.mp3" silentOnStart complete />
+                <skoash.Audio ref="splash" type="sfx" src="media/audio/DropSplash.mp3" complete />
                 <skoash.MediaSequence ref="incorrect-miss" silentOnStart>
                     <skoash.Audio ref="splash" type="sfx" src="media/audio/DropSplash.mp3" complete />
                     <skoash.Audio ref="miss" type="sfx" src="media/audio/LoosePoints.mp3" complete />
                 </skoash.MediaSequence>
-                <skoash.MediaSequence ref="correct" silentOnStart>
+                <skoash.MediaSequence ref="correct-catch" silentOnStart>
                     <skoash.Audio ref="catch" type="sfx" src="media/audio/basket.mp3" complete />
                     <skoash.Audio ref="earn" type="sfx" src="media/audio/GainPoints.mp3" complete />
                 </skoash.MediaSequence>
@@ -399,9 +416,10 @@ export default function (props, ref, key, opts = {}) {
             <Dropper
                 leftBound={70}
                 rightBound={820}
-                on={_.get(props, 'data.game.start', false)}
+                on={_.get(props, 'data.game.start', false) && !_.get(props, 'gameState.paused')}
                 start={_.get(props, 'data.game.start', false)}
                 stop={_.get(props, 'data.game.complete', false)}
+                onStop={dropperOnStop}
                 prepClasses={['ready', 'go']}
                 prepTimeout={opts.dropTimeout}
                 getClassNames={dropperGetClassNames}
