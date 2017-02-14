@@ -42,7 +42,7 @@ export default function (props, ref, key, opts = {}) {
     }
 
     SFXOnPlay = function () {
-        this.updateScreenData({
+        this.updateGameState({
             path: 'sfx',
             data: {
                 play: null
@@ -51,7 +51,7 @@ export default function (props, ref, key, opts = {}) {
     };
 
     scoreOnComplete = function () {
-        this.updateScreenData({
+        this.updateGameState({
             path: 'sfx',
             data: {
                 countdown: null
@@ -60,7 +60,7 @@ export default function (props, ref, key, opts = {}) {
 
         if (_.get(props, 'data.reveal.open') === 'level-complete') return;
 
-        this.updateScreenData({
+        this.updateGameState({
             path: 'reveal',
             data: {
                 open: 'try-again'
@@ -69,14 +69,14 @@ export default function (props, ref, key, opts = {}) {
     };
 
     timerOnComplete = function () {
-        this.updateScreenData({
+        this.updateGameState({
             path: 'sfx',
             data: {
                 countdown: null
             }
         });
 
-        this.updateScreenData({
+        this.updateGameState({
             path: 'score',
             data: {
                 points: 0
@@ -85,7 +85,7 @@ export default function (props, ref, key, opts = {}) {
 
         if (_.get(props, 'data.reveal.open') === 'level-complete') return;
 
-        this.updateScreenData({
+        this.updateGameState({
             path: 'reveal',
             data: {
                 open: 'try-again'
@@ -96,7 +96,7 @@ export default function (props, ref, key, opts = {}) {
     timerOnCheckComplete = function () {
         if (_.get(props, 'data.sfx.countdown') === 'countdown') return;
         if (this.props.timeout - this.state.time <= 10000) {
-            this.updateScreenData({
+            this.updateGameState({
                 path: 'sfx',
                 data: {
                     countdown: 'countdown'
@@ -106,7 +106,7 @@ export default function (props, ref, key, opts = {}) {
     };
 
     revealPromptOnOpen = function () {
-        this.updateScreenData({
+        this.updateGameState({
             path: 'game',
             data: {
                 stop: true,
@@ -116,20 +116,20 @@ export default function (props, ref, key, opts = {}) {
     };
 
     revealPromptOnClose = function () {
-        this.updateScreenData({
+        this.updateGameState({
             path: 'game',
             data: {
                 stop: false,
                 start: true
             }
         });
-        this.updateScreenData({
+        this.updateGameState({
             path: 'sfx',
             data: {
                 play: 'button'
             }
         });
-        this.updateScreenData({
+        this.updateGameState({
             path: 'reveal',
             data: {
                 open: null
@@ -146,7 +146,7 @@ export default function (props, ref, key, opts = {}) {
 
     dropperOnAddClassName = function (className) {
         if (className === 'go') return;
-        this.updateScreenData({
+        this.updateGameState({
             path: 'sfx',
             data: {
                 play: 'drop'
@@ -160,7 +160,7 @@ export default function (props, ref, key, opts = {}) {
             props.gameState.paused ||
             !item.state.canCatch) return;
 
-        this.updateScreenData({
+        this.updateGameState({
             path: 'catcher',
             data: {
                 miss: true
@@ -168,7 +168,7 @@ export default function (props, ref, key, opts = {}) {
         });
 
         setTimeout(() => {
-            this.updateScreenData({
+            this.updateGameState({
                 path: 'catcher',
                 data: {
                     miss: false
@@ -177,20 +177,20 @@ export default function (props, ref, key, opts = {}) {
         }, 1000);
 
         if (item.props.message === 'trash') {
-            this.updateScreenData({
+            this.updateGameState({
                 path: 'score',
                 data: {
                     points: _.get(props, 'data.score.points', 0) + opts.points.incorrect,
                 },
             });
-            this.updateScreenData({
+            this.updateGameState({
                 path: 'sfx',
                 data: {
                     play: 'incorrect-miss',
                 }
             });
         } else {
-            this.updateScreenData({
+            this.updateGameState({
                 path: 'sfx',
                 data: {
                     play: 'splash',
@@ -234,14 +234,14 @@ export default function (props, ref, key, opts = {}) {
             bucketRef.removeClassName('correct');
         }, 500);
 
-        this.updateScreenData({
+        this.updateGameState({
             path: 'score',
             data: {
                 points: _.get(props, 'data.score.points', 0) + opts.points.correct,
             },
         });
 
-        this.updateScreenData({
+        this.updateGameState({
             path: 'sfx',
             data: {
                 play: 'correct-catch',
@@ -249,7 +249,7 @@ export default function (props, ref, key, opts = {}) {
         });
 
         if (_.get(props, 'data.score.points') >= opts.points.goal) {
-            this.updateScreenData({
+            this.updateGameState({
                 path: 'game',
                 data: {
                     complete: true,
@@ -258,7 +258,7 @@ export default function (props, ref, key, opts = {}) {
                 }
             });
 
-            this.updateScreenData({
+            this.updateGameState({
                 path: 'reveal',
                 data: {
                     open: 'level-complete'
@@ -274,14 +274,14 @@ export default function (props, ref, key, opts = {}) {
         setTimeout(() => {
             bucketRef.removeClassName('incorrect');
         }, 1000);
-        this.updateScreenData({
+        this.updateGameState({
             path: 'score',
             data: {
                 points: _.get(props, 'data.score.points', 0) + opts.points.incorrect,
             },
         });
 
-        this.updateScreenData({
+        this.updateGameState({
             path: 'sfx',
             data: {
                 play: 'incorrect-catch',

@@ -86,7 +86,7 @@
                 left: 4%;
             }
 
-            &.center {
+            &.middle {
                 left: 33%;
             }
 
@@ -169,168 +169,166 @@
         }
     }
 
-    &.STARTED {
-        .items {
-            position: absolute;
-            top: 5%;
-            left: 0;
-            z-index: 1;
-            margin: 0;
-            padding: 0;
-            width: 100%;
-            height: 50%;
-            overflow: visible;
-            list-style: none;
-            pointer-events: none;
+    .items {
+        position: absolute;
+        top: 5%;
+        left: 0;
+        z-index: 1;
+        margin: 0;
+        padding: 0;
+        width: 100%;
+        height: 50%;
+        overflow: visible;
+        list-style: none;
+        pointer-events: none;
+    }
+
+    .catchable.go {
+        position: absolute;
+        top: 0;
+        transition: opacity .5s;
+        animation-name: catchable;
+        animation-timing-function: linear;
+        opacity: 1;
+        background: url('../media/S_6/sprite_6.2.png');
+        background-size: 275px 960px;
+        width: 15%;
+        height: 50%;
+
+        &.slow {
+            animation-duration: 5s;
         }
 
-        .catchable.go {
+        &.medium {
+            animation-duration: 4s;
+        }
+
+        &.fast {
+            animation-duration: 3s;
+        }
+
+        &.turtle {
+            background-image: url('../media/images/turtle.png');
+            background-repeat: no-repeat;
+            background-position: 0 15px;
+            background-size: contain;
+        }
+
+        &.frog {
+            background-image: url('../media/images/frog.png');
+            background-repeat: no-repeat;
+            background-position: 0 15px;
+            background-size: contain;
+        }
+
+        &.fish {
+            background-image: url('../media/images/sprite_fish.png');
+            background-position: 380px 15px;
+            background-size: 750px 282px;
+        }
+
+        &.plant {
+            background-image: url('../media/images/plants.png');
+            background-repeat: no-repeat;
+            background-position: -81px 0;
+            background-size: 750px 129px;
+        }
+
+        &.floss {
+            background-position: 156px 700px;
+        }
+
+        &.medicine {
+            background-position: 166px 554px;
+        }
+
+        &.diaper {
+            background-position: 27px 435px;
+        }
+
+        &.bandaid {
+            background-position: 17px 552px;
+        }
+
+        &.oil {
+            background-position: 42px 686px;
+        }
+
+        &.gum {
+            background-position: 156px 428px;
+        }
+
+        &.left {
+            left: 14%;
+        }
+
+        &.middle {
+            left: 43%;
+        }
+
+        &.right {
+            left: 71%;
+        }
+
+        &.correct::after {
             position: absolute;
             top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            text-align: right;
+            color: $white;
+            font-size: 50px;
+            font-weight: 600;
+            content: '+5';
+        }
+
+        &.incorrect::after {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            text-align: right;
+            color: $orange;
+            font-size: 50px;
+            font-weight: 600;
+            content: '-10';
+        }
+
+        &.trash:not(.CAUGHT)::after {
+            position: absolute;
+            top: 0;
+            left: 0;
             transition: opacity .5s;
-            animation-name: catchable;
-            animation-timing-function: linear;
-            opacity: 1;
-            background: url('../media/S_6/sprite_6.2.png');
-            background-size: 275px 960px;
-            width: 15%;
-            height: 50%;
+            animation-name: incorrectCatchable;
+            opacity: 0;
+            width: 100%;
+            height: 100%;
+            text-align: right;
+            color: $orange;
+            font-size: 50px;
+            font-weight: 600;
+            content: '-10';
+        }
 
-            &.slow {
-                animation-duration: 5s;
-            }
+        &.trash.slow:not(.CAUGHT)::after {
+            animation-duration: 5s;
+        }
 
-            &.medium {
-                animation-duration: 4s;
-            }
+        &.trash.medium:not(.CAUGHT)::after {
+            animation-duration: 4s;
+        }
 
-            &.fast {
-                animation-duration: 3s;
-            }
+        &.trash.fast:not(.CAUGHT)::after {
+            animation-duration: 3s;
+        }
 
-            &.turtle {
-                background-image: url('../media/images/turtle.png');
-                background-repeat: no-repeat;
-                background-position: 0 15px;
-                background-size: contain;
-            }
+        .PAUSED & {
+            animation-play-state: paused;
 
-            &.frog {
-                background-image: url('../media/images/frog.png');
-                background-repeat: no-repeat;
-                background-position: 0 15px;
-                background-size: contain;
-            }
-
-            &.fish {
-                background-image: url('../media/images/sprite_fish.png');
-                background-position: 380px 15px;
-                background-size: 750px 282px;
-            }
-
-            &.plant {
-                background-image: url('../media/images/plants.png');
-                background-repeat: no-repeat;
-                background-position: -81px 0;
-                background-size: 750px 129px;
-            }
-
-            &.floss {
-                background-position: 156px 700px;
-            }
-
-            &.medicine {
-                background-position: 166px 554px;
-            }
-
-            &.diaper {
-                background-position: 27px 435px;
-            }
-
-            &.bandaid {
-                background-position: 17px 552px;
-            }
-
-            &.oil {
-                background-position: 42px 686px;
-            }
-
-            &.gum {
-                background-position: 156px 428px;
-            }
-
-            &.left {
-                left: 14%;
-            }
-
-            &.center {
-                left: 43%;
-            }
-
-            &.right {
-                left: 71%;
-            }
-
-            &.correct::after {
-                position: absolute;
-                top: 0;
-                left: 0;
-                width: 100%;
-                height: 100%;
-                text-align: right;
-                color: $white;
-                font-size: 50px;
-                font-weight: 600;
-                content: '+5';
-            }
-
-            &.incorrect::after {
-                position: absolute;
-                top: 0;
-                left: 0;
-                width: 100%;
-                height: 100%;
-                text-align: right;
-                color: $orange;
-                font-size: 50px;
-                font-weight: 600;
-                content: '-10';
-            }
-
-            &.trash:not(.CAUGHT)::after {
-                position: absolute;
-                top: 0;
-                left: 0;
-                transition: opacity .5s;
-                animation-name: incorrectCatchable;
-                opacity: 0;
-                width: 100%;
-                height: 100%;
-                text-align: right;
-                color: $orange;
-                font-size: 50px;
-                font-weight: 600;
-                content: '-10';
-            }
-
-            &.trash.slow:not(.CAUGHT)::after {
-                animation-duration: 5s;
-            }
-
-            &.trash.medium:not(.CAUGHT)::after {
-                animation-duration: 4s;
-            }
-
-            &.trash.fast:not(.CAUGHT)::after {
-                animation-duration: 3s;
-            }
-
-            .PAUSED & {
+            &::after {
                 animation-play-state: paused;
-
-                &::after {
-                    animation-play-state: paused;
-                }
             }
         }
     }
