@@ -9,26 +9,57 @@ var webpackDevConfig = require('./webpack.config.dev.js');
 var webpackProdConfig = require('./webpack.config.prod.js');
 var fs = require('fs');
 var path = require('path');
-var nolivereload;
-var env;
-var debug;
-var local;
 var sourcemaps = require('gulp-sourcemaps');
 var postcss = require('gulp-postcss');
 var autoprefixer = require('autoprefixer');
 var sass = require('gulp-sass');
+var bourbon = require('node-bourbon');
 var header = require('gulp-header');
 var concat = require('gulp-concat');
 var livereload = require('gulp-livereload');
 var inject = require('gulp-inject');
 var exec = require('child_process').exec;
-var buildTask;
 var eslint = require('gulp-eslint');
 var eslintConfigJs = JSON.parse(fs.readFileSync('./.eslintrc'));
 var eslintConfigConfig = JSON.parse(fs.readFileSync('./.eslintrc_config'));
 var scsslint = require('gulp-scss-lint');
 var stylish = require('gulp-scss-lint-stylish2');
-var game;
+
+var getEnv = function (environment) {
+    switch (environment) {
+        case 'dev':
+        case 'development':
+            return 'dev';
+        case 'stage':
+        case 'staging':
+            return 'staging';
+        default:
+            return 'prod';
+    }
+};
+
+// In order for livereload to work, you should run gulp on the host machine
+// unless you have native docker installed.
+var game = argv.game || argv.g;
+var nolivereload = argv.nolr;
+var env = getEnv(argv.environment || argv.env || 'prod');
+var debug = argv.debug;
+// the flag --local should be passed only when working on localhost
+var local = argv.local || argv.l;
+var now = Date.now();
+
+// Production build
+var buildTask = [
+    'sass',
+    'webpack:build',
+    'copy-index',
+    'copy-framework',
+    'copy-media',
+    'clean'
+];
+gulp.task('default', buildTask);
+gulp.task('build', buildTask);
+gulp.task('b', buildTask);
 
 function defineEntries(config) {
     // modify some webpack config options
@@ -51,37 +82,17 @@ function defineEntries(config) {
         varsPath,
         mediaPath,
         './' + game + '/index.js',
-        'webpack/hot/dev-server',
-        'webpack-dev-server/client?http://localhost:8080/',
     ];
+
+    if (env === 'dev' && local) {
+        config.entry.push('webpack/hot/dev-server');
+        config.entry.push('webpack-dev-server/client?http://localhost:8080/');
+    }
 
     return config;
 }
 
-game = argv.game || argv.g;
-
-// In order for livereload to work, you should run gulp on the host machine
-// unless you have native docker installed.
-nolivereload = argv.nolr;
-env = argv.environment || argv.env || 'prod';
-debug = argv.debug;
-local = argv.local || argv.l;
-
-// Production build
-buildTask = [
-    'sass',
-    'webpack:build',
-    'copy-index',
-    'copy-framework',
-    'copy-media',
-    'copy-components',
-    'clean'
-];
-gulp.task('default', buildTask);
-gulp.task('build', buildTask);
-gulp.task('b', buildTask);
-
-gulp.task('webpack:build', function (callback) {
+function webpackBuild(callback, isWatch) {
     var webpackConfig;
     var name;
     var config;
@@ -101,7 +112,7 @@ gulp.task('webpack:build', function (callback) {
         callback();
     });
 
-    if (env === 'dev') {
+    if (isWatch && env === 'dev' && local) {
         server = new WebpackDevServer(compiler, {
             contentBase: 'build',
             hot: true,
@@ -113,7 +124,8 @@ gulp.task('webpack:build', function (callback) {
         });
         server.listen(8080, 'localhost', function () {});
     }
-});
+}
+gulp.task('webpack:build', webpackBuild);
 
 gulp.task('sass', function () {
     var varsPath = './library/shared/css/' + env + '-variables.scss';
@@ -129,7 +141,9 @@ gulp.task('sass', function () {
         './library/' + game + '/**/*.css'
     ])
     .pipe(header(fs.readFileSync(varsPath, 'utf8')))
-    .pipe(sass().on('error', sass.logError))
+    .pipe(sass({
+        includePaths: bourbon.includePaths,
+    }).on('error', sass.logError))
     .pipe(concat('style.css'))
     .pipe(sourcemaps.init())
     .pipe(postcss([autoprefixer({ browsers: ['last 5 versions'] })]))
@@ -143,7 +157,9 @@ gulp.task('sass', function () {
         './library/shared/css/**/*.css'
     ])
     .pipe(header(fs.readFileSync(varsPath, 'utf8')))
-    .pipe(sass().on('error', sass.logError))
+    .pipe(sass({
+        includePaths: bourbon.includePaths,
+    }).on('error', sass.logError))
     .pipe(concat('style.css'))
     .pipe(postcss([autoprefixer({ browsers: ['last 5 versions'] })]))
     .pipe(gulp.dest('./build/shared/css'))
@@ -178,8 +194,11 @@ gulp.task('copy-index', function () {
                 starttag: '<!-- inject:head -->',
                 transform: function (filePath, file) {
                     var config = JSON.parse(file.contents.toString('utf8'));
-                    var title = config.title || _.startCase(config.id);
-                    return `<title>${title}</title>`;
+                    var injection = `<title>${config.title || _.startCase(config.id)}</title>\n    ` +
+                        `<link rel="stylesheet" type="text/css" href="../shared/css/style.css?d=${now}">\n` +
+                        `    <link rel="stylesheet" type="text/css" href="css/style.css?d=${now}">`;
+                    injection += config.head_injection || '';
+                    return injection;
                 }
             }))
             .pipe(inject(gulp.src('./library/shared/js/test-platform-integration.js'), {
@@ -195,23 +214,21 @@ gulp.task('copy-index', function () {
                 starttag: '<!-- inject:body -->',
                 transform: function (filePath, file) {
                     var config = JSON.parse(file.contents.toString('utf8'));
-                    var folder = config.media_folder ||
-                        _.upperFirst(_.camelCase(config.title)) ||
-                        _.upperFirst(_.camelCase(config.id))
-                        ;
-
+                    var folder = config.media_folder || config.id;
                     var min = debug ? '' : '.min';
+
                     return (
-                        `<div id="${config.id}"></div>\n  ` +
+                        `<div id="${config.id}"></div>\n    ` +
                         '<script type="text/javascript" ' +
                         `src="https://cdnjs.cloudflare.com/ajax/libs/react/15.0.2/react${min}.js">` +
-                        '</script>\n  ' +
+                        '</script>\n    ' +
                         '<script type="text/javascript" ' +
                         `src="https://cdnjs.cloudflare.com/ajax/libs/react/15.0.2/react-dom${min}.js">` +
-                        '</script>\n  ' +
+                        '</script>\n    ' +
                         '<script type="text/javascript" ' +
-                        `src="../framework/skoash.${config.skoash}.js"></script>\n  ` +
-                        `<script>window.gameFolder="${folder}"</script>`
+                        `src="../framework/skoash.${config.skoash}.js"></script>\n    ` +
+                        `<script>window.CMWN={gameFolder:"${folder}"};</script>\n    ` +
+                        `<script type="text/javascript" src="./ai.js?d=${now}"></script>`
                     );
                 }
             }))
@@ -226,20 +243,16 @@ gulp.task('copy-index', function () {
             .pipe(inject(gulp.src('./library/shared/js/google-analytics.js'), {
                 starttag: '<!-- inject:ga -->',
                 transform: function (filePath, file) {
-                    return '<script>\n    ' + file.contents.toString('utf8') + '  \n</script>';
+                    return '<script>\n    ' + file.contents.toString('utf8') + '\n    </script>';
                 }
             }))
             .pipe(gulp.dest('./build/' + game));
         }
     });
-
-    // This is only needed for LL games and can be removed once we no longer need to build any LL games.
-    gulp
-    .src(path.join('./library', game, 'source/screens/*'))
-    .pipe(gulp.dest('./build/' + game + '/screens'));
 });
 
 gulp.task('copy-framework', function () {
+    // This can be removed once the framework is being deployed separately from games
     gulp
     .src(['./library/framework/*'])
     .pipe(gulp.dest('./build/framework'));
@@ -255,33 +268,13 @@ gulp.task('copy-media', function () {
     gulp
     .src(path.join( './library', game, 'media/**/*' ))
     .pipe( gulp.dest(path.join( './build', game, 'media' )) );
-
-    // This can be removed once fonts for every game are transferred to the media server.
-    gulp
-    .src(['./library/shared/fonts/*'])
-    .pipe(gulp.dest('./build/shared/fonts'));
-
-    // This can be removed once shared images games are transferred to the media server.
-    gulp
-    .src(['./library/shared/images/*'])
-    .pipe(gulp.dest('./build/shared/images'));
-});
-
-gulp.task('copy-components', function () {
-    if (typeof game !== 'string') {
-        gutil.log('Your game argument must be a string');
-        process.exit(1); // eslint-disable-line no-undef
-    }
-
-    // This is only needed for LL games and can be removed once we no longer need to build any LL games.
-    gulp
-    .src(path.join( './library', game, 'source/js/components/**/*.html' ))
-    .pipe( gulp.dest(path.join( './build', game, 'components' )) );
 });
 
 // To specify what game you'd like to watch call gulp watch --game game-name
 // Replace game-name with the name of the game
 function watchTask() {
+    var isWatch;
+
     if (typeof game !== 'string') {
         gutil.log('Your game argument must be a string');
         process.exit(1); // eslint-disable-line no-undef
@@ -312,6 +305,14 @@ function watchTask() {
     });
 
     watch([
+        'library/' + game + '/*.js',
+        'library/' + game + '/**/*.js',
+        'library/shared/**/*.js',
+    ], function () {
+        gulp.start('webpack:build');
+    });
+
+    watch([
         'library/' + game + '/**/*.html',
         'library/' + game + '/config.json',
         'library/shared/**/*',
@@ -323,7 +324,8 @@ function watchTask() {
         gulp.start('build');
     });
 
-    gulp.start('build');
+    isWatch = gulp.start('build');
+    webpackBuild(_.noop, isWatch);
 }
 gulp.task('watch', watchTask);
 gulp.task('w', watchTask);
