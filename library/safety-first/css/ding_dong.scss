@@ -1,0 +1,45 @@
+@import 'variables';
+@import 'mixins';
+
+#ding-dong {
+    .frame {
+        position: absolute;
+        background: url('#{$image}frame.quit.png');
+        background-size: 100% 100%;
+        width: 90%;
+        height: 80%;
+
+        &::after {
+            position: absolute;
+            top: 10%;
+            right: 3%;
+            background: url('#{$sprite}sprites.h1.png');
+            background-position: -10px 0;
+            background-size: auto 100%;
+            width: 70%;
+            height: 55%;
+            content: '';
+        }
+
+        span {
+            position: absolute;
+            top: 65%;
+            right: 13%;
+            font-size: 35px;
+        }
+    }
+
+    img {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        animation-name: tada;
+        width: 100%;
+    }
+}
+
+.skoash-game:not(.DEMO).SCREEN-ding-dong #ding-dong:not(.COMPLETE) {
+    .next-screen {
+        display: none;
+    }
+}

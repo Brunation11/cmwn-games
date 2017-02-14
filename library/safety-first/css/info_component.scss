@@ -1,0 +1,59 @@
+@import 'variables';
+@import 'mixins';
+
+[id*='info'] {
+    .frame {
+        @include center;
+        position: absolute;
+        background: url('#{$image}frame.quit.png');
+        background-size: 100% 100%;
+        width: 90%;
+        height: 80%;
+
+        &::after {
+            position: absolute;
+            top: 10%;
+            right: 3%;
+            width: 70%;
+            height: 55%;
+            content: '';
+        }
+
+        span {
+            position: absolute;
+            top: 65%;
+            right: 13%;
+            font-size: 35px;
+        }
+    }
+
+    img {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 35%;
+    }
+}
+
+#info-lets-see {
+    .frame::after {
+        background: url('#{$sprite}sprites.h1.png');
+        background-position: -10px 0;
+        background-size: auto 100%;
+    }
+}
+
+#info-good-job {
+    .frame {
+        &::after {
+            background: url('#{$image}goodjob.png');
+            background-position: -10px 0;
+            background-size: auto 100%;
+            height: 39%;
+        }
+
+        span {
+            top: 48%;
+        }
+    }
+}

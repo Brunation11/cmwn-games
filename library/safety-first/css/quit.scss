@@ -1,0 +1,64 @@
+@import 'variables';
+@import 'mixins';
+
+#quit {
+    .frame {
+        @include center;
+        position: absolute;
+        background: url('#{$image}frame.quit.png');
+        background-size: 100% 100%;
+        width: 80%;
+        height: 80%;
+
+        &::after {
+            position: absolute;
+            bottom: -13%;
+            left: -13%;
+            background: url('#{$image}dog.quit.png');
+            background-size: 100%;
+            width: 38%;
+            height: 75%;
+            content: '';
+        }
+
+        h2 {
+            position: absolute;
+            top: 0%;
+            left: 27%;
+            text-align: center;
+            font-size: 70px;
+        }
+
+        h3 {
+            display: none;
+        }
+
+        button.quit-yes {
+            position: absolute;
+            top: 58%;
+            left: 35%;
+            background-position: -721px 5px;
+            background-size: auto 200%;
+            width: 24%;
+            height: 29%;
+
+            &:hover {
+                background-position: -721px -122px;
+            }
+        }
+
+        button.quit-no {
+            position: absolute;
+            top: 58%;
+            left: 62%;
+            background-position: -905px 5px;
+            background-size: auto 200%;
+            width: 24%;
+            height: 29%;
+
+            &:hover {
+                background-position: -905px -122px;
+            }
+        }
+    }
+}

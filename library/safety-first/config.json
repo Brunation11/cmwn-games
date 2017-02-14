@@ -1,0 +1,10 @@
+{
+    "id": "safety-first",
+    "media_folder": "SafetyFirst",
+    "version": 1,
+    "skoash": "1.1.1",
+    "dimensions": {
+        "width": 960,
+        "height": 540
+    }
+}

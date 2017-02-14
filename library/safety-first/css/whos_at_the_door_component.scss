@@ -1,0 +1,244 @@
+@import 'variables';
+@import 'mixins';
+
+[id*='whos-at-the-door'] {
+    .frame {
+        position: absolute;
+        top: 50%;
+        left: 2%;
+        transform: translateY(-55%);
+        background: url('#{$sprite}sprites.dogsinframes.png');
+        background-size: auto 100%;
+        width: 47%;
+        height: 82%;
+
+        $people:
+            grandpa
+            delivery-person
+            sister
+            new-neighbor
+            mother
+            brother
+            gas-man
+            close-friend
+            person-with-flat
+            cable-person
+            close-relative;
+
+        $lefts: -27 -4107 -534 -2069 -1049 -1558 -3082 -2576 -3595 -4616 -5127;
+
+        @for $i from 1 through 11 {
+            &.#{nth($people, $i)} {
+                background-position: #{nth($lefts, $i)}px 0;
+            }
+        }
+
+        > span {
+            position: absolute;
+            bottom: -6%;
+            left: 50%;
+            transform: translateX(-50%);
+            transition: opacity 1s;
+            opacity: 0;
+            width: 100%;
+            line-height: 65px;
+            color: $color-yellow;
+            font-size: 40px;
+            font-weight: 900;
+            font-style: italic;
+
+            &.label {
+                opacity: 1;
+            }
+        }
+    }
+
+    .banner {
+        position: absolute;
+        top: 5%;
+        right: 4%;
+        background: url('#{$sprite}sprites.h1.png');
+        background-position: -632px 0;
+        background-size: auto 100%;
+        width: 46%;
+        height: 41%;
+
+        &::after {
+            position: absolute;
+            bottom: -56%;
+            left: 0;
+            background: url('#{$sprite}sprites.h1.png');
+            background-position: -1254px 0;
+            background-size: auto 100%;
+            width: 100%;
+            height: 102%;
+            content: '';
+        }
+    }
+
+    .yes-btn,
+    .no-btn {
+        position: absolute;
+        top: 54%;
+        background: url('#{$sprite}sprites.mainnav.png');
+        background-size: auto 200%;
+        width: 25%;
+        height: 31%;
+
+        .VOICE-OVER & {
+            pointer-events: none;
+        }
+    }
+
+    .yes-btn {
+        left: 49%;
+        background-position: -965px 4px;
+
+        &:hover {
+            background-position: -965px -165px;
+        }
+    }
+
+    .no-btn {
+        left: 74%;
+        background-position: -1212px 4px;
+
+        &:hover {
+            background-position: -1212px -165px;
+        }
+    }
+
+    *:not(.OPEN.reveal) {
+        display: none;
+    }
+
+    .reveal {
+        position: absolute;
+        top: 0;
+        left: 0;
+        background: url('#{$image}bkg.dooropened.jpg');
+        background-size: 100%;
+        width: 100%;
+        height: 100%;
+
+        ul {
+            position: absolute;
+            margin: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        li {
+            opacity: 0;
+        }
+
+        &.open-none {
+            display: none;
+        }
+
+        &.OPEN {
+            .OPEN {
+                opacity: 1;
+            }
+        }
+
+        $yes:
+            sister
+            mother
+            brother
+            close-friend
+            close-relative;
+
+        $no:
+            delivery-person
+            new-neighbor
+            gas-man
+            person-with-flat
+            cable-person;
+
+        $yes-positions: -419 -811 -1203 -1984 -3941;
+        $no-positions: -3162 1595 -2373 -2767 -3552;
+
+        @for $i from 1 through length($yes) {
+            &.open-#{nth($yes, $i)} .frame {
+                background-position: #{nth($yes-positions, $i)}px 0;
+            }
+
+            &.open-#{nth($no, $i)} {
+                .frame {
+                    background-position: #{nth($no-positions, $i)}px 0;
+                }
+
+                .prompt::before {
+                    background-position: 101% 0;
+                }
+            }
+        }
+
+        .frame {
+            top: 0%;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 35%;
+            height: 63%;
+
+            span {
+                top: 50%;
+                left: 100%;
+                transform: translateY(-25%);
+                width: 90%;
+                text-shadow: -5px 5px 2px $color-black;
+                font-size: 50px;
+            }
+        }
+
+        .prompt {
+            position: absolute;
+            bottom: 4%;
+            left: 50%;
+            transform: translateX(-50%);
+            background: url('#{$image}frame.roundedrec.png');
+            background-repeat: no-repeat;
+            background-size: 100%;
+            width: 80%;
+            height: 35%;
+
+            &::before {
+                position: absolute;
+                top: 50%;
+                left: 5%;
+                transform: translateY(-50%);
+                background: url('#{$sprite}sprites.yesno.png');
+                background-repeat: no-repeat;
+                background-size: 200%;
+                width: 33%;
+                height: 60%;
+                content: '';
+            }
+        }
+
+        .copy {
+            position: absolute;
+            top: 50%;
+            left: 40%;
+            transform: translateY(-50%);
+            width: 50%;
+            font-size: 26px;
+        }
+
+        img {
+            position: absolute;
+            right: 0;
+            bottom: 0;
+            width: 17%;
+        }
+
+        .barklines {
+            position: absolute;
+            right: 18%;
+            bottom: 32%;
+            width: 10%;
+            height: 10%;
+        }
+    }
+}

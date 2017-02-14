@@ -1,0 +1,283 @@
+@import 'variables';
+@import 'mixins';
+
+* {
+    box-sizing: border-box;
+}
+
+html,
+body {
+    margin: 0;
+    cursor: default;
+    padding: 0;
+    height: 100%;
+    overflow: hidden;
+    user-drag: none;
+    user-select: none;
+}
+
+html {
+    font-family: "Molot", "Source Sans Pro", "Helvetica Neue", Helvetica, sans-serif;
+}
+
+body,
+body > div,
+.skoash-game {
+    position: relative;
+    margin: auto;
+    background: url('#{$image}bkg.3.jpg') bottom center no-repeat;
+    background-size: cover;
+    width: 100%;
+    height: 100%;
+    font-size: 20px;
+
+
+    .background {
+        position: absolute;
+        top: 0;
+        left: 0;
+        transition: opacity .5s;
+        opacity: 0;
+        background-position: center center;
+        background-size: cover;
+        width: 100%;
+        height: 100%;
+    }
+
+    &[class*='SCREEN-info-'] .background.doorclosed,
+    &.SCREEN-ding-dong .background.doorclosed,
+    &[class*='SCREEN-whos-at-the-door-'] .background.doorclosed,
+    &.SCREEN-flip .background.bkg2,
+    &.MENU-quit .background.bkg2 {
+        opacity: 1;
+    }
+
+    &.MENU-quit .background.bkg2 {
+        transform: scaleX(-1);
+    }
+
+    &.SCREEN-meet-the-team,
+    &[class*='SCREEN-labyrinth-'],
+    &.SCREEN-flip,
+    &.SCREEN-quit {
+        .logo {
+            opacity: 1;
+        }
+    }
+}
+
+.skoash-game {
+    width: 960px;
+    height: 540px;
+}
+
+// preload assets
+#asset-bin {
+    display: none;
+}
+
+img {
+    &.hidden {
+        display: none;
+    }
+}
+
+button,
+.logo {
+    margin: 0;
+    outline: none;
+    border: 0;
+    background-color: transparent;
+    background-image: url('#{$sprite}sprites.mainnav.png');
+    background-repeat: no-repeat;
+    background-position: left top;
+    background-size: 1400px;
+    cursor: pointer;
+    padding: 0;
+    color: transparent;
+    font-family: inherit;
+    font-size: inherit;
+
+
+    &.close {
+        position: absolute;
+        top: 1%;
+        right: 1%;
+        z-index: 2;
+        background-position: -276px -44px;
+        width: 50px;
+        height: 50px;
+
+        &:hover {
+            background-position: -276px -185px;
+        }
+    }
+
+    &.next-screen,
+    &.prev-screen {
+        display: block;
+        position: absolute;
+        bottom: 2%;
+        z-index: 2;
+        width: 80px;
+        height: 50px;
+    }
+
+    &.next-screen {
+        right: 1%;
+        opacity: 0;
+        background-position: -665px -43px;
+        pointer-events: none;
+
+        &:hover {
+            background-position: -667px -187px;
+        }
+    }
+
+    &.prev-screen {
+        left: 1%;
+        background-position: -459px -43px;
+
+        &:hover {
+            background-position: -461px -186px;
+        }
+    }
+
+    &.quit-yes {
+        background-position: 0 0;
+        background-size: 300px;
+        width: 150px;
+        height: 60px;
+
+        &:hover {
+            background-position: 0 -66px;
+        }
+    }
+
+    &.quit-no {
+        background-position: -150px 0;
+        background-size: 300px;
+        width: 150px;
+        height: 60px;
+
+        &:hover {
+            background-position: -150px -66px;
+        }
+    }
+
+    &.close-reveal {
+        background-position: -660px 240px;
+        width: 30px;
+        height: 30px;
+
+        &:hover {
+            background-position: -660px 390px;
+        }
+    }
+}
+
+.logo {
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 0;
+    z-index: 2;
+    background-position: -1429px -25px;
+    background-size: auto 300%;
+    width: 20%;
+    height: 20%;
+}
+
+h2 {
+    font-size: 50px;
+}
+
+h3 {
+    margin: 0;
+    font-size: 36px;
+}
+
+p {
+    margin: 0;
+    font-size: 36px;
+}
+
+.screen {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    transition: opacity .5s, z-index 0 .5s;
+    opacity: 0;
+    z-index: -1;
+
+    .screen-content {
+        display: none;
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        transition: opacity .5s;
+        opacity: 0;
+        text-align: center;
+
+        .VOICE-OVER:not(.DEMO) & {
+            pointer-events: none;
+        }
+    }
+
+    &.OPEN {
+        transition: opacity .5s, z-index 0;
+        opacity: 1;
+        z-index: 1;
+    }
+
+    &.READY {
+        .screen-content {
+            display: block;
+            opacity: 1;
+        }
+    }
+
+    &.LEAVE {
+        opacity: 0;
+    }
+}
+
+.skoash-game.SFX:not(.DEMO) .close-reveal,
+.skoash-game.VOICE-OVER:not(.DEMO) .close-reveal,
+.screen.GATED .next-screen {
+    display: none;
+    transition: opacity 0s display 0s;
+    opacity: 0;
+    cursor: default;
+}
+
+.skoash-game.VOICE-OVER:not(.DEMO) .reveal .close-reveal,
+.reveal.open-none .close-reveal {
+    display: none;
+}
+
+.skoash-game.MENU-quit .screen {
+    &:not(#quit) {
+        opacity: 0;
+        pointer-events: none;
+    }
+}
+
+.skoash-game.DEMO .screen .next-screen,
+.screen.COMPLETE .next-screen,
+.screen.REPLAY .next-screen {
+    transform: rotate(0deg);
+    transition: opacity 1s, transform 1s;
+    opacity: 1;
+    cursor: pointer;
+    pointer-events: auto;
+}
+
+.screen .prev-screen {
+    left: 0;
+    margin-left: 5px;
+}
