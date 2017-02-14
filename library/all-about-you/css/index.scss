@@ -296,6 +296,10 @@ ul {
     }
 }
 
+.VOICE-OVER:not(.DEMO) * {
+    pointer-events: none;
+}
+
 .video {
     background: url('../media/_Frames/FR_2.png') center center no-repeat;
     background-size: 100% 100%;
