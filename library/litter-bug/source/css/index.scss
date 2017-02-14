@@ -98,13 +98,13 @@ body > div > div {
 
     .background.default,
     &.SCREEN-title .background.title,
+    &.SCREEN-lets-clean-up .background.lets-clean-up,
     &[class *=SCREEN-catch-game] .background.catch-game,
     &[class *=SCREEN-clean-up-game] .background.clean-up-game,
     &.SCREEN-commit .background.commit {
         transition: opacity .25s;
         opacity: 1;
     }
-
 
     &.MENU-quit {
         .screen:not(#quit) {
