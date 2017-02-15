@@ -22,39 +22,39 @@ let names = [
 
 let becomes = [
     {
-        name: 'empty-plastic-water-bottle-1',
+        name: 'empty-plastic-bottle-1',
         bin: 'recycle',
     },
     {
-        name: 'empty-plastic-water-bottle-2',
+        name: 'empty-plastic-bottle-2',
         bin: 'recycle',
     },
     {
-        name: 'empty-plastic-water-bottle-3',
+        name: 'empty-plastic-bottle-3',
         bin: 'recycle',
     },
     {
-        name: 'empty-plastic-water-bottle-4',
+        name: 'empty-plastic-bottle-4',
         bin: 'recycle',
     },
     {
-        name: 'empty-chocolate-milk-carton',
+        name: 'empty-milk-carton',
         bin: 'recycle',
     },
     {
-        name: 'empty-chocolate-milk',
+        name: 'empty-milk-carton',
         bin: 'recycle',
     },
     {
-        name: 'empty-energy-drink-bottle',
+        name: 'empty-aluminum-can-1',
         bin: 'recycle',
     },
     {
-        name: 'empty-lemonade-box-1',
+        name: 'juice-box-1',
         bin: 'landfill',
     },
     {
-        name: 'empty-lemonade-box-4',
+        name: 'juice-box-2',
         bin: 'landfill',
     },
     {
@@ -90,7 +90,7 @@ let becomes = [
         bin: 'recycle',
     },
     {
-        name: 'empty-orange-juice-2',
+        name: 'empty-plastic-bottle-2',
         bin: 'recycle',
     },
 ];
