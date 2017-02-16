@@ -65,7 +65,7 @@ export default function (props, ref, key, opts = {}) {
         opts.playAudio = (
             play ? play :
             revealOpen === 'resort' ? 'resort' :
-            _.upperFirst(_.camelCase(itemName)) : null
+            _.kebabCase(itemName) : null
         );
 
         screenProps = opts.getScreenProps(opts);
