@@ -13,7 +13,7 @@ let names = [
     'packaged-vegetables',
     'sealed-applesauce',
     'sealed-bag-of-carrots',
-    'sealed-bag-of-popcorn',
+    'sealed-popcorn',
     'sealed-chocolate-milk',
     'sealed-fruit-drink-1',
     'sealed-fruit-drink-2',

@@ -1,13 +1,13 @@
 let bin = 'liquids';
 let names = [
+    'half-full-energy-drink-bottle',
     'full-plastic-water-bottle-1',
     'full-plastic-water-bottle-2',
     'full-plastic-water-bottle-3',
     'full-plastic-water-bottle-4',
-    'half-full-energy-drink-bottle',
-    'half-full-chocolate-milk-carton',
-    'half-full-lemonade-box',
+    'half-full-lemonade-box-1',
     'half-full-lemonade-box-4',
+    'half-full-chocolate-milk-carton',
     'half-full-milk-carton-1',
     'half-full-milk-carton-2',
     'half-full-milk-carton-3',
@@ -16,7 +16,7 @@ let names = [
     'half-full-milk-carton-6',
     'half-full-milk-carton-7',
     'half-full-milk-carton-8',
-    'half-full-orange-juice',
+    'half-full-orange-juice-2',
 ];
 
 let becomes = [

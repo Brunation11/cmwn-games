@@ -8,7 +8,7 @@ let names = [
     'empty-aluminum-can-2',
     'empty-aluminum-can-3',
     'empty-aluminum-can-4',
-    'empty-box-of-crackers',
+    'empty-box-of-crackers-3',
     'empty-chocolate-milk-carton-4',
     'empty-cookie-box-1',
     'empty-cookie-box-2',
