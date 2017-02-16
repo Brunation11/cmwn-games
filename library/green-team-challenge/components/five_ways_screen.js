@@ -2,8 +2,8 @@ import InfoScreenComponent from './info_screen_component';
 
 import itemsCompost from './items_compost';
 
-var audioRefs = _.uniq(_.map(itemsCompost, v =>
-    _.upperFirst(_.camelCase(_.replace(v.name, /\d+/g, ''))))
+let audioRefs = _.uniq(_.map(itemsCompost, v =>
+    _.kebabCase(_.replace(v.name, /\d+/g, '')))
 );
 
 var arrayOfAudio = _.map(audioRefs, (v, k) =>

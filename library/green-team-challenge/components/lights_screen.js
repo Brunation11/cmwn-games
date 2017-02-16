@@ -87,7 +87,7 @@ let imageSrcs = [
 ];
 
 let audioRefs = _.uniq(_.map(itemLandfill, v =>
-    _.upperFirst(_.camelCase(_.replace(v.name, /\d+/g, ''))))
+    _.kebabCase(_.replace(v.name, /\d+/g, '')))
 );
 
 let arrayOfAudio = _.map(audioRefs, (v, k) =>
