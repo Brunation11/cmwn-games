@@ -73,7 +73,7 @@ skoash.start(
         screens={[
             iOSScreen,
             TitleScreen,
-            HiThereScreen,
+            /*HiThereScreen,
             KeyIsSortingScreen,
             LightsScreen,
             FiveWaysScreen,
@@ -148,7 +148,7 @@ skoash.start(
             WantToStackScreen,
             VideoScreen,
             LevelScreen(5.0),
-            MasterSorter1InfoScreen,
+            MasterSorter1InfoScreen,*/
             MasterSorter1Screen,
             LevelScreen(5.1),
             MasterSorter2InfoScreen,
