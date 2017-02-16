@@ -16,6 +16,10 @@ let onSelect = function (key) {
     });
 };
 
+let onBootstrap = function () {
+    this.invokeChildrenFunction('markCatchable');
+};
+
 let getChildren = v => {
     if (v.children) return v.children;
 
@@ -408,6 +412,7 @@ export default _.map(trayData, data => {
                 children: [
                     <skoash.Selectable
                         onSelect={onSelect}
+                        onBootstrap={onBootstrap}
                         list={mapItems(data.items)}
                     />
                 ]

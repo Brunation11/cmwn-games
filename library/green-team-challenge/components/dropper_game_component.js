@@ -220,6 +220,7 @@ export default function (props, ref, key, opts = {}) {
                     play={opts.playAudio}
                     children={audioArray}
                     checkComplete={false}
+                    checkReady={false}
                     complete={true}
                     onPlay={function () {
                         this.updateScreenData({
