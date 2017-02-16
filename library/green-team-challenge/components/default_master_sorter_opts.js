@@ -42,7 +42,7 @@ let binNames = [
 let itemsToSort = _.filter(ItemsToSort, item => _.includes(binNames, item.bin));
 
 let audioRefs = _.uniq(_.map(itemsToSort, v =>
-    _.upperFirst(_.camelCase(_.replace(v.name, /\d+/g, ''))))
+    _.kebabCase(_.replace(v.name, /\d+/g, '')))
 );
 
 let audioArray = _.map(audioRefs, (v, k) => ({
