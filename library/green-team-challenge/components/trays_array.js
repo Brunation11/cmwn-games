@@ -20,6 +20,17 @@ let onBootstrap = function () {
     this.invokeChildrenFunction('markCatchable');
 };
 
+let getName = name => {
+    if (!_.includes(name, 'tray')) {
+        return [
+            'tray-blue',
+            'tray-pink',
+        ][_.random(0, 1)];
+    }
+
+    return name;
+};
+
 let getChildren = v => {
     if (v.children) return v.children;
 
@@ -399,15 +410,16 @@ let trayData = [
 
 export default _.map(trayData, data => {
     let bin = _.includes(data.name, 'tray') ? 'tray-stacking' : 'home';
+    let name = getName(data.name);
 
     return {
         type: Catchable,
         props: {
-            className: data.name,
+            className: name,
             message: bin,
             reCatchable: true,
             children: getChildren({
-                name: data.name,
+                name,
                 bin,
                 children: [
                     <skoash.Selectable
