@@ -1,30 +1,26 @@
 export default function (props, ref, key) {
     const STATES = [
         {
-            name: 'VO',
-            audio: 'children-0',
+            audio: 'vo',
             interval: 2000,
         },
         {
-            name: 'FLAME',
-            audio: 'children-1',
+            audio: 'flame',
             interval: 1000
         },
         {
-            name: 'EQUAL',
-            audio: 'children-2',
+            audio: 'equal',
             interval: 700
         },
         {
-            name: 'TEXT',
-            audio: 'children-3',
+            audio: 'text',
         },
     ];
 
     var play = function (open, i) {
         var state = STATES[i];
 
-        open += ' ' + state.name;
+        open += ' ' + _.toUpper(state.audio);
         this.updateScreenData({
             key: 'screen-2',
             data: {
@@ -57,20 +53,24 @@ export default function (props, ref, key) {
         >
             <skoash.MediaCollection ref="media-collection" play={_.get(props, 'data.screen-2.play', null)}>
                 <skoash.Audio
+                    ref={STATES[0].audio}
                     type="voiceOver"
                     src="media/S_2/vo_ChemicalReaction.mp3"
                 />
                 <skoash.Audio
+                    ref={STATES[1].audio}
                     type="sfx"
                     src="media/S_2/S_2.2.mp3"
                     volume={0.5}
                 />
                 <skoash.Audio
+                    ref={STATES[2].audio}
                     type="sfx"
                     src="media/S_2/S_2.3.mp3"
                     volume={0.6}
                 />
                 <skoash.Audio
+                    ref={STATES[3].audio}
                     type="sfx"
                     src="media/S_2/S_2.4.mp3" 
                     volume={0.6}
