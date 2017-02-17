@@ -72,7 +72,7 @@ export default function (props, ref, key) {
                 <skoash.Audio
                     ref={STATES[3].audio}
                     type="sfx"
-                    src="media/S_2/S_2.4.mp3" 
+                    src="media/S_2/S_2.4.mp3"
                     volume={0.6}
                 />
             </skoash.MediaCollection>
