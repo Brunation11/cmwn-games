@@ -26,9 +26,9 @@ let numberWords = [
 ];
 
 let getLevelHeader = levelNumberWord => {
-    if (levelNumberWord) return <h3>Level {levelNumberWord} Complete!</h3>;
+    if (levelNumberWord) return <h3 className="animated">Level {levelNumberWord} Complete!</h3>;
     return (
-        <div className="header">
+        <div className="header animated">
             <h3>CONGRATULATIONS!</h3>
             <h4>You are a member of Green Team!</h4>
         </div>

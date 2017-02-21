@@ -81,9 +81,9 @@ let mediaCollectionList = _.map(revealVOs, (content, ref) =>
 );
 
 let imageSrcs = [
-    `${CMWN.MEDIA.IMAGE}lights.png`,
-    `${CMWN.MEDIA.SPRITE}sprite.bins.png`,
-    `${CMWN.MEDIA.SPRITE}sprite.btn.png`,
+    {src: `${CMWN.MEDIA.IMAGE}lights.png`},
+    {src: `${CMWN.MEDIA.SPRITE}sprite.bins.png`},
+    {src: `${CMWN.MEDIA.SPRITE}sprite.btn.png`},
 ];
 
 let audioRefs = _.uniq(_.map(itemLandfill, v =>
