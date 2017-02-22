@@ -70,7 +70,6 @@ export default function (props, ref, key, opts = {}) {
     };
 
     onLabyrinthComplete = function () {
-        console.log('object');
         this.updateGameState({
             path: 'openReveal',
             data: 'level-up',
