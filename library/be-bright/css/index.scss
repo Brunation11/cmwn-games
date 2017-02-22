@@ -468,7 +468,7 @@ p {
             li {
                 transition: opacity 1s;
                 opacity: .5;
-                background-image: url('#{$image}img-3-2.png');
+                background-image: url('#{$sprite}img-3-2.png');
                 background-repeat: no-repeat;
                 background-size: 450px;
                 cursor: auto;
@@ -1019,7 +1019,7 @@ p {
                 position: absolute;
                 top: -35px;
                 left: -35px;
-                background-image: url('#{$sprite}sprites-game-2-elem.png');
+                background-image: url('#{$sprite}sprites-game2elem.png');
                 background-repeat: no-repeat;
                 background-position: -20px -20px;
                 background-size: 400px;
@@ -1036,7 +1036,7 @@ p {
 
             &::before {
                 position: absolute;
-                background-image: url('#{$sprite}sprites-game-2-elem.png');
+                background-image: url('#{$sprite}sprites-game2elem.png');
                 background-repeat: no-repeat;
                 background-size: 400px;
                 content: '';
