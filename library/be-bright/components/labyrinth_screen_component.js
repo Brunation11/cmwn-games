@@ -1,11 +1,3 @@
-import Score from 'shared/components/score/0.1';
-import Labyrinth from 'shared/components/labyrinth/0.1';
-import DPad from 'shared/components/d_pad/0.1';
-import IteractiveItem from 'shared/components/interactive_item/0.1';
-import Timer from 'shared/components/timer/0.1';
-import MediaCollection from 'shared/components/media_collection/0.1';
-import Reveal from 'shared/components/reveal_prompt/0.1';
-
 export default function (props, ref, key, opts = {}) {
     var itemInteract;
     var enemyInteract;
@@ -13,7 +5,6 @@ export default function (props, ref, key, opts = {}) {
     var onLabyrinthStart;
     var onLabyrinthStop;
     var onLabyrinthComplete;
-    var getTime;
     var onTimerComplete;
     var onOpenReveal;
     var onCloseReveal;
@@ -79,6 +70,7 @@ export default function (props, ref, key, opts = {}) {
     };
 
     onLabyrinthComplete = function () {
+        console.log('object');
         this.updateGameState({
             path: 'openReveal',
             data: 'level-up',
@@ -89,17 +81,6 @@ export default function (props, ref, key, opts = {}) {
                 complete: true,
             },
         });
-    };
-
-    getTime = function () {
-        var timeLeft;
-        var minutesLeft;
-        var secondsLeft;
-        timeLeft = this.props.timeout / 1000 - this.state.time;
-        minutesLeft = Math.floor(timeLeft / 60);
-        secondsLeft = timeLeft % 60;
-        secondsLeft = secondsLeft < 10 ? '0' + secondsLeft : secondsLeft;
-        return `${minutesLeft}:${secondsLeft}`;
     };
 
     onTimerComplete = function () {
@@ -141,7 +122,7 @@ export default function (props, ref, key, opts = {}) {
         });
         this.updateGameState({
             path: 'openReveal',
-            data: false,
+            data: null,
         });
         this.updateGameState({
             path: 'correct',
@@ -155,7 +136,7 @@ export default function (props, ref, key, opts = {}) {
 
     for (let i = 0; i < opts.itemsCount; i++) {
         items.push(
-            <IteractiveItem
+            <skoash.InteractiveItem
                 className={'item-' + (i + 1)}
                 checkComplete={false}
                 onInteract={itemInteract}
@@ -173,7 +154,7 @@ export default function (props, ref, key, opts = {}) {
 
     for (let i = 0; i < opts.enemiesCount; i++) {
         enemies.push(
-            <IteractiveItem
+            <skoash.InteractiveItem
                 className={'enemy-' + (i + 1)}
                 onInteract={enemyInteract}
                 onDisable={enemyDisable}
@@ -201,11 +182,11 @@ export default function (props, ref, key, opts = {}) {
             <skoash.Image className="hidden" src="media/_images/frame.sorry.png" />
             <skoash.Image className="hidden" src="media/_images/frame.win.png" />
             <skoash.Image className="hidden" src="media/_images/inside.meter.png" />
-            <MediaCollection
+            <skoash.MediaCollection
                 play={_.get(props, 'data.game.vo')}
                 children={opts.vos}
             />
-            <MediaCollection
+            <skoash.MediaCollection
                 play={_.get(props, 'data.game.sfx')}
                 children={[
                     <skoash.Audio
@@ -216,7 +197,7 @@ export default function (props, ref, key, opts = {}) {
                     />,
                 ]}
             />
-            <Reveal
+            <skoash.Reveal
                 openOnStart={opts.openOnStart}
                 openReveal={_.get(props, 'data.openReveal')}
                 closeReveal={_.get(props, 'data.closeReveal')}
@@ -226,13 +207,13 @@ export default function (props, ref, key, opts = {}) {
             />
             <skoash.Component className="left">
                 <skoash.Image className="avatar" src="media/_images/mr.eco.avatar.png" />
-                <Score
+                <skoash.Score
                     increment={10}
                     max={opts.itemsCount * 10}
                     correct={_.get(props, 'data.correct', 0)}
                 />
             </skoash.Component>
-            <Labyrinth
+            <skoash.Labyrinth
                 img="media/_images/floor.plan.png"
                 map="media/_images/floor.plan-BW.png"
                 input={_.get(props, 'data.d-pad', {})}
@@ -253,11 +234,10 @@ export default function (props, ref, key, opts = {}) {
             <skoash.Component className="level-container">
                 <skoash.Image className="level" src="media/_images/text.level.png" />
                 <span>{opts.levelNumber}</span>
-                <Timer
+                <skoash.Timer
                     countDown
                     timeout={60000}
                     leadingContent="TIME LEFT"
-                    getTime={getTime}
                     onComplete={onTimerComplete}
                     checkComplete={_.get(props, 'data.game.start', false)}
                     restart={_.get(props, 'data.game.start', false)}
@@ -271,7 +251,7 @@ export default function (props, ref, key, opts = {}) {
                     people leave on!
                 </p>
             </skoash.Component>
-            <DPad
+            <skoash.DPad
                 start={_.get(props, 'data.game.start', false)}
                 stop={_.get(props, 'data.game.stop', false)}
                 assets={[

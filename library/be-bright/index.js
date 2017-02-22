@@ -19,19 +19,19 @@ import QuitScreen from 'shared/components/quit_screen/0.1';
 var BeBright = (
     <skoash.Game
         config={config}
-        screens={{
-            0: iOSScreen,
-            1: TitleScreen,
-            2: BulbsScreen,
-            3: PigScreen,
-            4: InfoScreen,
-            5: VideoScreen,
-            6: SpecialAnnouncementScreen,
-            7: LevelOneScreen,
-            8: LevelTwoScreen,
-            9: LevelThreeScreen,
-            10: FlipScreen,
-        }}
+        screens={[
+            iOSScreen,
+            TitleScreen,
+            BulbsScreen,
+            PigScreen,
+            InfoScreen,
+            VideoScreen,
+            SpecialAnnouncementScreen,
+            LevelOneScreen,
+            LevelTwoScreen,
+            LevelThreeScreen,
+            FlipScreen,
+        ]}
         menus={{
             quit: QuitScreen,
         }}
