@@ -6,10 +6,10 @@ export default function (props, ref, key) {
             key={key}
             id="special-announcement-screen"
         >
-            <skoash.Image className="hidden" src="media/_images/frame.specialannouncement.png" />
-            <skoash.Audio type="voiceOver" src="media/_sounds/_vos/SpecialAnn.mp3" />
+            <skoash.Image className="hidden" src={`${CMWN.MEDIA.IMAGE}frame-specialannouncement.png`} />
+            <skoash.Audio type="voiceOver" src={`${CMWN.MEDIA.VO}special-ann.mp3`} />
             <skoash.Component className="labyrinth-frame">
-                <skoash.Image className="eco" src="media/_images/mr.eco.png" />
+                <skoash.Image className="eco" src={`${CMWN.MEDIA.IMAGE}mr-eco.png`} />
                 <div className="copy">
                     <div>Special</div>
                     <div>Special</div>

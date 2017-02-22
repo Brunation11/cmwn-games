@@ -143,7 +143,7 @@ export default function (props, ref, key, opts = {}) {
                     <skoash.Audio
                         ref="interact"
                         type="sfx"
-                        src="media/_sounds/_effects/LightCapture.mp3"
+                        src={`${CMWN.MEDIA.EFFECT}light-capture.mp3`}
                         complete
                     />,
                 ]}
@@ -161,7 +161,7 @@ export default function (props, ref, key, opts = {}) {
                     <skoash.Audio
                         ref="interact"
                         type="sfx"
-                        src="media/_sounds/_effects/EnergyHog.mp3"
+                        src={`${CMWN.MEDIA.EFFECT}energy-hog.mp3`}
                         complete
                     />,
                 ]}
@@ -176,11 +176,11 @@ export default function (props, ref, key, opts = {}) {
           key={key}
           id={opts.id}
         >
-            <skoash.Image className="hidden" src="media/_images/frame.yellow.png" />
-            <skoash.Image className="hidden" src="media/_images/frame.lvlup.png" />
-            <skoash.Image className="hidden" src="media/_images/frame.sorry.png" />
-            <skoash.Image className="hidden" src="media/_images/frame.win.png" />
-            <skoash.Image className="hidden" src="media/_images/inside.meter.png" />
+            <skoash.Image className="hidden" src={`${CMWN.MEDIA.IMAGE}frame-yellow.png`} />
+            <skoash.Image className="hidden" src={`${CMWN.MEDIA.IMAGE}frame-lvlup.png`} />
+            <skoash.Image className="hidden" src={`${CMWN.MEDIA.IMAGE}frame-sorry.png`} />
+            <skoash.Image className="hidden" src={`${CMWN.MEDIA.IMAGE}frame-win.png`} />
+            <skoash.Image className="hidden" src={`${CMWN.MEDIA.IMAGE}inside-meter.png`} />
             <skoash.MediaCollection
                 play={_.get(props, 'data.game.vo')}
                 children={opts.vos}
@@ -191,7 +191,7 @@ export default function (props, ref, key, opts = {}) {
                     <skoash.Audio
                         ref="disable"
                         type="sfx"
-                        src="media/_sounds/_effects/HogDisappear.mp3"
+                        src={`${CMWN.MEDIA.EFFECT}hog-disappear.mp3`}
                         complete
                     />,
                 ]}
@@ -205,7 +205,7 @@ export default function (props, ref, key, opts = {}) {
                 list={opts.revealList}
             />
             <skoash.Component className="left">
-                <skoash.Image className="avatar" src="media/_images/mr.eco.avatar.png" />
+                <skoash.Image className="avatar" src={`${CMWN.MEDIA.IMAGE}mr-eco-avatar.png`} />
                 <skoash.Score
                     increment={10}
                     max={opts.itemsCount * 10}
@@ -213,8 +213,8 @@ export default function (props, ref, key, opts = {}) {
                 />
             </skoash.Component>
             <skoash.Labyrinth
-                img="media/_images/floor.plan.png"
-                map="media/_images/floor.plan-BW.png"
+                img={`${CMWN.MEDIA.IMAGE}floor-plan.png`}
+                map={`${CMWN.MEDIA.IMAGE}floor-plan-b-w.png`}
                 input={_.get(props, 'data.d-pad', {})}
                 startX={250}
                 startY={385}
@@ -225,13 +225,13 @@ export default function (props, ref, key, opts = {}) {
                 onStop={onLabyrinthStop}
                 onComplete={onLabyrinthComplete}
                 assets={[
-                    <skoash.Audio ref="collide" type="sfx" src="media/_sounds/_effects/wall.mp3" complete />,
+                    <skoash.Audio ref="collide" type="sfx" src={`${CMWN.MEDIA.EFFECT}wall.mp3`} complete />
                 ]}
                 items={items}
                 enemies={enemies}
             />
             <skoash.Component className="level-container">
-                <skoash.Image className="level" src="media/_images/text.level.png" />
+                <skoash.Image className="level" src={`${CMWN.MEDIA.IMAGE}text-level.png`} />
                 <span>{opts.levelNumber}</span>
                 <skoash.Timer
                     countDown
@@ -254,7 +254,7 @@ export default function (props, ref, key, opts = {}) {
                 start={_.get(props, 'data.game.start', false)}
                 stop={_.get(props, 'data.game.stop', false)}
                 assets={[
-                    <skoash.Audio ref="keydown" type="sfx" src="media/_sounds/_effects/Click.mp3" complete />
+                    <skoash.Audio ref="keydown" type="sfx" src={`${CMWN.MEDIA.EFFECT}click.mp3`} complete />
                 ]}
             />
         </skoash.Screen>

@@ -9,9 +9,9 @@ export default function (props, ref, key) {
                 name: 'flip',
             }}
         >
-            <skoash.Audio ref="vo" type="voiceOver" src="media/S_10/VO_10.1.mp3" />
-            <skoash.Audio ref="start" type="sfx" src="media/S_10/S_10.2.mp3" delay={4000} />
-            <skoash.Image className="flip" src="media/_animation/BeBrightEarned.gif" />
+            <skoash.Audio ref="vo" type="voiceOver" src={`${CMWN.MEDIA.VO}vo-10-1.mp3`} />
+            <skoash.Audio ref="start" type="sfx" src={`${CMWN.MEDIA.EFFECT}s-10-2.mp3`} delay={4000} />
+            <skoash.Image className="flip" src={`${CMWN.MEDIA.SPRITE}be-bright-earned.gif`} />
             <skoash.Component className="text">
                 <div>
                     <h1>GOOD JOB!</h1>
@@ -20,7 +20,7 @@ export default function (props, ref, key) {
                     <skoash.Image
                         ref="flip-img"
                         className="inline animated"
-                        src="media/S_10/flip.png"
+                        src={`${CMWN.MEDIA.IMAGE}flip.png`}
                     /><br />
                     that switch!
                 </div>
