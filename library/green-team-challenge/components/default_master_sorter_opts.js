@@ -1,24 +1,8 @@
-/* eslint max-lines: ["error", {"max": 600}] */
 import classNames from 'classnames';
 
 import defaultGameOpts from './default_game_opts';
-import Catchable from 'shared/components/catchable/0.2';
 import ItemsToSort from './items_to_sort';
-
-let onSelect = function (key) {
-    let ref = this.refs[key];
-    let rect = ReactDOM.findDOMNode(ref).getBoundingClientRect();
-    this.updateScreenData({
-        key: 'item',
-        data: {
-            name: _.startCase(_.replace(ref.props.className, /\d+/g, '')),
-            new: true,
-            ref,
-            top: rect.top,
-            left: rect.left,
-        }
-    });
-};
+import traysArray from './trays_array';
 
 let resort = function () {
     this.updateScreenData({
@@ -57,104 +41,8 @@ let binNames = [
 
 let itemsToSort = _.filter(ItemsToSort, item => _.includes(binNames, item.bin));
 
-let getChildren = v => {
-    if (v.children) return v.children;
-
-    return (
-        <skoash.Sprite
-            src={`${CMWN.MEDIA.SPRITE}_${_.replace(v.bin, '-', '')}`}
-            frame={v.frame || 1}
-            static
-        />
-    );
-};
-
-let mapItems = function (itemNames) {
-    let items = _.filter(ItemsToSort, item => _.includes(itemNames, item.name));
-
-    return _.map(items, item =>
-        <Catchable
-            className={item.name}
-            message={item.bin}
-            reCatchable={true}
-            becomes={item.becomes}
-            children={getChildren(item)}
-        />
-    );
-};
-
-let traysArray = [
-    {
-        name: 'tray',
-        bin: 'tray-stacking',
-        children: [
-            <skoash.Selectable
-                onSelect={onSelect}
-                list={mapItems([
-                    'full-plastic-water-bottle-1',
-                    'half-full-chocolate-milk-carton',
-                    'half-full-energy-drink-bottle',
-                    'half-full-lemonade-box-1',
-                    'half-full-orange-juice-2',
-                ])}
-            />
-        ]
-    },
-    {
-        name: 'tray',
-        bin: 'tray-stacking',
-        children: [
-            <skoash.Selectable
-                onSelect={onSelect}
-                list={mapItems([
-                    'plastic-cup-1',
-                    'apple-core',
-                    'empty-cracker-wrapper-2',
-                    'full-plastic-water-bottle-2',
-                    'whole-banana',
-                ])}
-            />
-        ]
-    },
-    {
-        name: 'tray-pink',
-        bin: 'tray-stacking',
-        children: [
-            <skoash.Selectable
-                onSelect={onSelect}
-                list={mapItems([
-                    'empty-yogurt-container-10',
-                ])}
-            />
-        ]
-    },
-    {
-        name: 'tray-blue',
-        bin: 'tray-stacking',
-        children: [
-            <skoash.Selectable
-                onSelect={onSelect}
-                list={mapItems([
-                    'empty-yogurt-container-10',
-                ])}
-            />
-        ]
-    },
-];
-
-let catchablesArray = _.map(traysArray, v => ({
-    type: Catchable,
-    props: {
-        className: v.name,
-        message: v.bin,
-        reCatchable: true,
-        becomes: v.becomes,
-        children: getChildren(v),
-    },
-}));
-
 let audioRefs = _.uniq(_.map(itemsToSort, v =>
-    _.upperFirst(_.camelCase(_.replace(v.name, /\d+/g, ''))))
+    _.kebabCase(_.replace(v.name, /\d+/g, '')))
 );
 
 let audioArray = _.map(audioRefs, (v, k) => ({
@@ -579,6 +467,6 @@ export default _.defaults({
         return audioArray;
     },
     getCatchablesArray() {
-        return catchablesArray;
+        return traysArray;
     },
 }, defaultGameOpts);

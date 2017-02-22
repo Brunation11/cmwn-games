@@ -1,14 +1,13 @@
 let bin = 'liquids';
 let names = [
+    'half-full-energy-drink-bottle',
     'full-plastic-water-bottle-1',
     'full-plastic-water-bottle-2',
     'full-plastic-water-bottle-3',
     'full-plastic-water-bottle-4',
-    'half-full-chocolate-milk-carton',
-    'half-full-chocolate-milk',
-    'half-full-energy-drink-bottle',
     'half-full-lemonade-box-1',
     'half-full-lemonade-box-4',
+    'half-full-chocolate-milk-carton',
     'half-full-milk-carton-1',
     'half-full-milk-carton-2',
     'half-full-milk-carton-3',
@@ -22,39 +21,39 @@ let names = [
 
 let becomes = [
     {
-        name: 'empty-plastic-water-bottle-1',
+        name: 'empty-plastic-bottle-1',
         bin: 'recycle',
     },
     {
-        name: 'empty-plastic-water-bottle-2',
+        name: 'empty-plastic-bottle-2',
         bin: 'recycle',
     },
     {
-        name: 'empty-plastic-water-bottle-3',
+        name: 'empty-plastic-bottle-3',
         bin: 'recycle',
     },
     {
-        name: 'empty-plastic-water-bottle-4',
+        name: 'empty-plastic-bottle-4',
         bin: 'recycle',
     },
     {
-        name: 'empty-chocolate-milk-carton',
+        name: 'empty-milk-carton',
         bin: 'recycle',
     },
     {
-        name: 'empty-chocolate-milk',
+        name: 'empty-milk-carton',
         bin: 'recycle',
     },
     {
-        name: 'empty-energy-drink-bottle',
+        name: 'empty-aluminum-can-1',
         bin: 'recycle',
     },
     {
-        name: 'empty-lemonade-box-1',
+        name: 'juice-box-1',
         bin: 'landfill',
     },
     {
-        name: 'empty-lemonade-box-4',
+        name: 'juice-box-2',
         bin: 'landfill',
     },
     {
@@ -90,7 +89,7 @@ let becomes = [
         bin: 'recycle',
     },
     {
-        name: 'empty-orange-juice-2',
+        name: 'empty-plastic-bottle-2',
         bin: 'recycle',
     },
 ];

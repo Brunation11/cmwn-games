@@ -81,8 +81,8 @@
                     @include master-sorter-catchable;
                 }
 
-                $trays:  tray  tray-pink   tray-blue   lunch-box;
-                $images: tray 'tray.pink' 'tray.blue' 'lunch.box';
+                $trays:  tray   tray-pink   tray-blue;
+                $images: tray 'tray.pink' 'tray.blue';
                 @for $i from 1 through length($trays) {
                     &.#{nth($trays, $i)}::before {
                         @include center;

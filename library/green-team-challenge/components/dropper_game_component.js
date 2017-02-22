@@ -78,7 +78,7 @@ export default function (props, ref, key, opts = {}) {
             opts.pour ? 'pour' :
             opts.next ? 'correct' :
             revealOpen === 'resort' ? 'resort' :
-            opts.itemNew ? _.upperFirst(_.camelCase(opts.itemName)) :
+            opts.itemNew ? _.kebabCase(opts.itemName) :
             dropClass === 'TRAY-STACKING' && _.includes(opts.itemName, 'tray') ? 'tray' :
             opts.itemName ? 'select' : null
         );
@@ -220,6 +220,7 @@ export default function (props, ref, key, opts = {}) {
                     play={opts.playAudio}
                     children={audioArray}
                     checkComplete={false}
+                    checkReady={false}
                     complete={true}
                     onPlay={function () {
                         this.updateScreenData({
