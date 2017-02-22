@@ -11,8 +11,6 @@ export default function () {
         top: -200,
     });
 
-    this.cursors = this.game.input.keyboard.createCursorKeys();
-
     this.helpers.makeBackground.call(this);
     this.helpers.makeGround.call(this);
     this.helpers.makeDoor.call(this);
@@ -20,7 +18,7 @@ export default function () {
 
     addPlayer.call(this, {
         left: 32,
-        top: this.game.world.height - 450,
+        top: this.game.world.height - 385,
         image: this.opts.playerImage,
         bounceY: this.opts.bounceY,
         gravityY: this.opts.gravityY,

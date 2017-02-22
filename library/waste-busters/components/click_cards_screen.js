@@ -1,3 +1,17 @@
+const IMAGE_SRCS = [
+    `${CMWN.MEDIA.IMAGE}game.1.bkg.sky.jpg`,
+    `${CMWN.MEDIA.IMAGE}game.1.bkg.clouds.png`,
+    `${CMWN.MEDIA.SPRITE}game1.ground.png`,
+    `${CMWN.MEDIA.SPRITE}game1.platform.png`,
+    `${CMWN.MEDIA.SPRITE}game1.5.png`,
+    `${CMWN.MEDIA.SPRITE}game1.logs.png`,
+    `${CMWN.MEDIA.SPRITE}game1.trees.png`,
+];
+
+const IMAGES = _.map(IMAGE_SRCS, src =>
+    <skoash.Image className="hidden" src={src} />
+);
+
 export default function (props, ref, key) {
     return (
         <skoash.Screen
@@ -33,6 +47,9 @@ export default function (props, ref, key) {
                 YOU can be a<br/>
                 Waste Buster!
             </p>
+            <div className="hidden">
+                {IMAGES}
+            </div>
         </skoash.Screen>
     );
 }

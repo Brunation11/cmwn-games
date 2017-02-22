@@ -1,3 +1,22 @@
+const IMAGE_SRCS = [
+    `${CMWN.MEDIA.SPRITE}turtle.walk.0.png`,
+    `${CMWN.MEDIA.SPRITE}turtle.walk.3.png`,
+    `${CMWN.MEDIA.SPRITE}turtle.walk.5.png`,
+    `${CMWN.MEDIA.SPRITE}game1.hearts.png`,
+    `${CMWN.MEDIA.SPRITE}recycle-01.png`,
+    `${CMWN.MEDIA.SPRITE}rainbow.recycle-01.png`,
+    `${CMWN.MEDIA.SPRITE}truck.png`,
+    `${CMWN.MEDIA.SPRITE}door.open.png`,
+    `${CMWN.MEDIA.SPRITE}jet.pack.png`,
+    `${CMWN.MEDIA.SPRITE}mother.slither-01.png`,
+    `${CMWN.MEDIA.SPRITE}sister.slither-01.png`,
+    `${CMWN.MEDIA.SPRITE}brother.slither-01.png`,
+];
+
+const IMAGES = _.map(IMAGE_SRCS, src =>
+    <skoash.Image className="hidden" src={src} />
+);
+
 export default function (props, ref, key) {
     return (
         <skoash.Screen
@@ -67,6 +86,9 @@ export default function (props, ref, key) {
                     </skoash.Component>,
                 ]}
             />
+            <div className="hidden">
+                {IMAGES}
+            </div>
         </skoash.Screen>
     );
 }
