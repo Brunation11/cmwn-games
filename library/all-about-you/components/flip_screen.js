@@ -17,7 +17,7 @@ export default function (props, ref, key) {
             <skoash.Image
                 ref="frame"
                 className="frame animated"
-                src={`${CMWN.MEDIA.IMAGE}img-17-frame.png`}
+                src={`${CMWN.MEDIA.FRAME}img-17-frame.png`}
             />
             <skoash.Image
                 ref="banner"

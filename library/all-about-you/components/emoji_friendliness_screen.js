@@ -29,7 +29,7 @@ export default function (props, ref, key) {
             <skoash.Image
                 ref="banner"
                 className="banner animated"
-                src={`${CMWN.MEDIA.IMAGE}text-10-a-friend-shares-a-game.png`}
+                src={`${CMWN.MEDIA.IMAGE}text-10-a-friend-sharesa-game.png`}
             />
             <div ref="frame" className="frame animated"></div>
             <skoash.Image
