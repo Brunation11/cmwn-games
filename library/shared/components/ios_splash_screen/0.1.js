@@ -11,8 +11,8 @@ export default function (props, ref, key) {
             completeOnStart
             hidePrev
         >
-            <skoash.Image className="hidden" src="../shared/images/ios_start_ball.png" />
-            <skoash.Image className="hidden" src="../shared/images/ios_start_ball_anim.gif" />
+            <skoash.Image className="hidden" src={`${CMWN.MEDIA.SHARED}ios-start-ball.png`} />
+            <skoash.Image className="hidden" src={`${CMWN.MEDIA.SHARED}ios-start-ball-anim.gif`} />
         </skoash.Screen>
     );
 }
