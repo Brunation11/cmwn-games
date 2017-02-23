@@ -51,12 +51,18 @@ body > div > div {
             background-image: url('../media/_BKG/BKG_3.png');
         }
     }
+}
 
-    &.BKG-2 .background.BKG-2,
-    &.BKG-3 .background.BKG-3 {
+.SCREEN-4 .BKG-2 {
+    opacity: 1;
+}
+
+@for $i from 5 through 14 {
+    .SCREEN-#{$i} .BKG-3 {
         opacity: 1;
     }
 }
+
 
 button {
     margin: 0;
@@ -257,7 +263,8 @@ img.background {
     }
 
     &#triangle {
-        .dropzone-reveal {
+        .draggables {
+            cursor: default;
             pointer-events: none;
         }
     }
@@ -270,16 +277,14 @@ img.background {
     }
 
     &#need {
-        .dropzone-reveal {
+        .draggable,
+        .close-reveal {
+            cursor: default;
             pointer-events: none;
         }
 
-        .draggable {
-            cursor: default;
-        }
-
         .close-reveal {
-            background-position: -500px -90px;
+            opacity: 0;
         }
     }
 }
@@ -575,54 +580,52 @@ img.background {
         width: 840px;
     }
 
-    .selectable-audio {
-        ul {
-            display: flex;
-            margin: 100px 0 0;
-            padding: 0 0 0 40px;
-            justify-content: center;
+    .selectable {
+        display: flex;
+        margin: 100px 0 0;
+        padding: 0 0 0 40px;
+        justify-content: center;
 
-            li {
-                background-position: left top;
-                background-size: auto 100%;
-                cursor: pointer;
-                height: 360px;
-                list-style: none;
+        li {
+            background-position: left top;
+            background-size: auto 100%;
+            cursor: pointer;
+            height: 360px;
+            list-style: none;
+
+            &:hover {
+                background-position: right top;
+            }
+
+            &:nth-of-type(1) {
+                background-image: url('../media/S_6/img_6.2.png');
+                background-position: left 12px;
+                width: 175px;
 
                 &:hover {
-                    background-position: right top;
+                    background-position: right 12px;
                 }
+            }
 
-                &:nth-of-type(1) {
-                    background-image: url('../media/S_6/img_6.2.png');
-                    background-position: left 12px;
-                    width: 175px;
+            &:nth-of-type(2) {
+                background-image: url('../media/S_6/img_6.3.png');
+                background-position: left 23px;
+                width: 171px;
 
-                    &:hover {
-                        background-position: right 12px;
-                    }
+                &:hover {
+                    background-position: right 23px;
                 }
+            }
 
-                &:nth-of-type(2) {
-                    background-image: url('../media/S_6/img_6.3.png');
-                    background-position: left 23px;
-                    width: 171px;
+            &:nth-of-type(3) {
+                background-image: url('../media/S_6/img_6.4.png');
+                width: 200px;
+            }
 
-                    &:hover {
-                        background-position: right 23px;
-                    }
-                }
-
-                &:nth-of-type(3) {
-                    background-image: url('../media/S_6/img_6.4.png');
-                    width: 200px;
-                }
-
-                &:nth-of-type(4) {
-                    margin-left: -30px;
-                    background-image: url('../media/S_6/img_6.5.png');
-                    width: 252px;
-                }
+            &:nth-of-type(4) {
+                margin-left: -30px;
+                background-image: url('../media/S_6/img_6.5.png');
+                width: 252px;
             }
         }
     }
@@ -652,29 +655,27 @@ img.background {
     }
 
     &.OPEN {
-        .selectable-audio {
-            ul {
-                li {
-                    animation-name: fadeInRightBig;
+        .selectable {
+            li {
+                animation-name: fadeInRightBig;
 
-                    &:nth-of-type(2) {
-                        animation-delay: 1s;
-                    }
+                &:nth-of-type(2) {
+                    animation-delay: 1s;
+                }
 
-                    &:nth-of-type(3) {
-                        animation-delay: 2s;
-                    }
+                &:nth-of-type(3) {
+                    animation-delay: 2s;
+                }
 
-                    &:nth-of-type(4) {
-                        animation-delay: 3s;
-                    }
+                &:nth-of-type(4) {
+                    animation-delay: 3s;
                 }
             }
         }
     }
 
     &.REVEAL-OPEN {
-        .selectable-audio {
+        .selectable {
             display: none;
         }
 
@@ -729,56 +730,48 @@ img.background {
 }
 
 #triangle {
-    display: flex;
-
-    img.title {
-        width: 740px;
+    .center > div {
+        display: block;
+        margin: 15px auto;
     }
 
-    div.directions {
+    .title {
         text-align: center;
         color: $white;
+
+        img {
+            width: 740px;
+        }
     }
 
-    .dropzone-reveal {
-        height: 360px;
-    }
-
-    .dropzone-container {
+    .draggables {
+        display: inline-block;
         position: absolute;
-        width: 100%;
+        z-index: 2;
+        background-image: url('../media/S_8/img_8.2.png');
+        background-size: 100% 100%;
+        padding: 10px;
+        width: 240px;
 
-        ul {
-            display: inline-block;
-            position: absolute;
-            left: 0;
-            background-image: url('../media/S_8/img_8.2.png');
-            background-size: 100% 100%;
-            padding: 10px;
-            width: 240px;
-            vertical-align: middle;
+        .draggable {
+            background-repeat: no-repeat;
+            background-position: center center;
+            background-size: auto 100%;
+            width: auto;
+            height: 40px;
+        }
 
-            li {
-                width: auto;
-                height: 40px;
-                list-style: none;
+        @for $i from 1 through 7 {
+            $img: $i + 2;
 
-                @for $i from 1 through 7 {
-                    $img: $i + 2;
-
-                    &:nth-of-type(#{$i}) .draggable {
-                        background-image: url('../media/S_8/img_8.#{$img}.png');
-                        background-repeat: no-repeat;
-                        background-position: center center;
-                        background-size: auto 100%;
-                    }
-                }
+            .draggable:nth-of-type(#{$i}) {
+                background-image: url('../media/S_8/img_8.#{$img}.png');
             }
         }
     }
 
     .reveal,
-    .dropzone {
+    .dropzones div {
         display: inline-block;
         position: absolute;
         right: 0;
@@ -816,12 +809,12 @@ img.background {
                 opacity: 0;
             }
 
-            ~ .dropzone-container img {
-                &.grey-trianlge {
+            ~ .dropzones {
+                .grey-triangle {
                     opacity: 0;
                 }
 
-                &.color-triangle {
+                .color-triangle {
                     opacity: 1;
                 }
             }
@@ -832,8 +825,8 @@ img.background {
         }
     }
 
-    .dropzone {
-        img.grey-triangle {
+    .dropzones {
+        .grey-triangle {
             top: 0;
             opacity: 1;
             z-index: -1;
@@ -1026,7 +1019,8 @@ img.background {
         }
     }
 
-    &.SKIN {
+    &.SKIN,
+    &.LEAVE {
         .female-male {
             transform: translateX(-100%);
         }
@@ -1055,7 +1049,8 @@ img.background {
         }
     }
 
-    .dropzone-container ul {
+    .draggables-left,
+    .draggables-right {
         display: inline-flex;
         position: relative;
         background-image: url('../media/_Frames/FR_4.png');
@@ -1068,59 +1063,66 @@ img.background {
         align-content: center;
         justify-content: space-around;
 
-        li {
-            display: inline-flex;
+        .draggable {
+            z-index: 1;
             margin-bottom: 10px;
-            list-style: none;
-            flex-direction: column;
-            justify-content: space-around;
+            background-image: url('../media/S_12/sprite_12.3.png');
+            background-repeat: no-repeat;
+            background-size: 500px;
+        }
+    }
 
-            $items:                     pants jacket hood boots mask gloves tank walkie axe light camera punch;
-            $background-lefts:        0            1        2         3        0            1        2            3     0         1            2         3;
-            $background-tops:         0            0        0         0        1            1        1            1     2         2            2         2;
-            $widths:                         65         85     58        65     70         72    104         50    70        52         80        70;
-            $heights:                        90         90     80        80     90         80     44         80    80        80         80        80;
+    $items:            pants jacket hood boots mask gloves tank walkie axe light camera punch;
+    $background-lefts: 0     1      2    3     0    1      2    3      0   1     2      3;
+    $background-tops:  0     0      0    0     1    1      1    1      2   2     2      2;
+    $widths:           65    85     58   65    70   72     104  50     70  52    80     70;
+    $heights:          90    90     80   80    90   80     44   80     80  80    80     80;
 
-            @for $i from 1 through 12 {
-
-                .#{nth($items, $i)} {
-                    display: inline-block;
-                    // scss-lint:disable ImportantRule
-                    background-image: url('../media/S_12/sprite_12.3.png') !important;
-                    // scss-lint:enable ImportantRule
-                    background-repeat: no-repeat;
-                    background-position: #{-4 - (122 * nth($background-lefts, $i)) + px} #{-3 - (109 * nth($background-tops, $i)) + px};
-                    background-size: 500px;
-                    width: nth($widths, $i) + px;
-                    height: nth($heights, $i) + px;
-                    vertical-align: middle;
-                }
+    .draggables-left {
+        @for $i from 1 through 6 {
+            .draggable:nth-of-type(#{$i}) {
+                background-position: #{-4 - (122 * nth($background-lefts, $i)) + px} #{-3 - (109 * nth($background-tops, $i)) + px};
+                width: nth($widths, $i) + px;
+                height: nth($heights, $i) + px;
             }
         }
     }
 
-    .dropzone {
+    .draggables-right {
+        @for $i from 7 through 12 {
+            .draggable:nth-of-type(#{$i - 6}) {
+                background-position: #{-4 - (122 * nth($background-lefts, $i)) + px} #{-3 - (109 * nth($background-tops, $i)) + px};
+                width: nth($widths, $i) + px;
+                height: nth($heights, $i) + px;
+            }
+        }
+    }
+
+    .dropzones {
         display: inline-block;
-        position: relative;
-        background-image: url('../media/S_12/img_12.14.png');
-        background-size: 100% 100%;
-        width: 240px;
-        height: 440px;
         vertical-align: top;
 
-        div {
-            position: absolute;
-            top: 20px;
-            left: 20px;
-            transition: opacity .5s;
-            opacity: 0;
-            background-repeat: no-repeat;
-            background-size: 880px;
-            width: 200px;
-            height: 400px;
+        > div {
+            position: relative;
+            background-image: url('../media/S_12/img_12.14.png');
+            background-size: 100% 100%;
+            width: 240px;
+            height: 440px;
 
-            &.body {
-                opacity: 1;
+            > div {
+                position: absolute;
+                top: 20px;
+                left: 20px;
+                transition: opacity .5s;
+                opacity: 0;
+                background-repeat: no-repeat;
+                background-size: 880px;
+                width: 200px;
+                height: 400px;
+
+                &.body {
+                    opacity: 1;
+                }
             }
         }
     }
@@ -1139,13 +1141,13 @@ img.background {
     &.female {
 
         @for $i from 1 through 3 {
-            &.#{nth($skin, $i)} .dropzone div.body {
+            &.#{nth($skin, $i)} .dropzones div.body {
                 background-position: #{-1 * nth($skin-pos, $i) + px} 0;
             }
         }
 
-        .dropzone {
-            div {
+        .dropzones {
+            div > div {
                 background-image: url('../media/S_12/sprite_12.5.png');
 
                 &.bun {
@@ -1158,17 +1160,17 @@ img.background {
                     background-position: #{-1 * nth($bg-lefts-f, $i) + px} #{-1 * nth($bg-tops-f, $i) + px};
                 }
 
-                &.dropped-#{nth($items-f, $i)} div.#{nth($items-f, $i)} {
+                .dropped-#{nth($items-f, $i)} div.#{nth($items-f, $i)} {
                     opacity: 1;
                 }
             }
 
-            &.dropped-tank div.straps {
+            .dropped-tank div.straps {
                 opacity: 1;
             }
 
-            &.dropped-hood div.bun,
-            &.dropped-mask div.bun {
+            .dropped-hood div.bun,
+            .dropped-mask div.bun {
                 opacity: 0;
             }
         }
@@ -1177,13 +1179,13 @@ img.background {
     &.male {
 
         @for $i from 1 through 3 {
-            &.#{nth($skin, $i)} .dropzone div.body {
+            &.#{nth($skin, $i)} .dropzones div.body {
                 background-position: #{-1 * nth($skin-pos, $i) + px} 0;
             }
         }
 
-        .dropzone {
-            div {
+        .dropzones {
+            div > div {
                 background-image: url('../media/S_12/sprite_12.6.png');
             }
 
@@ -1192,12 +1194,12 @@ img.background {
                     background-position: #{-1 * nth($bg-lefts-m, $i) + px} #{-1 * nth($bg-tops-m, $i) + px};
                 }
 
-                &.dropped-#{nth($items-m, $i)} div.#{nth($items-m, $i)} {
+                .dropped-#{nth($items-m, $i)} div.#{nth($items-m, $i)} {
                     opacity: 1;
                 }
             }
 
-            &.dropped-tank div.straps {
+            .dropped-tank div.straps {
                 opacity: 1;
             }
         }
@@ -1215,6 +1217,10 @@ img.background {
 
         &.OPEN {
             z-index: 2;
+
+            .close-reveal {
+                opacity: 1;
+            }
         }
 
         > div {
@@ -1262,6 +1268,7 @@ img.background {
             right: 40px;
             bottom: 40px;
             transition: opacity .5s;
+            opacity: 0;
         }
     }
 }

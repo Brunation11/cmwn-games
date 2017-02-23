@@ -10,6 +10,8 @@ class CursorCanvas extends skoash.Component {
             particles: [],
             updateCanvas: null,
         };
+
+        this.moveCursor = this.moveCursor.bind(this);
     }
 
     bootstrap() {
@@ -32,7 +34,7 @@ class CursorCanvas extends skoash.Component {
             });
         }
 
-        window.addEventListener('mousemove', this.moveCursor.bind(this));
+        window.addEventListener('mousemove', this.moveCursor);
     }
 
     componentWillUnmount() {
@@ -42,10 +44,13 @@ class CursorCanvas extends skoash.Component {
     }
 
     moveCursor(e) {
-        var scale = skoash.trigger('getState').scale;
-        this.setState({
-            cursorX: e.clientX / scale,
-            cursorY: e.clientY / scale,
+        var self = this;
+        skoash.trigger('getState').then(state => {
+            var scale = state.scale;
+            self.setState({
+                cursorX: e.clientX / scale,
+                cursorY: e.clientY / scale,
+            });
         });
     }
 
@@ -55,7 +60,7 @@ class CursorCanvas extends skoash.Component {
         var particles;
         var gameWidth;
         var gameHeight;
-        var scale;
+        var self = this;
 
         if (typeof this.props.particle === 'function') {
             p = this.props.particle();
@@ -74,19 +79,20 @@ class CursorCanvas extends skoash.Component {
         particles = this.state.particles;
         particles.push(particle);
 
-        scale = skoash.trigger('getState').scale;
-        gameWidth = window.innerWidth / scale;
-        gameHeight = window.innerHeight / scale;
+        skoash.trigger('getState').then(state => {
+            gameWidth = window.innerWidth / state.scale;
+            gameHeight = window.innerHeight / state.scale;
 
-        while (particles.length > this.props.particle.amount) particles.shift();
+            while (particles.length > self.props.particle.amount) particles.shift();
 
-        context.globalAlpha = 1;
-        context.clearRect(0, 0, gameWidth, gameHeight);
+            context.globalAlpha = 1;
+            context.clearRect(0, 0, gameWidth, gameHeight);
 
-        for (let i = 0; i < particles.length; i++) {
-            particles[i].update(context, image, p.delta);
-        }
-        this.setState({ particles });
+            for (let i = 0; i < particles.length; i++) {
+                particles[i].update(context, image, p.delta);
+            }
+            self.setState({ particles });
+        });
     }
 
     render() {

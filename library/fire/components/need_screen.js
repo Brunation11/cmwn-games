@@ -1,49 +1,81 @@
-import Draggable from 'shared/components/draggable/0.1';
-import DropzoneReveal from 'shared/components/dropzone_reveal/0.1';
+import Draggable from 'shared/components/draggable/0.4';
+import Dropzone from 'shared/components/dropzone/0.4';
 
 class NeedScreenComponent extends skoash.Screen {
-
-    getRefs(currentRef) {
-        if (!currentRef.refs) {
-            return;
-        }
-        _.each(currentRef.refs, (ref, key) => {
-            this.refs[key] = ref;
-            if (key.includes('children')) {
-                this.getRefs(ref);
-            }
-        });
-    }
-
-    bootstrap() {
-        var ref;
-        var self = this;
-        super.bootstrap();
-
-        ref = self.refs['children-1'];
-        if (ref) {
-            self.getRefs(ref);
-        }
-    }
-
     open() {
+        var componentParent;
+
         super.open();
 
         this.checkComplete = null;
-        this.refs['dropzone-reveal'].incompleteRefs();
+        this.refs['media-vos'].incompleteRefs();
+        componentParent = _.get(this.refs, 'children-3.refs.children-0', null);
+        if (componentParent) {
+            componentParent.refs['draggables-left'].incompleteRefs();
+            componentParent.refs['draggables-right'].incompleteRefs();
+        }
         this.incomplete();
         this.checkComplete = super.checkComplete;
     }
 }
 
 export default function (props, ref, key) {
-    var data = skoash.trigger('getState').data;
-    var skin;
-    var gender;
-    if (data.character) {
-        skin = data.character.gender;
-        gender = data.character.skin;
-    }
+    const ANSWERS = [
+        'pants',
+        'jacket',
+        'hood',
+        'boots',
+        'mask',
+        'gloves',
+        'tank',
+        'walkie',
+        'axe',
+        'light',
+        'camera',
+        'punch',
+    ];
+
+    const OBJECTS = [
+        'bun',
+        'tank',
+        'body',
+        'boots',
+        'pants',
+        'jacket',
+        'gloves',
+        'mask',
+        'straps',
+        'light',
+        'axe',
+        'walkie',
+        'camera',
+        'punch',
+    ];
+
+    var gender = _.get(props, 'gameState.data.character.gender', 'female');
+    var skin = _.get(props, 'gameState.data.character.skin', 'medium');
+
+    var openReveal = function (dropped) {
+        var droppedList = _.get(props, 'data.dropzone.droppedList', '');
+        var droppedMsg = 'dropped-' + dropped.props.message;
+        this.updateScreenData({
+            key: 'dropzone',
+            data: {
+                message: dropped.props.message,
+                droppedList: droppedList + ' ' + droppedMsg
+            }
+        });
+    };
+
+    var mediaComplete = function () {
+        this.updateScreenData({
+            key: 'media',
+            data: {
+                complete: 'complete'
+            }
+        });
+    };
+
     return (
         <NeedScreenComponent
             {...props}
@@ -56,70 +88,118 @@ export default function (props, ref, key) {
                 <skoash.Audio type="voiceOver" src="media/S_12/vo_ImagineYoureAFirefighter.mp3" />
                 <skoash.Audio type="voiceOver" src="media/S_12/vo_DragAndDropToOutfit.mp3" />
             </skoash.MediaSequence>
+            <skoash.MediaCollection
+				ref="media-vos"
+                play={_.get(props, 'data.dropzone.message', null)}
+                onComplete={mediaComplete}
+            >
+                <skoash.Audio
+                    type="voiceOver"
+                    data-ref="pants"
+                    src="media/S_12/vo_TurnoutPants.mp3"
+                />,
+                <skoash.Audio
+                    type="voiceOver"
+                    data-ref="jacket"
+                    src="media/S_12/vo_TurnoutJacket.mp3"
+                />,
+                <skoash.Audio
+                    type="voiceOver"
+                    data-ref="hood"
+                    src="media/S_12/vo_CarbonFlashHood.mp3"
+                />,
+                <skoash.Audio
+                    type="voiceOver"
+                    data-ref="boots"
+                    src="media/S_12/vo_ChemicalProofBoots.mp3"
+                />,
+                <skoash.Audio
+                    type="voiceOver"
+                    data-ref="mask"
+                    src="media/S_12/vo_HelmetVisor.mp3"
+                />,
+                <skoash.Audio
+                    type="voiceOver"
+                    data-ref="gloves"
+                    src="media/S_12/vo_SafetyGloves.mp3"
+                />,
+                <skoash.Audio
+                    type="voiceOver"
+                    data-ref="tank"
+                    src="media/S_12/vo_TankOfOxygen.mp3"
+                />,
+                <skoash.Audio
+                    type="voiceOver"
+                    data-ref="axe"
+                    src="media/S_12/vo_Axe.mp3"
+                />,
+                <skoash.Audio
+                    type="voiceOver"
+                    data-ref="walkie"
+                    src="media/S_12/vo_HandHeldRadio.mp3"
+                />,
+                <skoash.Audio
+                    type="voiceOver"
+                    data-ref="light"
+                    src="media/S_12/vo_Flashlight.mp3"
+                />,
+                <skoash.Audio
+                    type="voiceOver"
+                    data-ref="camera"
+                    src="media/S_12/vo_ThermalImaging.mp3"
+                />,
+                <skoash.Audio
+                    type="voiceOver"
+                    data-ref="punch"
+                    src="media/S_12/vo_WindowPunch.mp3"
+                />,
+            </skoash.MediaCollection>
+            <skoash.MediaCollection
+				ref="media-sfx"
+                play={_.get(props, 'data.media.complete', null)}
+            >
+                <skoash.Audio data-ref="complete" type="sfx" src="media/S_12/S_12.3.mp3" />,
+            </skoash.MediaCollection>
             <skoash.Component className="center">
                 <skoash.Component className="frame">
                     <skoash.Image className="animated" src="media/S_12/img_12.1.png" />
-                    <DropzoneReveal
-                        ref="dropzone-reveal"
+                    <skoash.Repeater
+                        className="draggables-left"
+						ref="draggables-left"
+                        amount={6}
+                        item={<Draggable returnOnIncorrect />}
+                        props={ANSWERS.slice(0, 6).map((value) => { return {message: value}; })}
+                    />
+                    <Dropzone
+                        ref="dropzone"
+                        dropped={_.get(props, 'data.draggable.dropped')}
+                        dragging={_.get(props, 'data.draggable.dragging')}
+                        onCorrect={openReveal}
+                        dropzones={[
+                            <skoash.Repeater
+                                className={_.get(props, 'data.dropzone.droppedList', null)}
+                                amount={16}
+                                answers={ANSWERS}
+                                props={OBJECTS.map((value) => { return {className: value}; })}
+                            />
+                        ]}
                         assets={[
-                            <skoash.Audio data-ref="complete" type="sfx" src="media/S_12/S_12.3.mp3" />,
-                        ]}
-                        dropzoneDraggablesLeft={[
-                            <Draggable message="pants" />,
-                            <Draggable message="jacket" />,
-                            <Draggable message="hood" />,
-                            <Draggable message="boots" />,
-                            <Draggable message="mask" />,
-                            <Draggable message="gloves" />,
-                        ]}
-                        dropzoneDraggablesRight={[
-                            <Draggable message="tank" />,
-                            <Draggable message="walkie" />,
-                            <Draggable message="axe" />,
-                            <Draggable message="light" />,
-                            <Draggable message="camera" />,
-                            <Draggable message="punch" />,
-                        ]}
-                        dropzoneAssets={[
                             <skoash.Audio type="sfx" data-ref="correct" src="media/S_12/S_12.2.mp3" />,
                             <skoash.Audio type="sfx" data-ref="drag" src="media/S_12/S_12.1.mp3" />,
                         ]}
-                        dropzones={[
-                            <skoash.Component
-                              className="body"
-                              answers={[
-                                  'pants',
-                                  'jacket',
-                                  'hood',
-                                  'boots',
-                                  'mask',
-                                  'gloves',
-                                  'tank',
-                                  'walkie',
-                                  'axe',
-                                  'light',
-                                  'camera',
-                                  'punch',
-                              ]}
-                            >
-                                <div className="bun" />
-                                <div className="tank" />
-                                <div className="body" />
-                                <div className="boots" />
-                                <div className="hood" />
-                                <div className="pants" />
-                                <div className="jacket" />
-                                <div className="gloves" />
-                                <div className="mask" />
-                                <div className="straps" />
-                                <div className="light" />
-                                <div className="axe" />
-                                <div className="walkie" />
-                                <div className="camera" />
-                                <div className="punch" />
-                            </skoash.Component>
-                        ]}
-                        revealList={[
+                    />
+                    <skoash.Repeater
+                        className="draggables-right"
+						ref="draggables-right"
+                        amount={6}
+                        item={<Draggable returnOnIncorrect />}
+                        props={ANSWERS.slice(6).map((value) => { return {message: value}; })}
+                    />
+                    <skoash.Reveal
+                        ref="reveal"
+                        openMultiple
+                        openReveal={_.get(props, 'data.dropzone.message', null)}
+                        list={[
                             <skoash.ListItem data-ref="pants">
                                 <p>
                                     Nobody wears shorts in a fire!<br /> You need these!
@@ -180,68 +260,6 @@ export default function (props, ref, key) {
                                     This helps you break<br /> through a window.
                                 </p>
                             </skoash.ListItem>,
-                        ]}
-                        revealAssets={[
-                            <skoash.Audio
-                                type="voiceOver"
-                                data-ref="pants"
-                                src="media/S_12/vo_TurnoutPants.mp3"
-                            />,
-                            <skoash.Audio
-                                type="voiceOver"
-                                data-ref="jacket"
-                                src="media/S_12/vo_TurnoutJacket.mp3"
-                            />,
-                            <skoash.Audio
-                                type="voiceOver"
-                                data-ref="hood"
-                                src="media/S_12/vo_CarbonFlashHood.mp3"
-                            />,
-                            <skoash.Audio
-                                type="voiceOver"
-                                data-ref="boots"
-                                src="media/S_12/vo_ChemicalProofBoots.mp3"
-                            />,
-                            <skoash.Audio
-                                type="voiceOver"
-                                data-ref="mask"
-                                src="media/S_12/vo_HelmetVisor.mp3"
-                            />,
-                            <skoash.Audio
-                                type="voiceOver"
-                                data-ref="gloves"
-                                src="media/S_12/vo_SafetyGloves.mp3"
-                            />,
-                            <skoash.Audio
-                                type="voiceOver"
-                                data-ref="tank"
-                                src="media/S_12/vo_TankOfOxygen.mp3"
-                            />,
-                            <skoash.Audio
-                                type="voiceOver"
-                                data-ref="axe"
-                                src="media/S_12/vo_Axe.mp3"
-                            />,
-                            <skoash.Audio
-                                type="voiceOver"
-                                data-ref="walkie"
-                                src="media/S_12/vo_HandHeldRadio.mp3"
-                            />,
-                            <skoash.Audio
-                                type="voiceOver"
-                                data-ref="light"
-                                src="media/S_12/vo_Flashlight.mp3"
-                            />,
-                            <skoash.Audio
-                                type="voiceOver"
-                                data-ref="camera"
-                                src="media/S_12/vo_ThermalImaging.mp3"
-                            />,
-                            <skoash.Audio
-                                type="voiceOver"
-                                data-ref="punch"
-                                src="media/S_12/vo_WindowPunch.mp3"
-                            />,
                         ]}
                     />
                 </skoash.Component>

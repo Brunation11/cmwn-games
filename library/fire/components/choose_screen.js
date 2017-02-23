@@ -1,163 +1,113 @@
-import Selectable from 'shared/components/selectable/0.1';
-
 import classNames from 'classnames';
 
 class ChooseScreenComponent extends skoash.Screen {
-
-    constructor() {
-        super();
-
-        this.state = {
-            slideToggle: true,
-        };
-    }
-
-    getRefs(currentRef) {
-        if (!currentRef.refs) {
-            return;
-        }
-        _.each(currentRef.refs, (ref, key) => {
-            this.refs[key] = ref;
-            if (key.includes('center') || key.includes('group')) {
-                this.getRefs(ref);
-            }
-        });
-    }
-
-    bootstrap() {
-        var ref;
-        var self = this;
-        super.bootstrap();
-
-        ['center-1', 'center-2'].forEach(val => {
-            ref = self.refs[val];
-            if (ref) {
-                self.getRefs(ref);
-            }
-        });
-    }
-
-    updateGender(gender) {
-        this.updateGameState({
-            path: ['character'],
-            data: {
-                gender
-            }
-        });
-    }
-
-    updateSkin(skin) {
-        this.updateGameState({
-            path: ['character'],
-            data: {
-                skin
-            }
-        });
-    }
-
-    prevSlide() {
-        this.setState({
-            slideToggle: true,
-        });
-    }
-
     prev() {
-        if (!this.state.slideToggle) {
-            this.prevSlide();
+        if (this.props.slideToggle) {
+            this.updateScreenData({
+                key: 'slide',
+                data: {
+                    toggle: false
+                }
+            });
+
             return;
         }
-
         super.prev();
-    }
-
-    nextSlide(gender) {
-        this.updateGender(gender);
-
-        this.setState({
-            slideToggle: false,
-        });
-    }
-
-    next(skin) {
-        this.updateSkin(skin);
-
-        super.next();
-    }
-
-    renderFemaleMale() {
-        return (
-            <skoash.Component ref="center-1" className="center female-male">
-                <skoash.Component className="group">
-                    <Selectable
-                        ref="selectable"
-                        list={[
-                            <skoash.ListItem id="gender-female" className="animated"
-                                onClick={this.nextSlide.bind(this, 'female')} />,
-                            <skoash.ListItem id="gender-male" className="animated"
-                                onClick={this.nextSlide.bind(this, 'male')} />,
-                        ]}
-                    />
-                </skoash.Component>
-            </skoash.Component>
-        );
-    }
-
-    renderSkinColor() {
-        return (
-            <skoash.Component ref="center-2" className="center skin-color">
-                <skoash.Component className="group">
-                    <Selectable
-                        ref="selectable-2"
-                        list={[
-                            <skoash.ListItem id="skin-light" className="animated"
-                            onClick={this.next.bind(this, 'light')} />,
-                            <skoash.ListItem id="skin-medium" className="animated"
-                            onClick={this.next.bind(this, 'medium')} />,
-                            <skoash.ListItem id="skin-dark" className="animated"
-                            onClick={this.next.bind(this, 'dark')} />,
-                        ]}
-                    />
-                </skoash.Component>
-            </skoash.Component>
-        );
-    }
-
-    getClassNames() {
-        var data = skoash.trigger('getState').data;
-        var gender;
-        if (data.character) {
-            gender = data.character.gender;
-        }
-        return classNames({
-            GENDER: this.state.slideToggle,
-            SKIN: !this.state.slideToggle,
-            [gender]: gender,
-        }, super.getClassNames());
-    }
-
-    renderContent() {
-        return (
-            <div>
-                {this.renderContentList()}
-                {this.renderFemaleMale()}
-                {this.renderSkinColor()}
-            </div>
-        );
     }
 }
 
 export default function (props, ref, key) {
+    var clearCharacter = function () {
+        this.updateGameData({
+            key: 'character',
+            data: {
+                gender: null,
+                skin: null,
+            }
+        });
+    };
+
+    var addGender = function (gender) {
+        this.updateGameData({
+            key: 'character',
+            data: {
+                gender,
+            }
+        });
+
+        this.updateScreenData({
+            key: 'slide',
+            data: {
+                toggle: true
+            }
+        });
+    };
+
+    var addSkin = function (skin) {
+        this.updateGameData({
+            key: 'character',
+            data: {
+                skin,
+            }
+        });
+    };
+
+    var getClassNames = function () {
+        var slideToggle = _.get(props, 'data.slide.toggle', false);
+        var gender = _.get(props, 'gameState.data.character.gender', null);
+
+        return classNames({
+            GENDER: !slideToggle,
+            SKIN: slideToggle,
+            [gender]: gender,
+        });
+    };
+
+    var nextScreen = function (nextProps) {
+        if (nextProps.next && this.props.next !== nextProps.next) {
+            this.next();
+        }
+    };
+
     return (
         <ChooseScreenComponent
             {...props}
             ref={ref}
             key={key}
             id="choose"
+            className={getClassNames()}
+            onOpen={clearCharacter}
+            slideToggle={_.get(props, 'data.slide.toggle', false)}
             hideNext
+            next={_.get(props, 'gameState.data.character.skin', null) != null}
+            onComponentWillReceiveProps={nextScreen}
             silentComplete
         >
-            <skoash.Audio ref="vo" type="voiceOver" src="media/S_11/vo_ChooseYourFirefighter.mp3" />
+            <skoash.Audio type="voiceOver" src="media/S_11/vo_ChooseYourFirefighter.mp3" />
             <skoash.Image className="animated" src="media/S_11/img_11.1.png" />
+            <skoash.Component className="center female-male">
+                <skoash.Component className="group">
+                    <skoash.Selectable
+                        onSelect={addGender}
+                        list={[
+                            <skoash.ListItem data-ref="female" id="gender-female" className="animated" />,
+                            <skoash.ListItem data-ref="male" id="gender-male" className="animated" />
+                        ]}
+                    />
+                </skoash.Component>
+            </skoash.Component>
+            <skoash.Component className="center skin-color">
+                <skoash.Component className="group">
+                    <skoash.Selectable
+                        onSelect={addSkin}
+                        list={[
+                            <skoash.ListItem data-ref="light" id="skin-light" className="animated" />,
+                            <skoash.ListItem data-ref="medium" id="skin-medium" className="animated" />,
+                            <skoash.ListItem data-ref="dark" id="skin-dark" className="animated" />
+                        ]}
+                    />
+                </skoash.Component>
+            </skoash.Component>
         </ChooseScreenComponent>
     );
 }

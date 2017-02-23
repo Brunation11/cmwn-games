@@ -1,37 +1,32 @@
-import _ from 'lodash';
-
-import MediaCollection from 'shared/components/media_collection/0.1';
-
-const STATES = [
-    {
-        name: 'VO',
-        audio: 'children-0',
-        interval: 2000,
-    },
-    {
-        name: 'FLAME',
-        audio: 'children-1',
-        interval: 1000
-    },
-    {
-        name: 'EQUAL',
-        audio: 'children-2',
-        interval: 700
-    },
-    {
-        name: 'TEXT',
-        audio: 'children-3',
-    },
-];
-
 export default function (props, ref, key) {
+    const STATES = [
+        {
+            name: 'VO',
+            audio: 'children-0',
+            interval: 2000,
+        },
+        {
+            name: 'FLAME',
+            audio: 'children-1',
+            interval: 1000
+        },
+        {
+            name: 'EQUAL',
+            audio: 'children-2',
+            interval: 700
+        },
+        {
+            name: 'TEXT',
+            audio: 'children-3',
+        },
+    ];
 
-    function play(open, i) {
+    var play = function (open, i) {
         var state = STATES[i];
 
         open += ' ' + state.name;
-        skoash.trigger('updateState', {
-            path: 'states',
+        this.updateScreenData({
+            key: 'screen-2',
             data: {
                 open,
                 play: state.audio,
@@ -40,16 +35,16 @@ export default function (props, ref, key) {
 
         if (state.interval) {
             setTimeout(() => {
-                play(open, ++i);
+                play.call(this, open, ++i);
             }, state.interval);
         }
-    }
+    };
 
-    function init() {
+    var init = function () {
         setTimeout(() => {
-            play('', 0);
+            play.call(this, '', 0);
         }, 100);
-    }
+    };
 
     return (
         <skoash.Screen
@@ -58,14 +53,14 @@ export default function (props, ref, key) {
             key={key}
             id="info-chemical"
             onOpen={init}
-            className={_.get(props, 'data.states.open', null)}
+            className={_.get(props, 'data.screen-2.open', null)}
         >
-            <MediaCollection ref="media-collection" play={_.get(props, 'data.states.play', null)}>
+            <skoash.MediaCollection ref="media-collection" play={_.get(props, 'data.screen-2.play', null)}>
                 <skoash.Audio type="voiceOver" src="media/S_2/vo_ChemicalReaction.mp3" />
                 <skoash.Audio type="sfx" src="media/S_2/S_2.2.mp3" />
                 <skoash.Audio type="sfx" src="media/S_2/S_2.3.mp3" />
                 <skoash.Audio type="sfx" src="media/S_2/S_2.4.mp3" />
-            </MediaCollection>
+            </skoash.MediaCollection>
             <skoash.Image className="animated" src="media/S_2/img_2.1.png" />
             <skoash.Image className="animated flame" src="media/S_2/img_2.2.png" />
             <skoash.Image className="animated equal" src="media/S_2/img_2.3.png" />

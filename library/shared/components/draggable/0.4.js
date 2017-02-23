@@ -21,6 +21,11 @@ class Draggable extends skoash.Component {
         this.setZoom = this.setZoom.bind(this);
     }
 
+    incomplete() {
+        this.markIncorrect();
+        super.incomplete();
+    }
+
     shouldDrag() {
         return this.props.shouldDrag.call(this);
     }
@@ -32,13 +37,14 @@ class Draggable extends skoash.Component {
     }
 
     markIncorrect() {
-        this.setState({
+        var self = this;
+        self.setState({
             correct: false,
+        }, () => {
+            if (self.props.returnOnIncorrect) {
+                self.returnToStart();
+            }
         });
-
-        if (this.props.returnOnIncorrect) {
-            this.returnToStart();
-        }
     }
 
     startEvent(e, cb) {
@@ -86,7 +92,7 @@ class Draggable extends skoash.Component {
             endY,
         });
 
-        this.updateGameState({
+        this.updateScreenData({
             path: this.props.draggableTarget,
             data: {
                 dragging: this,
@@ -189,7 +195,7 @@ class Draggable extends skoash.Component {
     }
 
     onDrop() {
-        this.updateGameState({
+        this.updateScreenData({
             path: this.props.draggableTarget,
             data: {
                 dragging: null,
