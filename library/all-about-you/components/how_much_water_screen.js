@@ -35,7 +35,7 @@ export default function (props, ref, key) {
             <skoash.Image
                 ref="banner"
                 className="banner animated"
-                src="media/assets/_images/S_13/Text_13_How+much+do+you+know.png"
+                src="media/assets/_images/S_13/Text_13_How_much_do_you_know.png"
             />
             <skoash.Image
                 ref="penguin"
