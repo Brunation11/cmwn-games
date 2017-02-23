@@ -25,7 +25,7 @@ html {
 body > div > div {
     position: relative;
     margin: auto;
-    background: url('../media/assets/_images/_BKG/BKG_1-01.png') bottom center no-repeat;
+    background: url('#{$image}bkg-1-01.png') bottom center no-repeat;
     background-size: cover;
     width: 960px;
     height: 540px;
@@ -39,7 +39,7 @@ button {
     border: 0;
 
     background-color: transparent;
-    background-image: url('../media/assets/_images/_SpriteSheet/SpriteSheet_HoverButtons.png');
+    background-image: url('#{$sprite}sprite-sheet-hover-buttons.png');
     background-position: left top;
     background-size: auto 200px;
 
@@ -301,7 +301,7 @@ ul {
 }
 
 .video {
-    background: url('../media/_Frames/FR_2.png') center center no-repeat;
+    background: url('#{$frame}fr-2.png') center center no-repeat;
     background-size: 100% 100%;
 
     video {
@@ -477,7 +477,7 @@ ul {
         .frame {
             bottom: 12%;
             left: 11%;
-            background: url('../media/assets/_images/Frames/Frame_11_GreyRectangle.png');
+            background: url('#{$frame}frame-11-grey-rectangle.png');
             background-size: 100% 100%;
             width: 45%;
             height: 69%;
@@ -486,7 +486,7 @@ ul {
         ul > * {
             display: inline-block;
             position: absolute;
-            background: url('../media/assets/_images/_SpriteSheet/spritesheet_frame3_leftbuttons-01.png');
+            background: url('#{$sprite}spritesheet-frame3-leftbuttons-01.png');
             background-size: 1015px 394px;
             width: 13%;
             height: 22%;
@@ -551,7 +551,7 @@ ul {
                 position: absolute;
                 top: -50%;
                 left: -50%;
-                background: url('../media/assets/_images/_SpriteSheet/spritesheet_frame3_leftbuttons-01.png');
+                background: url('#{$sprite}spritesheet-frame3-leftbuttons-01.png');
                 background-size: 1060px 411px;
                 width: 200%;
                 height: 200%;
@@ -664,7 +664,7 @@ ul {
 
             &.CORRECT {
                 &::before {
-                    background: url('../media/assets/_images/_SpriteSheet/spritesheet_frame3_passion.png');
+                    background: url('#{$sprite}spritesheet-frame3-passion.png');
                     background-size: 1000px 141px;
                 }
 
@@ -721,7 +721,7 @@ ul {
         div {
             .dropzone {
                 position: absolute;
-                background: url('../media/assets/_images/_SpriteSheet/spritesheet_right_numbers-01.png');
+                background: url('#{$sprite}spritesheet-right-numbers-01.png');
                 background-size: 1150px 130px;
                 width: 13%;
                 height: 22%;
@@ -779,7 +779,7 @@ ul {
         .meter {
             bottom: -5%;
             left: 25%;
-            background: url('../media/assets/_images/_SpriteSheet/Spritesheet_progressionmeter-01.png');
+            background: url('#{$sprite}spritesheet-progressionmeter-01.png');
             background-position: 0 130px;
             background-size: cover;
             width: 50%;
@@ -811,7 +811,7 @@ ul {
         .frame {
             bottom: 12%;
             left: 11%;
-            background: url('../media/assets/_images/Frames/Frame_11_GreyRectangle.png');
+            background: url('#{$frame}frame-11-grey-rectangle.png');
             background-size: 100% 100%;
             width: 45%;
             height: 69%;
@@ -820,7 +820,7 @@ ul {
         ul > * {
             display: inline-block;
             position: absolute;
-            background: url('../media/assets/_images/_SpriteSheet/spritesheet_frame4_leftbuttons-01-01.png');
+            background: url('#{$sprite}spritesheet-frame4-leftbuttons-01-01.png');
             background-size: 1015px 394px;
             width: 13%;
             height: 22%;
@@ -885,7 +885,7 @@ ul {
                 position: absolute;
                 top: -50%;
                 left: -50%;
-                background: url('../media/assets/_images/_SpriteSheet/spritesheet_frame4_leftbuttons-01-01.png');
+                background: url('#{$sprite}spritesheet-frame4-leftbuttons-01-01.png');
                 background-size: 1060px 411px;
                 width: 200%;
                 height: 200%;
@@ -998,7 +998,7 @@ ul {
 
             &.CORRECT {
                 &::before {
-                    background: url('../media/assets/_images/_SpriteSheet/spritesheet_frame3_worldissues-01.png');
+                    background: url('#{$sprite}spritesheet-frame3-worldissues-01.png');
                     background-size: 1000px 141px;
                 }
 
@@ -1055,7 +1055,7 @@ ul {
         div {
             .dropzone {
                 position: absolute;
-                background: url('../media/assets/_images/_SpriteSheet/spritesheet_right_numbers-01.png');
+                background: url('#{$sprite}spritesheet-right-numbers-01.png');
                 background-size: 1150px 130px;
                 width: 13%;
                 height: 22%;
@@ -1113,7 +1113,7 @@ ul {
         .meter {
             bottom: -5%;
             left: 25%;
-            background: url('../media/assets/_images/_SpriteSheet/Spritesheet_progressionmeter-01.png');
+            background: url('#{$sprite}spritesheet-progressionmeter-01.png');
             background-position: 0 252px;
             background-size: cover;
             width: 50%;
@@ -1138,7 +1138,7 @@ ul {
         ul.selectable > * {
             display: inline-block;
             position: absolute;
-            background: url('../media/assets/_images/_SpriteSheet/Srn5spritesheets-frame5-emotions.png');
+            background: url('#{$sprite}srn5spritesheets-frame5-emotions.png');
             background-size: 1250px 625px;
             width: 200px;
             height: 200px;
@@ -1200,7 +1200,7 @@ ul {
         .meter {
             bottom: -5%;
             left: 25%;
-            background: url('../media/assets/_images/_SpriteSheet/Spritesheet_progressionmeter-01.png');
+            background: url('#{$sprite}spritesheet-progressionmeter-01.png');
             background-position: 0 374px;
             background-size: cover;
             width: 50%;
@@ -1226,7 +1226,7 @@ ul {
         .frame {
             bottom: 14%;
             left: 23%;
-            background: url('../media/assets/_images/Frames/mostpowerfulleastpowerful-01.png');
+            background: url('#{$frame}mostpowerfulleastpowerful-01.png');
             background-size: 100% 100%;
             width: 70%;
             height: 85%;
@@ -1241,7 +1241,7 @@ ul {
                 position: absolute;
                 top: -115%;
                 left: -150%;
-                background: url('../media/assets/_images/_SpriteSheet/spritesheet_frame6-01.png');
+                background: url('#{$sprite}spritesheet-frame6-01.png');
                 background-size: 1200px 300px;
                 width: 375%;
                 height: 335%;
@@ -1380,7 +1380,7 @@ ul {
         div {
             .dropzone {
                 position: absolute;
-                background: url('../media/assets/_images/_SpriteSheet/spritesheet_frame6_bucket.png');
+                background: url('#{$sprite}spritesheet-frame6-bucket.png');
                 background-size: 600px 392px;
                 width: 15%;
                 height: 25%;
@@ -1412,7 +1412,7 @@ ul {
         .meter {
             bottom: -5%;
             left: 25%;
-            background: url('../media/assets/_images/_SpriteSheet/Spritesheet_progressionmeter-01.png');
+            background: url('#{$sprite}spritesheet-progressionmeter-01.png');
             background-position: 0 1729px;
             background-size: cover;
             width: 50%;
@@ -1422,7 +1422,7 @@ ul {
 }
 
 #emoji-bullying {
-    background: url('../media/assets/_images/_BKG/BKG_2.png') bottom center no-repeat;
+    background: url('#{$image}bkg-2.png') bottom center no-repeat;
     background-size: cover;
 
     &.READY.OPEN {
@@ -1448,7 +1448,7 @@ ul {
         .frame {
             top: 3%;
             right: 6%;
-            background: url('../media/assets/_images/S_7/img-s7-bigger-frame.png');
+            background: url('#{$frame}img-s7-bigger-frame.png');
             background-size: 100% 100%;
             width: 53%;
             height: 81%;
@@ -1457,7 +1457,7 @@ ul {
         .sub-frame {
             top: 7%;
             right: 9%;
-            background: url('../media/assets/_images/S_7/img-s7-smaller-frame.png');
+            background: url('#{$frame}img-s7-smaller-frame.png');
             background-size: 100% 100%;
             width: 47%;
             height: 45%;
@@ -1468,7 +1468,7 @@ ul {
             position: absolute;
             animation-name: fadeIn;
             animation-delay: 7s;
-            background: url('../media/assets/_images/_SpriteSheet/Spritesheet_frame07_PolarBear.png');
+            background: url('#{$sprite}spritesheet-frame07-polar-bear.png');
             background-size: 440px 270px;
             width: 143px;
             height: 133px;
@@ -1518,7 +1518,7 @@ ul {
     .meter {
         bottom: -5%;
         left: 25%;
-        background: url('../media/assets/_images/_SpriteSheet/Spritesheet_progressionmeter-01.png');
+        background: url('#{$sprite}spritesheet-progressionmeter-01.png');
         background-position: 0 496px;
         background-size: cover;
         width: 50%;
@@ -1527,7 +1527,7 @@ ul {
 }
 
 #emoji-compassion {
-    background: url('../media/assets/_images/_BKG/BKG_2.png') bottom center no-repeat;
+    background: url('#{$image}bkg-2.png') bottom center no-repeat;
     background-size: cover;
 
     &.READY.OPEN {
@@ -1553,7 +1553,7 @@ ul {
         .frame {
             top: 3%;
             right: 6%;
-            background: url('../media/assets/_images/S_8/img-s8-bigger-frame.png');
+            background: url('#{$frame}img-s8-bigger-frame.png');
             background-size: 100% 100%;
             width: 53%;
             height: 81%;
@@ -1562,7 +1562,7 @@ ul {
         .sub-frame {
             top: 7%;
             right: 9%;
-            background: url('../media/assets/_images/S_8/img-s8-smaller-frame.png');
+            background: url('#{$frame}img-s8-smaller-frame.png');
             background-size: 100% 100%;
             width: 47%;
             height: 43%;
@@ -1573,7 +1573,7 @@ ul {
             position: absolute;
             animation-name: fadeIn;
             animation-delay: 7s;
-            background: url('../media/assets/_images/_SpriteSheet/spritesheet-emotions.png');
+            background: url('#{$sprite}spritesheet-emotions.png');
             background-size: 1350px 280px;
             width: 142px;
             height: 133px;
@@ -1622,7 +1622,7 @@ ul {
         .meter {
             bottom: -5%;
             left: 25%;
-            background: url('../media/assets/_images/_SpriteSheet/Spritesheet_progressionmeter-01.png');
+            background: url('#{$sprite}spritesheet-progressionmeter-01.png');
             background-position: 0 616px;
             background-size: cover;
             width: 50%;
@@ -1632,7 +1632,7 @@ ul {
 }
 
 #emoji-angry {
-    background: url('../media/assets/_images/_BKG/BKG_2.png') bottom center no-repeat;
+    background: url('#{$image}bkg-2.png') bottom center no-repeat;
     background-size: cover;
 
     &.READY.OPEN {
@@ -1670,7 +1670,7 @@ ul {
         .frame {
             top: 3%;
             right: 6%;
-            background: url('../media/assets/_images/S_09/Frame_09_GreyRectangle.png');
+            background: url('#{$frame}frame-09-grey-rectangle.png');
             background-size: 100% 100%;
             width: 53%;
             height: 81%;
@@ -1681,7 +1681,7 @@ ul {
             position: absolute;
             animation-name: fadeIn;
             animation-delay: 6s;
-            background: url('../media/assets/_images/S_09/IMG_09_PolarBears_SpriteSheet-02.png');
+            background: url('#{$sprite}img-09-polar-bears-sprite-sheet-02.png');
             background-size: 440px 270px;
             width: 143px;
             height: 133px;
@@ -1730,7 +1730,7 @@ ul {
         .meter {
             bottom: -5%;
             left: 25%;
-            background: url('../media/assets/_images/_SpriteSheet/Spritesheet_progressionmeter-01.png');
+            background: url('#{$sprite}spritesheet-progressionmeter-01.png');
             background-position: 0 738px;
             background-size: cover;
             width: 50%;
@@ -1741,7 +1741,7 @@ ul {
 
 
 #emoji-friendliness {
-    background: url('../media/assets/_images/_BKG/BKG_2.png') bottom center no-repeat;
+    background: url('#{$image}bkg-2.png') bottom center no-repeat;
     background-size: cover;
 
     &.READY.OPEN {
@@ -1779,7 +1779,7 @@ ul {
         .frame {
             top: 3%;
             right: 6%;
-            background: url('../media/assets/_images/S_09/Frame_09_GreyRectangle.png');
+            background: url('#{$frame}frame-09-grey-rectangle.png');
             background-size: 100% 100%;
             width: 53%;
             height: 81%;
@@ -1790,7 +1790,7 @@ ul {
             position: absolute;
             animation-name: fadeIn;
             animation-delay: 6s;
-            background: url('../media/assets/_images/S_10/IMG_10_Polarbear_SpriteSheet-02.png');
+            background: url('#{$sprite}img-10-polarbear-sprite-sheet-02.png');
             background-size: 440px 270px;
             width: 135px;
             height: 132px;
@@ -1839,7 +1839,7 @@ ul {
         .meter {
             bottom: -5%;
             left: 25%;
-            background: url('../media/assets/_images/_SpriteSheet/Spritesheet_progressionmeter-01.png');
+            background: url('#{$sprite}spritesheet-progressionmeter-01.png');
             background-position: 0 862px;
             background-size: cover;
             width: 50%;
@@ -1871,7 +1871,7 @@ ul {
         .frame {
             top: 34%;
             right: 15%;
-            background: url('../media/assets/_images/S_11/Frame_11_GreyRectangle.png');
+            background: url('#{$frame}frame-11-grey-rectangle.png');
             background-size: 100% 100%;
             width: 47%;
             height: 47%;
@@ -1880,7 +1880,7 @@ ul {
         ul.selectable > * {
             display: inline-block;
             position: absolute;
-            background: url('../media/assets/_images/_SpriteSheet/Spritesheet_frame11_YesOrNo-01.png');
+            background: url('#{$sprite}spritesheet-frame11-yes-or-no-01.png');
             background-size: 400px 344px;
             width: 181px;
             height: 166px;
@@ -1916,7 +1916,7 @@ ul {
         .meter {
             bottom: -5%;
             left: 25%;
-            background: url('../media/assets/_images/_SpriteSheet/Spritesheet_progressionmeter-01.png');
+            background: url('#{$sprite}spritesheet-progressionmeter-01.png');
             background-position: 0 992px;
             background-size: cover;
             width: 50%;
@@ -1947,7 +1947,7 @@ ul {
         ul.selectable > * {
             display: inline-block;
             position: absolute;
-            background: url('../media/assets/_images/S_12/spritesheet-guide-12-01.png');
+            background: url('#{$sprite}spritesheet-guide-12-01.png');
             background-size: 1750px 174px;
             width: 339px;
             height: 86px;
@@ -2026,7 +2026,7 @@ ul {
     .meter {
         bottom: -5%;
         left: 25%;
-        background: url('../media/assets/_images/_SpriteSheet/Spritesheet_progressionmeter-01.png');
+        background: url('#{$sprite}spritesheet-progressionmeter-01.png');
         background-position: 0 1114px;
         background-size: cover;
         width: 50%;
@@ -2070,7 +2070,7 @@ ul {
         .frame {
             top: 34%;
             left: 24%;
-            background: url('../media/assets/_images/S_13/Frame_13_Grey.png');
+            background: url('#{$frame}frame-13-grey.png');
             background-size: 100% 100%;
             width: 75%;
             height: 46%;
@@ -2079,7 +2079,7 @@ ul {
         .sub-frame {
             top: 50%;
             left: 26.75%;
-            background: url('../media/assets/_images/S_13/IMG_13_Rectangle.png');
+            background: url('#{$image}img-13-rectangle.png');
             background-size: 100% 100%;
             width: 70%;
             height: 29%;
@@ -2090,7 +2090,7 @@ ul {
             position: absolute;
             animation-name: fadeIn;
             animation-delay: 4s;
-            background: url('../media/assets/_images/S_13/spritesheet_frame13-polarbear.png');
+            background: url('#{$sprite}spritesheet-frame13-polarbear.png');
             background-size: 500px 260px;
             width: 142px;
             height: 128px;
@@ -2140,7 +2140,7 @@ ul {
         .meter {
             bottom: -5%;
             left: 25%;
-            background: url('../media/assets/_images/_SpriteSheet/Spritesheet_progressionmeter-01.png');
+            background: url('#{$sprite}spritesheet-progressionmeter-01.png');
             background-position: 0 1234px;
             background-size: cover;
             width: 50%;
@@ -2186,7 +2186,7 @@ ul {
         .frame {
             top: 34%;
             left: 24%;
-            background: url('../media/assets/_images/S_13/Frame_13_Grey.png');
+            background: url('#{$frame}frame-13-grey.png');
             background-size: 100% 100%;
             width: 75%;
             height: 46%;
@@ -2195,7 +2195,7 @@ ul {
         .sub-frame {
             top: 50%;
             left: 26.75%;
-            background: url('../media/assets/_images/S_13/IMG_13_Rectangle.png');
+            background: url('#{$image}img-13-rectangle.png');
             background-size: 100% 100%;
             width: 70%;
             height: 29%;
@@ -2206,7 +2206,7 @@ ul {
             position: absolute;
             animation-name: fadeIn;
             animation-delay: 4s;
-            background: url('../media/assets/_images/S_13/spritesheet_frame13-polarbear.png');
+            background: url('#{$sprite}spritesheet-frame13-polarbear.png');
             background-size: 500px 260px;
             width: 142px;
             height: 128px;
@@ -2256,7 +2256,7 @@ ul {
         .meter {
             bottom: -5%;
             left: 25%;
-            background: url('../media/assets/_images/_SpriteSheet/Spritesheet_progressionmeter-01.png');
+            background: url('#{$sprite}spritesheet-progressionmeter-01.png');
             background-position: 0 1360px;
             background-size: cover;
             width: 50%;
@@ -2302,7 +2302,7 @@ ul {
         .frame {
             top: 34%;
             left: 24%;
-            background: url('../media/assets/_images/S_13/Frame_13_Grey.png');
+            background: url('#{$frame}frame-13-grey.png');
             background-size: 100% 100%;
             width: 75%;
             height: 46%;
@@ -2311,7 +2311,7 @@ ul {
         .sub-frame {
             top: 50%;
             left: 26.75%;
-            background: url('../media/assets/_images/S_13/IMG_13_Rectangle.png');
+            background: url('#{$image}img-13-rectangle.png');
             background-size: 100% 100%;
             width: 70%;
             height: 29%;
@@ -2322,7 +2322,7 @@ ul {
             position: absolute;
             animation-name: fadeIn;
             animation-delay: 4s;
-            background: url('../media/assets/_images/S_13/spritesheet_frame13-polarbear.png');
+            background: url('#{$sprite}spritesheet-frame13-polarbear.png');
             background-size: 500px 260px;
             width: 142px;
             height: 128px;
@@ -2372,7 +2372,7 @@ ul {
         .meter {
             bottom: -5%;
             left: 25%;
-            background: url('../media/assets/_images/_SpriteSheet/Spritesheet_progressionmeter-01.png');
+            background: url('#{$sprite}spritesheet-progressionmeter-01.png');
             background-position: 0 1482px;
             background-size: cover;
             width: 50%;
@@ -2404,7 +2404,7 @@ ul {
         .frame {
             bottom: 12%;
             left: 11%;
-            background: url('../media/assets/_images/Frames/Frame_11_GreyRectangle.png');
+            background: url('#{$frame}frame-11-grey-rectangle.png');
             background-size: 100% 100%;
             width: 45%;
             height: 69%;
@@ -2413,7 +2413,7 @@ ul {
         ul > * {
             display: inline-block;
             position: absolute;
-            background: url('../media/assets/_images/_SpriteSheet/spritesheet_frame16-01.png');
+            background: url('#{$sprite}spritesheet-frame16-01.png');
             background-size: 1015px 394px;
             width: 13%;
             height: 22%;
@@ -2478,7 +2478,7 @@ ul {
                 position: absolute;
                 top: -50%;
                 left: -50%;
-                background: url('../media/assets/_images/_SpriteSheet/spritesheet_frame16-01.png');
+                background: url('#{$sprite}spritesheet-frame16-01.png');
                 background-size: 1020px 395px;
                 width: 200%;
                 height: 200%;
@@ -2591,7 +2591,7 @@ ul {
 
             &.CORRECT {
                 &::before {
-                    background: url('../media/assets/_images/_SpriteSheet/spritesheet-icons-frame16-01.png');
+                    background: url('#{$sprite}spritesheet-icons-frame16-01.png');
                     background-size: 1000px 141px;
                 }
 
@@ -2648,7 +2648,7 @@ ul {
         div {
             .dropzone {
                 position: absolute;
-                background: url('../media/assets/_images/_SpriteSheet/spritesheet_right_numbers-01.png');
+                background: url('#{$sprite}spritesheet-right-numbers-01.png');
                 background-size: 1150px 130px;
                 width: 13%;
                 height: 22%;
@@ -2706,7 +2706,7 @@ ul {
         .meter {
             bottom: -5%;
             left: 25%;
-            background: url('../media/assets/_images/_SpriteSheet/Spritesheet_progressionmeter-01.png');
+            background: url('#{$sprite}spritesheet-progressionmeter-01.png');
             background-position: 0 1606px;
             background-size: cover;
             width: 50%;
@@ -2747,7 +2747,7 @@ ul {
                 position: absolute;
                 bottom: 8%;
                 left: 8%;
-                background: url('../media/assets/_images/S_17/survey_flip_coin_gif/Earned_Survey-flip.gif');
+                background: url('#{$sprite}earned-survey-flip.gif');
                 background-size: contain;
                 width: 35%;
                 height: 113%;
@@ -2762,7 +2762,7 @@ ul {
 
             &.COMPLETE {
                 .flip-image {
-                    background: url('../media/assets/_images/S_17/survey_flip_coin_gif/Static_Survey-flip.gif');
+                    background: url('#{$sprite}static-survey-flip.gif');
                     background-size: contain;
                 }
             }
@@ -2775,7 +2775,7 @@ ul {
         position: absolute;
         top: 2%;
         left: 6%;
-        background: url('../media/assets/_images/S_17/IMG_17_Frame.png');
+        background: url('#{$frame}img-17-frame.png');
         background-repeat: no-repeat;
         background-size: 100%;
         width: 88%;
@@ -2791,7 +2791,7 @@ ul {
             position: absolute;
             top: 25%;
             left: 15%;
-            background: url('../media/assets/_images/_QuitScreen/Quit-Screen_Text_AreYouSure.png');
+            background: url('#{$image}quit-screen-text-are-you-sure.png');
             background-repeat: no-repeat;
             background-size: 100%;
             width: 70%;
@@ -2803,7 +2803,7 @@ ul {
             position: absolute;
             bottom: 5%;
             left: 25%;
-            background: url('../media/assets/_images/_QuitScreen/yesnobuttons-01.png');
+            background: url('#{$image}yesnobuttons-01.png');
             background-position: -15px -23px;
             background-size: 200px 200px;
             width: 21%;
@@ -2811,7 +2811,7 @@ ul {
 
             &:hover,
             &:focus {
-                background: url('../media/assets/_images/_QuitScreen/yesnobuttons-03.png');
+                background: url('#{$image}yesnobuttons-03.png');
                 background-position: -15px -23px;
                 background-size: 200px 200px;
             }
@@ -2821,7 +2821,7 @@ ul {
             position: absolute;
             bottom: 5%;
             left: 54%;
-            background: url('../media/assets/_images/_QuitScreen/yesnobuttons-02.png');
+            background: url('#{$image}yesnobuttons-02.png');
             background-position: -11px -17px;
             background-size: 200px 200px;
             width: 21%;
@@ -2829,7 +2829,7 @@ ul {
 
             &:hover,
             &:focus {
-                background: url('../media/assets/_images/_QuitScreen/yesnobuttons-04.png');
+                background: url('#{$image}yesnobuttons-04.png');
                 background-position: -11px -17px;
                 background-size: 200px 200px;
             }
