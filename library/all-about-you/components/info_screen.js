@@ -13,7 +13,7 @@ export default function (props, ref, key) {
                 <skoash.Audio
                     ref="vo"
                     type="voiceOver"
-                    src="media/assets/_audio/VOs/VO_HiThere.mp3"
+                    src={`${CMWN.MEDIA.VO}VO_HiThere.mp3`}
                     delay={500}
                 />
                 <skoash.Audio

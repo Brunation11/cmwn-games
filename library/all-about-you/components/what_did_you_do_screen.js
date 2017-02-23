@@ -19,7 +19,7 @@ export default function (props, ref, key) {
             <skoash.Audio
                 ref="vo"
                 type="voiceOver"
-                src="media/assets/_audio/VOs/VO_WhatDid.mp3"
+                src={`${CMWN.MEDIA.VO}VO_WhatDid.mp3`}
             />
             <skoash.Image
                 ref="banner"
@@ -62,35 +62,35 @@ export default function (props, ref, key) {
                 <skoash.Audio
                     ref="never-bullied"
                     type="voiceOver"
-                    src="media/assets/_audio/VOs/VO_IveNeverBeenBullied.mp3"
+                    src={`${CMWN.MEDIA.VO}VO_IveNeverBeenBullied.mp3`}
                     complete
                     delay={1000}
                 />
                 <skoash.Audio
                     ref="didnt-bother"
                     type="voiceOver"
-                    src="media/assets/_audio/VOs/VO_DidntBotherMe.mp3"
+                    src={`${CMWN.MEDIA.VO}VO_DidntBotherMe.mp3`}
                     complete
                     delay={1000}
                 />
                 <skoash.Audio
                     ref="something-mean"
                     type="voiceOver"
-                    src="media/assets/_audio/VOs/VO_SaidSomething.mp3"
+                    src={`${CMWN.MEDIA.VO}VO_SaidSomething.mp3`}
                     complete
                     delay={1000}
                 />
                 <skoash.Audio
                     ref="asked-a-friend"
                     type="voiceOver"
-                    src="media/assets/_audio/VOs/VO_AskedFriend.mp3"
+                    src={`${CMWN.MEDIA.VO}VO_AskedFriend.mp3`}
                     complete
                     delay={1000}
                 />
                 <skoash.Audio
                     ref="reported-it"
                     type="voiceOver"
-                    src="media/assets/_audio/VOs/VO_Reported.mp3"
+                    src={`${CMWN.MEDIA.VO}VO_Reported.mp3`}
                     complete
                     delay={1000}
                 />

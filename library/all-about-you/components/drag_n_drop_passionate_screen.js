@@ -82,7 +82,7 @@ export default function (props, ref, key) {
             <skoash.Audio
                 ref="vo"
                 type="voiceOver"
-                src="media/assets/_audio/VOs/VO_Passionate.mp3"
+                src={`${CMWN.MEDIA.VO}VO_Passionate.mp3`}
             />
             <skoash.Image
                 ref="penguin"
@@ -129,42 +129,42 @@ export default function (props, ref, key) {
                 <skoash.Audio
                     ref="friends"
                     type="voiceOver"
-                    src="media/assets/_audio/VOs/VO_Friends.mp3"
+                    src={`${CMWN.MEDIA.VO}VO_Friends.mp3`}
                 />
                 <skoash.Audio
                     ref="world-peace"
                     type="voiceOver"
-                    src="media/assets/_audio/VOs/VO_WorldP.mp3"
+                    src={`${CMWN.MEDIA.VO}VO_WorldP.mp3`}
                 />
                 <skoash.Audio
                     ref="sports"
                     type="voiceOver"
-                    src="media/assets/_audio/VOs/VO_Sports.mp3"
+                    src={`${CMWN.MEDIA.VO}VO_Sports.mp3`}
                 />
                 <skoash.Audio
                     ref="playing-games"
                     type="voiceOver"
-                    src="media/assets/_audio/VOs/VO_Playing.mp3"
+                    src={`${CMWN.MEDIA.VO}VO_Playing.mp3`}
                 />
                 <skoash.Audio
                     ref="looking-cool"
                     type="voiceOver"
-                    src="media/assets/_audio/VOs/VO_Looking.mp3"
+                    src={`${CMWN.MEDIA.VO}VO_Looking.mp3`}
                 />
                 <skoash.Audio
                     ref="school"
                     type="voiceOver"
-                    src="media/assets/_audio/VOs/VO_School.mp3"
+                    src={`${CMWN.MEDIA.VO}VO_School.mp3`}
                 />
                 <skoash.Audio
                     ref="celebrities"
                     type="voiceOver"
-                    src="media/assets/_audio/VOs/VO_Celebrities.mp3"
+                    src={`${CMWN.MEDIA.VO}VO_Celebrities.mp3`}
                 />
                 <skoash.Audio
                     ref="environment"
                     type="voiceOver"
-                    src="media/assets/_audio/VOs/VO_Environment.mp3"
+                    src={`${CMWN.MEDIA.VO}VO_Environment.mp3`}
                 />
             </MediaCollection>
 

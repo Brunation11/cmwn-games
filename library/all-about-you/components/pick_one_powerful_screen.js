@@ -19,7 +19,7 @@ export default function (props, ref, key) {
             <skoash.Audio
                 ref="vo"
                 type="voiceOver"
-                src="media/assets/_audio/VOs/VO_Powerful.mp3"
+                src={`${CMWN.MEDIA.VO}VO_Powerful.mp3`}
             />
             <skoash.Image
                 ref="banner"
@@ -57,28 +57,28 @@ export default function (props, ref, key) {
                 <skoash.Audio
                     ref="very-powerful"
                     type="voiceOver"
-                    src="media/assets/_audio/VOs/VO_Very.mp3"
+                    src={`${CMWN.MEDIA.VO}VO_Very.mp3`}
                     complete
                     delay={1000}
                 />
                 <skoash.Audio
                     ref="not-powerful"
                     type="voiceOver"
-                    src="media/assets/_audio/VOs/VO_DontFeel.mp3"
+                    src={`${CMWN.MEDIA.VO}VO_DontFeel.mp3`}
                     complete
                     delay={1000}
                 />
                 <skoash.Audio
                     ref="unsure"
                     type="voiceOver"
-                    src="media/assets/_audio/VOs/VO_Unsure.mp3"
+                    src={`${CMWN.MEDIA.VO}VO_Unsure.mp3`}
                     complete
                     delay={1000}
                 />
                 <skoash.Audio
                     ref="dont-care"
                     type="voiceOver"
-                    src="media/assets/_audio/VOs/VO_DontCare.mp3"
+                    src={`${CMWN.MEDIA.VO}VO_DontCare.mp3`}
                     complete
                     delay={1000}
                 />

@@ -82,7 +82,7 @@ export default function (props, ref, key) {
             <skoash.Audio
                 ref="vo"
                 type="voiceOver"
-                src="media/assets/_audio/VOs/VO_MostInterested.mp3"
+                src={`${CMWN.MEDIA.VO}VO_MostInterested.mp3`}
             />
             <skoash.Image
                 ref="penguin"
@@ -129,42 +129,42 @@ export default function (props, ref, key) {
                 <skoash.Audio
                     ref="space"
                     type="voiceOver"
-                    src="media/assets/_audio/VOs/VO_Space.mp3"
+                    src={`${CMWN.MEDIA.VO}VO_Space.mp3`}
                 />
                 <skoash.Audio
                     ref="animals"
                     type="voiceOver"
-                    src="media/assets/_audio/VOs/VO_Animals.mp3"
+                    src={`${CMWN.MEDIA.VO}VO_Animals.mp3`}
                 />
                 <skoash.Audio
                     ref="recycling"
                     type="voiceOver"
-                    src="media/assets/_audio/VOs/VO_Recycling.mp3"
+                    src={`${CMWN.MEDIA.VO}VO_Recycling.mp3`}
                 />
                 <skoash.Audio
                     ref="money"
                     type="voiceOver"
-                    src="media/assets/_audio/VOs/VO_Money.mp3"
+                    src={`${CMWN.MEDIA.VO}VO_Money.mp3`}
                 />
                 <skoash.Audio
                     ref="printing"
                     type="voiceOver"
-                    src="media/assets/_audio/VOs/VO_3DPrint.mp3"
+                    src={`${CMWN.MEDIA.VO}VO_3DPrint.mp3`}
                 />
                 <skoash.Audio
                     ref="coding"
                     type="voiceOver"
-                    src="media/assets/_audio/VOs/VO_Coding.mp3"
+                    src={`${CMWN.MEDIA.VO}VO_Coding.mp3`}
                 />
                 <skoash.Audio
                     ref="art"
                     type="voiceOver"
-                    src="media/assets/_audio/VOs/VO_Art.mp3"
+                    src={`${CMWN.MEDIA.VO}VO_Art.mp3`}
                 />
                 <skoash.Audio
                     ref="robotics"
                     type="voiceOver"
-                    src="media/assets/_audio/VOs/VO_Robotics.mp3"
+                    src={`${CMWN.MEDIA.VO}VO_Robotics.mp3`}
                 />
             </MediaCollection>
 

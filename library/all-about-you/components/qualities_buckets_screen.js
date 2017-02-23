@@ -58,7 +58,7 @@ export default function (props, ref, key) {
             loadData={loadData}
             id="qualities-buckets"
         >
-            <skoash.Audio ref="vo" type="voiceOver" src="media/assets/_audio/VOs/VO_Buckets.mp3" />
+            <skoash.Audio ref="vo" type="voiceOver" src={`${CMWN.MEDIA.VO}VO_Buckets.mp3`} />
             <div ref="frame" className="frame animated"></div>
             <skoash.Image
                 ref="penguin"
@@ -97,42 +97,42 @@ export default function (props, ref, key) {
                 <skoash.Audio
                     ref="sharing"
                     type="voiceOver"
-                    src="media/assets/_audio/VOs/VO_Sharing.mp3"
+                    src={`${CMWN.MEDIA.VO}VO_Sharing.mp3`}
                 />
                 <skoash.Audio
                     ref="kindness"
                     type="voiceOver"
-                    src="media/assets/_audio/VOs/VO_Kindness.mp3"
+                    src={`${CMWN.MEDIA.VO}VO_Kindness.mp3`}
                 />
                 <skoash.Audio
                     ref="rudeness"
                     type="voiceOver"
-                    src="media/assets/_audio/VOs/VO_Rudeness.mp3"
+                    src={`${CMWN.MEDIA.VO}VO_Rudeness.mp3`}
                 />
                 <skoash.Audio
                     ref="being-a-bully"
                     type="voiceOver"
-                    src="media/assets/_audio/VOs/VO_BeingBully.mp3"
+                    src={`${CMWN.MEDIA.VO}VO_BeingBully.mp3`}
                 />
                 <skoash.Audio
                     ref="compassion"
                     type="voiceOver"
-                    src="media/assets/_audio/VOs/VO_Compassion.mp3"
+                    src={`${CMWN.MEDIA.VO}VO_Compassion.mp3`}
                 />
                 <skoash.Audio
                     ref="greediness"
                     type="voiceOver"
-                    src="media/assets/_audio/VOs/VO_Greediness.mp3"
+                    src={`${CMWN.MEDIA.VO}VO_Greediness.mp3`}
                 />
                 <skoash.Audio
                     ref="being-angry"
                     type="voiceOver"
-                    src="media/assets/_audio/VOs/VO_BeingAngry.mp3"
+                    src={`${CMWN.MEDIA.VO}VO_BeingAngry.mp3`}
                 />
                 <skoash.Audio
                     ref="friendliness"
                     type="voiceOver"
-                    src="media/assets/_audio/VOs/VO_Friendliness.mp3"
+                    src={`${CMWN.MEDIA.VO}VO_Friendliness.mp3`}
                 />
             </MediaCollection>
 

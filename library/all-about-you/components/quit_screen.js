@@ -48,9 +48,7 @@ export default (
     <QuitScreen
         id="quit"
         assets={[
-            <skoash.Audio ref="vo" type="voiceOver" src="media/assets/_audio/VOs/VO_Quit.mp3" />
+            <skoash.Audio ref="vo" type="voiceOver" src={`${CMWN.MEDIA.VO}vo-quit.mp3`} />
         ]}
     />
 );
-
-
