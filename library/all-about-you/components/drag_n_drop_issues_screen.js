@@ -82,7 +82,7 @@ export default function (props, ref, key) {
             <skoash.Audio
                 ref="vo"
                 type="voiceOver"
-                src={`${CMWN.MEDIA.VO}VO_WorldIssues.mp3`}
+                src={`${CMWN.MEDIA.VO}vo-world-issues.mp3`}
             />
             <skoash.Image
                 ref="penguin"
@@ -109,8 +109,8 @@ export default function (props, ref, key) {
                     });
                 }}
             >
-                <skoash.Audio ref="drag" type="sfx" src="media/assets/_audio/_Buttons/S_BU_2.mp3" />
-                <skoash.Audio ref="correct" type="sfx" src="media/assets/_audio/_Buttons/S_BU_3.mp3" />
+                <skoash.Audio ref="drag" type="sfx" src={`${CMWN.MEDIA.EFFECT}s-bu-2.mp3`} />
+                <skoash.Audio ref="correct" type="sfx" src={`${CMWN.MEDIA.EFFECT}s-bu-3.mp3`} />
             </MediaCollection>
 
             <MediaCollection
@@ -129,42 +129,42 @@ export default function (props, ref, key) {
             <skoash.Audio
                 ref="cyberbullying"
                 type="voiceOver"
-                src={`${CMWN.MEDIA.VO}VO_Cyberbullying.mp3`}
+                src={`${CMWN.MEDIA.VO}vo-cyberbullying.mp3`}
             />
             <skoash.Audio
                 ref="endangered-animals"
                  type="voiceOver"
-                 src={`${CMWN.MEDIA.VO}VO_Endangered.mp3`}
+                 src={`${CMWN.MEDIA.VO}vo-endangered.mp3`}
                 />
             <skoash.Audio
                 ref="literacy"
                 type="voiceOver"
-                src={`${CMWN.MEDIA.VO}VO_Literacy.mp3`}
+                src={`${CMWN.MEDIA.VO}vo-literacy.mp3`}
             />
             <skoash.Audio
                 ref="climate-change"
                  type="voiceOver"
-                 src={`${CMWN.MEDIA.VO}VO_Climate.mp3`}
+                 src={`${CMWN.MEDIA.VO}vo-climate.mp3`}
                 />
             <skoash.Audio
                 ref="poverty"
                 type="voiceOver"
-                src={`${CMWN.MEDIA.VO}VO_Poverty.mp3`}
+                src={`${CMWN.MEDIA.VO}vo-poverty.mp3`}
             />
             <skoash.Audio
                 ref="health-problems"
                  type="voiceOver"
-                 src={`${CMWN.MEDIA.VO}VO_Health.mp3`}
+                 src={`${CMWN.MEDIA.VO}vo-health.mp3`}
                 />
             <skoash.Audio
                 ref="homelessness"
                 type="voiceOver"
-                src={`${CMWN.MEDIA.VO}VO_Homelessness.mp3`}
+                src={`${CMWN.MEDIA.VO}vo-homelessness.mp3`}
             />
             <skoash.Audio
                 ref="safety"
                 type="voiceOver"
-                src={`${CMWN.MEDIA.VO}VO_Safety.mp3`}
+                src={`${CMWN.MEDIA.VO}vo-safety.mp3`}
             />
             </MediaCollection>
 

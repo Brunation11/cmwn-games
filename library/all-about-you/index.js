@@ -95,22 +95,22 @@ skoash.start(
             <skoash.Audio
                 ref="bkg-1"
                 type="background"
-                src="media/assets/_audio/_BKG/S_BKG_3.mp3"
+                src={`${CMWN.MEDIA.EFFECT}s-bkg-3.mp3`}
             />,
             <skoash.Audio
                 ref="bkg-2"
                 type="background"
-                src="media/assets/_audio/_BKG/S_BKG_2.mp3"
+                src={`${CMWN.MEDIA.EFFECT}s-bkg-2.mp3`}
             />,
             <skoash.Audio
                 ref="button"
                 type="sfx"
-                src="media/assets/_audio/_Buttons/S_BU_1.mp3"
+                src={`${CMWN.MEDIA.EFFECT}s-bu-1.mp3`}
             />,
             <skoash.Audio
                 ref="screen-complete"
                 type="sfx"
-                src="media/assets/_audio/_Buttons/S_BU_4.mp3"
+                src={`${CMWN.MEDIA.EFFECT}s-bu-4.mp3`}
             />,
         ]}
         getBackgroundIndex={(currentScreenIndex) => {

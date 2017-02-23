@@ -19,7 +19,7 @@ export default function (props, ref, key) {
             <skoash.Audio
                 ref="vo"
                 type="voiceOver"
-                src={`${CMWN.MEDIA.VO}VO_BeAngry.mp3`}
+                src={`${CMWN.MEDIA.VO}vo-be-angry.mp3`}
             />
             <skoash.Image
                 ref="penguins"
@@ -55,7 +55,7 @@ export default function (props, ref, key) {
                     });
                 }}
             >
-                <skoash.Audio ref="correct" type="sfx" src="media/assets/_audio/_Buttons/S_BU_1.mp3" />
+                <skoash.Audio ref="correct" type="sfx" src={`${CMWN.MEDIA.EFFECT}s-bu-1.mp3`} />
             </MediaCollection>
 
             <MediaCollection
@@ -73,21 +73,21 @@ export default function (props, ref, key) {
                 <skoash.Audio
                     ref="worried"
                     type="voiceOver"
-                    src={`${CMWN.MEDIA.VO}VO_Worried.mp3`}
+                    src={`${CMWN.MEDIA.VO}vo-worried.mp3`}
                     complete
                     delay={1000}
                 />
                 <skoash.Audio
                     ref="shocked"
                     type="voiceOver"
-                    src={`${CMWN.MEDIA.VO}VO_Shocked.mp3`}
+                    src={`${CMWN.MEDIA.VO}vo-shocked.mp3`}
                     complete
                     delay={1000}
                 />
                 <skoash.Audio
                     ref="no-big-deal"
                     type="voiceOver"
-                    src={`${CMWN.MEDIA.VO}VO_NoBig.mp3`}
+                    src={`${CMWN.MEDIA.VO}vo-no-big.mp3`}
                     complete
                     delay={1000}
                 />

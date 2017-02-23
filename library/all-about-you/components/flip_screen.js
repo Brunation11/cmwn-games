@@ -12,7 +12,7 @@ export default function (props, ref, key) {
             <skoash.Audio
                 ref="vo"
                 type="voiceOver"
-                src={`${CMWN.MEDIA.VO}VO_Finished.mp3`}
+                src={`${CMWN.MEDIA.VO}vo-finished.mp3`}
             />
             <skoash.Image
                 ref="frame"

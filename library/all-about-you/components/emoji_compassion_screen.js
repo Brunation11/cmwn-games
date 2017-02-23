@@ -19,7 +19,7 @@ export default function (props, ref, key) {
             <skoash.Audio
                 ref="vo"
                 type="voiceOver"
-                src={`${CMWN.MEDIA.VO}VO_Comp.mp3`}
+                src={`${CMWN.MEDIA.VO}vo-comp.mp3`}
             />
             <skoash.Image
                 ref="penguins"
@@ -46,7 +46,7 @@ export default function (props, ref, key) {
                     });
                 }}
             >
-                <skoash.Audio ref="correct" type="sfx" src="media/assets/_audio/_Buttons/S_BU_1.mp3" />
+                <skoash.Audio ref="correct" type="sfx" src={`${CMWN.MEDIA.EFFECT}s-bu-1.mp3`} />
             </MediaCollection>
 
             <MediaCollection
@@ -64,21 +64,21 @@ export default function (props, ref, key) {
                 <skoash.Audio
                     ref="happy"
                     type="voiceOver"
-                    src={`${CMWN.MEDIA.VO}VO_Happy.mp3`}
+                    src={`${CMWN.MEDIA.VO}vo-happy.mp3`}
                     complete
                     delay={1000}
                 />
                 <skoash.Audio
                     ref="confused"
                     type="voiceOver"
-                    src={`${CMWN.MEDIA.VO}VO_Confused.mp3`}
+                    src={`${CMWN.MEDIA.VO}vo-confused.mp3`}
                     complete
                     delay={1000}
                 />
                 <skoash.Audio
                     ref="thankful"
                     type="voiceOver"
-                    src={`${CMWN.MEDIA.VO}VO_Thankful.mp3`}
+                    src={`${CMWN.MEDIA.VO}vo-thankful.mp3`}
                     complete
                     delay={1000}
                 />

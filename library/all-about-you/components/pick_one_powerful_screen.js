@@ -19,7 +19,7 @@ export default function (props, ref, key) {
             <skoash.Audio
                 ref="vo"
                 type="voiceOver"
-                src={`${CMWN.MEDIA.VO}VO_Powerful.mp3`}
+                src={`${CMWN.MEDIA.VO}vo-powerful.mp3`}
             />
             <skoash.Image
                 ref="banner"
@@ -39,7 +39,7 @@ export default function (props, ref, key) {
                     });
                 }}
             >
-                <skoash.Audio ref="correct" type="sfx" src="media/assets/_audio/_Buttons/S_BU_1.mp3" />
+                <skoash.Audio ref="correct" type="sfx" src={`${CMWN.MEDIA.EFFECT}s-bu-1.mp3`} />
             </MediaCollection>
 
             <MediaCollection
@@ -57,28 +57,28 @@ export default function (props, ref, key) {
                 <skoash.Audio
                     ref="very-powerful"
                     type="voiceOver"
-                    src={`${CMWN.MEDIA.VO}VO_Very.mp3`}
+                    src={`${CMWN.MEDIA.VO}vo-very.mp3`}
                     complete
                     delay={1000}
                 />
                 <skoash.Audio
                     ref="not-powerful"
                     type="voiceOver"
-                    src={`${CMWN.MEDIA.VO}VO_DontFeel.mp3`}
+                    src={`${CMWN.MEDIA.VO}vo-dont-feel.mp3`}
                     complete
                     delay={1000}
                 />
                 <skoash.Audio
                     ref="unsure"
                     type="voiceOver"
-                    src={`${CMWN.MEDIA.VO}VO_Unsure.mp3`}
+                    src={`${CMWN.MEDIA.VO}vo-unsure.mp3`}
                     complete
                     delay={1000}
                 />
                 <skoash.Audio
                     ref="dont-care"
                     type="voiceOver"
-                    src={`${CMWN.MEDIA.VO}VO_DontCare.mp3`}
+                    src={`${CMWN.MEDIA.VO}vo-dont-care.mp3`}
                     complete
                     delay={1000}
                 />

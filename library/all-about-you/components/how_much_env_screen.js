@@ -23,12 +23,12 @@ export default function (props, ref, key) {
                 <skoash.Audio
                     ref="vo-how-much"
                     type="voiceOver"
-                    src={`${CMWN.MEDIA.VO}VO_HowMuch.mp3`}
+                    src={`${CMWN.MEDIA.VO}vo-how-much.mp3`}
                 />
                 <skoash.Audio
                     ref="vo-enviro-climate"
                     type="voiceOver"
-                    src={`${CMWN.MEDIA.VO}VO_EnviroClimate.mp3`}
+                    src={`${CMWN.MEDIA.VO}vo-enviro-climate.mp3`}
                 />
             </skoash.MediaSequence>
 
@@ -67,7 +67,7 @@ export default function (props, ref, key) {
                     });
                 }}
             >
-                <skoash.Audio ref="correct" type="sfx" src="media/assets/_audio/_Buttons/S_BU_1.mp3" />
+                <skoash.Audio ref="correct" type="sfx" src={`${CMWN.MEDIA.EFFECT}s-bu-1.mp3`} />
             </MediaCollection>
 
             <MediaCollection
@@ -90,13 +90,13 @@ export default function (props, ref, key) {
                     <skoash.Audio
                         ref="a-lot-expression"
                         type="voiceOver"
-                        src="media/assets/_audio/_Expressions/S_ALot.mp3"
+                        src={`${CMWN.MEDIA.EFFECT}s-a-lot.mp3`}
                         complete
                     />
                     <skoash.Audio
                         ref="a-lot-vo"
                         type="voiceOver"
-                        src={`${CMWN.MEDIA.VO}VO_ALot.mp3`}
+                        src={`${CMWN.MEDIA.VO}vo-a-lot.mp3`}
                         complete
                     />
                 </skoash.MediaSequence>
@@ -108,13 +108,13 @@ export default function (props, ref, key) {
                     <skoash.Audio
                         ref="a-little-expression"
                         type="voiceOver"
-                        src="media/assets/_audio/_Expressions/S_ALittle.mp3"
+                        src={`${CMWN.MEDIA.EFFECT}s-a-little.mp3`}
                         complete
                     />
                     <skoash.Audio
                         ref="a-little-vo"
                         type="voiceOver"
-                        src={`${CMWN.MEDIA.VO}VO_ALittle.mp3`}
+                        src={`${CMWN.MEDIA.VO}vo-a-little.mp3`}
                         complete
                     />
                 </skoash.MediaSequence>
@@ -126,13 +126,13 @@ export default function (props, ref, key) {
                     <skoash.Audio
                         ref="not-at-all-expression"
                         type="voiceOver"
-                        src="media/assets/_audio/_Expressions/S_NotAtAll.mp3"
+                        src={`${CMWN.MEDIA.EFFECT}s-not-at-all.mp3`}
                         complete
                     />
                     <skoash.Audio
                         ref="not-at-all-vo"
                         type="voiceOver"
-                        src={`${CMWN.MEDIA.VO}VO_NotAt.mp3`}
+                        src={`${CMWN.MEDIA.VO}vo-not-at.mp3`}
                         complete
                     />
                 </skoash.MediaSequence>
