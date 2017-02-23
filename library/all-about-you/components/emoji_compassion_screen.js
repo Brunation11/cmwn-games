@@ -24,14 +24,14 @@ export default function (props, ref, key) {
             <skoash.Image
                 ref="penguins"
                 className="penguins animated"
-                src="media/assets/_images/S_8/img-s8-main-penguins-01.png"
+                src={`${CMWN.MEDIA.IMAGE}img-s8-main-penguins-01.png`}
             />
             <div ref="frame" className="frame animated"></div>
             <div ref="sub-frame" className="sub-frame animated"></div>
             <skoash.Image
                 ref="penguins-compassion"
                 className="penguins-compassion animated"
-                src="media/assets/_images/S_8/img_s8_penguins_compassion.png"
+                src={`${CMWN.MEDIA.IMAGE}img-s8-penguins-compassion.png`}
             />
 
             <MediaCollection

@@ -87,12 +87,12 @@ export default function (props, ref, key) {
             <skoash.Image
                 ref="penguin"
                 className="penguin animated"
-                src="media/assets/_images/S_4/img_s4_penguin-01.png"
+                src={`${CMWN.MEDIA.IMAGE}img-s4-penguin-01.png`}
             />
             <skoash.Image
                 ref="banner"
                 className="banner animated"
-                src="media/assets/_images/S_4/text-worldissues-01.png"
+                src={`${CMWN.MEDIA.IMAGE}text-worldissues-01.png`}
             />
             <skoash.Component ref="frame" className="frame animated" />
 

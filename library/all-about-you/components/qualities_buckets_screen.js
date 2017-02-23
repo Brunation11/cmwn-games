@@ -63,7 +63,7 @@ export default function (props, ref, key) {
             <skoash.Image
                 ref="penguin"
                 className="penguin animated"
-                src="media/assets/_images/S_6/img_06_penguin-01.png"
+                src={`${CMWN.MEDIA.IMAGE}img_06_penguin-01.png`}
             />
 
             <MediaCollection

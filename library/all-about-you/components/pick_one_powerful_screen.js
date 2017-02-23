@@ -24,7 +24,7 @@ export default function (props, ref, key) {
             <skoash.Image
                 ref="banner"
                 className="banner animated"
-                src="media/assets/_images/S_5/img-05-text-top-01.png"
+                src={`${CMWN.MEDIA.IMAGE}img-05-text-top-01.png`}
             />
 
             <MediaCollection
