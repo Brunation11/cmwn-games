@@ -16,7 +16,7 @@
     .next-screen {
         right: 380px;
         bottom: 170px;
-        background-image: url($media-server + 'SpritesAnimations/sprite.nav.png');
+        background-image: url($media-game + 'SpritesAnimations/sprite.nav.png');
         background-position: -335px 0;
         width: 230px;
         height: 70px;
@@ -30,7 +30,7 @@
         position: absolute;
         bottom: 0;
         left: 405px;
-        background-image: url($media-server + 'SpritesAnimations/sprite.minion.png');
+        background-image: url($media-game + 'SpritesAnimations/sprite.minion.png');
         background-position: -1905px -180px;
         background-size: 2200px;
         width: 150px;

@@ -1,3 +1,8 @@
+// As of skoash 1.1.0 this component can be found at skoash.GameEmbedder
+/* eslint-disable no-console */
+console.warn('As of skoash 1.1.0 this component can be found at skoash.GameEmbedder');
+/* eslint-enable no-console */
+
 class GameEmbedder extends skoash.Component {
     constructor() {
         super();

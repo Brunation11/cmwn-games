@@ -1,4 +1,4 @@
-import config from './config.game';
+import config from './config';
 
 import Loader from 'shared/components/loader/0.1';
 
@@ -139,3 +139,5 @@ class AllAboutYou extends skoash.Game {
 }
 
 skoash.start(AllAboutYou, config.id);
+
+if (module.hot) module.hot.accept();

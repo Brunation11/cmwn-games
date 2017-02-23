@@ -1,4 +1,4 @@
-import config from './config.game';
+import config from './config';
 
 import Loader from 'shared/components/loader/0.1';
 
@@ -63,4 +63,4 @@ var MeerkatMania = (
 
 skoash.start(MeerkatMania);
 
-import 'shared/js/google-analytics';
+if (module.hot) module.hot.accept();
