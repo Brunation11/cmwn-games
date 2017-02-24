@@ -52,7 +52,7 @@ class Selectable extends skoash.Component {
         var self = this;
         _.forEach(self.refs, ref => {
             if (ref.props.correct || (self.props.answers && self.props.answers.indexOf(ref) !== -1)) {
-                 _.invoke(ref, 'incompleteRefs');
+                _.invoke(ref, 'incompleteRefs');
             }
         });
 
@@ -81,7 +81,7 @@ class Selectable extends skoash.Component {
         ref = self.refs[dataRef];
 
         isCorrect = (ref && ref.props && ref.props.correct) ||
-            (self.props.answers && self.props.answers.length && 
+            (self.props.answers && self.props.answers.length &&
                 self.props.answers.indexOf(dataRef) !== -1);
 
         shouldSelect = (ref && ref.props && ref.props.select);

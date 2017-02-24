@@ -1,5 +1,3 @@
-import ClassNames from 'classnames';
-
 import MediaCollection from 'shared/components/media_collection/0.1';
 import Selectable from 'shared/components/selectable/0.1';
 import Reveal from 'shared/components/reveal/0.1';
@@ -11,11 +9,13 @@ const GOOD_JOB = '1';
 
 class TrashScreenComponent extends CustomCursorScreen {
     start() {
+        var center;
+
         super.start();
 
-        var center = this.refs['children-1'].refs['children-0'];
+        center = this.refs['children-1'].refs['children-0'];
         ['selectable', 'timer', 'children-0'].forEach(ref => { center.refs[ref].incompleteRefs(); });
-        
+
         this.incomplete();
     }
 }
@@ -33,8 +33,8 @@ export default function (props, ref, key) {
         });
     };
 
-    var onSelect = function (ref, isCorrect) {
-        var play = isCorrect? 'correct' : 'incorrect';
+    var onSelect = function (r, isCorrect) {
+        var play = isCorrect ? 'correct' : 'incorrect';
         playAudio.call(this, play, 'dummy');
     };
 
@@ -72,12 +72,12 @@ export default function (props, ref, key) {
         openReveal.call(this, TRY_AGAIN);
     };
 
-    var revealClose = function (ref) {
+    var revealClose = function (r) {
         var self = this;
 
         openReveal.call(self, null);
 
-        if (ref === TRY_AGAIN) { 
+        if (r === TRY_AGAIN) {
             timerAction.call(self, 'restart');
             self.updateGameState({
                 path: 'selectable',
@@ -168,7 +168,11 @@ export default function (props, ref, key) {
                         countDown={true}
                         action={_.get(props, 'data.timer.action', null)}
                         timeout={90000}
-                        leadingContent={<skoash.Image src={`${ENVIRONMENT.MEDIA_GAME}ImageAssets/img_9.1.png`} />}
+                        leadingContent={
+                            <skoash.Image
+                                src={`${ENVIRONMENT.MEDIA_GAME}ImageAssets/img_9.1.png`}
+                            />
+                        }
                         onComplete={timerComplete}
                     />
                     <Selectable

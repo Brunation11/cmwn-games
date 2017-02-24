@@ -26,7 +26,10 @@ export default function (props, ref, key) {
             <skoash.Component className="center">
                 <skoash.Component className="group">
                     <skoash.Component className="frame" pl-bg>
-                        <skoash.Image className="fish" src={`${ENVIRONMENT.MEDIA_GAME}ImageAssets/img_11.1.png`} />
+                        <skoash.Image
+                            className="fish"
+                            src={`${ENVIRONMENT.MEDIA_GAME}ImageAssets/img_11.1.png`}
+                        />
                         <skoash.Component>
                             <p>
                                 Let me say thank you<br /> for cleaning up<br /> with a new
@@ -37,7 +40,10 @@ export default function (props, ref, key) {
                                     (_.get(props, 'data.vo.complete', false) ? ' show' : '')
                                 }
                             >
-                                <skoash.Image className="flip" src={`${ENVIRONMENT.MEDIA_GAME}ImageAssets/img_11.2.png`} />
+                                <skoash.Image
+                                    className="flip"
+                                    src={`${ENVIRONMENT.MEDIA_GAME}ImageAssets/img_11.2.png`}
+                                />
                             </skoash.Component>
                         </skoash.Component>
                     </skoash.Component>

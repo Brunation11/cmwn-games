@@ -10,7 +10,7 @@ const DECREMENT = 10;
 const CORRECT_BUBBLES = 10;
 
 export default function (props, ref, key) {
-    var onSelect = function (ref, isCorrect) {
+    var onSelect = function (r, isCorrect) {
         var correct = _.get(props, 'data.score.correct', 0);
         var incorrect = _.get(props, 'data.score.incorrect', 0);
         var cbRef = 'dummy';
@@ -21,10 +21,10 @@ export default function (props, ref, key) {
             updateMeter.call(this, correct);
         } else {
             incorrect++;
-            ref = 'incorrect';
+            r = 'incorrect';
         }
 
-        playAudio.call(this, ref, playAudio.bind(this, cbRef, _.noop));
+        playAudio.call(this, r, playAudio.bind(this, cbRef, _.noop));
 
         this.updateGameState({
             path: 'score',
@@ -33,19 +33,18 @@ export default function (props, ref, key) {
                 incorrect,
             },
         });
-
     };
-    
-    var playAudio = function (ref, cb) {
+
+    var playAudio = function (r, cb) {
         this.updateGameState({
             path: 'media',
             data: {
-                play: ref
+                play: r
             },
             callback: cb
         });
     };
-    
+
     var updateMeter = function (correct) {
         var percent = (correct / CORRECT_BUBBLES) * 100;
         this.updateGameState({

@@ -8,12 +8,21 @@ export default function (props, ref, key) {
             key={key}
             id="water-pollution"
         >
-            <skoash.Audio type="voiceOver" src={`${ENVIRONMENT.MEDIA_GAME}SoundAssets/vos/WaterPollution.mp3`} />
+            <skoash.Audio
+                type="voiceOver"
+                src={`${ENVIRONMENT.MEDIA_GAME}SoundAssets/vos/WaterPollution.mp3`}
+            />
             <skoash.Component className="center">
                 <skoash.Component className="group">
                     <skoash.Component className="frame" pl-bg>
-                        <skoash.Image className="words" src={`${ENVIRONMENT.MEDIA_GAME}ImageAssets/img_3.1.png`} />
-                        <skoash.Image className="fish" src={`${ENVIRONMENT.MEDIA_GAME}ImageAssets/img_3.2.png`} />
+                        <skoash.Image
+                            className="words"
+                            src={`${ENVIRONMENT.MEDIA_GAME}ImageAssets/img_3.1.png`}
+                        />
+                        <skoash.Image
+                            className="fish"
+                            src={`${ENVIRONMENT.MEDIA_GAME}ImageAssets/img_3.2.png`}
+                        />
                     </skoash.Component>
                 <Repeater className="bubbles" amount={14} />
                 </skoash.Component>

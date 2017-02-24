@@ -20,7 +20,7 @@ ENVIRONMENT.MEDIA_GAME = ENVIRONMENT.MEDIA + 'Games/HappyFishFace/';
 
 // TODO: need BKG3 audio on media server AIM 12/15/16
 
-var HappyFishFace = (
+skoash.start(
     <skoash.Game
         config={config}
         screens={{
@@ -93,5 +93,3 @@ var HappyFishFace = (
         }}
     />
 );
-
-skoash.start(HappyFishFace);
