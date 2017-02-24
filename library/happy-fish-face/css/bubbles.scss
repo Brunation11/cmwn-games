@@ -48,7 +48,7 @@
     @for $i from 1 through 14{
       &:nth-of-type(#{$i}){
         animation-delay: nth($delays, $i)+s;
-        left: nth($offsets, $i)+%;
+        left: percent(nth($offsets, $i) / 100);
         z-index: nth($z, $i);
       }
     }
