@@ -110,18 +110,17 @@ class Score extends skoash.Component {
     componentWillReceiveProps(props) {
         super.componentWillReceiveProps(props);
 
-        if (props.correct !== this.props.correct ||
-      props.incorrect !== this.props.incorrect) {
+        if (props.correct !== this.props.correct || props.incorrect !== this.props.incorrect) {
             this.setScore(props);
         }
     }
 
     getClassNames() {
         return classNames(
-      'score',
-      `score-${this.state.score}`,
-      super.getClassNames()
-    );
+            'score',
+            `score-${this.state.score}`,
+            super.getClassNames()
+        );
     }
 
     render() {
