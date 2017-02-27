@@ -10,17 +10,17 @@ export default function (props, ref, key) {
                 <skoash.Audio
                     ref="vo-1"
                     type="voiceOver"
-                    src="media/_assets/_sounds/_vos/LitterIsTrash.mp3"
+                    src={`${CMWN.MEDIA.VO}litter-is-trash.mp3`}
                 />
                 <skoash.Audio
                     ref="vo-2"
                     type="voiceOver"
-                    src="media/_assets/_sounds/_vos/PaperCansBottles.mp3"
+                    src={`${CMWN.MEDIA.VO}paper-cans-bottles.mp3`}
                 />
                 <skoash.Audio
                     ref="vo-3"
                     type="voiceOver"
-                    src="media/_assets/_sounds/_vos/LetsCleanUp.mp3"
+                    src={`${CMWN.MEDIA.VO}lets-clean-up.mp3`}
                 />
             </skoash.MediaSequence>
             <div className="copy animated">
@@ -32,7 +32,7 @@ export default function (props, ref, key) {
             <skoash.Image
                 ref="image"
                 className="banner animated"
-                src="media/_assets/_images/lets.clean.up.png"
+                src={`${CMWN.MEDIA.IMAGE}lets-clean-up.png`}
             />
         </skoash.Screen>
     );

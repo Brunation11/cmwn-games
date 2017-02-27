@@ -6,7 +6,7 @@ export default function (props, ref, key) {
             key={key}
             id="sing-about-it"
         >
-            <skoash.Audio ref="vo" type="voiceOver" src="media/_assets/_sounds/_vos/LetsSing.mp3" />
+            <skoash.Audio ref="vo" type="voiceOver" src={`${CMWN.MEDIA.VO}lets-sing.mp3`} />
             <div className="mr-eco animated" />
             <div className="banner animated" />
             <div className="dancers animated" />

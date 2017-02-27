@@ -26,17 +26,17 @@ export default function (props, ref, key) {
                 <skoash.Audio
                     ref="vo-1"
                     type="voiceOver"
-                    src="media/_assets/_sounds/_vos/Instructions.mp3"
+                    src={`${CMWN.MEDIA.VO}instructions.mp3`}
                 />
                 <skoash.Audio
                     ref="vo-2"
                     type="voiceOver"
-                    src="media/_assets/_sounds/_vos/TossLitter.mp3"
+                    src={`${CMWN.MEDIA.VO}toss-litter.mp3`}
                 />
                 <skoash.Audio
                     ref="vo-3"
                     type="voiceOver"
-                    src="media/_assets/_sounds/_vos/Get200.mp3"
+                    src={`${CMWN.MEDIA.VO}get-200.mp3`}
                     completeTarget="instructions"
                 />
             </skoash.MediaSequence>
@@ -63,31 +63,31 @@ export default function (props, ref, key) {
                 <skoash.Audio
                     ref="vo-4"
                     type="voiceOver"
-                    src="media/_assets/_sounds/_vos/Level3.mp3"
+                    src={`${CMWN.MEDIA.VO}level3.mp3`}
                 />
                 <skoash.Audio
                     ref="vo-5"
                     type="voiceOver"
-                    src="media/_assets/_sounds/_vos/ParkClean.mp3"
+                    src={`${CMWN.MEDIA.VO}park-clean.mp3`}
                 />
               </skoash.MediaSequence>
               <skoash.MediaSequence ref="try-again" silentOnStart complete>
                 <skoash.Audio
                     ref="vo-6"
                     type="voiceOver"
-                    src="media/_assets/_sounds/_vos/LevelLost.mp3"
+                    src={`${CMWN.MEDIA.VO}level-lost.mp3`}
                     complete
                 />
                 <skoash.Audio
                     ref="vo-7"
                     type="voiceOver"
-                    src="media/_assets/_sounds/_vos/OhNo.mp3"
+                    src={`${CMWN.MEDIA.VO}oh-no.mp3`}
                     complete
                 />
                 <skoash.Audio
                     ref="vo-8"
                     type="voiceOver"
-                    src="media/_assets/_sounds/_vos/ParkStill.mp3"
+                    src={`${CMWN.MEDIA.VO}park-still.mp3`}
                     complete
                 />
               </skoash.MediaSequence>
@@ -95,12 +95,12 @@ export default function (props, ref, key) {
                 <skoash.Audio
                     ref="vo-9"
                     type="voiceOver"
-                    src="media/_assets/_sounds/_effects/FastSwish.mp3"
+                    src={`${CMWN.MEDIA.EFFECT}fast-swish.mp3`}
                 />
                 <skoash.Audio
                     ref="vo-10"
                     type="voiceOver"
-                    src="media/_assets/_sounds/_effects/WinPoints.mp3"
+                    src={`${CMWN.MEDIA.EFFECT}win-points.mp3`}
                 />
               </skoash.MediaSequence>
             </MediaCollection>

@@ -6,9 +6,9 @@ export default function (props, ref, key) {
             key={key}
             id="take-pledge"
         >
-            <skoash.Audio ref="vo" type="voiceOver" src="media/_assets/_sounds/_vos/AntiLitterPledge.mp3" />
-            <skoash.Audio ref="button" complete type="sfx" src="media/_assets/_sounds/_effects/S_BU_1.mp3" />
-            <skoash.Image ref="bkg" className="background" src="media/_Frames/FR_1.png" />
+            <skoash.Audio ref="vo" type="voiceOver" src={`${CMWN.MEDIA.VO}anti-litter-pledge.mp3`} />
+            <skoash.Audio ref="button" complete type="sfx" src={`${CMWN.MEDIA.EFFECT}s-bu-1.mp3`} />
+            <skoash.Image ref="bkg" className="background" src={`${CMWN.MEDIA.FRAME}fr-1.png`} />
             <div className="mr-eco"></div>
             <div className="banner"></div>
         </skoash.Screen>

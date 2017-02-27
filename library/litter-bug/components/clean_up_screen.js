@@ -19,7 +19,10 @@ export default function (props, ref, key) {
                 ref="reveal"
                 openOnStart="0"
                 assets={[
-                    <skoash.Audio type="voiceOver" src="media/S_3/VO_3.1.mp3" />
+                    <skoash.Audio
+                        type="voiceOver"
+                        src={`${CMWN.MEDIA.VO}vo-3-1.mp3`}
+                    />
                 ]}
                 list={[
                     <skoash.Component ref="center" className="center" type="li">
@@ -27,7 +30,7 @@ export default function (props, ref, key) {
                             <skoash.Image
                                 ref="background"
                                 className="background"
-                                src="media/_Frames/FR_1.png"
+                                src={`${CMWN.MEDIA.FRAME}fr-1.png`}
                             />
                             <div className="content-group center">
                                 <div>
@@ -48,7 +51,7 @@ export default function (props, ref, key) {
                 selectableSelectClass="HIGHLIGHTED"
                 allCorrect
                 assets={[
-                    <skoash.Audio ref="correct" type="sfx" src="media/S_3/S_3.1.mp3" />
+                    <skoash.Audio ref="correct" type="sfx" src={`${CMWN.MEDIA.EFFECT}s-3-1-mp3`} />
                 ]}
                 selectableList={[
                     <skoash.Component
