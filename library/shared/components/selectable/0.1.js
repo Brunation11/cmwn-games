@@ -155,6 +155,10 @@ class Selectable extends skoash.Component {
         if (props.select && props.select !== this.props.select) {
             this.state.selectFunction.call(this, props.select);
         }
+
+        if (props.incompleteRefs === true && props.incompleteRefs !== this.props.incompleteRefs) {
+            this.incompleteRefs();
+        }
     }
 
     renderBin() {
@@ -189,13 +193,6 @@ class Selectable extends skoash.Component {
         });
     }
 
-    componentWillReceiveProps(props) {
-        super.componentWillReceiveProps(props);
-
-        if (props.incompleteRefs === true && props.incompleteRefs !== this.props.incompleteRefs) {
-            this.incompleteRefs();
-        }
-    }
 
     render() {
         return (
