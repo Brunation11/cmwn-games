@@ -6,9 +6,9 @@ export default function (props, ref, key) {
             key={key}
             id="info-forrest"
         >
-            <skoash.Audio type="voiceOver" src="media/S_4/vo_FireDestroysTrees.mp3" />
+            <skoash.Audio type="voiceOver" src={`${CMWN.MEDIA.VO}vo-fire-destroys-trees.mp3`} />
             <skoash.Component className="frame animated">
-                <skoash.Image className="background" src="media/_Frames/FR_1.png" />
+                <skoash.Image className="background" src={`${CMWN.MEDIA.FRAME}fr-1.png`} />
                 <p className="animated">
                     Fire destroys trees and homes and<br />
                     consumes landscapes and habitats.

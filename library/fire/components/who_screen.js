@@ -54,14 +54,23 @@ export default function (props, ref, key) {
             id="who"
             className={_.get(props, 'data.reveal.open', null) !== null ? 'REVEAL-OPEN' : ''}
         >
-            <skoash.Audio ref="title" type="voiceOver" src="media/S_6/vo_FireBreaksOut2.mp3" />
-            <skoash.Image className="animated" src="media/S_6/img_6.1.png" />
+            <skoash.Audio ref="title" type="voiceOver" src={`${CMWN.MEDIA.VO}vo-fire-breaks-out-2.mp3`} />
+            <skoash.Image className="animated" src={`${CMWN.MEDIA.IMAGE}img-6-1.png`} />
             <skoash.MediaCollection
                 play={_.get(props, 'data.media-sfx.effect', null)}
                 onComplete={openReveal}
             >
-                <skoash.Audio data-ref="correct" type="sfx" src="media/S_6/S_6.2.mp3" />
-                <skoash.Audio data-ref="incorrect" type="sfx" src="media/S_6/S_6.3.mp3" complete />
+                <skoash.Audio
+                    data-ref="correct"
+                    type="sfx"
+                    src={`${CMWN.MEDIA.EFFECT}s-6-2.mp3`}
+                />
+                <skoash.Audio
+                    data-ref="incorrect"
+                    type="sfx"
+                    src={`${CMWN.MEDIA.EFFECT}s-6-3.mp3`}
+                    complete
+                />
             </skoash.MediaCollection>
             <skoash.MediaCollection
                 play={_.get(props, 'data.selectable.target.props.data-ref', null)}
@@ -70,24 +79,24 @@ export default function (props, ref, key) {
                 <skoash.Audio
                     data-ref={JOBS[0]}
                     type="voiceOver"
-                    src="media/S_6/vo_Builder.mp3"
+                    src={`${CMWN.MEDIA.VO}vo-builder.mp3`}
                     complete
                 />
                 <skoash.Audio
                     data-ref={JOBS[1]}
                     type="voiceOver"
-                    src="media/S_6/vo_Plumber.mp3"
+                    src={`${CMWN.MEDIA.VO}vo-plumber.mp3`}
                     complete
                 />
                 <skoash.Audio
                     data-ref={JOBS[2]}
                     type="voiceOver"
-                    src="media/S_6/vo_Firefighter.mp3"
+                    src={`${CMWN.MEDIA.VO}vo-firefighter.mp3`}
                 />
                 <skoash.Audio
                     data-ref={JOBS[3]}
                     type="voiceOver"
-                    src="media/S_6/vo_Chef.mp3"
+                    src={`${CMWN.MEDIA.VO}vo-chef.mp3`}
                     complete
                 />
             </skoash.MediaCollection>
@@ -108,14 +117,14 @@ export default function (props, ref, key) {
                     <skoash.Audio
                         data-ref="open-sound"
                         type="voiceOver"
-                        src="media/S_6/vo_FirefightingTough.mp3"
+                        src={`${CMWN.MEDIA.VO}vo-firefighting-tough.mp3`}
                     />
                 ]}
                 list={[
                     <skoash.Component className="frame">
-                        <skoash.Image className="animated" src="media/S_6/img_6.7.png" />
+                        <skoash.Image className="animated" src={`${CMWN.MEDIA.IMAGE}img-6-7.png`} />
                         <div className="animated">
-                            <skoash.Image className="background" src="media/_Frames/FR_2.png" />
+                            <skoash.Image className="background" src={`${CMWN.MEDIA.FRAME}fr-2.png`} />
                             Firefighting is one of the<br />
                             toughest jobs in the world<br />
                             and demands total teamwork.

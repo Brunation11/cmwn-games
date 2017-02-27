@@ -55,30 +55,30 @@ export default function (props, ref, key) {
                 <skoash.Audio
                     ref={STATES[0].audio}
                     type="voiceOver"
-                    src="media/S_2/vo_ChemicalReaction.mp3"
+                    src={`${CMWN.MEDIA.VO}vo-chemical-reaction.mp3`}
                 />
                 <skoash.Audio
                     ref={STATES[1].audio}
                     type="sfx"
-                    src="media/S_2/S_2.2.mp3"
+                    src={`${CMWN.MEDIA.EFFECT}s-2-2.mp3`}
                     volume={0.5}
                 />
                 <skoash.Audio
                     ref={STATES[2].audio}
                     type="sfx"
-                    src="media/S_2/S_2.3.mp3"
+                    src={`${CMWN.MEDIA.EFFECT}s-2-3.mp3`}
                     volume={0.6}
                 />
                 <skoash.Audio
                     ref={STATES[3].audio}
                     type="sfx"
-                    src="media/S_2/S_2.4.mp3"
+                    src={`${CMWN.MEDIA.EFFECT}s-2-4.mp3`}
                     volume={0.6}
                 />
             </skoash.MediaCollection>
-            <skoash.Image className="animated" src="media/S_2/img_2.1.png" />
-            <skoash.Image className="animated flame" src="media/S_2/img_2.2.png" />
-            <skoash.Image className="animated equal" src="media/S_2/img_2.3.png" />
+            <skoash.Image className="animated" src={`${CMWN.MEDIA.IMAGE}img-2-1.png`} />
+            <skoash.Image className="animated flame" src={`${CMWN.MEDIA.IMAGE}img-2-2.png`} />
+            <skoash.Image className="animated equal" src={`${CMWN.MEDIA.IMAGE}img-2-3.png`} />
             <h2 className="animated text">
                 Chemical<br />Reaction
             </h2>

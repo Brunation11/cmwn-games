@@ -43,9 +43,9 @@ var Fire = (
         }}
         loader={<Loader />}
         assets={[
-            <skoash.Audio ref="bkg-1" type="background" src="media/_BKG/S_BKG_1.mp3" loop />,
-            <skoash.Audio ref="button" type="sfx" src="media/_Buttons/S_BU_1.mp3" />,
-            <skoash.Audio ref="screen-complete" type="sfx" src="media/_Buttons/S_BU_2.mp3" />,
+            <skoash.Audio ref="bkg-1" type="background" src={`${CMWN.MEDIA.EFFECT}s-bkg-1.mp3`} loop />,
+            <skoash.Audio ref="button" type="sfx" src={`${CMWN.MEDIA.EFFECT}s-bu-1.mp3`} />,
+            <skoash.Audio ref="screen-complete" type="sfx" src={`${CMWN.MEDIA.EFFECT}s-bu-2.mp3`} />,
             <div className="background BKG-2" />,
             <div className="background BKG-3" />,
         ]}

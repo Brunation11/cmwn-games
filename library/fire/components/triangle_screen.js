@@ -44,13 +44,19 @@ export default function (props, ref, key) {
         >
             <skoash.Component className="center">
                 <skoash.Component className="title">
-                    <skoash.Image src="media/S_8/img_8.1.png" />
+                    <skoash.Image src={`${CMWN.MEDIA.IMAGE}img-8-1.png`} />
                     <h3>Choose the words and drag to form a triangle</h3>
                 </skoash.Component>
                 <skoash.Component className="frame">
                     <skoash.MediaSequence>
-                        <skoash.Audio type="voiceOver" src="media/S_8/vo_ThreeThingsMakeFireBurn.mp3" />
-                        <skoash.Audio type="voiceOver" src="media/S_8/vo_ChooseTheWords.mp3" />
+                        <skoash.Audio
+                            type="voiceOver"
+                            src={`${CMWN.MEDIA.VO}vo-three-things-make-fire-burn.mp3`}
+                        />
+                        <skoash.Audio
+                            type="voiceOver"
+                            src={`${CMWN.MEDIA.VO}vo-choose-the-words.mp3`}
+                        />
                     </skoash.MediaSequence>
                     <skoash.MediaCollection
                         play={
@@ -61,47 +67,47 @@ export default function (props, ref, key) {
                         <skoash.Audio
                             type="voiceOver"
                             data-ref="air"
-                            src="media/S_8/vo_Air.mp3"
+                            src={`${CMWN.MEDIA.VO}vo-air.mp3`}
                         />
                         <skoash.Audio
                             type="voiceOver"
                             data-ref="clouds"
-                            src="media/S_8/vo_Clouds.mp3"
+                            src={`${CMWN.MEDIA.VO}vo-clouds.mp3`}
                             complete
                         />
                         <skoash.Audio
                             type="voiceOver"
                             data-ref="co2"
-                            src="media/S_8/vo_CarbonDioxide.mp3"
+                            src={`${CMWN.MEDIA.VO}vo-carbon-dioxide.mp3`}
                             complete
                         />
                         <skoash.Audio
                             type="voiceOver"
                             data-ref="heat"
-                            src="media/S_8/vo_Heat.mp3"
+                            src={`${CMWN.MEDIA.VO}vo-heat.mp3`}
                         />
                         <skoash.Audio
                             type="voiceOver"
                             data-ref="smoke"
-                            src="media/S_8/vo_Smoke.mp3"
+                            src={`${CMWN.MEDIA.VO}vo-smoke.mp3`}
                             complete
                         />
                         <skoash.Audio
                             type="voiceOver"
                             data-ref="fuel"
-                            src="media/S_8/vo_Fuel.mp3"
+                            src={`${CMWN.MEDIA.VO}vo-fuel.mp3`}
                         />
                         <skoash.Audio
                             type="voiceOver"
                             data-ref="water"
-                            src="media/S_8/vo_Water.mp3"
+                            src={`${CMWN.MEDIA.VO}vo-water.mp3`}
                             complete
                         />
 
                         <skoash.Audio
                             type="sfx"
                             data-ref="complete"
-                            src="media/S_8/S_8.3.mp3"
+                            src={`${CMWN.MEDIA.EFFECT}s-8-3.mp3`}
                         />,
                     </skoash.MediaCollection>
                     <skoash.Repeater
@@ -127,27 +133,27 @@ export default function (props, ref, key) {
                         onComplete={revealComplete}
                         list={[
                             <skoash.ListItem ref="fuel" correct>
-                                <skoash.Image data-ref="fuel" src="media/S_8/img_8.10b.png" />
+                                <skoash.Image data-ref="fuel" src={`${CMWN.MEDIA.IMAGE}img-8-10b.png`} />
                                 <skoash.Image
                                     className="side"
                                     data-ref="heatSide"
-                                    src="media/S_8/img_8.10g.png"
+                                    src={`${CMWN.MEDIA.IMAGE}img-8-10g.png`}
                                 />
                             </skoash.ListItem>,
                             <skoash.ListItem ref="heat" correct>
-                                <skoash.Image data-ref="heat" src="media/S_8/img_8.10c.png" />
+                                <skoash.Image data-ref="heat" src={`${CMWN.MEDIA.IMAGE}img-8-10c.png`} />
                                 <skoash.Image
                                     className="side"
                                     data-ref="fuelSide"
-                                    src="media/S_8/img_8.10f.png"
+                                    src={`${CMWN.MEDIA.IMAGE}img-8-10f.png`}
                                 />
                             </skoash.ListItem>,
                             <skoash.ListItem ref="air" correct>
-                                <skoash.Image data-ref="air" src="media/S_8/img_8.10d.png" />
+                                <skoash.Image data-ref="air" src={`${CMWN.MEDIA.IMAGE}img-8-10d.png`} />
                                 <skoash.Image
                                     className="side"
                                     data-ref="airSide"
-                                    src="media/S_8/img_8.10h.png"
+                                    src={`${CMWN.MEDIA.IMAGE}img-8-10h.png`}
                                 />
                             </skoash.ListItem>,
                         ]}
@@ -161,11 +167,11 @@ export default function (props, ref, key) {
                             <skoash.Component answers={['fuel', 'heat', 'air']}>
                                 <skoash.Image
                                     className="grey-triangle"
-                                    src="media/S_8/img_8.10a.png"
+                                    src={`${CMWN.MEDIA.IMAGE}img-8-10a.png`}
                                 />
                                 <skoash.Image
                                     className="color-triangle"
-                                    src="media/S_8/img_8.10e.png"
+                                    src={`${CMWN.MEDIA.IMAGE}img-8-10e.png`}
                                 />
                             </skoash.Component>
                         ]}
@@ -173,18 +179,18 @@ export default function (props, ref, key) {
                             <skoash.Audio
                                 type="sfx"
                                 data-ref="incorrect"
-                                src="media/S_8/S_8.1.mp3"
+                                src={`${CMWN.MEDIA.EFFECT}s-8-1.mp3`}
                                 complete
                             />,
                             <skoash.Audio
                                 type="sfx"
                                 data-ref="correct"
-                                src="media/S_8/S_8.2.mp3"
+                                src={`${CMWN.MEDIA.EFFECT}s-8-2.mp3`}
                             />,
                             <skoash.Audio
                                 type="sfx"
                                 data-ref="drag"
-                                src="media/S_8/S_8.4.mp3"
+                                src={`${CMWN.MEDIA.EFFECT}s-8-4.mp3`}
                             />,
                         ]}
                     />
