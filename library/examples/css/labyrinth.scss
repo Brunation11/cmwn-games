@@ -1,27 +1,27 @@
 .labyrinth {
-  position: relative;
-  display: inline-block;
-  clear: both;
-
-  .map {
-    display: none;
-  }
-
-  .image {
-    float: left;
-  }
-
-  canvas {
-    position: absolute;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    opacity: 0;
-  }
-
-  .player {
-    position: absolute;
     display: inline-block;
-  }
+    position: relative;
+    clear: both;
+
+    .map {
+        display: none;
+    }
+
+    .image {
+        float: left;
+    }
+
+    canvas {
+        position: absolute;
+        top: 0;
+        left: 0;
+        opacity: 0;
+        width: 100%;
+        height: 100%;
+    }
+
+    .player {
+        display: inline-block;
+        position: absolute;
+    }
 }

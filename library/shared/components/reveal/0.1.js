@@ -1,3 +1,8 @@
+// As of skoash 1.1.0 this component can be found at skoash.Reveal
+/* eslint-disable no-console */
+console.warn('As of skoash 1.1.0 this component can be found at skoash.Reveal');
+/* eslint-enable no-console */
+
 import classNames from 'classnames';
 
 class Reveal extends skoash.Component {
@@ -24,7 +29,7 @@ class Reveal extends skoash.Component {
     open(message) {
         var self = this;
         var currentlyOpen = this.props.openMultiple ?
-          this.state.currentlyOpen.concat(message) : [message];
+            this.state.currentlyOpen.concat(message) : [message];
 
         self.setState({
             open: true,
@@ -68,7 +73,7 @@ class Reveal extends skoash.Component {
         var open;
 
         prevMessage = this.state.openReveal;
-        currentlyOpen = this.state.currentlyOpen;
+        currentlyOpen = this.state.currentlyOpen || [];
         currentlyOpen.splice(currentlyOpen.indexOf(prevMessage), 1);
         open = currentlyOpen.length > 0;
         openReveal = open ? currentlyOpen[currentlyOpen.length - 1] : '';
@@ -118,13 +123,13 @@ class Reveal extends skoash.Component {
                 var ref = asset.ref || asset.props['data-ref'] || key;
                 ref = 'asset-' + ref;
                 return (
-          <asset.type
-            {...asset.props}
-            data-ref={key}
-            ref={ref}
-            key={key}
-          />
-        );
+                    <asset.type
+                        {...asset.props}
+                        data-ref={key}
+                        ref={ref}
+                        key={key}
+                    />
+                );
             });
         }
 
@@ -137,15 +142,15 @@ class Reveal extends skoash.Component {
         return list.map((li, key) => {
             var ref = li.ref || li.props['data-ref'] || key;
             return (
-        <li.type
-          {...li.props}
-          type="li"
-          className={this.getClass(li, key)}
-          data-ref={ref}
-          ref={ref}
-          key={key}
-        />
-      );
+                <li.type
+                    {...li.props}
+                    type="li"
+                    className={this.getClass(li, key)}
+                    data-ref={ref}
+                    ref={ref}
+                    key={key}
+                />
+            );
         });
     }
 
@@ -169,14 +174,15 @@ class Reveal extends skoash.Component {
 
     getClass(li, key) {
         var classes = '';
+        var currentlyOpen = this.state.currentlyOpen || [];
 
         if (li.props.className) classes = li.props.className;
 
-        if (this.state.currentlyOpen.indexOf(key) !== -1 ||
-        this.state.currentlyOpen.indexOf('' + key) !== -1 ||
-        this.state.currentlyOpen.indexOf(li.props['data-ref']) !== -1 ||
-        this.state.currentlyOpen.indexOf(li.ref) !== -1
-    ) {
+        if (currentlyOpen.indexOf(key) !== -1 ||
+            currentlyOpen.indexOf('' + key) !== -1 ||
+            currentlyOpen.indexOf(li.props['data-ref']) !== -1 ||
+            currentlyOpen.indexOf(li.ref) !== -1
+        ) {
             classes = classNames(classes, 'OPEN');
         }
 
@@ -185,20 +191,20 @@ class Reveal extends skoash.Component {
 
     getClassNames() {
         var classes;
-        var open = 'open-none ';
+        var open = 'open-none';
 
         if (this.state.open) {
             open = '';
-            this.state.currentlyOpen.forEach(ref => {
+            _.each(this.state.currentlyOpen, ref => {
                 open += 'open-' + ref;
             });
         }
 
         classes = classNames(
-      'reveal',
-      open,
-      super.getClassNames(),
-    );
+            'reveal',
+            open,
+            super.getClassNames()
+        );
 
         return classes;
     }
@@ -225,7 +231,7 @@ Reveal.defaultProps = _.defaults({
         <li></li>,
         <li></li>
     ],
-    openMultiple: true,
+    openMultiple: false,
     onOpen: _.noop,
     onClose: _.noop,
 }, skoash.Component.defaultProps);
