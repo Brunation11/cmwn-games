@@ -9,11 +9,6 @@ var webpackDevConfig = require('./webpack.config.dev.js');
 var webpackProdConfig = require('./webpack.config.prod.js');
 var fs = require('fs');
 var path = require('path');
-var nolivereload;
-var nohmr;
-var env;
-var debug;
-var local;
 var sourcemaps = require('gulp-sourcemaps');
 var postcss = require('gulp-postcss');
 var autoprefixer = require('autoprefixer');
@@ -24,17 +19,48 @@ var concat = require('gulp-concat');
 var livereload = require('gulp-livereload');
 var inject = require('gulp-inject');
 var exec = require('child_process').exec;
-var buildTask;
 var eslint = require('gulp-eslint');
 var eslintConfigJs = JSON.parse(fs.readFileSync('./.eslintrc'));
 var eslintConfigConfig = JSON.parse(fs.readFileSync('./.eslintrc_config'));
 var scsslint = require('gulp-scss-lint');
 var stylish = require('gulp-scss-lint-stylish2');
-var game;
-var webpackBuild;
-var fileName;
-var watchScssLint;
+
+var getEnv = function (environment) {
+    switch (environment) {
+        case 'dev':
+        case 'development':
+            return 'dev';
+        case 'stage':
+        case 'staging':
+            return 'staging';
+        default:
+            return 'prod';
+    }
+};
+
+// In order for livereload to work, you should run gulp on the host machine
+// unless you have native docker installed.
+var game = argv.game || argv.g;
+var nolivereload = argv.nolr;
+var env = getEnv(argv.environment || argv.env || 'prod');
+var debug = argv.debug;
+// the flag --local should be passed only when working on localhost
+var local = argv.local || argv.l;
+var libDir = argv.dir ? argv.dir + '/' : '';
 var now = Date.now();
+
+// Production build
+var buildTask = [
+    'sass',
+    'webpack:build',
+    'copy-index',
+    'copy-framework',
+    'copy-media',
+    'clean'
+];
+gulp.task('default', buildTask);
+gulp.task('build', buildTask);
+gulp.task('b', buildTask);
 
 function defineEntries(config) {
     // modify some webpack config options
@@ -59,7 +85,7 @@ function defineEntries(config) {
         './' + game + '/index.js',
     ];
 
-    if (env === 'dev' && !nohmr) {
+    if (env === 'dev' && local) {
         config.entry.push('webpack/hot/dev-server');
         config.entry.push('webpack-dev-server/client?http://localhost:8080/');
     }
@@ -67,31 +93,7 @@ function defineEntries(config) {
     return config;
 }
 
-game = argv.game || argv.g;
-fileName = argv.file;
-
-// In order for livereload to work, you should run gulp on the host machine
-// unless you have native docker installed.
-nolivereload = argv.nolr;
-nohmr = argv.nohmr;
-env = argv.environment || argv.env || 'prod';
-debug = argv.debug;
-local = argv.local || argv.l;
-
-// Production build
-buildTask = [
-    'sass',
-    'webpack:build',
-    'copy-index',
-    'copy-framework',
-    'copy-media',
-    'clean'
-];
-gulp.task('default', buildTask);
-gulp.task('build', buildTask);
-gulp.task('b', buildTask);
-
-webpackBuild = function (callback, isWatch) {
+function webpackBuild(callback, isWatch) {
     var webpackConfig;
     var name;
     var config;
@@ -111,7 +113,7 @@ webpackBuild = function (callback, isWatch) {
         callback();
     });
 
-    if (isWatch && env === 'dev' && !nohmr) {
+    if (isWatch && env === 'dev' && local) {
         server = new WebpackDevServer(compiler, {
             contentBase: 'build',
             hot: true,
@@ -123,7 +125,7 @@ webpackBuild = function (callback, isWatch) {
         });
         server.listen(8080, 'localhost', function () {});
     }
-};
+}
 gulp.task('webpack:build', webpackBuild);
 
 gulp.task('sass', function () {
@@ -152,8 +154,7 @@ gulp.task('sass', function () {
 
     gulp
     .src([
-        './library/shared/css/**/*.scss',
-        './library/shared/css/**/*.css'
+        './library/shared/css/**/*.scss'
     ])
     .pipe(header(fs.readFileSync(varsPath, 'utf8')))
     .pipe(sass({
@@ -242,7 +243,7 @@ gulp.task('copy-index', function () {
             .pipe(inject(gulp.src('./library/shared/js/google-analytics.js'), {
                 starttag: '<!-- inject:ga -->',
                 transform: function (filePath, file) {
-                    return '<script>\n    ' + file.contents.toString('utf8') + '  \n    </script>';
+                    return '<script>\n    ' + file.contents.toString('utf8') + '\n    </script>';
                 }
             }))
             .pipe(gulp.dest('./build/' + game));
@@ -251,7 +252,8 @@ gulp.task('copy-index', function () {
 });
 
 gulp.task('copy-framework', function () {
-    // This can be removed once the framework is being deployed separately from games
+    // This can be removed once the framework has been transferred to the media server.
+    // We will need to add a way to actively develop with the framework at that time.
     gulp
     .src(['./library/framework/*'])
     .pipe(gulp.dest('./build/framework'));
@@ -267,16 +269,6 @@ gulp.task('copy-media', function () {
     gulp
     .src(path.join( './library', game, 'media/**/*' ))
     .pipe( gulp.dest(path.join( './build', game, 'media' )) );
-
-    // This can be removed once fonts for every game are transferred to the media server.
-    gulp
-    .src(['./library/shared/fonts/*'])
-    .pipe(gulp.dest('./build/shared/fonts'));
-
-    // This can be removed once shared images games are transferred to the media server.
-    gulp
-    .src(['./library/shared/images/*'])
-    .pipe(gulp.dest('./build/shared/images'));
 });
 
 // To specify what game you'd like to watch call gulp watch --game game-name
@@ -374,34 +366,15 @@ gulp.task('lint-config', function () {
 });
 gulp.task('lint-scss', function () {
     var reporter = stylish();
-    var src = fileName || 'library/**/*.scss';
-    return gulp.src([src])
+    return gulp
+        .src([
+            'library/' + libDir + '**/*.scss',
+            '!library/**/node_modules/**/*.scss',
+        ])
         .pipe(scsslint({
             customReport: reporter.issues,
             reporterOutput: 'scsslint.json',
         }))
         .pipe(reporter.printSummary)
         .pipe(scsslint.failReporter());
-});
-
-watchScssLint = function (src) {
-    var reporter = stylish();
-    gutil.log(src);
-    return gulp.src([src])
-        .pipe(scsslint({
-            customReport: reporter.issues,
-            reporterOutput: 'scsslint.json',
-        }))
-        .pipe(reporter.printSummary);
-};
-
-gulp.task('watch-scss-lint', function () {
-    watch([
-        'library/**/**/*.scss',
-        'library/**/**/*.css',
-        'library/shared/**/*.scss',
-        'library/shared/**/*.css',
-    ], function (file) {
-        watchScssLint(file.history[0]);
-    });
 });

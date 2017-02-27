@@ -95,6 +95,7 @@ class Timer extends skoash.Component {
     componentWillReceiveProps(props) {
         super.componentWillReceiveProps(props);
 
+        // TODO convert all uses of "restart" prop to action prop below AIM 12/7/16
         if (props.restart && props.restart !== this.props.restart) {
             this.restart();
         }
