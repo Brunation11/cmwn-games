@@ -1,5 +1,13 @@
 @import 'variables';
 
+@mixin flyright {
+    animation: flyright 1.5s infinite linear;
+}
+
+@mixin flyleft {
+    animation: flyleft 1.5s infinite linear;
+}
+
 // code from https://github.com/hudochenkov/sass-text-stroke
 @function text-stroke($size: 2, $color: $white, $correction: 0) {
     $radius: $size - $correction;

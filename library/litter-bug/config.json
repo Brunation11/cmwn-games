@@ -1,5 +1,6 @@
 {
     "id": "litter-bug",
+    "media_folder": "litterbug",
     "version": 2,
     "skoash": "1.1.3",
     "dimensions": {

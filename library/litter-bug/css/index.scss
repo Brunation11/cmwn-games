@@ -42,29 +42,29 @@ body > div > div {
         height: 100%;
 
         &.default {
-            background-image: url('../media/_BKG/BKG_1.png');
+            background-image: url('#{$image}bkg-1.png');
         }
 
         &.title {
-            background-image: url('../media/_assets/_animations/Litterbug-titlescreen.gif');
+            background-image: url('#{$sprite}litterbug-titlescreen.gif');
         }
 
         &.catch-game {
-            background-image: url('../media/_assets/_sprites/sprites.game2.3-01-min.jpg');
+            background-image: url('#{$sprite}sprites-game2-3-01-min.jpg');
             background-position: 0 0;
             background-size: 300% 100%;
         }
 
         &.lets-clean-up {
-            background-image: url('../media/_assets/_images/BKG.4.jpg');
+            background-image: url('#{$image}bkg-4.jpg');
         }
 
         &.clean-up-game {
-            background-image: url('../media/_assets/_images/BKG.2.png');
+            background-image: url('#{$image}bkg-2.png');
         }
 
         &.select {
-            background-image: url('../media/_BKG/BKG_3.png');
+            background-image: url('#{$image}bkg-3.png');
 
             &::before {
                 position: absolute;
@@ -79,11 +79,11 @@ body > div > div {
         }
 
         &.sun {
-            background-image: url('../media/_BKG/BKG_4.png');
+            background-image: url('#{$image}bkg-4.png');
         }
 
         &.commit {
-            background-image: url('../media/_assets/_images/BKG.3.png');
+            background-image: url('#{$image}bkg-3.png');
         }
 
     }
@@ -182,7 +182,7 @@ button {
     border: 0;
 
     background-color: transparent;
-    background-image: url('../media/_assets/_sprites/main.nav.btns-01.png');
+    background-image: url('#{$sprite}main-nav-btns-01.png');
     background-position: left top;
     background-size: 3500px 778px;
 
@@ -232,7 +232,7 @@ button {
     }
 
     &.quit-yes {
-        background-image: url('../media/_Buttons/BU_1.png');
+        background-image: url('#{$sprite}bu-1.png');
         background-position: -1820px 450px;
         background-size: auto 500px;
         width: 230px;
@@ -244,7 +244,7 @@ button {
     }
 
     &.quit-no {
-        background-image: url('../media/_Buttons/BU_1.png');
+        background-image: url('#{$sprite}bu-1.png');
         background-position: -2080px 450px;
         background-size: auto 500px;
         width: 230px;
@@ -607,7 +607,7 @@ p {
     .banner,
     .avatar {
         position: absolute;
-        background: url('../media/_assets/_sprites/sprites.questions-01.png');
+        background: url('#{$sprite}sprites-questions-01.png');
         background-size: 6000px 565px;
     }
 
@@ -680,7 +680,7 @@ p {
     .banner,
     .avatar {
         position: absolute;
-        background: url('../media/_assets/_sprites/sprites.questions-01.png');
+        background: url('#{$sprite}sprites-questions-01.png');
         background-size: 6000px 565px;
     }
 
@@ -744,7 +744,7 @@ p {
     .banner,
     .avatar {
         position: absolute;
-        background: url('../media/_assets/_sprites/sprites.questions-01.png');
+        background: url('#{$sprite}sprites-questions-01.png');
         background-size: 6000px 565px;
     }
 
@@ -810,7 +810,7 @@ p {
         top: 0;
         left: 0;
 
-        background: url('../media/_assets/_sprites/sprites.mr.eco-01.png');
+        background: url('#{$sprite}sprites-mr-eco-01.png');
         background-position: -70px 0;
         background-size: 850px 624px;
 
@@ -821,7 +821,7 @@ p {
     .dancers,
     .banner {
         position: absolute;
-        background: url('../media/_assets/_sprites/sprites.sing.thankyou.flip-01.png');
+        background: url('#{$sprite}sprites-sing-thankyou-flip-01.png');
         background-size: 4000px 340px;
     }
 
@@ -851,7 +851,7 @@ p {
 }
 
 #video .frame {
-    background-image: url('../media/_Frames/FR_2.png');
+    background-image: url('#{$frame}fr-2.png');
     background-size: 100% 100%;
     width: 80%;
     height: 85%;
@@ -876,7 +876,7 @@ p {
         bottom: 0;
         left: -157px;
         transform: scale(.88) rotate(-5.6deg);
-        background: url('../media/_assets/_images/mr.eco.png') no-repeat;
+        background: url('#{$image}mr-eco.png') no-repeat;
         background-size: 388px;
         width: 514px;
         height: 105%;
@@ -886,7 +886,7 @@ p {
     .banner2 {
         position: absolute;
         transform: scaleX(1.073) scaleY(1.069);
-        background: url('../media/_assets/_sprites/sprites.sing.thankyou.flip-01.png');
+        background: url('#{$sprite}sprites-sing-thankyou-flip-01.png');
         background-size: 4000px 340px;
     }
 
@@ -929,7 +929,7 @@ p {
         bottom: 0;
         left: -157px;
         transform: scale(.88) rotate(-5.6deg);
-        background: url('../media/_assets/_images/mr.eco.png') no-repeat;
+        background: url('#{$image}mr-eco.png') no-repeat;
         background-size: 388px;
         width: 514px;
         height: 105%;
@@ -941,7 +941,7 @@ p {
         left: 111px;
         transform: scaleX(.87) scaleY(.87);
 
-        background: url('../media/_assets/_images/text-antilitter.png') no-repeat;
+        background: url('#{$image}text-antilitter.png') no-repeat;
         background-position: 60% 0;
         background-size: 798px;
 
@@ -995,7 +995,7 @@ p {
         position: absolute;
         top: 24px;
         left: 200px;
-        background: url('../media/_assets/_images/NEVER.png') no-repeat;
+        background: url('#{$image}never.png') no-repeat;
         background-position: 60% 0;
         background-size: 150px;
         width: 800px;
@@ -1076,7 +1076,7 @@ p {
 
     .words,
     .flip {
-        background-image: url('../media/_assets/_sprites/sprites.sing.thankyou.flip-01.png');
+        background-image: url('#{$sprite}sprites-sing-thankyou-flip-01.png');
         background-repeat: no-repeat;
         background-size: 4500px;
     }
@@ -1110,7 +1110,7 @@ p {
     .mr-eco {
         right: 0;
         bottom: 0;
-        background-image: url('../media/_assets/_sprites/sprites.mr.eco-01.png');
+        background-image: url('#{$sprite}sprites-mr-eco-01.png');
         background-repeat: no-repeat;
         background-position: -360px 0;
         background-size: 700px;
@@ -1151,7 +1151,7 @@ p {
 
     .frame {
         margin-top: -100px;
-        background-image: url('../media/_assets/_frames/frame_quit.frame.png');
+        background-image: url('#{$frame}frame-quit-frame.png');
         background-repeat: no-repeat;
         background-size: 100%;
         padding: 30px 0 0;

@@ -107,7 +107,7 @@
             bottom: .5%;
             left: 9%;
 
-            background: url('../media/_assets/_sprites/sprites.game1.7.png');
+            background: url('#{$sprite}sprites-game1-7.png');
             background-position: 0 0;
             background-size: 100%;
 
@@ -126,7 +126,7 @@
             bottom: 2%;
             left: 24%;
 
-            background: url('../media/_assets/_sprites/sprites.game1.4-01.png');
+            background: url('#{$sprite}sprites-game1-4-01.png');
             background-position: -334px 122px;
             background-size: 1600px 163px;
 
@@ -138,7 +138,7 @@
             display: inline;
             position: absolute;
             bottom: 5%;
-            background: url('../media/_assets/_sprites/sprites.game1.1.png');
+            background: url('#{$sprite}sprites-game1-1.png');
             background-size: 1000px 292px;
             width: 5%;
             height: 8%;
@@ -252,7 +252,7 @@
             transform: translate3d(0, 0, 0);
             transition: margin 0s;
 
-            background: url('../media/_assets/_sprites/sprites.game1.2-01.png');
+            background: url('#{$sprite}sprites-game1-2-01.png');
             background-position: 0 0;
             background-size: 150px 390px;
 
@@ -268,7 +268,7 @@
                 position: absolute;
                 top: 25%;
                 left: 15%;
-                background: url('../media/_assets/_sprites/sprites.game1.numbers.png');
+                background: url('#{$sprite}sprites-game1-numbers.png');
                 background-size: 425px 102px;
                 width: 70%;
                 height: 50%;
@@ -341,7 +341,7 @@
         position: absolute;
         bottom: 0;
 
-        background: url('../media/_assets/_images/game1_grass.png');
+        background: url('#{$image}game1-grass.png');
         background-repeat: no-repeat;
         background-position: 0 50px;
         background-size: contain;
@@ -357,7 +357,7 @@
         bottom: 0;
         transform: translate3d(0, 0, 0);
 
-        background: url('../media/_assets/_sprites/sprites.game1.4-01.png');
+        background: url('#{$sprite}sprites-game1-4-01.png');
         background-position: -16px 133px;
         background-size: 1600px 163px;
 
@@ -402,7 +402,7 @@
                         top: 30%;
                         left: -14%;
 
-                        background: url('../media/_assets/_sprites/sprites.mr.eco-01.png');
+                        background: url('#{$sprite}sprites-mr-eco-01.png');
                         background-position: 5px 0;
                         background-size: 500px 367px;
 
@@ -427,7 +427,7 @@
                         left: 49%;
                         transform: translateX(-50%);
 
-                        background: url('../media/_assets/_sprites/sprites.game1.3-01.png');
+                        background: url('#{$sprite}sprites-game1-3-01.png');
                         background-repeat: no-repeat;
                         background-position: -37px 2px;
                         background-size: 3200px 83px;
@@ -440,7 +440,7 @@
                         position: absolute;
                         top: 68%;
                         left: 28%;
-                        background: url('../media/_assets/_sprites/sprites.game1.8.png');
+                        background: url('#{$sprite}sprites-game1-8.png');
                         background-size: 300px 68px;
                         width: 12%;
                         height: 14%;
@@ -509,7 +509,7 @@
                         left: 50%;
                         transform: translateX(-50%);
 
-                        background: url('../media/_assets/_sprites/sprites.game1.3-01.png');
+                        background: url('#{$sprite}sprites-game1-3-01.png');
                         background-repeat: no-repeat;
                         background-position: -667px 2px;
                         background-size: 3200px 83px;
@@ -524,7 +524,7 @@
                         left: 55%;
                         transform: translateX(-50%);
 
-                        background: url('../media/_assets/_sprites/sprites.game1.6-01.png');
+                        background: url('#{$sprite}sprites-game1-6-01.png');
                         background-repeat: no-repeat;
                         background-position: -167px 2px;
                         background-size: 3000px 159px;
@@ -552,7 +552,7 @@
                     left: 50%;
                     transform: translateX(-50%);
 
-                    background: url('../media/_assets/_sprites/sprites.game1.3-01.png');
+                    background: url('#{$sprite}sprites-game1-3-01.png');
                     background-repeat: no-repeat;
                     background-position: -1300px 2px;
                     background-size: 3200px 83px;
@@ -567,7 +567,7 @@
                     left: 55%;
                     transform: translateX(-50%);
 
-                    background: url('../media/_assets/_sprites/sprites.game1.6-01.png');
+                    background: url('#{$sprite}sprites-game1-6-01.png');
                     background-repeat: no-repeat;
                     background-position: -647px 2px;
                     background-size: 2500px 133px;
@@ -594,7 +594,7 @@
                     left: 50%;
                     transform: translateX(-50%);
 
-                    background: url('../media/_assets/_sprites/sprites.game1.3-01.png');
+                    background: url('#{$sprite}sprites-game1-3-01.png');
                     background-repeat: no-repeat;
                     background-position: -1911px 2px;
                     background-size: 3200px 83px;
@@ -609,7 +609,7 @@
                     left: 55%;
                     transform: translateX(-50%);
 
-                    background: url('../media/_assets/_sprites/sprites.game1.6-01.png');
+                    background: url('#{$sprite}sprites-game1-6-01.png');
                     background-repeat: no-repeat;
                     background-position: -1617px 2px;
                     background-size: 3000px 159px;
@@ -639,7 +639,7 @@
                         left: 50%;
                         transform: translateX(-50%);
 
-                        background: url('../media/_assets/_sprites/sprites.game1.3-01.png');
+                        background: url('#{$sprite}sprites-game1-3-01.png');
                         background-repeat: no-repeat;
                         background-position: -2587px 2px;
                         background-size: 3200px 83px;
@@ -654,7 +654,7 @@
                         left: 55%;
                         transform: translateX(-50%);
 
-                        background: url('../media/_assets/_sprites/sprites.game1.6-01.png');
+                        background: url('#{$sprite}sprites-game1-6-01.png');
                         background-repeat: no-repeat;
                         background-position: -2426px 2px;
                         background-size: 3000px 159px;

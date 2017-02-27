@@ -23,7 +23,7 @@
                 display: inline-block;
                 margin-left: 80px;
 
-                background-image: url('../media/_assets/_sprites/sprites.game2.4-01.png');
+                background-image: url('#{$sprite}sprites-game2-4-01.png');
                 background-repeat: no-repeat;
                 background-position: -240px -30px;
                 background-size: 600px;
@@ -63,7 +63,7 @@
                 left: 0;
                 z-index: 2;
 
-                background-image: url('../media/_assets/_sprites/sprites.game2.4-01.png');
+                background-image: url('#{$sprite}sprites-game2-4-01.png');
                 background-repeat: no-repeat;
                 background-position: -20px -24px;
                 background-size: 500px;
@@ -147,7 +147,7 @@
             display: inline-block;
             position: relative;
 
-            background-image: url('../media/_assets/_sprites/sprites.game2.4-01.png');
+            background-image: url('#{$sprite}sprites-game2-4-01.png');
             background-repeat: no-repeat;
             background-position: -307px -30px;
             background-size: 500px;
@@ -202,7 +202,7 @@
             animation-duration: 6s;
             animation-timing-function: linear;
             opacity: 1;
-            background-image: url('../media/_assets/_sprites/sprites.game2.1-01.png');
+            background-image: url('#{$sprite}sprites-game2-1-01.png');
             background-size: 1400px;
             width: 100px;
             height: 100px;
@@ -248,7 +248,7 @@
                 top: -15px;
                 left: -50px;
 
-                background-image: url('../media/_assets/_sprites/sprites.game2.4-01.png');
+                background-image: url('#{$sprite}sprites-game2-4-01.png');
                 background-position: -400px 0;
                 background-size: 500px;
 
@@ -281,7 +281,7 @@
                 top: 0;
                 left: 0;
                 opacity: .4;
-                background-image: url('../media/_assets/_images/BKG.5.png');
+                background-image: url('#{$image}bkg-5.png');
                 background-position: center center;
                 background-size: cover;
                 width: 100%;
@@ -308,7 +308,7 @@
             }
 
             .line {
-                background-image: url($media-server + 'ImageAssets/thick.border.png');
+                background-image: url('#{$image}thick-border.png');
                 background-repeat: no-repeat;
                 background-size: 100% 100%;
             }
@@ -329,7 +329,7 @@
                 .words {
                     position: relative;
                     margin: 0 auto;
-                    background-image: url('../media/_assets/_sprites/sprites.game2.2-01.png');
+                    background-image: url('#{$sprite}sprites-game2-2-01.png');
                     background-repeat: no-repeat;
                     background-size: 6000px;
                 }
@@ -352,7 +352,7 @@
                     opacity: 0;
                     margin: 0 auto;
 
-                    background-image: url('../media/_assets/_sprites/main.nav.btns-01.png');
+                    background-image: url('#{$sprite}main-nav-btns-01.png');
                     background-repeat: no-repeat;
                     background-position: -2070px -117px;
                     background-size: 3000px;
@@ -381,7 +381,7 @@
                     left: -100px;
                     z-index: 1;
 
-                    background-image: url('../media/_assets/_sprites/sprites.mr.eco-01.png');
+                    background-image: url('#{$sprite}sprites-mr-eco-01.png');
                     background-position: 0 0;
                     background-size: 600px;
 
@@ -405,7 +405,7 @@
                 .level-up {
                     position: relative;
                     margin: 0 auto;
-                    background-image: url('../media/_assets/_sprites/sprites.game2.2-01.png');
+                    background-image: url('#{$sprite}sprites-game2-2-01.png');
                     background-repeat: no-repeat;
                     background-size: 6000px;
                 }
@@ -434,7 +434,7 @@
                     transition: transform .5s;
                     z-index: 1;
 
-                    background-image: url('../media/_assets/_images/litterbug_.png');
+                    background-image: url('#{$image}litterbug.png');
                     background-repeat: no-repeat;
                     background-position: left bottom;
                     background-size: contain;
@@ -477,7 +477,7 @@
                     transform: scale3d(-1, 1, 1);
                     z-index: 1;
 
-                    background-image: url('../media/_assets/_images/litterbug_.png');
+                    background-image: url('#{$image}litterbug.png');
                     background-repeat: no-repeat;
                     background-position: left bottom;
                     background-size: contain;
@@ -503,7 +503,7 @@
                     position: relative;
                     margin: 0 auto;
 
-                    background-image: url('../media/_assets/_sprites/sprites.game2.2-01.png');
+                    background-image: url('#{$sprite}sprites-game2-2-01.png');
                     background-repeat: no-repeat;
                     background-size: 6000px;
                 }
@@ -525,7 +525,7 @@
                     transition: opacity .5s;
                     margin: 0 auto;
 
-                    background-image: url('../media/_assets/_sprites/main.nav.btns-01.png');
+                    background-image: url('#{$sprite}main-nav-btns-01.png');
                     background-repeat: no-repeat;
                     background-position: -2400px -117px;
                     background-size: 3000px;

@@ -1,3 +1,5 @@
+@import '../../variables';
+
 .selectable {
     width: 100%;
     height: 100%;
@@ -6,7 +8,7 @@
         position: absolute;
         transition: opacity .5s;
         opacity: 1;
-        background-image: url('../media/S_3/sprite_3.1.png');
+        background-image: url('#{$sprite}sprite-3-1.png');
         background-repeat: no-repeat;
         background-size: 351px;
         cursor: pointer;
