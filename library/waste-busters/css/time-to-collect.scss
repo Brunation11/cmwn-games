@@ -1,0 +1,32 @@
+@import 'mixins';
+
+#time-to-collect {
+    $scale: 1.4;
+
+    .truck,
+    .trash {
+        display: inline-block;
+        margin: 20px;
+        width: 120px;
+        height: 86px;
+    }
+
+    .truck {
+        @include sprite-metericons(1);
+        transform: scale3d(-$scale, $scale, 1);
+    }
+
+    .trash {
+        @include sprite-metericons(2);
+        transform: scale3d($scale, $scale, 1);
+    }
+
+    .turtle {
+        $turtle-scale: .8;
+        @include sprite-turtle(2);
+        position: absolute;
+        bottom: 10px;
+        left: -40px;
+        transform: scale3d($turtle-scale, $turtle-scale, 1);
+    }
+}

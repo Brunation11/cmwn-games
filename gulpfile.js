@@ -46,6 +46,7 @@ var env = getEnv(argv.environment || argv.env || 'prod');
 var debug = argv.debug;
 // the flag --local should be passed only when working on localhost
 var local = argv.local || argv.l;
+var libDir = argv.dir ? argv.dir + '/' : '';
 var now = Date.now();
 
 // Production build
@@ -365,7 +366,11 @@ gulp.task('lint-config', function () {
 });
 gulp.task('lint-scss', function () {
     var reporter = stylish();
-    return gulp.src(['library/**/*.scss'])
+    return gulp
+        .src([
+            'library/' + libDir + '**/*.scss',
+            '!library/**/node_modules/**/*.scss',
+        ])
         .pipe(scsslint({
             customReport: reporter.issues,
             reporterOutput: 'scsslint.json',

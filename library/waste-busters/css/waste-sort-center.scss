@@ -1,0 +1,27 @@
+@import 'variables';
+@import 'mixins';
+
+#waste-sort-center {
+    .title {
+        @include center;
+        top: 10%;
+        width: 900px;
+    }
+
+    .turtle {
+        position: absolute;
+        bottom: 20px;
+        left: 0;
+        z-index: 1;
+        width: 360px;
+    }
+
+    .frame {
+        top: 57%;
+        left: 64%;
+        width: 600px;
+        height: 400px;
+        line-height: 1.2;
+        font-size: 32px;
+    }
+}

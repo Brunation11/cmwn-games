@@ -1,0 +1,27 @@
+@import 'variables';
+@import 'mixins';
+
+#title {
+    img {
+        position: absolute;
+    }
+
+    .title {
+        top: 60px;
+        left: 120px;
+        width: 720px;
+    }
+
+    .logo {
+        top: 20px;
+        left: 10px;
+        width: 300px;
+    }
+
+    .next-screen {
+        @include nav-button(1, 200px, 110px);
+        bottom: 20px;
+        width: 200px;
+        height: 110px;
+    }
+}

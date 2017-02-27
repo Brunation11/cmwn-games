@@ -2,7 +2,7 @@ var path = require('path');
 var webpack = require('webpack');
 
 module.exports = {
-    context: __dirname + '/library',
+    context: path.join(__dirname, 'library'),
     entry: null,
     devtool: 'source-map',
     resolve: {
@@ -38,14 +38,16 @@ module.exports = {
         preLoaders: [
             { test: /\.json$/, exclude: /node_modules/, loader: 'json'},
         ],
-        loaders: [{
-            test: /\.js$/,
-            loader: ['babel'],
-            exclude: [/bower_components/, /node_modules/],
-            query: {
-                presets: ['react', 'es2015', 'stage-0']
+        loaders: [
+            {
+                test: /\.js$/,
+                loader: ['babel'],
+                exclude: [/bower_components/, /node_modules/],
+                query: {
+                    presets: ['react', 'es2015', 'stage-0']
+                }
             }
-        }]
+        ]
     },
     postcss: function () {
         return [autoprefixer];
