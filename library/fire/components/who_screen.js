@@ -54,7 +54,11 @@ export default function (props, ref, key) {
             id="who"
             className={_.get(props, 'data.reveal.open', null) !== null ? 'REVEAL-OPEN' : ''}
         >
-            <skoash.Audio ref="title" type="voiceOver" src={`${CMWN.MEDIA.VO}vo-fire-breaks-out-2.mp3`} />
+            <skoash.Audio ref="title" type="voiceOver" src={`${CMWN.MEDIA.VO}vo-fire-breaks-out2.mp3`} />
+            <skoash.Image className="hidden" src={`${CMWN.MEDIA.SPRITE}img-6-2.png`} />
+            <skoash.Image className="hidden" src={`${CMWN.MEDIA.SPRITE}img-6-3.png`} />
+            <skoash.Image className="hidden" src={`${CMWN.MEDIA.SPRITE}img-6-4.png`} />
+            <skoash.Image className="hidden" src={`${CMWN.MEDIA.SPRITE}img-6-5.png`} />
             <skoash.Image className="animated" src={`${CMWN.MEDIA.IMAGE}img-6-1.png`} />
             <skoash.MediaCollection
                 play={_.get(props, 'data.media-sfx.effect', null)}

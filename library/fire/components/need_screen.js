@@ -85,7 +85,7 @@ export default function (props, ref, key) {
             id="need"
         >
             <skoash.MediaSequence ref="media-sequence">
-                <skoash.Audio type="voiceOver" src={`${CMWN.MEDIA.VO}vo-imagine-youre-a-firefighter.mp3`} />
+                <skoash.Audio type="voiceOver" src={`${CMWN.MEDIA.VO}vo-imagine-yourea-firefighter.mp3`} />
                 <skoash.Audio type="voiceOver" src={`${CMWN.MEDIA.VO}vo-drag-and-drop-to-outfit.mp3`} />
             </skoash.MediaSequence>
             <skoash.MediaCollection
