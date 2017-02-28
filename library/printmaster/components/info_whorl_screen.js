@@ -18,9 +18,9 @@ export default function (props, ref, key) {
                 });
             }}
         >
-            <skoash.Audio ref="vo" type="voiceOver" src="media/S_6/VO_6.1.mp3" />
-            <skoash.Image ref="img" className="animated" src="media/S_6/img_6.1.gif" />
-            <skoash.Image ref="frame-img" className="hidden" src="media/_Frame/Fr_2.png" />
+            <skoash.Audio ref="vo" type="voiceOver" src={`${CMWN.MEDIA.VO}vo-6-1.mp3`} />
+            <skoash.Image ref="img" className="animated" src={`${CMWN.MEDIA.IMAGE}img-6-1.gif`} />
+            <skoash.Image ref="frame-img" className="hidden" src={`${CMWN.MEDIA.FRAME}fr-2.png`} />
             <div className="frame">
                 <div>
                     <div>

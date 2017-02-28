@@ -7,8 +7,8 @@ export default function (props, ref, key) {
             id="info-further"
             className="large-frame"
         >
-            <skoash.Audio ref="vo" type="voiceOver" src="media/S_21/VO_21.1.mp3" />
-            <skoash.Image ref="frame-img" className="hidden" src="media/_Frame/Fr_1.png" />
+            <skoash.Audio ref="vo" type="voiceOver" src={`${CMWN.MEDIA.VO}vo-21-1.mp3`} />
+            <skoash.Image ref="frame-img" className="hidden" src={`${CMWN.MEDIA.FRAME}fr-1.png`} />
             <div className="frame">
                 <p>
                     Use your magnifying glass and compare<br/>

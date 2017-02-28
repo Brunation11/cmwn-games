@@ -7,16 +7,20 @@ export default function (props, ref, key) {
             id="info-step-1"
             className="large-frame right"
         >
-            <skoash.Audio ref="vo" type="voiceOver" src="media/S_13/VO_13.1.mp3" />
-            <skoash.Image ref="frame-img" className="hidden" src="media/_Frame/Fr_1.png" />
+            <skoash.Audio ref="vo" type="voiceOver" src={`${CMWN.MEDIA.VO}vo-13-1.mp3`} />
+            <skoash.Image ref="frame-img" className="hidden" src={`${CMWN.MEDIA.FRAME}fr-1.png`} />
             <skoash.Component ref="frame" className="frame">
                 <skoash.Image
                     ref="illustration"
                     className="illustration animated"
-                    src="media/S_13/img_13.2.gif"
+                    src={`${CMWN.MEDIA.SPRITE}img_13.2.gif`}
                 />
                 <skoash.Component ref="container">
-                    <skoash.Image ref="title" className="title animated" src="media/S_13/img_13.1.png" />
+                    <skoash.Image
+                        ref="title"
+                        className="title animated"
+                        src={`${CMWN.MEDIA.IMAGE}img-13-1.png`}
+                    />
                     <p>
                         Put a dab of hand lotion<br/>
                         in your palm and rub it<br/>

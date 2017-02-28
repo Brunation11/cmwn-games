@@ -15,7 +15,7 @@
         position: relative;
         z-index: 1;
         margin: 0;
-        background-image: url('../media/S_10/img_10.3.png');
+        background-image: url('#{$image}img-10-3.png');
         background-position: center center;
         background-size: contain;
         padding: 0;
@@ -32,7 +32,7 @@
             left: 0;
             z-index: 1;
 
-            background-image: url('../media/S_10/img_10.2.png');
+            background-image: url('#{$image}img-10-2.png');
             background-repeat: no-repeat;
             background-position: left top;
             background-size: 750px 440px;
@@ -106,7 +106,7 @@
 
             @for $i from 1 through 4 {
                 &[data-message=#{nth($types, $i)}] {
-                    background-image: url('../media/S_10/img_10.#{$i + 3}.png');
+                    background-image: url('#{$image}img-10-i + 3}.png');
                 }
             }
         }
@@ -116,7 +116,7 @@
         position: absolute;
         top: 0;
         right: 30px;
-        background-image: url('../media/S_10/img_10.8.png');
+        background-image: url('#{$image}img-10-8.png');
         background-repeat: no-repeat;
         background-position: center center;
         background-size: contain;
@@ -152,7 +152,7 @@
         top: 205px;
         right: 280px;
         transform: translateX(50%);
-        background-image: url('../media/S_10/img_10.9.png');
+        background-image: url('#{$image}img-10-9.png');
         background-repeat: no-repeat;
         background-position: -565px;
         background-size: 1075px 250px;
@@ -229,28 +229,28 @@
     [class *=loops] + .score {
 
         .board div {
-            background-image: url('../media/S_10/img_10.4.png');
+            background-image: url('#{$image}img-10-4.png');
         }
     }
 
     [class *=whorl] + .score {
 
         .board div {
-            background-image: url('../media/S_10/img_10.5.png');
+            background-image: url('#{$image}img-10-5.png');
         }
     }
 
     [class *=arch] + .score {
 
         .board div {
-            background-image: url('../media/S_10/img_10.6.png');
+            background-image: url('#{$image}img-10-6.png');
         }
     }
 
     [class *=doubleloop] + .score {
 
         .board div {
-            background-image: url('../media/S_10/img_10.7.png');
+            background-image: url('#{$image}img-10-7.png');
         }
     }
 
@@ -288,7 +288,7 @@
             top: 50%;
             left: 130px;
             margin-top: -200px;
-            background-image: url('../media/_Frame/Fr_3.png');
+            background-image: url('#{$frame}fr-3.png');
             background-repeat: no-repeat;
             background-position: center center;
             background-size: contain;

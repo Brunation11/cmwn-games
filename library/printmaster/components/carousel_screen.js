@@ -9,11 +9,11 @@ export default function (props, ref, key) {
             key={key}
             id="carousel"
         >
-            <skoash.Image className="hidden cannon" src="media/S_10/img_10.3.png" />
-            <skoash.Image className="hidden viewport" src="media/S_10/img_10.3.png" />
-            <skoash.Image className="hidden target" src="media/S_10/img_10.8.png" />
-            <skoash.Image className="hidden score" src="media/S_10/img_10.9.png" />
-            <skoash.Image className="hidden reveal" src="media/_Frame/Fr_3.png" />
+            <skoash.Image className="hidden cannon" src={`${CMWN.MEDIA.IMAGE}img-10-3.png`} />
+            <skoash.Image className="hidden viewport" src={`${CMWN.MEDIA.IMAGE}img-10-3.png`} />
+            <skoash.Image className="hidden target" src={`${CMWN.MEDIA.IMAGE}img-10-8.png`} />
+            <skoash.Image className="hidden score" src={`${CMWN.MEDIA.IMAGE}img-10-9.png`} />
+            <skoash.Image className="hidden reveal" src={`${CMWN.MEDIA.FRAME}fr-3.png`} />
             <skoash.Component className="group">
                 <Carousel
                     className={'slide' + (_.get(props, 'data.reveal.indexToOpen', 0) === 7 ? ' disable' : '')}
@@ -66,54 +66,54 @@ export default function (props, ref, key) {
                             amount={2}
                             targetClass="loops-2"
                             className="animated"
-                            src="media/S_10/img_10.11.png"
+                            src={`${CMWN.MEDIA.IMAGE}img-10-11.png`}
                         />,
                         <skoash.Image
                             name="whorl"
                             amount={3}
                             targetClass="whorl-3"
                             className="animated"
-                            src="media/S_10/img_10.15.png"
+                            src={`${CMWN.MEDIA.IMAGE}img-10-15.png`}
                         />,
                         <skoash.Image
                             name="arch"
                             amount={3}
                             targetClass="arch-3"
                             className="animated"
-                            src="media/S_10/img_10.18.png"
+                            src={`${CMWN.MEDIA.IMAGE}img-10-18.png`}
                         />,
                         <skoash.Image
                             name="doubleloops"
                             amount={2}
                             targetClass="doubleloops-2"
                             className="animated"
-                            src="media/S_10/img_10.20.png"
+                            src={`${CMWN.MEDIA.IMAGE}img-10-20.png`}
                         />,
                         <skoash.Image
                             name="whorl"
                             amount={2}
                             targetClass="whorl-2"
                             className="animated"
-                            src="media/S_10/img_10.14.png"
+                            src={`${CMWN.MEDIA.IMAGE}img-10-14.png`}
                         />,
                         <skoash.Image
                             name="doubleloops"
                             amount={3}
                             targetClass="doubleloops-3"
                             className="animated"
-                            src="media/S_10/img_10.21.png"
+                            src={`${CMWN.MEDIA.IMAGE}img-10-21.png`}
                         />,
                         <skoash.Image
                             name="arch"
                             amount={2}
                             targetClass="arch-2"
                             className="animated"
-                            src="media/S_10/img_10.17.png"
+                            src={`${CMWN.MEDIA.IMAGE}img-10-17.png`}
                         />,
                     ]}
                     assets={[
-                        <skoash.Audio ref="correct" type="sfx" src="media/S_10/S_10.3.mp3" />,
-                        <skoash.Audio ref="incorrect" type="sfx" src="media/S_10/S_10.4.mp3" />
+                        <skoash.Audio ref="correct" type="sfx" src={`${CMWN.MEDIA.EFFECT}s-10-3.mp3`} />,
+                        <skoash.Audio ref="incorrect" type="sfx" src={`${CMWN.MEDIA.EFFECT}s-10-4.mp3`} />
                     ]}
                 />
                 <skoash.Score
@@ -147,14 +147,14 @@ export default function (props, ref, key) {
             <skoash.MediaCollection
                 play={_.get(props, 'data.reveal.open')}
             >
-                <skoash.Audio ref="0" type="voiceOver" src="media/S_10/VO_10.1.mp3" />,
-                <skoash.Audio ref="1" type="voiceOver" src="media/S_10/VO_10.5.mp3" />,
-                <skoash.Audio ref="2" type="voiceOver" src="media/S_10/VO_10.4.mp3" />,
-                <skoash.Audio ref="3" type="voiceOver" src="media/S_10/VO_10.6.mp3" />,
-                <skoash.Audio ref="4" type="voiceOver" src="media/S_10/VO_10.7.mp3" />,
-                <skoash.Audio ref="5" type="voiceOver" src="media/S_10/VO_10.8.mp3" />,
-                <skoash.Audio ref="6" type="voiceOver" src="media/S_10/VO_10.9.mp3" />,
-                <skoash.Audio ref="7" type="voiceOver" src="media/S_10/VO_10.10.mp3" />,
+                <skoash.Audio ref="0" type="voiceOver" src={`${CMWN.MEDIA.VO}vo-10-1.mp3`} />,
+                <skoash.Audio ref="1" type="voiceOver" src={`${CMWN.MEDIA.VO}vo-10-5.mp3`} />,
+                <skoash.Audio ref="2" type="voiceOver" src={`${CMWN.MEDIA.VO}vo-10-4.mp3`} />,
+                <skoash.Audio ref="3" type="voiceOver" src={`${CMWN.MEDIA.VO}vo-10-6.mp3`} />,
+                <skoash.Audio ref="4" type="voiceOver" src={`${CMWN.MEDIA.VO}vo-10-7.mp3`} />,
+                <skoash.Audio ref="5" type="voiceOver" src={`${CMWN.MEDIA.VO}vo-10-8.mp3`} />,
+                <skoash.Audio ref="6" type="voiceOver" src={`${CMWN.MEDIA.VO}vo-10-9.mp3`} />,
+                <skoash.Audio ref="7" type="voiceOver" src={`${CMWN.MEDIA.VO}vo-10-10.mp3`} />,
             </skoash.MediaCollection>
             <skoash.Reveal
               openTarget="reveal"

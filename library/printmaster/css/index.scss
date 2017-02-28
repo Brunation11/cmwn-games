@@ -3,11 +3,11 @@
 
 @font-face {
     font-family: 'Powderfinger';
-    src: url('../media/_Fonts/powderfinger/POWDRFT_.eot'); /* IE9 Compat Modes */
-    src: url('../media/_Fonts/powderfinger/POWDRFT_.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
-         url('../media/_Fonts/powderfinger/POWDRFT_.woff') format('woff'), /* Modern Browsers */
-         url('../media/_Fonts/powderfinger/POWDRFT_.ttf')    format('truetype'), /* Safari, Android, iOS */
-         url('../media/_Fonts/powderfinger/POWDRFT_.svg#10f6fe65355d8d8834bd6b1900d3311e') format('svg'); /* Legacy iOS */
+    src: url('#{$font}powdrft.eot'); /* IE9 Compat Modes */
+    src: url('#{$font}powdrft.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+         url('#{$font}powdrft.woff') format('woff'), /* Modern Browsers */
+         url('#{$font}powdrft.ttf')    format('truetype'), /* Safari, Android, iOS */
+         url('#{$font}powdrft.svg#10f6fe65355d8d8834bd6b1900d3311e') format('svg'); /* Legacy iOS */
 
     font-style: normal;
     font-weight: 400;
@@ -38,7 +38,7 @@ body > div,
 .skoash-game {
     position: relative;
     margin: auto;
-    background: url('../media/_BKG/BKG_1.png') bottom center no-repeat;
+    background: url('#{$image}bkg-1.png') bottom center no-repeat;
     background-size: cover;
     width: 100%;
     height: 100%;
@@ -88,7 +88,7 @@ button {
     border: 0;
 
     background-color: transparent;
-    background-image: url('../media/_Button/BU_1.png');
+    background-image: url('#{$sprite}bu-1.png');
     background-position: left top;
     background-size: auto 300px;
 
@@ -302,7 +302,7 @@ img.inline {
 .screen.large-frame {
     .frame {
         margin: 40px auto;
-        background-image: url('../media/_Frame/Fr_1.png');
+        background-image: url('#{$frame}fr-1.png');
         background-repeat: no-repeat;
         background-position: center center;
         background-size: contain;
@@ -357,7 +357,7 @@ img.inline {
             display: inline-block;
             position: relative;
             margin: 60px 0 60px 20px;
-            background-image: url('../media/_Frame/Fr_2.png');
+            background-image: url('#{$frame}fr-2.png');
             background-repeat: no-repeat;
             background-position: center center;
             background-size: contain;
@@ -453,7 +453,7 @@ img.inline {
 
         div {
             float: left;
-            background-image: url('../media/S_1/img_1.2.png');
+            background-image: url('#{$image}img-1-2.png');
             background-size: 480px;
             width: 75px;
             height: 120px;
@@ -826,7 +826,7 @@ img.inline {
         div {
             position: absolute;
             transform: translate3d(2000px, 0, 0);
-            background-image: url('../media/S_12/img_12.2.png');
+            background-image: url('#{$image}img-12-2.png');
             background-repeat: no-repeat;
             background-size: 400px 292px;
 
@@ -1103,7 +1103,7 @@ img.inline {
 
             div {
                 float: left;
-                background-image: url('../media/S_22/img_22.1.png');
+                background-image: url('#{$image}img-22-1.png');
                 background-size: 330px;
                 width: 76px;
                 height: 130px;
@@ -1138,7 +1138,7 @@ img.inline {
 #quit {
 
     .frame {
-        background-image: url('../media/_Frame/Fr_1.png');
+        background-image: url('#{$frame}fr-1.png');
         padding: 70px 80px;
         width: 720px;
         height: 440px;

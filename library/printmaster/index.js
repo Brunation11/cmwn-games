@@ -78,16 +78,16 @@ var Printmaster = (
             }
         }}
         assets={[
-            <skoash.Audio ref="bkg-1" type="background" src="media/_BKG/S_BKG_1.mp3" loop />,
-            <skoash.Audio ref="bkg-2" type="background" src="media/_BKG/S_BKG_2.mp3" loop />,
-            <skoash.Audio ref="bkg-3" type="background" src="media/_BKG/S_BKG_3.mp3" loop />,
-            <skoash.Audio ref="bkg-4" type="background" src="media/_BKG/S_BKG_4.mp3" loop />,
-            <skoash.Audio ref="bkg-5" type="background" src="media/S_12/S_12.1.mp3" />,
-            <skoash.Audio ref="bkg-6" type="background" src="media/S_22/S_22.1.mp3" />,
-            <skoash.Image ref="img-bkg" className="hidden" src="media/_BKG/BKG_1.png" />,
-            <skoash.Audio ref="button" type="sfx" src="media/_Button/S_BU_1.mp3" />,
-            <skoash.Audio ref="screen-complete" type="sfx" src="media/_Button/S_BU_2.mp3" />,
-            <skoash.Audio ref="typing" type="sfx" src="media/S_3/S_3.1.mp3" />,
+            <skoash.Audio ref="bkg-1" type="background" src={`${CMWN.MEDIA.EFFECT}s-bkg-1.mp3`} loop />,
+            <skoash.Audio ref="bkg-2" type="background" src={`${CMWN.MEDIA.EFFECT}s-bkg-2.mp3`} loop />,
+            <skoash.Audio ref="bkg-3" type="background" src={`${CMWN.MEDIA.EFFECT}s-bkg-3.mp3`} loop />,
+            <skoash.Audio ref="bkg-4" type="background" src={`${CMWN.MEDIA.EFFECT}s-bkg-4.mp3`} loop />,
+            <skoash.Audio ref="bkg-5" type="background" src={`${CMWN.MEDIA.IMAGE}s-12-1.mp3`} />,
+            <skoash.Audio ref="bkg-6" type="background" src={`${CMWN.MEDIA.IMAGE}s-22-1.mp3`} />,
+            <skoash.Image ref="img-bkg" className="hidden" src={`${CMWN.MEDIA.IMAGE}bkg-1.png`} />,
+            <skoash.Audio ref="button" type="sfx" src={`${CMWN.MEDIA.EFFECT}s-bu-1.mp3`} />,
+            <skoash.Audio ref="screen-complete" type="sfx" src={`${CMWN.MEDIA.EFFECT}s-bu-2.mp3`} />,
+            <skoash.Audio ref="typing" type="sfx" src={`${CMWN.MEDIA.EFFECT}s-3-1.mp3`} />,
         ]}
     />
 );

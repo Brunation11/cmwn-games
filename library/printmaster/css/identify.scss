@@ -8,7 +8,7 @@ $types: arch loops whorl doubleloop;
     .header {
         position: relative;
         margin: 0 auto;
-        background-image: url('../media/S_9/img_9.1.png');
+        background-image: url('#{$image}img_9.1.png');
         background-repeat: no-repeat;
         background-position: center center;
         background-size: contain;
@@ -64,7 +64,7 @@ $types: arch loops whorl doubleloop;
 
             @for $i from 1 through 4 {
                 &[data-ref=#{nth($types, $i)}] {
-                    background-image: url('../media/S_9/img_9.#{nth($bkg, $i)}.png');
+                    background-image: url('#{$image}img-9-#{nth($bkg, $i)}.png');
                 }
             }
         }
