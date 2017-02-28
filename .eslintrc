@@ -11,7 +11,8 @@
         "__dirname": true,
         "autoprefixer": true,
         "Phaser": true,
-        "ENVIRONMENT": true
+        "ENVIRONMENT": true,
+        "CMWN": true
     },
     "parser": "babel-eslint",
     "plugins": [

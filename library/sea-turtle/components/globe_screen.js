@@ -244,24 +244,34 @@ export default function (props, ref, key) {
                     </skoash.Component>,
                 ]}
                 revealAssets={[
-                    <skoash.Audio type="voiceOver" src="media/audio/globe/VO_4.2.mp3" />,
-                    <skoash.Audio type="voiceOver" src="media/audio/globe/VO_4.3.mp3" />,
-                    <skoash.Audio type="voiceOver" src="media/audio/globe/VO_4.4.mp3" />,
-                    <skoash.Audio type="voiceOver" src="media/audio/globe/VO_4.5.mp3" />,
-                    <skoash.Audio type="voiceOver" src="media/audio/globe/VO_4.6.mp3" />,
-                    <skoash.Audio type="voiceOver" src="media/audio/globe/VO_4.7.mp3" />,
-                    <skoash.Audio type="voiceOver" src="media/audio/globe/VO_4.8.mp3" />,
-                    <skoash.Audio type="voiceOver" src="media/audio/globe/VO_4.9.mp3" />,
-                    <skoash.Audio type="voiceOver" src="media/audio/globe/VO_4.10.mp3" />,
-                    <skoash.Audio type="voiceOver" src="media/audio/globe/VO_4.11.mp3" />,
-                    <skoash.Audio type="voiceOver" src="media/audio/globe/VO_4.1.mp3"
+                    <skoash.Audio type="voiceOver" src={`${CMWN.MEDIA.VO}vo-4-2.mp3`} />,
+                    <skoash.Audio type="voiceOver" src={`${CMWN.MEDIA.VO}vo-4-3.mp3`} />,
+                    <skoash.Audio type="voiceOver" src={`${CMWN.MEDIA.VO}vo-4-4.mp3`} />,
+                    <skoash.Audio type="voiceOver" src={`${CMWN.MEDIA.VO}vo-4-5.mp3`} />,
+                    <skoash.Audio type="voiceOver" src={`${CMWN.MEDIA.VO}vo-4-6.mp3`} />,
+                    <skoash.Audio type="voiceOver" src={`${CMWN.MEDIA.VO}vo-4-7.mp3`} />,
+                    <skoash.Audio type="voiceOver" src={`${CMWN.MEDIA.VO}vo-4-8.mp3`} />,
+                    <skoash.Audio type="voiceOver" src={`${CMWN.MEDIA.VO}vo-4-9.mp3`} />,
+                    <skoash.Audio type="voiceOver" src={`${CMWN.MEDIA.VO}vo-4-10.mp3`} />,
+                    <skoash.Audio type="voiceOver" src={`${CMWN.MEDIA.VO}vo-4-11.mp3`} />,
+                    <skoash.Audio type="voiceOver" src={`${CMWN.MEDIA.VO}vo-4-1.mp3`}
                         onComplete={closeReveal} />,
-                    <skoash.Audio type="sfx" src="media/audio/SO_Right.mp3" />,
-                    <skoash.Audio type="sfx" ref="incorrect-1" complete src="media/audio/SO_Wrong.mp3" />,
-                    <skoash.Audio type="sfx" ref="incorrect-2" complete src="media/audio/SO_Wrong.mp3" />,
+                    <skoash.Audio type="sfx" src={`${CMWN.MEDIA.EFFECT}so_Right.mp3`} />,
+                    <skoash.Audio
+                        type="sfx"
+                        ref="incorrect-1"
+                        complete
+                        src={`${CMWN.MEDIA.EFFECT}so-wrong.mp3`}
+                    />,
+                    <skoash.Audio
+                        type="sfx"
+                        ref="incorrect-2"
+                        complete
+                        src={`${CMWN.MEDIA.EFFECT}so-wrong.mp3`}
+                    />,
                     <skoash.Image
                         className="background"
-                        src="media/images/globe/background-reveal.png"
+                        src={`${CMWN.MEDIA.FRAME}background-reveal.png`}
                         checkComplete={false}
                         completeOnStart
                     />,
@@ -280,8 +290,8 @@ export default function (props, ref, key) {
                   </skoash.Component>,
                 ]}
                 assets={[
-                    <skoash.Audio type="voiceOver" ref="well-done" src="media/audio/globe/VO_4.12.mp3" />,
-                    <skoash.Image className="background" src="media/images/globe/background-reveal.png" />,
+                    <skoash.Audio type="voiceOver" ref="well-done" src={`${CMWN.MEDIA.VO}vo-4-12.mp3`} />,
+                    <skoash.Image className="background" src={`${CMWN.MEDIA.FRAME}background-reveal.png`} />,
                 ]}
             />
         </GlobeScreenComponent>

@@ -46,14 +46,18 @@ var SeaTurtle = (
             return -1;
         }}
         assets={[
-            <skoash.Audio ref="bkg-1" type="background" src="media/audio/SO_1.1.mp3" />,
-            <skoash.Audio ref="bkg-2" type="background" src="media/audio/background/1.mp3" loop />,
-            <skoash.Audio ref="bkg-3" type="background" src="media/audio/background/3.mp3" loop />,
-            <skoash.Audio ref="bkg-4" type="background" src="media/audio/SO_7.1.mp3" />,
-            <skoash.Audio ref="bkg-5" type="background" src="media/audio/background/3.mp3" loop />,
-            <skoash.Audio ref="bkg-6" type="background" src="media/audio/background/3.mp3" loop />,
-            <skoash.Audio ref="button" type="sfx" src="media/audio/button.mp3" />,
-            <skoash.Audio ref="screen-complete" type="sfx" src="media/audio/button-next-activated.mp3" />,
+            <skoash.Audio ref="bkg-1" type="background" src={`${CMWN.MEDIA.EFFECT}so-1-1.mp3`} />,
+            <skoash.Audio ref="bkg-2" type="background" src={`${CMWN.MEDIA.EFFECT}1.mp3`} loop />,
+            <skoash.Audio ref="bkg-3" type="background" src={`${CMWN.MEDIA.EFFECT}3.mp3`} loop />,
+            <skoash.Audio ref="bkg-4" type="background" src={`${CMWN.MEDIA.EFFECT}so-7-1.mp3`} />,
+            <skoash.Audio ref="bkg-5" type="background" src={`${CMWN.MEDIA.EFFECT}3.mp3`} loop />,
+            <skoash.Audio ref="bkg-6" type="background" src={`${CMWN.MEDIA.EFFECT}3.mp3`} loop />,
+            <skoash.Audio ref="button" type="sfx" src={`${CMWN.MEDIA.EFFECT}button.mp3`} />,
+            <skoash.Audio
+                ref="screen-complete"
+                type="sfx"
+                src={`${CMWN.MEDIA.EFFECT}button-next-activated.mp3`}
+            />,
         ]}
     />
 );

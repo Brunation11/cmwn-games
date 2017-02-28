@@ -59,12 +59,12 @@ export default function (props, ref, key) {
                 ref="reveal"
                 openReveal={_.get(props, 'data.reveal.open', null)}
                 assets={[
-                    <skoash.Audio type="voiceOver" src="media/audio/jellyfish/VO_1.mp3" />,
-                    <skoash.Audio type="voiceOver" src="media/audio/jellyfish/VO_2.mp3" />,
-                    <skoash.Audio type="voiceOver" src="media/audio/jellyfish/VO_3.mp3" />,
-                    <skoash.Audio type="voiceOver" src="media/audio/jellyfish/VO_4.mp3" />,
-                    <skoash.Audio type="voiceOver" src="media/audio/jellyfish/VO_5.mp3" />,
-                    <skoash.Audio type="voiceOver" src="media/audio/jellyfish/VO_6.mp3" />,
+                    <skoash.Audio type="voiceOver" src={`${CMWN.MEDIA.VO}vo-1.mp3`} />,
+                    <skoash.Audio type="voiceOver" src={`${CMWN.MEDIA.VO}vo-2.mp3`} />,
+                    <skoash.Audio type="voiceOver" src={`${CMWN.MEDIA.VO}vo-3.mp3`} />,
+                    <skoash.Audio type="voiceOver" src={`${CMWN.MEDIA.VO}vo-4.mp3`} />,
+                    <skoash.Audio type="voiceOver" src={`${CMWN.MEDIA.VO}vo-5.mp3`} />,
+                    <skoash.Audio type="voiceOver" src={`${CMWN.MEDIA.VO}vo-6.mp3`} />,
                 ]}
                 list={[
                     <li>

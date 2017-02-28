@@ -11,7 +11,7 @@ export default function (props, ref, key) {
         >
             <skoash.Component className="center">
                 <skoash.Component className="content-group">
-                    <skoash.Image className="animated tada" src="media/images/title.png" />
+                    <skoash.Image className="animated tada" src={`${CMWN.MEDIA.IMAGE}title.png`} />
                 </skoash.Component>
                 <skoash.Component className="bubbles">
                     <div></div>
