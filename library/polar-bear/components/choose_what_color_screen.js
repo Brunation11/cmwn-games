@@ -9,7 +9,7 @@ export default function (props, ref, key) {
             id="choose-what-color"
         >
             <skoash.Component className="frame">
-                <skoash.Image ref="bear" className="bear animated" src="media/images/Img_6.1.png" />
+                <skoash.Image ref="bear" className="bear animated" src={`${CMWN.MEDIA.IMAGE}img-6-1.png`} />
                 <SelectableReveal
                     ref="selectable-reveal"
                     revealAll
@@ -18,12 +18,12 @@ export default function (props, ref, key) {
                         <skoash.Audio
                             ref="correct"
                             type="sfx"
-                            src="media/audio/answer-correct.mp3"
+                            src={`${CMWN.MEDIA.EFFECT}answer-correct.mp3`}
                         />,
                         <skoash.Audio
                             ref="incorrect"
                             type="sfx"
-                            src="media/audio/answer-incorrect.mp3"
+                            src={`${CMWN.MEDIA.EFFECT}answer-incorrect.mp3`}
                             complete
                         />
                     ]}
@@ -42,20 +42,20 @@ export default function (props, ref, key) {
                         <skoash.Audio
                             ref="clear"
                             type="voiceOver"
-                            src="media/audio/colors-bears/clear.mp3"
+                            src={`${CMWN.MEDIA.VO}clear.mp3`}
                             delay={500}
                         />,
                         <skoash.Audio
                             ref="plaid"
                             type="voiceOver"
-                            src="media/audio/colors-bears/plaid.mp3"
+                            src={`${CMWN.MEDIA.VO}plaid.mp3`}
                             delay={500}
                             complete
                         />,
                         <skoash.Audio
                             ref="white"
                             type="voiceOver"
-                            src="media/audio/colors-bears/white.mp3"
+                            src={`${CMWN.MEDIA.VO}white.mp3`}
                             delay={500}
                             complete
                         />

@@ -6,9 +6,13 @@ export default function (props, ref, key) {
             key={key}
             id="info-carousel"
         >
-            <skoash.Audio ref="vo" type="voiceOver" src="media/audio/VO_10.1.mp3" delay={750} />
+            <skoash.Audio ref="vo" type="voiceOver" src={`${CMWN.MEDIA.VO}vo-10-1.mp3`} delay={750} />
             <skoash.Component className="frame">
-                <skoash.Image ref="banner" className="banner animated" src="media/images/Img_10.1.png" />
+                <skoash.Image
+                    ref="banner"
+                    className="banner animated"
+                    src={`${CMWN.MEDIA.IMAGE}img-10-1.png`}
+                />
                 <h3>
                     Tap or click the puck.<br />
                     Land 5 in the pocket when the<br />

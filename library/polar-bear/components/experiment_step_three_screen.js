@@ -7,7 +7,11 @@ export default function (props, ref, key) {
             id="experiment-step-three"
         >
             <skoash.Component className="frame">
-                <skoash.Image ref="banner" className="banner animated" src="media/images/Img_18.1.png" />
+                <skoash.Image
+                    ref="banner"
+                    className="banner animated"
+                    src={`${CMWN.MEDIA.IMAGE}img-18-1.png`}
+                />
                 <h3>Cover Hands With Plastic Bags</h3>
                 <p>
                     Cover your right hand with a plastic bag.

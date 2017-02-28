@@ -6,7 +6,7 @@ export default function (props, ref, key) {
             key={key}
             id="info-majestic"
         >
-            <skoash.Audio ref="vo" type="voiceOver" src="media/audio/VO_2.1.mp3" delay={500} />
+            <skoash.Audio ref="vo" type="voiceOver" src={`${CMWN.MEDIA.VO}vo-2-1.mp3`} delay={500} />
             <skoash.Component className="frame">
                 <h3>
                     I am a majestic, beautiful<br />
@@ -20,7 +20,7 @@ export default function (props, ref, key) {
                     seals living under,<br />
                     on or in the ice.
                 </h3>
-                <skoash.Image ref="bear" className="bear animated" src="media/images/Img_3.2.png" />
+                <skoash.Image ref="bear" className="bear animated" src={`${CMWN.MEDIA.IMAGE}img-3-2.png`} />
             </skoash.Component>
         </skoash.Screen>
     );

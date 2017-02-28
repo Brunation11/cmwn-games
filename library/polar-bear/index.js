@@ -106,13 +106,17 @@ class PolarBear extends skoash.Game {
     renderAssets() {
         return (
             <div>
-                <skoash.Audio ref="bkg-1" type="background" src="media/audio/SO_BKG_1.mp3" />
-                <skoash.Audio ref="bkg-2" type="background" src="media/audio/SO_BKG_2.mp3" />
-                <skoash.Audio ref="bkg-3" type="background" src="media/audio/SO_BKG_3.wav" />
-                <skoash.Audio ref="bkg-4" type="background" src="media/audio/SO_BKG_4.mp3" />
-                <skoash.Audio ref="bkg-5" type="background" src="media/audio/SO_5.1.mp3" />
-                <skoash.Audio ref="button" type="sfx" src="media/audio/button.mp3" />
-                <skoash.Audio ref="screen-complete" type="sfx" src="media/audio/screen-complete.mp3" />
+                <skoash.Audio ref="bkg-1" type="background" src={`${CMWN.MEDIA.EFFECT}so-BKG_1.mp3`} />
+                <skoash.Audio ref="bkg-2" type="background" src={`${CMWN.MEDIA.EFFECT}so-BKG_2.mp3`} />
+                <skoash.Audio ref="bkg-3" type="background" src={`${CMWN.MEDIA.EFFECT}so-BKG_3.wav`} />
+                <skoash.Audio ref="bkg-4" type="background" src={`${CMWN.MEDIA.EFFECT}so-BKG_4.mp3`} />
+                <skoash.Audio ref="bkg-5" type="background" src={`${CMWN.MEDIA.EFFECT}so-5.1.mp3`} />
+                <skoash.Audio ref="button" type="sfx" src={`${CMWN.MEDIA.EFFECT}button.mp3`} />
+                <skoash.Audio
+                    ref="screen-complete"
+                    type="sfx"
+                    src={`${CMWN.MEDIA.EFFECT}screen-complete.mp3`}
+                />
             </div>
         );
     }

@@ -10,30 +10,30 @@ export default function (props, ref, key) {
                 <skoash.Image
                     ref="banner"
                     className="banner animated"
-                    src="media/images/S_15/Img_15.1.png"
+                    src={`${CMWN.MEDIA.IMAGE}img-15-1.png`}
                 />
                 <skoash.Image
                     ref="bowl"
                     className="item bowl animated"
-                    src="media/images/S_15/Img_15.2.png"
+                    src={`${CMWN.MEDIA.IMAGE}img-15-2.png`}
                 />
                 <p className="bowl"><strong>Large bowl</strong></p>
                 <skoash.Image
                     ref="ice"
                     className="item ice animated"
-                    src="media/images/S_15/Img_15.3.png"
+                    src={`${CMWN.MEDIA.IMAGE}img-15-3.png`}
                 />
                 <p className="ice"><strong>4 cups of ice</strong></p>
                 <skoash.Image
                     ref="water"
                     className="item water animated"
-                    src="media/images/S_15/Img_15.4.png"
+                    src={`${CMWN.MEDIA.IMAGE}img-15-4.png`}
                 />
                 <p className="water"><strong>Cold water</strong></p>
                 <skoash.Image
                     ref="oil"
                     className="item oil animated"
-                    src="media/images/S_15/Img_15.5.png"
+                    src={`${CMWN.MEDIA.IMAGE}img-15-5.png`}
                 />
                 <p className="oil">
                     <strong>
@@ -44,7 +44,7 @@ export default function (props, ref, key) {
                 <skoash.Image
                     ref="bag"
                     className="item bag animated"
-                    src="media/images/S_15/Img_15.6.png"
+                    src={`${CMWN.MEDIA.IMAGE}img-15-6.png`}
                 />
                 <p className="bag"><strong>4 medium-size sealable<br />plastic bags</strong></p>
             </skoash.Component>

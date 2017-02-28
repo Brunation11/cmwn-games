@@ -9,7 +9,7 @@ export default function (props, ref, key) {
             completeOnStart
             silentComlete
         >
-            <skoash.Image ref="title" className="title animated" src="media/images/title.png" />
+            <skoash.Image ref="title" className="title animated" src={`${CMWN.MEDIA.IMAGE}title.png`} />
         </skoash.Screen>
     );
 }

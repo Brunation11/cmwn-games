@@ -17,12 +17,12 @@ export default function (props, ref, key) {
                         <skoash.Audio
                             ref="correct"
                             type="sfx"
-                            src="media/audio/answer-correct.mp3"
+                            src={`${CMWN.MEDIA.EFFECT}answer-correct.mp3`}
                         />,
                         <skoash.Audio
                             ref="incorrect"
                             type="sfx"
-                            src="media/audio/answer-incorrect.mp3"
+                            src={`${CMWN.MEDIA.EFFECT}answer-incorrect.mp3`}
                             complete
                         />
                     ]}
@@ -32,7 +32,7 @@ export default function (props, ref, key) {
                                 ref="img"
                                 data-ref="greenland"
                                 className="greenland animated"
-                                src="media/images/map/img_9.3.png"
+                                src={`${CMWN.MEDIA.IMAGE}img-9-3.png`}
                             />
                         </skoash.Component>,
                         <skoash.Component>
@@ -40,7 +40,7 @@ export default function (props, ref, key) {
                                 ref="img"
                                 data-ref="alaska"
                                 className="alaska animated"
-                                src="media/images/map/img_9.4.png"
+                                src={`${CMWN.MEDIA.IMAGE}img-9-4.png`}
                             />
                        </skoash.Component>,
                         <skoash.Component>
@@ -48,7 +48,7 @@ export default function (props, ref, key) {
                                 ref="img"
                                 data-ref="canada"
                                 className="canada animated"
-                                src="media/images/map/img_9.5.png"
+                                src={`${CMWN.MEDIA.IMAGE}img-9-5.png`}
                             />
                         </skoash.Component>,
                         <skoash.Component>
@@ -56,7 +56,7 @@ export default function (props, ref, key) {
                                 ref="img"
                                 data-ref="norway"
                                 className="norway animated"
-                                src="media/images/map/img_9.8.png"
+                                src={`${CMWN.MEDIA.IMAGE}img-9-8.png`}
                             />
                         </skoash.Component>,
                         <skoash.Component>
@@ -64,7 +64,7 @@ export default function (props, ref, key) {
                                 ref="img"
                                 data-ref="north-
                                 ole" className="north
-                                pole animated" src="media/images/map/img_9.10.png"
+                                pole animated" src={`${CMWN.MEDIA.IMAGE}img-9-10.png`}
                             />
                         </skoash.Component>,
                         <skoash.Component>
@@ -72,7 +72,7 @@ export default function (props, ref, key) {
                                 ref="img"
                                 data-ref="russia"
                                 className="russia animated"
-                                src="media/images/map/img_9.11.png"
+                                src={`${CMWN.MEDIA.IMAGE}img-9-11.png`}
                             />
                         </skoash.Component>,
                         <skoash.Component>
@@ -80,7 +80,7 @@ export default function (props, ref, key) {
                                 ref="img"
                                 data-ref="finland"
                                 className="finland animated"
-                                src="media/images/map/img_9.6.png"
+                                src={`${CMWN.MEDIA.IMAGE}img-9-6.png`}
                             />
                         </skoash.Component>,
                         <skoash.Component>
@@ -88,7 +88,7 @@ export default function (props, ref, key) {
                                 ref="img"
                                 data-ref="sweedan"
                                 className="sweden animated"
-                                src="media/images/map/img_9.7.png"
+                                src={`${CMWN.MEDIA.IMAGE}img-9-7.png`}
                             />
                         </skoash.Component>,
                         <skoash.Component>
@@ -96,7 +96,7 @@ export default function (props, ref, key) {
                                 ref="img"
                                 data-ref="denmark"
                                 className="denmark animated"
-                                src="media/images/map/img_9.9.png"
+                                src={`${CMWN.MEDIA.IMAGE}img-9-9.png`}
                             />
                         </skoash.Component>,
                         <skoash.Component>
@@ -104,51 +104,51 @@ export default function (props, ref, key) {
                                 ref="img"
                                 data-ref="iceland"
                                 className="iceland animated"
-                                src="media/images/map/img_9.12.png"
+                                src={`${CMWN.MEDIA.IMAGE}img-9-12.png`}
                             />
                         </skoash.Component>,
                         <skoash.Component>
                             <skoash.Image
                                 className="border animated"
-                                src="media/images/map/img_9.13.png"
+                                src={`${CMWN.MEDIA.IMAGE}img-9-13.png`}
                             />
                         </skoash.Component>,
                         <skoash.Component>
                             <skoash.Image
                                 className="labels animated"
-                                src="media/images/map/img_9.2.png"
+                                src={`${CMWN.MEDIA.IMAGE}img-9-2.png`}
                             />
                         </skoash.Component>,
                     ]}
                     revealAssets={[
                         <skoash.Audio
                             type="voiceOver"
-                            src="media/audio/map/VO_9.2.mp3"
+                            src={`${CMWN.MEDIA.EFFECT}vo-9-2.mp3`}
                             delay={500}
                         />,
                         <skoash.Audio
                             type="voiceOver"
-                            src="media/audio/map/VO_9.6.mp3"
+                            src={`${CMWN.MEDIA.EFFECT}vo-9-6.mp3`}
                             delay={500}
                         />,
                         <skoash.Audio
                             type="voiceOver"
-                            src="media/audio/map/VO_9.3.mp3"
+                            src={`${CMWN.MEDIA.EFFECT}vo-9-3.mp3`}
                             delay={500}
                         />,
                         <skoash.Audio
                             type="voiceOver"
-                            src="media/audio/map/VO_9.5.mp3"
+                            src={`${CMWN.MEDIA.EFFECT}vo-9-5.mp3`}
                             delay={500}
                         />,
                         <skoash.Audio
                             type="voiceOver"
-                            src="media/audio/map/VO_9.1.mp3"
+                            src={`${CMWN.MEDIA.EFFECT}vo-9-1.mp3`}
                             delay={500}
                         />,
                         <skoash.Audio
                             type="voiceOver"
-                            src="media/audio/map/VO_9.4.mp3"
+                            src={`${CMWN.MEDIA.EFFECT}vo-9-4.mp3`}
                             delay={500}
                         />
                     ]}
