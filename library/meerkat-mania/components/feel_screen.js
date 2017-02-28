@@ -27,7 +27,7 @@ export default function (props, ref, key) {
                 <skoash.Audio
                     ref="correct"
                     type="sfx"
-                    src={`${CMWN.MEDIA.VO}s-6-2.mp3`}
+                    src={`${CMWN.MEDIA.EFFECT}s-6-2.mp3`}
                 />
                 <skoash.Audio
                     ref="safe"

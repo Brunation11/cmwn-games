@@ -20,5 +20,3 @@ export default function (props, ref, key) {
         </skoash.Screen>
     );
 }
-
-

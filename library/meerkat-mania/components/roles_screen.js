@@ -64,7 +64,7 @@ export default function (props, ref, key) {
                             />
                             <skoash.Image
                                 ref="img"
-                                src={`${CMWN.MEDIA.VO}img-3-2.png`}
+                                src={`${CMWN.MEDIA.IMAGE}img-3-2.png`}
                             />
                             <span>
                                 I stand watch!<br/>
@@ -83,7 +83,7 @@ export default function (props, ref, key) {
                             />
                             <skoash.Image
                                 ref="img"
-                                src={`${CMWN.MEDIA.VO}img-3-4.png`}
+                                src={`${CMWN.MEDIA.IMAGE}img-3-4.png`}
                             />
                             <span>
                                 I'm a pup so I'm under 6 months old.<br/>
@@ -103,7 +103,7 @@ export default function (props, ref, key) {
                             />
                             <skoash.Image
                                 ref="img"
-                                src={`${CMWN.MEDIA.VO}img-3-6.png`}
+                                src={`${CMWN.MEDIA.IMAGE}img-3-6.png`}
                             />
                             <span>
                                 I help babysit the pups!<br/>
@@ -123,7 +123,7 @@ export default function (props, ref, key) {
                             />
                             <skoash.Image
                                 ref="img"
-                                src={`${CMWN.MEDIA.VO}img-3-8.png`}
+                                src={`${CMWN.MEDIA.IMAGE}img-3-8.png`}
                             />
                             <span>
                                 As a meerkat, I’m omnivorous so<br/>
@@ -145,7 +145,7 @@ export default function (props, ref, key) {
                             />
                             <skoash.Image
                                 ref="img"
-                                src={`${CMWN.MEDIA.VO}img-3-10.png`}
+                                src={`${CMWN.MEDIA.IMAGE}img-3-10.png`}
                             />
                             <span>
                                 Alpha males usually come<br/>
@@ -165,7 +165,7 @@ export default function (props, ref, key) {
                             />
                             <skoash.Image
                                 ref="img"
-                                src={`${CMWN.MEDIA.VO}img-3-12.png`}
+                                src={`${CMWN.MEDIA.IMAGE}img-3-12.png`}
                             />
                             <span>
                                 As an alpha female, I lead the group<br/>
@@ -194,42 +194,48 @@ export default function (props, ref, key) {
                         <skoash.Image
                             ref="img"
                             data-ref="sentry"
-                            message="sentry" src={`${CMWN.MEDIA.IMAGE}img-3-1.png`}
+                            message="sentry"
+                            src={`${CMWN.MEDIA.IMAGE}img-3-1.png`}
                         />
                     </skoash.Component>,
                     <skoash.Component ref="pup" data-ref="pup" message="pup">
                         <skoash.Image
                             ref="img"
                             data-ref="pup"
-                            message="pup" src={`${CMWN.MEDIA.IMAGE}img-3-3.png`}
+                            message="pup"
+                            src={`${CMWN.MEDIA.IMAGE}img-3-3.png`}
                         />
                     </skoash.Component>,
                     <skoash.Component ref="babysitter" data-ref="babysitter" message="babysitter">
                         <skoash.Image
                             ref="img"
                             data-ref="babysitter"
-                            message="babysitter" src={`${CMWN.MEDIA.IMAGE}img-3-5.png`}
+                            message="babysitter"
+                            src={`${CMWN.MEDIA.IMAGE}img-3-5.png`}
                         />
                     </skoash.Component>,
                     <skoash.Component ref="gatherer" data-ref="gatherer" message="gatherer">
                         <skoash.Image
                             ref="img"
                             data-ref="gatherer"
-                            message="gatherer" src={`${CMWN.MEDIA.IMAGE}img-3-7.png`}
+                            message="gatherer"
+                            src={`${CMWN.MEDIA.IMAGE}img-3-7.png`}
                         />
                     </skoash.Component>,
                     <skoash.Component ref="alpha-male" data-ref="alpha-male" message="alpha-male">
                         <skoash.Image
                             ref="img"
                             data-ref="alpha-male"
-                            message="alpha-male" src={`${CMWN.MEDIA.IMAGE}img-3-9.png`}
+                            message="alpha-male"
+                            src={`${CMWN.MEDIA.IMAGE}img-3-9.png`}
                         />
                     </skoash.Component>,
                     <skoash.Component ref="alpha-female" data-ref="alpha-female" message="alpha-female">
                         <skoash.Image
                             ref="img"
                             data-ref="alpha-female"
-                            message="alpha-female" src={`${CMWN.MEDIA.IMAGE}img-3-11.png`}
+                            message="alpha-female"
+                            src={`${CMWN.MEDIA.IMAGE}img-3-11.png`}
                         />
                     </skoash.Component>,
                 ]}
