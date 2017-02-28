@@ -1,0 +1,24 @@
+#what-happens {
+    .intro-image-1,
+    .intro-image-2 {
+        top: 30px;
+        transform: scale(1.2);
+    }
+
+    .intro-image-1 {
+        left: 90px;
+    }
+
+    .intro-image-2 {
+        left: 470px;
+    }
+
+    p {
+        margin-top: 70px;
+    }
+
+    h3 {
+        margin-top: 10px;
+        font-size: 48px;
+    }
+}

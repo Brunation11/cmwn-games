@@ -4,8 +4,8 @@ import shortid from 'shortid';
 import Selectable from 'shared/components/selectable/0.1';
 
 class Carousel extends Selectable {
-    constructor() {
-        super();
+    constructor(props) {
+        super(props);
 
         this.next = this.next.bind(this);
     }
@@ -16,22 +16,32 @@ class Carousel extends Selectable {
         if (nextProps.selected && nextProps.selected !== this.props.selected) {
             this.select();
         }
+
+        if (nextProps.next && nextProps.next !== this.props.next) {
+            this.next();
+        }
     }
 
     start() {
         super.start();
-        this.next();
+        if (this.props.nextOnStart) this.next();
     }
 
     next() {
-        var classes;
-        var list;
-        classes = this.state.classes;
-        list = this.state.list;
-        list = list.concat(this.refs.bin.get(1));
+        var classes = this.state.classes;
+        var list = this.state.list;
+        var item = this.refs.bin.get(1)[0];
+        list = list.concat(
+            <item.type
+                {...item.props}
+                {...{
+                    'data-key': shortid.generate()
+                }}
+            />
+        );
         list.shift();
         classes[0] = '';
-        this.enabled = true;
+        this.enabled = this.props.enabled;
 
         this.setState({
             classes,
@@ -52,6 +62,17 @@ class Carousel extends Selectable {
         skoash.Component.prototype.bootstrap.call(this);
 
         list = this.refs.bin ? this.refs.bin.get(this.props.showNum + 1) : this.props.list;
+
+        _.each(list, item => {
+            return (
+                <item.type
+                    {...item.props}
+                    {...{
+                        'data-key': shortid.generate()
+                    }}
+                />
+            );
+        });
 
         this.setState({
             list
@@ -79,10 +100,10 @@ class Carousel extends Selectable {
         return classNames('carousel', super.getClassNames());
     }
 
-  /*
-   * shortid is intentionally not used for key here because we want to make sure
-   * that the element is transitioned and not replaced.
-   */
+    /*
+     * shortid is intentionally not used for key here because we want to make sure
+     * that the element is transitioned and not replaced.
+     */
     renderList() {
         var list = this.state.list || this.props.list;
         return list.map((li, key) => {
@@ -121,6 +142,8 @@ class Carousel extends Selectable {
 Carousel.defaultProps = _.defaults({
     showNum: 3,
     targetIndex: 1,
+    enabled: true,
+    nextOnStart: true,
     pause: 500,
     clickable: false,
     onSelect: _.noop,

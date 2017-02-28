@@ -1,149 +1,163 @@
-/**
- * Index script
- * @module
- */
-import './config.game';
+import config from './config';
 
-import 'shared/js/screen-ios-splash';
-import './source/js/components/audio-sequence/behavior';
-import './source/js/components/frame/behavior';
-import './source/js/components/modal/behavior';
-import './source/js/components/multiple-choice/behavior';
-import './source/js/components/reveal/behavior';
-import './source/js/components/runner/behavior';
-import './source/js/components/score/behavior';
-import './source/js/components/screen-basic/behavior';
-import './source/js/components/screen-quit/behavior';
-import './source/js/components/selectable-reveal/behavior';
-import './source/js/components/selectable/behavior';
-import './source/js/components/video/behavior';
+import Loader from 'shared/components/loader/0.1';
 
-// import 'shared/js/test-platform-integration';
-import 'shared/js/google-analytics';
+import iOSScreen from 'shared/components/ios_splash_screen/0.1';
 
-pl.game('monarch', function () {
+import TitleScreen from './components/title_screen';
+import InfoVideoOneScreen from './components/info_video_one_screen';
+import LifeStagesScreen from './components/life_stages_screen';
+import FirstStageScreen from './components/first_stage_screen';
+import InstructionsOneScreen from './components/instructions_1_screen';
+import BonusLevelOneScreen from './components/bonus_level_one_screen';
+import BonusLevelTwoScreen from './components/bonus_level_two_screen';
+import VideoPupaScreen from './components/video_pupa_screen';
+import InfoYouWonScreen from './components/info_you_won_screen';
+import VideoMonarchScreen from './components/video_monarch_screen';
+import InfoMigrateScreen from './components/info_migrate_screen';
+import InfoVideoTwoScreen from './components/info_video_two_screen';
+import MonarchGenerationOneScreen from './components/monarch_generation_one_screen';
+import LevelOneScreen from './components/level_one_screen';
+import MonarchGenerationTwoScreen from './components/monarch_generation_two_screen';
+import LevelTwoScreen from './components/level_two_screen';
+import MonarchGenerationThreeScreen from './components/monarch_generation_three_screen';
+import LevelThreeScreen from './components/level_three_screen';
+import MonarchGenerationFourScreen from './components/monarch_generation_four_screen';
+import FlipScreen from './components/flip_screen';
+import QuitScreen from './components/quit_screen';
 
-    this.screen('title', function () {
-        this.on('ui-open', function () {
-            this.repeat('4s', function () {
-                this.audio.sfx.play();
-            });
-            this.audio.sfx.on('play', function () {
-                this.pupa.addClass('SHAKE');
-            }.bind(this));
-            this.audio.sfx.on('ended', function () {
-                this.pupa.removeClass('SHAKE');
-            }.bind(this));
-        });
-
-        this.pause = function () {
-            this.kill('repeat');
-            this.__proto__.pause();
-        };
-
-        this.resume = function () {
-            this.repeat('4s', function () {
-                this.audio.sfx.play();
-            });
-            this.__proto__.resume();
-        };
-
-        this.on('ready', function (_event) {
-            if (!this.is(_event.target)) return;
-
-            if (this.game.iosSplash.state(this.STATE.READY)) this.game.iosSplash.splash();
-        });
-
-        this.on('ui-close', function () {
-            this.kill('repeat');
-        });
-    });
-
-    this.screen('fly-across', function () {
-        var count = 0;
-
-        this.on('ui-open', function (_event) {
-            if (!this.is(_event.target)) return;
-            this.length = this.modal.reveal.find('li').length;
-        });
-
-        this.respond('landed', function (_event) {
-            if (_event.message === 'red') {
-                this.audio.sfx.correct.play();
-                this.modal.item(count++);
-                if (count >= this.length) count = 0;
-            } else {
-                this.audio.sfx.incorrect.play();
+skoash.start(
+    <skoash.Game
+        config={config}
+        loader={<Loader />}
+        screens={[
+            iOSScreen,
+            TitleScreen,
+            InfoVideoOneScreen,
+            LifeStagesScreen,
+            FirstStageScreen,
+            InstructionsOneScreen,
+            BonusLevelOneScreen,
+            BonusLevelTwoScreen,
+            VideoPupaScreen,
+            InfoYouWonScreen,
+            VideoMonarchScreen,
+            InfoMigrateScreen,
+            InfoVideoTwoScreen,
+            MonarchGenerationOneScreen,
+            LevelOneScreen,
+            MonarchGenerationTwoScreen,
+            LevelTwoScreen,
+            MonarchGenerationThreeScreen,
+            LevelThreeScreen,
+            MonarchGenerationFourScreen,
+            FlipScreen,
+        ]}
+        menus={{
+            quit: QuitScreen,
+        }}
+        assets={[
+            <skoash.Font name="Chelsea Market" />,
+            <skoash.Font name="Source Sans Pro" />,
+            // <skoash.Font name="CMWN" />,
+            <skoash.Image
+                className="hidden"
+                src={`${MEDIA.FRAME}monarch.fact.png`}
+            />,
+            <skoash.Image
+                className="hidden"
+                src={`${MEDIA.FRAME}try.again.frame.png`}
+            />,
+            <div className="background title" />,
+            <div className="background bkg-1" />,
+            <div className="background bkg-2" />,
+            <div className="background bkg-3" />,
+            <div className="background bkg-4" />,
+            <div className="background bkg-5" />,
+            <skoash.Audio
+                ref="button"
+                type="sfx"
+                src={`${MEDIA.EFFECT}Click.mp3`}
+            />,
+            <skoash.Audio
+                ref="screen-complete"
+                type="sfx"
+                src={`${MEDIA.EFFECT}NextAppear.mp3`}
+            />,
+            <skoash.Audio
+                ref="bkg-1"
+                type="background"
+                src={`${MEDIA.EFFECT}BKG_1.mp3`}
+                loop
+            />,
+            <skoash.Audio
+                ref="bkg-2"
+                type="background"
+                src={`${MEDIA.EFFECT}BKG_2.mp3`}
+                loop
+            />,
+            <skoash.Audio
+                ref="bkg-3"
+                type="background"
+                src={`${MEDIA.EFFECT}BKG_3.mp3`}
+                loop
+            />,
+            <skoash.Audio
+                ref="bkg-4"
+                type="background"
+                src={`${MEDIA.EFFECT}BKG_4.mp3`}
+                loop
+            />,
+            <skoash.Audio
+                ref="bkg-5"
+                type="background"
+                src={`${MEDIA.EFFECT}BKG_5.mp3`}
+                loop
+            />,
+            <skoash.Audio
+                ref="bkg-6"
+                type="background"
+                src={`${MEDIA.EFFECT}BKG_6.mp3`}
+                loop
+            />,
+            <skoash.Audio
+                ref="bkg-bonus"
+                type="background"
+                src={`${MEDIA.EFFECT}BonusBKG.mp3`}
+            />,
+        ]}
+        getBackgroundIndex={(index, id) => {
+            switch (id) {
+                case 'ios-splash': return;
+                case 'title':
+                    return 'bkg-1';
+                case 'life-stages':
+                    return 'bkg-2';
+                case 'first-stage':
+                case 'instructions-1':
+                case 'video-pupa':
+                case 'video-monarch':
+                case 'info-migrate':
+                    return 'bkg-3';
+                case 'bonus-level-one':
+                case 'bonus-level-two':
+                case 'info-video-two':
+                    return 'bkg-4';
+                case 'monarch-generations-1':
+                case 'phaser-level-1':
+                case 'monarch-generations-2':
+                case 'phaser-level-2':
+                case 'monarch-generations-3':
+                case 'phaser-level-3':
+                case 'monarch-generations-4':
+                    return 'bkg-3';
+                case 'flip':
+                    return;
+                case 'info-video-one':
+                    return; // no bkg audio
             }
-        });
+        }}
+    />
+);
 
-        this.respond('close', function (_event) {
-            if (!this.modal.is(_event.target)) return;
-            this.screen.runner.restart();
-        });
-    });
-
-    this.screen('floating-weed', function () {
-        var count = 0;
-
-        this.on('ui-open', function (_event) {
-            if (!this.is(_event.target)) return;
-            this.length = this.modal.reveal.find('li').length;
-        });
-
-        this.respond('select', function (_event) {
-            if (!_event.behaviorTarget.is('li')) return;
-            this.audio.sfx.correct.play();
-            this.modal.item(count++);
-            if (count >= this.length) count = 0;
-        });
-    });
-
-    this.screen('four-generations', function () {
-        this.on('ui-open', function () {
-            this.deselect(this.selectableReveal.reveal.find('li'));
-        });
-
-        this.on('audio-ended', function (_event) {
-            if (this.audio.voiceOver.lifespan === _event.target) {
-                this.selectableReveal.reveal.item(4);
-            }
-        });
-    });
-
-    this.screen('flip', function () {
-        this.next = function () {
-            this.game.quit.okay();
-        };
-
-        this.on('animationend', function (_event) {
-            if (!this.flipContainer.is(_event.target)) return;
-            this.find('.pupa').addClass('SHAKE');
-            this.screen.audio.sfx.shake.play();
-        });
-
-        this.complete = function () {
-            var eventCategory;
-            var theEvent = new Event('game-event', {bubbles: true, cancelable: false});
-            theEvent.name = 'flip';
-            theEvent.gameData = {id: this.game.id()};
-            if (window.frameElement) window.frameElement.dispatchEvent(theEvent);
-            eventCategory = (['game', this.game.id(), this.id() + '(' + (this.index() + 1) + ')']).join(' ');
-            ga('send', 'event', eventCategory, 'complete');
-            return this.proto();
-        };
-    });
-
-    this.exit = function () {
-        var screen, eventCategory;
-
-        screen = this.findOwn(pl.game.config('screenSelector') + '.OPEN:not(#quit)').scope();
-        eventCategory = (['game', this.id(), screen.id() + '(' + (screen.index() + 1) + ')']).join(' ');
-
-        ga('send', 'event', eventCategory, 'quit');
-
-        return this.proto();
-    };
-
-
-});
+if (module.hot) module.hot.accept();

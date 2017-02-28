@@ -1,0 +1,11 @@
+{
+    "id": "monarch",
+    "media_folder": "monarch",
+    "version": 1,
+    "skoash": "1.1.1",
+    "head_injection": "<link href='https://fonts.googleapis.com/css?family=Chelsea+Market' rel='stylesheet'>",
+    "dimensions": {
+        "width": 960,
+        "height": 540
+    }
+}

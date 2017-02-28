@@ -1,0 +1,235 @@
+@import 'variables';
+@import '../../shared/css/mixins/import';
+
+@mixin nav-button($column, $width: 0, $height: 0) {
+    @include sprite($sprite + 'nav.png', 2400px, 533px, 9, 2, $column, 1, 2, $width, $height);
+}
+
+@mixin sprite-background($column, $width: 0, $height: 0) {
+    @include sprite($sprite + 'BKG.1.jpg', 2880px, 540px, 3, 1, $column, 1, 1, $width, $height);
+}
+
+@mixin sprite-frame($column, $width: 0, $height: 0) {
+    @include sprite($sprite + 'frames.intro-01.png', 1325px, 268px, 2, 1, $column, 1, 1, $width, $height);
+    @include center;
+    width: 660px;
+    height: 268px;
+}
+
+@mixin sprite-intro($column, $width: 0, $height: 0) {
+    @include sprite($sprite + 'intro.imgs.png', 1268px, 423px, 3, 1, $column, 1, 1, $width, $height);
+    position: absolute;
+    top: -80px;
+    left: -130px;
+    width: 422px;
+    height: 423px;
+}
+
+@mixin sprite-turtle($column, $width: 0, $height: 0) {
+    @include sprite($sprite + 'game1.4.png', 700px, 340px, 2, 1, $column, 1, 1, $width, $height);
+    width: 340px;
+    height: 330px;
+}
+
+@mixin sprite-question($column, $width: 0, $height: 0) {
+    @include sprite($sprite + 'cards.1.png', 575px, 715px, 2, 2, $column, 1, 2, $width, $height);
+}
+
+@mixin sprite-cards($column, $width: 0, $height: 0) {
+    @include sprite($sprite + 'cards.2.png', 2145px, 448px, 6, 1, $column, 1, 1, $width, $height);
+}
+
+@mixin sprite-grass($column, $width: 0, $height: 0) {
+    @include sprite($sprite + 'cards.3.png', 1920px, 220px, 2, 1, $column, 1, 1, $width, $height);
+}
+
+@mixin sprite-metericons($column, $width: 0, $height: 0) {
+    @include sprite($sprite + 'game1.metericons.png', 360px, 86px, 3, 1, $column, 1, 1, $width, $height);
+}
+
+@mixin sprite-game-tree($column, $width: 0, $height: 0) {
+    @include sprite($sprite + 'game1.intro.trees.png', 565px, 460px, 2, 1, $column, 1, 1, $width, $height);
+}
+
+@mixin sprite-types-tree($column, $width: 0, $height: 0) {
+    @include sprite($sprite + 'cards.4.png', 565px, 460px, 2, 1, $column, 1, 1, $width, $height);
+}
+
+@mixin sprite-game-intro($column, $width: 0, $height: 0) {
+    @include sprite($sprite + 'game1.9.png', 720px, 263px, 2, 1, $column, 1, 1, $width, $height);
+    position: absolute;
+    width: 360px;
+    height: 250px;
+}
+
+@mixin sprite-fact($column, $width: 0, $height: 0) {
+    @include sprite($sprite + 'game1.3.png', 1335px, 145px, 3, 1, $column, 1, 1, $width, $height);
+    width: 445px;
+    height: 145px;
+}
+
+@mixin sprite-level($column, $width: 0, $height: 0) {
+    @include sprite($sprite + 'game1.2.png', 2050px, 78px, 5, 1, $column, 1, 1, $width, $height);
+}
+
+@mixin sprite-level-complete($column, $width: 0, $height: 0) {
+    @include sprite($sprite + 'game1.1.png', 1950px, 155px, 5, 1, $column, 1, 1, $width, $height);
+    @include center;
+    display: block;
+    top: 20%;
+    width: 390px;
+    height: 155px;
+}
+
+@mixin sprite-sort-title($column, $width: 0, $height: 0) {
+    @include sprite($sprite + 'game2.1.png', 2250px, 163px, 5, 1, $column, 1, 1, $width, $height);
+    @include center;
+    top: 12%;
+    left: 48%;
+    width: 450px;
+    height: 163px;
+}
+
+@mixin sprite-sort-level($column, $width: 0, $height: 0) {
+    @include sprite($sprite + 'game2.2.png', 938px, 225px, 3, 1, $column, 1, 1, $width, $height);
+    width: 312px;
+    height: 225px;
+}
+
+@mixin sprite-number($column, $width: 0, $height: 0) {
+    @include sprite($sprite + 'game2.3.png', 300px, 125px, 3, 1, $column, 1, 1, $width, $height);
+    width: 100px;
+    height: 125px;
+}
+
+@mixin sprite-reward($column, $width: 0, $height: 0) {
+    @include sprite($sprite + 'game2.4.png', 900px, 450px, 3, 1, $column, 1, 1, $width, $height);
+    width: 300px;
+    height: 450px;
+}
+
+@mixin sprite-sort-item($column, $width: 0, $height: 0) {
+    $item-scale: .7;
+    @include sprite($sprite + 'game2.6.png', 3600px, 450px, 15, 2, $column, 1, 1, $width, $height);
+    transform: scale3d($item-scale, $item-scale, 1);
+    width: 240px;
+    height: 225px;
+}
+
+@mixin sprite-sort-can($column, $row: 1, $width: 0, $height: 0) {
+    @include sprite($sprite + 'game2.7.png', 578px, 520px, 3, 2, $column, $row, $row, $width, $height);
+}
+
+@mixin sprite-sort-button($width: 0, $height: 0) {
+    @include sprite($sprite + 'game2.8.png', 183px, 365px, 1, 2, 1, 1, 2, $width, $height);
+    position: absolute;
+    width: 183px;
+    height: 183px;
+    right: 20px;
+    bottom: 0;
+}
+
+// work later to move this function to a shared/css/mixins
+@mixin score-meter($steps: 4, $meter-color: $light-green) {
+    display: inline-block;
+    position: relative;
+    z-index: 1;
+    margin: 10px 0 10px 40px;
+    width: 200px;
+    height: 20px;
+    vertical-align: middle;
+
+    &::after {
+        position: absolute;
+        bottom: 0;
+        left: 5%;
+        opacity: .6;
+        z-index: 1;
+        border-radius: 10px;
+        background-color: $light-grey;
+        width: 90%;
+        height: 6px;
+        content: '';
+    }
+
+    span {
+        display: block;
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        color: transparent;
+        font-size: 0;
+
+        &::before,
+        &::after {
+            display: block;
+            position: absolute;
+            border-radius: 50px;
+            height: 100%;
+            content: '';
+        }
+
+        &::before {
+            top: 0;
+            left: 0;
+            border: 3px solid $black;
+            background-color: $white;
+            width: 100%;
+        }
+
+        &::after {
+            top: 3px;
+            left: 3px;
+
+            // scss-lint:disable VendorPrefix
+            -webkit-transition: width .5s cubic-bezier(.53, 0, .63, 1);
+            // scss-lint:enable VendorPrefix
+            transition: width .5s cubic-bezier(.53, -.56, .63, 1.74);
+
+            background-color: $meter-color;
+            width: 0;
+        }
+    }
+
+    @for $i from 0 through $steps {
+        &.score-#{$i} {
+            span::after {
+                width: percentage($i / $steps);
+            }
+        }
+    }
+}
+
+@mixin life-tracker() {
+    &::before,
+    &::after {
+        content: '';
+    }
+
+    &::before,
+    span,
+    &::after {
+        display: inline-block;
+        position: relative;
+        transition: opacity .5s;
+        opacity: .5;
+        background-repeat: no-repeat;
+        vertical-align: middle;
+    }
+
+    span {
+        color: transparent;
+        font-size: 0;
+    }
+
+    &.score-1::before,
+    &.score-2::before,
+    &.score-2 span,
+    &.score-3::before,
+    &.score-3 span,
+    &.score-3::after {
+        opacity: 1;
+    }
+}
