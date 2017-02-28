@@ -39,14 +39,14 @@ class CollisionWarning extends skoash.Screen {
                         <skoash.Image
                             ref="copy"
                             className="copy"
-                            src="media/_CollisionWarning/text-youmustnotoverlapimgs.png"
+                            src={`${CMWN.MEDIA.IMAGE}text-youmustnotoverlapimgs.png`}
                         />
                         <button className={this.getToggleClassNames()} onClick={this.toggle}></button>
                         <button className="close-collision-warning" onClick={this.cancel}></button>
                         <skoash.Image
                             ref="otter"
                             className="otter"
-                            src="media/_CollisionWarning/Peeking-through-Otter.gif"
+                            src={`${CMWN.MEDIA.IMAGE}peeking-through-otter.gif`}
                         />
                     </div>
                 </div>

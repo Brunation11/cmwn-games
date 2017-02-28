@@ -18,7 +18,7 @@
 .item-drawer-container {
     display: inline-block;
     margin: 20px 0 20px 120px;
-    background-image: url('../media/_Frames/SK_frames_general.png');
+    background-image: url('#{$frame}sk-frames-general.png');
     background-repeat: no-repeat;
     background-position: -1640px 0;
     background-size: 6500px;
@@ -51,7 +51,7 @@
         margin: 0 10px 20px;
         border: 2px solid transparent;
 
-        background-image: url('../media/_Frames/SK_frames_Image.png');
+        background-image: url('#{$frame}sk-frames-image.png');
         background-repeat: no-repeat;
         background-position: -30px -370px;
         background-size: 350px;
@@ -83,7 +83,7 @@
             left: 0;
             transition: opacity .5s;
             opacity: 0;
-            background-image: url('../media/_Frames/SK_frames_Image.png');
+            background-image: url('#{$frame}sk-frames-image.png');
             background-repeat: no-repeat;
             background-position: -30px -20px;
             background-size: 350px;
@@ -102,7 +102,7 @@
 
     &.messages {
         li {
-            background-image: url('../media/_Frames/SK_frames_message.png');
+            background-image: url('#{$frame}sk-frames-message.png');
             background-repeat: no-repeat;
             background-position: -1000px -5px;
             background-size: 3000px;
@@ -137,7 +137,7 @@
         li {
             margin: 0;
 
-            background-image: url('../media/_Frames/SK_frames_Background.png');
+            background-image: url('#{$frame}sk-frames-background.png');
             background-repeat: no-repeat;
             background-position: 0 -370px;
             background-size: 560px;
@@ -146,7 +146,7 @@
             height: 330px;
 
             &::before {
-                background-image: url('../media/_Frames/SK_frames_Background.png');
+                background-image: url('#{$frame}sk-frames-background.png');
                 background-repeat: no-repeat;
                 background-position: 0 -7px;
                 background-size: 560px;

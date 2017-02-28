@@ -13,17 +13,17 @@ export default function (props, ref, key) {
             <skoash.Image
                 ref="title"
                 className="title animated"
-                src="media/_Title/SKribble_title.png"
+                src={`${CMWN.MEDIA.IMAGE}skribble-title.png`}
             />
             <skoash.Image
                 ref="play"
                 className="hidden"
-                src="media/_Buttons/skribble-play-01.png"
+                src={`${CMWN.MEDIA.SPRITE}skribble-play-01.png`}
             />
             <skoash.Image
                 ref="play-hover"
                 className="hidden"
-                src="media/_Buttons/skribble-hover.png"
+                src={`${CMWN.MEDIA.SPRITE}skribble-hover.png`}
             />
         </skoash.Screen>
     );

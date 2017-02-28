@@ -133,7 +133,7 @@ class FriendScreen extends skoash.Screen {
             return (
                 <ItemDrawer
                     ref="drawer"
-                    scrollbarImg="./media/_Buttons/sk_btn_slider.png"
+                    scrollbarImg={`${CMWN.MEDIA.IMAGE}sk_btn_slider.png`}
                     selectRespond={this.selectRespond.bind(this)}
                     cancelRespond={this.back}
                     categories={this.state.opts.categories}

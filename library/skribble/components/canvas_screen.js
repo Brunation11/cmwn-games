@@ -196,8 +196,8 @@ class CanvasScreen extends skoash.Screen {
             <div>
                 <skoash.Audio ref="slide" type="sfx" src={`${CMWN.MEDIA.EFFECT}MenuSlide.mp3`} />
                 <skoash.Audio ref="highlight" type="sfx" src={`${CMWN.MEDIA.EFFECT}Highlight.mp3`} />
-                <skoash.Image className="hidden" src="media/_Frames/SK_frames_canvas.png" />
-                <skoash.Image className="hidden" src="media/_Buttons/SK_btn_friend.png" />
+                <skoash.Image className="hidden" src={`${CMWN.MEDIA.FRAME}sk-frames-canvas.png`} />
+                <skoash.Image className="hidden" src={`${CMWN.MEDIA.SPRITE}sk-btn-friend.png`} />
                 <Menu
                       ref={'menu'}
                       items={this.state.menu.items}
