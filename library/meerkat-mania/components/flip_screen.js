@@ -10,11 +10,11 @@ export default function (props, ref, key) {
             }}
         >
             <skoash.MediaSequence>
-                <skoash.Audio type="voiceOver" src="media/S_13/VO_13-1.mp3" />
-                <skoash.Audio playTarget="flip" type="sfx" src="media/S_13/S_13.2.mp3" />
+                <skoash.Audio type="voiceOver" src={`${CMWN.MEDIA.VO}vo-13-1.mp3`} />
+                <skoash.Audio playTarget="flip" type="sfx" src={`${CMWN.MEDIA.EFFECT}s-13-2.mp3`} />
             </skoash.MediaSequence>
             <div className="frame">
-                <skoash.Image className="background" src="media/_Frames/FR_11.png" />
+                <skoash.Image className="background" src={`${CMWN.MEDIA.FRAME}fr-11.png`} />
                 <p>
                     Thank you for<br/>
                     looking out for others<br/>
@@ -24,7 +24,7 @@ export default function (props, ref, key) {
                 <skoash.Image
                     className={'flip animated ' +
                         (_.get(props, 'data.flip.playing', null) ? 'in' : '')}
-                    src="media/S_13/img_13.1.png"
+                    src={`${CMWN.MEDIA.IMAGE}img-13-1.png`}
                 />
             </div>
         </skoash.Screen>
