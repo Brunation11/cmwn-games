@@ -4,7 +4,7 @@ class Catchable extends skoash.Component {
     constructor(props) {
         super(props);
         this.state = {
-            canCatch: true
+            catchable: false
         };
         this.reset = this.reset.bind(this);
     }
@@ -15,28 +15,38 @@ class Catchable extends skoash.Component {
 
     bootstrap() {
         super.bootstrap();
-        this.DOMNode = ReactDOM.findDOMNode(this);
     }
 
     markCaught() {
         if (!this.state.ready) return;
-        this.setState({canCatch: false});
+        this.catchable = false;
+        this.setState({catchable: false});
         this.props.onCaught.call(this);
     }
 
+    markCatchable() {
+        this.DOMNode = this.DOMNode || ReactDOM.findDOMNode(this);
+        if (this.state.catchable && this.catchable) return;
+        this.catchable = true;
+        this.setState({
+            catchable: true,
+        });
+    }
+
     canCatch() {
-        return !this.props.disabled && this.state.canCatch;
+        return !this.props.disabled && this.catchable;
     }
 
     getClassNames() {
         return classNames('catchable', {
-            CAUGHT: !this.state.canCatch
+            CAUGHT: !this.state.catchable
         }, super.getClassNames());
     }
 
     reset() {
         if (this.state.ready && !this.props.disabled && this.props.reCatchable) {
-            this.setState({canCatch: true});
+            this.catchable = true;
+            this.setState({catchable: true});
         }
     }
 }
