@@ -25,7 +25,7 @@ html {
 body > div > div {
     position: relative;
     margin: auto;
-    background: url('../media/images/background.png') bottom center no-repeat;
+    background: url('#{$image}background.png') bottom center no-repeat;
     background-size: cover;
     width: 960px;
     height: 540px;
@@ -51,13 +51,13 @@ button {
         right: 0;
         z-index: 2;
         margin: 10px;
-        background: url('../media/images/button-quit.png');
+        background: url('#{$image}button-quit.png');
         background-size: contain;
         width: 40px;
         height: 40px;
 
         &:hover {
-            background: url('../media/images/button-quit-hover.png');
+            background: url('#{$image}button-quit-hover.png');
             background-size: contain;
         }
     }
@@ -69,21 +69,21 @@ button {
     }
 
     &.next-screen {
-        background: url('../media/images/button-next.png');
+        background: url('#{$image}button-next.png');
         background-size: contain;
 
         &:hover {
-            background: url('../media/images/button-next-hover.png');
+            background: url('#{$image}button-next-hover.png');
             background-size: contain;
         }
     }
 
     &.prev-screen {
-        background: url('../media/images/button-prev.png');
+        background: url('#{$image}button-prev.png');
         background-size: contain;
 
         &:hover {
-            background: url('../media/images/button-prev-hover.png');
+            background: url('#{$image}button-prev-hover.png');
             background-size: contain;
         }
     }
@@ -299,7 +299,7 @@ p {
 }
 
 .video {
-    background: url('../media/_Frames/FR_2.png') center center no-repeat;
+    background: url('#{$frame}fr-2.png') center center no-repeat;
     background-size: 100% 100%;
 
     video {
@@ -324,13 +324,13 @@ p {
         &.next-screen {
             right: 3%;
             bottom: 1%;
-            background: url('../media/images/button-play.png');
+            background: url('#{$image}button-play.png');
             background-size: contain;
             width: 120px;
             height: 68px;
 
             &:hover {
-                background: url('../media/images/button-play-hover.png');
+                background: url('#{$image}button-play-hover.png');
                 background-size: contain;
             }
         }
@@ -360,7 +360,7 @@ p {
         position: absolute;
         top: 15%;
         left: 14%;
-        background: url('../media/images/bg-slide.png');
+        background: url('#{$image}bg-slide.png');
         background-size: cover;
         width: 72%;
         height: 73%;
@@ -398,7 +398,7 @@ p {
         position: absolute;
         top: 15%;
         left: 14%;
-        background: url('../media/images/bg-slide.png');
+        background: url('#{$image}bg-slide.png');
         background-size: cover;
         width: 72%;
         height: 73%;
@@ -429,7 +429,7 @@ p {
         position: absolute;
         top: 15%;
         left: 14%;
-        background: url('../media/images/bg-slide.png');
+        background: url('#{$image}bg-slide.png');
         background-size: cover;
         width: 72%;
         height: 73%;
@@ -455,7 +455,7 @@ p {
 
             li {
                 position: absolute;
-                background: url('../media/images/button-radio.png');
+                background: url('#{$image}button-radio.png');
                 background-repeat: no-repeat;
                 background-position: top left;
                 background-size: contain;
@@ -477,7 +477,7 @@ p {
                 }
 
                 &.SELECTED {
-                    background: url('../media/images/button-radio-selected.png');
+                    background: url('#{$image}button-radio-selected.png');
                     background-repeat: no-repeat;
                     background-position: top left;
                     background-size: contain;
@@ -502,7 +502,7 @@ p {
         position: absolute;
         top: 15%;
         left: 14%;
-        background: url('../media/images/bg-slide.png');
+        background: url('#{$image}bg-slide.png');
         background-size: cover;
         width: 72%;
         height: 73%;
@@ -533,7 +533,7 @@ p {
         position: absolute;
         top: 15%;
         left: 14%;
-        background: url('../media/images/bg-slide.png');
+        background: url('#{$image}bg-slide.png');
         background-size: cover;
         width: 72%;
         height: 73%;
@@ -569,7 +569,7 @@ p {
         position: absolute;
         top: 1%;
         left: 0;
-        background: url('../media/images/map/img_9.1.png');
+        background: url('#{$image}img-9-1.png');
         background-repeat: no-repeat;
         background-position: 221px 0;
         background-size: 575px 575px;
@@ -634,7 +634,7 @@ p {
         position: absolute;
         top: 15%;
         left: 14%;
-        background: url('../media/images/bg-slide.png');
+        background: url('#{$image}bg-slide.png');
         background-size: cover;
         width: 72%;
         height: 73%;
@@ -677,7 +677,7 @@ p {
         bottom: 0;
         left: 50%;
         transform: translateX(-50%);
-        background-image: url('../media/images/cannon-bears/background.png');
+        background-image: url('#{$image}cannon-background.png');
         background-repeat: no-repeat;
         background-position: center center;
         background-size: contain;
@@ -748,7 +748,7 @@ p {
         position: absolute;
         top: 1%;
         left: 2%;
-        background: url('../media/images/score-bears/background.png');
+        background: url('#{$sprite}background.png');
         background-position: -6px 0;
         background-size: cover;
         width: 29%;
@@ -818,7 +818,7 @@ p {
         position: absolute;
         top: 15%;
         left: 14%;
-        background: url('../media/images/bg-slide.png');
+        background: url('#{$image}bg-slide.png');
         background-size: cover;
         width: 72%;
         height: 73%;
@@ -851,7 +851,7 @@ p {
         position: absolute;
         top: 15%;
         left: 14%;
-        background: url('../media/images/bg-slide.png');
+        background: url('#{$image}bg-slide.png');
         background-size: cover;
         width: 72%;
         height: 73%;
@@ -884,7 +884,7 @@ p {
         position: absolute;
         top: 15%;
         left: 14%;
-        background: url('../media/images/bg-slide.png');
+        background: url('#{$image}bg-slide.png');
         background-size: cover;
         width: 72%;
         height: 73%;
@@ -918,7 +918,7 @@ p {
         position: absolute;
         top: 15%;
         left: 14%;
-        background: url('../media/images/bg-slide.png');
+        background: url('#{$image}bg-slide.png');
         background-size: cover;
         width: 72%;
         height: 73%;
@@ -991,14 +991,14 @@ p {
         bottom: 3%;
         left: 50%;
         transform: translateX(-50%);
-        background: url('../media/images/S_15/Img_15.7b.png') no-repeat center;
+        background: url('#{$image}img-15-7-b.png') no-repeat center;
         background-size: 100%;
         cursor: pointer;
         width: 23%;
         height: 7%;
 
         &:hover {
-            background-image: url('../media/images/S_15/Img_15.7a.png');
+            background-image: url('#{$image}img-15-7-a.png');
         }
     }
 }
@@ -1019,7 +1019,7 @@ p {
         position: absolute;
         top: 15%;
         left: 14%;
-        background: url('../media/images/bg-slide.png');
+        background: url('#{$image}bg-slide.png');
         background-size: cover;
         width: 72%;
         height: 73%;
@@ -1095,7 +1095,7 @@ p {
         position: absolute;
         top: 15%;
         left: 14%;
-        background: url('../media/images/bg-slide.png');
+        background: url('#{$image}bg-slide.png');
         background-size: cover;
         width: 72%;
         height: 73%;
@@ -1167,7 +1167,7 @@ p {
         position: absolute;
         top: 15%;
         left: 14%;
-        background: url('../media/images/bg-slide.png');
+        background: url('#{$image}bg-slide.png');
         background-size: cover;
         width: 72%;
         height: 73%;
@@ -1213,7 +1213,7 @@ p {
         position: absolute;
         top: 15%;
         left: 14%;
-        background: url('../media/images/bg-slide.png');
+        background: url('#{$image}bg-slide.png');
         background-size: cover;
         width: 72%;
         height: 73%;
@@ -1259,7 +1259,7 @@ p {
         position: absolute;
         top: 15%;
         left: 14%;
-        background: url('../media/images/bg-slide.png');
+        background: url('#{$image}bg-slide.png');
         background-size: cover;
         width: 72%;
         height: 73%;
@@ -1267,7 +1267,7 @@ p {
         .left {
             position: absolute;
             bottom: 10%;
-            background-image: url('../media/images/hands-bears/left_a.png');
+            background-image: url('#{$image}left-a.png');
             background-repeat: no-repeat;
             background-position: bottom right;
             background-size: 95%;
@@ -1278,7 +1278,7 @@ p {
             &.SELECTED {
                 &::after {
                     position: absolute;
-                    background-image: url('../media/images/hands-bears/left_b.png');
+                    background-image: url('#{$image}left-b.png');
                     background-repeat: no-repeat;
                     background-position: bottom right;
                     background-size: 95%;
@@ -1293,7 +1293,7 @@ p {
             position: absolute;
             bottom: 10%;
             left: 50%;
-            background-image: url('../media/images/hands-bears/right_a.png');
+            background-image: url('#{$image}right-a.png');
             background-repeat: no-repeat;
             background-position: bottom left;
             background-size: 95%;
@@ -1304,7 +1304,7 @@ p {
             &.SELECTED {
                 &::after {
                     position: absolute;
-                    background-image: url('../media/images/hands-bears/right_b.png');
+                    background-image: url('#{$image}right-b.png');
                     background-repeat: no-repeat;
                     background-position: bottom left;
                     background-size: 95%;
@@ -1333,7 +1333,7 @@ p {
         position: absolute;
         top: 15%;
         left: 14%;
-        background: url('../media/images/bg-slide.png');
+        background: url('#{$image}bg-slide.png');
         background-size: cover;
         width: 72%;
         height: 73%;
@@ -1341,7 +1341,7 @@ p {
         .oil {
             position: absolute;
             bottom: 10%;
-            background-image: url('../media/images/shortening-bears/shortening_a.png');
+            background-image: url('#{$image}shortening-a.png');
             background-repeat: no-repeat;
             background-position: right 150px;
             background-size: 80%;
@@ -1352,7 +1352,7 @@ p {
             &.SELECTED {
                 &::after {
                     position: absolute;
-                    background-image: url('../media/images/shortening-bears/shortening_b.png');
+                    background-image: url('#{$image}shortening-b.png');
                     background-repeat: no-repeat;
                     background-position: right 150px;
                     background-size: 80%;
@@ -1367,7 +1367,7 @@ p {
             position: absolute;
             bottom: 10%;
             left: 50%;
-            background-image: url('../media/images/shortening-bears/bag_a.png');
+            background-image: url('#{$image}bag-a.png');
             background-repeat: no-repeat;
             background-position: bottom left;
             background-size: 80%;
@@ -1378,7 +1378,7 @@ p {
             &.SELECTED {
                 &::after {
                     position: absolute;
-                    background-image: url('../media/images/shortening-bears/bag_b.png');
+                    background-image: url('#{$image}bag-b.png');
                     background-repeat: no-repeat;
                     background-position: bottom left;
                     background-size: 80%;
@@ -1407,7 +1407,7 @@ p {
         position: absolute;
         top: 15%;
         left: 14%;
-        background: url('../media/images/bg-slide.png');
+        background: url('#{$image}bg-slide.png');
         background-size: cover;
         width: 72%;
         height: 73%;
@@ -1415,7 +1415,7 @@ p {
         .cold {
             position: absolute;
             bottom: 5%;
-            background-image: url('../media/images/cold-bears/cold_a.png');
+            background-image: url('#{$image}cold-a.png');
             background-repeat: no-repeat;
             background-position: 100px 238px;
             background-size: 55%;
@@ -1426,7 +1426,7 @@ p {
             &.SELECTED {
                 &::after {
                     position: absolute;
-                    background-image: url('../media/images/cold-bears/cold_b.png');
+                    background-image: url('#{$image}cold-b.png');
                     background-repeat: no-repeat;
                     background-position: 100px 237px;
                     background-size: 55%;
@@ -1441,7 +1441,7 @@ p {
             position: absolute;
             bottom: 5%;
             left: 50%;
-            background-image: url('../media/images/cold-bears/warm_a.png');
+            background-image: url('#{$image}warm-a.png');
             background-repeat: no-repeat;
             background-position: 50px 250px;
             background-size: 55%;
@@ -1452,7 +1452,7 @@ p {
             &.SELECTED {
                 &::after {
                     position: absolute;
-                    background-image: url('../media/images/cold-bears/warm_b.png');
+                    background-image: url('#{$image}warm-b.png');
                     background-repeat: no-repeat;
                     background-position: 45px 250px;
                     background-size: 55%;
@@ -1491,7 +1491,7 @@ p {
         position: absolute;
         top: 15%;
         left: 14%;
-        background: url('../media/images/bg-slide.png');
+        background: url('#{$image}bg-slide.png');
         background-size: cover;
         width: 72%;
         height: 73%;
@@ -1501,14 +1501,14 @@ p {
             top: 27%;
             left: 10%;
             transition: top .5s;
-            background-image: url('../media/images/features-bears/feet_a.png');
+            background-image: url('#{$image}feet-a.png');
             background-repeat: no-repeat;
             background-size: contain;
             width: 25%;
             height: 44%;
 
             &:hover {
-                background-image: url('../media/images/features-bears/feet_b.png');
+                background-image: url('#{$image}feet-b.png');
                 background-repeat: no-repeat;
                 background-size: contain;
             }
@@ -1528,14 +1528,14 @@ p {
             left: 50%;
             transform: translateX(-50%);
             transition: top .5s;
-            background-image: url('../media/images/features-bears/ears_a.png');
+            background-image: url('#{$image}ears-a.png');
             background-repeat: no-repeat;
             background-size: contain;
             width: 25%;
             height: 44%;
 
             &:hover {
-                background-image: url('../media/images/features-bears/ears_b.png');
+                background-image: url('#{$image}ears-b.png');
                 background-repeat: no-repeat;
                 background-size: contain;
             }
@@ -1554,14 +1554,14 @@ p {
             top: 27%;
             right: 10%;
             transition: top .5s;
-            background-image: url('../media/images/features-bears/coat_a.png');
+            background-image: url('#{$image}coat-a.png');
             background-repeat: no-repeat;
             background-size: contain;
             width: 25%;
             height: 44%;
 
             &:hover {
-                background-image: url('../media/images/features-bears/coat_b.png');
+                background-image: url('#{$image}coat-b.png');
                 background-repeat: no-repeat;
                 background-size: contain;
             }
@@ -1614,7 +1614,7 @@ p {
         position: absolute;
         top: 15%;
         left: 14%;
-        background: url('../media/images/bg-slide.png');
+        background: url('#{$image}bg-slide.png');
         background-size: cover;
         width: 72%;
         height: 73%;
@@ -1648,7 +1648,7 @@ p {
         position: absolute;
         top: 15%;
         left: 14%;
-        background: url('../media/images/bg-slide.png');
+        background: url('#{$image}bg-slide.png');
         background-size: cover;
         width: 72%;
         height: 73%;
@@ -1674,7 +1674,7 @@ p {
             position: absolute;
             bottom: -5%;
             left: 22%;
-            background: url('../media/images/quit-bears/yes_a.png');
+            background: url('#{$image}yes-a.png');
             background-position: 0 0;
             background-size: cover;
             width: 21%;
@@ -1682,7 +1682,7 @@ p {
 
             &:hover,
             &:focus {
-                background: url('../media/images/quit-bears/yes_b.png');
+                background: url('#{$image}yes-b.png');
                 background-position: 0 0;
                 background-size: cover;
             }
@@ -1692,7 +1692,7 @@ p {
             position: absolute;
             bottom: -5%;
             left: 57%;
-            background: url('../media/images/quit-bears/no_a.png');
+            background: url('#{$image}no-a.png');
             background-position: 0 0;
             background-size: cover;
             width: 21%;
@@ -1700,7 +1700,7 @@ p {
 
             &:hover,
             &:focus {
-                background: url('../media/images/quit-bears/no_b.png');
+                background: url('#{$image}no-b.png');
                 background-position: 0 0;
                 background-size: cover;
             }
