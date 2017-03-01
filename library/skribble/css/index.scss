@@ -467,7 +467,7 @@ p {
 
 .header {
     margin: 0 auto;
-    background-image: url('#{$image}sk-headers.png');
+    background-image: url('#{$sprite}sk-headers.png');
     background-size: 3800px;
     width: 900px;
     height: 140px;
@@ -494,7 +494,7 @@ p {
 
     .next-screen {
         margin: 0 90px 70px 0;
-        background-image: url('#{$sprite}skribble-play-01.png');
+        background-image: url('#{$image}skribble-play-01.png');
         background-repeat: no-repeat;
         background-position: center center;
         background-size: contain;
@@ -502,7 +502,7 @@ p {
         height: 180px;
 
         &:hover {
-            background-image: url('#{$sprite}skribble-hover.png');
+            background-image: url('#{$image}skribble-hover.png');
         }
     }
 }
@@ -584,7 +584,7 @@ p {
             transition: opacity .5s 2s, z-index 0s 2.5s;
             opacity: 0;
             z-index: -1;
-            background: url('#{$sprite}joyful-otter_2.gif') no-repeat;
+            background: url('#{$sprite}joyful-otter-2.gif') no-repeat;
             background-size: contain;
         }
     }
@@ -1114,7 +1114,7 @@ p {
 
     .your-message-to,
     .is-ready {
-        background-image: url('#{$image}sk-headers.png');
+        background-image: url('#{$sprite}sk-headers.png');
         background-repeat: no-repeat;
         background-size: 3800px;
     }
@@ -1155,7 +1155,7 @@ p {
 #sent {
     .character {
         margin: 0 auto;
-        background-image: url('#{$image}Otter_Static4.png');
+        background-image: url('#{$image}otter-static-4.png');
         background-position: 52px 0;
         background-size: 700px;
         width: 400px;
@@ -1399,7 +1399,7 @@ p {
             top: 400px;
             left: 500px;
 
-            background-image: url('#{$image}Otter_Static_GreetingOne.png');
+            background-image: url('#{$image}otter-static-greeting-one.png');
             background-repeat: no-repeat;
             background-position: top left;
             background-size: contain;
@@ -1446,7 +1446,7 @@ p {
             top: 400px;
             left: -100px;
 
-            background-image: url('#{$image}Otter_Static_peeringOverText.png');
+            background-image: url('#{$image}otter-static-peering-over-text.png');
             background-repeat: no-repeat;
             background-position: top left;
             background-size: contain;

@@ -46,7 +46,7 @@ class CollisionWarning extends skoash.Screen {
                         <skoash.Image
                             ref="otter"
                             className="otter"
-                            src={`${CMWN.MEDIA.IMAGE}peeking-through-otter.gif`}
+                            src={`${CMWN.MEDIA.SPRITE}peeking-through-otter.gif`}
                         />
                     </div>
                 </div>

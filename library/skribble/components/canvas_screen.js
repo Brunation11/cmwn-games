@@ -219,33 +219,6 @@ class CanvasScreen extends skoash.Screen {
                 <Selectable className="menu right-menu" list={this.rightMenuList} />
             </div>
         );
-        // move this back up below the Selectable when there is an instructional help video
-        /*
-            <Reveal
-              ref="reveal"
-              openOnStart="0"
-              list={[
-                <li>
-                  <skoash.Image className="otter" src={'media/_Otter/joyful-otter_2.gif'} />
-                  <div className="bubble">
-                    Welcome to your canvas!<br/><br/>
-                    Would you like me<br/>
-                    to show you around?
-                    <div className="buttons">
-                      <button
-                        className="yes"
-                        onClick={skoash.trigger.bind(null, 'openMenu', {id: 'help'})}
-                      />
-                      <button
-                        className="no"
-                        onClick={this.closeReveal}
-                      />
-                    </div>
-                  </div>
-                </li>
-              ]}
-            />
-        */
     }
 }
 

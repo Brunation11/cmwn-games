@@ -68,7 +68,7 @@ class ItemDrawerScreen extends skoash.Screen {
             <div>
                 <ItemDrawer
                     ref="drawer"
-                    scrollbarImg={`${CMWN.MEDIA.IMAGE}sk_btn_slider.png`}
+                    scrollbarImg={`${CMWN.MEDIA.IMAGE}sk-btn-slider.png`}
                     selectRespond={this.selectRespond.bind(this)}
                     cancelRespond={this.cancelRespond}
                     categories={this.state.opts.categories}
