@@ -1,29 +1,37 @@
 var path = require('path');
+var webpack = require('webpack');
 
 module.exports = {
-    context: __dirname + '/library',
+    context: path.join(__dirname, 'library'),
     entry: null,
     devtool: 'cheap-module-inline-source-map',
     resolve: {
         root: [path.resolve(__dirname, 'library'), path.resolve(__dirname, 'node_modules')],
-        extensions: ['', '.js'],
+        extensions: ['', '.js', '.json'],
         modulesDirectories: ['node_modules']
     },
-    plugins: [],
+    plugins: [
+        new webpack.HotModuleReplacementPlugin()
+    ],
     output: {
         path: __dirname + '/build',
         filename: '[name]/ai.js',
         publicPath: '/build/'
     },
     module: {
-        loaders: [{
-            test: /\.js$/,
-            loader: ['babel'],
-            exclude: [/bower_components/, /node_modules/],
-            query: {
-                presets: ['react', 'es2015', 'stage-0']
+        preLoaders: [
+            { test: /\.json$/, exclude: /node_modules/, loader: 'json'},
+        ],
+        loaders: [
+            {
+                test: /\.js$/,
+                loader: ['babel'],
+                exclude: [/bower_components/, /node_modules/],
+                query: {
+                    presets: ['react', 'es2015', 'react-hmre', 'stage-0']
+                }
             }
-        }]
+        ]
     },
     postcss: function () {
         return [autoprefixer];

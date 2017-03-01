@@ -1,3 +1,5 @@
+import ClassNames from 'classnames';
+
 class CustomCursorScreen extends skoash.Screen {
     constructor() {
         super();
@@ -53,7 +55,7 @@ class CustomCursorScreen extends skoash.Screen {
         className = ref = 'cursor';
         if (cursor && cursor.props) {
             props = cursor.props;
-            className = className + ' ' + cursor.props.className;
+            className = ClassNames(className, {[cursor.props.className]: cursor.props.classname});
             ref = cursor.ref || ref;
         }
         return (

@@ -1,0 +1,18 @@
+#better-ways {
+    p {
+        line-height: 1.2;
+        font-size: 30px;
+    }
+
+    .yes {
+        position: absolute;
+        top: 50px;
+        left: 20px;
+        opacity: 0;
+        width: 900px;
+
+        &.bounce {
+            animation-name: bounceIn;
+        }
+    }
+}

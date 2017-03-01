@@ -1,0 +1,205 @@
+@import 'variables';
+@import 'mixins';
+
+@include reset;
+@include bootstrap-game;
+
+html {
+    color: $text-color;
+    font-family: "McLaren", "Source Sans Pro", "Helvetica Neue", Helvetica, sans-serif;
+}
+
+.pl-game {
+    overflow: hidden;
+}
+
+button {
+    &.close {
+        @include nav-button(4, 40px, 45px);
+        position: absolute;
+        top: 0;
+        right: 0;
+        z-index: 2;
+        width: 40px;
+        height: 45px;
+    }
+
+    &.next-screen,
+    &.prev-screen,
+    &.close-reveal {
+        display: block;
+        position: absolute;
+        bottom: 10px;
+        z-index: 2;
+        margin: 0;
+        width: 90px;
+        height: 65px;
+    }
+
+    &.next-screen,
+    &.close-reveal {
+        @include nav-button(3, 90px, 65px);
+        right: 15px;
+    }
+
+    &.prev-screen {
+        @include nav-button(2, 90px, 65px);
+        left: 15px;
+    }
+}
+
+.skoash-game {
+    $screens:
+        title
+        eat-and-drink
+        learn-and-create
+        what-happens
+        better-ways
+        click-cards
+        cards
+        time-to-collect
+        lets-play
+        remember
+        bonus-round
+        neighborhood-waste
+        types-of-waste
+        waste-sort-center
+        sorting-level-1
+        sorting-level-2
+        sorting-level-3
+        take-action
+        flip;
+
+    $backgrounds:
+        title
+        everyday
+        everyday
+        everyday
+        everyday
+        cards
+        cards
+        cards
+        cards
+        cards
+        bkg-2
+        bkg-1
+        bkg-1
+        bkg-3
+        bkg-3
+        bkg-3
+        bkg-3
+        bkg-3
+        everyday;
+
+    @include screen-backgrounds($screens, $backgrounds);
+
+    .background {
+        $sprite-backgrounds: title everyday cards;
+        @for $i from 1 through length($sprite-backgrounds) {
+            &.#{nth($sprite-backgrounds, $i)} {
+                @include sprite-background($i);
+            }
+        }
+
+        @for $i from 1 through 3 {
+            &.bkg-#{$i} {
+                @include background($image + 'BKG.#{$i}.jpg');
+                background-size: cover;
+            }
+        }
+    }
+}
+
+@for $i from 1 through 2 {
+    .frame-#{$i} {
+        @include sprite-frame($i);
+    }
+}
+
+.frame-1 {
+    margin: -10px 0 0 50px;
+
+    p {
+        @include center;
+        position: absolute;
+        left: 66%;
+        width: 52%;
+        font-size: inherit;
+    }
+}
+
+@for $i from 1 through 3 {
+    .intro-image-#{$i} {
+        @include sprite-intro($i);
+    }
+}
+
+.frame {
+    @include center;
+
+    &.square {
+        @include background($image + 'frame.square.png');
+        width: 660px;
+        height: 440px;
+        color: $black;
+    }
+
+    &.round {
+        @include background($image + 'frame.round.png');
+        left: 58%;
+        width: 660px;
+        height: 440px;
+        color: $black;
+        font-size: 40px;
+    }
+
+    .content {
+        @include center;
+        width: 85%;
+    }
+
+    h3 {
+        margin-bottom: 30px;
+        font-size: 56px;
+    }
+
+    p {
+        font-size: 32px;
+    }
+}
+
+.tree-1,
+.tree-2,
+.tree-3,
+.tree-4 {
+    position: absolute;
+    width: 280px;
+    height: 460px;
+}
+
+.tree-1 {
+    @include sprite-game-tree(1);
+    top: 10px;
+    left: -120px;
+}
+
+.tree-2 {
+    @include sprite-game-tree(2);
+    top: 120px;
+    right: -10px;
+}
+
+.tree-3 {
+    @include sprite-types-tree(1);
+    top: 0;
+    left: -50px;
+    z-index: 1;
+}
+
+.tree-4 {
+    @include sprite-types-tree(2);
+    top: 100px;
+    right: -70px;
+    z-index: 1;
+}
+

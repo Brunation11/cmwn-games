@@ -1,0 +1,10 @@
+{
+    "id": "waste-busters",
+    "version": 1,
+    "skoash": "1.1.0",
+    "head_injection": "<link href='https://fonts.googleapis.com/css?family=McLaren' rel='stylesheet'>",
+    "dimensions": {
+        "width": 960,
+        "height": 540
+    }
+}

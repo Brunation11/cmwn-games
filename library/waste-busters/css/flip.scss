@@ -1,0 +1,30 @@
+@import 'variables';
+@import 'mixins';
+
+#flip {
+    .title {
+        margin: -5% 0 0 -5%;
+        width: 110%;
+    }
+
+    .content {
+        padding: 0 20px;
+    }
+
+    p {
+        text-align: right;
+        font-size: 46px;
+    }
+
+    .flip {
+        display: none;
+        position: absolute;
+        bottom: -20px;
+        left: -10px;
+        width: 170px;
+
+        &.show {
+            display: inline-block;
+        }
+    }
+}

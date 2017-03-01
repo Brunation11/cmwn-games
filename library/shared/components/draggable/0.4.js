@@ -1,8 +1,8 @@
 import classNames from 'classnames';
 
 class Draggable extends skoash.Component {
-    constructor() {
-        super();
+    constructor(props) {
+        super(props);
 
         this.state = {
             endX: 0,
@@ -68,11 +68,11 @@ class Draggable extends skoash.Component {
 
         if (!this.state.return) {
             startX = _.isFinite(this.state.grabX) ?
-        this.state.startX + this.state.grabX - grabX :
-        startX;
+                this.state.startX + this.state.grabX - grabX :
+                startX;
             startY = _.isFinite(this.state.grabY) ?
-        this.state.startY + this.state.grabY - grabY :
-        startY;
+                this.state.startY + this.state.grabY - grabY :
+                startY;
         }
 
         this.setState({
@@ -222,18 +222,16 @@ class Draggable extends skoash.Component {
     }
 
     getStyle() {
-        var x;
-        var y;
-        var transform;
+        let x = this.state.endX - this.state.startX || 0;
+        let y = this.state.endY - this.state.startY || 0;
+        let scale = this.state.scale || 1;
+        let rotate = this.state.rotate || 0;
+        let transform = `translateX(${x}px) translateY(${y}px) scale(${scale}) rotate(${rotate}deg)`;
 
-        x = this.state.endX - this.state.startX;
-        y = this.state.endY - this.state.startY;
-        transform = `translateX(${x}px) translateY(${y}px)`;
-
-        return {
+        return _.defaults({
             transform,
             WebkitTransform: transform,
-        };
+        }, this.state.style, this.props.style);
     }
 
     getClassNames() {

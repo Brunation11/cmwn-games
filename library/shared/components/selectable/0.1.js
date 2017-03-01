@@ -6,8 +6,8 @@ console.warn('As of skoash 1.1.0 this component can be found at skoash.Selectabl
 import classNames from 'classnames';
 
 class Selectable extends skoash.Component {
-    constructor() {
-        super();
+    constructor(props) {
+        super(props);
 
         this.state = {
             classes: {},
@@ -37,6 +37,12 @@ class Selectable extends skoash.Component {
         });
     }
 
+    incomplete() {
+        super.incomplete();
+
+        this.setState({ classes: {} });
+    }
+
     bootstrap() {
         super.bootstrap();
 
@@ -47,12 +53,24 @@ class Selectable extends skoash.Component {
         }
     }
 
+    incompleteRefs() {
+        var self = this;
+        _.forEach(self.refs, ref => {
+            if (ref.props.correct || (self.props.answers && self.props.answers.indexOf(ref) !== -1)) {
+                _.invoke(ref, 'incompleteRefs');
+            }
+        });
+
+        this.incomplete();
+    }
+
     selectHelper(e, classes) {
         var ref;
         var dataRef;
         var target;
         var id;
         var isCorrect;
+        var shouldSelect;
         var self = this;
 
         if (typeof e === 'string') {
@@ -68,12 +86,14 @@ class Selectable extends skoash.Component {
         ref = self.refs[dataRef];
 
         isCorrect = (ref && ref.props && ref.props.correct) ||
-            (!self.props.answers || !self.props.answers.length ||
+            (self.props.answers && self.props.answers.length &&
                 self.props.answers.indexOf(dataRef) !== -1);
+
+        shouldSelect = (ref && ref.props && ref.props.select);
 
         if (self.props.allowDeselect && classes[dataRef]) {
             delete classes[dataRef];
-        } else if (isCorrect) {
+        } else if (isCorrect || shouldSelect) {
             classes[dataRef] = self.state.selectClass;
         }
 
@@ -81,8 +101,8 @@ class Selectable extends skoash.Component {
             classes,
         });
 
-        self.props.selectRespond.call(self, dataRef);
-        self.props.onSelect.call(self, dataRef);
+        self.props.selectRespond.call(self, dataRef, isCorrect);
+        self.props.onSelect.call(self, dataRef, isCorrect);
 
         if (self.props.chooseOne) self.complete();
 
@@ -129,6 +149,18 @@ class Selectable extends skoash.Component {
         return classNames('selectable', super.getClassNames());
     }
 
+    componentWillReceiveProps(props) {
+        super.componentWillReceiveProps(props);
+
+        if (props.select && props.select !== this.props.select) {
+            this.state.selectFunction.call(this, props.select);
+        }
+
+        if (props.incompleteRefs === true && props.incompleteRefs !== this.props.incompleteRefs) {
+            this.incompleteRefs();
+        }
+    }
+
     renderBin() {
         if (!this.props.bin) return null;
 
@@ -160,6 +192,7 @@ class Selectable extends skoash.Component {
             );
         });
     }
+
 
     render() {
         return (
