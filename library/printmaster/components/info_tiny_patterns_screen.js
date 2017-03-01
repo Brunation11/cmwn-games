@@ -14,7 +14,7 @@ export default function (props, ref, key) {
                 <skoash.Audio type="sfx" src={`${CMWN.MEDIA.EFFECT}s-1-2.mp3`} />
             </skoash.MediaSequence>
             <skoash.Component ref="frame" className="frame">
-                <skoash.Image ref="img" className="animated" src={`${CMWN.MEDIA.IMAGE}img-2-1.gif`} />
+                <skoash.Image ref="img" className="animated" src={`${CMWN.MEDIA.SPRITE}img-2-1.gif`} />
                 <p>
                     Fingerprints are the<br/>
                     tiny patterns on the<br/>

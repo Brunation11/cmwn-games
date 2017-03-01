@@ -16,11 +16,11 @@ export default function (props, ref, key) {
                 src={`${CMWN.MEDIA.EFFECT}s-9-5.mp3`}
                 delay={1000}
             />
-            <skoash.Image className="hidden" src={`${CMWN.MEDIA.IMAGE}img-9-1.png`} />
-            <skoash.Image className="hidden" src={`${CMWN.MEDIA.IMAGE}img-9-8.png`} />
-            <skoash.Image className="hidden" src={`${CMWN.MEDIA.IMAGE}img-9-6.png`} />
-            <skoash.Image className="hidden" src={`${CMWN.MEDIA.IMAGE}img-9-7.png`} />
-            <skoash.Image className="hidden" src={`${CMWN.MEDIA.IMAGE}img-9-9.png`} />
+            <skoash.Image className="hidden" src={`${CMWN.MEDIA.FRAME}img-9-1.png`} />
+            <skoash.Image className="hidden" src={`${CMWN.MEDIA.SPRITE}img-9-8.png`} />
+            <skoash.Image className="hidden" src={`${CMWN.MEDIA.SPRITE}img-9-6.png`} />
+            <skoash.Image className="hidden" src={`${CMWN.MEDIA.SPRITE}img-9-7.png`} />
+            <skoash.Image className="hidden" src={`${CMWN.MEDIA.SPRITE}img-9-9.png`} />
             <TargetSelectable className="group"
                 assets={[
                     <skoash.Audio

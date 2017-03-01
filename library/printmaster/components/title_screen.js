@@ -16,7 +16,11 @@ export default function (props, ref, key) {
                     <skoash.Audio ref="0" type="sfx" src={`${CMWN.MEDIA.EFFECT}s-1-1.mp3`} />
                     <skoash.Audio ref="1" type="sfx" src={`${CMWN.MEDIA.EFFECT}s-1-2.mp3`} />
                 </skoash.MediaSequence>
-                <skoash.Image ref="img" className="scanner animated" src={`${CMWN.MEDIA.IMAGE}img-1-1.gif`} />
+                <skoash.Image
+                    ref="img"
+                    className="scanner animated"
+                    src={`${CMWN.MEDIA.SPRITE}img-1-1.gif`}
+                />
                 <div className="title">
                     <div className="animated" />
                     <div className="animated" />

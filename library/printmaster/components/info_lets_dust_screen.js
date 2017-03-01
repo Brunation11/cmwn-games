@@ -35,42 +35,42 @@ export default function (props, ref, key) {
                 />
                 <skoash.Audio
                     type="voiceOver"
-                    src={`${CMWN.MEDIA.EFFECT}S_11.2.mp3`}
+                    src={`${CMWN.MEDIA.EFFECT}s-11-2.mp3`}
                     playTarget="count5"
                     completeTarget="count5"
                     sprite={[0, 1000]}
                 />
                 <skoash.Audio
                     type="voiceOver"
-                    src={`${CMWN.MEDIA.EFFECT}S_11.2.mp3`}
+                    src={`${CMWN.MEDIA.EFFECT}s-11-2.mp3`}
                     playTarget="count4"
                     completeTarget="count4"
                     sprite={[1000, 1000]}
                 />
                 <skoash.Audio
                     type="voiceOver"
-                    src={`${CMWN.MEDIA.EFFECT}S_11.2.mp3`}
+                    src={`${CMWN.MEDIA.EFFECT}s-11-2.mp3`}
                     playTarget="count3"
                     completeTarget="count3"
                     sprite={[2000, 1000]}
                 />
                 <skoash.Audio
                     type="voiceOver"
-                    src={`${CMWN.MEDIA.EFFECT}S_11.2.mp3`}
+                    src={`${CMWN.MEDIA.EFFECT}s-11-2.mp3`}
                     playTarget="count2"
                     completeTarget="count2"
                     sprite={[3000, 1000]}
                 />
                 <skoash.Audio
                     type="voiceOver"
-                    src={`${CMWN.MEDIA.EFFECT}S_11.2.mp3`}
+                    src={`${CMWN.MEDIA.EFFECT}s-11-2.mp3`}
                     playTarget="count1"
                     completeTarget="count1"
                     sprite={[4000, 1000]}
                 />
                 <skoash.Audio
                     type="voiceOver"
-                    src={`${CMWN.MEDIA.EFFECT}S_11.3.mp3`}
+                    src={`${CMWN.MEDIA.EFFECT}s-11-3.mp3`}
                     playTarget="engage"
                 />
             </skoash.MediaSequence>

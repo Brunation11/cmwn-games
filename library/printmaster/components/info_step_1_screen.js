@@ -13,7 +13,7 @@ export default function (props, ref, key) {
                 <skoash.Image
                     ref="illustration"
                     className="illustration animated"
-                    src={`${CMWN.MEDIA.SPRITE}img_13.2.gif`}
+                    src={`${CMWN.MEDIA.SPRITE}img-13-2.gif`}
                 />
                 <skoash.Component ref="container">
                     <skoash.Image

@@ -9,10 +9,10 @@ export default function (props, ref, key) {
             key={key}
             id="carousel"
         >
-            <skoash.Image className="hidden cannon" src={`${CMWN.MEDIA.IMAGE}img-10-3.png`} />
-            <skoash.Image className="hidden viewport" src={`${CMWN.MEDIA.IMAGE}img-10-3.png`} />
-            <skoash.Image className="hidden target" src={`${CMWN.MEDIA.IMAGE}img-10-8.png`} />
-            <skoash.Image className="hidden score" src={`${CMWN.MEDIA.IMAGE}img-10-9.png`} />
+            <skoash.Image className="hidden cannon" src={`${CMWN.MEDIA.FRAME}img-10-3.png`} />
+            <skoash.Image className="hidden viewport" src={`${CMWN.MEDIA.FRAME}img-10-3.png`} />
+            <skoash.Image className="hidden target" src={`${CMWN.MEDIA.FRAME}img-10-8.png`} />
+            <skoash.Image className="hidden score" src={`${CMWN.MEDIA.SPRITE}img-10-9.png`} />
             <skoash.Image className="hidden reveal" src={`${CMWN.MEDIA.FRAME}fr-3.png`} />
             <skoash.Component className="group">
                 <Carousel
