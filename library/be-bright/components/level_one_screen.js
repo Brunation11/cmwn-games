@@ -24,13 +24,13 @@ export default function (props, ref, key) {
         disableInterval: 4000,
         openOnStart: 'instructions',
         vos: [
-            <skoash.Audio ref="instructions" type="voiceOver" src="media/_sounds/_vos/Instructions.mp3" />,
-            <skoash.Audio ref="level-up" type="voiceOver" src="media/_sounds/_vos/LevelUp1.mp3" />,
-            <skoash.Audio ref="try-again" type="voiceOver" src="media/_sounds/_vos/TryAgain.mp3" complete />,
+            <skoash.Audio ref="instructions" type="voiceOver" src={`${CMWN.MEDIA.VO}instructions.mp3`} />,
+            <skoash.Audio ref="level-up" type="voiceOver" src={`${CMWN.MEDIA.VO}level-up1.mp3`} />,
+            <skoash.Audio ref="try-again" type="voiceOver" src={`${CMWN.MEDIA.VO}try-again.mp3`} complete />,
         ],
         revealList: [
             <skoash.Component ref="instructions" className="labyrinth-frame instructions">
-                <skoash.Image className="eco" src="media/_images/mr.eco.png" />
+                <skoash.Image className="eco" src={`${CMWN.MEDIA.IMAGE}mr-eco.png`} />
                 <div className="copy">
                     <p>
                         Move Mr. Eco<br/>
@@ -50,7 +50,7 @@ export default function (props, ref, key) {
                 </div>
             </skoash.Component>,
             <skoash.Component ref="count-down" className="labyrinth-frame count-down">
-                <skoash.Image className="eco" src="media/_images/mr.eco.png" />
+                <skoash.Image className="eco" src={`${CMWN.MEDIA.IMAGE}mr-eco.png`} />
                 <div className="count">
                     <div>READY</div>
                     <div className="number one">1</div>
@@ -59,7 +59,7 @@ export default function (props, ref, key) {
                 </div>
             </skoash.Component>,
             <skoash.Component ref="level-up" className="labyrinth-frame level-up">
-                <skoash.Image className="eco" src="media/_images/mr.eco.png" />
+                <skoash.Image className="eco" src={`${CMWN.MEDIA.IMAGE}mr-eco.png`} />
                 <div className="copy">
                     <p>
                         <h2>Level up!</h2>
@@ -70,7 +70,7 @@ export default function (props, ref, key) {
                 </div>
             </skoash.Component>,
             <skoash.Component ref="try-again" className="labyrinth-frame try-again">
-                <skoash.Image className="eco" src="media/_images/mr.eco.png" />
+                <skoash.Image className="eco" src={`${CMWN.MEDIA.IMAGE}mr-eco.png`} />
                 <div className="copy">
                     <p>
                         Sorry,<br/>

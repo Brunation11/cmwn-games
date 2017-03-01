@@ -41,11 +41,11 @@ body > div > div {
         height: 100%;
 
         &.bkg-1 {
-            background-image: url('../media/_BKG/BKG_1.png');
+            background-image: url('#{$image}bkg01.png');
         }
 
         &.bkg-2 {
-            background-image: url('../media/_images/bkg02.png');
+            background-image: url('#{$image}bkg02.png');
         }
     }
 
@@ -61,7 +61,7 @@ button {
     border: 0;
 
     background-color: transparent;
-    background-image: url('../media/_Buttons/BU_1.png');
+    background-image: url('#{$sprite}bu-1.png');
     background-position: left top;
     background-size: auto 500px;
 
@@ -119,7 +119,7 @@ button {
     }
 
     &.quit-yes {
-        background-image: url('../media/_sprites/sprites.btns.png');
+        background-image: url('#{$sprite}sprites-btns.png');
         background-position: -5894px -9px;
         width: 230px;
         height: 240px;
@@ -130,7 +130,7 @@ button {
     }
 
     &.quit-no {
-        background-image: url('../media/_sprites/sprites.btns.png');
+        background-image: url('#{$sprite}sprites-btns.png');
         background-position: -6272px -9px;
         width: 230px;
         height: 240px;
@@ -261,7 +261,7 @@ p {
         top: 50%;
         left: 0;
         margin-top: -120px;
-        background-image: url('../media/_frames/FR_1.png');
+        background-image: url('#{$frame}fr-1.png');
         background-size: 100% 100%;
         width: 100%;
         height: 251px;
@@ -320,7 +320,7 @@ p {
 }
 
 .video {
-    background: url('../media/_Frames/FR_2.png') center center no-repeat;
+    background: url('#{$frame}fr-2.png') center center no-repeat;
     background-size: 100% 100%;
 
     video {
@@ -468,7 +468,7 @@ p {
             li {
                 transition: opacity 1s;
                 opacity: .5;
-                background-image: url('../media/S_3/img_3.2.png');
+                background-image: url('#{$sprite}img-3-2.png');
                 background-repeat: no-repeat;
                 background-size: 450px;
                 cursor: auto;
@@ -523,7 +523,7 @@ p {
                 border-width: 8px 0;
                 border-style: solid;
                 border-color: $yellow;
-                background-image: url('../media/_images/frame3.lightning.png');
+                background-image: url('#{$image}frame-3-lightning.png');
                 background-position: center;
                 background-size: 100% 100%;
                 box-sizing: border-box;
@@ -549,7 +549,7 @@ p {
             &.open-1 > div,
             &.open-2 > div,
             &.open-3 > div {
-                background-image: url('../media/_sprites/sprites.why.png');
+                background-image: url('#{$sprite}sprites-why.png');
                 background-size: auto 100%;
 
                 li {
@@ -567,7 +567,7 @@ p {
                 background-position: right;
 
                 li {
-                    background-image: url('../media/_images/frame4.smoke.png');
+                    background-image: url('#{$image}frame-4-smoke.png');
                 }
             }
 
@@ -575,7 +575,7 @@ p {
                 background-position: left;
 
                 li {
-                    background-image: url('../media/_images/frame5.smoke.png');
+                    background-image: url('#{$image}frame-5-smoke.png');
                 }
             }
 
@@ -721,7 +721,7 @@ p {
         li {
             display: inline-block;
             margin: 0 40px;
-            background-image: url('../media/_sprites/sprites.who.png');
+            background-image: url('#{$sprite}sprites-who.png');
             background-repeat: no-repeat;
             background-size: 600px;
             cursor: pointer;
@@ -853,7 +853,7 @@ p {
 .labyrinth-frame {
     position: relative;
     margin: 60px auto;
-    background-image: url('../media/_images/frame.specialannouncement.png');
+    background-image: url('#{$image}frame-specialannouncement.png');
     background-repeat: no-repeat;
     background-position: center center;
     background-size: contain;
@@ -924,7 +924,7 @@ p {
         position: absolute;
         top: -20px;
         right: -40px;
-        background-image: url('../media/_images/speech.balloon.png');
+        background-image: url('#{$image}speech-balloon.png');
         background-repeat: no-repeat;
         background-position: center center;
         background-size: contain;
@@ -963,7 +963,7 @@ p {
         border: 10px solid $yellow;
         border-radius: 50px;
         background-color: $white;
-        background-image: url('../media/_images/inside.meter.png');
+        background-image: url('#{$image}inside-meter.png');
         background-repeat: no-repeat;
         background-size: 80px 360px;
         width: 80px;
@@ -1019,7 +1019,7 @@ p {
                 position: absolute;
                 top: -35px;
                 left: -35px;
-                background-image: url('../media/_sprites/sprites.game2elem.png');
+                background-image: url('#{$sprite}sprites-game2elem.png');
                 background-repeat: no-repeat;
                 background-position: -20px -20px;
                 background-size: 400px;
@@ -1036,7 +1036,7 @@ p {
 
             &::before {
                 position: absolute;
-                background-image: url('../media/_sprites/sprites.game2elem.png');
+                background-image: url('#{$sprite}sprites-game2elem.png');
                 background-repeat: no-repeat;
                 background-size: 400px;
                 content: '';
@@ -1131,7 +1131,7 @@ p {
 
         div {
             position: absolute;
-            background-image: url('../media/_sprites/sprites.arrowkeys.png');
+            background-image: url('#{$sprite}sprites-arrowkeys.png');
             background-size: 500px;
             width: 72px;
             height: 72px;
@@ -1155,7 +1155,7 @@ p {
     }
 
     .labyrinth-frame {
-        background-image: url('../media/_images/frame.yellow.png');
+        background-image: url('#{$image}frame-yellow.png');
         color: $black;
 
         &.instructions {
@@ -1163,7 +1163,7 @@ p {
                 position: absolute;
                 right: 30px;
                 bottom: 11px;
-                background-image: url('../media/_sprites/sprites.btns.png');
+                background-image: url('#{$sprite}sprites-btns.png');
                 background-position: -1220px -80px;
                 background-size: 3375px;
                 width: 190px;
@@ -1211,7 +1211,7 @@ p {
         }
 
         &.level-up {
-            background-image: url('../media/_images/frame.lvlup.png');
+            background-image: url('#{$image}frame-lvlup.png');
 
             h2 {
                 position: relative;
@@ -1239,7 +1239,7 @@ p {
         }
 
         &.try-again {
-            background-image: url('../media/_images/frame.sorry.png');
+            background-image: url('#{$image}frame-sorry.png');
 
             p {
                 padding-left: 300px;
@@ -1249,7 +1249,7 @@ p {
 
             button {
                 margin-left: 310px;
-                background-image: url('../media/_sprites/sprites.btns.png');
+                background-image: url('#{$sprite}sprites-btns.png');
                 background-position: -1930px -78px;
                 background-size: 3375px;
                 width: 270px;
@@ -1263,7 +1263,7 @@ p {
 
         &.win {
             margin: 0;
-            background-image: url('../media/_images/frame.win.png');
+            background-image: url('#{$image}frame-win.png');
             width: 960px;
             height: 540px;
 
@@ -1286,7 +1286,7 @@ p {
                 bottom: 71px;
                 transition: filter .5s, opacity .5s;
                 opacity: 1;
-                background-image: url('../media/_images/energyhog.greyscale.png');
+                background-image: url('#{$image}energyhog-greyscale.png');
                 background-size: 220px;
                 width: 200px;
                 height: 200px;
@@ -1339,7 +1339,7 @@ p {
 
             button {
                 margin-left: 310px;
-                background-image: url('../media/_sprites/sprites.btns.png');
+                background-image: url('#{$sprite}sprites-btns.png');
                 background-position: -1930px -78px;
                 background-size: 3375px;
                 width: 270px;
@@ -1365,7 +1365,7 @@ p {
 
             div {
                 position: absolute;
-                background-image: url('../media/_sprites/sprites.arrowkeys.png');
+                background-image: url('#{$sprite}sprites-arrowkeys.png');
                 background-size: 400px;
                 width: 54px;
                 height: 54px;
@@ -1419,7 +1419,7 @@ p {
         position: absolute;
         right: 100px;
         bottom: 75px;
-        background-image: url('../media/_sprites/sprites.btns.png');
+        background-image: url('#{$sprite}sprites-btns.png');
         background-position: -1220px -80px;
         background-size: 3375px;
         width: 190px;
@@ -1569,7 +1569,7 @@ p {
         position: absolute;
         top: -20px;
         right: -40px;
-        background-image: url('../media/_images/speech.balloon.png');
+        background-image: url('#{$image}speech-balloon.png');
         background-repeat: no-repeat;
         background-position: center center;
         background-size: contain;

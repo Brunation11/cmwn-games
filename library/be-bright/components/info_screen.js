@@ -6,12 +6,12 @@ export default function (props, ref, key) {
             key={key}
             id="info-lets-learn"
         >
-            <skoash.Audio ref="vo" type="voiceOver" src="media/S_6/VO_6.1.mp3" />
+            <skoash.Audio ref="vo" type="voiceOver" src={`${CMWN.MEDIA.VO}vo-6-1.mp3`} />
             <skoash.Component className="info animated">
                 <div>
                     Let's learn Mr. Eco's Super Special<br />
                     <skoash.Image
-                        src="media/_animation/animation.lightsoff-LOOP.gif"
+                        src={`${CMWN.MEDIA.SPRITE}animation-lightsoff-loop.gif`}
                         className="turn-off"
                     />
                     <br />
@@ -20,7 +20,7 @@ export default function (props, ref, key) {
                 <div>
                     Let's learn Mr. Eco's Super Special<br />
                     <skoash.Image
-                        src="media/_animation/animation.lightsoff-LOOP.gif"
+                        src={`${CMWN.MEDIA.SPRITE}animation-lightsoff-loop.gif`}
                         className="turn-off"
                     />
                     <br />
