@@ -147,55 +147,55 @@ export default function (props, ref, key) {
                     <skoash.Audio
                         ref="fox-vo"
                         type="voiceOver"
-                        src={`${CMWN.MEDIA.EFFECT}vo-1.mp3`}
+                        src={`${CMWN.MEDIA.VO}vo-1.mp3`}
                         complete={true}
                     />,
                     <skoash.Audio
                         ref="seal-vo"
                         type="voiceOver"
-                        src={`${CMWN.MEDIA.EFFECT}vo-2.mp3`}
+                        src={`${CMWN.MEDIA.VO}vo-2.mp3`}
                         complete={true}
                     />,
                     <skoash.Audio
                         ref="ermine-vo"
                         type="voiceOver"
-                        src={`${CMWN.MEDIA.EFFECT}vo-3.mp3`}
+                        src={`${CMWN.MEDIA.VO}vo-3.mp3`}
                         complete={true}
                     />,
                     <skoash.Audio
                         ref="goat-vo"
                         type="voiceOver"
-                        src={`${CMWN.MEDIA.EFFECT}vo-4.mp3`}
+                        src={`${CMWN.MEDIA.VO}vo-4.mp3`}
                         complete={true}
                     />,
                     <skoash.Audio
                         ref="peacock-vo"
                         type="voiceOver"
-                        src={`${CMWN.MEDIA.EFFECT}vo-5.mp3`}
+                        src={`${CMWN.MEDIA.VO}vo-5.mp3`}
                         complete={true}
                     />,
                     <skoash.Audio
                         ref="dog-vo"
                         type="voiceOver"
-                        src={`${CMWN.MEDIA.EFFECT}vo-6.mp3`}
+                        src={`${CMWN.MEDIA.VO}vo-6.mp3`}
                         complete={true}
                     />,
                     <skoash.Audio
                         ref="cat-vo"
                         type="voiceOver"
-                        src={`${CMWN.MEDIA.EFFECT}vo-7.mp3`}
+                        src={`${CMWN.MEDIA.VO}vo-7.mp3`}
                         complete={true}
                     />,
                     <skoash.Audio
                         ref="hare-vo"
                         type="voiceOver"
-                        src={`${CMWN.MEDIA.EFFECT}vo-8.mp3`}
+                        src={`${CMWN.MEDIA.VO}vo-8.mp3`}
                         complete={true}
                     />,
                     <skoash.Audio
                         ref="polar-vo"
                         type="voiceOver"
-                        src={`${CMWN.MEDIA.EFFECT}vo-9.mp3`}
+                        src={`${CMWN.MEDIA.VO}vo-9.mp3`}
                     />
                 ]}
             />

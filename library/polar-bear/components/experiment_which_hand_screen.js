@@ -13,7 +13,7 @@ export default function (props, ref, key) {
                 <skoash.Image
                     ref="banner"
                     className="banner animated"
-                    src={`${CMWN.MEDIA.IMAGE}img-21.1.png`}
+                    src={`${CMWN.MEDIA.IMAGE}img-21-1.png`}
                 />
                 <SelectableReveal
                     ref="selectable-reveal"
