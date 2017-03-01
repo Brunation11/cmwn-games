@@ -1,0 +1,321 @@
+@import 'variables';
+@import 'mixins';
+
+[id*=phaser] {
+    iframe {
+        display: block;
+        border: 0;
+        width: 100%;
+        height: 100%;
+    }
+
+    .timer {
+        position: absolute;
+        top: 0;
+        left: 0;
+        text-shadow: 2px 2px 5px $black;
+        font-size: 40px;
+
+        &::before {
+            display: block;
+            background-image: url($media + 'SpritesAnimations/game1.timelevelscore.png');
+            background-size: auto 45px;
+            width: 100px;
+            height: 45px;
+            content: '';
+        }
+
+        span {
+            position: relative;
+            top: -20px;
+        }
+    }
+
+    .bottom {
+        position: absolute;
+        bottom: 10px;
+        left: 2%;
+        border-radius: 20px;
+        box-shadow: 0 0 10px $grass;
+        background-color: $grass;
+        padding: 10px 20px;
+        width: 96%;
+
+        > div {
+            float: left;
+            width: 33.33%;
+        }
+    }
+
+    .score {
+        &.life,
+        &.bags {
+            &::before {
+                display: block;
+                position: absolute;
+                top: -10px;
+                left: -40px;
+                z-index: 2;
+                background-repeat: no-repeat;
+                width: 60px;
+                height: 45px;
+                content: '';
+            }
+        }
+
+        &.life {
+            @include score-meter(4, $bright-green);
+
+            &::before {
+                background-image: url($media + 'SpritesAnimations/game1.metericons.png');
+                background-position: -130px 0;
+                background-size: 200px;
+            }
+        }
+
+        &.bags {
+            @include score-meter(5, $light-purple);
+
+            &::before {
+                left: -25px;
+                background-image: url($media + 'SpritesAnimations/game1.metericons.png');
+                background-repeat: no-repeat;
+                background-position: -65px 0;
+                background-size: 170px;
+                width: 40px;
+            }
+        }
+
+        &.lives,
+        &.trucks {
+            &::before,
+            span,
+            &::after {
+                background-image: url($media + 'SpritesAnimations/game1.metericons.png');
+                background-repeat: no-repeat;
+                background-size: 170px;
+                height: 40px;
+            }
+        }
+
+        &.lives {
+            @include life-tracker;
+
+            &::before,
+            span,
+            &::after {
+                background-position: -120px 0;
+                width: 40px;
+            }
+        }
+
+        &.trucks {
+            @include life-tracker;
+
+            &::before,
+            span,
+            &::after {
+                background-position: 0 0;
+                width: 60px;
+            }
+        }
+    }
+
+    .level-score,
+    .level {
+        text-shadow: 2px 2px 5px $black;
+        font-size: 32px;
+
+        &::before {
+            display: inline-block;
+            background-image: url($media + 'SpritesAnimations/game1.timelevelscore.png');
+            background-repeat: no-repeat;
+            background-size: auto 40px;
+            height: 40px;
+            vertical-align: middle;
+            content: '';
+        }
+    }
+
+    .level-score {
+        &::before {
+            background-position: -85px 0;
+            width: 100px;
+        }
+    }
+
+    .level {
+        &::before {
+            background-position: -185px 0;
+            width: 90px;
+        }
+
+        &::after {
+            display: inline-block;
+            background-image: url($media + 'SpritesAnimations/game1.levelnumbers.png');
+            background-repeat: no-repeat;
+            background-size: auto 100px;
+            width: 30px;
+            height: 40px;
+            vertical-align: middle;
+            content: '';
+        }
+
+        @for $i from 1 through 5 {
+            &.level-#{$i}::after {
+                background-position: #{($i - 1) * -34}px -5px;
+            }
+        }
+    }
+
+    .reveal {
+        @include reveal;
+
+        &.open-intro,
+        &.open-complete {
+            background-color: $transparent-white;
+        }
+
+        p {
+            line-height: 1.2;
+            font-size: 28px;
+        }
+
+        li {
+            &::after {
+                $turtle-scale: .8;
+                @include sprite-turtle(2);
+                display: block;
+                position: absolute;
+                bottom: -30px;
+                left: -180px;
+                transform: scale3d($turtle-scale, $turtle-scale, 1);
+                content: '';
+            }
+        }
+
+        .close-reveal {
+            right: 200px;
+            bottom: 90px;
+            pointer-events: none;
+
+            .skoash-game:not(.VOICE-OVER) & {
+                opacity: 1;
+                pointer-events: auto;
+            }
+        }
+
+        span.truck {
+            $truck-scale: .4;
+            @include sprite-game-intro(2);
+            display: inline-block;
+            position: relative;
+            transform: scale3d($truck-scale, $truck-scale, 1);
+            margin: -95px -115px;
+            vertical-align: middle;
+        }
+
+        .intro,
+        .complete {
+            &::after {
+                @include sprite-turtle(2);
+            }
+        }
+
+        .intro {
+            .content {
+                &::after,
+                &::before {
+                    display: block;
+                    margin: 0 auto 30px;
+                    content: '';
+                }
+
+                &::before {
+                    width: 410px;
+                    height: 78px;
+                }
+            }
+
+            p {
+                font-size: 40px;
+            }
+        }
+
+        .complete {
+            .content {
+                top: 60%;
+            }
+
+            p {
+                font-size: 32px;
+            }
+        }
+
+        @for $i from 1 through 3 {
+            &.open-fact-#{$i} {
+                border: 10px solid $green-border;
+                background-color: $transparent-blue;
+
+                .close-reveal {
+                    right: 190px;
+                    bottom: 80px;
+                }
+            }
+
+            .fact-#{$i} {
+                &::after {
+                    @include sprite-turtle(1);
+                }
+
+                .title,
+                .banner {
+                    @include center;
+                    display: block;
+                    position: absolute;
+                    top: 14%;
+                }
+
+                .title {
+                    @include sprite-fact($i);
+                    left: 48%;
+                }
+
+                .banner {
+                    @include background($image + 'banner.png');
+                    left: 52%;
+                    width: 610px;
+                    height: 200px;
+                }
+
+                span {
+                    display: block;
+                    margin: 60px 0 30px;
+                    font-size: 36px;
+                    font-weight: bold;
+                }
+            }
+        }
+    }
+
+    @for $i from 1 through 5 {
+        &#phaser-level-#{$i} {
+            .reveal {
+                .intro {
+                    .content {
+                        &::before {
+                            @include sprite-level($i);
+                        }
+                    }
+                }
+
+                .complete {
+                    &::before {
+                        @include sprite-level-complete($i);
+                        content: '';
+                    }
+                }
+            }
+        }
+    }
+}

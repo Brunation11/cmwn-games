@@ -1,6 +1,7 @@
 {
     "globals": {
         "skoash": true,
+        "$k": true,
         "_": true,
         "ga": true,
         "React": true,
@@ -11,7 +12,9 @@
         "__dirname": true,
         "autoprefixer": true,
         "Phaser": true,
-        "ENVIRONMENT": true
+        "ENVIRONMENT": true,
+        "MEDIA": true,
+        "CMWN": true
     },
     "parser": "babel-eslint",
     "plugins": [

@@ -1,4 +1,4 @@
-import config from './config.game';
+import config from './config';
 
 import Loader from 'shared/components/loader/0.1';
 
@@ -59,3 +59,5 @@ var SeaTurtle = (
 );
 
 skoash.start(SeaTurtle);
+
+if (module.hot) module.hot.accept();
