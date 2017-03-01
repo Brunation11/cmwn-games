@@ -23,32 +23,32 @@ export default function (props, ref, key) {
             >
                 <skoash.Audio
                     type="sfx"
-                    src="media/_audio/_Reveals/TI_RV_1.mp3"
+                    src={`${CMWN.MEDIA.EFFECT}ti-rv-1.mp3`}
                 />
                 <skoash.Audio
                     type="voiceOver"
-                    src="media/_audio/S_Step2/VO_Step2.mp3"
+                    src={`${CMWN.MEDIA.VO}vo-step-2.mp3`}
                 />
                 <skoash.Audio
                     type="voiceOver"
-                    src="media/_audio/S_Step2/VO_CollectEmpty.mp3"
+                    src={`${CMWN.MEDIA.VO}vo-collect-empty.mp3`}
                 />
                 <skoash.Audio
                     playTarget="container-1"
                     type="sfx"
-                    src="media/_audio/_Reveals/TI_RV_5.mp3"
+                    src={`${CMWN.MEDIA.EFFECT}ti-rv-5.mp3`}
                     delay={600}
                 />
                 <skoash.Audio
                     playTarget="container-2"
                     type="sfx"
-                    src="media/_audio/_Reveals/TI_RV_5.mp3"
+                    src={`${CMWN.MEDIA.EFFECT}ti-rv-5.mp3`}
                     delay={600}
                 />
                 <skoash.Audio
                     playTarget="container-3"
                     type="sfx"
-                    src="media/_audio/_Reveals/TI_RV_5.mp3"
+                    src={`${CMWN.MEDIA.EFFECT}ti-rv-5.mp3`}
                     delay={600}
                 />
             </skoash.MediaSequence>

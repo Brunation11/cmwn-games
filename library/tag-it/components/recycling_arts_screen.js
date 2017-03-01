@@ -13,12 +13,12 @@ export default function (props, ref, key) {
                 <skoash.Audio
                     ref="vo"
                     type="voiceOver"
-                    src="media/_audio/S_RecyclingArts/VO_RecyclingArt.mp3"
+                    src={`${CMWN.MEDIA.VO}vo-recycling-art.mp3`}
                 />
                 <skoash.Audio
                     ref="sfx"
                     type="sfx"
-                    src="media/_audio/S_RecyclingArts/TI_Recycling.mp3"
+                    src={`${CMWN.MEDIA.EFFECT}ti-recycling.mp3`}
                 />
             </skoash.MediaSequence>
             <div className="pallet animated">

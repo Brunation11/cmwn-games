@@ -10,9 +10,9 @@ export default function (props, ref, key) {
                 ref="audio-sequence"
                 checkComplete={true}
             >
-                <skoash.Audio ref="step" type="sfx" src="media/_audio/_Reveals/TI_RV_1.mp3" />
-                <skoash.Audio ref="step-4" type="voiceOver" src="media/_audio/S_Step4/VO_Step4.mp3" />
-                <skoash.Audio ref="check-the" type="voiceOver" src="media/_audio/S_Step4/VO_CheckThe.mp3" />
+                <skoash.Audio ref="step" type="sfx" src={`${CMWN.MEDIA.EFFECT}ti-rv-1.mp3`} />
+                <skoash.Audio ref="step-4" type="voiceOver" src={`${CMWN.MEDIA.VO}vo-step-4.mp3`} />
+                <skoash.Audio ref="check-the" type="voiceOver" src={`${CMWN.MEDIA.VO}vo-check-the.mp3`} />
             </skoash.MediaSequence>
             <div className="step" />
                 <p>

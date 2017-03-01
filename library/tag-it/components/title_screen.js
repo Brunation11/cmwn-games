@@ -9,7 +9,7 @@ export default function (props, ref, key) {
             completeDelay={5000}
             completeOnStart
         >
-            <skoash.Audio ref="button" type="sfx" src="media/_audio/_Buttons/TI_BU_1.mp3" complete />
+            <skoash.Audio ref="button" type="sfx" src={`${CMWN.MEDIA.EFFECT}ti-bu-1.mp3`} complete />
 
             <div className="group">
                 <div className="drop" />
