@@ -256,7 +256,7 @@ export default function (props, ref, key) {
                     <skoash.Audio type="voiceOver" src={`${CMWN.MEDIA.VO}vo-4-11.mp3`} />,
                     <skoash.Audio type="voiceOver" src={`${CMWN.MEDIA.VO}vo-4-1.mp3`}
                         onComplete={closeReveal} />,
-                    <skoash.Audio type="sfx" src={`${CMWN.MEDIA.EFFECT}so_Right.mp3`} />,
+                    <skoash.Audio type="sfx" src={`${CMWN.MEDIA.EFFECT}so-right.mp3`} />,
                     <skoash.Audio
                         type="sfx"
                         ref="incorrect-1"
