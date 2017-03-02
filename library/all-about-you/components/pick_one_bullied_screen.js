@@ -19,17 +19,17 @@ export default function (props, ref, key) {
             <skoash.Audio
                 ref="vo"
                 type="voiceOver"
-                src="media/assets/_audio/VOs/VO_EverWorried.mp3"
+                src={`${CMWN.MEDIA.VO}vo-ever-worried.mp3`}
             />
             <skoash.Image
                 ref="banner"
                 className="banner animated"
-                src="media/assets/_images/S_11/Text_11_HaveYouEver.png"
+                src={`${CMWN.MEDIA.IMAGE}text-11-have-you-ever.png`}
             />
             <skoash.Image
                 ref="penguin"
                 className="penguin animated"
-                src="media/assets/_images/S_11/IMG_11_Penguins.png"
+                src={`${CMWN.MEDIA.IMAGE}img-11-penguins.png`}
             />
             <div ref="frame" className="frame animated"></div>
 
@@ -45,7 +45,7 @@ export default function (props, ref, key) {
                   });
               }}
             >
-              <skoash.Audio ref="correct" type="sfx" src="media/assets/_audio/_Buttons/S_BU_1.mp3" />
+              <skoash.Audio ref="correct" type="sfx" src={`${CMWN.MEDIA.EFFECT}s-bu-1.mp3`} />
             </MediaCollection>
 
             <MediaCollection
@@ -63,14 +63,14 @@ export default function (props, ref, key) {
                 <skoash.Audio
                     ref="yes"
                     type="voiceOver"
-                    src="media/assets/_audio/VOs/VO_Yes.mp3"
+                    src={`${CMWN.MEDIA.VO}vo-yes.mp3`}
                     complete
                     delay={1000}
                 />
                 <skoash.Audio
                     ref="no"
                     type="voiceOver"
-                    src="media/assets/_audio/VOs/VO_No.mp3"
+                    src={`${CMWN.MEDIA.VO}vo-no.mp3`}
                     complete
                     delay={1000}
                 />

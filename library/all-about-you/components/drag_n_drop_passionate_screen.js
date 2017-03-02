@@ -82,17 +82,17 @@ export default function (props, ref, key) {
             <skoash.Audio
                 ref="vo"
                 type="voiceOver"
-                src="media/assets/_audio/VOs/VO_Passionate.mp3"
+                src={`${CMWN.MEDIA.VO}vo-passionate.mp3`}
             />
             <skoash.Image
                 ref="penguin"
                 className="penguin animated"
-                src="media/assets/_images/S_3/img_s3_penguin-01.png"
+                src={`${CMWN.MEDIA.IMAGE}img-s3-penguin-01.png`}
             />
             <skoash.Image
                 ref="banner"
                 className="banner animated"
-                src="media/assets/_images/S_3/text_what_are_you_passionate_about_copy.png"
+                src={`${CMWN.MEDIA.IMAGE}text-what-are-you-passionate-about-copy.png`}
             />
             <skoash.Component ref="frame" className="frame animated" />
 
@@ -109,8 +109,8 @@ export default function (props, ref, key) {
                     });
                 }}
             >
-            <skoash.Audio ref="drag" type="sfx" src="media/assets/_audio/_Buttons/S_BU_2.mp3" />
-            <skoash.Audio ref="correct" type="sfx" src="media/assets/_audio/_Buttons/S_BU_3.mp3" />
+            <skoash.Audio ref="drag" type="sfx" src={`${CMWN.MEDIA.EFFECT}s-bu-2.mp3`} />
+            <skoash.Audio ref="correct" type="sfx" src={`${CMWN.MEDIA.EFFECT}s-bu-3.mp3`} />
             </MediaCollection>
 
             <MediaCollection
@@ -129,42 +129,42 @@ export default function (props, ref, key) {
                 <skoash.Audio
                     ref="friends"
                     type="voiceOver"
-                    src="media/assets/_audio/VOs/VO_Friends.mp3"
+                    src={`${CMWN.MEDIA.VO}vo-friends.mp3`}
                 />
                 <skoash.Audio
                     ref="world-peace"
                     type="voiceOver"
-                    src="media/assets/_audio/VOs/VO_WorldP.mp3"
+                    src={`${CMWN.MEDIA.VO}vo-world-p.mp3`}
                 />
                 <skoash.Audio
                     ref="sports"
                     type="voiceOver"
-                    src="media/assets/_audio/VOs/VO_Sports.mp3"
+                    src={`${CMWN.MEDIA.VO}vo-sports.mp3`}
                 />
                 <skoash.Audio
                     ref="playing-games"
                     type="voiceOver"
-                    src="media/assets/_audio/VOs/VO_Playing.mp3"
+                    src={`${CMWN.MEDIA.VO}vo-playing.mp3`}
                 />
                 <skoash.Audio
                     ref="looking-cool"
                     type="voiceOver"
-                    src="media/assets/_audio/VOs/VO_Looking.mp3"
+                    src={`${CMWN.MEDIA.VO}vo-looking.mp3`}
                 />
                 <skoash.Audio
                     ref="school"
                     type="voiceOver"
-                    src="media/assets/_audio/VOs/VO_School.mp3"
+                    src={`${CMWN.MEDIA.VO}vo-school.mp3`}
                 />
                 <skoash.Audio
                     ref="celebrities"
                     type="voiceOver"
-                    src="media/assets/_audio/VOs/VO_Celebrities.mp3"
+                    src={`${CMWN.MEDIA.VO}vo-celebrities.mp3`}
                 />
                 <skoash.Audio
                     ref="environment"
                     type="voiceOver"
-                    src="media/assets/_audio/VOs/VO_Environment.mp3"
+                    src={`${CMWN.MEDIA.VO}vo-environment.mp3`}
                 />
             </MediaCollection>
 

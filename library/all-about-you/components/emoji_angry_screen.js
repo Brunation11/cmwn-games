@@ -19,28 +19,28 @@ export default function (props, ref, key) {
             <skoash.Audio
                 ref="vo"
                 type="voiceOver"
-                src="media/assets/_audio/VOs/VO_BeAngry.mp3"
+                src={`${CMWN.MEDIA.VO}vo-be-angry.mp3`}
             />
             <skoash.Image
                 ref="penguins"
                 className="penguins animated"
-                src="media/assets/_images/S_09/IMG_09_PenguinsCircle.png"
+                src={`${CMWN.MEDIA.IMAGE}img-09-penguins-circle.png`}
             />
             <skoash.Image
                 ref="banner"
                 className="banner animated"
-                src="media/assets/_images/S_09/Text_09_AClassmateYellsAtYou.png"
+                src={`${CMWN.MEDIA.IMAGE}text-09-a-classmate-yells-at-you.png`}
             />
             <div ref="frame" className="frame animated"></div>
             <skoash.Image
                 ref="penguins-angry"
                 className="penguins-angry animated"
-                src="media/assets/_images/S_09/IMG_09_AngryPenguin.png"
+                src={`${CMWN.MEDIA.IMAGE}img-09-angry-penguin.png`}
             />
             <skoash.Image
                 ref="text-angry"
                 className="text-angry animated"
-                src="media/assets/_images/S_09/Text_09_BeingAngry.png"
+                src={`${CMWN.MEDIA.IMAGE}text-09-being-angry.png`}
             />
 
             <MediaCollection
@@ -55,7 +55,7 @@ export default function (props, ref, key) {
                     });
                 }}
             >
-                <skoash.Audio ref="correct" type="sfx" src="media/assets/_audio/_Buttons/S_BU_1.mp3" />
+                <skoash.Audio ref="correct" type="sfx" src={`${CMWN.MEDIA.EFFECT}s-bu-1.mp3`} />
             </MediaCollection>
 
             <MediaCollection
@@ -73,21 +73,21 @@ export default function (props, ref, key) {
                 <skoash.Audio
                     ref="worried"
                     type="voiceOver"
-                    src="media/assets/_audio/VOs/VO_Worried.mp3"
+                    src={`${CMWN.MEDIA.VO}vo-worried.mp3`}
                     complete
                     delay={1000}
                 />
                 <skoash.Audio
                     ref="shocked"
                     type="voiceOver"
-                    src="media/assets/_audio/VOs/VO_Shocked.mp3"
+                    src={`${CMWN.MEDIA.VO}vo-shocked.mp3`}
                     complete
                     delay={1000}
                 />
                 <skoash.Audio
                     ref="no-big-deal"
                     type="voiceOver"
-                    src="media/assets/_audio/VOs/VO_NoBig.mp3"
+                    src={`${CMWN.MEDIA.VO}vo-no-big.mp3`}
                     complete
                     delay={1000}
                 />

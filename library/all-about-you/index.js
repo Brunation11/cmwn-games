@@ -24,52 +24,6 @@ import FlipScreen from './components/flip_screen';
 import QuitScreen from './components/quit_screen';
 
 class AllAboutYou extends skoash.Game {
-    constructor() {
-        super(config);
-
-        this.screens = {
-            0: iOSScreen,
-            1: TitleScreen,
-            2: InfoScreen,
-            3: DragNDropPassionateScreen,
-            4: DragNDropIssuesScreen,
-            5: PickOnePowerfulScreen,
-            6: EmojiBullyingScreen,
-            7: EmojiCompassionScreen,
-            8: EmojiAngryScreen,
-            9: EmojiFriendlinessScreen,
-            10: PickOneBulliedScreen,
-            11: WhatDidYouDoScreen,
-            12: HowMuchEnvScreen,
-            13: HowMuchSpeciesScreen,
-            14: HowMuchWaterScreen,
-            15: DragNDropInterestsScreen,
-            16: QualitiesBucketsScreen,
-            17: FlipScreen
-        };
-
-        this.menus = {
-            quit: QuitScreen
-        };
-    }
-
-    renderLoader() {
-        return (
-            <Loader />
-        );
-    }
-
-    getBackgroundIndex(currentScreenIndex) {
-        switch (currentScreenIndex) {
-            case 1:
-                return 0;
-            case 17:
-                return 1;
-            default:
-                return;
-        }
-    }
-
     emitSave(highestScreenIndex, currentScreenIndex) {
         var data = {};
         if (currentScreenIndex !== 17) return;
@@ -108,36 +62,68 @@ class AllAboutYou extends skoash.Game {
             });
         }
     }
-
-    renderAssets() {
-        return (
-            <div>
-                <skoash.Audio
-                    ref="bkg-1"
-                    type="background"
-                    src="media/assets/_audio/_BKG/S_BKG_3.mp3"
-                />
-                <skoash.Audio
-                    ref="bkg-2"
-                    type="background"
-                    src="media/assets/_audio/_BKG/S_BKG_2.mp3"
-                />
-                <skoash.Audio
-                    ref="button"
-                    type="sfx"
-                    src="media/assets/_audio/_Buttons/S_BU_1.mp3"
-                />
-                <skoash.Audio
-                    ref="screen-complete"
-                    type="sfx"
-                    src="media/assets/_audio/_Buttons/S_BU_4.mp3"
-                />
-            </div>
-        );
-    }
-
 }
 
-skoash.start(AllAboutYou, config.id);
+skoash.start(
+    <AllAboutYou
+        config={config}
+        loader={<Loader />}
+        screens={[
+            iOSScreen,
+            TitleScreen,
+            InfoScreen,
+            DragNDropPassionateScreen,
+            DragNDropIssuesScreen,
+            PickOnePowerfulScreen,
+            EmojiBullyingScreen,
+            EmojiCompassionScreen,
+            EmojiAngryScreen,
+            EmojiFriendlinessScreen,
+            PickOneBulliedScreen,
+            WhatDidYouDoScreen,
+            HowMuchEnvScreen,
+            HowMuchSpeciesScreen,
+            HowMuchWaterScreen,
+            DragNDropInterestsScreen,
+            QualitiesBucketsScreen,
+            FlipScreen
+        ]}
+        menus={{
+            quit: QuitScreen
+        }}
+        assets={[
+            <skoash.Audio
+                ref="bkg-1"
+                type="background"
+                src={`${CMWN.MEDIA.EFFECT}s-bkg-3.mp3`}
+            />,
+            <skoash.Audio
+                ref="bkg-2"
+                type="background"
+                src={`${CMWN.MEDIA.EFFECT}s-bkg-2.mp3`}
+            />,
+            <skoash.Audio
+                ref="button"
+                type="sfx"
+                src={`${CMWN.MEDIA.EFFECT}s-bu-1.mp3`}
+            />,
+            <skoash.Audio
+                ref="screen-complete"
+                type="sfx"
+                src={`${CMWN.MEDIA.EFFECT}s-bu-4.mp3`}
+            />,
+        ]}
+        getBackgroundIndex={(currentScreenIndex) => {
+            switch (currentScreenIndex) {
+                case 1:
+                    return 0;
+                case 17:
+                    return 1;
+                default:
+                    return;
+            }
+        }}
+    />
+);
 
 if (module.hot) module.hot.accept();

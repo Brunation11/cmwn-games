@@ -19,12 +19,12 @@ export default function (props, ref, key) {
             <skoash.Audio
                 ref="vo"
                 type="voiceOver"
-                src="media/assets/_audio/VOs/VO_Powerful.mp3"
+                src={`${CMWN.MEDIA.VO}vo-powerful.mp3`}
             />
             <skoash.Image
                 ref="banner"
                 className="banner animated"
-                src="media/assets/_images/S_5/img-05-text-top-01.png"
+                src={`${CMWN.MEDIA.IMAGE}img-05-text-top-01.png`}
             />
 
             <MediaCollection
@@ -39,7 +39,7 @@ export default function (props, ref, key) {
                     });
                 }}
             >
-                <skoash.Audio ref="correct" type="sfx" src="media/assets/_audio/_Buttons/S_BU_1.mp3" />
+                <skoash.Audio ref="correct" type="sfx" src={`${CMWN.MEDIA.EFFECT}s-bu-1.mp3`} />
             </MediaCollection>
 
             <MediaCollection
@@ -57,28 +57,28 @@ export default function (props, ref, key) {
                 <skoash.Audio
                     ref="very-powerful"
                     type="voiceOver"
-                    src="media/assets/_audio/VOs/VO_Very.mp3"
+                    src={`${CMWN.MEDIA.VO}vo-very.mp3`}
                     complete
                     delay={1000}
                 />
                 <skoash.Audio
                     ref="not-powerful"
                     type="voiceOver"
-                    src="media/assets/_audio/VOs/VO_DontFeel.mp3"
+                    src={`${CMWN.MEDIA.VO}vo-dont-feel.mp3`}
                     complete
                     delay={1000}
                 />
                 <skoash.Audio
                     ref="unsure"
                     type="voiceOver"
-                    src="media/assets/_audio/VOs/VO_Unsure.mp3"
+                    src={`${CMWN.MEDIA.VO}vo-unsure.mp3`}
                     complete
                     delay={1000}
                 />
                 <skoash.Audio
                     ref="dont-care"
                     type="voiceOver"
-                    src="media/assets/_audio/VOs/VO_DontCare.mp3"
+                    src={`${CMWN.MEDIA.VO}vo-dont-care.mp3`}
                     complete
                     delay={1000}
                 />
