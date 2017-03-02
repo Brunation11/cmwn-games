@@ -63,7 +63,7 @@ class SendScreen extends skoash.Screen {
                     <button className={classNameText.changeFriend} onClick={changeFriendClick} />
                 </div>
                 <div className={classNameText.character}>
-                    <skoash.Image className="otter" src="media/_Otter/proud-of-you2.gif" />
+                    <skoash.Image className="otter" src={`${CMWN.MEDIA.SPRITE}proud-of-you-2.gif`} />
                     <div className="bubble">
                         Are you sure<br/>
                         you are ready to<br/>

@@ -35,7 +35,7 @@ body > div > div {
 
     @for $i from 1 through 6 {
         .background-#{$i} {
-            background-image: url('../media/_Background/SK_BKG_#{$i}.png');
+            background-image: url('#{$image}sk-bkg-#{$i}.png');
         }
     }
 
@@ -150,7 +150,7 @@ button {
     border: 0;
 
     background-color: transparent;
-    background-image: url('../media/_Buttons/SK_btn_rounded.png');
+    background-image: url('#{$sprite}sk-btn-rounded.png');
     background-position: left top;
     background-size: 1950px;
 
@@ -324,7 +324,7 @@ button {
         float: left;
         margin: 5px;
 
-        background-image: url('../media/_Buttons/SK_btn_topnav.png');
+        background-image: url('#{$sprite}sk-btn-topnav.png');
         background-size: 400px;
 
         cursor: pointer;
@@ -467,7 +467,7 @@ p {
 
 .header {
     margin: 0 auto;
-    background-image: url('../media/_Headers/SK_headers.png');
+    background-image: url('#{$sprite}sk-headers.png');
     background-size: 3800px;
     width: 900px;
     height: 140px;
@@ -494,7 +494,7 @@ p {
 
     .next-screen {
         margin: 0 90px 70px 0;
-        background-image: url('../media/_Buttons/skribble-play-01.png');
+        background-image: url('#{$image}skribble-play-01.png');
         background-repeat: no-repeat;
         background-position: center center;
         background-size: contain;
@@ -502,7 +502,7 @@ p {
         height: 180px;
 
         &:hover {
-            background-image: url('../media/_Buttons/skribble-hover.png');
+            background-image: url('#{$image}skribble-hover.png');
         }
     }
 }
@@ -554,7 +554,7 @@ p {
                 top: 10px;
                 left: 690px;
 
-                background-image: url('../media/_Frames/SK_frames_speechbubbles.png');
+                background-image: url('#{$frame}sk-frames-speechbubbles.png');
                 background-repeat: no-repeat;
                 background-position: -1010px -20px;
                 background-size: 1500px;
@@ -584,7 +584,7 @@ p {
             transition: opacity .5s 2s, z-index 0s 2.5s;
             opacity: 0;
             z-index: -1;
-            background: url('../media/_Otter/joyful-otter_2.gif') no-repeat;
+            background: url('#{$sprite}joyful-otter-2.gif') no-repeat;
             background-size: contain;
         }
     }
@@ -611,7 +611,7 @@ p {
 
         .bubble {
             position: absolute;
-            background-image: url('../media/_Frames/SK_frames_speechbubbles.png');
+            background-image: url('#{$frame}sk-frames-speechbubbles.png');
             background-repeat: no-repeat;
             background-size: 1500px;
             text-align: center;
@@ -663,7 +663,7 @@ p {
     .item-drawer {
         li {
             margin: 0 5px 20px;
-            background-image: url('../media/_Buttons/sk_btn_selectfriend.png');
+            background-image: url('#{$sprite}sk-btn-selectfriend.png');
             background-repeat: no-repeat;
             background-position: 0 0;
             background-size: 400px;
@@ -763,7 +763,7 @@ p {
         top: 80px;
         left: 450px;
 
-        background-image: url('../media/_Frames/SK_frames_speechbubbles.png');
+        background-image: url('#{$frame}sk-frames-speechbubbles.png');
         background-repeat: no-repeat;
         background-position: -380px -380px;
         background-size: 1125px;
@@ -821,7 +821,7 @@ p {
     }
 
     .selectable-reveal {
-        background-image: url('../media/_Frames/SK_frames_general.png');
+        background-image: url('#{$frame}sk-frames-general.png');
         background-position: -3500px 0;
         background-size: 7000px;
         width: 1300px;
@@ -837,7 +837,7 @@ p {
 
         li {
             margin-right: 6px;
-            background-image: url('../media/_Buttons/SK_btn_inbox.png');
+            background-image: url('#{$sprite}sk-btn-inbox.png');
             background-position: 0 -82px;
             background-size: 684px;
             width: 138px;
@@ -909,7 +909,7 @@ p {
             opacity: 1;
             margin: 0;
             background-color: transparent;
-            background-image: url('../media/_Buttons/SK_btn_messages.png');
+            background-image: url('#{$sprite}sk-btn-messages.png');
             background-position: -30px -414px;
             background-size: 2600px;
             height: 160px;
@@ -1086,7 +1086,7 @@ p {
             top: -80px;
             left: 110px;
 
-            background-image: url('../media/_Frames/SK_frames_speechbubbles.png');
+            background-image: url('#{$frame}sk-frames-speechbubbles.png');
             background-repeat: no-repeat;
             background-position: -70px -540px;
             background-size: 1500px;
@@ -1114,7 +1114,7 @@ p {
 
     .your-message-to,
     .is-ready {
-        background-image: url('../media/_Headers/SK_headers.png');
+        background-image: url('#{$sprite}sk-headers.png');
         background-repeat: no-repeat;
         background-size: 3800px;
     }
@@ -1143,7 +1143,7 @@ p {
 
     .gift {
         margin: 0 auto;
-        background-image: url('../media/_Frames/SK_frames_messagebox.png');
+        background-image: url('#{$frame}sk-frames-messagebox.png');
         background-repeat: no-repeat;
         background-position: -40px -80px;
         background-size: 2600px;
@@ -1155,7 +1155,7 @@ p {
 #sent {
     .character {
         margin: 0 auto;
-        background-image: url('../media/_Otter/Otter_Static4.png');
+        background-image: url('#{$image}otter-static-4.png');
         background-position: 52px 0;
         background-size: 700px;
         width: 400px;
@@ -1164,7 +1164,7 @@ p {
 
     .header {
         margin-top: -35px;
-        background-image: url('../media/_Frames/SK_frames_general.png');
+        background-image: url('#{$frame}sk-frames-general.png');
         background-repeat: no-repeat;
         background-position: -4825px 0;
         background-size: 6450px;
@@ -1257,7 +1257,7 @@ p {
         z-index: 1;
         margin: 100px auto;
 
-        background-image: url('../media/_Frames/SK_frames_messagebox.png');
+        background-image: url('#{$frame}sk-frames-messagebox.png');
         background-repeat: no-repeat;
         background-position: -40px -80px;
         background-size: 2600px;
@@ -1385,7 +1385,7 @@ p {
 
     .frame {
         margin-top: -320px;
-        background-image: url('../media/_Frames/SK_frames_speechbubbles.png');
+        background-image: url('#{$frame}sk-frames-speechbubbles.png');
         background-repeat: no-repeat;
         background-position: -1130px -20px;
         background-size: 1700px;
@@ -1399,7 +1399,7 @@ p {
             top: 400px;
             left: 500px;
 
-            background-image: url('../media/_Otter/Otter_Static_GreetingOne.png');
+            background-image: url('#{$image}otter-static-greeting-one.png');
             background-repeat: no-repeat;
             background-position: top left;
             background-size: contain;
@@ -1431,7 +1431,7 @@ p {
         margin-top: -320px;
         margin-left: -680px;
 
-        background-image: url('../media/_Frames/SK_frames_speechbubbles.png');
+        background-image: url('#{$frame}sk-frames-speechbubbles.png');
         background-repeat: no-repeat;
         background-position: 0 0;
         background-size: 1700px;
@@ -1446,7 +1446,7 @@ p {
             top: 400px;
             left: -100px;
 
-            background-image: url('../media/_Otter/Otter_Static_peeringOverText.png');
+            background-image: url('#{$image}otter-static-peering-over-text.png');
             background-repeat: no-repeat;
             background-position: top left;
             background-size: contain;
@@ -1463,7 +1463,7 @@ p {
 
         button {
             margin: 20px 10px 20px 260px;
-            background-image: url('../media/_Frames/SK_frames_canvas.png');
+            background-image: url('#{$frame}sk-frames-canvas.png');
             background-position: -1666px 0;
             background-size: 2500px;
             width: 45px;
@@ -1495,7 +1495,7 @@ p {
     }
 
     .toggle-collision-warning {
-        background-image: url('../media/_CollisionWarning/spritesheet-donotshow.png');
+        background-image: url('#{$sprite}spritesheet-donotshow.png');
         background-position: 0 -16px;
         background-size: 840px;
         width: 840px;
@@ -1507,7 +1507,7 @@ p {
     }
 
     .close-collision-warning {
-        background-image: url('../media/_CollisionWarning/spritesheet-ok.png');
+        background-image: url('#{$sprite}spritesheet-ok.png');
         background-size: 278px;
         width: 278px;
         height: 238px;

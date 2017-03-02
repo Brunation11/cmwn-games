@@ -97,7 +97,7 @@ class FriendScreen extends skoash.Screen {
         var imageSrc;
 
         src = 'One';
-        imageSrc = 'media/_Otter/Otter_Static_GreetingOne.png';
+        imageSrc = `${CMWN.MEDIA.IMAGE}otter-static-greeting-one.png`;
         copy = (
             <span>
                 Don't have<br/>
@@ -109,7 +109,7 @@ class FriendScreen extends skoash.Screen {
 
         if (this.state.data && this.state.data.length) {
             src = 'Two';
-            imageSrc = 'media/_Otter/Open-wide-Otter2.gif';
+            imageSrc = `${CMWN.MEDIA.SPRITE}open-wide-otter-2.gif`;
             copy = (
                 <span>
                     Let me find a friend<br/>
@@ -133,7 +133,7 @@ class FriendScreen extends skoash.Screen {
             return (
                 <ItemDrawer
                     ref="drawer"
-                    scrollbarImg="./media/_Buttons/sk_btn_slider.png"
+                    scrollbarImg={`${CMWN.MEDIA.IMAGE}sk-btn-slider.png`}
                     selectRespond={this.selectRespond.bind(this)}
                     cancelRespond={this.back}
                     categories={this.state.opts.categories}

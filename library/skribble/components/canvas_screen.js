@@ -196,8 +196,8 @@ class CanvasScreen extends skoash.Screen {
             <div>
                 <skoash.Audio ref="slide" type="sfx" src={`${CMWN.MEDIA.EFFECT}MenuSlide.mp3`} />
                 <skoash.Audio ref="highlight" type="sfx" src={`${CMWN.MEDIA.EFFECT}Highlight.mp3`} />
-                <skoash.Image className="hidden" src="media/_Frames/SK_frames_canvas.png" />
-                <skoash.Image className="hidden" src="media/_Buttons/SK_btn_friend.png" />
+                <skoash.Image className="hidden" src={`${CMWN.MEDIA.FRAME}sk-frames-canvas.png`} />
+                <skoash.Image className="hidden" src={`${CMWN.MEDIA.SPRITE}sk-btn-friend.png`} />
                 <Menu
                       ref={'menu'}
                       items={this.state.menu.items}
@@ -219,33 +219,6 @@ class CanvasScreen extends skoash.Screen {
                 <Selectable className="menu right-menu" list={this.rightMenuList} />
             </div>
         );
-        // move this back up below the Selectable when there is an instructional help video
-        /*
-            <Reveal
-              ref="reveal"
-              openOnStart="0"
-              list={[
-                <li>
-                  <skoash.Image className="otter" src={'media/_Otter/joyful-otter_2.gif'} />
-                  <div className="bubble">
-                    Welcome to your canvas!<br/><br/>
-                    Would you like me<br/>
-                    to show you around?
-                    <div className="buttons">
-                      <button
-                        className="yes"
-                        onClick={skoash.trigger.bind(null, 'openMenu', {id: 'help'})}
-                      />
-                      <button
-                        className="no"
-                        onClick={this.closeReveal}
-                      />
-                    </div>
-                  </div>
-                </li>
-              ]}
-            />
-        */
     }
 }
 

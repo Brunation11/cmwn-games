@@ -1,3 +1,5 @@
+@import 'variables';
+
 .canvas {
     position: relative;
     z-index: 1;
@@ -17,7 +19,7 @@
     top: 60px;
     left: 126px;
     z-index: 1;
-    background-image: url('../media/_Frames/SK_frames_canvas.png');
+    background-image: url('#{$frame}sk-frames-canvas.png');
     background-repeat: no-repeat;
     background-size: 4080px;
     padding: 30px;

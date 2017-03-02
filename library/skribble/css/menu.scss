@@ -31,7 +31,7 @@
             z-index: 2;
             border-radius: 0 30px 30px 0;
 
-            background-image: url('../media/_Buttons/SK_btn_slidenav.png');
+            background-image: url('#{$sprite}sk-btn-slidenav.png');
             background-size: 2700px;
 
             width: 410px;
@@ -79,7 +79,7 @@
         position: relative;
         bottom: auto;
         margin: -20px 20px 20px;
-        background-image: url('../media/_Frames/SK_frames_canvas.png');
+        background-image: url('#{$frame}sk-frames-canvas.png');
         background-size: 5100px;
         padding-top: 0;
         width: 340px;
@@ -103,7 +103,7 @@
                 display: block;
                 margin-left: 34px;
                 border-radius: 0;
-                background-image: url('../media/_Buttons/SK_btn_catergorymenu.png');
+                background-image: url('#{$sprite}sk-btn-catergorymenu.png');
                 background-repeat: no-repeat;
                 background-position: -10px -10px;
                 background-size: 600px;
@@ -158,7 +158,7 @@
             }
 
             > span {
-                background-image: url('../media/_Buttons/SK_btn_friend.png');
+                background-image: url('#{$sprite}sk-btn-friend.png');
                 background-position: -500px -10px;
                 background-size: 1000px;
                 width: 465px;
