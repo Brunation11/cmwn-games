@@ -7,15 +7,27 @@ export default function (props, ref, key) {
             id="experiment-step-two"
         >
             <skoash.Component className="frame">
-                <skoash.Image ref="banner" className="banner animated" src="media/images/Img_17.1.png" />
-                <skoash.Image ref="oil" className="item oil animated" src="media/images/S_15/Img_15.5.png" />
+                <skoash.Image
+                    ref="banner"
+                    className="banner animated"
+                    src={`${CMWN.MEDIA.IMAGE}img-17-1.png`}
+                />
+                <skoash.Image
+                    ref="oil"
+                    className="item oil animated"
+                    src={`${CMWN.MEDIA.IMAGE}img-15-5.png`}
+                />
                 <p className="oil">
                     <strong>
                         4 cups of solid vegetable<br />
                         shortening (like Crisco)
                     </strong>
                 </p>
-                <skoash.Image ref="bag" className="item bag animated" src="media/images/S_15/Img_15.6.png" />
+                <skoash.Image
+                    ref="bag"
+                    className="item bag animated"
+                    src={`${CMWN.MEDIA.IMAGE}img-15-6.png`}
+                />
                 <p className="bag">
                     <strong>
                         4 medium-size sealable<br />

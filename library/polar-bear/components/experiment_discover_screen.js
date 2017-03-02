@@ -8,15 +8,23 @@ export default function (props, ref, key) {
             key={key}
             id="experiment-discover"
         >
-            <skoash.Audio ref="vo" type="voiceOver" src="media/audio/VO_24.4.mp3" />
+            <skoash.Audio ref="vo" type="voiceOver" src={`${CMWN.MEDIA.VO}vo-24-4.mp3`} />
             <skoash.Component className="frame">
-                <skoash.Image ref="banner" className="banner animated" src="media/images/Img_24.1.png" />
+                <skoash.Image
+                    ref="banner"
+                    className="banner animated"
+                    src={`${CMWN.MEDIA.IMAGE}img-24-1.png`}
+                />
                 <SelectableReveal
                     ref="selectable-reveal"
                     selectableSelectClass="HIGHLIGHTED"
                     allCorrect
                     assets={[
-                        <skoash.Audio ref="correct" type="sfx" src="media/audio/answer-correct.mp3" />
+                        <skoash.Audio
+                            ref="correct"
+                            type="sfx"
+                            src={`${CMWN.MEDIA.EFFECT}answer-correct.mp3`}
+                        />
                     ]}
                     selectableList={[
                         <skoash.ListItem className="feet animated" data-ref="feet">
@@ -33,19 +41,19 @@ export default function (props, ref, key) {
                         <skoash.Audio
                             ref="feet"
                             type="voiceOver"
-                            src="media/audio/features-bears/feet.mp3"
+                            src={`${CMWN.MEDIA.VO}feet.mp3`}
                             delay={1000}
                         />,
                         <skoash.Audio
                             ref="ears"
                             type="voiceOver"
-                            src="media/audio/features-bears/ears.mp3"
+                            src={`${CMWN.MEDIA.VO}ears.mp3`}
                             delay={1000}
                         />,
                         <skoash.Audio
                             ref="coat"
                             type="voiceOver"
-                            src="media/audio/features-bears/coat.mp3"
+                            src={`${CMWN.MEDIA.VO}coat.mp3`}
                             delay={1000}
                         />
                     ]}

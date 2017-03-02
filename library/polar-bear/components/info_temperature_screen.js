@@ -6,9 +6,9 @@ export default function (props, ref, key) {
             key={key}
             id="info-temperature"
         >
-            <skoash.Audio ref="vo" type="voiceOver" src="media/audio/VO_13.1.mp3" delay={500} />
+            <skoash.Audio ref="vo" type="voiceOver" src={`${CMWN.MEDIA.VO}vo-13-1.mp3`} delay={500} />
             <skoash.Component className="frame">
-                <skoash.Image ref="bear" className="bear animated" src="media/images/Img_13.1.png" />
+                <skoash.Image ref="bear" className="bear animated" src={`${CMWN.MEDIA.IMAGE}img-13-1.png`} />
                 <h3>
                     In the Arctic regions<br />
                     where Polar Bears live,<br />

@@ -39,163 +39,163 @@ export default function (props, ref, key) {
                     bin={[
                         <skoash.Image
                             name="fox"
-                            src="media/images/carousel-bears/carousel-slide-1.png"
+                            src={`${CMWN.MEDIA.IMAGE}carousel-slide-1.png`}
                         />,
                         <skoash.Image
                             name="dog"
-                            src="media/images/carousel-bears/carousel-slide-2.png"
+                            src={`${CMWN.MEDIA.IMAGE}carousel-slide-2.png`}
                         />,
                         <skoash.Image
                             name="polar"
-                            src="media/images/carousel-bears/carousel-slide-7.png"
+                            src={`${CMWN.MEDIA.IMAGE}carousel-slide-7.png`}
                         />,
                         <skoash.Image
                             name="cat"
-                            src="media/images/carousel-bears/carousel-slide-3.png"
+                            src={`${CMWN.MEDIA.IMAGE}carousel-slide-3.png`}
                         />,
                         <skoash.Image
                             name="ermine"
-                            src="media/images/carousel-bears/carousel-slide-4.png"
+                            src={`${CMWN.MEDIA.IMAGE}carousel-slide-4.png`}
                         />,
                         <skoash.Image
                             name="goat"
-                            src="media/images/carousel-bears/carousel-slide-5.png"
+                            src={`${CMWN.MEDIA.IMAGE}carousel-slide-5.png`}
                         />,
                         <skoash.Image
                             name="peacock"
-                            src="media/images/carousel-bears/carousel-slide-6.png"
+                            src={`${CMWN.MEDIA.IMAGE}carousel-slide-6.png`}
                         />,
                         <skoash.Image
                             name="polar"
-                            src="media/images/carousel-bears/carousel-slide-7.png"
+                            src={`${CMWN.MEDIA.IMAGE}carousel-slide-7.png`}
                         />,
                         <skoash.Image
                             name="seal"
-                            src="media/images/carousel-bears/carousel-slide-8.png"
+                            src={`${CMWN.MEDIA.IMAGE}carousel-slide-8.png`}
                         />,
                         <skoash.Image
                             name="hare"
-                            src="media/images/carousel-bears/carousel-slide-9.png"
+                            src={`${CMWN.MEDIA.IMAGE}carousel-slide-9.png`}
                         />,
                         <skoash.Image
                             name="polar"
-                            src="media/images/carousel-bears/carousel-slide-7.png"
+                            src={`${CMWN.MEDIA.IMAGE}carousel-slide-7.png`}
                         />,
                     ]}
                   />
                 }
                 cannonBall={
-                  <skoash.Image src="media/images/cannon-bears/ball.png" />
+                  <skoash.Image src={`${CMWN.MEDIA.IMAGE}cannon-ball.png`} />
                 }
                 autoCloseReveal
                 revealList={[
                     <skoash.Image
                         data-ref="fox"
                         className="animated"
-                        src="media/images/reveal-bears/reveal-1.png"
+                        src={`${CMWN.MEDIA.IMAGE}reveal-1.png`}
                         complete={true}
                     />,
                     <skoash.Image
                         data-ref="seal"
                         className="animated"
-                        src="media/images/reveal-bears/reveal-5.png"
+                        src={`${CMWN.MEDIA.IMAGE}reveal-5.png`}
                         complete={true}
                     />,
                     <skoash.Image
                         data-ref="ermine"
                         className="animated"
-                        src="media/images/reveal-bears/reveal-4.png"
+                        src={`${CMWN.MEDIA.IMAGE}reveal-4.png`}
                         complete={true}
                     />,
                     <skoash.Image
                         data-ref="goat"
                         className="animated"
-                        src="media/images/reveal-bears/reveal-6.png"
+                        src={`${CMWN.MEDIA.IMAGE}reveal-6.png`}
                         complete={true}
                     />,
                     <skoash.Image
                         data-ref="peacock"
                         className="animated"
-                        src="media/images/reveal-bears/reveal-7.png"
+                        src={`${CMWN.MEDIA.IMAGE}reveal-7.png`}
                         complete={true}
                     />,
                     <skoash.Image
                         data-ref="dog"
                         className="animated"
-                        src="media/images/reveal-bears/reveal-2.png"
+                        src={`${CMWN.MEDIA.IMAGE}reveal-2.png`}
                         complete={true}
                     />,
                     <skoash.Image
                         data-ref="cat"
                         className="animated"
-                        src="media/images/reveal-bears/reveal-3.png"
+                        src={`${CMWN.MEDIA.IMAGE}reveal-3.png`}
                         complete={true}
                     />,
                     <skoash.Image
                         data-ref="hare"
                         className="animated"
-                        src="media/images/reveal-bears/reveal-9.png"
+                        src={`${CMWN.MEDIA.IMAGE}reveal-9.png`}
                         complete={true}
                     />,
                     <skoash.Image
                         data-ref="polar"
                         className="animated"
-                        src="media/images/reveal-bears/reveal-8.png"
+                        src={`${CMWN.MEDIA.IMAGE}reveal-8.png`}
                     />,
                 ]}
                 revealAssets={[
                     <skoash.Audio
                         ref="fox-vo"
                         type="voiceOver"
-                        src="media/audio/reveal-bears/VO_1.mp3"
+                        src={`${CMWN.MEDIA.VO}vo-1.mp3`}
                         complete={true}
                     />,
                     <skoash.Audio
                         ref="seal-vo"
                         type="voiceOver"
-                        src="media/audio/reveal-bears/VO_2.mp3"
+                        src={`${CMWN.MEDIA.VO}vo-2.mp3`}
                         complete={true}
                     />,
                     <skoash.Audio
                         ref="ermine-vo"
                         type="voiceOver"
-                        src="media/audio/reveal-bears/VO_3.mp3"
+                        src={`${CMWN.MEDIA.VO}vo-3.mp3`}
                         complete={true}
                     />,
                     <skoash.Audio
                         ref="goat-vo"
                         type="voiceOver"
-                        src="media/audio/reveal-bears/VO_4.mp3"
+                        src={`${CMWN.MEDIA.VO}vo-4.mp3`}
                         complete={true}
                     />,
                     <skoash.Audio
                         ref="peacock-vo"
                         type="voiceOver"
-                        src="media/audio/reveal-bears/VO_5.mp3"
+                        src={`${CMWN.MEDIA.VO}vo-5.mp3`}
                         complete={true}
                     />,
                     <skoash.Audio
                         ref="dog-vo"
                         type="voiceOver"
-                        src="media/audio/reveal-bears/VO_6.mp3"
+                        src={`${CMWN.MEDIA.VO}vo-6.mp3`}
                         complete={true}
                     />,
                     <skoash.Audio
                         ref="cat-vo"
                         type="voiceOver"
-                        src="media/audio/reveal-bears/VO_7.mp3"
+                        src={`${CMWN.MEDIA.VO}vo-7.mp3`}
                         complete={true}
                     />,
                     <skoash.Audio
                         ref="hare-vo"
                         type="voiceOver"
-                        src="media/audio/reveal-bears/VO_8.mp3"
+                        src={`${CMWN.MEDIA.VO}vo-8.mp3`}
                         complete={true}
                     />,
                     <skoash.Audio
                         ref="polar-vo"
                         type="voiceOver"
-                        src="media/audio/reveal-bears/VO_9.mp3"
+                        src={`${CMWN.MEDIA.VO}vo-9.mp3`}
                     />
                 ]}
             />
