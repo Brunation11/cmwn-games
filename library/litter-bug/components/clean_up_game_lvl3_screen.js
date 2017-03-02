@@ -1,3 +1,5 @@
+import classNames from 'classnames';
+
 import MediaCollection from 'shared/components/media_collection/0.1';
 import RevealPrompt from 'shared/components/reveal_prompt/0.1';
 import Carousel from 'shared/components/carousel/0.1';
@@ -21,9 +23,22 @@ export default function (props, ref, key) {
             id="clean-up-game-lvl-3"
         >
             <skoash.MediaSequence ref="instructions">
-              <skoash.Audio ref="vo-1" type="voiceOver" src="media/_assets/_sounds/_vos/Instructions.mp3" />
-              <skoash.Audio ref="vo-2" type="voiceOver" src="media/_assets/_sounds/_vos/TossLitter.mp3" />
-              <skoash.Audio ref="vo-3" type="voiceOver" src="media/_assets/_sounds/_vos/Get200.mp3" />
+                <skoash.Audio
+                    ref="vo-1"
+                    type="voiceOver"
+                    src="media/_assets/_sounds/_vos/Instructions.mp3"
+                />
+                <skoash.Audio
+                    ref="vo-2"
+                    type="voiceOver"
+                    src="media/_assets/_sounds/_vos/TossLitter.mp3"
+                />
+                <skoash.Audio
+                    ref="vo-3"
+                    type="voiceOver"
+                    src="media/_assets/_sounds/_vos/Get200.mp3"
+                    completeTarget="instructions"
+                />
             </skoash.MediaSequence>
 
             <MediaCollection
@@ -94,6 +109,9 @@ export default function (props, ref, key) {
                 ref="reveal"
                 openOnStart="instructions"
                 openReveal={_.get(props, 'data.reveal.open', null)}
+                className={classNames({
+                    instructionsComplete: _.get(props, 'data.instructions.complete')
+                })}
                 onOpen={function () {
                     this.updateGameState({
                         path: 'game',

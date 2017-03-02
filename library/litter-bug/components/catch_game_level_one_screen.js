@@ -1,3 +1,5 @@
+import classNames from 'classnames';
+
 import CatchGameScreenComponent from './catch_game_screen_component';
 
 export default function (props, ref, key) {
@@ -78,6 +80,7 @@ export default function (props, ref, key) {
                 <skoash.Audio
                     type="voiceOver"
                     src={'media/_assets/_sounds/_vos/PickUpLitter.mp3'}
+                    completeTarget="instructions"
                 />
             </skoash.MediaSequence>,
             <skoash.MediaSequence
@@ -132,6 +135,9 @@ export default function (props, ref, key) {
                     <div className="instructions" />
                     <div className="words" />
                     <button
+                        className={classNames({
+                            instructionsComplete: _.get(props, 'data.instructions.complete')
+                        })}
                         onClick={function () {
                             skoash.trigger('updateState', {
                                 path: 'reveal',

@@ -6,6 +6,7 @@ import Loader from 'shared/components/loader/0.1';
 
 import iOSScreen from 'shared/components/ios_splash_screen/0.1';
 import TitleScreen from './components/title_screen';
+import LetsCleanUpScreen from './components/lets_clean_up_screen';
 import CatchGameLevelOne from './components/catch_game_level_one_screen';
 import CatchGameLevelTwo from './components/catch_game_level_two_screen';
 import CatchGameLevelThree from './components/catch_game_level_three_screen';
@@ -27,25 +28,26 @@ import QuitScreen from 'shared/components/quit_screen/0.1';
 var LitterBug = (
     <skoash.Game
         config={config}
-        screens={{
-            0: iOSScreen,
-            1: TitleScreen,
-            2: CatchGameLevelOne,
-            3: CatchGameLevelTwo,
-            4: CatchGameLevelThree,
-            5: RoomScreen,
-            6: SchoolScreen,
-            7: GroundScreen,
-            8: SingAboutItScreen,
-            9: VideoScreen,
-            10: GoodForYouScreen,
-            11: CleanUpGameLvl1Screen,
-            12: CleanUpGameLvl2Screen,
-            13: CleanUpGameLvl3Screen,
-            14: TakePledgeScreen,
-            15: CommitScreen,
-            16: FlipScreen,
-        }}
+        screens={[
+            iOSScreen,
+            TitleScreen,
+            LetsCleanUpScreen,
+            CatchGameLevelOne,
+            CatchGameLevelTwo,
+            CatchGameLevelThree,
+            RoomScreen,
+            SchoolScreen,
+            GroundScreen,
+            SingAboutItScreen,
+            VideoScreen,
+            GoodForYouScreen,
+            CleanUpGameLvl1Screen,
+            CleanUpGameLvl2Screen,
+            CleanUpGameLvl3Screen,
+            TakePledgeScreen,
+            CommitScreen,
+            FlipScreen,
+        ]}
         menus={{
             quit: QuitScreen,
         }}
