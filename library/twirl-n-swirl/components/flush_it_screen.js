@@ -114,7 +114,7 @@ export default function (props, ref, key) {
                 completeOnStart
                 checkComplete={false}
                 assets={[
-                    <skoash.Audio data-ref="correct" type="sfx" src="media/S_6/S_6.1.mp3" />,
+                    <skoash.Audio data-ref="correct" type="sfx" src={`${CMWN.MEDIA.EFFECT}s-6-1.mp3`} />,
                 ]}
                 correctRespond={correctRespond}
                 dropzones={[
@@ -343,26 +343,26 @@ export default function (props, ref, key) {
                 <skoash.Audio
                     ref="flush"
                     type="sfx"
-                    src="media/S_6/S_6.2.mp3"
+                    src={`${CMWN.MEDIA.EFFECT}s-6-2.mp3`}
                     onComplete={openReveal}
                     playTarget="flush"
                     completeTarget="flush"
                 />
-                <skoash.Audio ref="intro" type="voiceOver" src="media/S_6/VO_6.1.mp3" />
-                <skoash.Audio ref={answers[0]} type="voiceOver" src="media/S_6/VO_6.3.mp3" />
-                <skoash.Audio ref={answers[1]} type="voiceOver" src="media/S_6/VO_6.4.mp3" />
-                <skoash.Audio ref={answers[2]} type="voiceOver" src="media/S_6/VO_6.5.mp3" />
-                <skoash.Audio ref={answers[3]} type="voiceOver" src="media/S_6/VO_6.6.mp3" />
-                <skoash.Audio ref={answers[4]} type="voiceOver" src="media/S_6/VO_6.7.mp3" />
-                <skoash.Audio ref={answers[5]} type="voiceOver" src="media/S_6/VO_6.8.mp3" />
-                <skoash.Audio ref={answers[6]} type="voiceOver" src="media/S_6/VO_6.9.mp3" />
-                <skoash.Audio ref={answers[7]} type="voiceOver" src="media/S_6/VO_6.10.mp3" />
-                <skoash.Audio ref={answers[8]} type="voiceOver" src="media/S_6/VO_6.11.mp3" />
-                <skoash.Audio ref={answers[9]} type="voiceOver" src="media/S_6/VO_6.12.mp3" />
-                <skoash.Audio ref={answers[10]} type="voiceOver" src="media/S_6/VO_6.13.mp3" />
-                <skoash.Audio ref={answers[11]} type="voiceOver" src="media/S_6/VO_6.14.mp3" />
-                <skoash.Audio ref={answers[12]} type="voiceOver" src="media/S_6/VO_6.15.mp3" />
-                <skoash.Audio ref={answers[13]} type="voiceOver" src="media/S_6/VO_6.16.mp3" />
+                <skoash.Audio ref="intro" type="voiceOver" src={`${CMWN.MEDIA.VO}vo-6-1.mp3`} />
+                <skoash.Audio ref={answers[0]} type="voiceOver" src={`${CMWN.MEDIA.VO}vo-6-3.mp3`} />
+                <skoash.Audio ref={answers[1]} type="voiceOver" src={`${CMWN.MEDIA.VO}vo-6-4.mp3`} />
+                <skoash.Audio ref={answers[2]} type="voiceOver" src={`${CMWN.MEDIA.VO}vo-6-5.mp3`} />
+                <skoash.Audio ref={answers[3]} type="voiceOver" src={`${CMWN.MEDIA.VO}vo-6-6.mp3`} />
+                <skoash.Audio ref={answers[4]} type="voiceOver" src={`${CMWN.MEDIA.VO}vo-6-7.mp3`} />
+                <skoash.Audio ref={answers[5]} type="voiceOver" src={`${CMWN.MEDIA.VO}vo-6-8.mp3`} />
+                <skoash.Audio ref={answers[6]} type="voiceOver" src={`${CMWN.MEDIA.VO}vo-6-9.mp3`} />
+                <skoash.Audio ref={answers[7]} type="voiceOver" src={`${CMWN.MEDIA.VO}vo-6-10.mp3`} />
+                <skoash.Audio ref={answers[8]} type="voiceOver" src={`${CMWN.MEDIA.VO}vo-6-11.mp3`} />
+                <skoash.Audio ref={answers[9]} type="voiceOver" src={`${CMWN.MEDIA.VO}vo-6-12.mp3`} />
+                <skoash.Audio ref={answers[10]} type="voiceOver" src={`${CMWN.MEDIA.VO}vo-6-13.mp3`} />
+                <skoash.Audio ref={answers[11]} type="voiceOver" src={`${CMWN.MEDIA.VO}vo-6-14.mp3`} />
+                <skoash.Audio ref={answers[12]} type="voiceOver" src={`${CMWN.MEDIA.VO}vo-6-15.mp3`} />
+                <skoash.Audio ref={answers[13]} type="voiceOver" src={`${CMWN.MEDIA.VO}vo-6-16.mp3`} />
             </MediaCollection>
         </skoash.Screen>
     );

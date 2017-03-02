@@ -12,7 +12,7 @@ export default function (props, ref, key) {
             hidePrev
         >
             <skoash.Component className="center animated">
-                <skoash.Image className="logo animated" src="media/images/title/logo.png" />
+                <skoash.Image className="logo animated" src={`${CMWN.MEDIA.IMAGE}logo.png`} />
             </skoash.Component>
         </skoash.Screen>
     );

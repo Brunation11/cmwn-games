@@ -6,7 +6,7 @@ export default function (props, ref, key) {
             key={key}
             id="info-plant"
         >
-            <skoash.Audio ref="vo" type="voiceOver" src="media/S_4/VO_4.1.mp3" />
+            <skoash.Audio ref="vo" type="voiceOver" src={`${CMWN.MEDIA.VO}vo-4-1.mp3`} />
             <skoash.Component>
                 <h2>
                     Whatever you flush goes down into the pipe that<br />

@@ -6,7 +6,7 @@ export default function (props, ref, key) {
             key={key}
             id="info-catch-game"
         >
-            <skoash.Audio type="voiceOver" src="media/audio/CatchtoWin.mp3" />
+            <skoash.Audio type="voiceOver" src={`${CMWN.MEDIA.VO}catchto-win.mp3`} />
 
             <skoash.Component data-ref="intro" className="frame">
                 <span>

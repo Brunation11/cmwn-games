@@ -42,27 +42,27 @@ body > div > div {
         height: 100%;
 
         &.bkg-1 {
-            background: url('../media/images/background-title.png'); //blue tile
+            background: url('#{$image}background-title.png'); //blue tile
         }
 
         &.bkg-2 {
-            background-image: url('../media/images/background.png'); // white tile
+            background-image: url('#{$image}background.png'); // white tile
         }
 
         &.bkg-3 {
-            background-image: url('../media/images/background-plant.png');// plant
+            background-image: url('#{$image}background-plant.png');// plant
         }
 
         &.bkg-4 {
-            background-image: url('../media/images/background-released.jpg');// released
+            background-image: url('#{$image}background-released.jpg');// released
         }
 
         &.bkg-5 {
-            background-image: url('../media/images/background-catcher.png');// catch game
+            background-image: url('#{$image}background-catcher.png');// catch game
         }
 
         &.bkg-6 {
-            background-image: url('../media/images/background-flip.png');//flip
+            background-image: url('#{$image}background-flip.png');//flip
         }
 
     }
@@ -90,7 +90,7 @@ button {
     margin: 0;
     outline: none;
     border: 0;
-    background: url('../media/images/buttons.png');
+    background: url('#{$sprite}buttons.png');
     background-color: transparent;
     background-size: 1500px 427px;
     cursor: pointer;
@@ -361,7 +361,7 @@ p {
 }
 
 .video {
-    background: url('../media/_Frames/FR_2.png') center center no-repeat;
+    background: url('#{$frame}fr-2.png') center center no-repeat;
     background-size: 100% 100%;
 
     video {
@@ -375,7 +375,7 @@ p {
         opacity: 0;
         margin-left: 20%;
 
-        background-image: url('../media/images/title/background.png');
+        background-image: url('#{$image}toilet-background.png');
         background-repeat: no-repeat;
         background-size: 55%;
 
@@ -438,7 +438,7 @@ p {
         position: absolute;
         top: 6%;
         right: 10%;
-        background-image: url('../media/images/frame.png');
+        background-image: url('#{$image}frame.png');
         background-repeat: no-repeat;
         background-size: contain;
         width: 40%;
@@ -458,7 +458,7 @@ p {
         right: 18%;
         bottom: 7%;
         z-index: 1;
-        background: url('../media/S_3/img_3.2.png');
+        background: url('#{$sprite}img-3-2.png');
         background-position: 1px -3px;
         background-size: cover;
         width: 25%;
@@ -504,7 +504,7 @@ p {
         position: absolute;
         top: 6%;
         right: 7%;
-        background-image: url('../media/images/frame.png');
+        background-image: url('#{$image}frame.png');
         background-repeat: no-repeat;
         background-size: contain;
         width: 50%;

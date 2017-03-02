@@ -5,7 +5,7 @@
         * {
             position: absolute;
             animation-iteration-count: infinite;
-            background: url('../media/images/sprite_fish.png');
+            background: url('#{$sprite}sprite-fish.png');
             background-size: 750px 282px;
             width: 20%;
             height: 21%;
@@ -76,7 +76,7 @@
         .pipe {
             position: absolute;
             top: 0;
-            background: url('../media/images/pipe.png');
+            background: url('#{$image}pipe.png');
             background-repeat: no-repeat;
             background-size: contain;
             width: 30%;
@@ -111,7 +111,7 @@
             position: absolute;
             top: -80%;
             left: 0;
-            background: url('../media/images/sprites-level.png');
+            background: url('#{$sprite}sprites-level.png');
             background-size: 1184px;
             width: 100%;
             height: 100%;
@@ -190,7 +190,7 @@
         animation-name: catchable;
         animation-timing-function: linear;
         opacity: 1;
-        background: url('../media/S_6/sprite_6.2.png');
+        background: url('#{$sprite}sprite-6-2.png');
         background-size: 275px 960px;
         width: 15%;
         height: 50%;
@@ -208,27 +208,27 @@
         }
 
         &.turtle {
-            background-image: url('../media/images/turtle.png');
+            background-image: url('#{$image}turtle.png');
             background-repeat: no-repeat;
             background-position: 0 15px;
             background-size: contain;
         }
 
         &.frog {
-            background-image: url('../media/images/frog.png');
+            background-image: url('#{$image}frog.png');
             background-repeat: no-repeat;
             background-position: 0 15px;
             background-size: contain;
         }
 
         &.fish {
-            background-image: url('../media/images/sprite_fish.png');
+            background-image: url('#{$sprite}sprite-fish.png');
             background-position: 380px 15px;
             background-size: 750px 282px;
         }
 
         &.plant {
-            background-image: url('../media/images/plants.png');
+            background-image: url('#{$image}plants.png');
             background-repeat: no-repeat;
             background-position: -81px 0;
             background-size: 750px 129px;
@@ -354,7 +354,7 @@
                 top: -50%;
                 left: -150%;
 
-                background: url('../media/images/basket.png');
+                background: url('#{$sprite}basket.png');
                 background-position: center -45px;
                 background-size: 130%;
 
@@ -381,7 +381,7 @@
             opacity: 0;
             margin-top: 0;
 
-            background: url('../media/images/frame.png');
+            background: url('#{$image}frame.png');
             background-repeat: no-repeat;
             background-position: center;
             background-size: contain;
@@ -416,7 +416,7 @@
                     top: -10%;
                     left: -10%;
                     transform: rotate(11deg);
-                    background: url('../media/images/sprite_fish.png');
+                    background: url('#{$sprite}sprite-fish.png');
                     background-position: 346px -3px;
                     width: 120%;
                     height: 120%;
@@ -447,7 +447,7 @@
                 left: 50%;
                 transform: translateX(-50%);
 
-                background: url('../media/images/sprite_main_nav.png');
+                background: url('#{$sprite}sprite-main-nav.png');
                 background-position: 684px 149px;
                 background-size: 1500px 427px;
 
@@ -472,7 +472,7 @@
                 left: 50%;
                 transform: translateX(-50%);
 
-                background: url('../media/images/sprites-levelup.png');
+                background: url('#{$sprite}sprites-levelup.png');
                 background-position: 8px -26px;
                 background-size: 2250px 292px;
 
@@ -498,7 +498,7 @@
                 left: 50%;
                 transform: translateX(-50%);
 
-                background: url('../media/images/sprites-levelup.png');
+                background: url('#{$sprite}sprites-levelup.png');
                 background-position: 1790px -26px;
                 background-size: 2250px 292px;
 
@@ -524,7 +524,7 @@
                 left: 50%;
                 transform: translateX(-50%);
 
-                background: url('../media/images/sprites-levelup.png');
+                background: url('#{$sprite}sprites-levelup.png');
                 background-position: 1340px -26px;
                 background-size: 2250px 292px;
 
@@ -550,7 +550,7 @@
                 left: 50%;
                 transform: translateX(-50%);
 
-                background: url('../media/images/sprites-levelup.png');
+                background: url('#{$sprite}sprites-levelup.png');
                 background-position: 890px -26px;
                 background-size: 2250px 292px;
 
@@ -576,7 +576,7 @@
                 left: 50%;
                 transform: translateX(-50%);
 
-                background: url('../media/images/sprites-levelup.png');
+                background: url('#{$sprite}sprites-levelup.png');
                 background-position: 445px -26px;
                 background-size: 2250px 292px;
 
@@ -612,7 +612,7 @@
                 left: 50%;
                 transform: translateX(-50%);
 
-                background: url('../media/images/sprite_main_nav.png');
+                background: url('#{$sprite}sprite-main-nav.png');
                 background-position: 310px 368px;
                 background-size: 1500px 427px;
 
