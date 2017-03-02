@@ -13,7 +13,7 @@ class QuitScreen extends skoash.Screen {
     render() {
         return (
             <div id={this.props.id} className={this.getClassNames()}>
-                <skoash.Audio ref="vo" type="voiceOver" src="media/S_Quit/VO_QuitScreen.mp3" />
+                <skoash.Audio ref="vo" type="voiceOver" src={`${CMWN.MEDIA.VO}vo-quit-screen.mp3`} />
                 <div className="center">
                     <div className="frame">
                         <h2>Are you sure you<br/>want to quit?</h2>

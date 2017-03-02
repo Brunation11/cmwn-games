@@ -7,12 +7,12 @@ export default function (props, ref, key) {
             id="look-out"
         >
             <skoash.MediaSequence>
-                <skoash.Audio type="sfx" src="media/S_4/S_4.1.mp3" />
-                <skoash.Audio type="voiceOver" src="media/S_4/VO_4.1.mp3" />
+                <skoash.Audio type="sfx" src={`${CMWN.MEDIA.EFFECT}s-4-1.mp3`} />
+                <skoash.Audio type="voiceOver" src={`${CMWN.MEDIA.VO}vo-4-1.mp3`} />
             </skoash.MediaSequence>
 
             <skoash.Component className="frame">
-                <skoash.Image className="background" src="media/_Frames/FR_8.png" />
+                <skoash.Image className="background" src={`${CMWN.MEDIA.FRAME}fr-8.png`} />
                 <p>
                     We meerkats really<br/>
                     look out for each other.<br/>

@@ -1,7 +1,9 @@
+@import '../../variables';
+
 #video,
 #video-2 {
     .frame {
-        background-image: url('../media/_Frames/FR_9.png');
+        background-image: url('#{$frame}fr-9.png');
         background-size: 100% 100%;
 
         video {
