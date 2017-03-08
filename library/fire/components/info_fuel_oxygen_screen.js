@@ -1,25 +1,55 @@
 export default function (props, ref, key) {
-    const ANIMATE = [
-        'WOOD',
-        'PLUS',
-        'O2',
-        'EQUAL',
-        'FIRE',
+    const STATES = [
+        {
+            audio: 'wood',
+            interval: 1000,
+        },
+        {
+            audio: 'plus',
+            interval: 1000,
+        },
+        {
+            audio: 'o2',
+            interval: 1000,
+        },
+        {
+            audio: 'equal',
+            interval: 1000,
+        },
+        {
+            audio: 'fire',
+        },
     ];
 
-    var animate = function () {
-        var index = _.get(props, 'data.screen-3.index', 0);
-        var open = _.get(props, 'data.screen-3.open', '');
-        open += ` ${ANIMATE[index]}`;
+    var play = function (open, i) {
+        var state = STATES[i];
+        var audio = state.audio;
+
+        if (audio === 'wood') audio += ' vo';
+
+        open += ' ' + _.toUpper(state.audio);
 
         this.updateScreenData({
             key: 'screen-3',
             data: {
-                index: index + 1,
                 open,
-            },
+                play: audio,
+            }
         });
+
+        if (state.interval) {
+            setTimeout(() => {
+                play.call(this, open, ++i);
+            }, state.interval);
+        }
     };
+
+    var init = function () {
+        setTimeout(() => {
+            play.call(this, '', 0);
+        }, 100);
+    };
+
 
     return (
         <skoash.Screen
@@ -27,44 +57,43 @@ export default function (props, ref, key) {
             ref={ref}
             key={key}
             id="info-fuel-oxygen"
+            onOpen={init}
             className={_.get(props, 'data.screen-3.open', null)}
         >
-            <skoash.MediaSequence ref="audio-sequence">
+            <skoash.MediaCollection
+                play={_.get(props, 'data.screen-3.play', null)}
+            >
                     <skoash.Audio
-                        type="voiceOver"
-                        src="media/S_3/vo_FuelOxygenMakeItBurn.mp3"
-                        onComplete={animate}
-                    />
-                    <skoash.Audio
-                        ref="wood"
+                        ref={STATES[0].audio}
                         type="sfx"
                         src="media/S_3/S_3.2.mp3"
-                        onComplete={animate}
                     />
                     <skoash.Audio
-                        ref="plus"
+                        ref={STATES[1].audio}
                         type="sfx"
                         src="media/S_3/S_3.4.mp3"
-                        onComplete={animate}
                     />
                     <skoash.Audio
-                        ref="o2"
+                        ref={STATES[2].audio}
                         type="sfx"
                         src="media/S_3/S_3.2.mp3"
-                        onComplete={animate}
                     />
                     <skoash.Audio
-                        ref="equal"
+                        ref={STATES[3].audio}
                         type="sfx"
                         src="media/S_3/S_3.4.mp3"
-                        onComplete={animate}
                     />
                     <skoash.Audio
-                        ref="fire"
+                        ref={STATES[4].audio}
                         type="sfx"
                         src="media/S_3/S_3.3.mp3"
                     />
-            </skoash.MediaSequence>
+                    <skoash.Audio
+                        ref="vo"
+                        type="voiceOver"
+                        src="media/S_3/vo_FuelOxygenMakeItBurn.mp3"
+                    />
+            </skoash.MediaCollection>
             <skoash.Image className="animated wood" src="media/S_3/img_3.1.png" />
             <skoash.Image className="animated plus" src="media/S_3/img_3.2.png" />
             <skoash.Image className="animated o2" src="media/S_3/img_3.3.png" />
