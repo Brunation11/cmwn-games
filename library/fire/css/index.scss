@@ -25,7 +25,7 @@ html {
 body > div > div {
     position: relative;
     margin: auto;
-    background-image: url('../media/_BKG/BKG_1.png');
+    background-image: url('#{$image}bkg-1.png');
     background-size: cover;
     width: 960px;
     height: 540px;
@@ -44,11 +44,11 @@ body > div > div {
         height: 100%;
 
         &.BKG-2 {
-            background-image: url('../media/_BKG/BKG_2.png');
+            background-image: url('#{$image}bkg-2.png');
         }
 
         &.BKG-3 {
-            background-image: url('../media/_BKG/BKG_3.png');
+            background-image: url('#{$image}bkg-3.png');
         }
     }
 }
@@ -70,7 +70,7 @@ button {
     border: 0;
 
     background-color: transparent;
-    background-image: url('../media/_Buttons/BU_1.png');
+    background-image: url('#{$sprite}bu-1.png');
     background-position: left top;
     background-size: auto 500px;
 
@@ -549,7 +549,7 @@ img.background {
         top: 250px;
         left: 410px;
 
-        background-image: url('../media/S_5/img_5.3.png');
+        background-image: url('#{$sprite}img-5-3.png');
         background-position: -30px -140px;
         background-size: 400px auto;
 
@@ -598,7 +598,7 @@ img.background {
             }
 
             &:nth-of-type(1) {
-                background-image: url('../media/S_6/img_6.2.png');
+                background-image: url('#{$sprite}img-6-2.png');
                 background-position: left 12px;
                 width: 175px;
 
@@ -608,7 +608,7 @@ img.background {
             }
 
             &:nth-of-type(2) {
-                background-image: url('../media/S_6/img_6.3.png');
+                background-image: url('#{$sprite}img-6-3.png');
                 background-position: left 23px;
                 width: 171px;
 
@@ -618,13 +618,13 @@ img.background {
             }
 
             &:nth-of-type(3) {
-                background-image: url('../media/S_6/img_6.4.png');
+                background-image: url('#{$sprite}img-6-4.png');
                 width: 200px;
             }
 
             &:nth-of-type(4) {
                 margin-left: -30px;
-                background-image: url('../media/S_6/img_6.5.png');
+                background-image: url('#{$sprite}img-6-5.png');
                 width: 252px;
             }
         }
@@ -748,7 +748,7 @@ img.background {
         display: inline-block;
         position: absolute;
         z-index: 2;
-        background-image: url('../media/S_8/img_8.2.png');
+        background-image: url('#{$frame}img-8-2.png');
         background-size: 100% 100%;
         padding: 10px;
         width: 240px;
@@ -765,7 +765,7 @@ img.background {
             $img: $i + 2;
 
             .draggable:nth-of-type(#{$i}) {
-                background-image: url('../media/S_8/img_8.#{$img}.png');
+                background-image: url('#{$image}img-8-#{$img}.png');
             }
         }
     }
@@ -961,7 +961,7 @@ img.background {
     li {
         display: inline-block;
         margin: 25px;
-        background-image: url('../media/S_11/sprite_11.2.png');
+        background-image: url('#{$sprite}sprite-11-2.png');
         background-repeat: no-repeat;
         background-size: 1200px;
         cursor: pointer;
@@ -1053,7 +1053,7 @@ img.background {
     .draggables-right {
         display: inline-flex;
         position: relative;
-        background-image: url('../media/_Frames/FR_4.png');
+        background-image: url('#{$frame}fr-4.png');
         background-size: 100% 100%;
         padding: 10px;
         width: 200px;
@@ -1066,7 +1066,7 @@ img.background {
         .draggable {
             z-index: 1;
             margin-bottom: 10px;
-            background-image: url('../media/S_12/sprite_12.3.png');
+            background-image: url('#{$sprite}sprite-12-3.png');
             background-repeat: no-repeat;
             background-size: 500px;
         }
@@ -1104,7 +1104,7 @@ img.background {
 
         > div {
             position: relative;
-            background-image: url('../media/S_12/img_12.14.png');
+            background-image: url('#{$image}img-12-14.png');
             background-size: 100% 100%;
             width: 240px;
             height: 440px;
@@ -1148,7 +1148,7 @@ img.background {
 
         .dropzones {
             div > div {
-                background-image: url('../media/S_12/sprite_12.5.png');
+                background-image: url('#{$sprite}sprite-12-5.png');
 
                 &.bun {
                     opacity: 1;
@@ -1186,7 +1186,7 @@ img.background {
 
         .dropzones {
             div > div {
-                background-image: url('../media/S_12/sprite_12.6.png');
+                background-image: url('#{$sprite}sprite-12-6.png');
             }
 
             @for $i from 1 through 13 {
@@ -1210,7 +1210,7 @@ img.background {
         position: absolute;
         top: 80px;
         left: 100px;
-        background-image: url('../media/_Frames/FR_5.png');
+        background-image: url('#{$frame}fr-5.png');
         background-size: 100% 100%;
         width: 600px;
         height: 320px;
@@ -1238,7 +1238,7 @@ img.background {
             &::before {
                 display: block;
                 margin: 10px auto;
-                background-image: url('../media/S_12/sprite_12.4.png');
+                background-image: url('#{$sprite}sprite-12-4.png');
                 background-size: 1320px;
                 height: 50px;
                 content: '';
@@ -1329,7 +1329,7 @@ img.background {
 #quit {
 
     .frame {
-        background-image: url('../media/_Frames/FR_6.png');
+        background-image: url('#{$frame}fr-6.png');
         background-size: 100% 100%;
         padding: 30px;
         width: 960px;

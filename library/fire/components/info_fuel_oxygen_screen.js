@@ -66,40 +66,40 @@ export default function (props, ref, key) {
                     <skoash.Audio
                         ref={STATES[0].audio}
                         type="sfx"
-                        src="media/S_3/S_3.2.mp3"
+                        src={`${CMWN.MEDIA.EFFECT}s-3-2.mp3`}
                     />
                     <skoash.Audio
                         ref={STATES[1].audio}
                         type="sfx"
-                        src="media/S_3/S_3.4.mp3"
+                        src={`${CMWN.MEDIA.EFFECT}s-3-4.mp3`}
                     />
                     <skoash.Audio
                         ref={STATES[2].audio}
                         type="sfx"
-                        src="media/S_3/S_3.2.mp3"
+                        src={`${CMWN.MEDIA.EFFECT}s-3-2.mp3`}
                     />
                     <skoash.Audio
                         ref={STATES[3].audio}
                         type="sfx"
-                        src="media/S_3/S_3.4.mp3"
+                        src={`${CMWN.MEDIA.EFFECT}s-3-4.mp3`}
                     />
                     <skoash.Audio
                         ref={STATES[4].audio}
                         type="sfx"
-                        src="media/S_3/S_3.3.mp3"
+                        src={`${CMWN.MEDIA.EFFECT}s-3-3.mp3`}
                     />
                     <skoash.Audio
                         ref="vo"
                         type="voiceOver"
-                        src="media/S_3/vo_FuelOxygenMakeItBurn.mp3"
+                        src={`${CMWN.MEDIA.VO}vo-fuel-oxygen-make-it-burn.mp3`}
                     />
             </skoash.MediaCollection>
-            <skoash.Image className="animated wood" src="media/S_3/img_3.1.png" />
-            <skoash.Image className="animated plus" src="media/S_3/img_3.2.png" />
-            <skoash.Image className="animated o2" src="media/S_3/img_3.3.png" />
-            <skoash.Image className="animated equal" src="media/S_3/img_3.4.png" />
-            <skoash.Image className="animated fire" src="media/S_3/img_3.5.png" />
-            <skoash.Image className="animated words" src="media/S_3/img_3.6.png" />
+            <skoash.Image className="animated wood" src={`${CMWN.MEDIA.IMAGE}img-3-1.png`} />
+            <skoash.Image className="animated plus" src={`${CMWN.MEDIA.IMAGE}img-3-2.png`} />
+            <skoash.Image className="animated o2" src={`${CMWN.MEDIA.IMAGE}img-3-3.png`} />
+            <skoash.Image className="animated equal" src={`${CMWN.MEDIA.IMAGE}img-3-4.png`} />
+            <skoash.Image className="animated fire" src={`${CMWN.MEDIA.IMAGE}img-3-5.png`} />
+            <skoash.Image className="animated words" src={`${CMWN.MEDIA.IMAGE}img-3-6.png`} />
         </skoash.Screen>
     );
 }

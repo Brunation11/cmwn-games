@@ -34,11 +34,11 @@ export default function (props, ref, key) {
             completeDelay={2000}
             completeOnStart
         >
-            <CursorCanvas src="media/_Smoke/particle.jpg" particle={particleGenerator} />
+            <CursorCanvas src={`${CMWN.MEDIA.IMAGE}particle.jpg`} particle={particleGenerator} />
             <skoash.Component className="title">
-                <skoash.Image className="animated" src="media/S_1/img_1.1.png" />
-                <skoash.Image className="animated" src="media/S_1/img_1.2.png" />
-                <skoash.Image className="animated" src="media/S_1/img_1.3.png" />
+                <skoash.Image className="animated" src={`${CMWN.MEDIA.IMAGE}img-1-1.png`} />
+                <skoash.Image className="animated" src={`${CMWN.MEDIA.IMAGE}img-1-2.png`} />
+                <skoash.Image className="animated" src={`${CMWN.MEDIA.IMAGE}img-1-3.png`} />
             </skoash.Component>
         </skoash.Screen>
     );

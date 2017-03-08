@@ -83,8 +83,8 @@ export default function (props, ref, key) {
             onComponentWillReceiveProps={nextScreen}
             silentComplete
         >
-            <skoash.Audio type="voiceOver" src="media/S_11/vo_ChooseYourFirefighter.mp3" />
-            <skoash.Image className="animated" src="media/S_11/img_11.1.png" />
+            <skoash.Audio type="voiceOver" src={`${CMWN.MEDIA.VO}vo-choose-your-firefighter.mp3`} />
+            <skoash.Image className="animated" src={`${CMWN.MEDIA.IMAGE}img-11-1.png`} />
             <skoash.Component className="center female-male">
                 <skoash.Component className="group">
                     <skoash.Selectable

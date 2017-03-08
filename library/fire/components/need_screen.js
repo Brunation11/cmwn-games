@@ -85,87 +85,87 @@ export default function (props, ref, key) {
             id="need"
         >
             <skoash.MediaSequence ref="media-sequence">
-                <skoash.Audio type="voiceOver" src="media/S_12/vo_ImagineYoureAFirefighter.mp3" />
-                <skoash.Audio type="voiceOver" src="media/S_12/vo_DragAndDropToOutfit.mp3" />
+                <skoash.Audio type="voiceOver" src={`${CMWN.MEDIA.VO}vo-imagine-yourea-firefighter.mp3`} />
+                <skoash.Audio type="voiceOver" src={`${CMWN.MEDIA.VO}vo-drag-and-drop-to-outfit.mp3`} />
             </skoash.MediaSequence>
             <skoash.MediaCollection
-				ref="media-vos"
+                ref="media-vos"
                 play={_.get(props, 'data.dropzone.message', null)}
                 onComplete={mediaComplete}
             >
                 <skoash.Audio
                     type="voiceOver"
                     data-ref="pants"
-                    src="media/S_12/vo_TurnoutPants.mp3"
+                    src={`${CMWN.MEDIA.VO}vo-turnout-pants.mp3`}
                 />,
                 <skoash.Audio
                     type="voiceOver"
                     data-ref="jacket"
-                    src="media/S_12/vo_TurnoutJacket.mp3"
+                    src={`${CMWN.MEDIA.VO}vo-turnout-jacket.mp3`}
                 />,
                 <skoash.Audio
                     type="voiceOver"
                     data-ref="hood"
-                    src="media/S_12/vo_CarbonFlashHood.mp3"
+                    src={`${CMWN.MEDIA.VO}vo-carbon-flash-hood.mp3`}
                 />,
                 <skoash.Audio
                     type="voiceOver"
                     data-ref="boots"
-                    src="media/S_12/vo_ChemicalProofBoots.mp3"
+                    src={`${CMWN.MEDIA.VO}vo-chemical-proof-boots.mp3`}
                 />,
                 <skoash.Audio
                     type="voiceOver"
                     data-ref="mask"
-                    src="media/S_12/vo_HelmetVisor.mp3"
+                    src={`${CMWN.MEDIA.VO}vo-helmet-visor.mp3`}
                 />,
                 <skoash.Audio
                     type="voiceOver"
                     data-ref="gloves"
-                    src="media/S_12/vo_SafetyGloves.mp3"
+                    src={`${CMWN.MEDIA.VO}vo-safety-gloves.mp3`}
                 />,
                 <skoash.Audio
                     type="voiceOver"
                     data-ref="tank"
-                    src="media/S_12/vo_TankOfOxygen.mp3"
+                    src={`${CMWN.MEDIA.VO}vo-tank-of-oxygen.mp3`}
                 />,
                 <skoash.Audio
                     type="voiceOver"
                     data-ref="axe"
-                    src="media/S_12/vo_Axe.mp3"
+                    src={`${CMWN.MEDIA.VO}vo-axe.mp3`}
                 />,
                 <skoash.Audio
                     type="voiceOver"
                     data-ref="walkie"
-                    src="media/S_12/vo_HandHeldRadio.mp3"
+                    src={`${CMWN.MEDIA.VO}vo-hand-held-radio.mp3`}
                 />,
                 <skoash.Audio
                     type="voiceOver"
                     data-ref="light"
-                    src="media/S_12/vo_Flashlight.mp3"
+                    src={`${CMWN.MEDIA.VO}vo-flashlight.mp3`}
                 />,
                 <skoash.Audio
                     type="voiceOver"
                     data-ref="camera"
-                    src="media/S_12/vo_ThermalImaging.mp3"
+                    src={`${CMWN.MEDIA.VO}vo-thermal-imaging.mp3`}
                 />,
                 <skoash.Audio
                     type="voiceOver"
                     data-ref="punch"
-                    src="media/S_12/vo_WindowPunch.mp3"
+                    src={`${CMWN.MEDIA.VO}vo-window-punch.mp3`}
                 />,
             </skoash.MediaCollection>
             <skoash.MediaCollection
-				ref="media-sfx"
+                ref="media-sfx"
                 play={_.get(props, 'data.media.complete', null)}
             >
-                <skoash.Audio data-ref="complete" type="sfx" src="media/S_12/S_12.3.mp3" />,
+                <skoash.Audio data-ref="complete" type="sfx" src={`${CMWN.MEDIA.EFFECT}s-12-3.mp3`} />,
             </skoash.MediaCollection>
             <skoash.Component className="center">
                 <skoash.Component className="frame">
-                    <skoash.Image className="animated" src="media/S_12/img_12.1.png" />
+                    <skoash.Image className="animated" src={`${CMWN.MEDIA.IMAGE}img-12-1.png`} />
                     <skoash.Repeater
                         className="draggables-left"
-						ref="draggables-left"
+                        ref="draggables-left"
                         amount={6}
                         item={<Draggable returnOnIncorrect />}
                         props={ANSWERS.slice(0, 6).map((value) => { return {message: value}; })}
@@ -184,13 +184,21 @@ export default function (props, ref, key) {
                             />
                         ]}
                         assets={[
-                            <skoash.Audio type="sfx" data-ref="correct" src="media/S_12/S_12.2.mp3" />,
-                            <skoash.Audio type="sfx" data-ref="drag" src="media/S_12/S_12.1.mp3" />,
+                            <skoash.Audio
+                                type="sfx"
+                                data-ref="correct"
+                                src={`${CMWN.MEDIA.EFFECT}s-12-2.mp3`}
+                            />,
+                            <skoash.Audio
+                                type="sfx"
+                                data-ref="drag"
+                                src={`${CMWN.MEDIA.EFFECT}s-12-1.mp3`}
+                            />,
                         ]}
                     />
                     <skoash.Repeater
                         className="draggables-right"
-						ref="draggables-right"
+                        ref="draggables-right"
                         amount={6}
                         item={<Draggable returnOnIncorrect />}
                         props={ANSWERS.slice(6).map((value) => { return {message: value}; })}
