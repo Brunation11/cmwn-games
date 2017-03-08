@@ -68,27 +68,27 @@ body > div > div {
 
     .background.default {
         opacity: 1;
-        background-image: url('../media/_images/_BKG/BKG_1.png');
+        background-image: url('#{$image}bkg-1.png');
     }
 
     .background.bkg_2 {
-        background-image: url('../media/_images/_BKG/BKG_2.png');
+        background-image: url('#{$image}bkg-2.png');
     }
 
     .background.bkg_3 {
-        background-image: url('../media/_images/_BKG/BKG_3.png');
+        background-image: url('#{$image}bkg-3.png');
     }
 
     .background.bkg_4 {
-        background-image: url('../media/_images/_BKG/BKG_4.png');
+        background-image: url('#{$image}bkg-4.png');
     }
 
     .background.bkg_5 {
-        background-image: url('../media/_images/_BKG/BKG_5.png');
+        background-image: url('#{$image}bkg-5.png');
     }
 
     .background.bkg_6 {
-        background-image: url('../media/_images/_BKG/BKG_6.png');
+        background-image: url('#{$image}bkg-6.png');
     }
 
     &.SCREEN-2:not(.MENU-quit) > .background.bkg_2,
@@ -145,7 +145,7 @@ button {
     border: 0;
 
     background-color: transparent;
-    background-image: url('../media/_images/_Buttons/BU_1.png');
+    background-image: url('#{$sprite}bu-1.png');
     background-size: 3750px;
 
     cursor: pointer;
@@ -348,7 +348,7 @@ img.inline {
         height: 540px;
 
         div {
-            background-image: url('../media/_images/_Title/img_1.1.png');
+            background-image: url('#{$sprite}img-1-1.png');
             background-size: 3000px;
         }
     }
@@ -403,7 +403,7 @@ img.inline {
             transition: opacity 1s, transform 1s;
             opacity: 1;
             margin-right: 5px;
-            background-image: url('../media/_images/_Buttons/BU_1.png');
+            background-image: url('#{$sprite}bu-1.png');
             background-position: 0 0;
             width: 300px;
         }
@@ -413,7 +413,7 @@ img.inline {
         top: 330px;
         left: 330px;
         opacity: 1;
-        background-image: url('../media/_images/_Buttons/BU_1.png');
+        background-image: url('#{$sprite}bu-1.png');
         background-position: 0 0;
         width: 300px;
     }
@@ -474,7 +474,7 @@ img.inline {
         top: 0;
         left: 0;
         z-index: -1;
-        background-image: url('../media/_images/S_RecyclingArts/img_4.1.png');
+        background-image: url('#{$sprite}img-4-1.png');
         background-size: 1200px;
         width: 480px;
         height: 540px;
@@ -491,7 +491,7 @@ img.inline {
     .recycle {
         display: inline-block;
         margin: -5px auto -15px;
-        background-image: url('../media/_images/S_RecyclingArts/img_4.1.png');
+        background-image: url('#{$sprite}img-4-1.png');
         background-position: 600px 0;
         background-size: 1200px;
         width: 600px;
@@ -581,7 +581,7 @@ img.inline {
     .question {
         margin-top: 40px;
         margin-left: 6%;
-        background-image: url('../media/_images/S_WhatFaucet/img_7.1.png');
+        background-image: url('#{$sprite}img-7-1.png');
         background-size: 1700px;
         width: 820px;
         height: 110px;
@@ -608,7 +608,7 @@ img.inline {
         li {
             position: absolute;
             opacity: 0;
-            background-image: url('../media/_images/_Buttons/BU_1.png');
+            background-image: url('#{$sprite}bu-1.png');
             background-repeat: no-repeat;
             background-position: -1500px 0;
             background-size: 3750px;
@@ -637,7 +637,7 @@ img.inline {
     }
 
     .SELECTED::after {
-        background-image: url('../media/_images/S_WhatFaucet/img_7.1.png');
+        background-image: url('#{$sprite}img-7-1.png');
         background-repeat: no-repeat;
         background-position: -900px 1px;
         background-size: 1700px 800px;
@@ -714,7 +714,7 @@ img.inline {
         position: absolute;
         top: 0;
         left: 0;
-        background-image: url('../media/_images/S_Step2/img_8.1.png');
+        background-image: url('#{$sprite}img-8-1.png');
         background-size: 5000px;
         width: 320px;
         height: 130px;
@@ -733,7 +733,7 @@ img.inline {
         div {
             display: inline-block;
             opacity: 0;
-            background-image: url('../media/_images/S_Step2/img_8.1.png');
+            background-image: url('#{$sprite}img-8-1.png');
             background-size: 5000px;
             width: 240px;
             height: 240px;
@@ -805,7 +805,7 @@ img.inline {
     top: auto;
     bottom: 0;
     left: 0;
-    background-image: url('../media/_images/S_Step2/img_8.1.png');
+    background-image: url('#{$sprite}img-8-1.png');
     background-repeat: no-repeat;
     background-position: -4000px 0;
     background-size: 5000px 240%;
@@ -841,7 +841,7 @@ img.inline {
         position: absolute;
         left: 0;
         z-index: -1;
-        background-image: url('../media/_images/S_WhatNeed/img_9.1.png');
+        background-image: url('#{$sprite}img-9-1.png');
         background-size: 1875px;
         width: 400px;
         height: 540px;
@@ -852,7 +852,7 @@ img.inline {
         top: 0;
         right: 0;
         z-index: -1;
-        background-image: url('../media/_images/S_WhatNeed/img_9.1.png');
+        background-image: url('#{$sprite}img-9-1.png');
         background-position: -1250px 0;
         background-size: 1875px;
         padding-left: 70px;
@@ -861,7 +861,7 @@ img.inline {
 
         div {
             margin: 40px auto 25px;
-            background-image: url('../media/_images/S_WhatNeed/img_9.1.png');
+            background-image: url('#{$sprite}img-9-1.png');
             background-position: -640px 0;
             background-size: 1875px;
             width: 535px;
@@ -952,7 +952,7 @@ img.inline {
         position: absolute;
         top: 0;
         left: 0;
-        background-image: url('../media/_images/S_Step3/img_11.1.png');
+        background-image: url('#{$sprite}img-11-1.png');
         background-size: 1950px;
         width: 320px;
         height: 130px;
@@ -960,7 +960,7 @@ img.inline {
 
     .text {
         margin-top: 130px;
-        background-image: url('../media/_images/S_Step3/img_11.1.png');
+        background-image: url('#{$sprite}img-11-1.png');
         background-position: -1000px 0;
         background-size: 3000px 360%;
         padding: 10px;
@@ -978,7 +978,7 @@ img.inline {
     .lids {
         margin-top: -3%;
         margin-left: 17%;
-        background-image: url('../media/_images/S_Step3/img_11.1.png');
+        background-image: url('#{$sprite}img-11-1.png');
         background-position: -1300px 0;
         background-size: 1950px;
         width: 610px;
@@ -999,7 +999,7 @@ img.inline {
         position: absolute;
         top: 0;
         left: 0;
-        background-image: url('../media/_images/S_Step4/img_12.1.png');
+        background-image: url('#{$sprite}img-12-1.png');
         background-size: 1350px;
         width: 320px;
         height: 130px;
@@ -1009,7 +1009,7 @@ img.inline {
         position: absolute;
         top: 160px;
         left: 50px;
-        background-image: url('../media/_images/S_Step4/img_12.1.png');
+        background-image: url('#{$sprite}img-12-1.png');
         background-position: -450px 0;
         background-size: 1350px 190%;
         padding: 20px 0;
@@ -1023,7 +1023,7 @@ img.inline {
         top: 80px;
         right: 50px;
 
-        background-image: url('../media/_images/S_Step4/img_12.1.png');
+        background-image: url('#{$sprite}img-12-1.png');
         background-repeat: no-repeat;
         background-position: -900px 0;
         background-size: 1350px;
@@ -1046,7 +1046,7 @@ img.inline {
         position: absolute;
         top: 0;
         left: 45px;
-        background-image: url('../media/_images/S_Step5/img_13.1.png');
+        background-image: url('#{$sprite}img-13-1.png');
         background-size: 1575px;
         width: 320px;
         height: 130px;
@@ -1056,7 +1056,7 @@ img.inline {
         position: absolute;
         top: 110px;
         left: 50px;
-        background-image: url('../media/_images/S_Step5/img_13.1.png');
+        background-image: url('#{$sprite}img-13-1.png');
         background-position: -525px 0;
         background-size: 1575px 190%;
         padding: 10px 20px;
@@ -1070,7 +1070,7 @@ img.inline {
         position: absolute;
         top: 60px;
         right: 0;
-        background-image: url('../media/_images/S_Step5/img_13.1.png');
+        background-image: url('#{$sprite}img-13-1.png');
         background-position: -1040px 0;
         background-size: 1575px;
         width: 315px;
@@ -1096,7 +1096,7 @@ img.inline {
         position: absolute;
         top: 0;
         left: 45px;
-        background-image: url('../media/_images/S_Step6/img_14.1.png');
+        background-image: url('#{$sprite}img-14-1.png');
         background-size: 1350px;
         width: 320px;
         height: 130px;
@@ -1106,7 +1106,7 @@ img.inline {
         position: absolute;
         top: 130px;
         left: 50px;
-        background-image: url('../media/_images/S_Step6/img_14.1.png');
+        background-image: url('#{$sprite}img-14-1.png');
         background-position: -450px 0;
         background-size: 1350px 140%;
         padding: 10px 20px;
@@ -1119,7 +1119,7 @@ img.inline {
         position: absolute;
         top: 40px;
         right: 60px;
-        background-image: url('../media/_images/S_Step6/img_14.1.png');
+        background-image: url('#{$sprite}img-14-1.png');
         background-repeat: no-repeat;
         background-position: -900px 0;
         background-size: 1350px;
@@ -1140,7 +1140,7 @@ img.inline {
         position: absolute;
         top: 0;
         left: 45px;
-        background-image: url('../media/_images/S_Step7/img_15.1.png');
+        background-image: url('#{$sprite}img-15-1.png');
         background-size: 1800px;
         width: 320px;
         height: 130px;
@@ -1150,7 +1150,7 @@ img.inline {
         position: absolute;
         top: 130px;
         left: 50px;
-        background-image: url('../media/_images/S_Step7/img_15.1.png');
+        background-image: url('#{$sprite}img-15-1.png');
         background-position: -600px 0;
         background-size: 1800px 180%;
         padding: 10px 20px;
@@ -1162,7 +1162,7 @@ img.inline {
         position: absolute;
         top: 0;
         right: 0;
-        background-image: url('../media/_images/S_Step7/img_15.1.png');
+        background-image: url('#{$sprite}img-15-1.png');
         background-position: -1200px 0;
         background-size: 1800px;
         width: 275px;
@@ -1188,7 +1188,7 @@ img.inline {
         position: absolute;
         top: 0;
         left: 0;
-        background-image: url('../media/_images/_Frames/FR_1.png');
+        background-image: url('#{$frame}fr-1.png');
         background-position: -975px 0;
         background-size: 3900px;
         padding: 90px 50px 0 0;
@@ -1219,7 +1219,7 @@ img.inline {
         top: 0;
         right: 50px;
         z-index: 1;
-        background-image: url('../media/_images/S_Step8/img_17.1.png');
+        background-image: url('#{$sprite}img-17-1.png');
         background-size: 950px;
         width: 320px;
         height: 130px;
@@ -1229,7 +1229,7 @@ img.inline {
         position: absolute;
         top: 0;
         left: 0;
-        background-image: url('../media/_images/_Frames/FR_1.png');
+        background-image: url('#{$frame}fr-1.png');
         background-position: -975px 0;
         background-size: 3900px;
         padding: 220px 50px 0 0;
@@ -1242,7 +1242,7 @@ img.inline {
         position: absolute;
         top: 100px;
         right: 0;
-        background-image: url('../media/_images/S_Step8/img_17.1.png');
+        background-image: url('#{$sprite}img-17-1.png');
         background-repeat: no-repeat;
         background-position: -475px 0;
         background-size: 950px;
@@ -1270,7 +1270,7 @@ img.inline {
         position: absolute;
         top: 0;
         left: 0;
-        background-image: url('../media/_images/_Frames/FR_1.png');
+        background-image: url('#{$frame}fr-1.png');
         background-position: -975px 0;
         background-size: 3900px;
         padding: 220px 50px 0 0;
@@ -1307,7 +1307,7 @@ img.inline {
         top: 0;
         right: 50px;
         z-index: 1;
-        background-image: url('../media/_images/S_Step9/img_19.1.png');
+        background-image: url('#{$sprite}img-19-1.png');
         background-size: 700px;
         width: 320px;
         height: 130px;
@@ -1317,7 +1317,7 @@ img.inline {
         position: absolute;
         top: 0;
         left: 0;
-        background-image: url('../media/_images/_Frames/FR_1.png');
+        background-image: url('#{$frame}fr-1.png');
         background-position: -975px 0;
         background-size: 3900px;
         padding: 160px 50px 0 0;
@@ -1330,7 +1330,7 @@ img.inline {
         position: absolute;
         top: 110px;
         right: 50px;
-        background-image: url('../media/_images/S_Step9/img_19.1.png');
+        background-image: url('#{$sprite}img-19-1.png');
         background-repeat: no-repeat;
         background-position: -350px 0;
         background-size: 700px;
@@ -1357,7 +1357,7 @@ img.inline {
         position: absolute;
         top: 0;
         left: 0;
-        background-image: url('../media/_images/_Frames/FR_1.png');
+        background-image: url('#{$frame}fr-1.png');
         background-position: -975px 0;
         background-size: 3900px;
         padding: 160px 50px 0 0;
@@ -1389,7 +1389,7 @@ img.inline {
         position: absolute;
         top: 0;
         left: 60px;
-        background-image: url('../media/_images/S_Tips/img_22.1.png');
+        background-image: url('#{$sprite}img-22-1.png');
         background-size: 1200px;
         width: 260px;
         height: 140px;
@@ -1397,7 +1397,7 @@ img.inline {
 
     [class^=lid-] {
         position: absolute;
-        background-image: url('../media/_images/S_Tips/img_22.1.png');
+        background-image: url('#{$sprite}img-22-1.png');
         background-repeat: no-repeat;
         background-size: 1200px;
         width: 200px;
@@ -1456,7 +1456,7 @@ img.inline {
         left: 280px;
         z-index: -1;
 
-        background-image: url('../media/_images/_Flip/img_25.1.png');
+        background-image: url('#{$sprite}img-25-1.png');
         background-repeat: no-repeat;
         background-position: -425px 0;
         background-size: 850px;
@@ -1476,7 +1476,7 @@ img.inline {
         top: 270px;
         left: 330px;
 
-        background-image: url('../media/_images/_Flip/img_25.1.png');
+        background-image: url('#{$sprite}img-25-1.png');
         background-repeat: no-repeat;
         background-position: 0 0;
         background-size: 850px;

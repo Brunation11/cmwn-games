@@ -35,61 +35,61 @@ export default function (props, ref, key) {
                 <skoash.Audio
                     ref="what-faucet"
                     type="voiceOver"
-                    src="media/_audio/S_WhatFaucet/VO_WhatFaucet.mp3"
+                    src={`${CMWN.MEDIA.VO}vo-what-faucet.mp3`}
                 />
                 <skoash.Audio
                     type="sfx"
-                    src="media/_audio/_Reveals/TI_RV_3.mp3"
+                    src={`${CMWN.MEDIA.EFFECT}ti-rv-3.mp3`}
                 />
                 <skoash.Audio
                     playTarget="kitchen"
                     type="voiceOver"
-                    src="media/_audio/S_WhatFaucet/VO_Kitchen.mp3"
+                    src={`${CMWN.MEDIA.VO}vo-kitchen.mp3`}
                 />
                 <skoash.Audio
                     type="sfx"
-                    src="media/_audio/_Reveals/TI_RV_3.mp3"
+                    src={`${CMWN.MEDIA.EFFECT}ti-rv-3.mp3`}
                 />
                 <skoash.Audio
                     playTarget="shower"
                     type="voiceOver"
-                    src="media/_audio/S_WhatFaucet/VO_Shower.mp3"
+                    src={`${CMWN.MEDIA.VO}vo-shower.mp3`}
                 />
                 <skoash.Audio
                     type="sfx"
-                    src="media/_audio/_Reveals/TI_RV_3.mp3"
+                    src={`${CMWN.MEDIA.EFFECT}ti-rv-3.mp3`}
                 />
                 <skoash.Audio
                     playTarget="bathroom"
                     type="voiceOver"
-                    src="media/_audio/S_WhatFaucet/VO_Bathroom.mp3"
+                    src={`${CMWN.MEDIA.VO}vo-bathroom.mp3`}
                 />
                 <skoash.Audio
                     type="sfx"
-                    src="media/_audio/_Reveals/TI_RV_3.mp3"
+                    src={`${CMWN.MEDIA.EFFECT}ti-rv-3.mp3`}
                 />
                 <skoash.Audio
                     playTarget="bathtub"
                     type="voiceOver"
-                    src="media/_audio/S_WhatFaucet/VO_Bathtub.mp3"
+                    src={`${CMWN.MEDIA.VO}vo-bathtub.mp3`}
                 />
                 <skoash.Audio
                     type="sfx"
-                    src="media/_audio/_Reveals/TI_RV_3.mp3"
+                    src={`${CMWN.MEDIA.EFFECT}ti-rv-3.mp3`}
                 />
                 <skoash.Audio
                     playTarget="classroom"
                     type="voiceOver"
-                    src="media/_audio/S_WhatFaucet/VO_Classroom.mp3"
+                    src={`${CMWN.MEDIA.VO}vo-classroom.mp3`}
                 />
                 <skoash.Audio
                     type="sfx"
-                    src="media/_audio/_Reveals/TI_RV_3.mp3"
+                    src={`${CMWN.MEDIA.EFFECT}ti-rv-3.mp3`}
                 />
                 <skoash.Audio
                     playTarget="outdoor"
                     type="voiceOver"
-                    src="media/_audio/S_WhatFaucet/VO_Outdoor.mp3"
+                    src={`${CMWN.MEDIA.VO}vo-outdoor.mp3`}
                 />
             </skoash.MediaSequence>
 
@@ -106,7 +106,7 @@ export default function (props, ref, key) {
                     });
                 }}
             >
-                <skoash.Audio ref="correct" type="sfx" src="media/_audio/_Reveals/TI_RV_4.mp3" />
+                <skoash.Audio ref="correct" type="sfx" src={`${CMWN.MEDIA.EFFECT}ti-rv-4.mp3`} />
             </MediaCollection>
 
             <Selectable

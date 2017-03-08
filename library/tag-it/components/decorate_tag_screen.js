@@ -13,11 +13,11 @@ export default function (props, ref, key) {
                 <skoash.Audio
                     ref="notice"
                     type="sfx"
-                    src="media/_audio/_Reveals/TI_RV_7.mp3" pl-required preload="none"
+                    src={`${CMWN.MEDIA.EFFECT}ti-rv-7.mp3`} pl-required preload="none"
                 />
                 <skoash.Audio
                     type="voiceOver"
-                    src="media/_audio/S_DecorateTag/VO_NowYou.mp3"
+                    src={`${CMWN.MEDIA.VO}vo-now-you.mp3`}
                 />
             </skoash.MediaSequence>
             <p>
@@ -31,7 +31,7 @@ export default function (props, ref, key) {
             <skoash.Image
                 ref="image"
                 className="animated"
-                src="media/_images/S_ScissorsAndPaint/img_10.1.png"
+                src={`${CMWN.MEDIA.IMAGE}img-10-1.png`}
             />
         </skoash.Screen>
     );

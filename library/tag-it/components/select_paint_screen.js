@@ -18,12 +18,12 @@ export default function (props, ref, key) {
                 <skoash.Audio
                     ref="brush"
                     type="sfx"
-                    src="media/_audio/_Reveals/TI_RV_6.mp3"
+                    src={`${CMWN.MEDIA.EFFECT}ti-rv-6.mp3`}
                 />
                 <skoash.Audio
                     ref="select"
                     type="voiceOver"
-                    src="media/_audio/S_SelectPaint/VO_SelectYour.mp3"
+                    src={`${CMWN.MEDIA.VO}vo-select-your.mp3`}
                 />
             </skoash.MediaSequence>
             <p className="text">
@@ -31,7 +31,7 @@ export default function (props, ref, key) {
                 nail polish, markers or<br />
                 acrylic paint.
             </p>
-            <skoash.Image ref="image" className="animated" src="media/_images/S_SelectPaint/img_18.1.png" />
+            <skoash.Image ref="image" className="animated" src={`${CMWN.MEDIA.IMAGE}img-18-1.png`} />
         </skoash.Screen>
     );
 }

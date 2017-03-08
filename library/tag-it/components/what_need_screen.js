@@ -23,27 +23,27 @@ export default function (props, ref, key) {
             >
                 <skoash.Audio
                     type="voiceOver"
-                    src="media/_audio/S_WhatNeed/VO_WhatNeed.mp3"
+                    src={`${CMWN.MEDIA.VO}vo-what-need.mp3`}
                 />
                 <skoash.Audio
                     playTarget="lids"
                     type="voiceOver"
-                    src="media/_audio/S_WhatNeed/VO_Lids.mp3"
+                    src={`${CMWN.MEDIA.VO}vo-lids.mp3`}
                 />
                 <skoash.Audio
                     playTarget="scissors"
                     type="voiceOver"
-                    src="media/_audio/S_WhatNeed/VO_Scissors.mp3"
+                    src={`${CMWN.MEDIA.VO}vo-scissors.mp3`}
                 />
                 <skoash.Audio
                     playTarget="markers"
                     type="voiceOver"
-                    src="media/_audio/S_WhatNeed/VO_Markers.mp3"
+                    src={`${CMWN.MEDIA.VO}vo-markers.mp3`}
                 />
                 <skoash.Audio
                     playTarget="polish"
                     type="voiceOver"
-                    src="media/_audio/S_WhatNeed/VO_Polish.mp3"
+                    src={`${CMWN.MEDIA.VO}vo-polish.mp3`}
                 />
             </skoash.MediaSequence>
             <div className="left animated" />

@@ -19,36 +19,36 @@ export default function (props, ref, key) {
             >
                 <skoash.Audio
                     type="sfx"
-                    src="media/_audio/_Reveals/TI_RV_1.mp3"
+                    src={`${CMWN.MEDIA.EFFECT}ti-rv-1.mp3`}
                 />
                 <skoash.Audio
                     type="voiceOver"
-                    src="media/_audio/S_Tips/VO_Tips.mp3"
+                    src={`${CMWN.MEDIA.VO}vo-tips.mp3`}
                 />
                 <skoash.Audio
                     playTarget="use-your"
                     type="voiceOver"
-                    src="media/_audio/S_Tips/VO_UseYour.mp3"
+                    src={`${CMWN.MEDIA.VO}vo-use-your.mp3`}
                 />
                 <skoash.Audio
                     playTarget="try-glow"
                     type="voiceOver"
-                    src="media/_audio/S_Tips/VO_TryGlow.mp3"
+                    src={`${CMWN.MEDIA.VO}vo-try-glow.mp3`}
                 />
                 <skoash.Audio
                     playTarget="use-multiple"
                     type="voiceOver"
-                    src="media/_audio/S_Tips/VO_UseMultiple.mp3"
+                    src={`${CMWN.MEDIA.VO}vo-use-multiple.mp3`}
                 />
                 <skoash.Audio
                     playTarget="create"
                     type="voiceOver"
-                    src="media/_audio/S_Tips/VO_Create.mp3"
+                    src={`${CMWN.MEDIA.VO}vo-create.mp3`}
                 />
                 <skoash.Audio
                     playTarget="personalize"
                     type="voiceOver"
-                    src="media/_audio/S_Tips/VO_Personalize.mp3"
+                    src={`${CMWN.MEDIA.VO}vo-personalize.mp3`}
                 />
             </skoash.MediaSequence>
             <div className="tips" />

@@ -6,7 +6,7 @@ export default function (props, ref, key) {
             key={key}
             id="note"
         >
-            <skoash.Audio ref="note" type="voiceOver" src="media/_audio/S_WhatNeed/VO_Note_WN.mp3" />
+            <skoash.Audio ref="note" type="voiceOver" src={`${CMWN.MEDIA.VO}vo-note-w-n.mp3`} />
             <div className="tip hint">
                 <p>
                     Note: Paint, polish and markers must be waterproof.

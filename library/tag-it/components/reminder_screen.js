@@ -6,8 +6,8 @@ export default function (props, ref, key) {
             key={key}
             id="reminder"
         >
-            <skoash.Audio ref="vo" type="voiceOver" src="media/_audio/S_Reminder/VO_Reminder.mp3" />
-            <skoash.Image className="animated" src="media/_images/S_Reminder/img_5.1.png" />
+            <skoash.Audio ref="vo" type="voiceOver" src={`${CMWN.MEDIA.VO}vo-reminder.mp3`} />
+            <skoash.Image className="animated" src={`${CMWN.MEDIA.IMAGE}img-5-1.png`} />
             <p>
                 You're going to make reminder<br />
                 tags to help you and your<br />

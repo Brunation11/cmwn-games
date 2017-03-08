@@ -10,8 +10,8 @@ export default function (props, ref, key) {
                  ref="audio-sequence"
                  checkComplete={true}
             >
-                <skoash.Audio type="sfx" src="media/_audio/_Reveals/TI_RV_2.mp3" />
-                <skoash.Audio ref="plan" type="voiceOver" src="media/_audio/S_Step8/VO_HintPlan.mp3" />
+                <skoash.Audio type="sfx" src={`${CMWN.MEDIA.EFFECT}ti-rv-2.mp3`} />
+                <skoash.Audio ref="plan" type="voiceOver" src={`${CMWN.MEDIA.VO}vo-hint-plan.mp3`} />
             </skoash.MediaSequence>
             <div className="tip hint">
                 <p>

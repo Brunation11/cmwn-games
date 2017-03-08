@@ -6,8 +6,8 @@ export default function (props, ref, key) {
             key={key}
             id="precious"
         >
-            <skoash.Audio ref="vo" type="voiceOver" src="media/_audio/S_Precious/VO_Precious.mp3" />
-            <skoash.Image ref="image" className="animated" src="media/_images/S_Precious/img_2.1.png" />
+            <skoash.Audio ref="vo" type="voiceOver" src={`${CMWN.MEDIA.VO}vo-precious.mp3`} />
+            <skoash.Image ref="image" className="animated" src={`${CMWN.MEDIA.IMAGE}img-2-1.png`} />
             <div className="text">
                 <p>
                     Water is one of <br />

@@ -19,29 +19,29 @@ export default function (props, ref, key) {
             >
                 <skoash.Audio
                     type="sfx"
-                    src="media/_audio/_Reveals/TI_RV_1.mp3"
+                    src={`${CMWN.MEDIA.EFFECT}ti-rv-1.mp3`}
                     delay={500}
                 />
                 <skoash.Audio
                     type="voiceOver"
-                    src="media/_audio/S_Step1/VO_Step1.mp3"
+                    src={`${CMWN.MEDIA.VO}vo-step-1.mp3`}
                 />
                 <skoash.Audio
                     type="voiceOver"
-                    src="media/_audio/S_Step1/VO_CountHow.mp3"
+                    src={`${CMWN.MEDIA.VO}vo-count-how.mp3`}
                 />
                 <skoash.Audio
                     type="sfx"
-                    src="media/_audio/_Reveals/TI_RV_2.mp3"
+                    src={`${CMWN.MEDIA.EFFECT}ti-rv-2.mp3`}
                 />
                 <skoash.Audio
                     playTarget="start"
                     type="voiceOver"
-                    src="media/_audio/S_Step1/VO_YouCan.mp3"
+                    src={`${CMWN.MEDIA.VO}vo-you-can.mp3`}
                 />
             </skoash.MediaSequence>
 
-            <skoash.Image ref="image" className="animated" src="media/_images/S_Step1/img_6.1.png" />
+            <skoash.Image ref="image" className="animated" src={`${CMWN.MEDIA.IMAGE}img-6-1.png`} />
             <p className="count">
                 Count how many faucets you have in your house.<br />
                 Remember to include sinks, tubs, showers<br />

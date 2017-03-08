@@ -13,18 +13,18 @@ export default function (props, ref, key) {
                 <skoash.Audio
                     ref="sfx"
                     type="sfx"
-                    src="media/_audio/_Reveals/TI_RV_7.mp3"
+                    src={`${CMWN.MEDIA.EFFECT}ti-rv-7.mp3`}
                 />
                 <skoash.Audio
                     ref="vo"
                     type="voiceOver"
-                    src="media/_audio/S_ScissorsAndPaint/VO_ScissorsAndPaint.mp3"
+                    src={`${CMWN.MEDIA.VO}vo-scissors-and-paint.mp3`}
                 />
             </skoash.MediaSequence>
             <skoash.Image
                 ref="image"
                 className="animated"
-                src="media/_images/S_ScissorsAndPaint/img_10.1.png"
+                src={`${CMWN.MEDIA.IMAGE}img-10-1.png`}
             />
             <p>
                 Be sure to let<br />
