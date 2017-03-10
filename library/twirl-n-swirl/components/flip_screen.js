@@ -9,13 +9,13 @@ export default function (props, ref, key) {
                 name: 'flip',
             }}
         >
-            <skoash.Audio ref="vo" type="voiceOver" src="media/flip/VO_8.1.mp3" />
+            <skoash.Audio ref="vo" type="voiceOver" src={`${CMWN.MEDIA.VO}vo-8-1.mp3`} />
             <skoash.Component className="message">
-                <skoash.Image className="banner" src="media/flip/img_8.1.png" />
+                <skoash.Image className="banner" src={`${CMWN.MEDIA.IMAGE}img-8-1.png`} />
                     <p>You flushed out a brand new</p><br />
-                <skoash.Image className="flip" src="media/flip/flip.png" />
+                <skoash.Image className="flip" src={`${CMWN.MEDIA.IMAGE}flip.png`} />
             </skoash.Component>
-            <skoash.Image className="flip-coin" src="media/flip/TwirlNSwirl_EarnedFlip.gif" />
+            <skoash.Image className="flip-coin" src={`${CMWN.MEDIA.SPRITE}twirln-swirl-earned-flip.gif`} />
         </skoash.Screen>
     );
 }

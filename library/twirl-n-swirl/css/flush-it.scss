@@ -12,7 +12,7 @@
             position: absolute;
             top: -95%;
             left: -29%;
-            background: url('../media/S_6/img_6.1.png');
+            background: url('#{$image}img-6-1.png');
             background-repeat: no-repeat;
             background-position: 13px 0;
             background-size: 90%;
@@ -304,7 +304,7 @@
                 left: -100%;
                 transition: opacity .25s .25s;
                 opacity: 1;
-                background: url('../media/S_6/sprite_6.2.png');
+                background: url('#{$sprite}sprite-6-2.png');
                 background-size: 200px 698px;
                 width: 300%;
                 height: 300%;
@@ -344,7 +344,7 @@
     .frame {
         position: absolute;
         top: 1%;
-        background: url('../media/images/frame-tall.png');
+        background: url('#{$image}frame-tall.png');
         background-size: cover;
         width: 28%;
         height: 88%;
@@ -364,7 +364,7 @@
         left: 43%;
         z-index: 1;
 
-        background: url('../media/S_6/img_6.2.png');
+        background: url('#{$sprite}img-6-2.png');
         background-position: -3px -11px;
         background-size: 210%;
 
@@ -399,7 +399,7 @@
                 transform: translateX(-50%);
                 animation-name: fadeIn;
                 animation-delay: 0s;
-                background: $transparent-black url('../media/images/frame.png') no-repeat;
+                background: $transparent-black url('#{$image}frame.png') no-repeat;
                 background-position: 210px 137px;
                 background-size: 55%;
                 width: 100%;
@@ -426,7 +426,7 @@
                     position: absolute;
                     top: 32%;
                     left: 27%;
-                    background: url('../media/S_6/sprite_6.1.png');
+                    background: url('#{$sprite}sprite-6-1.png');
                     background-size: cover;
                     width: 45%;
                     height: 15%;

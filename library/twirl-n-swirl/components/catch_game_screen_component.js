@@ -349,7 +349,7 @@ export default function (props, ref, key, opts = {}) {
                 <skoash.Audio
                     ref="countdown"
                     type="sfx"
-                    src="media/audio/Timer_Last10Sec.mp3"
+                    src={`${CMWN.MEDIA.EFFECT}timer-last-10-sec.mp3`}
                     silentOnStart
                     complete
                 />
@@ -360,19 +360,60 @@ export default function (props, ref, key, opts = {}) {
                 play={_.get(props, 'data.sfx.play', null)}
                 onPlay={SFXOnPlay}
             >
-                <skoash.Audio ref="button" type="sfx" src="media/audio/button.mp3" silentOnStart complete />
-                <skoash.Audio ref="splash" type="sfx" src="media/audio/DropSplash.mp3" complete />
+                <skoash.Audio
+                    ref="button"
+                    type="sfx"
+                    src={`${CMWN.MEDIA.EFFECT}button.mp3`}
+                    silentOnStart
+                    complete
+                />
+                <skoash.Audio
+                    ref="splash"
+                    type="sfx"
+                    src={`${CMWN.MEDIA.EFFECT}drop-splash.mp3`}
+                    complete
+                />
                 <skoash.MediaSequence ref="incorrect-miss" silentOnStart>
-                    <skoash.Audio ref="splash" type="sfx" src="media/audio/DropSplash.mp3" complete />
-                    <skoash.Audio ref="miss" type="sfx" src="media/audio/LoosePoints.mp3" complete />
+                    <skoash.Audio
+                        ref="splash"
+                        type="sfx"
+                        src={`${CMWN.MEDIA.EFFECT}drop-splash.mp3`}
+                        complete
+                    />
+                    <skoash.Audio
+                        ref="miss"
+                        type="sfx"
+                        src={`${CMWN.MEDIA.EFFECT}loose-points.mp3`}
+                        complete
+                    />
                 </skoash.MediaSequence>
                 <skoash.MediaSequence ref="correct-catch" silentOnStart>
-                    <skoash.Audio ref="catch" type="sfx" src="media/audio/basket.mp3" complete />
-                    <skoash.Audio ref="earn" type="sfx" src="media/audio/GainPoints.mp3" complete />
+                    <skoash.Audio
+                        ref="catch"
+                        type="sfx"
+                        src={`${CMWN.MEDIA.EFFECT}basket.mp3`}
+                        complete
+                    />
+                    <skoash.Audio
+                        ref="earn"
+                        type="sfx"
+                        src={`${CMWN.MEDIA.EFFECT}gain-points.mp3`}
+                        complete
+                    />
                 </skoash.MediaSequence>
                 <skoash.MediaSequence ref="incorrect-catch" silentOnStart>
-                    <skoash.Audio ref="catch" type="sfx" src="media/audio/basket.mp3" complete />
-                    <skoash.Audio ref="lose" type="sfx" src="media/audio/LoosePoints.mp3" complete />
+                    <skoash.Audio
+                        ref="catch"
+                        type="sfx"
+                        src={`${CMWN.MEDIA.EFFECT}basket.mp3`}
+                        complete
+                    />
+                    <skoash.Audio
+                        ref="lose"
+                        type="sfx"
+                        src={`${CMWN.MEDIA.EFFECT}loose-points.mp3`}
+                        complete
+                    />
                 </skoash.MediaSequence>
             </MediaCollection>
 

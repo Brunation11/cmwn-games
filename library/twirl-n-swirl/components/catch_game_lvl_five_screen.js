@@ -78,11 +78,11 @@ export default function (props, ref, key) {
             >
                 <skoash.Audio
                     type="sfx"
-                    src="media/audio/LevelComplete.mp3"
+                    src={`${CMWN.MEDIA.EFFECT}level-complete.mp3`}
                 />
                 <skoash.Audio
                     type="voiceOver"
-                    src="media/audio/lvl-5-complete.mp3"
+                    src={`${CMWN.MEDIA.VO}lvl-5-complete.mp3`}
                 />
             </skoash.MediaSequence>,
             <skoash.MediaSequence
@@ -91,12 +91,12 @@ export default function (props, ref, key) {
             >
                 <skoash.Audio
                     type="sfx"
-                    src="media/audio/LevelFail.mp3"
+                    src={`${CMWN.MEDIA.EFFECT}level-fail.mp3`}
                     complete
                 />
                 <skoash.Audio
                     type="voiceOver"
-                    src="media/audio/try-again.mp3"
+                    src={`${CMWN.MEDIA.VO}try-again.mp3`}
                     complete
                 />
             </skoash.MediaSequence>

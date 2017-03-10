@@ -6,7 +6,7 @@ export default function (props, ref, key) {
             key={key}
             id="info-released"
         >
-            <skoash.Audio ref="vo" type="voiceOver" src="media/audio/WaterProcessed.mp3" />
+            <skoash.Audio ref="vo" type="voiceOver" src={`${CMWN.MEDIA.VO}water-processed.mp3`} />
             <skoash.Component>
                 <h2>
                     The water is processed at the treatment plant<br />

@@ -45,11 +45,11 @@ skoash.start(
             quit: QuitScreen,
         }}
         assets={[
-            <skoash.Audio ref="bkg-1" type="background" src="media/audio/title/background.mp3" />,
-            <skoash.Audio ref="bkg-2" type="background" src="media/audio/TS_Game_Theme.mp3" />,
-            <skoash.Audio ref="button" type="sfx" src="media/audio/button.mp3" />,
-            <skoash.Audio ref="close-sound" type="sfx" src="media/audio/button.mp3" />,
-            <skoash.Audio ref="screen-complete" type="sfx" src="media/audio/screen-complete.mp3" />,
+            <skoash.Audio ref="bkg-1" type="background" src={`${CMWN.MEDIA.EFFECT}background.mp3`} />,
+            <skoash.Audio ref="bkg-2" type="background" src={`${CMWN.MEDIA.EFFECT}ts-game-theme.mp3`} />,
+            <skoash.Audio ref="button" type="sfx" src={`${CMWN.MEDIA.EFFECT}button.mp3`} />,
+            <skoash.Audio ref="close-sound" type="sfx" src={`${CMWN.MEDIA.EFFECT}button.mp3`} />,
+            <skoash.Audio ref="screen-complete" type="sfx" src={`${CMWN.MEDIA.EFFECT}screen-complete.mp3`} />,
             <div className="background bkg-1" />,
             <div className="background bkg-2" />,
             <div className="background bkg-3" />,

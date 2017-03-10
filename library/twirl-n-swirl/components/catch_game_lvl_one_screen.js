@@ -46,7 +46,7 @@ export default function (props, ref, key) {
             >
                 <skoash.Audio
                     type="voiceOver"
-                    src="media/audio/CatchtoWin.mp3"
+                    src={`${CMWN.MEDIA.VO}catchto-win.mp3`}
                 />
             </skoash.MediaSequence>,
             <skoash.MediaSequence
@@ -55,11 +55,11 @@ export default function (props, ref, key) {
             >
                 <skoash.Audio
                     type="sfx"
-                    src="media/audio/LevelComplete.mp3"
+                    src={`${CMWN.MEDIA.EFFECT}level-complete.mp3`}
                 />
                 <skoash.Audio
                     type="voiceOver"
-                    src="media/audio/lvl-1-complete.mp3"
+                    src={`${CMWN.MEDIA.VO}lvl-1-complete.mp3`}
                 />
             </skoash.MediaSequence>,
             <skoash.MediaSequence
@@ -68,12 +68,12 @@ export default function (props, ref, key) {
             >
                 <skoash.Audio
                     type="sfx"
-                    src="media/audio/LevelFail.mp3"
+                    src={`${CMWN.MEDIA.EFFECT}level-fail.mp3`}
                     complete
                 />
                 <skoash.Audio
                     type="voiceOver"
-                    src="media/audio/try-again.mp3"
+                    src={`${CMWN.MEDIA.VO}try-again.mp3`}
                     complete
                 />
             </skoash.MediaSequence>
@@ -81,7 +81,7 @@ export default function (props, ref, key) {
         revealPromptList: [
             <skoash.Component data-ref="instructions">
                 <skoash.Component className="frame">
-                    <skoash.Image className="fish-left" src="media/images/fish-ins.png" />
+                    <skoash.Image className="fish-left" src={`${CMWN.MEDIA.IMAGE}fish-ins.png`} />
                     <skoash.Component className="fish-right" />
                     <span>
                         Catch the pollutants by<br />
