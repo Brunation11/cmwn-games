@@ -1,3 +1,5 @@
+@import 'variables';
+
 #jellyfish {
     display: block;
     overflow: hidden;
@@ -31,7 +33,7 @@
             top: 50%;
             left: 50%;
             transform: translateX(-50%) translateY(-50%);
-            background: url('../media/images/jellyfish/reveal.png') no-repeat center center;
+            background: url('#{$frame}reveal.png') no-repeat center center;
             background-size: 500px;
             width: 500px;
             height: 165px;
@@ -49,13 +51,13 @@
             top: 200px;
             right: 250px;
             margin: 0;
-            background: url('../media/images/buttons/quit.png') no-repeat center center;
+            background: url('#{$image}quit.png') no-repeat center center;
             background-size: 25px;
             width: 25px;
             height: 25px;
 
             &:hover {
-                background: url('../media/images/buttons/quit-hover.png') no-repeat center center;
+                background: url('#{$image}quit-hover.png') no-repeat center center;
                 background-size: 25px;
             }
         }

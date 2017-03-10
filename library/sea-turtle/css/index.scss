@@ -9,7 +9,7 @@ body {
 }
 
 html {
-    background: url('../media/images/background.png') bottom center no-repeat;
+    background: url('#{$image}background.png') bottom center no-repeat;
     background-size: cover;
     cursor: default;
     // the autoprefixer doesn't add these automatically
@@ -53,14 +53,14 @@ button {
         top: 10px;
         right: 10px;
         z-index: 1;
-        background: url('../media/images/buttons/quit.png') no-repeat center center;
+        background: url('#{$image}quit.png') no-repeat center center;
         background-size: 30px;
         cursor: pointer;
         width: 35px;
         height: 35px;
 
         &:hover {
-            background: url('../media/images/buttons/quit-hover.png') no-repeat center center;
+            background: url('#{$image}quit-hover.png') no-repeat center center;
             background-size: 30px;
         }
     }
@@ -141,12 +141,12 @@ img.hidden {
     margin-top: 5px;
     margin-right: 5px;
 
-    background-image: url('../media/images/buttons/next.png');
+    background-image: url('#{$image}next.png');
     cursor: default;
     pointer-events: none;
 
     &:hover {
-        background-image: url('../media/images/buttons/next-hover.png');
+        background-image: url('#{$image}next-hover.png');
     }
 }
 
@@ -168,11 +168,11 @@ img.hidden {
     transform: translateX(-50%);
     margin-top: 5px;
     margin-left: 10px;
-    background-image: url('../media/images/buttons/prev.png');
+    background-image: url('#{$image}prev.png');
 }
 
 .screen .prev-screen:hover {
-    background-image: url('../media/images/buttons/prev-hover.png');
+    background-image: url('#{$image}prev-hover.png');
 }
 
 .screen.no-frame {
@@ -255,13 +255,13 @@ section.OPEN .flip {
         right: 40px;
         bottom: 20px;
         transform: none;
-        background-image: url('../media/images/buttons/play.png');
+        background-image: url('#{$image}play.png');
         background-size: 100%;
         width: 120px;
         height: 75px;
 
         &:hover {
-            background-image: url('../media/images/buttons/play-hover.png');
+            background-image: url('#{$image}play-hover.png');
         }
     }
 
@@ -405,7 +405,7 @@ section.OPEN .flip {
     .video {
         position: absolute;
         top: 40px;
-        background-image: url('../media/images/video-frame.png');
+        background-image: url('#{$frame}video-frame.png');
         background-size: 100% 100%;
         width: 760px;
 
@@ -427,7 +427,7 @@ section.OPEN .flip {
 
 #quit {
     .frame {
-        background-image: url('../media/images/bg-slide.png');
+        background-image: url('#{$frame}bg-slide.png');
         background-size: 30px;
         width: 960px;
         text-align: center;
@@ -450,25 +450,25 @@ section.OPEN .flip {
         }
 
         .quit-yes {
-            background-image: url('../media/images/quit-sea-turtle/yes.png');
+            background-image: url('#{$image}yes.png');
             background-size: 100%;
             width: 180px;
             height: 150px;
 
             &:hover {
-                background-image: url('../media/images/quit-sea-turtle/yes-hover.png');
+                background-image: url('#{$image}yes-hover.png');
                 background-size: 100%;
             }
         }
 
         .quit-no {
-            background-image: url('../media/images/quit-sea-turtle/no.png');
+            background-image: url('#{$image}no.png');
             background-size: 100%;
             width: 148px;
             height: 150px;
 
             &:hover {
-                background-image: url('../media/images/quit-sea-turtle/no-hover.png');
+                background-image: url('#{$image}no-hover.png');
                 background-size: 100%;
             }
         }

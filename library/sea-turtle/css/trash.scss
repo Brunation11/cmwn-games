@@ -1,3 +1,5 @@
+@import 'variables';
+
 @keyframes bob {
     0% {transform: translateY(-10%);}
     50% {transform: translateY(10%);}
@@ -10,7 +12,7 @@
         left: 0;
         transition: opacity .5s;
         z-index: 1;
-        background-image: url('../media/images/trash/sprite_6.1.png');
+        background-image: url('#{$sprite}sprite-6-1.png');
         background-position: -740px 0;
         background-size: 1110px;
         width: 355px;
@@ -22,7 +24,7 @@
         position: absolute;
         top: 10%;
         left: 0;
-        background-image: url('../media/images/trash/sprite_6.1.png');
+        background-image: url('#{$sprite}sprite-6-1.png');
         background-size: 1110px;
         width: 355px;
         height: 595px;
@@ -87,7 +89,7 @@
                 list-style: none;
 
                 div {
-                    background-image: url('../media/images/trash/sprite_6.2.png');
+                    background-image: url('#{$sprite}sprite-6-2.png');
                     background-size: 325px;
                 }
 
@@ -104,8 +106,8 @@
 
                 @for $i from 1 through 21 {
                     &.#{nth($class, $i)} {
-                        // top: nth($top, $i) + %;
-                        // left: nth($left, $i) + %;
+                        top: percentage(nth($top, $i) / 100);
+                        left: percentage(nth($left, $i) / 100);
 
                         div {
                             background-position: 0 nth($background-top, $i) * -1 + px;

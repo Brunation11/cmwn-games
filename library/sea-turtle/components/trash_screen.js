@@ -19,7 +19,7 @@ export default function (props, ref, key) {
             ref={ref}
             key={key}
             id="trash"
-            cursor={<skoash.Image src="media/images/trash/sprite_6.1.png" />}
+            cursor={<skoash.Image src={`${CMWN.MEDIA.SPRITE}sprite-6-1.png`} />}
         >
             <skoash.Component className="turtle" />
             <SelectableAudio
@@ -116,12 +116,12 @@ export default function (props, ref, key) {
                     <skoash.Audio
                         data-ref="correct"
                         type="sfx"
-                        src="media/audio/trash/answer-correct.mp3"
+                        src={`${CMWN.MEDIA.EFFECT}answer-correct.mp3`}
                     />,
                     <skoash.Audio
                         data-ref="incorrect"
                         type="sfx"
-                        src="media/audio/trash/answer-incorrect.mp3"
+                        src={`${CMWN.MEDIA.EFFECT}answer-incorrect.mp3`}
                         complete
                     />,
                 ]}
