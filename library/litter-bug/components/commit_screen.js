@@ -6,8 +6,8 @@ export default function (props, ref, key) {
             key={key}
             id="commit"
         >
-            <skoash.Audio ref="vo" type="voiceOver" src="media/_assets/_sounds/_vos/IPromise.mp3" />
-            <skoash.Audio ref="button" complete type="sfx" src="media/_assets/_sounds/_effects/S_BU_1.mp3" />
+            <skoash.Audio ref="vo" type="voiceOver" src={`${CMWN.MEDIA.VO}i-promise.mp3`} />
+            <skoash.Audio ref="button" complete type="sfx" src={`${CMWN.MEDIA.EFFECT}s-bu-1.mp3`} />
             <div className="pledge">
                 I promise to <span className="never"></span> litter
                 <br /><span className="spacerA"></span>and to pick up the litter

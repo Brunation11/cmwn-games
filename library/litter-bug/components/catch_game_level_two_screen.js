@@ -72,11 +72,11 @@ export default function (props, ref, key) {
             >
                 <skoash.Audio
                     type="voiceOver"
-                    src={'media/_assets/_sounds/_effects/LevelUp.mp3'}
+                    src={`${CMWN.MEDIA.EFFECT}level-up.mp3`}
                 />
                 <skoash.Audio
                     type="voiceOver"
-                    src={'media/_assets/_sounds/_vos/Congratulations.mp3'}
+                    src={`${CMWN.MEDIA.VO}congratulations.mp3`}
                 />
             </skoash.MediaSequence>,
             <skoash.MediaSequence
@@ -86,17 +86,17 @@ export default function (props, ref, key) {
                 <skoash.Audio
                     type="voiceOver"
                     complete
-                    src={'media/_assets/_sounds/_effects/TryAgain.mp3'}
+                    src={`${CMWN.MEDIA.EFFECT}try-again.mp3`}
                 />
                 <skoash.Audio
                     type="voiceOver"
                     complete
-                    src={'media/_assets/_sounds/_vos/TryAgain.mp3'}
+                    src={`${CMWN.MEDIA.VO}try-again.mp3`}
                 />
                 <skoash.Audio
                     type="voiceOver"
                     complete
-                    src={'media/_assets/_sounds/_vos/YouDidntWin.mp3'}
+                    src={`${CMWN.MEDIA.VO}you-didnt-win.mp3`}
                 />
             </skoash.MediaSequence>,
         ],
@@ -104,7 +104,7 @@ export default function (props, ref, key) {
             <skoash.Audio
                 type="sfx"
                 ref="miss"
-                src={'media/_assets/_sounds/_effects/LosePoints.mp3'}
+                src={`${CMWN.MEDIA.EFFECT}lose-points.mp3`}
                 complete
             />,
         ],

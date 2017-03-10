@@ -1,0 +1,552 @@
+@import 'variables';
+@import 'mixins';
+
+[id*='catch-game'] {
+    .bottom {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 960px;
+        height: 80px;
+        vertical-align: middle;
+
+        .level {
+            @include text-stroke(3, $black);
+            display: inline-block;
+            position: relative;
+            margin-right: 30px;
+            vertical-align: middle;
+            color: $bright-yellow;
+            font-size: 48px;
+
+            &::before {
+                display: inline-block;
+                margin-left: 80px;
+
+                background-image: url('#{$sprite}sprites-game2-4-01.png');
+                background-repeat: no-repeat;
+                background-position: -240px -30px;
+                background-size: 600px;
+
+                width: 120px;
+                height: 80px;
+                vertical-align: middle;
+                content: '';
+            }
+        }
+
+        .score {
+            display: inline-block;
+            position: relative;
+            z-index: 1;
+            padding-left: 40px;
+            width: 190px;
+            height: 80px;
+            vertical-align: middle;
+
+            &.litter-bug-score {
+                &::before {
+                    background-position: -122px -24px;
+                }
+
+                div {
+                    &::after {
+                        background-color: $orange;
+                    }
+                }
+            }
+
+            &::before {
+                display: block;
+                position: absolute;
+                top: 0;
+                left: 0;
+                z-index: 2;
+
+                background-image: url('#{$sprite}sprites-game2-4-01.png');
+                background-repeat: no-repeat;
+                background-position: -20px -24px;
+                background-size: 500px;
+
+                width: 60px;
+                height: 60px;
+                content: '';
+            }
+
+            &::after {
+                position: absolute;
+                bottom: 35px;
+                left: 51px;
+                opacity: .6;
+                z-index: 1;
+                border-radius: 10px;
+                background-color: $light-grey;
+                width: 140px;
+                height: 6px;
+                content: '';
+            }
+
+            span {
+                display: none;
+            }
+
+            div {
+                position: relative;
+                padding-top: 25px;
+                width: 200px;
+                height: 29px;
+
+                &::before {
+                    display: block;
+                    border: 3px solid $black;
+                    border-radius: 50px;
+                    background-color: $white;
+                    width: 160px;
+                    height: 20px;
+                    content: '';
+                }
+
+                &::after {
+                    display: block;
+                    position: absolute;
+                    bottom: 6px;
+                    left: 3px;
+
+                    // scss-lint:disable VendorPrefix
+                    -webkit-transition: width .5s cubic-bezier(.53, 0, .63, 1);
+                    // scss-lint:enable VendorPrefix
+                    transition: width .5s cubic-bezier(.53, -.56, .63, 1.74);
+
+                    border-radius: 50px;
+                    background-color: $bright-green;
+                    width: 0;
+                    height: 20px;
+                    content: '';
+                }
+            }
+
+            @for $i from 0 through 10 {
+                &.score-#{$i * 10} {
+                    div::after {
+                        width: #{$i * 16}px;
+                    }
+                }
+            }
+        }
+    }
+
+    .timer {
+        display: inline-block;
+        width: 200px;
+        height: 60px;
+        vertical-align: middle;
+        font-size: 14px;
+        font-weight: normal;
+
+        &::before {
+            display: inline-block;
+            position: relative;
+
+            background-image: url('#{$sprite}sprites-game2-4-01.png');
+            background-repeat: no-repeat;
+            background-position: -307px -30px;
+            background-size: 500px;
+
+            width: 90px;
+            height: 50px;
+            vertical-align: middle;
+            content: '';
+        }
+
+        span {
+            @include text-stroke(3, $black);
+            display: inline-block;
+            vertical-align: middle;
+            color: $bright-yellow;
+            font-size: 32px;
+        }
+    }
+
+    .main {
+        position: absolute;
+        top: 0;
+        left: 0;
+        border-radius: 16px 16px 0 0;
+        width: 960px;
+        height: 460px;
+        overflow: hidden;
+    }
+
+    .randomizer {
+        display: none;
+    }
+
+    .dropper {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+
+        .items {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        .catchable {
+            position: absolute;
+            top: 60px;
+            left: 980px;
+            transition: opacity .5s;
+            animation-duration: 6s;
+            animation-timing-function: linear;
+            opacity: 1;
+            background-image: url('#{$sprite}sprites-game2-1-01.png');
+            background-size: 1400px;
+            width: 100px;
+            height: 100px;
+
+            &.CAUGHT {
+                opacity: 0;
+            }
+
+            &.go {
+                animation-name: catchable;
+            }
+
+            .PAUSED & {
+                animation-play-state: paused;
+            }
+
+            $catchables: mushroom banana paper dog battery duck squirrel tire blue-flower yellow-flower red-flower purple-flower glass plastic;
+            @for $i from 1 through 14 {
+                &.#{nth($catchables, $i)} {
+                    background-position: #{($i - 1) * -100}px 0;
+                }
+            }
+        }
+    }
+
+    .catcher {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+
+        .mr-eco {
+            position: absolute;
+            top: 200px;
+            left: 70px;
+            width: 50px;
+            height: 75px;
+            pointer-events: none;
+
+            &::before {
+                position: absolute;
+                top: -15px;
+                left: -50px;
+
+                background-image: url('#{$sprite}sprites-game2-4-01.png');
+                background-position: -400px 0;
+                background-size: 500px;
+
+                width: 100px;
+                height: 105px;
+                content: '';
+            }
+        }
+    }
+
+    .reveal {
+        position: absolute;
+        top: 0;
+        left: 0;
+        transition: opacity .5s, z-index 0s .5s;
+        opacity: 0;
+        z-index: -1;
+        width: 100%;
+        height: 100%;
+
+        &.OPEN {
+            transition: opacity .5s, z-index 0s;
+            opacity: 1;
+            z-index: 1;
+        }
+
+        &.open-level-up {
+            &::before {
+                position: absolute;
+                top: 0;
+                left: 0;
+                opacity: .4;
+                background-image: url('#{$image}bkg-5.png');
+                background-position: center center;
+                background-size: cover;
+                width: 100%;
+                height: 100%;
+                content: '';
+            }
+        }
+
+        ul {
+            margin: 0;
+            list-style: none;
+        }
+
+        li {
+            display: none;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 960px;
+            height: 540px;
+
+            &.OPEN {
+                display: block;
+            }
+
+            .line {
+                background-image: url('#{$image}thick-border.png');
+                background-repeat: no-repeat;
+                background-size: 100% 100%;
+            }
+
+            &.instructions {
+                > div {
+                    position: absolute;
+                    top: 50px;
+                    left: 80px;
+                    border: 4px solid $black;
+                    border-radius: 20px;
+                    background-color: $light-yellow;
+                    width: 800px;
+                    height: 440px;
+                }
+
+                .instructions,
+                .words {
+                    position: relative;
+                    margin: 0 auto;
+                    background-image: url('#{$sprite}sprites-game2-2-01.png');
+                    background-repeat: no-repeat;
+                    background-size: 6000px;
+                }
+
+                .instructions {
+                    background-position: -120px -60px;
+                    width: 510px;
+                    height: 115px;
+                }
+
+                .words {
+                    background-position: -720px -5px;
+                    width: 800px;
+                    height: 220px;
+                }
+
+                button {
+                    display: block;
+                    transition: opacity .5s;
+                    opacity: 0;
+                    margin: 0 auto;
+
+                    background-image: url('#{$sprite}main-nav-btns-01.png');
+                    background-repeat: no-repeat;
+                    background-position: -2070px -117px;
+                    background-size: 3000px;
+
+                    width: 200px;
+                    height: 100px;
+                    pointer-events: none;
+
+                    &:hover {
+                        background-position: -2070px -450px;
+                    }
+
+                    &.instructionsComplete {
+                        opacity: 1;
+                        pointer-events: auto;
+                    }
+                }
+            }
+
+            &.level-up {
+
+                &::before {
+                    display: block;
+                    position: absolute;
+                    bottom: 0;
+                    left: -100px;
+                    z-index: 1;
+
+                    background-image: url('#{$sprite}sprites-mr-eco-01.png');
+                    background-position: 0 0;
+                    background-size: 600px;
+
+                    width: 300px;
+                    height: 400px;
+                    content: '';
+                }
+
+                > div {
+                    position: absolute;
+                    top: 50px;
+                    left: 80px;
+                    border: 4px solid $black;
+                    border-radius: 20px;
+                    background-color: $light-yellow;
+                    width: 800px;
+                    height: 440px;
+                }
+
+                .congratulations,
+                .level-up {
+                    position: relative;
+                    margin: 0 auto;
+                    background-image: url('#{$sprite}sprites-game2-2-01.png');
+                    background-repeat: no-repeat;
+                    background-size: 6000px;
+                }
+
+                .congratulations {
+                    margin-top: 80px;
+                    background-position: -1550px -60px;
+                    width: 650px;
+                    height: 115px;
+                }
+
+                .level-up {
+                    background-position: -2320px -45px;
+                    width: 610px;
+                    height: 150px;
+                }
+            }
+
+            &.youve-won {
+                &::after {
+                    display: block;
+                    position: absolute;
+                    right: -100px;
+                    bottom: -10px;
+                    transform: rotate(0deg);
+                    transition: transform .5s;
+                    z-index: 1;
+
+                    background-image: url('#{$image}litterbug.png');
+                    background-repeat: no-repeat;
+                    background-position: left bottom;
+                    background-size: contain;
+
+                    width: 400px;
+                    height: 500px;
+                    content: '';
+                    transform-origin: 50% 75%;
+                }
+
+                .congratulations {
+                    margin-top: 10px;
+                    background-position: -4610px -60px;
+                    width: 530px;
+                    height: 115px;
+                }
+
+                .level-up {
+                    margin-top: 10px;
+                    background-position: -5330px 10px;
+                    width: 580px;
+                    height: 250px;
+                }
+
+                &.fall {
+                    &::after {
+                        transform: rotate(-90deg);
+                    }
+                }
+            }
+
+            &.try-again {
+                background-color: $overlay-red;
+
+                &::before {
+                    display: block;
+                    position: absolute;
+                    bottom: -15px;
+                    left: -157px;
+                    transform: scale3d(-1, 1, 1);
+                    z-index: 1;
+
+                    background-image: url('#{$image}litterbug.png');
+                    background-repeat: no-repeat;
+                    background-position: left bottom;
+                    background-size: contain;
+
+                    width: 400px;
+                    height: 500px;
+                    content: '';
+                }
+
+                > div {
+                    position: absolute;
+                    top: 50px;
+                    left: 80px;
+                    border: 4px solid $black;
+                    border-radius: 20px;
+                    background-color: $green;
+                    width: 800px;
+                    height: 440px;
+                }
+
+                .try-again,
+                .words {
+                    position: relative;
+                    margin: 0 auto;
+
+                    background-image: url('#{$sprite}sprites-game2-2-01.png');
+                    background-repeat: no-repeat;
+                    background-size: 6000px;
+                }
+
+                .try-again {
+                    background-position: -3190px -60px;
+                    width: 370px;
+                    height: 115px;
+                }
+
+                .words {
+                    background-position: -3720px -15px;
+                    width: 800px;
+                    height: 210px;
+                }
+
+                button {
+                    display: block;
+                    transition: opacity .5s;
+                    margin: 0 auto;
+
+                    background-image: url('#{$sprite}main-nav-btns-01.png');
+                    background-repeat: no-repeat;
+                    background-position: -2400px -117px;
+                    background-size: 3000px;
+
+                    width: 200px;
+                    height: 100px;
+
+                    &:hover {
+                        background-position: -2400px -450px;
+                    }
+
+                    .VOICE-OVER:not(.DEMO) & {
+                        opacity: 0;
+                        pointer-events: none;
+                    }
+                }
+            }
+        }
+
+        .close-reveal {
+            display: none;
+        }
+    }
+}

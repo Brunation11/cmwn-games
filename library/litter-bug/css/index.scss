@@ -1,0 +1,1168 @@
+@import 'variables';
+@import 'mixins';
+
+html,
+body {
+    margin: 0;
+    cursor: default;
+    padding: 0;
+    height: 100%;
+    overflow: hidden;
+    user-drag: none;
+    user-select: none;
+}
+
+html {
+    font-family: 'Source Sans Pro', 'Helvetica Neue', Helvetica, sans-serif;
+}
+
+html,
+body,
+body > div,
+body > div > div {
+    position: relative;
+    margin: auto;
+    background: transparent;
+    width: 960px;
+    height: 540px;
+    font-size: 20px;
+
+    .background {
+        position: absolute;
+        top: 0;
+        left: 0;
+        transition: opacity .5s;
+        opacity: 0;
+
+        background-repeat: no-repeat;
+        background-position: center center;
+        background-size: cover;
+
+        width: 100%;
+        height: 100%;
+
+        &.default {
+            background-image: url('#{$image}bkg-1.png');
+        }
+
+        &.title {
+            background-image: url('#{$sprite}litterbug-titlescreen.gif');
+        }
+
+        &.catch-game {
+            background-image: url('#{$sprite}sprites-game2-3-01-min.jpg');
+            background-position: 0 0;
+            background-size: 300% 100%;
+        }
+
+        &.lets-clean-up {
+            background-image: url('#{$image}bkg-4.jpg');
+        }
+
+        &.clean-up-game {
+            background-image: url('#{$image}bkg-2.png');
+        }
+
+        &.select {
+            background-image: url('#{$image}bkg-3.png');
+
+            &::before {
+                position: absolute;
+                top: 0;
+                left: 0;
+                opacity: .2;
+                background: $black;
+                width: 100%;
+                height: 100%;
+                content: '';
+            }
+        }
+
+        &.sun {
+            background-image: url('#{$image}bkg-4.png');
+        }
+
+        &.commit {
+            background-image: url('#{$image}bkg-3.png');
+        }
+
+    }
+
+    &.SCREEN-catch-game-level-two .background.catch-game {
+        background-position: -960px 0;
+    }
+
+    &.SCREEN-catch-game-level-three .background.catch-game {
+        background-position: -1920px 0;
+    }
+
+    .background.default,
+    &.SCREEN-title .background.title,
+    &.SCREEN-lets-clean-up .background.lets-clean-up,
+    &[class *=SCREEN-catch-game] .background.catch-game,
+    &[class *=SCREEN-clean-up-game] .background.clean-up-game,
+    &.SCREEN-commit .background.commit {
+        transition: opacity .25s;
+        opacity: 1;
+    }
+
+    &.MENU-quit {
+        .screen:not(#quit) {
+            opacity: 0;
+        }
+    }
+}
+
+@mixin flyright {
+    animation: flyright 1.5s infinite linear;
+}
+
+@mixin flyleft {
+    animation: flyleft 1.5s infinite linear;
+}
+
+$delays: 0s .5s 1s .25s 1.25s .75s;
+
+.sparkles {
+    position: absolute;
+    top: 0;
+    left: 0;
+    transition: opacity 1s;
+    opacity: 0;
+    width: 100%;
+    height: 100%;
+
+    div {
+        position: absolute;
+        transform: rotate(0deg);
+        transition: transform 1s, opacity 1s;
+        width: 100px;
+        height: 100px;
+        text-align: left;
+        line-height: 100px;
+
+        &::before {
+            color: $yellow;
+            content: '\02736';
+        }
+
+        @for $i from 1 through 40 {
+            &:nth-of-type(#{$i}) {
+                $left: (-4 * $i) % 65 + 15;
+                $top: (-1 * $i) % 12 + 6;
+
+                top: percentage($top / 100);
+                left: percentage($left / 100);
+
+                @if $left > 45 {
+                    @include flyright;
+                } @else {
+                    @include flyleft;
+                }
+
+                animation-delay: nth($delays, ($i % 6) + 1);
+            }
+        }
+    }
+}
+
+html,
+body,
+body > div {
+    width: 100%;
+    height: 100%;
+}
+
+// This is just to preload the images used in css. */
+#asset-bin { display: none; }
+
+button {
+    margin: 0;
+    outline: none;
+    border: 0;
+
+    background-color: transparent;
+    background-image: url('#{$sprite}main-nav-btns-01.png');
+    background-position: left top;
+    background-size: 3500px 778px;
+
+    cursor: pointer;
+    padding: 0;
+    color: transparent;
+    font-family: inherit;
+    font-size: inherit;
+
+
+    &.close {
+        position: absolute;
+        top: 0;
+        right: 0;
+        z-index: 2;
+        margin: 5px;
+        background-position: 2862px 529px;
+        background-size: 3000px 667px;
+        width: 60px;
+        height: 60px;
+
+        &:hover {
+            background-position: 2862px 196px;
+        }
+    }
+
+    &.next-screen,
+    &.prev-screen {
+        width: 70px;
+        height: 70px;
+    }
+
+    &.next-screen {
+        background-position: 2562px 617px;
+
+        &:hover {
+            background-position: 2562px 228px;
+        }
+    }
+
+    &.prev-screen {
+        background-position: 2950px 617px;
+
+        &:hover {
+            background-position: 2950px 228px;
+        }
+    }
+
+    &.quit-yes {
+        background-image: url('#{$sprite}bu-1.png');
+        background-position: -1820px 450px;
+        background-size: auto 500px;
+        width: 230px;
+        height: 130px;
+
+        &:hover {
+            background-position: -1820px 193px;
+        }
+    }
+
+    &.quit-no {
+        background-image: url('#{$sprite}bu-1.png');
+        background-position: -2080px 450px;
+        background-size: auto 500px;
+        width: 230px;
+        height: 130px;
+
+        &:hover {
+            background-position: -2080px 193px;
+        }
+    }
+}
+
+@media(max-width: 601px) {
+    button {
+        &.close {
+            background-position: -231px 435px;
+            background-size: auto 525px;
+            width: 50px;
+            height: 50px;
+
+            &:hover {
+                background-position: -231px 165px;
+            }
+        }
+    }
+}
+
+#room,
+#school,
+#ground {
+    button.next-screen {
+        animation-duration: 1s;
+        animation-fill-mode: both;
+        background-position: -300px 500px;
+        width: 230px;
+        height: 235px;
+
+        &:hover {
+            background-position: -300px 243px;
+        }
+    }
+}
+
+h2 {
+    font-size: 40px;
+}
+
+h3 {
+    margin: 0;
+    font-size: 30px;
+}
+
+p {
+    margin: 0;
+    font-size: 28px;
+}
+
+.canvas-src { display: none; }
+
+.screen {
+    display: none;
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    transition: opacity .5s, z-index 0s 1s;
+    opacity: 0;
+    z-index: -1;
+    width: 960px;
+    height: 540px;
+    overflow: hidden;
+
+    &.OPEN {
+        transition: opacity .5s, z-index 0s;
+        opacity: 1;
+        z-index: 1;
+    }
+
+    &.READY {
+        display: block;
+    }
+
+    &.no-frame {
+        color: $white;
+
+        .frame {
+            text-align: center;
+        }
+    }
+
+    .next-screen,
+    .prev-screen {
+        display: block;
+        position: absolute;
+        bottom: 1%;
+        transform: translate3d(0, 0, 0);
+        z-index: 2;
+    }
+
+    .prev-screen {
+        left: 0;
+        margin-left: 5px;
+    }
+
+    .next-screen {
+        right: 0;
+        transform: rotate(-180deg) translate3d(0, 0, 0);
+        transition: opacity 1s, transform 1s;
+        opacity: 0;
+        margin-right: 5px;
+        pointer-events: none;
+    }
+
+    &.GATED .next-screen {
+        opacity: 0;
+        cursor: default;
+    }
+}
+
+.DEMO .screen .next-screen,
+.DEMO #clean-up .close-reveal,
+.screen.COMPLETE .next-screen,
+.screen.REPLAY .next-screen {
+    transform: rotate(0deg) translate3d(0, 0, 0);
+    opacity: 1;
+    cursor: pointer;
+    pointer-events: auto;
+}
+
+.DEMO .screen.room button.next-screen,
+.DEMO .screen.school button.next-screen,
+.DEMO .screen.ground button.next-screen,
+.DEMO .screen.take-pledge button.next-screen,
+.DEMO .screen.commit button.next-screen {
+    display: block;
+}
+
+.DEMO .screen.clean-up .next-screen {
+    z-index: 0;
+}
+
+.DEMO .screen .next-screen,
+.DEMO #clean-up .close-reveal,
+.screen.COMPLETE .next-screen,
+.screen.REPLAY .next-screen {
+    transform: rotate(0deg) translate3d(0, 0, 0);
+    opacity: 1;
+    cursor: pointer;
+    pointer-events: auto;
+}
+
+.DEMO .screen.room button.next-screen,
+.DEMO .screen.school button.next-screen,
+.DEMO .screen.ground button.next-screen,
+.DEMO .screen.take-pledge button.next-screen,
+.DEMO .screen.commit button.next-screen {
+    display: block;
+}
+
+.DEMO {
+    #room,
+    #school,
+    #ground {
+        button.next-screen {
+            animation-name: bounceInLeft;
+            opacity: 1;
+            cursor: pointer;
+        }
+    }
+
+    .screen.clean-up .next-screen {
+        z-index: 0;
+    }
+}
+
+// the following css is specific to this game
+
+#litter-bug {
+    .center {
+        overflow: hidden;
+
+        .content-group {
+            overflow: visible;
+
+            div {
+                position: absolute;
+                top: 0;
+                left: 0;
+                margin: 0;
+                width: 100%;
+                height: 100%;
+                text-align: center;
+            }
+        }
+    }
+
+    .frame {
+        position: relative;
+        top: 0;
+        width: 960px;
+        height: 200px;
+
+        img.background {
+            position: absolute;
+            left: -2.5%;
+            opacity: 1;
+            width: 105%;
+        }
+    }
+}
+
+#lets-clean-up {
+    .copy {
+        position: absolute;
+        top: 10%;
+        left: 55%;
+        transform: translateX(-50%);
+        width: 75%;
+        text-align: center;
+        color: $white;
+        font-size: 40px;
+        font-weight: 700;
+    }
+
+    .banner {
+        position: absolute;
+        bottom: 28%;
+        left: 55%;
+        transform: translateX(-50%);
+        width: 70%;
+    }
+
+    &.OPEN {
+        .banner {
+            animation-name: zoomInDown;
+        }
+    }
+}
+
+#clean-up {
+
+    .frame-component {
+        z-index: 1;
+    }
+
+    .prev-screen {
+        z-index: 1;
+    }
+
+    .COMPLETE {
+        .next-screen {
+            transform: rotate(0deg) translate3d(0, 0, 0);
+            opacity: 1;
+            z-index: 1;
+        }
+    }
+
+    .frame {
+        position: absolute;
+        top: 160px;
+        left: 0;
+
+        .content-group {
+
+            h2 {
+                margin: 20px 0 15px;
+            }
+
+            p {
+                bottom: 20px;
+                width: 100%;
+                text-align: center;
+            }
+
+            button {
+                position: absolute;
+                top: 125%;
+                left: 50%;
+                margin-left: -115px;
+            }
+        }
+    }
+
+    .trash {
+        transform: translateX(0);
+    }
+
+    .reveal {
+        position: absolute;
+        transition: opacity .5s;
+        opacity: 0;
+        z-index: -1;
+        width: 960px;
+        height: 540px;
+        pointer-events: none;
+
+        &.OPEN {
+            opacity: 1;
+            z-index: 1;
+            pointer-events: auto;
+        }
+
+        &.COMPLETE {
+            .close-reveal {
+                transform: rotate(0deg) translate3d(0, 0, 0);
+                opacity: 1;
+                pointer-events: auto;
+            }
+        }
+
+        ul {
+            list-style: none;
+        }
+    }
+
+    .selectable-reveal {
+        .reveal {
+            display: none;
+        }
+    }
+
+    .close-reveal {
+        position: absolute;
+        right: 0;
+        bottom: 1%;
+        transform: rotate(-180deg) translate3d(0, 0, 0);
+        transition: opacity 1s, transform 1s;
+        opacity: 0;
+        margin-right: 5px;
+        background-position: -125px 420px;
+        width: 60px;
+        height: 60px;
+        pointer-events: none;
+
+        &:hover {
+            background-position: -125px 664px;
+        }
+    }
+
+    .selectable {
+        margin: 0;
+        width: 100%;
+        height: 100%;
+        list-style: none;
+    }
+
+    .next-screen {
+        z-index: -1;
+    }
+
+    &.COMPLETE {
+        .next-screen {
+            opacity: 1;
+            z-index: 1;
+        }
+    }
+}
+
+#room {
+    .banner,
+    .avatar {
+        position: absolute;
+        background: url('#{$sprite}sprites-questions-01.png');
+        background-size: 6000px 565px;
+    }
+
+    .banner {
+        top: 0%;
+        right: 2%;
+        background-position: -179px 360px;
+        width: 67%;
+        height: 30%;
+    }
+
+    .avatar {
+        bottom: 0;
+        left: 0%;
+        background-position: -3290px -5px;
+        width: 40%;
+        height: 100%;
+    }
+
+    button.next-screen {
+        position: absolute;
+        bottom: 7%;
+        left: 46%;
+        opacity: 0;
+        background-position: -1200px -17px;
+        cursor: auto;
+        width: 34%;
+        height: 64%;
+
+        &:hover {
+            background-position: -1200px 373px;
+        }
+    }
+
+    &.OPEN {
+
+        .banner {
+            top: 2000%;
+        }
+
+        .avatar {
+            bottom: 2000%;
+        }
+
+        &.STARTED {
+
+            .banner {
+                top: 0%;
+                animation-name: bounceInUp;
+            }
+
+            .avatar {
+                bottom: 0%;
+                animation-name: bounceInDown;
+            }
+        }
+    }
+
+
+    &.COMPLETE {
+        button.next-screen {
+            animation-name: bounceInLeft;
+            opacity: 1;
+            cursor: pointer;
+        }
+    }
+}
+
+#school {
+    .banner,
+    .avatar {
+        position: absolute;
+        background: url('#{$sprite}sprites-questions-01.png');
+        background-size: 6000px 565px;
+    }
+
+    .banner {
+        bottom: 10%;
+        left: 8%;
+        z-index: 1;
+        background-position: -1249px 390px;
+        width: 67%;
+        height: 40%;
+    }
+
+    .avatar {
+        bottom: 0;
+        left: 0%;
+        background-position: -4003px -5px;
+        width: 100%;
+        height: 100%;
+    }
+
+    button.next-screen {
+        position: absolute;
+        bottom: 2%;
+        left: 63%;
+        opacity: 0;
+        background-position: -1200px -17px;
+        cursor: auto;
+        width: 34%;
+        height: 64%;
+
+        &:hover {
+            background-position: -1200px 373px;
+        }
+    }
+
+    &.OPEN {
+
+        .banner {
+            bottom: 2000%;
+        }
+
+        &.STARTED {
+            .banner {
+                bottom: 0%;
+                animation-name: bounceInDown;
+            }
+        }
+    }
+
+
+    &.COMPLETE {
+        button.next-screen {
+            animation-name: bounceInLeft;
+            opacity: 1;
+            cursor: pointer;
+        }
+    }
+}
+
+#ground {
+    .banner,
+    .avatar {
+        position: absolute;
+        background: url('#{$sprite}sprites-questions-01.png');
+        background-size: 6000px 565px;
+    }
+
+    .banner {
+        top: 0;
+        left: 8%;
+        z-index: 1;
+        background-position: -2253px 390px;
+        width: 51%;
+        height: 40%;
+    }
+
+    .avatar {
+        right: 0%;
+        bottom: 0;
+        background-position: -5025px -5px;
+        width: 90%;
+        height: 100%;
+    }
+
+    button.next-screen {
+        position: absolute;
+        bottom: -3%;
+        left: 15%;
+        opacity: 0;
+        background-position: -1200px -17px;
+        cursor: auto;
+        width: 34%;
+        height: 64%;
+
+        &:hover {
+            background-position: -1200px 373px;
+        }
+    }
+
+    &.OPEN {
+
+        .banner {
+            top: 2000%;
+        }
+
+        &.STARTED {
+            .banner {
+                top: 0%;
+                animation-name: bounceInDown;
+            }
+        }
+    }
+
+
+    &.COMPLETE {
+        button.next-screen {
+            animation-name: bounceInLeft;
+            opacity: 1;
+            cursor: pointer;
+        }
+    }
+}
+
+#sing-about-it {
+    .mr-eco {
+        position: absolute;
+        top: 0;
+        left: 0;
+
+        background: url('#{$sprite}sprites-mr-eco-01.png');
+        background-position: -70px 0;
+        background-size: 850px 624px;
+
+        width: 37%;
+        height: 100%;
+    }
+
+    .dancers,
+    .banner {
+        position: absolute;
+        background: url('#{$sprite}sprites-sing-thankyou-flip-01.png');
+        background-size: 4000px 340px;
+    }
+
+    .dancers {
+        right: 0;
+        bottom: 0;
+        background-position: -713px 226px;
+        width: 611px;
+        height: 20%;
+    }
+
+    .banner {
+        position: absolute;
+        top: 20%;
+        right: 20%;
+        bottom: 17%;
+        left: 20%;
+        background-position: 0 0;
+    }
+
+    &.OPEN {
+
+        img {
+            animation-name: flipInY;
+        }
+    }
+}
+
+#video .frame {
+    background-image: url('#{$frame}fr-2.png');
+    background-size: 100% 100%;
+    width: 80%;
+    height: 85%;
+
+    video {
+        position: relative;
+        margin: 4.2% 4.3%;
+        width: 91.2%;
+        max-height: 95%;
+    }
+}
+
+#good-for-you {
+
+    &.OPEN .sparkles {
+        opacity: 1;
+    }
+
+    .mr-eco {
+        position: absolute;
+        top: 18px;
+        bottom: 0;
+        left: -157px;
+        transform: scale(.88) rotate(-5.6deg);
+        background: url('#{$image}mr-eco.png') no-repeat;
+        background-size: 388px;
+        width: 514px;
+        height: 105%;
+    }
+
+    .banner,
+    .banner2 {
+        position: absolute;
+        transform: scaleX(1.073) scaleY(1.069);
+        background: url('#{$sprite}sprites-sing-thankyou-flip-01.png');
+        background-size: 4000px 340px;
+    }
+
+    .banner {
+        top: 25%;
+        right: 4%;
+        bottom: 17%;
+        left: 21%;
+        background-position: 60% 0;
+    }
+
+    .banner2 {
+        top: -7.4%;
+        left: 30.7%;
+        background-position: 41% 0;
+        width: 60%;
+        height: 42%;
+    }
+
+    &.OPEN {
+
+        img {
+
+            &:nth-of-type(1) {
+                animation-name: zoomInDown;
+            }
+
+            &:nth-of-type(2) {
+                animation-name: bounceIn;
+            }
+        }
+    }
+}
+
+#take-pledge {
+
+    .mr-eco {
+        position: absolute;
+        top: 18px;
+        bottom: 0;
+        left: -157px;
+        transform: scale(.88) rotate(-5.6deg);
+        background: url('#{$image}mr-eco.png') no-repeat;
+        background-size: 388px;
+        width: 514px;
+        height: 105%;
+    }
+
+    .banner {
+        position: absolute;
+        top: 84px;
+        left: 111px;
+        transform: scaleX(.87) scaleY(.87);
+
+        background: url('#{$image}text-antilitter.png') no-repeat;
+        background-position: 60% 0;
+        background-size: 798px;
+
+        width: 800px;
+        height: 700px;
+    }
+
+    button {
+        &.next-screen {
+            position: absolute;
+            top: 64.55%;
+            left: 31.9%;
+            transform: scaleX(.87) scaleY(.88);
+            animation-duration: 1s;
+            animation-fill-mode: both;
+            opacity: 0;
+            background-position: -1973px -109px;
+            cursor: auto;
+            width: 336px;
+            height: 170px;
+
+            &:hover {
+                background-position: -1973px 280px;
+            }
+        }
+    }
+
+    &.OPEN {
+        .content-group {
+
+            img {
+                animation-name: bounceIn;
+            }
+        }
+    }
+
+    &.COMPLETE,
+    .DEMO & {
+        button.next-screen {
+            animation-name: zoomInDown;
+            opacity: 1;
+            cursor: pointer;
+        }
+    }
+}
+
+#commit {
+
+
+    .banner {
+        position: absolute;
+        top: 24px;
+        left: 200px;
+        background: url('#{$image}never.png') no-repeat;
+        background-position: 60% 0;
+        background-size: 150px;
+        width: 800px;
+        height: 700px;
+    }
+
+    button.next-screen {
+        position: absolute;
+        top: 66.6%;
+        left: 35.5%;
+        transform: scale(.88);
+        animation-duration: 1s;
+        animation-fill-mode: both;
+        opacity: 0;
+        background-position: -1611px -109px;
+        cursor: auto;
+        width: 272px;
+        height: 151px;
+
+        &:hover {
+            background-position: -1611px 280px;
+        }
+    }
+
+    .pledge {
+        position: absolute;
+        top: 25px;
+        left: 352px;
+        width: 590px;
+        text-shadow: -1px -1px 0 $black, 1px -1px 0 $black, -1px 1px 0 $black;
+        letter-spacing: .5px;
+        color: $white;
+        font-size: 44px;
+        font-weight: bold;
+
+        .never {
+            padding: 69px;
+        }
+
+        .spacerA {
+            padding-left: 28px;
+        }
+
+        .spacerB {
+            padding-left: 11.5px;
+        }
+
+        .spacer1 {
+            padding-left: 49px;
+        }
+
+        .spacer2 {
+            padding-left: 93px;
+        }
+
+        .spacer3 {
+            padding-left: 223px;
+        }
+    }
+
+    &.COMPLETE,
+    .DEMO & {
+        button.next-screen {
+            animation-name: zoomInDown;
+            opacity: 1;
+            cursor: pointer;
+        }
+    }
+}
+
+#flip {
+
+    .screen-content {
+        div {
+            position: absolute;
+        }
+    }
+
+    .words,
+    .flip {
+        background-image: url('#{$sprite}sprites-sing-thankyou-flip-01.png');
+        background-repeat: no-repeat;
+        background-size: 4500px;
+    }
+
+    .words {
+        top: 0;
+        left: 0;
+        background-position: -3030px -40px;
+        width: 660px;
+        height: 290px;
+    }
+
+    .flip-container {
+        top: 280px;
+        left: 50px;
+        animation-delay: 5s;
+        width: 330px;
+        height: 220px;
+    }
+
+    .flip {
+        top: 0;
+        left: 0;
+        transition: opacity .5s 5s;
+        opacity: 0;
+        background-position: -3960px -80px;
+        width: 100%;
+        height: 100%;
+    }
+
+    .mr-eco {
+        right: 0;
+        bottom: 0;
+        background-image: url('#{$sprite}sprites-mr-eco-01.png');
+        background-repeat: no-repeat;
+        background-position: -360px 0;
+        background-size: 700px;
+        width: 325px;
+        height: 500px;
+    }
+
+    .earned {
+        display: none;
+        position: absolute;
+        top: 110px;
+        left: 388px;
+        width: 200px;
+    }
+
+    &.OPEN {
+        .flip-container {
+            animation-name: flip;
+        }
+
+        .flip {
+            opacity: 1;
+        }
+
+        .mr-eco {
+            animation-name: bounceInUp;
+        }
+    }
+
+    &.COMPLETE {
+        .earned {
+            display: inline-block;
+        }
+    }
+}
+
+#quit {
+
+    .frame {
+        margin-top: -100px;
+        background-image: url('#{$frame}frame-quit-frame.png');
+        background-repeat: no-repeat;
+        background-size: 100%;
+        padding: 30px 0 0;
+        text-align: center;
+
+        h2 {
+            margin: 0;
+        }
+
+        button {
+            margin: 70px 10px 20px;
+        }
+    }
+}

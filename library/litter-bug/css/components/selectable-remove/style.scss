@@ -1,0 +1,56 @@
+@import '../../variables';
+
+.selectable {
+    width: 100%;
+    height: 100%;
+
+    li {
+        position: absolute;
+        transition: opacity .5s;
+        opacity: 1;
+        background-image: url('#{$sprite}sprite-3-1.png');
+        background-repeat: no-repeat;
+        background-size: 351px;
+        cursor: pointer;
+        list-style: none;
+
+        &.HIGHLIGHTED {
+            opacity: 0;
+            cursor: auto;
+            pointer-events: none;
+        }
+
+        $items: bottle card-board-first card-board-second bag paper-first paper-second paper-third paper-fourth batteries banana glass tuna glass-bottle newspaper soda-first soda-second can tires;
+        $widths: 120 140 140    70 120 120 120 120    70    60 145    70 100 120 100 100    70 120;
+        $heights: 65 100 100    75 100 100 100 100    65    75 100    85    65    85    80    80    50    95;
+        $lefts:    800 720 300    30 120 260 520 860 180 355 375 445 345 495 560 124 665 705;
+        $tops:     350 430 260 350 430 300 285 235 350 290 430 230 355 335 410 286 305 225;
+        $background-tops: 0 1 1 2 3 3 3 3 4 5 6 7 8 9 10 10 11 12;
+        $scales: 1 1 .5 1 1 .6 .8 .6 1 1 1 1 1 1 1 .6 1 1;
+
+        @for $i from 1 through 18 {
+            &.#{nth($items, $i)} {
+                top: (nth($tops, $i) + 15) + px;
+                left: nth($lefts, $i) + px;
+                background-position: 0 #{-175 * nth($background-tops, $i) + px};
+                width: nth($widths, $i) + px;
+                height: nth($heights, $i) + px;
+                $scale: nth($scales, $i);
+
+                @if($scale != 1) {
+                    transform: scale($scale);
+                    transform-origin: 0 0 0;
+                }
+
+                &:hover {
+                    background-position: -176px #{-175 * nth($background-tops, $i) + px};
+                }
+            }
+        }
+
+        // the banana hover was slightly off and needed to be adjusted
+        &.banana:hover {
+            background-position: -181px #{-175 * 5 - 5 + px};
+        }
+    }
+}

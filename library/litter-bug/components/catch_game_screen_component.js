@@ -268,12 +268,12 @@ export default function (props, ref, key, opts = {}) {
                         <skoash.Audio
                             type="sfx"
                             ref="correct"
-                            src={'media/_assets/_sounds/_effects/WinPoints.mp3'}
+                            src={`${CMWN.MEDIA.EFFECT}win-points.mp3`}
                         />,
                         <skoash.Audio
                             type="sfx"
                             ref="incorrect"
-                            src={'media/_assets/_sounds/_effects/LosePoints.mp3'}
+                            src={`${CMWN.MEDIA.EFFECT}lose-points.mp3`}
                         />,
                     ]}
                 />

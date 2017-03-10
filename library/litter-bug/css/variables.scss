@@ -1,0 +1,20 @@
+$media: $media-server + 'games/litterbug/';
+$sprite: $media + 'sprites-animations/';
+$image: $media + 'image-assets/';
+$frame: $media + 'frames/';
+$font: $media + 'fonts/';
+
+$white: #fff;
+$black: #000;
+$yellow: #efc300;
+$light-yellow: #f1f64e;
+$bright-yellow: #f5fd37;
+$green: #4a6f11;
+$bright-green: #008000;
+$overlay-red: rgba(243, 157, 201, .6);
+$light-grey: #f9f9f9;
+$orange: #e24419;
+$olive: #6d8326;
+$lime: #b7db40;
+$transparent-red: rgba(255, 0, 0, .6);
+$transparent-lime: rgba(183, 219, 64, .6);

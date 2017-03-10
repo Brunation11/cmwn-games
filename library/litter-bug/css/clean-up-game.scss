@@ -1,0 +1,742 @@
+@import 'variables';
+@import 'mixins';
+
+#clean-up-game-lvl-1,
+#clean-up-game-lvl-2,
+#clean-up-game-lvl-3 {
+    @keyframes reload {
+        0% {
+            visibility: hidden;
+            opacity: 0;
+        }
+
+        67% {
+            visibility: hidden;
+            opacity: 0;
+        }
+
+        100% {
+            visibility: visible;
+            opacity: 1;
+        }
+    }
+
+    @keyframes fire {
+        25% {
+            transform: translateY(-650%) scale(.5);
+        }
+
+        50% {
+            transform: translateY(-550%) scale(.3);
+        }
+
+        60% {
+            transform: translateY(-550%) scale(1);
+        }
+
+        100% {
+            transform: translateY(-550%) scale(1);
+        }
+    }
+
+    @keyframes points {
+        60% {
+            opacity: 0;
+        }
+
+        65% {
+            opacity: 1;
+        }
+
+        100% {
+            opacity: 1;
+        }
+    }
+
+    @keyframes throw {
+        100% {
+            background-position: -500px;
+        }
+    }
+
+    .cannon {
+        display: inline-block;
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        z-index: 1;
+        border: 1px solid $bright-green;
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+        text-align: center;
+
+        &.FIRE {
+            pointer-events: none;
+
+            .LOADED {
+                /**
+                 *    Normaly I would define the transition on the default rule but this way
+                 *    the animation will not play when the 'LAUNCHED' flag is removed.
+                 */
+                transition: transform .5s cubic-bezier(0, 0, .2, 1);
+                animation: fire 2s;
+
+                &::before {
+                    position: absolute;
+                    top: -50%;
+                    left: -50%;
+                    animation: points 2s;
+                    opacity: 0;
+                    width: 200%;
+                    height: 200%;
+                    content: '';
+                }
+            }
+        }
+
+        &.RELOAD {
+            .LOADED {
+                animation: reload .5s;
+            }
+        }
+
+        .launch-button {
+            position: absolute;
+            bottom: .5%;
+            left: 9%;
+
+            background: url('#{$sprite}sprites-game1-7.png');
+            background-position: 0 0;
+            background-size: 100%;
+
+            width: 10%;
+            height: 18%;
+
+            &:hover,
+            &:focus,
+            &:active {
+                background-position: 0 97px;
+            }
+        }
+
+        .ammo-container {
+            position: absolute;
+            bottom: 2%;
+            left: 24%;
+
+            background: url('#{$sprite}sprites-game1-4-01.png');
+            background-position: -334px 122px;
+            background-size: 1600px 163px;
+
+            width: 30%;
+            height: 15%;
+        }
+
+        .ammo {
+            display: inline;
+            position: absolute;
+            bottom: 5%;
+            background: url('#{$sprite}sprites-game1-1.png');
+            background-size: 1000px 292px;
+            width: 5%;
+            height: 8%;
+            pointer-events: none;
+
+            &:nth-of-type(1) {
+                left: 25%;
+            }
+
+            &:nth-of-type(2) {
+                left: 25%;
+            }
+
+            &:nth-of-type(3) {
+                left: 30%;
+            }
+
+            &:nth-of-type(4) {
+                left: 35%;
+            }
+
+            &:nth-of-type(5) {
+                left: 40%;
+            }
+
+            &:nth-of-type(6) {
+                bottom: 3%;
+                left: 46%;
+                width: 7%;
+                height: 13%;
+
+                &.plastic-bottle {
+                    background-position: 224px 179px;
+                }
+
+                &.soda-can {
+                    background-position: -26px 180px;
+                }
+
+                &.banana-peal {
+                    background-position: -153px 182px;
+                }
+
+                &.glass-bottle {
+                    background-position: 99px 178px;
+                }
+
+                &.crumbled-paper {
+                    background-position: 723px 181px;
+                }
+
+                &.tuna-can {
+                    background-position: 597px 178px;
+                }
+
+                &.tire {
+                    background-position: 472px 180px;
+                }
+
+                &.battery {
+                    background-position: 347px 179px;
+                }
+            }
+
+            &.plastic-bottle {
+                background-position: 211px 72px;
+            }
+
+            &.soda-can {
+                background-position: -40px 73px;
+            }
+
+            &.banana-peal {
+                background-position: -165px 73px;
+            }
+
+            &.glass-bottle {
+                background-position: 85px 73px;
+            }
+
+            &.crumbled-paper {
+                background-position: 710px 72px;
+            }
+
+            &.tuna-can {
+                background-position: 587px 72px;
+            }
+
+            &.tire {
+                background-position: 460px 72px;
+            }
+
+            &.battery {
+                background-position: 334px 72px;
+            }
+        }
+    }
+
+    .carousel {
+        position: absolute;
+        top: 20%;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 80%;
+        overflow: hidden;
+        white-space: nowrap;
+
+        > * {
+            display: inline-block;
+            position: relative;
+            transform: translate3d(0, 0, 0);
+            transition: margin 0s;
+
+            background: url('#{$sprite}sprites-game1-2-01.png');
+            background-position: 0 0;
+            background-size: 150px 390px;
+
+            width: 20%;
+            height: 36%;
+            box-sizing: border-box;
+
+            // &.SELECTED {
+            //     background-position: 0 190px;
+            // }
+
+            &::after {
+                position: absolute;
+                top: 25%;
+                left: 15%;
+                background: url('#{$sprite}sprites-game1-numbers.png');
+                background-size: 425px 102px;
+                width: 70%;
+                height: 50%;
+                content: '';
+            }
+
+            &.five::after {
+                background-position: -2px -8px;
+            }
+
+            &.ten::after {
+                background-position: 319px -8px;
+            }
+
+            &.twenty::after {
+                background-position: 213px -8px;
+            }
+
+            &.thirty::after {
+                background-position: 106px -8px;
+            }
+        }
+
+        .LEAVE {
+            transition: margin 1s;
+            margin-left: -20%;
+        }
+    }
+
+    .randomizer {
+        img {
+            visibility: hidden;
+        }
+    }
+
+    .level {
+        position: absolute;
+        top: 49%;
+        left: 7%;
+        transform: translate3d(1px, 1px, 1px);
+        width: 19%;
+        height: 35%;
+        text-align: center;
+        font-size: 1.25rem;
+    }
+
+    .score {
+        position: absolute;
+        top: 49%;
+        left: 41%;
+        transform: translate3d(1px, 1px, 1px);
+        width: 19%;
+        height: 35%;
+        text-align: center;
+        font-size: 1.25rem;
+    }
+
+    .timer {
+        position: absolute;
+        top: 47%;
+        left: 74%;
+        transform: translate3d(1px, 1px, 1px);
+        width: 19%;
+        height: 35%;
+        text-align: center;
+        font-size: 1.25rem;
+    }
+
+    .grass {
+        position: absolute;
+        bottom: 0;
+
+        background: url('#{$image}game1-grass.png');
+        background-repeat: no-repeat;
+        background-position: 0 50px;
+        background-size: contain;
+
+        width: 100%;
+        height: 70%;
+        content: '';
+    }
+
+    .stats {
+        position: absolute;
+        right: 10%;
+        bottom: 0;
+        transform: translate3d(0, 0, 0);
+
+        background: url('#{$sprite}sprites-game1-4-01.png');
+        background-position: -16px 133px;
+        background-size: 1600px 163px;
+
+        width: 30%;
+        height: 27%;
+    }
+
+    .reveal {
+        position: absolute;
+        top: 0;
+        left: 0;
+        transition: opacity .5s;
+        opacity: 0;
+        z-index: -1;
+        width: 100%;
+        height: 100%;
+        pointer-events: none;
+
+        li {
+            opacity: 0;
+        }
+
+        &.OPEN {
+            opacity: 1;
+            z-index: 2;
+            pointer-events: auto;
+
+            *.OPEN {
+                opacity: 1;
+
+                .frame {
+                    position: absolute;
+                    top: 10%;
+                    left: 10%;
+                    border: 5px solid $black;
+                    border-radius: 30px;
+                    width: 80%;
+                    height: 80%;
+
+                    &::after {
+                        position: absolute;
+                        top: 30%;
+                        left: -14%;
+
+                        background: url('#{$sprite}sprites-mr-eco-01.png');
+                        background-position: 5px 0;
+                        background-size: 500px 367px;
+
+                        width: 33%;
+                        height: 81%;
+                        content: '';
+                    }
+                }
+            }
+
+            &.open-instructions {
+                background: $transparent-lime;
+
+                .frame.instructions-lvl-1,
+                .frame.instructions-lvl-2,
+                .frame.instructions-lvl-3 {
+                    background: $bright-yellow;
+
+                    .banner {
+                        position: absolute;
+                        top: 5%;
+                        left: 49%;
+                        transform: translateX(-50%);
+
+                        background: url('#{$sprite}sprites-game1-3-01.png');
+                        background-repeat: no-repeat;
+                        background-position: -37px 2px;
+                        background-size: 3200px 83px;
+
+                        width: 76%;
+                        height: 20%;
+                    }
+
+                    .hundred {
+                        position: absolute;
+                        top: 68%;
+                        left: 28%;
+                        background: url('#{$sprite}sprites-game1-8.png');
+                        background-size: 300px 68px;
+                        width: 12%;
+                        height: 14%;
+                    }
+
+                    span:nth-of-type(1) {
+                        position: absolute;
+                        top: 30%;
+                        left: 19%;
+                        width: 77%;
+                        text-align: center;
+                        font-size: 43px;
+                        font-weight: 600;
+                    }
+
+                    span:nth-of-type(2) {
+                        position: absolute;
+                        top: 69%;
+                        left: 19%;
+                        width: 10%;
+                        font-size: 43px;
+                        font-weight: 600;
+                    }
+
+                    span:nth-of-type(3) {
+                        position: absolute;
+                        top: 69%;
+                        left: 41%;
+                        width: 61%;
+                        font-size: 43px;
+                        font-weight: 600;
+                    }
+
+                    span:nth-of-type(4) {
+                        position: absolute;
+                        top: 81%;
+                        left: 38%;
+                        width: 61%;
+                        font-size: 43px;
+                        font-weight: 600;
+                    }
+                }
+
+                .frame.instructions-lvl-1 .hundred {
+                    background-position: -3px 1px;
+                }
+
+                .frame.instructions-lvl-2 .hundred {
+                    background-position: -103px 1px;
+                }
+
+                .frame.instructions-lvl-3 .hundred {
+                    background-position: -203px 1px;
+                }
+            }
+
+            &.open-complete {
+                background: $transparent-lime;
+
+                .frame.complete-lvl-1 {
+                    background: $lime;
+
+                    .banner {
+                        position: absolute;
+                        top: 5%;
+                        left: 50%;
+                        transform: translateX(-50%);
+
+                        background: url('#{$sprite}sprites-game1-3-01.png');
+                        background-repeat: no-repeat;
+                        background-position: -667px 2px;
+                        background-size: 3200px 83px;
+
+                        width: 76%;
+                        height: 20%;
+                    }
+
+                    .banner-2 {
+                        position: absolute;
+                        top: 25%;
+                        left: 55%;
+                        transform: translateX(-50%);
+
+                        background: url('#{$sprite}sprites-game1-6-01.png');
+                        background-repeat: no-repeat;
+                        background-position: -167px 2px;
+                        background-size: 3000px 159px;
+
+                        width: 76%;
+                        height: 36%;
+                    }
+
+                    span {
+                        position: absolute;
+                        top: 60%;
+                        left: 20%;
+                        font-size: 39px;
+                        font-weight: 600;
+                    }
+                }
+            }
+
+            .frame.complete-lvl-2 {
+                background: $lime;
+
+                .banner {
+                    position: absolute;
+                    top: 5%;
+                    left: 50%;
+                    transform: translateX(-50%);
+
+                    background: url('#{$sprite}sprites-game1-3-01.png');
+                    background-repeat: no-repeat;
+                    background-position: -1300px 2px;
+                    background-size: 3200px 83px;
+
+                    width: 78%;
+                    height: 20%;
+                }
+
+                .banner-2 {
+                    position: absolute;
+                    top: 25%;
+                    left: 55%;
+                    transform: translateX(-50%);
+
+                    background: url('#{$sprite}sprites-game1-6-01.png');
+                    background-repeat: no-repeat;
+                    background-position: -647px 2px;
+                    background-size: 2500px 133px;
+
+                    width: 76%;
+                    height: 36%;
+                }
+
+                span {
+                    position: absolute;
+                    top: 60%;
+                    left: 20%;
+                    font-size: 39px;
+                    font-weight: 600;
+                }
+            }
+
+            .frame.complete-lvl-3 {
+                background: $lime;
+
+                .banner {
+                    position: absolute;
+                    top: 5%;
+                    left: 50%;
+                    transform: translateX(-50%);
+
+                    background: url('#{$sprite}sprites-game1-3-01.png');
+                    background-repeat: no-repeat;
+                    background-position: -1911px 2px;
+                    background-size: 3200px 83px;
+
+                    width: 85%;
+                    height: 20%;
+                }
+
+                .banner-2 {
+                    position: absolute;
+                    top: 60%;
+                    left: 55%;
+                    transform: translateX(-50%);
+
+                    background: url('#{$sprite}sprites-game1-6-01.png');
+                    background-repeat: no-repeat;
+                    background-position: -1617px 2px;
+                    background-size: 3000px 159px;
+
+                    width: 76%;
+                    height: 36%;
+                }
+
+                span {
+                    position: absolute;
+                    top: 27%;
+                    left: 20%;
+                    font-size: 60px;
+                    font-weight: 600;
+                }
+            }
+
+            &.open-try-again {
+                background: $transparent-red;
+
+                .frame {
+                    background: $olive;
+
+                    .banner {
+                        position: absolute;
+                        top: 5%;
+                        left: 50%;
+                        transform: translateX(-50%);
+
+                        background: url('#{$sprite}sprites-game1-3-01.png');
+                        background-repeat: no-repeat;
+                        background-position: -2587px 2px;
+                        background-size: 3200px 83px;
+
+                        width: 76%;
+                        height: 20%;
+                    }
+
+                    .banner-2 {
+                        position: absolute;
+                        top: 25%;
+                        left: 55%;
+                        transform: translateX(-50%);
+
+                        background: url('#{$sprite}sprites-game1-6-01.png');
+                        background-repeat: no-repeat;
+                        background-position: -2426px 2px;
+                        background-size: 3000px 159px;
+
+                        width: 76%;
+                        height: 36%;
+                    }
+
+                    span {
+                        position: absolute;
+                        top: 60%;
+                        left: 20%;
+                        color: $white;
+                        font-size: 39px;
+                        font-weight: 600;
+                    }
+                }
+            }
+        }
+
+        &.open-instructions,
+        &.open-try-again {
+            .close-reveal {
+                position: absolute;
+                right: 12%;
+                bottom: 10%;
+                transform: rotate(0deg) translate3d(0, 0, 0);
+                opacity: 1;
+                background-position: 209px -103px;
+                background-size: 2500px 556px;
+                width: 15%;
+                height: 14%;
+                pointer-events: auto;
+
+                .VOICE-OVER:not(.DEMO) & {
+                    opacity: .5;
+                    pointer-events: none;
+                }
+
+                &:hover,
+                &:focus,
+                &:active {
+                    background-position: 209px 175px;
+                }
+            }
+        }
+
+        &.open-instructions:not(.instructionsComplete) {
+            .close-reveal {
+                opacity: .5;
+                pointer-events: none;
+            }
+        }
+
+        ul {
+            padding: 0;
+            list-style: none;
+        }
+    }
+
+    &.COMPLETE {
+        .SCREEN-clean-up-game-lvl-1:not(.DEMO) &,
+        .SCREEN-clean-up-game-lvl-2:not(.DEMO) &,
+        .SCREEN-clean-up-game-lvl-3:not(.DEMO) & {
+            .next-screen {
+                position: absolute;
+                right: 12%;
+                bottom: 10%;
+                transform: rotate(0deg) translate3d(0, 0, 0);
+                opacity: 1;
+                background-position: 209px -103px;
+                background-size: 2500px 556px;
+                width: 15%;
+                height: 14%;
+                pointer-events: auto;
+
+                &:hover,
+                &:focus,
+                &:active {
+                    background-position: 209px 175px;
+                }
+            }
+        }
+    }
+}

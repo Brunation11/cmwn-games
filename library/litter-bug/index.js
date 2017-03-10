@@ -63,46 +63,46 @@ var LitterBug = (
             }
         }}
         assets={[
-            <skoash.Audio ref="bkg-1" type="background" src="media/_BKG/S_BKG_1.mp3" loop/>,
+            <skoash.Audio ref="bkg-1" type="background" src={`${CMWN.MEDIA.EFFECT}s-bkg-1.mp3`} loop/>,
             <skoash.Audio
                 ref="bkg-2"
                 type="background"
-                src="media/_assets/_sounds/_effects/GameThemeMusic%202.mp3"
+                src={`${CMWN.MEDIA.EFFECT}game-theme-music-2.mp3`}
                 loop
             />,
-            <skoash.Audio ref="button" type="sfx" src="media/_Buttons/S_BU_1.mp3" />,
-            <skoash.Image ref="img-bkg-1" className="hidden" src="media/_BKG/BKG_1.png" />,
-            <skoash.Image ref="img-bkg-2" className="hidden" src="media/_BKG/BKG_2.png" />,
-            <skoash.Image ref="img-bkg-3" className="hidden" src="media/_BKG/BKG_3.png" />,
-            <skoash.Image ref="img-bkg-4" className="hidden" src="media/_assets/_images/BKG.4.jpg" />,
-            <skoash.Image ref="img-bkg-5" className="hidden" src="media/_BKG/BKG_5.png" />,
+            <skoash.Audio ref="button" type="sfx" src={`${CMWN.MEDIA.EFFECT}s-bu-1.mp3`} />,
+            <skoash.Image ref="img-bkg-1" className="hidden" src={`${CMWN.MEDIA.IMAGE}bkg-1.png`} />,
+            <skoash.Image ref="img-bkg-2" className="hidden" src={`${CMWN.MEDIA.IMAGE}bkg-2.png`} />,
+            <skoash.Image ref="img-bkg-3" className="hidden" src={`${CMWN.MEDIA.IMAGE}bkg-3.png`} />,
+            <skoash.Image ref="img-bkg-4" className="hidden" src={`${CMWN.MEDIA.IMAGE}bkg-4.jpg`} />,
+            <skoash.Image ref="img-bkg-5" className="hidden" src={`${CMWN.MEDIA.IMAGE}bkg-5.png`} />,
             <skoash.Image
                 className="hidden"
-                src="media/_assets/_images/BKG.3.png"
+                src={`${CMWN.MEDIA.IMAGE}bkg-3.png`}
             />,
             <skoash.Image
                 className="hidden"
-                src="media/_assets/_images/BKG.5.png"
+                src={`${CMWN.MEDIA.IMAGE}bkg-5.png`}
             />,
             <skoash.Image
                 className="hidden"
-                src={'media/_assets/_sprites/sprites.game2.1-01.png'}
+                src={`${CMWN.MEDIA.SPRITE}sprites-game2-1-01.png`}
             />,
             <skoash.Image
                 className="hidden"
-                src={'media/_assets/_sprites/sprites.game2.2-01.png'}
+                src={`${CMWN.MEDIA.SPRITE}sprites-game2-2-01.png`}
             />,
             <skoash.Image
                 className="hidden"
-                src={'media/_assets/_sprites/sprites.game2.3-01-min.jpg'}
+                src={`${CMWN.MEDIA.SPRITE}sprites-game2-3-01-min.jpg`}
             />,
             <skoash.Image
                 className="hidden"
-                src={'media/_assets/_sprites/sprites.game2.4-01.png'}
+                src={`${CMWN.MEDIA.SPRITE}sprites-game2-4-01.png`}
             />,
             <skoash.Image
                 className="hidden"
-                src={'media/_assets/_sprites/sprites.mr.eco-01.png'}
+                src={`${CMWN.MEDIA.SPRITE}sprites-mr-eco-01.png`}
             />,
             <div className="background default" />,
             <div className="background title" />,
