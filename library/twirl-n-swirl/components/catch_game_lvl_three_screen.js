@@ -23,7 +23,39 @@ export default function (props, ref, key) {
                 message: ''
             },
             {
+                className: 'frog',
+                message: ''
+            },
+            {
+                className: 'plant',
+                message: ''
+            },
+            {
+                className: 'trash wipes',
+                message: 'trash'
+            },
+            {
+                className: 'trash litter',
+                message: 'trash'
+            },
+            {
+                className: 'trash paper-towels',
+                message: 'trash'
+            },
+            {
+                className: 'trash cue-tips',
+                message: 'trash'
+            },
+            {
+                className: 'trash oil',
+                message: 'trash'
+            },
+            {
                 className: 'trash floss',
+                message: 'trash'
+            },
+            {
+                className: 'trash bandaid',
                 message: 'trash'
             },
             {
@@ -35,15 +67,23 @@ export default function (props, ref, key) {
                 message: 'trash'
             },
             {
-                className: 'trash bandaid',
-                message: 'trash'
-            },
-            {
-                className: 'trash oil',
-                message: 'trash'
-            },
-            {
                 className: 'trash gum',
+                message: 'trash'
+            },
+            {
+                className: 'trash tissue',
+                message: 'trash'
+            },
+            {
+                className: 'trash hair',
+                message: 'trash'
+            },
+            {
+                className: 'trash make-up',
+                message: 'trash'
+            },
+            {
+                className: 'trash chemicals',
                 message: 'trash'
             }
         ],
