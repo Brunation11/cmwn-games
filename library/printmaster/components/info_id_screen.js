@@ -19,10 +19,10 @@ export default function (props, ref, key) {
             }}
         >
             <skoash.MediaSequence ref="media">
-                <skoash.Audio type="voiceOver" src="media/S_8/S_8.1.mp3" delay={500} />
-                <skoash.Audio type="voiceOver" src="media/S_8/VO_8.1.mp3" />
+                <skoash.Audio type="voiceOver" src={`${CMWN.MEDIA.EFFECT}s-8-1.mp3`} delay={500} />
+                <skoash.Audio type="voiceOver" src={`${CMWN.MEDIA.VO}vo-8-1.mp3`} />
             </skoash.MediaSequence>
-            <skoash.Image ref="frame-img" className="hidden" src="media/_Frame/Fr_1.png" />
+            <skoash.Image ref="frame-img" className="hidden" src={`${CMWN.MEDIA.FRAME}fr-1.png`} />
             <div className="frame">
                 <div className="center">
                     <span>

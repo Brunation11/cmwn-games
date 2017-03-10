@@ -13,18 +13,18 @@ export default function (props, ref, key) {
             <skoash.MediaSequence>
                 <skoash.Audio
                     type="voiceOver"
-                    src="media/S_22/VO_22.1.mp3"
+                    src={`${CMWN.MEDIA.VO}vo-22-1.mp3`}
                     sprite={[0, 2000]}
                     completeTarget="vo"
                 />
                 <skoash.Audio
                     type="voiceOver"
-                    src="media/S_22/VO_22.1.mp3"
+                    src={`${CMWN.MEDIA.VO}vo-22-1.mp3`}
                     sprite={[2000, 4000]}
                 />
             </skoash.MediaSequence>
-            <skoash.Image className="hidden" src="media/_Frame/Fr_1.png" />
-            <skoash.Image className="hidden" src="media/S_22/img_22.1.png" />
+            <skoash.Image className="hidden" src={`${CMWN.MEDIA.FRAME}fr-1.png`} />
+            <skoash.Image className="hidden" src={`${CMWN.MEDIA.IMAGE}img-22-1.png`} />
             <div className="frame">
                 <div>
                     <p>
