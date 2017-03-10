@@ -86,7 +86,7 @@
                 left: 4%;
             }
 
-            &.center {
+            &.middle {
                 left: 33%;
             }
 
@@ -167,173 +167,168 @@
         .randomizer {
             display: none;
         }
+    }
 
-        .items {
-            position: absolute;
-            top: 5%;
-            left: 0;
-            z-index: 1;
-            margin: 0;
-            padding: 0;
-            width: 100%;
-            height: 50%;
-            overflow: visible;
-            list-style: none;
-            pointer-events: none;
+    .items {
+        position: absolute;
+        top: 5%;
+        left: 0;
+        z-index: 1;
+        margin: 0;
+        padding: 0;
+        width: 100%;
+        height: 50%;
+        overflow: visible;
+        list-style: none;
+        pointer-events: none;
+    }
+
+    .catchable.go {
+        position: absolute;
+        top: 0;
+        transition: opacity .5s;
+        animation-name: catchable;
+        animation-timing-function: linear;
+        opacity: 1;
+        background: url('../media/S_6/sprite_6.2.png');
+        background-size: 275px 960px;
+        width: 15%;
+        height: 50%;
+
+        &.slow {
+            animation-duration: 5s;
         }
 
-        &.STARTED {
-            .catchable {
-                position: absolute;
-                top: -100%;
-                transition: opacity .5s;
+        &.medium {
+            animation-duration: 4s;
+        }
 
-                animation-name: catchable;
-                animation-timing-function: linear;
-                opacity: 1;
+        &.fast {
+            animation-duration: 3s;
+        }
 
-                background: url('../media/S_6/sprite_6.2.png');
-                background-size: 275px 960px;
+        &.turtle {
+            background-image: url('../media/images/turtle.png');
+            background-repeat: no-repeat;
+            background-position: 0 15px;
+            background-size: contain;
+        }
 
-                width: 15%;
-                height: 50%;
+        &.frog {
+            background-image: url('../media/images/frog.png');
+            background-repeat: no-repeat;
+            background-position: 0 15px;
+            background-size: contain;
+        }
 
-                &.slow {
-                    animation-duration: 5s;
-                }
+        &.fish {
+            background-image: url('../media/images/sprite_fish.png');
+            background-position: 380px 15px;
+            background-size: 750px 282px;
+        }
 
-                &.medium {
-                    animation-duration: 4s;
-                }
+        &.plant {
+            background-image: url('../media/images/plants.png');
+            background-repeat: no-repeat;
+            background-position: -81px 0;
+            background-size: 750px 129px;
+        }
 
-                &.fast {
-                    animation-duration: 3s;
-                }
+        &.floss {
+            background-position: 156px 700px;
+        }
 
-                &.turtle {
-                    background-image: url('../media/images/turtle.png');
-                    background-repeat: no-repeat;
-                    background-position: 0 15px;
-                    background-size: contain;
-                }
+        &.medicine {
+            background-position: 166px 554px;
+        }
 
-                &.frog {
-                    background-image: url('../media/images/frog.png');
-                    background-repeat: no-repeat;
-                    background-position: 0 15px;
-                    background-size: contain;
-                }
+        &.diaper {
+            background-position: 27px 435px;
+        }
 
-                &.fish {
-                    background-image: url('../media/images/sprite_fish.png');
-                    background-position: 380px 15px;
-                    background-size: 750px 282px;
-                }
+        &.bandaid {
+            background-position: 17px 552px;
+        }
 
-                &.plant {
-                    background-image: url('../media/images/plants.png');
-                    background-repeat: no-repeat;
-                    background-position: -81px 0;
-                    background-size: 750px 129px;
-                }
+        &.oil {
+            background-position: 42px 686px;
+        }
 
-                &.floss {
-                    background-position: 156px 700px;
-                }
+        &.gum {
+            background-position: 156px 428px;
+        }
 
-                &.medicine {
-                    background-position: 166px 554px;
-                }
+        &.left {
+            left: 14%;
+        }
 
-                &.diaper {
-                    background-position: 27px 435px;
-                }
+        &.middle {
+            left: 43%;
+        }
 
-                &.bandaid {
-                    background-position: 17px 552px;
-                }
+        &.right {
+            left: 71%;
+        }
 
-                &.oil {
-                    background-position: 42px 686px;
-                }
+        &.correct::after {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            text-align: right;
+            color: $white;
+            font-size: 50px;
+            font-weight: 600;
+            content: '+5';
+        }
 
-                &.gum {
-                    background-position: 156px 428px;
-                }
+        &.incorrect::after {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            text-align: right;
+            color: $orange;
+            font-size: 50px;
+            font-weight: 600;
+            content: '-10';
+        }
 
-                &.left {
-                    left: 14%;
-                }
+        &.trash:not(.CAUGHT)::after {
+            position: absolute;
+            top: 0;
+            left: 0;
+            transition: opacity .5s;
+            animation-name: incorrectCatchable;
+            opacity: 0;
+            width: 100%;
+            height: 100%;
+            text-align: right;
+            color: $orange;
+            font-size: 50px;
+            font-weight: 600;
+            content: '-10';
+        }
 
-                &.center {
-                    left: 43%;
-                }
+        &.trash.slow:not(.CAUGHT)::after {
+            animation-duration: 5s;
+        }
 
-                &.right {
-                    left: 71%;
-                }
+        &.trash.medium:not(.CAUGHT)::after {
+            animation-duration: 4s;
+        }
 
-                &.correct::after {
-                    position: absolute;
-                    top: 0;
-                    left: 0;
-                    width: 100%;
-                    height: 100%;
-                    text-align: right;
-                    color: $white;
-                    font-size: 50px;
-                    font-weight: 600;
-                    content: '+5';
-                }
+        &.trash.fast:not(.CAUGHT)::after {
+            animation-duration: 3s;
+        }
 
-                &.incorrect::after {
-                    position: absolute;
-                    top: 0;
-                    left: 0;
-                    width: 100%;
-                    height: 100%;
-                    text-align: right;
-                    color: $orange;
-                    font-size: 50px;
-                    font-weight: 600;
-                    content: '-10';
-                }
+        .PAUSED & {
+            animation-play-state: paused;
 
-                &.trash:not(.CAUGHT)::after {
-                    position: absolute;
-                    top: 0;
-                    left: 0;
-                    transition: opacity .5s;
-                    animation-name: incorrectCatchable;
-                    opacity: 0;
-                    width: 100%;
-                    height: 100%;
-                    text-align: right;
-                    color: $orange;
-                    font-size: 50px;
-                    font-weight: 600;
-                    content: '-10';
-                }
-
-                &.trash.slow:not(.CAUGHT)::after {
-                    animation-duration: 5s;
-                }
-
-                &.trash.medium:not(.CAUGHT)::after {
-                    animation-duration: 4s;
-                }
-
-                &.trash.fast:not(.CAUGHT)::after {
-                    animation-duration: 3s;
-                }
-
-                .PAUSED & {
-                    animation-play-state: paused;
-
-                    &::after {
-                        animation-play-state: paused;
-                    }
-                }
+            &::after {
+                animation-play-state: paused;
             }
         }
     }

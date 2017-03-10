@@ -5,15 +5,14 @@ export default function (props, ref, key) {
         id: 'catch-game-lvl-3',
         level: 3,
         timeout: 60000,
-        dropTimeout: 1500,
+        dropTimeout: 1000,
         dropSpeed: 'medium',
-        rows: 3,
         points: {
             goal: 50,
             correct: 5,
             incorrect: -10
         },
-        dropPoints: ['left', 'center', 'right'],
+        dropPoints: ['left', 'middle', 'right'],
         bin: [
             {
                 className: 'fish',
@@ -25,14 +24,6 @@ export default function (props, ref, key) {
             },
             {
                 className: 'trash floss',
-                message: 'trash'
-            },
-            {
-                className: 'trash floss',
-                message: 'trash'
-            },
-            {
-                className: 'trash medicine',
                 message: 'trash'
             },
             {

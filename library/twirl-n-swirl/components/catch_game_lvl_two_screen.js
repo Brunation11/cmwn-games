@@ -4,10 +4,9 @@ export default function (props, ref, key) {
     return CatchGameScreenComponent(props, ref, key, {
         id: 'catch-game-lvl-2',
         level: 2,
-        timeout: 60000,
-        dropTimeout: 1500,
-        dropSpeed: 'medium',
-        rows: 3,
+        timeout: 30000,
+        dropTimeout: 1000,
+        dropSpeed: 'slow',
         points: {
             goal: 50,
             correct: 5,

@@ -5,15 +5,14 @@ export default function (props, ref, key) {
         id: 'catch-game-lvl-5',
         level: 5,
         timeout: 60000,
-        dropTimeout: 1500,
+        dropTimeout: 1000,
         dropSpeed: 'fast',
-        rows: 3,
         points: {
             goal: 50,
             correct: 5,
             incorrect: -10
         },
-        dropPoints: ['left', 'center', 'right'],
+        dropPoints: ['left', 'middle', 'right'],
         bin: [
             {
                 className: 'fish',

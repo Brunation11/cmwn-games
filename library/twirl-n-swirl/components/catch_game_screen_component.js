@@ -20,29 +20,25 @@ export default function (props, ref, key, opts = {}) {
     var dropperGetClassNames;
     var dropperOnAddClassName;
     var dropperOnTransitionEnd;
+    var dropperOnStop;
     var catcherOnMove;
     var catcherOnCorrect;
     var catcherOnIncorrect;
     var renderDropPoints;
 
     for (let i = 0; i < opts.bin.length; i++) {
-        for (let j = 0; j < opts.rows; j++) {
-            bin.push(
-                <Catchable
-                    className={classNames(
-                        opts.bin[i].className,
-                        opts.dropSpeed,
-                        {
-                            PAUSED: _.get(props, 'data.game.start', false)
-                        }
-                    )}
-                    message={opts.bin[i].message}
-                    style={{
-                        top: 400 * (j + .4) / opts.rows,
-                    }}
-                />
-            );
-        }
+        bin.push(
+            <Catchable
+                className={classNames(
+                    opts.bin[i].className,
+                    opts.dropSpeed,
+                    {
+                        PAUSED: _.get(props, 'gameState.paused', false)
+                    }
+                )}
+                message={opts.bin[i].message}
+            />
+        );
     }
 
     SFXOnPlay = function () {
@@ -180,17 +176,32 @@ export default function (props, ref, key, opts = {}) {
             });
         }, 1000);
 
-        this.updateGameState({
-            path: 'score',
-            data: {
-                points: _.get(props, 'data.score.points', 0) + opts.points.incorrect,
-            },
-        });
-        this.updateGameState({
-            path: 'sfx',
-            data: {
-                play: 'incorrect-miss',
-            }
+        if (item.props.message === 'trash') {
+            this.updateGameState({
+                path: 'score',
+                data: {
+                    points: _.get(props, 'data.score.points', 0) + opts.points.incorrect,
+                },
+            });
+            this.updateGameState({
+                path: 'sfx',
+                data: {
+                    play: 'incorrect-miss',
+                }
+            });
+        } else {
+            this.updateGameState({
+                path: 'sfx',
+                data: {
+                    play: 'splash',
+                }
+            });
+        }
+    };
+
+    dropperOnStop = function () {
+        this.setState({
+            items: {}
         });
     };
 
@@ -221,7 +232,7 @@ export default function (props, ref, key, opts = {}) {
 
         setTimeout(() => {
             bucketRef.removeClassName('correct');
-        }, 1000);
+        }, 500);
 
         this.updateGameState({
             path: 'score',
@@ -233,7 +244,7 @@ export default function (props, ref, key, opts = {}) {
         this.updateGameState({
             path: 'sfx',
             data: {
-                play: 'correct',
+                play: 'correct-catch',
             }
         });
 
@@ -292,7 +303,6 @@ export default function (props, ref, key, opts = {}) {
             ref={ref}
             key={key}
             id={opts.id}
-            onStart={opts.onStart}
         >
             <skoash.Component className="misc">
                 <skoash.Component
@@ -351,11 +361,12 @@ export default function (props, ref, key, opts = {}) {
                 onPlay={SFXOnPlay}
             >
                 <skoash.Audio ref="button" type="sfx" src="media/audio/button.mp3" silentOnStart complete />
+                <skoash.Audio ref="splash" type="sfx" src="media/audio/DropSplash.mp3" complete />
                 <skoash.MediaSequence ref="incorrect-miss" silentOnStart>
                     <skoash.Audio ref="splash" type="sfx" src="media/audio/DropSplash.mp3" complete />
                     <skoash.Audio ref="miss" type="sfx" src="media/audio/LoosePoints.mp3" complete />
                 </skoash.MediaSequence>
-                <skoash.MediaSequence ref="correct" silentOnStart>
+                <skoash.MediaSequence ref="correct-catch" silentOnStart>
                     <skoash.Audio ref="catch" type="sfx" src="media/audio/basket.mp3" complete />
                     <skoash.Audio ref="earn" type="sfx" src="media/audio/GainPoints.mp3" complete />
                 </skoash.MediaSequence>
@@ -400,9 +411,10 @@ export default function (props, ref, key, opts = {}) {
             <Dropper
                 leftBound={70}
                 rightBound={820}
-                on={_.get(props, 'data.game.start', false)}
+                on={_.get(props, 'data.game.start', false) && !_.get(props, 'gameState.paused')}
                 start={_.get(props, 'data.game.start', false)}
                 stop={_.get(props, 'data.game.complete', false)}
+                onStop={dropperOnStop}
                 prepClasses={['ready', 'go']}
                 prepTimeout={opts.dropTimeout}
                 getClassNames={dropperGetClassNames}

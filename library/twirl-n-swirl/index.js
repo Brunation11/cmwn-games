@@ -20,46 +20,35 @@ import FlipScreen from './components/flip_screen';
 
 import QuitScreen from 'shared/components/quit_screen/0.1';
 
-var TwirlNSwirl = (
+skoash.start(
     <skoash.Game
         config={config}
-        screens={{
-            0: iOSScreen,
-            1: TitleScreen,
-            2: InfoQuestionScreen,
-            3: InfoPlantScreen,
-            4: FlushItScreen,
-            5: ResponsibleFlusherScreen,
-            6: InfoReleasedScreen,
-            7: LetsCleanUpScreen,
-            8: CatchGameLvlOneScreen,
-            9: CatchGameLvlTwoScreen,
-            10: CatchGameLvlThreeScreen,
-            11: CatchGameLvlFourScreen,
-            12: CatchGameLvlFiveScreen,
-            13: MakeADifferenceScreen,
-            14: FlipScreen
-        }}
+        loader={<Loader />}
+        screens={[
+            iOSScreen,
+            TitleScreen,
+            InfoQuestionScreen,
+            InfoPlantScreen,
+            FlushItScreen,
+            ResponsibleFlusherScreen,
+            InfoReleasedScreen,
+            LetsCleanUpScreen,
+            CatchGameLvlOneScreen,
+            CatchGameLvlTwoScreen,
+            CatchGameLvlThreeScreen,
+            CatchGameLvlFourScreen,
+            CatchGameLvlFiveScreen,
+            MakeADifferenceScreen,
+            FlipScreen
+        ]}
         menus={{
             quit: QuitScreen,
-        }}
-        loader={<Loader />}
-        getBackgroundIndex={function (index) {
-            switch (index) {
-                case 8:
-                case 9:
-                case 10:
-                case 11:
-                case 12:
-                    return 1;
-                default:
-                    return 0;
-            }
         }}
         assets={[
             <skoash.Audio ref="bkg-1" type="background" src="media/audio/title/background.mp3" />,
             <skoash.Audio ref="bkg-2" type="background" src="media/audio/TS_Game_Theme.mp3" />,
             <skoash.Audio ref="button" type="sfx" src="media/audio/button.mp3" />,
+            <skoash.Audio ref="close-sound" type="sfx" src="media/audio/button.mp3" />,
             <skoash.Audio ref="screen-complete" type="sfx" src="media/audio/screen-complete.mp3" />,
             <div className="background bkg-1" />,
             <div className="background bkg-2" />,
@@ -68,9 +57,20 @@ var TwirlNSwirl = (
             <div className="background bkg-5" />,
             <div className="background bkg-6" />
         ]}
+        getBackgroundIndex={function (index, id) {
+            switch (id) {
+                case 'ios-splash': return;
+                case 'CatchGameLvlOneScreen':
+                case 'CatchGameLvlTwoScreen':
+                case 'CatchGameLvlThreeScreen':
+                case 'CatchGameLvlFourScreen':
+                case 'CatchGameLvlFiveScreen':
+                    return 1;
+                default:
+                    return 0;
+            }
+        }}
     />
 );
-
-skoash.start(TwirlNSwirl);
 
 if (module.hot) module.hot.accept();
