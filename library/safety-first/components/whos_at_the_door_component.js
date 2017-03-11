@@ -20,7 +20,7 @@ export default function (props, ref, key, opts = {}) {
     };
 
     selectRespond = function (target) {
-        if (_.get(props, 'data.sfx') === target) return;
+        if (_.get(props, 'data.sfx')) return;
         this.updateGameState({
             path: 'sfx',
             data: target
